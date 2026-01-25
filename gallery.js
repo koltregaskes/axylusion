@@ -52,20 +52,6 @@ const embeddedData = {
       "dimensions": "21:9",
       "created": "2024-12-14",
       "tags": ["sci-fi", "cinematic", "vehicle", "landscape", "desert", "action", "futuristic"]
-    },
-    {
-      "id": "5cd9687f-59b6-4688-ae38-bed536dd4a3e",
-      "name": "Man Winking",
-      "type": "video",
-      "source": "midjourney",
-      "url": "https://www.midjourney.com/jobs/5cd9687f-59b6-4688-ae38-bed536dd4a3e?index=0",
-      "cdn_url": "https://cdn.midjourney.com/5cd9687f-59b6-4688-ae38-bed536dd4a3e/0_0.mp4",
-      "thumbnail_url": "",
-      "prompt": "man looks at camera, winks, smiles",
-      "parameters": "--duration 5s --profile aztrg5w",
-      "dimensions": "video",
-      "created": "2024-12-14",
-      "tags": ["portrait", "video", "man", "animation"]
     }
   ]
 };

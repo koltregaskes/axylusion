@@ -138,7 +138,7 @@ h1 {
 }
 
 .search-bar select {
-    padding: 0.75rem 1.25rem;
+    padding: 0.75rem 2.5rem 0.75rem 1.25rem;
     border: 1px solid #333;
     border-radius: 50px;
     background: var(--axyl-dark);
@@ -146,6 +146,12 @@ h1 {
     font-size: 0.85rem;
     cursor: pointer;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
 }
 
 .search-bar select:focus {
@@ -417,7 +423,7 @@ h1 {
     transition: opacity 0.2s ease, background 0.2s ease;
 }
 
-.modal-content:hover .close {
+.modal.active .close {
     opacity: 1;
 }
 
@@ -426,52 +432,51 @@ h1 {
     color: var(--axyl-black);
 }
 
-/* Modal Navigation Buttons */
+/* Modal Navigation Buttons - Fixed position outside content */
 .modal-nav {
-    position: absolute;
+    position: fixed;
     top: 50%;
-    transform: translateY(-100%);
+    transform: translateY(-50%);
     width: 50px;
     height: 50px;
-    background: rgba(0,0,0,0.7);
-    border: none;
+    background: rgba(30, 30, 30, 0.9);
+    border: 1px solid #333;
     border-radius: 50%;
     color: #fff;
     font-size: 2rem;
     cursor: pointer;
-    z-index: 15;
-    opacity: 0;
-    transition: opacity 0.2s ease, background 0.2s ease;
+    z-index: 1010;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     line-height: 1;
 }
 
-.modal-content:hover .modal-nav {
-    opacity: 1;
-}
-
 .modal-nav:hover {
+    opacity: 1;
     background: rgba(196, 133, 26, 0.9);
+    border-color: var(--axyl-amber);
     color: var(--axyl-black);
 }
 
 .modal-prev {
-    left: 1rem;
+    left: 1.5rem;
 }
 
 .modal-next {
-    right: 1rem;
+    right: 1.5rem;
 }
 
 .modal-nav:disabled {
-    opacity: 0.3;
+    opacity: 0.2;
     cursor: not-allowed;
 }
 
 .modal-nav:disabled:hover {
-    background: rgba(0,0,0,0.7);
+    background: rgba(30, 30, 30, 0.9);
+    border-color: #333;
     color: #fff;
 }
 
