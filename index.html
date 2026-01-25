@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axylusion | AI Art, Video & Music</title>
+    <meta name="description" content="AI-generated art, video, and music by Kol Tregaskes. Explore cinematic portraits, cyberpunk scenes, and original music.">
+    <meta property="og:title" content="Axylusion | AI Art, Video & Music">
+    <meta property="og:description" content="AI-generated art, video, and music by Kol Tregaskes">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://axylusion.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Axylusion">
+    <link rel="canonical" href="https://axylusion.com">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Axylusion</h1>
+        <p class="tagline">AI Art, Video & Music</p>
+        <nav class="social-links">
+            <a href="https://x.com/Axylusion" target="_blank" title="X / Twitter">X</a>
+            <a href="https://www.instagram.com/axylusion" target="_blank" title="Instagram">Instagram</a>
+            <a href="https://www.youtube.com/@AxyLusion" target="_blank" title="YouTube">YouTube</a>
+            <a href="https://www.tiktok.com/@axylusion" target="_blank" title="TikTok">TikTok</a>
+            <a href="https://www.midjourney.com/@axylusion" target="_blank" title="Midjourney">Midjourney</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search by keyword..." autocomplete="off">
+            <input type="month" id="date-filter" title="Filter by month">
+            <select id="type-filter">
+                <option value="all">All Types</option>
+                <option value="image">Images</option>
+                <option value="video">Videos</option>
+                <option value="music">Music</option>
+            </select>
+        </div>
+        <div class="tags-bar" id="tags-bar">
+            <!-- Tags populated dynamically -->
+        </div>
+        <div class="results-count" id="results-count"></div>
+    </header>
+
+    <main class="gallery" id="gallery">
+        <!-- Items loaded dynamically -->
+    </main>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-media"></div>
+            <div class="modal-info">
+                <h2 id="modal-title"></h2>
+                <div class="modal-meta">
+                    <span id="modal-type"></span>
+                    <span id="modal-dimensions"></span>
+                    <span id="modal-date"></span>
+                </div>
+                <div class="modal-tags" id="modal-tags"></div>
+                <h3>Prompt</h3>
+                <p id="modal-prompt" class="prompt-text"></p>
+                <div class="modal-params">
+                    <strong>Parameters:</strong> <code id="modal-params"></code>
+                </div>
+                <a id="modal-link" href="" target="_blank" class="source-link">View Source</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 <a href="https://koltregaskes.com" target="_blank">Kol Tregaskes</a></p>
+    </footer>
+
+    <script src="gallery.js"></script>
+</body>
+</html>

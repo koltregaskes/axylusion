@@ -1,0 +1,69 @@
+{
+  "items": [
+    {
+      "id": "e055ca01-1d3c-433c-80f3-aa4818322225",
+      "name": "Fantasy Heroine - Red Hair",
+      "type": "image",
+      "source": "midjourney",
+      "url": "https://www.midjourney.com/jobs/e055ca01-1d3c-433c-80f3-aa4818322225?index=0",
+      "cdn_url": "https://cdn.midjourney.com/e055ca01-1d3c-433c-80f3-aa4818322225/0_0.png",
+      "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity+ use text",
+      "parameters": "--ar 3:2 --style raw --stylize 200 --profile aztrg5w",
+      "dimensions": "3:2",
+      "created": "2024-12-14",
+      "tags": ["portrait", "fantasy", "cinematic", "noir", "woman", "graphic-novel", "sin-city"]
+    },
+    {
+      "id": "bbee3420-ec91-4dbd-b4fe-fd81a4e39a47",
+      "name": "Fantasy Heroine - Variant",
+      "type": "image",
+      "source": "midjourney",
+      "url": "https://www.midjourney.com/jobs/bbee3420-ec91-4dbd-b4fe-fd81a4e39a47?index=0",
+      "cdn_url": "https://cdn.midjourney.com/bbee3420-ec91-4dbd-b4fe-fd81a4e39a47/0_0.png",
+      "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity+ use text",
+      "parameters": "--ar 3:2 --style raw --stylize 1000 --profile aztrg5w",
+      "dimensions": "3:2",
+      "created": "2024-12-14",
+      "tags": ["portrait", "fantasy", "cinematic", "noir", "woman", "graphic-novel", "sin-city"]
+    },
+    {
+      "id": "c3558a76-5d87-4b0f-8153-dbd38646e905",
+      "name": "Cyberpunk Woman - Comic Style",
+      "type": "image",
+      "source": "midjourney",
+      "url": "https://www.midjourney.com/jobs/c3558a76-5d87-4b0f-8153-dbd38646e905?index=0",
+      "cdn_url": "https://cdn.midjourney.com/c3558a76-5d87-4b0f-8153-dbd38646e905/0_0.png",
+      "prompt": "comic book style, beautiful woman, mid 30s, athletic, dark hair pushed back, cyberpunk, near future, leather jacket, crop top, cargo pants, looking directly at the camera, stood in front of a futuristic neon city, neon lights, night time",
+      "parameters": "--ar 91:51 --style raw --stylize 1000 --profile aztrg5w",
+      "dimensions": "91:51",
+      "created": "2024-12-14",
+      "tags": ["portrait", "cyberpunk", "cinematic", "sci-fi", "woman", "comic", "neon", "city"]
+    },
+    {
+      "id": "9c76a821-7461-4d02-abc3-a09b685fe73d",
+      "name": "Cyberpunk Hover Bike",
+      "type": "image",
+      "source": "midjourney",
+      "url": "https://www.midjourney.com/jobs/9c76a821-7461-4d02-abc3-a09b685fe73d?index=0",
+      "cdn_url": "https://cdn.midjourney.com/9c76a821-7461-4d02-abc3-a09b685fe73d/0_0.png",
+      "prompt": "cinematic still of a sleek industrial black hover bike with a rider in matte black armor, desert terrain with scattered debris, dust trails behind the vehicle, low camera angle emphasizing speed and power, dramatic motion blur on background, golden hour lighting with warm amber tones, photorealistic rendering, high detail mechanical parts, weathered and battle-worn aesthetic",
+      "parameters": "--ar 21:9 --style raw --stylize 300 --profile aztrg5w",
+      "dimensions": "21:9",
+      "created": "2024-12-14",
+      "tags": ["sci-fi", "cinematic", "vehicle", "landscape", "desert", "action", "futuristic"]
+    },
+    {
+      "id": "5cd9687f-59b6-4688-ae38-bed536dd4a3e",
+      "name": "Man Winking",
+      "type": "video",
+      "source": "midjourney",
+      "url": "https://www.midjourney.com/jobs/5cd9687f-59b6-4688-ae38-bed536dd4a3e?index=0",
+      "cdn_url": "https://cdn.midjourney.com/5cd9687f-59b6-4688-ae38-bed536dd4a3e/0_0.mp4",
+      "prompt": "man looks at camera, winks, smiles",
+      "parameters": "--duration 5s --profile aztrg5w",
+      "dimensions": "video",
+      "created": "2024-12-14",
+      "tags": ["portrait", "video", "man", "animation"]
+    }
+  ]
+}
