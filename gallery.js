@@ -60,6 +60,7 @@ const embeddedData = {
       "source": "midjourney",
       "url": "https://www.midjourney.com/jobs/5cd9687f-59b6-4688-ae38-bed536dd4a3e?index=0",
       "cdn_url": "https://cdn.midjourney.com/5cd9687f-59b6-4688-ae38-bed536dd4a3e/0_0.mp4",
+      "thumbnail_url": "",
       "prompt": "man looks at camera, winks, smiles",
       "parameters": "--duration 5s --profile aztrg5w",
       "dimensions": "video",
@@ -94,7 +95,55 @@ const prevBtn = document.getElementById('modal-prev');
 const nextBtn = document.getElementById('modal-next');
 const searchInput = document.getElementById('search');
 const typeFilter = document.getElementById('type-filter');
+const dateFilter = document.getElementById('date-filter');
 const pagination = document.getElementById('pagination');
+
+// URL History management
+function updateURL(item) {
+    if (item) {
+        const url = new URL(window.location);
+        url.searchParams.set('view', item.id);
+        window.history.pushState({ itemId: item.id }, '', url);
+    } else {
+        const url = new URL(window.location);
+        url.searchParams.delete('view');
+        window.history.pushState({}, '', url);
+    }
+}
+
+// Handle browser back/forward
+window.addEventListener('popstate', (e) => {
+    const url = new URL(window.location);
+    const viewId = url.searchParams.get('view');
+
+    if (viewId) {
+        const item = items.find(i => i.id === viewId);
+        if (item) {
+            const index = filteredItems.indexOf(item);
+            if (index !== -1) {
+                openModal(item, index, false); // false = don't push to history
+            }
+        }
+    } else {
+        closeModal(false); // false = don't push to history
+    }
+});
+
+// Check URL on load
+function checkURLOnLoad() {
+    const url = new URL(window.location);
+    const viewId = url.searchParams.get('view');
+
+    if (viewId) {
+        const item = items.find(i => i.id === viewId);
+        if (item) {
+            const index = filteredItems.indexOf(item);
+            if (index !== -1) {
+                openModal(item, index, false);
+            }
+        }
+    }
+}
 
 // Load data - try fetch first (for served files), fall back to embedded (for file://)
 async function loadData() {
@@ -113,13 +162,35 @@ async function loadData() {
     }
     // Sort by date descending (newest first)
     items.sort((a, b) => new Date(b.created) - new Date(a.created));
+
+    // Populate date filter with available years
+    populateDateFilter();
+
     renderGallery();
+    checkURLOnLoad();
+}
+
+// Populate date filter dropdown
+function populateDateFilter() {
+    const years = new Set();
+    items.forEach(item => {
+        const year = item.created.substring(0, 4);
+        years.add(year);
+    });
+
+    const sortedYears = Array.from(years).sort((a, b) => b - a);
+
+    dateFilter.innerHTML = '<option value="">All Time</option>';
+    sortedYears.forEach(year => {
+        dateFilter.innerHTML += `<option value="${year}">${year}</option>`;
+    });
 }
 
 // Filter items
 function getFilteredItems() {
     const searchTerm = searchInput.value.toLowerCase().trim();
     const typeValue = typeFilter.value;
+    const dateValue = dateFilter.value;
 
     return items.filter(item => {
         // Type filter
@@ -127,6 +198,12 @@ function getFilteredItems() {
 
         // Tag filter
         if (activeTag && !item.tags.includes(activeTag)) return false;
+
+        // Date filter (by year)
+        if (dateValue) {
+            const itemYear = item.created.substring(0, 4);
+            if (itemYear !== dateValue) return false;
+        }
 
         // Keyword search (searches name, prompt, and tags)
         if (searchTerm) {
@@ -230,16 +307,16 @@ function renderGallery() {
         let overlayHtml = '';
 
         if (item.type === 'video') {
-            // For Midjourney videos, the thumbnail is at 0_0_thumbnail_00001.webp or similar
-            // Try multiple thumbnail patterns
-            const thumbBase = item.cdn_url.replace('/0_0.mp4', '');
-            const videoThumb = `${thumbBase}/0_0_thumbnail_00001.webp`;
-            const fallbackThumb = item.cdn_url.replace('.mp4', '.webp');
-            mediaHtml = `<img src="${videoThumb}" alt="${item.name}" loading="lazy"
-                onerror="this.onerror=null; this.src='${fallbackThumb}';">`;
+            // For videos, use thumbnail_url if provided, otherwise show placeholder
+            if (item.thumbnail_url) {
+                mediaHtml = `<img src="${item.thumbnail_url}" alt="${item.name}" loading="lazy">`;
+            } else {
+                // Video placeholder with play icon
+                mediaHtml = '<div class="video-placeholder"></div>';
+            }
             badgeHtml = '<div class="video-play-icon"></div>';
         } else if (item.type === 'music') {
-            // For music, use album art if available, otherwise placeholder
+            // For music, use thumbnail_url if available, otherwise placeholder
             if (item.thumbnail_url) {
                 mediaHtml = `<img src="${item.thumbnail_url}" alt="${item.name}" loading="lazy">`;
             } else {
@@ -278,15 +355,22 @@ function renderGallery() {
 }
 
 // Open modal
-function openModal(item, index) {
+function openModal(item, index, pushHistory = true) {
     currentModalIndex = index;
+
+    // Update URL for back button support
+    if (pushHistory) {
+        updateURL(item);
+    }
 
     // Set media
     if (item.type === 'video') {
-        // Use proper video element with controls
-        modalMedia.innerHTML = `<video src="${item.cdn_url}" controls autoplay loop playsinline>
-            Your browser does not support video playback.
-        </video>`;
+        // Check if CDN URL is accessible - show message if not
+        modalMedia.innerHTML = `
+            <video src="${item.cdn_url}" controls autoplay loop playsinline
+                onerror="this.outerHTML='<div class=\\'video-error\\'>Video unavailable. <a href=\\'${item.url}\\' target=\\'_blank\\'>View on Midjourney</a></div>'">
+                Your browser does not support video playback.
+            </video>`;
     } else if (item.type === 'music') {
         // For Suno music with video, show video player
         if (item.cdn_url && item.cdn_url.endsWith('.mp4')) {
@@ -379,14 +463,18 @@ function showNext() {
 }
 
 // Close modal
-function closeModal() {
+function closeModal(pushHistory = true) {
     modal.classList.remove('active');
     document.body.style.overflow = '';
     modalMedia.innerHTML = '';
+
+    if (pushHistory) {
+        updateURL(null);
+    }
 }
 
 // Event listeners
-closeBtn.addEventListener('click', closeModal);
+closeBtn.addEventListener('click', () => closeModal());
 prevBtn.addEventListener('click', showPrevious);
 nextBtn.addEventListener('click', showNext);
 
@@ -394,6 +482,7 @@ modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
 });
 
+// Keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (!modal.classList.contains('active')) return;
 
@@ -401,6 +490,22 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') showPrevious();
     if (e.key === 'ArrowRight') showNext();
 });
+
+// Mouse wheel navigation in modal
+modal.addEventListener('wheel', (e) => {
+    if (!modal.classList.contains('active')) return;
+
+    // Prevent default scroll
+    e.preventDefault();
+
+    if (e.deltaY > 0) {
+        // Scroll down = next
+        showNext();
+    } else if (e.deltaY < 0) {
+        // Scroll up = previous
+        showPrevious();
+    }
+}, { passive: false });
 
 // Search and filter listeners with debounce
 let searchTimeout;
@@ -413,6 +518,11 @@ searchInput.addEventListener('input', () => {
 });
 
 typeFilter.addEventListener('change', () => {
+    currentPage = 1;
+    renderGallery();
+});
+
+dateFilter.addEventListener('change', () => {
     currentPage = 1;
     renderGallery();
 });
