@@ -18,13 +18,6 @@
     <header>
         <h1>Axylusion</h1>
         <p class="tagline">AI Art, Video & Music</p>
-        <nav class="social-links">
-            <a href="https://x.com/Axylusion" target="_blank" title="X / Twitter">X</a>
-            <a href="https://www.instagram.com/axylusion" target="_blank" title="Instagram">Instagram</a>
-            <a href="https://www.youtube.com/@AxyLusion" target="_blank" title="YouTube">YouTube</a>
-            <a href="https://www.tiktok.com/@axylusion" target="_blank" title="TikTok">TikTok</a>
-            <a href="https://www.midjourney.com/@axylusion" target="_blank" title="Midjourney">Midjourney</a>
-        </nav>
         <div class="search-bar">
             <input type="text" id="search" placeholder="Search by keyword..." autocomplete="off">
             <input type="month" id="date-filter" title="Filter by month">
@@ -48,7 +41,11 @@
     <div class="modal" id="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <div id="modal-media"></div>
+            <button class="modal-nav modal-prev" id="modal-prev" title="Previous">&lsaquo;</button>
+            <button class="modal-nav modal-next" id="modal-next" title="Next">&rsaquo;</button>
+            <div class="modal-media-wrapper">
+                <div id="modal-media"></div>
+            </div>
             <div class="modal-info">
                 <h2 id="modal-title"></h2>
                 <div class="modal-meta">
@@ -68,6 +65,14 @@
     </div>
 
     <footer>
+        <nav class="social-links">
+            <a href="https://x.com/Axylusion" target="_blank" title="X / Twitter">X</a>
+            <a href="https://www.instagram.com/axylusion" target="_blank" title="Instagram">Instagram</a>
+            <a href="https://www.youtube.com/@AxyLusion" target="_blank" title="YouTube">YouTube</a>
+            <a href="https://www.tiktok.com/@axylusion" target="_blank" title="TikTok">TikTok</a>
+            <a href="https://www.midjourney.com/@axylusion" target="_blank" title="Midjourney">Midjourney</a>
+            <a href="https://suno.com/@axylusion" target="_blank" title="Suno">Suno</a>
+        </nav>
         <p>&copy; 2025 <a href="https://koltregaskes.com" target="_blank">Kol Tregaskes</a></p>
     </footer>
 

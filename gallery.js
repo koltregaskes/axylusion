@@ -72,6 +72,8 @@ const embeddedData = {
 // State
 let items = [];
 let activeTag = null;
+let currentModalIndex = -1;
+let filteredItems = [];
 
 // DOM elements
 const gallery = document.getElementById('gallery');
@@ -86,6 +88,8 @@ const modalDate = document.getElementById('modal-date');
 const modalTags = document.getElementById('modal-tags');
 const modalLink = document.getElementById('modal-link');
 const closeBtn = document.querySelector('.close');
+const prevBtn = document.getElementById('modal-prev');
+const nextBtn = document.getElementById('modal-next');
 const searchInput = document.getElementById('search');
 const dateFilter = document.getElementById('date-filter');
 const typeFilter = document.getElementById('type-filter');
@@ -176,28 +180,37 @@ function getFilteredItems() {
 
 // Render gallery
 function renderGallery() {
-    const filtered = getFilteredItems();
+    filteredItems = getFilteredItems();
 
     // Update count
-    resultsCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'item' : 'items'}`;
+    resultsCount.textContent = `${filteredItems.length} ${filteredItems.length === 1 ? 'item' : 'items'}`;
 
-    if (filtered.length === 0) {
+    if (filteredItems.length === 0) {
         gallery.innerHTML = '<div class="empty-state"><h3>No results found</h3><p>Try adjusting your search or filters</p></div>';
         return;
     }
 
-    gallery.innerHTML = filtered.map(item => {
+    gallery.innerHTML = filteredItems.map((item, index) => {
         let mediaHtml = '';
         let badgeHtml = '';
         let overlayHtml = '';
 
         if (item.type === 'video') {
-            // For videos, use a thumbnail from the CDN (Midjourney provides .webp thumbnails)
-            const videoThumb = item.cdn_url.replace('/0_0.mp4', '/0_0.webp');
-            mediaHtml = `<img src="${videoThumb}" alt="${item.name}" loading="lazy" onerror="this.src='${item.cdn_url.replace('.mp4', '.webp')}'">`;
+            // For Midjourney videos, the thumbnail is at 0_0_thumbnail_00001.webp or similar
+            // Try multiple thumbnail patterns
+            const thumbBase = item.cdn_url.replace('/0_0.mp4', '');
+            const videoThumb = `${thumbBase}/0_0_thumbnail_00001.webp`;
+            const fallbackThumb = item.cdn_url.replace('.mp4', '.webp');
+            mediaHtml = `<img src="${videoThumb}" alt="${item.name}" loading="lazy"
+                onerror="this.onerror=null; this.src='${fallbackThumb}';">`;
             badgeHtml = '<div class="video-play-icon"></div>';
         } else if (item.type === 'music') {
-            mediaHtml = '<div class="music-placeholder">&#127925;</div>';
+            // For music, use album art if available, otherwise placeholder
+            if (item.thumbnail_url) {
+                mediaHtml = `<img src="${item.thumbnail_url}" alt="${item.name}" loading="lazy">`;
+            } else {
+                mediaHtml = '<div class="music-placeholder">&#127925;</div>';
+            }
             badgeHtml = '<span class="type-badge music">music</span>';
         } else {
             mediaHtml = `<img src="${item.cdn_url}" alt="${item.name}" loading="lazy">`;
@@ -211,7 +224,7 @@ function renderGallery() {
         `;
 
         return `
-        <div class="gallery-item" data-id="${item.id}">
+        <div class="gallery-item" data-id="${item.id}" data-index="${index}">
             ${badgeHtml}
             ${mediaHtml}
             ${overlayHtml}
@@ -220,18 +233,32 @@ function renderGallery() {
 
     // Add click handlers
     gallery.querySelectorAll('.gallery-item').forEach(el => {
-        const item = items.find(i => i.id === el.dataset.id);
-        el.addEventListener('click', () => openModal(item));
+        el.addEventListener('click', () => {
+            const index = parseInt(el.dataset.index);
+            openModal(filteredItems[index], index);
+        });
     });
 }
 
 // Open modal
-function openModal(item) {
+function openModal(item, index) {
+    currentModalIndex = index;
+
     // Set media
     if (item.type === 'video') {
-        modalMedia.innerHTML = `<video src="${item.cdn_url}" controls autoplay loop></video>`;
+        // Use proper video element with controls
+        modalMedia.innerHTML = `<video src="${item.cdn_url}" controls autoplay loop playsinline>
+            Your browser does not support video playback.
+        </video>`;
     } else if (item.type === 'music') {
-        modalMedia.innerHTML = `<audio src="${item.cdn_url}" controls autoplay></audio>`;
+        // For Suno music with video, show video player
+        if (item.cdn_url && item.cdn_url.endsWith('.mp4')) {
+            modalMedia.innerHTML = `<video src="${item.cdn_url}" controls autoplay loop playsinline>
+                Your browser does not support video playback.
+            </video>`;
+        } else {
+            modalMedia.innerHTML = `<audio src="${item.cdn_url}" controls autoplay></audio>`;
+        }
     } else {
         modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="${item.name}">`;
     }
@@ -240,7 +267,19 @@ function openModal(item) {
     modalType.textContent = item.type;
     modalDimensions.textContent = item.dimensions;
     modalDate.textContent = item.created;
-    modalTags.innerHTML = item.tags.map(t => `<span>${t}</span>`).join('');
+
+    // Create clickable tags
+    modalTags.innerHTML = item.tags.map(t => `<span data-tag="${t}">${t}</span>`).join('');
+
+    // Add click handlers to tags
+    modalTags.querySelectorAll('span').forEach(tagEl => {
+        tagEl.addEventListener('click', () => {
+            const tag = tagEl.dataset.tag;
+            closeModal();
+            filterByTag(tag);
+        });
+    });
+
     modalPrompt.textContent = item.prompt || '';
     modalParams.textContent = item.parameters || '';
 
@@ -260,8 +299,54 @@ function openModal(item) {
         modalLink.style.display = 'none';
     }
 
+    // Update navigation buttons
+    updateNavButtons();
+
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+}
+
+// Filter by tag (called from modal tag click)
+function filterByTag(tag) {
+    // Set the active tag
+    activeTag = tag;
+
+    // Update tag bar to show active state
+    tagsBar.querySelectorAll('.tag-btn').forEach(btn => {
+        if (btn.dataset.tag === tag) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // Re-render gallery with filter
+    renderGallery();
+
+    // Scroll to top of gallery
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Update navigation button states
+function updateNavButtons() {
+    prevBtn.disabled = currentModalIndex <= 0;
+    nextBtn.disabled = currentModalIndex >= filteredItems.length - 1;
+}
+
+// Navigate to previous item
+function showPrevious() {
+    if (currentModalIndex > 0) {
+        currentModalIndex--;
+        openModal(filteredItems[currentModalIndex], currentModalIndex);
+    }
+}
+
+// Navigate to next item
+function showNext() {
+    if (currentModalIndex < filteredItems.length - 1) {
+        currentModalIndex++;
+        openModal(filteredItems[currentModalIndex], currentModalIndex);
+    }
 }
 
 // Close modal
@@ -273,11 +358,19 @@ function closeModal() {
 
 // Event listeners
 closeBtn.addEventListener('click', closeModal);
+prevBtn.addEventListener('click', showPrevious);
+nextBtn.addEventListener('click', showNext);
+
 modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
 });
+
 document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+
     if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') showPrevious();
+    if (e.key === 'ArrowRight') showNext();
 });
 
 // Search and filter listeners with debounce
