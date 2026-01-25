@@ -6,6 +6,7 @@ const embeddedData = {
       "name": "Fantasy Heroine - Red Hair",
       "type": "image",
       "source": "midjourney",
+      "model": "Midjourney v6.1",
       "url": "https://www.midjourney.com/jobs/e055ca01-1d3c-433c-80f3-aa4818322225?index=0",
       "cdn_url": "https://cdn.midjourney.com/e055ca01-1d3c-433c-80f3-aa4818322225/0_0.png",
       "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity+ use text",
@@ -19,6 +20,7 @@ const embeddedData = {
       "name": "Fantasy Heroine - Variant",
       "type": "image",
       "source": "midjourney",
+      "model": "Midjourney v6.1",
       "url": "https://www.midjourney.com/jobs/bbee3420-ec91-4dbd-b4fe-fd81a4e39a47?index=0",
       "cdn_url": "https://cdn.midjourney.com/bbee3420-ec91-4dbd-b4fe-fd81a4e39a47/0_0.png",
       "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity+ use text",
@@ -32,6 +34,7 @@ const embeddedData = {
       "name": "Cyberpunk Woman - Comic Style",
       "type": "image",
       "source": "midjourney",
+      "model": "Midjourney v6.1",
       "url": "https://www.midjourney.com/jobs/c3558a76-5d87-4b0f-8153-dbd38646e905?index=0",
       "cdn_url": "https://cdn.midjourney.com/c3558a76-5d87-4b0f-8153-dbd38646e905/0_0.png",
       "prompt": "comic book style, beautiful woman, mid 30s, athletic, dark hair pushed back, cyberpunk, near future, leather jacket, crop top, cargo pants, looking directly at the camera, stood in front of a futuristic neon city, neon lights, night time",
@@ -45,6 +48,7 @@ const embeddedData = {
       "name": "Cyberpunk Hover Bike",
       "type": "image",
       "source": "midjourney",
+      "model": "Midjourney v6.1",
       "url": "https://www.midjourney.com/jobs/9c76a821-7461-4d02-abc3-a09b685fe73d?index=0",
       "cdn_url": "https://cdn.midjourney.com/9c76a821-7461-4d02-abc3-a09b685fe73d/0_0.png",
       "prompt": "cinematic still of a sleek industrial black hover bike with a rider in matte black armor, desert terrain with scattered debris, dust trails behind the vehicle, low camera angle emphasizing speed and power, dramatic motion blur on background, golden hour lighting with warm amber tones, photorealistic rendering, high detail mechanical parts, weathered and battle-worn aesthetic",
@@ -82,6 +86,7 @@ const nextBtn = document.getElementById('modal-next');
 const searchInput = document.getElementById('search');
 const typeFilter = document.getElementById('type-filter');
 const dateFilter = document.getElementById('date-filter');
+const modelFilter = document.getElementById('model-filter');
 const pagination = document.getElementById('pagination');
 
 // URL History management
@@ -152,6 +157,9 @@ async function loadData() {
     // Populate date filter with available years
     populateDateFilter();
 
+    // Populate model filter with available models
+    populateModelFilter();
+
     renderGallery();
     checkURLOnLoad();
 }
@@ -172,11 +180,29 @@ function populateDateFilter() {
     });
 }
 
+// Populate model filter dropdown
+function populateModelFilter() {
+    const models = new Set();
+    items.forEach(item => {
+        if (item.model) {
+            models.add(item.model);
+        }
+    });
+
+    const sortedModels = Array.from(models).sort();
+
+    modelFilter.innerHTML = '<option value="">All Models</option>';
+    sortedModels.forEach(model => {
+        modelFilter.innerHTML += `<option value="${model}">${model}</option>`;
+    });
+}
+
 // Filter items
 function getFilteredItems() {
     const searchTerm = searchInput.value.toLowerCase().trim();
     const typeValue = typeFilter.value;
     const dateValue = dateFilter.value;
+    const modelValue = modelFilter.value;
 
     return items.filter(item => {
         // Type filter
@@ -191,11 +217,15 @@ function getFilteredItems() {
             if (itemYear !== dateValue) return false;
         }
 
-        // Keyword search (searches name, prompt, and tags)
+        // Model filter
+        if (modelValue && item.model !== modelValue) return false;
+
+        // Keyword search (searches name, prompt, tags, and model)
         if (searchTerm) {
             const searchable = [
                 item.name,
                 item.prompt,
+                item.model || '',
                 ...item.tags
             ].join(' ').toLowerCase();
             if (!searchable.includes(searchTerm)) return false;
@@ -371,7 +401,7 @@ function openModal(item, index, pushHistory = true) {
     }
 
     modalTitle.textContent = item.name;
-    modalType.textContent = item.type;
+    modalType.textContent = item.model || item.type;
     modalDimensions.textContent = item.dimensions;
     modalDate.textContent = item.created;
 
@@ -509,6 +539,11 @@ typeFilter.addEventListener('change', () => {
 });
 
 dateFilter.addEventListener('change', () => {
+    currentPage = 1;
+    renderGallery();
+});
+
+modelFilter.addEventListener('change', () => {
     currentPage = 1;
     renderGallery();
 });
