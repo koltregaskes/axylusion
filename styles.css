@@ -160,6 +160,23 @@ h1 {
     box-shadow: 0 0 0 3px rgba(196, 133, 26, 0.15);
 }
 
+.reset-btn {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #333;
+    border-radius: 50px;
+    background: var(--axyl-dark);
+    color: #888;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+    border-color: var(--axyl-amber);
+    color: var(--axyl-amber);
+    background: rgba(196, 133, 26, 0.1);
+}
+
 /* Pagination */
 .pagination {
     display: flex;
