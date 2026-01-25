@@ -74,6 +74,8 @@ let items = [];
 let activeTag = null;
 let currentModalIndex = -1;
 let filteredItems = [];
+let currentPage = 1;
+const ITEMS_PER_PAGE = 30;
 
 // DOM elements
 const gallery = document.getElementById('gallery');
@@ -91,10 +93,8 @@ const closeBtn = document.querySelector('.close');
 const prevBtn = document.getElementById('modal-prev');
 const nextBtn = document.getElementById('modal-next');
 const searchInput = document.getElementById('search');
-const dateFilter = document.getElementById('date-filter');
 const typeFilter = document.getElementById('type-filter');
-const tagsBar = document.getElementById('tags-bar');
-const resultsCount = document.getElementById('results-count');
+const pagination = document.getElementById('pagination');
 
 // Load data - try fetch first (for served files), fall back to embedded (for file://)
 async function loadData() {
@@ -111,44 +111,14 @@ async function loadData() {
         console.log('Using embedded data (local mode)');
         items = embeddedData.items;
     }
-    initTags();
+    // Sort by date descending (newest first)
+    items.sort((a, b) => new Date(b.created) - new Date(a.created));
     renderGallery();
-}
-
-// Get all unique tags
-function getAllTags() {
-    const tagSet = new Set();
-    items.forEach(item => item.tags.forEach(tag => tagSet.add(tag)));
-    return Array.from(tagSet).sort();
-}
-
-// Initialize tag buttons
-function initTags() {
-    const tags = getAllTags();
-    tagsBar.innerHTML = tags.map(tag =>
-        `<button class="tag-btn" data-tag="${tag}">${tag}</button>`
-    ).join('');
-
-    tagsBar.querySelectorAll('.tag-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const tag = btn.dataset.tag;
-            if (activeTag === tag) {
-                activeTag = null;
-                btn.classList.remove('active');
-            } else {
-                tagsBar.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
-                activeTag = tag;
-                btn.classList.add('active');
-            }
-            renderGallery();
-        });
-    });
 }
 
 // Filter items
 function getFilteredItems() {
     const searchTerm = searchInput.value.toLowerCase().trim();
-    const dateValue = dateFilter.value; // YYYY-MM format
     const typeValue = typeFilter.value;
 
     return items.filter(item => {
@@ -157,12 +127,6 @@ function getFilteredItems() {
 
         // Tag filter
         if (activeTag && !item.tags.includes(activeTag)) return false;
-
-        // Date filter (by month)
-        if (dateValue) {
-            const itemMonth = item.created.substring(0, 7); // YYYY-MM
-            if (itemMonth !== dateValue) return false;
-        }
 
         // Keyword search (searches name, prompt, and tags)
         if (searchTerm) {
@@ -178,19 +142,89 @@ function getFilteredItems() {
     });
 }
 
-// Render gallery
-function renderGallery() {
-    filteredItems = getFilteredItems();
+// Get paginated items
+function getPaginatedItems() {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    return filteredItems.slice(startIndex, endIndex);
+}
 
-    // Update count
-    resultsCount.textContent = `${filteredItems.length} ${filteredItems.length === 1 ? 'item' : 'items'}`;
+// Get total pages
+function getTotalPages() {
+    return Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+}
 
-    if (filteredItems.length === 0) {
-        gallery.innerHTML = '<div class="empty-state"><h3>No results found</h3><p>Try adjusting your search or filters</p></div>';
+// Render pagination
+function renderPagination() {
+    const totalPages = getTotalPages();
+
+    if (totalPages <= 1) {
+        pagination.innerHTML = '';
         return;
     }
 
-    gallery.innerHTML = filteredItems.map((item, index) => {
+    let html = '';
+
+    // Previous button
+    html += `<button ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}">Previous</button>`;
+
+    // Page numbers - show max 5 pages around current
+    const maxVisible = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+
+    if (endPage - startPage < maxVisible - 1) {
+        startPage = Math.max(1, endPage - maxVisible + 1);
+    }
+
+    if (startPage > 1) {
+        html += `<button data-page="1">1</button>`;
+        if (startPage > 2) html += `<span class="pagination-info">...</span>`;
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+        html += `<button class="${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+    }
+
+    if (endPage < totalPages) {
+        if (endPage < totalPages - 1) html += `<span class="pagination-info">...</span>`;
+        html += `<button data-page="${totalPages}">${totalPages}</button>`;
+    }
+
+    // Next button
+    html += `<button ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">Next</button>`;
+
+    pagination.innerHTML = html;
+
+    // Add click handlers
+    pagination.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const page = parseInt(btn.dataset.page);
+            if (page && page !== currentPage) {
+                currentPage = page;
+                renderGallery();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    });
+}
+
+// Render gallery
+function renderGallery() {
+    filteredItems = getFilteredItems();
+    const paginatedItems = getPaginatedItems();
+
+    if (filteredItems.length === 0) {
+        gallery.innerHTML = '<div class="empty-state"><h3>No results found</h3><p>Try adjusting your search or filters</p></div>';
+        pagination.innerHTML = '';
+        return;
+    }
+
+    // Calculate the starting index for the current page
+    const pageStartIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+
+    gallery.innerHTML = paginatedItems.map((item, localIndex) => {
+        const index = pageStartIndex + localIndex;
         let mediaHtml = '';
         let badgeHtml = '';
         let overlayHtml = '';
@@ -238,6 +272,9 @@ function renderGallery() {
             openModal(filteredItems[index], index);
         });
     });
+
+    // Render pagination
+    renderPagination();
 }
 
 // Open modal
@@ -310,15 +347,7 @@ function openModal(item, index) {
 function filterByTag(tag) {
     // Set the active tag
     activeTag = tag;
-
-    // Update tag bar to show active state
-    tagsBar.querySelectorAll('.tag-btn').forEach(btn => {
-        if (btn.dataset.tag === tag) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
+    currentPage = 1;
 
     // Re-render gallery with filter
     renderGallery();
@@ -377,11 +406,16 @@ document.addEventListener('keydown', (e) => {
 let searchTimeout;
 searchInput.addEventListener('input', () => {
     clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(renderGallery, 200);
+    searchTimeout = setTimeout(() => {
+        currentPage = 1;
+        renderGallery();
+    }, 200);
 });
 
-dateFilter.addEventListener('change', renderGallery);
-typeFilter.addEventListener('change', renderGallery);
+typeFilter.addEventListener('change', () => {
+    currentPage = 1;
+    renderGallery();
+});
 
 // Initialize
 loadData();
