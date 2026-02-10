@@ -1502,6 +1502,122 @@ footer a:hover {
 }
 
 /* -----------------------------------------------------------------------------
+   Page Header (for sub-pages)
+   ----------------------------------------------------------------------------- */
+.page-header {
+    padding: calc(80px + var(--space-3xl)) var(--space-xl) var(--space-2xl);
+    text-align: center;
+    background: linear-gradient(180deg,
+        rgba(196, 133, 26, 0.08) 0%,
+        transparent 100%);
+}
+
+.page-header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--axyl-cream);
+    margin-bottom: var(--space-sm);
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: var(--axyl-gray-400);
+}
+
+/* -----------------------------------------------------------------------------
+   Coming Soon Section
+   ----------------------------------------------------------------------------- */
+.coming-soon-section {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3xl) var(--space-xl);
+}
+
+.coming-soon-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+.coming-soon-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--space-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(196, 133, 26, 0.1);
+    border: 2px solid var(--axyl-amber);
+    border-radius: 50%;
+    color: var(--axyl-amber);
+}
+
+.coming-soon-icon svg {
+    width: 50px;
+    height: 50px;
+}
+
+.coming-soon-content h2 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--axyl-cream);
+    margin-bottom: var(--space-lg);
+}
+
+.coming-soon-content p {
+    color: var(--axyl-gray-300);
+    line-height: 1.8;
+    margin-bottom: var(--space-xl);
+}
+
+.coming-soon-links {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.coming-soon-links .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.coming-soon-links .cta-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* News topics */
+.news-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-bottom: var(--space-xl);
+}
+
+.topic-tag {
+    background: var(--axyl-gray-800);
+    color: var(--axyl-gray-300);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid var(--axyl-gray-700);
+}
+
+/* -----------------------------------------------------------------------------
    Empty State
    ----------------------------------------------------------------------------- */
 .empty-state {
