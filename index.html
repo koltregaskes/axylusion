@@ -29,7 +29,7 @@
             <p class="hero-tagline">Exploring the intersection of creativity and artificial intelligence</p>
             <div class="hero-cta">
                 <a href="#gallery" class="cta-button primary">Explore Gallery</a>
-                <a href="#about" class="cta-button secondary">About the Artist</a>
+                <a href="about.html" class="cta-button secondary">About the Artist</a>
             </div>
         </div>
         <div class="hero-featured">
@@ -64,7 +64,7 @@
                 <a href="videos.html" class="nav-link">Videos</a>
                 <a href="music.html" class="nav-link">Music</a>
                 <a href="news.html" class="nav-link">News</a>
-                <a href="#about" class="nav-link">About</a>
+                <a href="about.html" class="nav-link">About</a>
             </nav>
             <div class="header-social">
                 <a href="https://x.com/Axylusion" target="_blank" title="X / Twitter" aria-label="X">
@@ -331,7 +331,7 @@
                 }
             });
 
-            // Smooth scroll for anchor links
+            // Smooth scroll for anchor links with header offset
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -340,7 +340,14 @@
                     e.preventDefault();
                     const target = document.querySelector(href);
                     if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
+                        // Calculate offset for sticky header
+                        const headerHeight = header.classList.contains('sticky') ? 70 : 0;
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
                     }
                 });
             });
