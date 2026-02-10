@@ -15,35 +15,142 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Axy Lusion</h1>
-        <p class="tagline">AI Art, Video & Music</p>
-        <div class="search-bar">
-            <input type="text" id="search" placeholder="Search..." autocomplete="off">
-            <select id="type-filter">
-                <option value="all">All</option>
-                <option value="image">Images</option>
-                <option value="video">Videos</option>
-                <option value="music">Music</option>
-            </select>
-            <select id="date-filter">
-                <option value="">All Time</option>
-            </select>
-            <select id="model-filter">
-                <option value="">All Models</option>
-            </select>
-            <button id="reset-filters" class="reset-btn" title="Reset all filters">Reset</button>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="hero-image" id="hero-image"></div>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-title-main">Axy Lusion</span>
+                <span class="hero-title-sub">AI Art, Video & Music</span>
+            </h1>
+            <p class="hero-tagline">Exploring the intersection of creativity and artificial intelligence</p>
+            <div class="hero-cta">
+                <a href="#gallery" class="cta-button primary">Explore Gallery</a>
+                <a href="#about" class="cta-button secondary">About the Artist</a>
+            </div>
+        </div>
+        <div class="hero-featured">
+            <div class="featured-info">
+                <span class="featured-label">Featured</span>
+                <h3 class="featured-title" id="featured-title">Loading...</h3>
+            </div>
+            <div class="featured-nav">
+                <button class="featured-nav-btn" id="hero-prev" aria-label="Previous">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <div class="featured-dots" id="hero-dots"></div>
+                <button class="featured-nav-btn" id="hero-next" aria-label="Next">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="hero-scroll-hint">
+            <span>Scroll to explore</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+    </section>
+
+    <!-- Navigation Header -->
+    <header id="header">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <span class="logo-text">Axy Lusion</span>
+            </a>
+            <nav class="main-nav">
+                <a href="#gallery" class="nav-link active">Gallery</a>
+                <a href="videos.html" class="nav-link">Videos</a>
+                <a href="music.html" class="nav-link">Music</a>
+                <a href="news.html" class="nav-link">News</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+            <div class="header-social">
+                <a href="https://x.com/Axylusion" target="_blank" title="X / Twitter" aria-label="X">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/axylusion" target="_blank" title="Instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@AxyLusion" target="_blank" title="YouTube" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
         </div>
     </header>
 
-    <main class="gallery" id="gallery">
-        <!-- Items loaded dynamically -->
-    </main>
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-header">
+            <h2 class="section-title">Gallery</h2>
+            <p class="section-subtitle">AI-generated artwork created with Midjourney</p>
+        </div>
 
-    <nav class="pagination" id="pagination">
-        <!-- Pagination loaded dynamically -->
-    </nav>
+        <div class="gallery-controls">
+            <div class="search-bar">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+                <input type="text" id="search" placeholder="Search artworks..." autocomplete="off">
+            </div>
+            <div class="filter-group">
+                <select id="type-filter">
+                    <option value="all">All Types</option>
+                    <option value="image">Images</option>
+                    <option value="video">Videos</option>
+                    <option value="music">Music</option>
+                </select>
+                <select id="date-filter">
+                    <option value="">All Time</option>
+                </select>
+                <select id="model-filter">
+                    <option value="">All Models</option>
+                </select>
+                <button id="reset-filters" class="reset-btn" title="Reset all filters">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                        <path d="M3 3v5h5"/>
+                    </svg>
+                    Reset
+                </button>
+            </div>
+        </div>
 
+        <main class="gallery" id="gallery-grid">
+            <!-- Items loaded dynamically -->
+        </main>
+
+        <nav class="pagination" id="pagination">
+            <!-- Pagination loaded dynamically -->
+        </nav>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <div class="about-image">
+                <div class="about-avatar"></div>
+            </div>
+            <div class="about-text">
+                <h2>About the Artist</h2>
+                <p>I'm <strong>Kol Tregaskes</strong>, a creative explorer at the intersection of art and artificial intelligence. Through tools like Midjourney, I craft cinematic portraits, dark fantasy scenes, and cyberpunk visions that blur the line between imagination and reality.</p>
+                <p>Every piece in this gallery represents a collaboration between human creativity and AI capability - prompts refined through countless iterations, seeking that perfect moment where technology meets artistic vision.</p>
+                <div class="about-links">
+                    <a href="https://koltregaskes.com" target="_blank" class="about-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Website
+                    </a>
+                    <a href="https://x.com/Axylusion" target="_blank" class="about-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        Follow on X
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
     <div class="modal" id="modal">
         <div class="modal-content">
             <button class="modal-nav modal-prev" id="modal-prev" title="Previous (← or scroll up)">&lsaquo;</button>
@@ -70,32 +177,174 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer>
-        <nav class="social-links">
-            <a href="https://x.com/Axylusion" target="_blank" title="X / Twitter" aria-label="X">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/axylusion" target="_blank" title="Instagram" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a href="https://www.youtube.com/@AxyLusion" target="_blank" title="YouTube" aria-label="YouTube">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
-            <a href="https://www.tiktok.com/@axylusion" target="_blank" title="TikTok" aria-label="TikTok">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-            </a>
-            <a href="https://www.midjourney.com/@axylusion" target="_blank" title="Midjourney" aria-label="Midjourney">
-                <!-- Midjourney official sailboat logo -->
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.914 14.066c.267-.226.6-.453 1-.68.4-.226.867-.46 1.4-.7.533-.24 1.133-.473 1.8-.7.667-.227 1.393-.44 2.18-.64a38.037 38.037 0 012.506-.54c.867-.16 1.78-.293 2.74-.4.96-.107 1.967-.18 3.02-.22 1.053-.04 2.147-.033 3.28.02-.107-.36-.233-.713-.38-1.06a8.347 8.347 0 00-.52-1.02 6.94 6.94 0 00-.66-.94 5.47 5.47 0 00-.8-.82 4.835 4.835 0 00-.94-.66 4.368 4.368 0 00-1.06-.46c-.373-.12-.76-.2-1.16-.24a5.57 5.57 0 00-1.24 0c-.413.04-.82.12-1.22.24s-.787.28-1.16.48c-.373.2-.727.44-1.06.72-.333.28-.64.593-.92.94-.28.347-.527.727-.74 1.14-.213.413-.387.847-.52 1.3-.133.453-.22.927-.26 1.42a7.91 7.91 0 00.04 1.48c.053.493.147.973.28 1.44.133.467.307.913.52 1.34.213.427.46.833.74 1.22.28.387.593.747.94 1.08.347.333.72.633 1.12.9.4.267.827.5 1.28.7.453.2.927.36 1.42.48.493.12 1 .2 1.52.24.52.04 1.053.033 1.6-.02s1.1-.147 1.66-.28c.56-.133 1.113-.313 1.66-.54s1.08-.5 1.6-.82c.52-.32 1.02-.687 1.5-1.1.48-.413.933-.873 1.36-1.38a12.26 12.26 0 001.12-1.6c.347-.56.653-1.153.92-1.78.267-.627.487-1.28.66-1.96.173-.68.3-1.38.38-2.1.08-.72.107-1.46.08-2.22a14.08 14.08 0 00-.26-2.26 13.02 13.02 0 00-3.1.06c-1.04.107-2.033.26-2.98.46s-1.84.44-2.68.72c-.84.28-1.62.593-2.34.94-.72.347-1.373.72-1.96 1.12-.587.4-1.1.82-1.54 1.26z"/></svg>
-            </a>
-            <a href="https://suno.com/@axylusion" target="_blank" title="Suno" aria-label="Suno">
-                <!-- Suno S logo -->
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c0 .83-.67 1.5-1.5 1.5h-4c-.83 0-1.5-.67-1.5-1.5v-1c0-.83.67-1.5 1.5-1.5H14v-2h-4v1H8v-1c0-.83.67-1.5 1.5-1.5h4c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5H10v2h4v-1h1.5v1z"/></svg>
-            </a>
-        </nav>
-        <p>&copy; 2026 <a href="https://koltregaskes.com" target="_blank">Kol Tregaskes</a></p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">Axy Lusion</span>
+                <p class="footer-tagline">AI Art, Video & Music</p>
+            </div>
+            <nav class="social-links">
+                <a href="https://x.com/Axylusion" target="_blank" title="X / Twitter" aria-label="X">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/axylusion" target="_blank" title="Instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@AxyLusion" target="_blank" title="YouTube" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@axylusion" target="_blank" title="TikTok" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                </a>
+                <a href="https://www.midjourney.com/@axylusion" target="_blank" title="Midjourney" aria-label="Midjourney">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.914 14.066c.267-.226.6-.453 1-.68.4-.226.867-.46 1.4-.7.533-.24 1.133-.473 1.8-.7.667-.227 1.393-.44 2.18-.64a38.037 38.037 0 012.506-.54c.867-.16 1.78-.293 2.74-.4.96-.107 1.967-.18 3.02-.22 1.053-.04 2.147-.033 3.28.02-.107-.36-.233-.713-.38-1.06a8.347 8.347 0 00-.52-1.02 6.94 6.94 0 00-.66-.94 5.47 5.47 0 00-.8-.82 4.835 4.835 0 00-.94-.66 4.368 4.368 0 00-1.06-.46c-.373-.12-.76-.2-1.16-.24a5.57 5.57 0 00-1.24 0c-.413.04-.82.12-1.22.24s-.787.28-1.16.48c-.373.2-.727.44-1.06.72-.333.28-.64.593-.92.94-.28.347-.527.727-.74 1.14-.213.413-.387.847-.52 1.3-.133.453-.22.927-.26 1.42a7.91 7.91 0 00.04 1.48c.053.493.147.973.28 1.44.133.467.307.913.52 1.34.213.427.46.833.74 1.22.28.387.593.747.94 1.08.347.333.72.633 1.12.9.4.267.827.5 1.28.7.453.2.927.36 1.42.48.493.12 1 .2 1.52.24.52.04 1.053.033 1.6-.02s1.1-.147 1.66-.28c.56-.133 1.113-.313 1.66-.54s1.08-.5 1.6-.82c.52-.32 1.02-.687 1.5-1.1.48-.413.933-.873 1.36-1.38a12.26 12.26 0 001.12-1.6c.347-.56.653-1.153.92-1.78.267-.627.487-1.28.66-1.96.173-.68.3-1.38.38-2.1.08-.72.107-1.46.08-2.22a14.08 14.08 0 00-.26-2.26 13.02 13.02 0 00-3.1.06c-1.04.107-2.033.26-2.98.46s-1.84.44-2.68.72c-.84.28-1.62.593-2.34.94-.72.347-1.373.72-1.96 1.12-.587.4-1.1.82-1.54 1.26z"/></svg>
+                </a>
+                <a href="https://suno.com/@axylusion" target="_blank" title="Suno" aria-label="Suno">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c0 .83-.67 1.5-1.5 1.5h-4c-.83 0-1.5-.67-1.5-1.5v-1c0-.83.67-1.5 1.5-1.5H14v-2h-4v1H8v-1c0-.83.67-1.5 1.5-1.5h4c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5H10v2h4v-1h1.5v1z"/></svg>
+                </a>
+            </nav>
+            <p class="footer-copyright">&copy; 2026 <a href="https://koltregaskes.com" target="_blank">Kol Tregaskes</a></p>
+        </div>
     </footer>
 
     <script src="gallery.js"></script>
+    <script>
+        // Hero section functionality
+        (function() {
+            const heroImage = document.getElementById('hero-image');
+            const featuredTitle = document.getElementById('featured-title');
+            const heroDots = document.getElementById('hero-dots');
+            const heroPrev = document.getElementById('hero-prev');
+            const heroNext = document.getElementById('hero-next');
+
+            // Get featured items from gallery data (first 5 items)
+            let featuredItems = [];
+            let currentIndex = 0;
+            let autoRotateInterval;
+
+            function initHero() {
+                // Wait for gallery data to load
+                if (typeof embeddedData !== 'undefined' && embeddedData.items) {
+                    featuredItems = embeddedData.items.slice(0, 5);
+                } else {
+                    // Fallback - try again after a delay
+                    setTimeout(initHero, 100);
+                    return;
+                }
+
+                if (featuredItems.length === 0) return;
+
+                // Create dots
+                featuredItems.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', `Featured item ${i + 1}`);
+                    dot.addEventListener('click', () => goToSlide(i));
+                    heroDots.appendChild(dot);
+                });
+
+                // Show first item
+                showItem(0);
+
+                // Start auto-rotation
+                startAutoRotate();
+            }
+
+            function showItem(index) {
+                if (!featuredItems[index]) return;
+
+                const item = featuredItems[index];
+
+                // Update background image with fade effect
+                heroImage.style.opacity = '0';
+                setTimeout(() => {
+                    heroImage.style.backgroundImage = `url(${item.cdn_url})`;
+                    heroImage.style.opacity = '1';
+                }, 300);
+
+                // Update title
+                featuredTitle.textContent = item.name;
+
+                // Update dots
+                const dots = heroDots.querySelectorAll('.dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+
+                currentIndex = index;
+            }
+
+            function goToSlide(index) {
+                showItem(index);
+                resetAutoRotate();
+            }
+
+            function nextSlide() {
+                const next = (currentIndex + 1) % featuredItems.length;
+                showItem(next);
+            }
+
+            function prevSlide() {
+                const prev = (currentIndex - 1 + featuredItems.length) % featuredItems.length;
+                showItem(prev);
+            }
+
+            function startAutoRotate() {
+                autoRotateInterval = setInterval(nextSlide, 5000);
+            }
+
+            function resetAutoRotate() {
+                clearInterval(autoRotateInterval);
+                startAutoRotate();
+            }
+
+            // Event listeners
+            heroNext.addEventListener('click', () => {
+                nextSlide();
+                resetAutoRotate();
+            });
+
+            heroPrev.addEventListener('click', () => {
+                prevSlide();
+                resetAutoRotate();
+            });
+
+            // Pause on hover
+            const hero = document.getElementById('hero');
+            hero.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
+            hero.addEventListener('mouseleave', startAutoRotate);
+
+            // Initialize
+            initHero();
+
+            // Sticky header on scroll
+            const header = document.getElementById('header');
+            const heroSection = document.getElementById('hero');
+
+            window.addEventListener('scroll', () => {
+                const heroHeight = heroSection.offsetHeight;
+                if (window.scrollY > heroHeight - 100) {
+                    header.classList.add('sticky');
+                } else {
+                    header.classList.remove('sticky');
+                }
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
 </body>
 </html>
