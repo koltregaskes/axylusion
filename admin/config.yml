@@ -1,0 +1,77 @@
+# Decap CMS Configuration for Axylusion
+# Documentation: https://decapcms.org/docs/
+
+backend:
+  name: github
+  repo: koltregaskes/axylusion
+  branch: main
+  # OAuth authentication will be configured once you create a GitHub OAuth App
+  # For local development, you can use: npx decap-server
+
+# Local backend for testing (run: npx decap-server)
+local_backend: true
+
+# Media files storage
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Site URL for previews
+site_url: https://axylusion.com
+
+# Logo for the CMS (optional)
+# logo_url: /images/logo.png
+
+# Collections - types of content you can edit
+collections:
+  # About page - single file
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "about"
+        label: "About Page"
+        file: "content/about.md"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string", default: "About" }
+          - { label: "Tagline", name: "tagline", widget: "string", default: "The human behind the prompts" }
+          - { label: "Name", name: "name", widget: "string", default: "Kol Tregaskes" }
+          - { label: "Role", name: "role", widget: "string", default: "AI Artist & Creative Technologist" }
+          - { label: "Bio", name: "bio", widget: "markdown" }
+          - label: "Tools"
+            name: "tools"
+            widget: "list"
+            fields:
+              - { label: "Tool Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "string" }
+          - label: "Social Links"
+            name: "social"
+            widget: "list"
+            fields:
+              - { label: "Platform", name: "platform", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Handle", name: "handle", widget: "string" }
+
+  # News articles - folder of markdown files
+  - name: "news"
+    label: "News Articles"
+    folder: "content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Summary", name: "summary", widget: "text", required: false }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Midjourney", value: "midjourney" }
+          - { label: "Suno", value: "suno" }
+          - { label: "Runway ML", value: "runway" }
+          - { label: "Stable Diffusion", value: "stable-diffusion" }
+          - { label: "AI Video", value: "ai-video" }
+          - { label: "AI Music", value: "ai-music" }
+          - { label: "Tutorial", value: "tutorial" }
+          - { label: "General", value: "general" }
+      - { label: "Content", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
