@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Axy Lusion - AI Art Collection</title>
+    <meta name="description" content="Browse the complete AI art gallery by Kol Tregaskes. Search, filter, and explore 1,500+ AI-generated images created with Midjourney.">
+    <meta property="og:title" content="Gallery | Axy Lusion">
+    <meta property="og:description" content="Browse the complete AI art collection - 1,500+ images">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://axylusion.com/gallery">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header id="header" class="sticky">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <span class="logo-text">Axy Lusion</span>
+            </a>
+            <nav class="main-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="gallery.html" class="nav-link active">Gallery</a>
+                <a href="videos.html" class="nav-link">Videos</a>
+                <a href="music.html" class="nav-link">Music</a>
+                <a href="news.html" class="nav-link">News</a>
+                <a href="about.html" class="nav-link">About</a>
+            </nav>
+            <div class="header-social">
+                <a href="https://x.com/Axylusion" target="_blank" title="X / Twitter" aria-label="X">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/axylusion" target="_blank" title="Instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@AxyLusion" target="_blank" title="YouTube" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header gallery-page-header">
+        <div class="page-header-content">
+            <h1 class="page-title stagger-load delay-1">Gallery</h1>
+            <p class="page-subtitle stagger-load delay-2">Browse the complete AI art collection</p>
+            <div class="gallery-stats stagger-load delay-3">
+                <span id="total-count">0</span> artworks
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Controls -->
+    <section class="gallery-controls-section stagger-load delay-3">
+        <div class="gallery-controls-wrapper">
+            <div class="search-bar-large">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+                <input type="text" id="search" placeholder="Search by title, prompt, or tags..." autocomplete="off">
+                <button class="clear-search" id="clear-search" title="Clear search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="filters-row">
+                <div class="filter-group">
+                    <label for="type-filter">Type</label>
+                    <select id="type-filter">
+                        <option value="all">All Types</option>
+                        <option value="image">Images</option>
+                        <option value="video">Videos</option>
+                        <option value="music">Music</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="model-filter">Model</label>
+                    <select id="model-filter">
+                        <option value="">All Models</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="aspect-filter">Aspect Ratio</label>
+                    <select id="aspect-filter">
+                        <option value="">All Ratios</option>
+                        <option value="1:1">Square (1:1)</option>
+                        <option value="3:2">Landscape (3:2)</option>
+                        <option value="2:3">Portrait (2:3)</option>
+                        <option value="16:9">Widescreen (16:9)</option>
+                        <option value="9:16">Vertical (9:16)</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sort-filter">Sort By</label>
+                    <select id="sort-filter">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                    </select>
+                </div>
+
+                <button class="reset-filters-btn" id="reset-filters">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                        <path d="M3 3v5h5"/>
+                    </svg>
+                    Reset
+                </button>
+            </div>
+
+            <!-- Active Tags -->
+            <div class="active-tags" id="active-tags"></div>
+        </div>
+    </section>
+
+    <!-- Results Info -->
+    <div class="results-info">
+        <span id="results-count">Showing 0 of 0 results</span>
+    </div>
+
+    <!-- Gallery Grid -->
+    <main class="gallery-page-grid">
+        <div class="gallery-grid" id="gallery-grid"></div>
+
+        <!-- Loading State -->
+        <div class="gallery-loading" id="gallery-loading">
+            <div class="loading-spinner"></div>
+            <p>Loading gallery...</p>
+        </div>
+
+        <!-- No Results State -->
+        <div class="no-results" id="no-results" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+                <path d="M8 8l6 6M14 8l-6 6"/>
+            </svg>
+            <h3>No results found</h3>
+            <p>Try adjusting your search or filters</p>
+        </div>
+    </main>
+
+    <!-- Pagination -->
+    <nav class="pagination" id="pagination"></nav>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-nav modal-prev" id="modal-prev" title="Previous (← or scroll up)">&lsaquo;</button>
+            <button class="modal-nav modal-next" id="modal-next" title="Next (→ or scroll down)">&rsaquo;</button>
+            <span class="close" title="Close (Esc)">&times;</span>
+            <div class="modal-media-wrapper">
+                <div id="modal-media"></div>
+            </div>
+            <div class="modal-info">
+                <h2 id="modal-title"></h2>
+                <div class="modal-meta">
+                    <span id="modal-type"></span>
+                    <span id="modal-dimensions"></span>
+                    <span id="modal-date"></span>
+                </div>
+                <div class="modal-tags" id="modal-tags"></div>
+                <h3>Prompt</h3>
+                <p id="modal-prompt" class="prompt-text"></p>
+                <div class="modal-params">
+                    <strong>Parameters:</strong> <code id="modal-params"></code>
+                </div>
+                <a id="modal-link" href="" target="_blank" class="source-link">View Source</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">Axy Lusion</span>
+                <p class="footer-tagline">AI Art, Video & Music</p>
+            </div>
+            <nav class="social-links">
+                <a href="https://x.com/Axylusion" target="_blank" title="X / Twitter" aria-label="X">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/axylusion" target="_blank" title="Instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@AxyLusion" target="_blank" title="YouTube" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@axylusion" target="_blank" title="TikTok" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                </a>
+            </nav>
+            <p class="footer-copyright">&copy; 2026 <a href="https://koltregaskes.com" target="_blank">Kol Tregaskes</a></p>
+        </div>
+    </footer>
+
+    <!-- Load gallery data and script -->
+    <script src="gallery.js"></script>
+    <script>
+        // Gallery page specific functionality
+        (function() {
+            const ITEMS_PER_PAGE = 24;
+            let allItems = [];
+            let filteredItems = [];
+            let currentPage = 1;
+            let activeTag = null;
+            let currentModalIndex = 0;
+
+            // DOM elements
+            const grid = document.getElementById('gallery-grid');
+            const searchInput = document.getElementById('search');
+            const clearSearch = document.getElementById('clear-search');
+            const typeFilter = document.getElementById('type-filter');
+            const modelFilter = document.getElementById('model-filter');
+            const aspectFilter = document.getElementById('aspect-filter');
+            const sortFilter = document.getElementById('sort-filter');
+            const resetBtn = document.getElementById('reset-filters');
+            const pagination = document.getElementById('pagination');
+            const resultsCount = document.getElementById('results-count');
+            const totalCount = document.getElementById('total-count');
+            const activeTags = document.getElementById('active-tags');
+            const loading = document.getElementById('gallery-loading');
+            const noResults = document.getElementById('no-results');
+            const modal = document.getElementById('modal');
+            const modalMedia = document.getElementById('modal-media');
+            const modalTitle = document.getElementById('modal-title');
+            const modalType = document.getElementById('modal-type');
+            const modalDimensions = document.getElementById('modal-dimensions');
+            const modalDate = document.getElementById('modal-date');
+            const modalTags = document.getElementById('modal-tags');
+            const modalPrompt = document.getElementById('modal-prompt');
+            const modalParams = document.getElementById('modal-params');
+            const modalLink = document.getElementById('modal-link');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.getElementById('modal-prev');
+            const nextBtn = document.getElementById('modal-next');
+
+            // Initialize
+            function init() {
+                if (typeof embeddedData !== 'undefined' && embeddedData.items) {
+                    allItems = embeddedData.items;
+                    totalCount.textContent = allItems.length.toLocaleString();
+                    populateModelFilter();
+                    applyFilters();
+                    loading.style.display = 'none';
+                }
+            }
+
+            // Populate model filter from data
+            function populateModelFilter() {
+                const models = [...new Set(allItems.map(item => item.model).filter(Boolean))];
+                models.sort();
+                models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelFilter.appendChild(option);
+                });
+            }
+
+            // Apply all filters and render
+            function applyFilters() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const typeValue = typeFilter.value;
+                const modelValue = modelFilter.value;
+                const aspectValue = aspectFilter.value;
+                const sortValue = sortFilter.value;
+
+                // Filter items
+                filteredItems = allItems.filter(item => {
+                    // Search filter
+                    if (searchTerm) {
+                        const searchableText = `${item.name} ${item.prompt || ''} ${(item.tags || []).join(' ')}`.toLowerCase();
+                        if (!searchableText.includes(searchTerm)) return false;
+                    }
+
+                    // Type filter
+                    if (typeValue !== 'all' && item.type !== typeValue) return false;
+
+                    // Model filter
+                    if (modelValue && item.model !== modelValue) return false;
+
+                    // Aspect ratio filter
+                    if (aspectValue && item.dimensions !== aspectValue) return false;
+
+                    // Tag filter
+                    if (activeTag && !(item.tags || []).includes(activeTag)) return false;
+
+                    return true;
+                });
+
+                // Sort items
+                filteredItems.sort((a, b) => {
+                    switch (sortValue) {
+                        case 'oldest':
+                            return new Date(a.created || 0) - new Date(b.created || 0);
+                        case 'name-asc':
+                            return (a.name || '').localeCompare(b.name || '');
+                        case 'name-desc':
+                            return (b.name || '').localeCompare(a.name || '');
+                        case 'newest':
+                        default:
+                            return new Date(b.created || 0) - new Date(a.created || 0);
+                    }
+                });
+
+                currentPage = 1;
+                renderGallery();
+                renderPagination();
+                updateResultsCount();
+                updateActiveTags();
+            }
+
+            // Render gallery grid
+            function renderGallery() {
+                const start = (currentPage - 1) * ITEMS_PER_PAGE;
+                const end = start + ITEMS_PER_PAGE;
+                const pageItems = filteredItems.slice(start, end);
+
+                if (pageItems.length === 0) {
+                    grid.innerHTML = '';
+                    noResults.style.display = 'flex';
+                    return;
+                }
+
+                noResults.style.display = 'none';
+                grid.innerHTML = pageItems.map((item, index) => `
+                    <div class="gallery-item" data-index="${start + index}">
+                        <div class="gallery-item-inner">
+                            <img src="${item.cdn_url}" alt="${item.name}" loading="lazy">
+                            <div class="gallery-item-overlay">
+                                <h3>${item.name}</h3>
+                                <div class="gallery-item-meta">
+                                    <span>${item.type}</span>
+                                    ${item.dimensions ? `<span>${item.dimensions}</span>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Add click listeners
+                grid.querySelectorAll('.gallery-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const index = parseInt(item.dataset.index);
+                        openModal(index);
+                    });
+                });
+            }
+
+            // Render pagination
+            function renderPagination() {
+                const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+                if (totalPages <= 1) {
+                    pagination.innerHTML = '';
+                    return;
+                }
+
+                let html = '';
+
+                // Previous button
+                if (currentPage > 1) {
+                    html += `<button class="page-btn" data-page="${currentPage - 1}">&laquo; Prev</button>`;
+                }
+
+                // Page numbers
+                const startPage = Math.max(1, currentPage - 2);
+                const endPage = Math.min(totalPages, currentPage + 2);
+
+                if (startPage > 1) {
+                    html += `<button class="page-btn" data-page="1">1</button>`;
+                    if (startPage > 2) html += `<span class="page-ellipsis">...</span>`;
+                }
+
+                for (let i = startPage; i <= endPage; i++) {
+                    html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+                }
+
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) html += `<span class="page-ellipsis">...</span>`;
+                    html += `<button class="page-btn" data-page="${totalPages}">${totalPages}</button>`;
+                }
+
+                // Next button
+                if (currentPage < totalPages) {
+                    html += `<button class="page-btn" data-page="${currentPage + 1}">Next &raquo;</button>`;
+                }
+
+                pagination.innerHTML = html;
+
+                // Add click listeners
+                pagination.querySelectorAll('.page-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        currentPage = parseInt(btn.dataset.page);
+                        renderGallery();
+                        renderPagination();
+                        updateResultsCount();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                });
+            }
+
+            // Update results count
+            function updateResultsCount() {
+                const start = (currentPage - 1) * ITEMS_PER_PAGE + 1;
+                const end = Math.min(currentPage * ITEMS_PER_PAGE, filteredItems.length);
+                resultsCount.textContent = `Showing ${start}-${end} of ${filteredItems.length.toLocaleString()} results`;
+            }
+
+            // Update active tags display
+            function updateActiveTags() {
+                if (!activeTag) {
+                    activeTags.innerHTML = '';
+                    return;
+                }
+                activeTags.innerHTML = `
+                    <span class="active-tag">
+                        ${activeTag}
+                        <button class="remove-tag" title="Remove filter">×</button>
+                    </span>
+                `;
+                activeTags.querySelector('.remove-tag').addEventListener('click', () => {
+                    activeTag = null;
+                    applyFilters();
+                });
+            }
+
+            // Modal functions
+            function openModal(index) {
+                currentModalIndex = index;
+                const item = filteredItems[index];
+                if (!item) return;
+
+                modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="${item.name}">`;
+                modalTitle.textContent = item.name;
+                modalType.textContent = item.type;
+                modalDimensions.textContent = item.dimensions || '';
+                modalDate.textContent = item.created || '';
+                modalPrompt.textContent = item.prompt || 'No prompt available';
+                modalParams.textContent = item.parameters || 'None';
+                modalLink.href = item.url || '#';
+
+                // Tags
+                modalTags.innerHTML = (item.tags || []).map(tag =>
+                    `<span class="tag" data-tag="${tag}">${tag}</span>`
+                ).join('');
+
+                // Tag click to filter
+                modalTags.querySelectorAll('.tag').forEach(tagEl => {
+                    tagEl.addEventListener('click', () => {
+                        activeTag = tagEl.dataset.tag;
+                        closeModal();
+                        applyFilters();
+                    });
+                });
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            function showPrevious() {
+                if (currentModalIndex > 0) {
+                    openModal(currentModalIndex - 1);
+                }
+            }
+
+            function showNext() {
+                if (currentModalIndex < filteredItems.length - 1) {
+                    openModal(currentModalIndex + 1);
+                }
+            }
+
+            // Event listeners
+            let searchTimeout;
+            searchInput.addEventListener('input', () => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(applyFilters, 300);
+            });
+
+            clearSearch.addEventListener('click', () => {
+                searchInput.value = '';
+                applyFilters();
+            });
+
+            typeFilter.addEventListener('change', applyFilters);
+            modelFilter.addEventListener('change', applyFilters);
+            aspectFilter.addEventListener('change', applyFilters);
+            sortFilter.addEventListener('change', applyFilters);
+
+            resetBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                typeFilter.value = 'all';
+                modelFilter.value = '';
+                aspectFilter.value = '';
+                sortFilter.value = 'newest';
+                activeTag = null;
+                applyFilters();
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', showPrevious);
+            nextBtn.addEventListener('click', showNext);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('active')) return;
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') showPrevious();
+                if (e.key === 'ArrowRight') showNext();
+            });
+
+            // Mouse wheel navigation in modal with cursor position detection
+            let scrollAccumulator = 0;
+            const SCROLL_THRESHOLD = 120;
+
+            modal.addEventListener('wheel', (e) => {
+                if (!modal.classList.contains('active')) return;
+
+                const mediaWrapper = document.querySelector('.modal-media-wrapper');
+                if (!mediaWrapper) return;
+
+                const rect = mediaWrapper.getBoundingClientRect();
+                const isOverImage = (
+                    e.clientX >= rect.left && e.clientX <= rect.right &&
+                    e.clientY >= rect.top && e.clientY <= rect.bottom
+                );
+
+                if (isOverImage) {
+                    e.preventDefault();
+                    scrollAccumulator += e.deltaY;
+
+                    if (scrollAccumulator > SCROLL_THRESHOLD) {
+                        showNext();
+                        scrollAccumulator = 0;
+                    } else if (scrollAccumulator < -SCROLL_THRESHOLD) {
+                        showPrevious();
+                        scrollAccumulator = 0;
+                    }
+                }
+            }, { passive: false });
+
+            // Initialize on load
+            init();
+        })();
+    </script>
+</body>
+</html>

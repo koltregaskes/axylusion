@@ -1903,6 +1903,288 @@ footer a:hover {
 }
 
 /* -----------------------------------------------------------------------------
+   Gallery Page (Dedicated)
+   ----------------------------------------------------------------------------- */
+.gallery-page-header {
+    padding-top: 120px;
+}
+
+.gallery-stats {
+    font-size: 1.1rem;
+    color: var(--axyl-amber);
+    font-weight: 600;
+    margin-top: var(--space-md);
+}
+
+.gallery-controls-section {
+    padding: var(--space-xl) var(--space-xl);
+    background: var(--axyl-gray-900);
+    border-bottom: 1px solid var(--axyl-gray-800);
+    position: sticky;
+    top: 70px;
+    z-index: 50;
+}
+
+.gallery-controls-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.search-bar-large {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+}
+
+.search-bar-large input {
+    width: 100%;
+    padding: var(--space-md) var(--space-xl);
+    padding-left: 50px;
+    padding-right: 50px;
+    background: var(--axyl-gray-800);
+    border: 2px solid var(--axyl-gray-700);
+    border-radius: var(--radius-full);
+    color: var(--axyl-cream);
+    font-size: 1rem;
+    transition: all var(--transition-base);
+}
+
+.search-bar-large input:focus {
+    outline: none;
+    border-color: var(--axyl-amber);
+    background: var(--axyl-gray-850);
+}
+
+.search-bar-large .search-icon {
+    position: absolute;
+    left: var(--space-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: var(--axyl-gray-500);
+}
+
+.clear-search {
+    position: absolute;
+    right: var(--space-lg);
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--axyl-gray-500);
+    cursor: pointer;
+    padding: var(--space-xs);
+    opacity: 0.5;
+    transition: opacity var(--transition-fast);
+}
+
+.clear-search:hover {
+    opacity: 1;
+}
+
+.clear-search svg {
+    width: 18px;
+    height: 18px;
+}
+
+.filters-row {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.filters-row .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.filters-row .filter-group label {
+    font-size: 0.75rem;
+    color: var(--axyl-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.filters-row select {
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--axyl-gray-800);
+    border: 1px solid var(--axyl-gray-700);
+    border-radius: var(--radius-md);
+    color: var(--axyl-cream);
+    font-size: 0.9rem;
+    cursor: pointer;
+    min-width: 140px;
+}
+
+.filters-row select:focus {
+    outline: none;
+    border-color: var(--axyl-amber);
+}
+
+.reset-filters-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-lg);
+    background: transparent;
+    border: 1px solid var(--axyl-gray-700);
+    border-radius: var(--radius-md);
+    color: var(--axyl-gray-400);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.reset-filters-btn:hover {
+    border-color: var(--axyl-amber);
+    color: var(--axyl-amber);
+}
+
+.reset-filters-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.active-tags {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    margin-top: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.active-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-md);
+    background: var(--axyl-amber);
+    color: var(--axyl-black);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.remove-tag {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0;
+    margin-left: var(--space-xs);
+    opacity: 0.7;
+}
+
+.remove-tag:hover {
+    opacity: 1;
+}
+
+.results-info {
+    text-align: center;
+    padding: var(--space-md) var(--space-xl);
+    color: var(--axyl-gray-500);
+    font-size: 0.9rem;
+}
+
+.gallery-page-grid {
+    padding: var(--space-xl);
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.gallery-page-grid .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-md);
+}
+
+.gallery-loading {
+    text-align: center;
+    padding: var(--space-3xl);
+    color: var(--axyl-gray-500);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--axyl-gray-700);
+    border-top-color: var(--axyl-amber);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto var(--space-lg);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.no-results {
+    text-align: center;
+    padding: var(--space-3xl);
+    color: var(--axyl-gray-500);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-results svg {
+    width: 60px;
+    height: 60px;
+    margin-bottom: var(--space-lg);
+    opacity: 0.5;
+}
+
+.no-results h3 {
+    font-size: 1.3rem;
+    color: var(--axyl-gray-400);
+    margin-bottom: var(--space-sm);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--axyl-gray-800);
+    border: 1px solid var(--axyl-gray-700);
+    border-radius: var(--radius-md);
+    color: var(--axyl-gray-300);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    min-width: 40px;
+}
+
+.page-btn:hover {
+    border-color: var(--axyl-amber);
+    color: var(--axyl-amber);
+}
+
+.page-btn.active {
+    background: var(--axyl-amber);
+    border-color: var(--axyl-amber);
+    color: var(--axyl-black);
+    font-weight: 600;
+}
+
+.page-ellipsis {
+    padding: var(--space-sm);
+    color: var(--axyl-gray-500);
+}
+
+/* -----------------------------------------------------------------------------
    Empty State
    ----------------------------------------------------------------------------- */
 .empty-state {
