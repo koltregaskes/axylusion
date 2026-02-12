@@ -74,7 +74,8 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-snap-type: y proximity;
+    /* Mandatory snap for smooth bounce between hero images */
+    scroll-snap-type: y mandatory;
 }
 
 body {
@@ -412,6 +413,25 @@ header.sticky {
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
+/* Header peek animation - briefly shows nav on page load */
+header.peek {
+    transform: translateY(0);
+    opacity: 0.9;
+    background: linear-gradient(180deg,
+        rgba(10, 10, 10, 0.7) 0%,
+        rgba(10, 10, 10, 0.5) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: peekFade 2s ease-in-out forwards;
+}
+
+@keyframes peekFade {
+    0% { opacity: 0; transform: translateY(-100%); }
+    20% { opacity: 0.9; transform: translateY(0); }
+    80% { opacity: 0.9; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-100%); }
+}
+
 .header-content {
     max-width: 1600px;
     margin: 0 auto;
@@ -533,15 +553,38 @@ h1 {
 }
 
 @keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
     from {
         opacity: 0;
         transform: translateY(10px);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+/* Staggered page load animations - title first, then content */
+@keyframes staggerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stagger-load {
+    opacity: 0;
+    animation: staggerFadeIn 0.4s ease-out forwards;
+}
+
+.stagger-load.delay-1 { animation-delay: 0s; }      /* Title */
+.stagger-load.delay-2 { animation-delay: 0.1s; }    /* Subtitle */
+.stagger-load.delay-3 { animation-delay: 0.2s; }    /* Icon/Main content */
+.stagger-load.delay-4 { animation-delay: 0.35s; }   /* Description */
+.stagger-load.delay-5 { animation-delay: 0.5s; }    /* CTA buttons */
 
 /* Navigation */
 .nav-links {

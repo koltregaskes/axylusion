@@ -26433,20 +26433,38 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') showNext();
 });
 
-// Mouse wheel navigation in modal
+// Mouse wheel navigation in modal - with cursor position detection and scroll threshold
+let scrollAccumulator = 0;
+const SCROLL_THRESHOLD = 120; // Pixels of scroll before changing image (prevents too-fast scrolling)
+
 modal.addEventListener('wheel', (e) => {
     if (!modal.classList.contains('active')) return;
 
-    // Prevent default scroll
-    e.preventDefault();
+    // Check if cursor is over the image area or the metadata area
+    const mediaWrapper = document.querySelector('.modal-media-wrapper');
+    if (!mediaWrapper) return;
 
-    if (e.deltaY > 0) {
-        // Scroll down = next
-        showNext();
-    } else if (e.deltaY < 0) {
-        // Scroll up = previous
-        showPrevious();
+    const rect = mediaWrapper.getBoundingClientRect();
+    const isOverImage = (
+        e.clientX >= rect.left && e.clientX <= rect.right &&
+        e.clientY >= rect.top && e.clientY <= rect.bottom
+    );
+
+    if (isOverImage) {
+        // Cursor over image: use scroll to change images (with threshold)
+        e.preventDefault();
+        scrollAccumulator += e.deltaY;
+
+        if (scrollAccumulator > SCROLL_THRESHOLD) {
+            showNext();
+            scrollAccumulator = 0;
+        } else if (scrollAccumulator < -SCROLL_THRESHOLD) {
+            showPrevious();
+            scrollAccumulator = 0;
+        }
     }
+    // Cursor over metadata area: let normal scroll happen (don't preventDefault)
+    // This allows users to scroll down to see prompt and parameters
 }, { passive: false });
 
 // Search and filter listeners with debounce

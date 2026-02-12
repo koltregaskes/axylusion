@@ -320,17 +320,35 @@
             // Initialize
             initHero();
 
-            // Sticky header on scroll
+            // Sticky header on scroll with peek hint
             const header = document.getElementById('header');
             const heroSection = document.getElementById('hero');
 
+            // Peek the header briefly on page load to hint there's navigation
+            setTimeout(() => {
+                header.classList.add('peek');
+                setTimeout(() => {
+                    header.classList.remove('peek');
+                }, 2000); // Show for 2 seconds
+            }, 1500); // Start after 1.5 seconds
+
+            // Track scroll direction for smart header reveal
+            let lastScrollY = window.scrollY;
+
             window.addEventListener('scroll', () => {
                 const heroHeight = heroSection.offsetHeight;
-                if (window.scrollY > heroHeight - 100) {
+                const scrollingUp = window.scrollY < lastScrollY;
+
+                // Show header when:
+                // 1. Scrolled past hero, OR
+                // 2. Scrolling UP anywhere on the page (even in hero)
+                if (window.scrollY > heroHeight - 100 || (scrollingUp && window.scrollY > 50)) {
                     header.classList.add('sticky');
-                } else {
+                } else if (!scrollingUp && window.scrollY <= heroHeight - 100) {
                     header.classList.remove('sticky');
                 }
+
+                lastScrollY = window.scrollY;
             });
 
             // Smooth scroll for anchor links with header offset
