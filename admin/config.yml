@@ -2,14 +2,11 @@
 # Documentation: https://decapcms.org/docs/
 
 backend:
-  name: github
-  repo: koltregaskes/axylusion
+  name: git-gateway
   branch: main
-  # OAuth authentication will be configured once you create a GitHub OAuth App
-  # For local development, you can use: npx decap-server
 
-# Local backend for testing (run: npx decap-server)
-local_backend: true
+# Netlify Identity widget for authentication
+# This lets you log in at axylusion.com/admin with your GitHub account
 
 # Media files storage
 media_folder: "images/uploads"
