@@ -26644,5 +26644,9 @@ modalStyles.textContent = `
 `;
 document.head.appendChild(modalStyles);
 
-// Initialize
-loadData();
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadData);
+} else {
+    loadData();
+}
