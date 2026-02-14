@@ -26252,7 +26252,7 @@ function renderGallery() {
         if (item.type === 'video') {
             // For videos, use thumbnail_url if provided, otherwise show placeholder
             if (item.thumbnail_url) {
-                mediaHtml = `<img src="${item.thumbnail_url}" alt="${item.name}" loading="lazy">`;
+                mediaHtml = `<img src="${item.thumbnail_url}" alt="" loading="lazy">`;
             } else {
                 // Video placeholder with play icon
                 mediaHtml = '<div class="video-placeholder"></div>';
@@ -26261,13 +26261,13 @@ function renderGallery() {
         } else if (item.type === 'music') {
             // For music, use thumbnail_url if available, otherwise placeholder
             if (item.thumbnail_url) {
-                mediaHtml = `<img src="${item.thumbnail_url}" alt="${item.name}" loading="lazy">`;
+                mediaHtml = `<img src="${item.thumbnail_url}" alt="" loading="lazy">`;
             } else {
                 mediaHtml = '<div class="music-placeholder">&#127925;</div>';
             }
             badgeHtml = '<span class="type-badge music">music</span>';
         } else {
-            mediaHtml = `<img src="${item.cdn_url}" alt="${item.name}" loading="lazy">`;
+            mediaHtml = `<img src="${item.cdn_url}" alt="" loading="lazy">`;
         }
 
         overlayHtml = `
@@ -26324,7 +26324,7 @@ function openModal(item, index, pushHistory = true) {
             modalMedia.innerHTML = `<audio src="${item.cdn_url}" controls autoplay></audio>`;
         }
     } else {
-        modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="${item.name}">`;
+        modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
     }
 
     modalTitle.textContent = item.name;
