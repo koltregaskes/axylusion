@@ -66,6 +66,22 @@ Removed image names from alt attributes:
 - **Click-to-fullscreen:** Click any image to enter fullscreen mode
 - **Metadata display:** Shows "Not available" instead of blank fields
 
+### 9. Gallery Data Loading FIXED ✅
+**Critical fix for blank gallery and homepage:**
+- **Problem:** Gallery stuck on "loading gallery" / zero artworks, homepage showing blank placeholders
+- **Root cause:** Conflicting data loading patterns - gallery.html had duplicate inline script, index.html expected `embeddedData` that was never defined
+- **Solution:**
+  - Created `data-loader.js` - centralized data loader for both pages
+  - Exposes `window.galleryData` and `window.embeddedData` (backward compatibility)
+  - Dispatches `galleryDataLoaded` event when ready
+  - Updated gallery.js to use event-driven loading pattern
+  - Both pages now share the same data source
+- **Result:** Gallery and homepage now load all 6,031 images correctly
+
+### 10. Header Improvements ✅
+- **Logo link:** Fixed to go to homepage (index.html) instead of old GitHub
+- **TikTok icon:** Added social media link alongside YouTube/Instagram/X
+
 ## Issues Identified & RESOLVED
 
 ### ✅ FIXED - Critical Data Issue (Creation Dates)
@@ -102,6 +118,10 @@ All the issues you reported have been resolved:
 9. ✅ Scroll resistance - Smart detection
 10. ✅ Click-to-fullscreen - Implemented
 11. ✅ Metadata display - Shows "Not available"
+12. ✅ Gallery not loading - Fixed with shared data-loader.js
+13. ✅ Homepage blank images - Fixed with shared data-loader.js
+14. ✅ Logo link - Now goes to homepage
+15. ✅ TikTok icon - Added to header
 
 ### Optional / Future Tasks
 1. **Individual Image Pages Restructure** - If you have specific layout requirements
@@ -117,6 +137,8 @@ All the issues you reported have been resolved:
 - `a9cc2b9` - Gallery rebuild from database (creation dates fixed)
 - `a0f1a1e` - Updated session notes
 - `c1dd86e` - Modal UX improvements (transitions, fullscreen, scroll detection)
+- `fcd3261` - Removed duplicate inline script from gallery.html
+- `9607777` - Fixed gallery data loading with shared data-loader.js, added TikTok icon, fixed logo links
 
 Live site will update automatically via GitHub Pages within 2-5 minutes.
 
