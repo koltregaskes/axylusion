@@ -394,5 +394,44 @@
 
     <!-- Load gallery data first -->
     <script src="data-loader.js"></script>
+
+    <!-- Homepage gallery rendering -->
+    <script>
+        (function() {
+            function renderHomepageGallery() {
+                if (!window.galleryData || !window.galleryData.items) {
+                    // Wait for data to load
+                    window.addEventListener('galleryDataLoaded', renderHomepageGallery, { once: true });
+                    return;
+                }
+
+                const galleryGrid = document.getElementById('gallery-grid');
+                if (!galleryGrid) return;
+
+                // Show first 30 items on homepage
+                const items = window.galleryData.items.slice(0, 30);
+
+                items.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'gallery-item';
+
+                    if (item.type === 'image') {
+                        div.innerHTML = `<img src="${item.cdn_url}" alt="" loading="lazy">`;
+                    } else if (item.type === 'video') {
+                        div.innerHTML = `<video src="${item.cdn_url}" muted loop playsinline></video>`;
+                    }
+
+                    // Link to full gallery page
+                    div.addEventListener('click', () => {
+                        window.location.href = `gallery.html#${item.id}`;
+                    });
+
+                    galleryGrid.appendChild(div);
+                });
+            }
+
+            renderHomepageGallery();
+        })();
+    </script>
 </body>
 </html>
