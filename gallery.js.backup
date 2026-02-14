@@ -26013,7 +26013,6 @@ const typeFilter = document.getElementById('type-filter');
 const dateFilter = document.getElementById('date-filter');
 const modelFilter = document.getElementById('model-filter');
 const resetBtn = document.getElementById('reset-filters');
-const sortFilter = document.getElementById("sort-filter");const aspectFilter = document.getElementById("aspect-filter");
 const pagination = document.getElementById('pagination');
 
 // URL History management
@@ -26492,16 +26491,13 @@ modelFilter.addEventListener('change', () => {
     currentPage = 1;
     renderGallery();
 });
-if (sortFilter) {    sortFilter.addEventListener("change", () => {        currentPage = 1;        renderGallery();    });}if (aspectFilter) {    aspectFilter.addEventListener("change", () => {        currentPage = 1;        renderGallery();    });}
 
 // Reset all filters
 resetBtn.addEventListener('click', () => {
     searchInput.value = '';
     typeFilter.value = 'all';
     dateFilter.value = '';
-    modelFilter.value = "";
-    if (sortFilter) sortFilter.value = "newest";
-    if (aspectFilter) aspectFilter.value = "";
+    modelFilter.value = '';
     activeTag = null;
     currentPage = 1;
     renderGallery();
