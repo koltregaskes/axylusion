@@ -26297,7 +26297,7 @@ function renderGallery() {
     renderPagination();
 }
 
-// Open modal
+// Open modal with smooth transitions
 function openModal(item, index, pushHistory = true) {
     currentModalIndex = index;
 
@@ -26306,16 +26306,46 @@ function openModal(item, index, pushHistory = true) {
         updateURL(item);
     }
 
+    // Pre-load images before showing modal to prevent jolt
+    if (item.type === 'image') {
+        const img = new Image();
+        img.onload = () => {
+            setModalContent(item);
+            modal.classList.add('active');
+            requestAnimationFrame(() => {
+                modal.classList.add('loaded');
+            });
+        };
+        img.onerror = () => {
+            // Still show modal even if image fails to load
+            setModalContent(item);
+            modal.classList.add('active');
+            requestAnimationFrame(() => {
+                modal.classList.add('loaded');
+            });
+        };
+        img.src = item.cdn_url;
+    } else {
+        setModalContent(item);
+        modal.classList.add('active');
+        requestAnimationFrame(() => {
+            modal.classList.add('loaded');
+        });
+    }
+
+    document.body.style.overflow = 'hidden';
+}
+
+// Set modal content (separated for cleaner code)
+function setModalContent(item) {
     // Set media
     if (item.type === 'video') {
-        // Check if CDN URL is accessible - show message if not
         modalMedia.innerHTML = `
             <video src="${item.cdn_url}" controls autoplay loop playsinline
                 onerror="this.outerHTML='<div class=\\'video-error\\'>Video unavailable. <a href=\\'${item.url}\\' target=\\'_blank\\'>View on Midjourney</a></div>'">
                 Your browser does not support video playback.
             </video>`;
     } else if (item.type === 'music') {
-        // For Suno music with video, show video player
         if (item.cdn_url && item.cdn_url.endsWith('.mp4')) {
             modalMedia.innerHTML = `<video src="${item.cdn_url}" controls autoplay loop playsinline>
                 Your browser does not support video playback.
@@ -26324,7 +26354,17 @@ function openModal(item, index, pushHistory = true) {
             modalMedia.innerHTML = `<audio src="${item.cdn_url}" controls autoplay></audio>`;
         }
     } else {
-        modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
+        // Add click-to-fullscreen capability
+        modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="" class="modal-image" style="cursor: zoom-in;">`;
+
+        // Add fullscreen click handler
+        const modalImage = modalMedia.querySelector('img');
+        if (modalImage) {
+            modalImage.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleFullscreen(modalImage);
+            });
+        }
     }
 
     modalTitle.textContent = item.name;
@@ -26344,14 +26384,14 @@ function openModal(item, index, pushHistory = true) {
         });
     });
 
-    modalPrompt.textContent = item.prompt || '';
-    modalParams.textContent = item.parameters || '';
+    // Show "Not available" for empty metadata instead of blank
+    modalPrompt.textContent = item.prompt || 'Not available';
+    modalParams.textContent = item.parameters || 'Not available';
 
     if (item.url) {
         modalLink.href = item.url;
         modalLink.style.display = 'inline-block';
 
-        // Dynamic link text based on source
         if (item.source === 'midjourney') {
             modalLink.textContent = 'View on Midjourney';
         } else if (item.source === 'suno') {
@@ -26363,12 +26403,29 @@ function openModal(item, index, pushHistory = true) {
         modalLink.style.display = 'none';
     }
 
-    // Update navigation buttons
     updateNavButtons();
-
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
 }
+
+// Toggle fullscreen mode for images
+function toggleFullscreen(element) {
+    if (!document.fullscreenElement) {
+        element.requestFullscreen().catch(err => {
+            console.error('Fullscreen error:', err);
+        });
+        element.style.cursor = 'zoom-out';
+    } else {
+        document.exitFullscreen();
+        element.style.cursor = 'zoom-in';
+    }
+}
+
+// Update cursor when fullscreen state changes
+document.addEventListener('fullscreenchange', () => {
+    const modalImage = modalMedia.querySelector('img');
+    if (modalImage) {
+        modalImage.style.cursor = document.fullscreenElement ? 'zoom-out' : 'zoom-in';
+    }
+});
 
 // Filter by tag (called from modal tag click)
 function filterByTag(tag) {
@@ -26405,15 +26462,20 @@ function showNext() {
     }
 }
 
-// Close modal
+// Close modal with smooth fade-out
 function closeModal(pushHistory = true) {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-    modalMedia.innerHTML = '';
+    modal.classList.remove('loaded');
 
-    if (pushHistory) {
-        updateURL(null);
-    }
+    // Wait for fade-out transition before cleanup
+    setTimeout(() => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        modalMedia.innerHTML = '';
+
+        if (pushHistory) {
+            updateURL(null);
+        }
+    }, 200);
 }
 
 // Event listeners
@@ -26441,31 +26503,51 @@ const SCROLL_THRESHOLD = 300; // Increased for more subtle transitions // Pixels
 modal.addEventListener('wheel', (e) => {
     if (!modal.classList.contains('active')) return;
 
-    // Check if cursor is over the image area or the metadata area
     const mediaWrapper = document.querySelector('.modal-media-wrapper');
-    if (!mediaWrapper) return;
+    const modalInfo = document.querySelector('.modal-info');
+    if (!mediaWrapper || !modalInfo) return;
 
-    const rect = mediaWrapper.getBoundingClientRect();
-    const isOverImage = (
-        e.clientX >= rect.left && e.clientX <= rect.right &&
-        e.clientY >= rect.top && e.clientY <= rect.bottom
+    // Check if cursor is over the metadata/info area
+    const infoRect = modalInfo.getBoundingClientRect();
+    const isOverMetadata = (
+        e.clientX >= infoRect.left && e.clientX <= infoRect.right &&
+        e.clientY >= infoRect.top && e.clientY <= infoRect.bottom
     );
 
-    if (isOverImage) {
-        // Cursor over image: use scroll to change images (with threshold)
-        e.preventDefault();
-        scrollAccumulator += e.deltaY;
+    // If over metadata, check if it's scrollable and handle scroll boundaries
+    if (isOverMetadata) {
+        const hasScroll = modalInfo.scrollHeight > modalInfo.clientHeight;
+        const atTop = modalInfo.scrollTop === 0;
+        const atBottom = modalInfo.scrollTop + modalInfo.clientHeight >= modalInfo.scrollHeight - 1;
 
-        if (scrollAccumulator > SCROLL_THRESHOLD) {
-            showNext();
-            scrollAccumulator = 0;
-        } else if (scrollAccumulator < -SCROLL_THRESHOLD) {
-            showPrevious();
-            scrollAccumulator = 0;
+        const scrollingUp = e.deltaY < 0;
+        const scrollingDown = e.deltaY > 0;
+
+        // Allow image navigation only if:
+        // - No scrollable content, OR
+        // - Scrolling up while at top, OR
+        // - Scrolling down while at bottom
+        const shouldNavigateImages = !hasScroll ||
+                                    (scrollingUp && atTop) ||
+                                    (scrollingDown && atBottom);
+
+        if (!shouldNavigateImages) {
+            // Let natural scroll happen in metadata
+            return;
         }
     }
-    // Cursor over metadata area: let normal scroll happen (don't preventDefault)
-    // This allows users to scroll down to see prompt and parameters
+
+    // Over image area or at scroll boundaries: navigate between images
+    e.preventDefault();
+    scrollAccumulator += e.deltaY;
+
+    if (scrollAccumulator > SCROLL_THRESHOLD) {
+        showNext();
+        scrollAccumulator = 0;
+    } else if (scrollAccumulator < -SCROLL_THRESHOLD) {
+        showPrevious();
+        scrollAccumulator = 0;
+    }
 }, { passive: false });
 
 // Search and filter listeners with debounce
@@ -26506,6 +26588,60 @@ resetBtn.addEventListener('click', () => {
     currentPage = 1;
     renderGallery();
 });
+
+// Add CSS for smooth modal transitions and fullscreen support
+const modalStyles = document.createElement('style');
+modalStyles.textContent = `
+    /* Smooth modal fade transitions */
+    .modal {
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        pointer-events: none;
+    }
+
+    .modal.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .modal.loaded .modal-content {
+        transform: scale(1);
+    }
+
+    .modal-content {
+        transform: scale(0.95);
+        transition: transform 0.2s ease-out;
+    }
+
+    /* Smooth image loading */
+    .modal-image {
+        animation: modalImageFadeIn 0.15s ease-in;
+    }
+
+    @keyframes modalImageFadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Fullscreen image styling */
+    .modal-image:fullscreen {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        cursor: zoom-out !important;
+    }
+
+    /* Webkit fullscreen support */
+    .modal-image:-webkit-full-screen {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        cursor: zoom-out !important;
+    }
+`;
+document.head.appendChild(modalStyles);
 
 // Initialize
 loadData();
