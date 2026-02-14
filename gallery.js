@@ -26063,21 +26063,22 @@ function checkURLOnLoad() {
     }
 }
 
-// Load data - try fetch first (for served files), fall back to embedded (for file://)
-async function loadData() {
-    try {
-        const response = await fetch('data/gallery.json');
-        if (response.ok) {
-            const data = await response.json();
-            items = data.items;
-        } else {
-            throw new Error('Fetch failed');
-        }
-    } catch (error) {
-        // Fall back to embedded data for local file:// access
-        console.log('Using embedded data (local mode)');
-        items = embeddedData.items;
+// Load data from shared data-loader.js
+function loadData() {
+    // Check if data is already loaded
+    if (window.galleryData && window.galleryData.items) {
+        items = window.galleryData.items;
+        initializeGallery();
+    } else {
+        // Wait for data to load
+        window.addEventListener('galleryDataLoaded', (e) => {
+            items = e.detail.items;
+            initializeGallery();
+        }, { once: true });
     }
+}
+
+function initializeGallery() {
     // Sort by date descending (newest first)
     items.sort((a, b) => new Date(b.created) - new Date(a.created));
 
