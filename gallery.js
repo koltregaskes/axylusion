@@ -26436,7 +26436,7 @@ document.addEventListener('keydown', (e) => {
 
 // Mouse wheel navigation in modal - with cursor position detection and scroll threshold
 let scrollAccumulator = 0;
-const SCROLL_THRESHOLD = 120; // Pixels of scroll before changing image (prevents too-fast scrolling)
+const SCROLL_THRESHOLD = 300; // Increased for more subtle transitions // Pixels of scroll before changing image (prevents too-fast scrolling)
 
 modal.addEventListener('wheel', (e) => {
     if (!modal.classList.contains('active')) return;
