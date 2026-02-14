@@ -1,75 +1,29 @@
-# Axylusion
+# Axy Lusion
 
-AI Art, Video & Music Gallery by [Kol Tregaskes](https://koltregaskes.com)
+A visual portfolio showcasing AI-generated art, video, and music.
 
-## Live Site
+## About
 
-**Domain:** [axylusion.com](https://axylusion.com) (pending DNS configuration)
-**GitHub Pages:** [koltregaskes.github.io/axylusion](https://koltregaskes.github.io/axylusion)
+Axy Lusion is the creative alter ego of [Kol Tregaskes](https://koltregaskes.com), exploring the artistic possibilities of generative AI through Midjourney imagery, Suno music, and experimental video.
 
-## Features
+## View the Gallery
 
-- **Unified Gallery** - Images, videos, and music in one place
-- **Search & Filter** - By keyword, date, type, or tags
-- **Responsive Design** - Works on desktop, tablet, and mobile
-- **Dark Theme** - Purple/pink gradient accent colours
-- **No Backend Required** - Static site with JSON database
+**Live Site:** [koltregaskes.github.io/axylusion](https://koltregaskes.github.io/axylusion)
 
-## Content Sources
+## What's Inside
 
-| Type | Source | Format |
-|------|--------|--------|
-| Images | Midjourney | PNG via CDN |
-| Videos | Midjourney | MP4 via CDN |
-| Music | Suno | MP3 (local or CDN) |
+- AI-generated artwork created with Midjourney
+- Original music compositions from Suno
+- Experimental AI videos
+- Behind-the-scenes insights into the creative process
 
-## Structure
+## Connect
 
-```
-axylusion/
-├── index.html          # Main page
-├── styles.css          # Styling
-├── gallery.js          # Logic (includes embedded data fallback)
-├── data/
-│   └── gallery.json    # Gallery database
-└── README.md
-```
-
-## Adding Content
-
-Edit `data/gallery.json` with new entries:
-
-```json
-{
-  "id": "unique-id",
-  "name": "Display Name",
-  "type": "image|video|music",
-  "source": "midjourney|suno",
-  "url": "https://source-link",
-  "cdn_url": "https://direct-media-url",
-  "prompt": "Generation prompt",
-  "parameters": "--ar 16:9 --style raw",
-  "dimensions": "16:9",
-  "created": "2024-12-14",
-  "tags": ["tag1", "tag2"]
-}
-```
-
-## Local Development
-
-Just open `index.html` in a browser. The site works with file:// protocol thanks to embedded data fallback.
-
-For live reloading:
-```bash
-npx http-server -p 8080
-```
-
-## Deployment
-
-Push to GitHub and enable Pages from the main branch.
-
-## Related
-
-- **Main Site:** [koltregaskes.com](https://koltregaskes.com)
-- **Midjourney:** [@koltregaskes](https://www.midjourney.com/@koltregaskes)
 - **X/Twitter:** [@axylusion](https://x.com/axylusion)
+- **Instagram:** [@axylusion](https://instagram.com/axylusion)
+- **Midjourney:** [@koltregaskes](https://www.midjourney.com/@koltregaskes)
+- **Main Website:** [koltregaskes.com](https://koltregaskes.com)
+
+---
+
+*Exploring the intersection of artificial intelligence and creative expression*

@@ -320,31 +320,34 @@
             // Initialize
             initHero();
 
-            // Sticky header on scroll with peek hint
+            // Sticky header on scroll with better UX
             const header = document.getElementById('header');
             const heroSection = document.getElementById('hero');
 
-            // Peek the header briefly on page load to hint there's navigation
+            // Show header briefly on page load as a hint
             setTimeout(() => {
                 header.classList.add('peek');
                 setTimeout(() => {
                     header.classList.remove('peek');
-                }, 2000); // Show for 2 seconds
-            }, 1500); // Start after 1.5 seconds
+                }, 3000); // Show for 3 seconds (longer for user to notice)
+            }, 1000); // Start after 1 second
 
             // Track scroll direction for smart header reveal
             let lastScrollY = window.scrollY;
+            const SCROLL_THRESHOLD = 30; // Reduced for easier access
 
             window.addEventListener('scroll', () => {
                 const heroHeight = heroSection.offsetHeight;
                 const scrollingUp = window.scrollY < lastScrollY;
+                const scrolledPastHero = window.scrollY > heroHeight - 100;
 
-                // Show header when:
-                // 1. Scrolled past hero, OR
-                // 2. Scrolling UP anywhere on the page (even in hero)
-                if (window.scrollY > heroHeight - 100 || (scrollingUp && window.scrollY > 50)) {
+                // Always show header when scrolling up (if past minimal threshold)
+                // OR when past the hero section
+                if ((scrollingUp && window.scrollY > SCROLL_THRESHOLD) || scrolledPastHero) {
                     header.classList.add('sticky');
-                } else if (!scrollingUp && window.scrollY <= heroHeight - 100) {
+                }
+                // Only hide when scrolling DOWN and still within hero section
+                else if (!scrollingUp && !scrolledPastHero) {
                     header.classList.remove('sticky');
                 }
 
