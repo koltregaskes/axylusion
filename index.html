@@ -398,18 +398,30 @@
     <!-- Homepage gallery rendering -->
     <script>
         (function() {
+            console.log('[Homepage] Script loaded');
+
             function renderHomepageGallery() {
+                console.log('[Homepage] renderHomepageGallery called');
+                console.log('[Homepage] galleryData exists:', !!window.galleryData);
+
                 if (!window.galleryData || !window.galleryData.items) {
+                    console.log('[Homepage] Waiting for galleryData...');
                     // Wait for data to load
                     window.addEventListener('galleryDataLoaded', renderHomepageGallery, { once: true });
                     return;
                 }
 
                 const galleryGrid = document.getElementById('gallery-grid');
-                if (!galleryGrid) return;
+                console.log('[Homepage] gallery-grid element:', !!galleryGrid);
+
+                if (!galleryGrid) {
+                    console.error('[Homepage] gallery-grid element not found!');
+                    return;
+                }
 
                 // Show first 30 items on homepage
                 const items = window.galleryData.items.slice(0, 30);
+                console.log('[Homepage] Rendering', items.length, 'items');
 
                 items.forEach(item => {
                     const div = document.createElement('div');
@@ -428,6 +440,8 @@
 
                     galleryGrid.appendChild(div);
                 });
+
+                console.log('[Homepage] Gallery rendered successfully!');
             }
 
             renderHomepageGallery();
