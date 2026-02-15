@@ -25997,11 +25997,8 @@ const ITEMS_PER_PAGE = 30;
 const gallery = document.getElementById('gallery');
 const modal = document.getElementById('modal');
 const modalMedia = document.getElementById('modal-media');
-const modalTitle = document.getElementById('modal-title');
 const modalPrompt = document.getElementById('modal-prompt');
 const modalParams = document.getElementById('modal-params');
-const modalType = document.getElementById('modal-type');
-const modalDimensions = document.getElementById('modal-dimensions');
 const modalDate = document.getElementById('modal-date');
 const modalTags = document.getElementById('modal-tags');
 const modalLink = document.getElementById('modal-link');
@@ -26326,10 +26323,6 @@ function openModal(item, index, pushHistory = true) {
     } else {
         modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
     }
-
-    modalTitle.textContent = item.name;
-    modalType.textContent = item.model || item.type;
-    modalDimensions.textContent = item.dimensions;
     modalDate.textContent = item.created;
 
     // Create clickable tags
