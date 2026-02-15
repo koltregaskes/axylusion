@@ -19,7 +19,7 @@
                 <span class="logo-text">Axy Lusion</span>
             </a>
             <nav class="main-nav">
-                <a href="/" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="gallery.html" class="nav-link active">Gallery</a>
                 <a href="videos.html" class="nav-link">Videos</a>
                 <a href="music.html" class="nav-link">Music</a>
@@ -35,9 +35,6 @@
                 </a>
                 <a href="https://www.youtube.com/@AxyLusion" target="_blank" title="YouTube" aria-label="YouTube">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@axylusion" target="_blank" title="TikTok" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
                 </a>
             </div>
         </div>
@@ -205,7 +202,362 @@
         </div>
     </footer>
 
-    <!-- Load gallery script -->
+    <!-- Load gallery data and script -->
     <script src="gallery.js"></script>
+    <script>
+        // Gallery page specific functionality
+        (function() {
+            const ITEMS_PER_PAGE = 24;
+            let allItems = [];
+            let filteredItems = [];
+            let currentPage = 1;
+            let activeTag = null;
+            let currentModalIndex = 0;
+
+            // DOM elements
+            const grid = document.getElementById('gallery-grid');
+            const searchInput = document.getElementById('search');
+            const clearSearch = document.getElementById('clear-search');
+            const typeFilter = document.getElementById('type-filter');
+            const modelFilter = document.getElementById('model-filter');
+            const aspectFilter = document.getElementById('aspect-filter');
+            const sortFilter = document.getElementById('sort-filter');
+            const resetBtn = document.getElementById('reset-filters');
+            const pagination = document.getElementById('pagination');
+            const resultsCount = document.getElementById('results-count');
+            const totalCount = document.getElementById('total-count');
+            const activeTags = document.getElementById('active-tags');
+            const loading = document.getElementById('gallery-loading');
+            const noResults = document.getElementById('no-results');
+            const modal = document.getElementById('modal');
+            const modalMedia = document.getElementById('modal-media');
+            const modalTitle = document.getElementById('modal-title');
+            const modalType = document.getElementById('modal-type');
+            const modalDimensions = document.getElementById('modal-dimensions');
+            const modalDate = document.getElementById('modal-date');
+            const modalTags = document.getElementById('modal-tags');
+            const modalPrompt = document.getElementById('modal-prompt');
+            const modalParams = document.getElementById('modal-params');
+            const modalLink = document.getElementById('modal-link');
+            const closeBtn = document.querySelector('.close');
+            const prevBtn = document.getElementById('modal-prev');
+            const nextBtn = document.getElementById('modal-next');
+
+            // Initialize
+            function init() {
+                if (typeof embeddedData !== 'undefined' && embeddedData.items) {
+                    allItems = embeddedData.items;
+                    totalCount.textContent = allItems.length.toLocaleString();
+                    populateModelFilter();
+                    applyFilters();
+                    loading.style.display = 'none';
+                }
+            }
+
+            // Populate model filter from data
+            function populateModelFilter() {
+                const models = [...new Set(allItems.map(item => item.model).filter(Boolean))];
+                models.sort();
+                models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelFilter.appendChild(option);
+                });
+            }
+
+            // Apply all filters and render
+            function applyFilters() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const typeValue = typeFilter.value;
+                const modelValue = modelFilter.value;
+                const aspectValue = aspectFilter.value;
+                const sortValue = sortFilter.value;
+
+                // Filter items
+                filteredItems = allItems.filter(item => {
+                    // Search filter
+                    if (searchTerm) {
+                        const searchableText = `${item.name} ${item.prompt || ''} ${(item.tags || []).join(' ')}`.toLowerCase();
+                        if (!searchableText.includes(searchTerm)) return false;
+                    }
+
+                    // Type filter
+                    if (typeValue !== 'all' && item.type !== typeValue) return false;
+
+                    // Model filter
+                    if (modelValue && item.model !== modelValue) return false;
+
+                    // Aspect ratio filter
+                    if (aspectValue && item.dimensions !== aspectValue) return false;
+
+                    // Tag filter
+                    if (activeTag && !(item.tags || []).includes(activeTag)) return false;
+
+                    return true;
+                });
+
+                // Sort items
+                filteredItems.sort((a, b) => {
+                    switch (sortValue) {
+                        case 'oldest':
+                            return new Date(a.created || 0) - new Date(b.created || 0);
+                        case 'name-asc':
+                            return (a.name || '').localeCompare(b.name || '');
+                        case 'name-desc':
+                            return (b.name || '').localeCompare(a.name || '');
+                        case 'newest':
+                        default:
+                            return new Date(b.created || 0) - new Date(a.created || 0);
+                    }
+                });
+
+                currentPage = 1;
+                renderGallery();
+                renderPagination();
+                updateResultsCount();
+                updateActiveTags();
+            }
+
+            // Render gallery grid
+            function renderGallery() {
+                const start = (currentPage - 1) * ITEMS_PER_PAGE;
+                const end = start + ITEMS_PER_PAGE;
+                const pageItems = filteredItems.slice(start, end);
+
+                if (pageItems.length === 0) {
+                    grid.innerHTML = '';
+                    noResults.style.display = 'flex';
+                    return;
+                }
+
+                noResults.style.display = 'none';
+                grid.innerHTML = pageItems.map((item, index) => `
+                    <div class="gallery-item" data-index="${start + index}">
+                        <div class="gallery-item-inner">
+                            <img src="${item.cdn_url}" alt="${item.name}" loading="lazy">
+                            <div class="gallery-item-overlay">
+                                <h3>${item.name}</h3>
+                                <div class="gallery-item-meta">
+                                    <span>${item.type}</span>
+                                    ${item.dimensions ? `<span>${item.dimensions}</span>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Add click listeners
+                grid.querySelectorAll('.gallery-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const index = parseInt(item.dataset.index);
+                        openModal(index);
+                    });
+                });
+            }
+
+            // Render pagination
+            function renderPagination() {
+                const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+                if (totalPages <= 1) {
+                    pagination.innerHTML = '';
+                    return;
+                }
+
+                let html = '';
+
+                // Previous button
+                if (currentPage > 1) {
+                    html += `<button class="page-btn" data-page="${currentPage - 1}">&laquo; Prev</button>`;
+                }
+
+                // Page numbers
+                const startPage = Math.max(1, currentPage - 2);
+                const endPage = Math.min(totalPages, currentPage + 2);
+
+                if (startPage > 1) {
+                    html += `<button class="page-btn" data-page="1">1</button>`;
+                    if (startPage > 2) html += `<span class="page-ellipsis">...</span>`;
+                }
+
+                for (let i = startPage; i <= endPage; i++) {
+                    html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+                }
+
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) html += `<span class="page-ellipsis">...</span>`;
+                    html += `<button class="page-btn" data-page="${totalPages}">${totalPages}</button>`;
+                }
+
+                // Next button
+                if (currentPage < totalPages) {
+                    html += `<button class="page-btn" data-page="${currentPage + 1}">Next &raquo;</button>`;
+                }
+
+                pagination.innerHTML = html;
+
+                // Add click listeners
+                pagination.querySelectorAll('.page-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        currentPage = parseInt(btn.dataset.page);
+                        renderGallery();
+                        renderPagination();
+                        updateResultsCount();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                });
+            }
+
+            // Update results count
+            function updateResultsCount() {
+                const start = (currentPage - 1) * ITEMS_PER_PAGE + 1;
+                const end = Math.min(currentPage * ITEMS_PER_PAGE, filteredItems.length);
+                resultsCount.textContent = `Showing ${start}-${end} of ${filteredItems.length.toLocaleString()} results`;
+            }
+
+            // Update active tags display
+            function updateActiveTags() {
+                if (!activeTag) {
+                    activeTags.innerHTML = '';
+                    return;
+                }
+                activeTags.innerHTML = `
+                    <span class="active-tag">
+                        ${activeTag}
+                        <button class="remove-tag" title="Remove filter">×</button>
+                    </span>
+                `;
+                activeTags.querySelector('.remove-tag').addEventListener('click', () => {
+                    activeTag = null;
+                    applyFilters();
+                });
+            }
+
+            // Modal functions
+            function openModal(index) {
+                currentModalIndex = index;
+                const item = filteredItems[index];
+                if (!item) return;
+
+                modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="${item.name}">`;
+                modalTitle.textContent = item.name;
+                modalType.textContent = item.type;
+                modalDimensions.textContent = item.dimensions || '';
+                modalDate.textContent = item.created || '';
+                modalPrompt.textContent = item.prompt || 'No prompt available';
+                modalParams.textContent = item.parameters || 'None';
+                modalLink.href = item.url || '#';
+
+                // Tags
+                modalTags.innerHTML = (item.tags || []).map(tag =>
+                    `<span class="tag" data-tag="${tag}">${tag}</span>`
+                ).join('');
+
+                // Tag click to filter
+                modalTags.querySelectorAll('.tag').forEach(tagEl => {
+                    tagEl.addEventListener('click', () => {
+                        activeTag = tagEl.dataset.tag;
+                        closeModal();
+                        applyFilters();
+                    });
+                });
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            function showPrevious() {
+                if (currentModalIndex > 0) {
+                    openModal(currentModalIndex - 1);
+                }
+            }
+
+            function showNext() {
+                if (currentModalIndex < filteredItems.length - 1) {
+                    openModal(currentModalIndex + 1);
+                }
+            }
+
+            // Event listeners
+            let searchTimeout;
+            searchInput.addEventListener('input', () => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(applyFilters, 300);
+            });
+
+            clearSearch.addEventListener('click', () => {
+                searchInput.value = '';
+                applyFilters();
+            });
+
+            typeFilter.addEventListener('change', applyFilters);
+            modelFilter.addEventListener('change', applyFilters);
+            aspectFilter.addEventListener('change', applyFilters);
+            sortFilter.addEventListener('change', applyFilters);
+
+            resetBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                typeFilter.value = 'all';
+                modelFilter.value = '';
+                aspectFilter.value = '';
+                sortFilter.value = 'newest';
+                activeTag = null;
+                applyFilters();
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', showPrevious);
+            nextBtn.addEventListener('click', showNext);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('active')) return;
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') showPrevious();
+                if (e.key === 'ArrowRight') showNext();
+            });
+
+            // Mouse wheel navigation in modal with cursor position detection
+            let scrollAccumulator = 0;
+            const SCROLL_THRESHOLD = 120;
+
+            modal.addEventListener('wheel', (e) => {
+                if (!modal.classList.contains('active')) return;
+
+                const mediaWrapper = document.querySelector('.modal-media-wrapper');
+                if (!mediaWrapper) return;
+
+                const rect = mediaWrapper.getBoundingClientRect();
+                const isOverImage = (
+                    e.clientX >= rect.left && e.clientX <= rect.right &&
+                    e.clientY >= rect.top && e.clientY <= rect.bottom
+                );
+
+                if (isOverImage) {
+                    e.preventDefault();
+                    scrollAccumulator += e.deltaY;
+
+                    if (scrollAccumulator > SCROLL_THRESHOLD) {
+                        showNext();
+                        scrollAccumulator = 0;
+                    } else if (scrollAccumulator < -SCROLL_THRESHOLD) {
+                        showPrevious();
+                        scrollAccumulator = 0;
+                    }
+                }
+            }, { passive: false });
+
+            // Initialize on load
+            init();
+        })();
+    </script>
 </body>
 </html>
