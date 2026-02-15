@@ -85,22 +85,50 @@
         </div>
     </header>
 
-    <!-- Gallery Preview Section -->
+    <!-- Gallery Section -->
     <section class="gallery-section" id="gallery">
         <div class="section-header">
             <h2 class="section-title">Gallery</h2>
             <p class="section-subtitle">AI-generated artwork created with Midjourney</p>
         </div>
 
-        <div class="gallery" id="gallery-grid">
-            <!-- Items loaded dynamically -->
+        <div class="gallery-controls">
+            <div class="search-bar">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+                <input type="text" id="search" placeholder="Search artworks..." autocomplete="off">
+            </div>
+            <div class="filter-group">
+                <select id="type-filter">
+                    <option value="all">All Types</option>
+                    <option value="image">Images</option>
+                    <option value="video">Videos</option>
+                    <option value="music">Music</option>
+                </select>
+                <select id="date-filter">
+                    <option value="">All Time</option>
+                </select>
+                <select id="model-filter">
+                    <option value="">All Models</option>
+                </select>
+                <button id="reset-filters" class="reset-btn" title="Reset all filters">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                        <path d="M3 3v5h5"/>
+                    </svg>
+                    Reset
+                </button>
+            </div>
         </div>
 
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="gallery.html" class="cta-btn" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: transform 0.2s;">
-                View Full Gallery →
-            </a>
-        </div>
+        <main class="gallery" id="gallery-grid">
+            <!-- Items loaded dynamically -->
+        </main>
+
+        <nav class="pagination" id="pagination">
+            <!-- Pagination loaded dynamically -->
+        </nav>
     </section>
 
     <!-- About Section -->
@@ -364,60 +392,7 @@
         }
     </script>
 
-    <!-- Load gallery data first -->
+    <!-- Load gallery data -->
     <script src="data-loader.js"></script>
-
-    <!-- Homepage gallery rendering -->
-    <script>
-        (function() {
-            console.log('[Homepage] Script loaded');
-
-            function renderHomepageGallery() {
-                console.log('[Homepage] renderHomepageGallery called');
-                console.log('[Homepage] galleryData exists:', !!window.galleryData);
-
-                if (!window.galleryData || !window.galleryData.items) {
-                    console.log('[Homepage] Waiting for galleryData...');
-                    // Wait for data to load
-                    window.addEventListener('galleryDataLoaded', renderHomepageGallery, { once: true });
-                    return;
-                }
-
-                const galleryGrid = document.getElementById('gallery-grid');
-                console.log('[Homepage] gallery-grid element:', !!galleryGrid);
-
-                if (!galleryGrid) {
-                    console.error('[Homepage] gallery-grid element not found!');
-                    return;
-                }
-
-                // Show first 30 items on homepage
-                const items = window.galleryData.items.slice(0, 30);
-                console.log('[Homepage] Rendering', items.length, 'items');
-
-                items.forEach(item => {
-                    const div = document.createElement('div');
-                    div.className = 'gallery-item';
-
-                    if (item.type === 'image') {
-                        div.innerHTML = `<img src="${item.cdn_url}" alt="" loading="lazy">`;
-                    } else if (item.type === 'video') {
-                        div.innerHTML = `<video src="${item.cdn_url}" muted loop playsinline></video>`;
-                    }
-
-                    // Link to full gallery page
-                    div.addEventListener('click', () => {
-                        window.location.href = `gallery.html#${item.id}`;
-                    });
-
-                    galleryGrid.appendChild(div);
-                });
-
-                console.log('[Homepage] Gallery rendered successfully!');
-            }
-
-            renderHomepageGallery();
-        })();
-    </script>
 </body>
 </html>
