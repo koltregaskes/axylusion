@@ -25994,7 +25994,7 @@ let currentPage = 1;
 const ITEMS_PER_PAGE = 30;
 
 // DOM elements
-const gallery = document.getElementById('gallery');
+const gallery = document.getElementById('gallery-grid');
 const modal = document.getElementById('modal');
 const modalMedia = document.getElementById('modal-media');
 const modalTitle = document.getElementById('modal-title');
