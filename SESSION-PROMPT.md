@@ -16,7 +16,7 @@ Current state: The gallery works with 4 sample images, search, filtering by type
 
 The repo was just renamed from axylusion to axylusiondotcom. References to the old name may exist in docs and configs — these need checking.
 
-There is a detailed Gemini Deep Think prompt at W:\Agent Workspace 2\prompts\12-axy-lusion-website.md that covers the full architecture, bugs to fix, news page design, and image hosting strategy. No response has been generated for it yet.
+There is a detailed Gemini Deep Think prompt at docs/DEEP-THINK-PROMPT.md in this repo that covers the full architecture, bugs to fix, news page design, and image hosting strategy.
 
 The HANDOFF.md lists these priority tasks:
 1. Midjourney metadata extraction script (Python + Playwright to scrape archive, extract prompts/parameters/CDN URLs, output to gallery.json format). Goal: 500+ images.
@@ -34,7 +34,7 @@ Your tasks for this session, in priority order:
 
 3. GALLERY EXPANSION PLANNING — The big task is getting 500+ Midjourney images into the gallery. Review the extraction script requirements in HANDOFF.md and plan the approach. The script needs Midjourney session cookie auth and Playwright for browser automation.
 
-4. NEWS PAGE — news.html is currently a "coming soon" placeholder. Read Prompt 12 for the design spec. If time permits, build a basic news page structure.
+4. NEWS PAGE — news.html is currently a "coming soon" placeholder. Read docs/DEEP-THINK-PROMPT.md for the design spec. If time permits, build a basic news page structure.
 
 Rules:
 - UK English always
