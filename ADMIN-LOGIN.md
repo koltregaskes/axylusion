@@ -16,14 +16,14 @@
 Since the CMS isn't configured yet, edit content directly:
 
 ### Option 1: Edit on GitHub
-1. Go to https://github.com/koltregaskes/axylusion
+1. Go to https://github.com/koltregaskes/axylusiondotcom
 2. Navigate to `data/gallery.json`
 3. Click the pencil icon (✏️) to edit
 4. Make your changes
 5. Click "Commit changes"
 
 ### Option 2: Edit Locally
-1. Clone the repo: `git clone git@github.com:koltregaskes/axylusion.git`
+1. Clone the repo: `git clone git@github.com:koltregaskes/axylusiondotcom.git`
 2. Edit `data/gallery.json` in your text editor
 3. Commit and push:
    ```bash

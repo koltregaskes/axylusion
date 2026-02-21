@@ -2,13 +2,13 @@
 
 **Brand:** Axylusion - AI Art, Video & Music by Kol Tregaskes
 **Domain:** axylusion.com (currently redirects to Notion - needs DNS update)
-**Repo:** github.com/koltregaskes/axylusion
+**Repo:** github.com/koltregaskes/axylusiondotcom
 
 ---
 
 ## Current State (v1.0)
 
-**Live:** [koltregaskes.github.io/axylusion](https://koltregaskes.github.io/axylusion)
+**Live:** [koltregaskes.github.io/axylusiondotcom](https://koltregaskes.github.io/axylusiondotcom)
 
 ### Features
 - Gallery grid with images, videos, music
@@ -118,7 +118,7 @@ axylusion.com/
 
 ### Current State
 - `axylusion.com` redirects to `axylusion-art.notion.site`
-- GitHub Pages at `koltregaskes.github.io/axylusion`
+- GitHub Pages at `koltregaskes.github.io/axylusiondotcom`
 
 ### Migration Plan
 1. Enable GitHub Pages for axylusion repo

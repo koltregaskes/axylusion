@@ -13,8 +13,6 @@
     <meta name="twitter:site" content="@Axylusion">
     <link rel="canonical" href="https://axylusion.com">
     <link rel="stylesheet" href="styles.css">
-    <!-- Netlify Identity Widget for CMS login redirect -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
     <!-- Hero Section -->
@@ -385,18 +383,6 @@
                 });
             });
         })();
-    </script>
-    <!-- Netlify Identity redirect after login -->
-    <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
     </script>
 </body>
 </html>
