@@ -25997,12 +25997,7 @@ const ITEMS_PER_PAGE = 30;
 const gallery = document.getElementById('gallery-grid') || document.getElementById('gallery');
 const modal = document.getElementById('modal');
 const modalMedia = document.getElementById('modal-media');
-const modalTitle = document.getElementById('modal-title');
-const modalPrompt = document.getElementById('modal-prompt');
-const modalParams = document.getElementById('modal-params');
 const modalDate = document.getElementById('modal-date');
-const modalTags = document.getElementById('modal-tags');
-const modalLink = document.getElementById('modal-link');
 const closeBtn = document.querySelector('.close');
 const prevBtn = document.getElementById('modal-prev');
 const nextBtn = document.getElementById('modal-next');
@@ -26323,40 +26318,7 @@ function openModal(item, index, pushHistory = true) {
     } else {
         modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
     }
-    if (modalTitle) modalTitle.textContent = item.name || '';
-    modalDate.textContent = item.created;
-
-    // Create clickable tags
-    modalTags.innerHTML = item.tags.map(t => `<span data-tag="${t}">${t}</span>`).join('');
-
-    // Add click handlers to tags
-    modalTags.querySelectorAll('span').forEach(tagEl => {
-        tagEl.addEventListener('click', () => {
-            const tag = tagEl.dataset.tag;
-            closeModal();
-            filterByTag(tag);
-        });
-    });
-
-    modalPrompt.textContent = item.prompt || '';
-    // Hide parameters section - keep it minimal
-    if (modalParams) modalParams.parentElement.style.display = 'none';
-
-    if (item.url) {
-        modalLink.href = item.url;
-        modalLink.style.display = 'inline-block';
-
-        // Dynamic link text based on source
-        if (item.source === 'midjourney') {
-            modalLink.textContent = 'View on Midjourney';
-        } else if (item.source === 'suno') {
-            modalLink.textContent = 'View on Suno';
-        } else {
-            modalLink.textContent = 'View Source';
-        }
-    } else {
-        modalLink.style.display = 'none';
-    }
+    if (modalDate) modalDate.textContent = item.created || '';
 
     // Update navigation buttons
     updateNavButtons();

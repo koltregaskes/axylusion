@@ -169,17 +169,9 @@
                 <div id="modal-media"></div>
             </div>
             <div class="modal-info">
-                <h2 id="modal-title"></h2>
                 <div class="modal-meta">
                     <span id="modal-date"></span>
                 </div>
-                <div class="modal-tags" id="modal-tags"></div>
-                <h3>Prompt</h3>
-                <p id="modal-prompt" class="prompt-text"></p>
-                <div class="modal-params">
-                    <strong>Parameters:</strong> <code id="modal-params"></code>
-                </div>
-                <a id="modal-link" href="" target="_blank" class="source-link">View Source</a>
             </div>
         </div>
     </div>
@@ -244,12 +236,7 @@
             const noResults = document.getElementById('no-results');
             const modal = document.getElementById('modal');
             const modalMedia = document.getElementById('modal-media');
-            const modalTitle = document.getElementById('modal-title');
             const modalDate = document.getElementById('modal-date');
-            const modalTags = document.getElementById('modal-tags');
-            const modalPrompt = document.getElementById('modal-prompt');
-            const modalParams = document.getElementById('modal-params');
-            const modalLink = document.getElementById('modal-link');
             const closeBtn = document.querySelector('.close');
             const prevBtn = document.getElementById('modal-prev');
             const nextBtn = document.getElementById('modal-next');
@@ -445,25 +432,7 @@
                 if (!item) return;
 
                 modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
-                modalTitle.textContent = item.name;
-                modalDate.textContent = item.created || '';
-                modalPrompt.textContent = item.prompt || 'No prompt available';
-                if (modalParams) modalParams.parentElement.style.display = 'none';
-                modalLink.href = item.url || '#';
-
-                // Tags
-                modalTags.innerHTML = (item.tags || []).map(tag =>
-                    `<span class="tag" data-tag="${tag}">${tag}</span>`
-                ).join('');
-
-                // Tag click to filter
-                modalTags.querySelectorAll('.tag').forEach(tagEl => {
-                    tagEl.addEventListener('click', () => {
-                        activeTag = tagEl.dataset.tag;
-                        closeModal();
-                        applyFilters();
-                    });
-                });
+                if (modalDate) modalDate.textContent = item.created || '';
 
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
