@@ -186,11 +186,14 @@
             let currentIndex = 0;
             let autoRotateInterval;
 
+            // Placeholder date used during batch import - hide these images
+            const PLACEHOLDER_DATE = '2026-02-10';
+
             function initHero() {
                 if (typeof embeddedData !== 'undefined' && embeddedData.items) {
-                    // Sort by date descending, take first 5 for hero
+                    // Only show images with real creation dates
                     const sorted = [...embeddedData.items]
-                        .filter(i => i.type === 'image')
+                        .filter(i => i.type === 'image' && i.created !== PLACEHOLDER_DATE)
                         .sort((a, b) => new Date(b.created) - new Date(a.created));
                     featuredItems = sorted.slice(0, 5);
                 } else {
@@ -247,13 +250,13 @@
                 const container = document.getElementById('showcase-images');
                 if (!container) return;
 
-                // Sort all images by date, newest first
+                // Only show images with real creation dates, newest first
                 const allImages = embeddedData.items
-                    .filter(i => i.type === 'image')
+                    .filter(i => i.type === 'image' && i.created !== PLACEHOLDER_DATE)
                     .sort((a, b) => new Date(b.created) - new Date(a.created));
 
-                // Show first 50 images as full-screen panels
-                const showcaseItems = allImages.slice(0, 50);
+                // Show all images with real dates as full-screen panels
+                const showcaseItems = allImages;
 
                 container.innerHTML = showcaseItems.map(item => `
                     <div class="showcase-panel" style="background-image: url(${item.cdn_url})">
