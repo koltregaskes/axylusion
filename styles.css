@@ -498,7 +498,7 @@ header.peek {
 
 .header-social {
     display: flex;
-    gap: var(--space-sm);
+    gap: 0.75rem;
 }
 
 .header-social a {
