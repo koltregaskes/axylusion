@@ -74,8 +74,6 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Mandatory snap for smooth bounce between hero images */
-    scroll-snap-type: y mandatory;
 }
 
 body {
@@ -123,8 +121,6 @@ body::after {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
 }
 
 .hero-background {
@@ -635,7 +631,6 @@ h1 {
    ----------------------------------------------------------------------------- */
 .gallery-section {
     padding: var(--space-3xl) 0;
-    scroll-snap-align: start;
 }
 
 .section-header {

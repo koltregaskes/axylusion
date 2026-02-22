@@ -25997,6 +25997,7 @@ const ITEMS_PER_PAGE = 30;
 const gallery = document.getElementById('gallery-grid') || document.getElementById('gallery');
 const modal = document.getElementById('modal');
 const modalMedia = document.getElementById('modal-media');
+const modalTitle = document.getElementById('modal-title');
 const modalPrompt = document.getElementById('modal-prompt');
 const modalParams = document.getElementById('modal-params');
 const modalDate = document.getElementById('modal-date');
@@ -26270,7 +26271,6 @@ function renderGallery() {
         overlayHtml = `
             <div class="overlay">
                 <div class="title">${item.name}</div>
-                <div class="meta">${item.dimensions} · ${item.created}</div>
             </div>
         `;
 
@@ -26323,6 +26323,7 @@ function openModal(item, index, pushHistory = true) {
     } else {
         modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
     }
+    if (modalTitle) modalTitle.textContent = item.name || '';
     modalDate.textContent = item.created;
 
     // Create clickable tags
@@ -26338,7 +26339,8 @@ function openModal(item, index, pushHistory = true) {
     });
 
     modalPrompt.textContent = item.prompt || '';
-    modalParams.textContent = item.parameters || '';
+    // Hide parameters section - keep it minimal
+    if (modalParams) modalParams.parentElement.style.display = 'none';
 
     if (item.url) {
         modalLink.href = item.url;

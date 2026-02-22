@@ -345,15 +345,9 @@
                 noResults.style.display = 'none';
                 grid.innerHTML = pageItems.map((item, index) => `
                     <div class="gallery-item" data-index="${start + index}">
-                        <div class="gallery-item-inner">
-                            <img src="${item.cdn_url}" alt="${item.name}" loading="lazy">
-                            <div class="gallery-item-overlay">
-                                <h3>${item.name}</h3>
-                                <div class="gallery-item-meta">
-                                    <span>${item.type}</span>
-                                    ${item.dimensions ? `<span>${item.dimensions}</span>` : ''}
-                                </div>
-                            </div>
+                        <img src="${item.cdn_url}" alt="" loading="lazy">
+                        <div class="overlay">
+                            <div class="title">${item.name}</div>
                         </div>
                     </div>
                 `).join('');
@@ -450,11 +444,11 @@
                 const item = filteredItems[index];
                 if (!item) return;
 
-                modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="${item.name}">`;
+                modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
                 modalTitle.textContent = item.name;
                 modalDate.textContent = item.created || '';
                 modalPrompt.textContent = item.prompt || 'No prompt available';
-                modalParams.textContent = item.parameters || 'None';
+                if (modalParams) modalParams.parentElement.style.display = 'none';
                 modalLink.href = item.url || '#';
 
                 // Tags
