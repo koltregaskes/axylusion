@@ -8,7 +8,7 @@ Axy Lusion is the creative alter ego of [Kol Tregaskes](https://koltregaskes.com
 
 ## View the Gallery
 
-**Live Site:** [koltregaskes.github.io/axylusion](https://koltregaskes.github.io/axylusion)
+**Live Site:** [koltregaskes.github.io/axylusiondotcom](https://koltregaskes.github.io/axylusiondotcom)
 
 ## What's Inside
 

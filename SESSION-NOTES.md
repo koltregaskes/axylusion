@@ -4,8 +4,8 @@
 Successfully recovered your AXY LUSION website session from the task descriptions you provided.
 
 ## Repository
-- **Repo:** github.com/koltregaskes/axylusion
-- **Live:** https://koltregaskes.github.io/axylusion
+- **Repo:** github.com/koltregaskes/axylusiondotcom
+- **Live:** https://koltregaskes.github.io/axylusiondotcom
 - **Local:** W:\Agent Workspace\Projects\axylusion-repo
 
 ## Changes Made

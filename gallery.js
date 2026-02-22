@@ -12,7 +12,7 @@ const embeddedData = {
       "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity",
       "parameters": "--ar 3:2 --raw --quality 4 --stylize 1000 --profile aztrg5w",
       "dimensions": "3:2",
-      "created": "2025-12-14",
+      "created": "2025-12-13",
       "tags": [
         "portrait",
         "cinematic",
@@ -35,7 +35,7 @@ const embeddedData = {
       "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity",
       "parameters": "--ar 3:2 --raw --stylize 1000 --profile aztrg5w",
       "dimensions": "3:2",
-      "created": "2025-12-14",
+      "created": "2025-12-13",
       "tags": [
         "portrait",
         "cinematic",
@@ -58,7 +58,7 @@ const embeddedData = {
       "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity",
       "parameters": "--ar 3:2 --raw --stylize 200 --profile aztrg5w",
       "dimensions": "3:2",
-      "created": "2025-12-14",
+      "created": "2025-12-13",
       "tags": [
         "portrait",
         "cinematic",
@@ -446,13 +446,13 @@ const embeddedData = {
       "name": "an illustration of a cute cricket close-up playing a violin and making music under the stars. The sc",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/022acd31-6a52-4922-afa4-8db0c33c1643?index=0",
       "cdn_url": "https://cdn.midjourney.com/022acd31-6a52-4922-afa4-8db0c33c1643/0_0.png",
       "prompt": "an illustration of a cute cricket close-up playing a violin and making music under the stars. The scene is magical with dappled light. Colors are blue and turquoise",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "fantasy",
         "comic"
@@ -531,7 +531,7 @@ const embeddedData = {
       "prompt": "A dynamic sketch illustration featuring a fierce, battle-hardened female warrior, possibly a pirate captain or a veteran soldier, shown in a three-quarter profile. She has an intense, gritted-teeth expression, conveying determination. She is wearing detailed battle armor and is partially concealed behind a tall, rectangular shield with a curved top edge, held firmly in front of her, suggesting a defensive stance or readiness for combat. A distinctive eye-patch covers her right eye, while her left eye is sharply focused forward. Her hair is swept back, and the overall style is an expressive sketch with bold red lines on a muted background, emphasizing tension and combat readiness",
       "parameters": "--raw",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-10-01",
       "tags": [
         "comic",
         "woman",
@@ -549,7 +549,7 @@ const embeddedData = {
       "prompt": "In the style of Greg Rutkowski",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-04-13",
       "tags": []
     },
     {
@@ -557,13 +557,13 @@ const embeddedData = {
       "name": "Micelangelo, Teenage Mutant Ninja Turtles, Professional Kader, hyper realistic, ultra detailed photo",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/034310b4-2e9d-4248-9f3d-12b10b0796ae?index=0",
       "cdn_url": "https://cdn.midjourney.com/034310b4-2e9d-4248-9f3d-12b10b0796ae/0_0.png",
       "prompt": "Micelangelo, Teenage Mutant Ninja Turtles, Professional Kader, hyper realistic, ultra detailed photograph, captured with a 85mm lens, f4. 6, bokeh, ultra detailed, ultra accurate detailed, urban settin, ultra unreal engine, intricate, life-size figures,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "photorealistic",
         "city"
@@ -624,13 +624,13 @@ const embeddedData = {
       "name": "Ephemeral Embrace | by Kol Tregaskes Tags | #ktlineart, #ktabstract, #ktlove::0Scene | Incomplete, h",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/0436b0c7-dc33-4be4-b2bf-71884293cbab?index=0",
       "cdn_url": "https://cdn.midjourney.com/0436b0c7-dc33-4be4-b2bf-71884293cbab/0_0.png",
       "prompt": "Ephemeral Embrace | by Kol Tregaskes Tags | #ktlineart, #ktabstract, #ktlove::0Scene | Incomplete, haphazard line scribble, ephemeral clean outline art, with scribble handwritten \"love\", girl embracing a sunset::3Details | Clip art style, minimalist and abstract, conveying a sense of unfinished beauty::1Parameters |::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": [
         "abstract",
         "woman"
@@ -1107,13 +1107,13 @@ const embeddedData = {
       "name": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with pa",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/09d76cd4-4b97-4ef0-8124-1ab662df4727?index=0",
       "cdn_url": "https://cdn.midjourney.com/09d76cd4-4b97-4ef0-8124-1ab662df4727/0_0.png",
       "prompt": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with paper cutout, paper cutout",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "nature"
       ]
@@ -1209,13 +1209,13 @@ const embeddedData = {
       "name": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with pa",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/0b167e6f-dd41-4db4-b5ea-8ed7ffdd0f2a?index=0",
       "cdn_url": "https://cdn.midjourney.com/0b167e6f-dd41-4db4-b5ea-8ed7ffdd0f2a/0_0.png",
       "prompt": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with paper cutout, paper cutout",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "nature"
       ]
@@ -1439,13 +1439,13 @@ const embeddedData = {
       "name": "san francisco hand drawn, style Sōsaku-hanga, tranquil, downtown",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/0e114de9-c5f4-4265-9fc3-ba51d032cdfb?index=0",
       "cdn_url": "https://cdn.midjourney.com/0e114de9-c5f4-4265-9fc3-ba51d032cdfb/0_0.png",
       "prompt": "san francisco hand drawn, style Sōsaku-hanga, tranquil, downtown",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": []
     },
     {
@@ -1569,13 +1569,13 @@ const embeddedData = {
       "name": "The robot, the head of a dragon, has an extremelydelicate and complex mechanical structure on thefro",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/0ff00df6-15c9-40d0-8406-cd02747f4372?index=0",
       "cdn_url": "https://cdn.midjourney.com/0ff00df6-15c9-40d0-8406-cd02747f4372/0_0.png",
       "prompt": "The robot, the head of a dragon, has an extremelydelicate and complex mechanical structure on thefront, with illustrations,X-ray perspective, and byNick Veasey, the image appears very ethereal, reflecting the beauty of technology and art",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "fantasy",
         "comic",
@@ -1755,13 +1755,13 @@ const embeddedData = {
       "name": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a mic",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/14edc3e2-bc32-4d94-a5b8-4bfe88f17b5a?index=0",
       "cdn_url": "https://cdn.midjourney.com/14edc3e2-bc32-4d94-a5b8-4bfe88f17b5a/0_0.png",
       "prompt": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a microphone stand and other recording equipment in the background, the background was blurred, the dilapidated room, the dim and gloomy lighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "dark"
       ]
@@ -1944,13 +1944,13 @@ const embeddedData = {
       "name": "Rock n Roll Elvis Presley, cartoon 3d character in the room, in the style of realistic hyper-detaile",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/163a3cb2-7883-46bd-a349-4568bc104524?index=0",
       "cdn_url": "https://cdn.midjourney.com/163a3cb2-7883-46bd-a349-4568bc104524/0_0.png",
       "prompt": "Rock n Roll Elvis Presley, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -1961,13 +1961,13 @@ const embeddedData = {
       "name": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/16b5fe41-72d8-4bed-905e-c9deffeb2d4d?index=0",
       "cdn_url": "https://cdn.midjourney.com/16b5fe41-72d8-4bed-905e-c9deffeb2d4d/0_0.png",
       "prompt": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "photorealistic",
         "man"
@@ -2479,13 +2479,13 @@ const embeddedData = {
       "name": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with pa",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/1f62dae6-da7a-4079-8532-d5458df66602?index=0",
       "cdn_url": "https://cdn.midjourney.com/1f62dae6-da7a-4079-8532-d5458df66602/0_0.png",
       "prompt": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with paper cutout, paper cutout",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "nature"
       ]
@@ -2545,13 +2545,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-machine in battlefield, white & metalic, James Turrell, Octa",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/201181ca-0dd1-49be-9c29-2093ba14012f?index=0",
       "cdn_url": "https://cdn.midjourney.com/201181ca-0dd1-49be-9c29-2093ba14012f/0_0.png",
       "prompt": "Interstellar colonization custom battle-machine in battlefield, white & metalic, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, clearly Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -2594,13 +2594,13 @@ const embeddedData = {
       "name": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a mic",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/20475c3e-6cf9-47bf-a438-ee7ce772f601?index=0",
       "cdn_url": "https://cdn.midjourney.com/20475c3e-6cf9-47bf-a438-ee7ce772f601/0_0.png",
       "prompt": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a microphone stand and other recording equipment in the background, the background was blurred, the dilapidated room, the dim and gloomy lighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "dark"
       ]
@@ -2712,13 +2712,13 @@ const embeddedData = {
       "name": "raindrops but instead of rain they are clenched fists, Ariel shot of crowds reaction,",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/2258d517-759f-447b-8824-be04760b4504?index=0",
       "cdn_url": "https://cdn.midjourney.com/2258d517-759f-447b-8824-be04760b4504/0_0.png",
       "prompt": "raindrops but instead of rain they are clenched fists, Ariel shot of crowds reaction,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": []
     },
     {
@@ -2846,13 +2846,13 @@ const embeddedData = {
       "name": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a mic",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/2464b251-6d3f-4574-9c0a-f506b4d3a472?index=0",
       "cdn_url": "https://cdn.midjourney.com/2464b251-6d3f-4574-9c0a-f506b4d3a472/0_0.png",
       "prompt": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a microphone stand and other recording equipment in the background, the background was blurred, the dilapidated room, the dim and gloomy lighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "dark"
       ]
@@ -2914,13 +2914,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-tank in battlefield, shoot，battle，glass & metalic, James Tur",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/25308ad8-1875-4e6f-9cc1-c10c3474d7c2?index=0",
       "cdn_url": "https://cdn.midjourney.com/25308ad8-1875-4e6f-9cc1-c10c3474d7c2/0_0.png",
       "prompt": "Interstellar colonization custom battle-tank in battlefield, shoot，battle，glass & metalic, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, clearly Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -2931,13 +2931,13 @@ const embeddedData = {
       "name": "Ralph McQuarrie's cover artwork for the book of The Hitchhikers Guide to the Galaxy",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/2566ada3-aa12-4c09-87e5-ff4e05604762?index=0",
       "cdn_url": "https://cdn.midjourney.com/2566ada3-aa12-4c09-87e5-ff4e05604762/0_0.png",
       "prompt": "Ralph McQuarrie's cover artwork for the book of The Hitchhikers Guide to the Galaxy",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": []
     },
     {
@@ -3126,13 +3126,13 @@ const embeddedData = {
       "name": "a concept drawing of a classic red Ferrari dino driving at speed through a corner on a race track, s",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/27fa4786-3e0b-409b-ae56-af0c96118930?index=0",
       "cdn_url": "https://cdn.midjourney.com/27fa4786-3e0b-409b-ae56-af0c96118930/0_0.png",
       "prompt": "a concept drawing of a classic red Ferrari dino driving at speed through a corner on a race track, summer golden hour, 16:9, style is conceptual bold marker pens, energetic, light leaks, porta film stock",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic"
       ]
@@ -3223,13 +3223,13 @@ const embeddedData = {
       "name": "custom battle-machine in battlefield, white & metalic, James Turrell, Octane rendering, 32k photo, H",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/2a0a67b3-65da-4885-bcc0-240ddb4cc877?index=0",
       "cdn_url": "https://cdn.midjourney.com/2a0a67b3-65da-4885-bcc0-240ddb4cc877/0_0.png",
       "prompt": "custom battle-machine in battlefield, white & metalic, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, clearly Detail, realistic cinematic Lighting, A magnificent scene,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-14",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -3375,13 +3375,13 @@ const embeddedData = {
       "name": "Reggae Musican Bob Marley, cartoon 3d character in the room, in the style of realistic hyper-detaile",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/2bec2583-63dc-4656-89cc-6d40f8a797bd?index=0",
       "cdn_url": "https://cdn.midjourney.com/2bec2583-63dc-4656-89cc-6d40f8a797bd/0_0.png",
       "prompt": "Reggae Musican Bob Marley, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -3478,13 +3478,13 @@ const embeddedData = {
       "name": "in the style of Ralph McQuarrie",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/2e060451-a524-4b14-8b88-a8ae05f861c3?index=0",
       "cdn_url": "https://cdn.midjourney.com/2e060451-a524-4b14-8b88-a8ae05f861c3/0_0.png",
       "prompt": "in the style of Ralph McQuarrie",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-18",
       "tags": []
     },
     {
@@ -3527,13 +3527,13 @@ const embeddedData = {
       "name": "a judaicpunk female traditional Rabin with white porcelain makeup, white skin, a white mitre headdre",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/2ebc8812-1587-41b0-8ad7-17b3f6df89d0?index=0",
       "cdn_url": "https://cdn.midjourney.com/2ebc8812-1587-41b0-8ad7-17b3f6df89d0/0_0.png",
       "prompt": "a judaicpunk female traditional Rabin with white porcelain makeup, white skin, a white mitre headdress, star of David in the forehead, in the style of daz3d, freakshow, porcelain, white, meticulous detail",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "woman",
         "man"
@@ -3544,13 +3544,13 @@ const embeddedData = {
       "name": "a scribbled character concept sketch of an ancient egypt girl with modern clothes and a smirk on her",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/2ec35c7d-9e92-44c3-aae4-c6ba9f56e174?index=0",
       "cdn_url": "https://cdn.midjourney.com/2ec35c7d-9e92-44c3-aae4-c6ba9f56e174/0_0.png",
       "prompt": "a scribbled character concept sketch of an ancient egypt girl with modern clothes and a smirk on her face, in the style of tara mcpherson, ancient egypt, rough-edged 2d animation, childlike figures, striped, exaggerated proportions",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": [
         "portrait",
         "woman"
@@ -3577,13 +3577,13 @@ const embeddedData = {
       "name": "full body view angle of muscular all white tactical spiderman angry look wearing all white with a la",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/2ef6fce9-54cb-4d86-9506-0fddbd69f266?index=0",
       "cdn_url": "https://cdn.midjourney.com/2ef6fce9-54cb-4d86-9506-0fddbd69f266/0_0.png",
       "prompt": "full body view angle of muscular all white tactical spiderman angry look wearing all white with a large white spider on his torso wearing tactical arm and leg armor holding two rifles at night, movie scene, make everything look set for the character, characteristic scene of the character, make it look very epic, very realistic, cinematic, make it look like it's from real movies, very impressive, very incredible, unique, high contrast, saturation , tint, trippy, photographic, highest quality, high quality, action taken from the movie itself, different pose, full face or full body, different perspective, different angle, extremely impressive, good lighting, looks extremely good, very high quality , good color selection, very good shading, 32k",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "portrait",
         "cinematic",
@@ -3894,13 +3894,13 @@ const embeddedData = {
       "name": "in one of the pictures, the man of myth wearing blue and green eyes, in the style of mayan art and a",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/3255fe7a-3b46-4b5f-b7a4-c925dcecb63f?index=0",
       "cdn_url": "https://cdn.midjourney.com/3255fe7a-3b46-4b5f-b7a4-c925dcecb63f/0_0.png",
       "prompt": "in one of the pictures, the man of myth wearing blue and green eyes, in the style of mayan art and architecture, unreal engine 5, detailed costumes, dark blue and crimson, grotesque characters, li-core, made of feathers",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-06",
       "tags": [
         "man",
         "dark"
@@ -4148,13 +4148,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-transform ship tank troops in battlefield , white, Minimalis",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/3528b549-4724-4d85-92cb-807c75c67464?index=0",
       "cdn_url": "https://cdn.midjourney.com/3528b549-4724-4d85-92cb-807c75c67464/0_0.png",
       "prompt": "Interstellar colonization custom battle-transform ship tank troops in battlefield , white, Minimalist look, matte finish, red accent, numbers and warning labels through body, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene, most clearly, most clearly view",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -4183,13 +4183,13 @@ const embeddedData = {
       "name": "Batman as a character in a scene from South Park",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/356b444e-6f40-43ab-b1a8-87b9db302957?index=0",
       "cdn_url": "https://cdn.midjourney.com/356b444e-6f40-43ab-b1a8-87b9db302957/0_0.png",
       "prompt": "Batman as a character in a scene from South Park",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-06",
       "tags": [
         "man"
       ]
@@ -4215,13 +4215,13 @@ const embeddedData = {
       "name": "Reggae Musican Bob Marley, cartoon 3d character in the room, in the style of realistic hyper-detaile",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/357cf48a-52ac-4a08-9961-4fe4b3511292?index=0",
       "cdn_url": "https://cdn.midjourney.com/357cf48a-52ac-4a08-9961-4fe4b3511292/0_0.png",
       "prompt": "Reggae Musican Bob Marley, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -4460,7 +4460,7 @@ const embeddedData = {
       "prompt": "An epic Arena by the cliff looking over to a fjord in Thailand::1, Huge floating space mothership, massive citylights::1, centered composition Dark silver dark gold tranquil jolly::1, massive city lights from buildings lights. city glows in the sky::1, futuristic life::1, in the style of captivatingly atmospheric cityscapes, aerial view, smokey background::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-12-12",
       "tags": [
         "sci-fi",
         "city",
@@ -4575,13 +4575,13 @@ const embeddedData = {
       "name": "Naive children's drawing with colored chalk on white paper, made by hand by a child, family and a ho",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/398093a3-aae2-4371-9711-e018848a9f2e?index=0",
       "cdn_url": "https://cdn.midjourney.com/398093a3-aae2-4371-9711-e018848a9f2e/0_0.png",
       "prompt": "Naive children's drawing with colored chalk on white paper, made by hand by a child, family and a house, isolated on white background",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-14",
       "tags": []
     },
     {
@@ -4589,13 +4589,13 @@ const embeddedData = {
       "name": "In an ink wash style, a depiction of a trendy man with a big beard emerges with minimalist lines. Cr",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/3a918d8d-b213-46d6-95f5-cf86e9e2ddf0?index=0",
       "cdn_url": "https://cdn.midjourney.com/3a918d8d-b213-46d6-95f5-cf86e9e2ddf0/0_0.png",
       "prompt": "In an ink wash style, a depiction of a trendy man with a big beard emerges with minimalist lines. Crafted solely in black ink, resembling handwritten woodblock print, cubism, the artwork captures the his essence with a single, continuous stroke. It evokes the sensation of linoprint onto the canvas, offering a fluid and abstract impression, magazine and newspaper collage, color shades of organe and white.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-10",
       "tags": [
         "abstract",
         "man"
@@ -4705,7 +4705,7 @@ const embeddedData = {
       "name": "close-up na expressão facial refletindo indecisão no caminho a ser tomado",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/3c401f2a-3984-4205-93af-9e4caf175be9?index=0",
       "cdn_url": "https://cdn.midjourney.com/3c401f2a-3984-4205-93af-9e4caf175be9/0_0.png",
       "prompt": "close-up na expressão facial refletindo indecisão no caminho a ser tomado",
@@ -4826,13 +4826,13 @@ const embeddedData = {
       "name": "Detailed and realistic portrait of a woman with freckles, round eyes and short messy hair shot outsi",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/3db371ad-b7be-46ec-a3c4-f75873795054?index=0",
       "cdn_url": "https://cdn.midjourney.com/3db371ad-b7be-46ec-a3c4-f75873795054/0_0.png",
       "prompt": "Detailed and realistic portrait of a woman with freckles, round eyes and short messy hair shot outside, wearing a white t shirt, skin texture, chapped lips, soft natural lighting, portrait photography, 85mm lens, magical photography, dramatic lighting, photo realism, ultra-detailed, intimate portrait composition, Cinestill 800T",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-09-02",
       "tags": [
         "portrait",
         "fantasy",
@@ -4877,13 +4877,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-transform ship tank troops in battlefield , white, Minimalis",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/3e36320d-dd96-46ff-ad10-dc9b0563b3ff?index=0",
       "cdn_url": "https://cdn.midjourney.com/3e36320d-dd96-46ff-ad10-dc9b0563b3ff/0_0.png",
       "prompt": "Interstellar colonization custom battle-transform ship tank troops in battlefield , white, Minimalist look, matte finish, red accent, numbers and warning labels through body, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene, most clearly, most clearly view",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -5007,13 +5007,13 @@ const embeddedData = {
       "name": "photo realistic still frame image from Nausicaa and the Valley of the Wind 風の谷のナウシカ , Capture this s",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/40e6e4ab-f614-4892-bf9f-462896ffb7a7?index=0",
       "cdn_url": "https://cdn.midjourney.com/40e6e4ab-f614-4892-bf9f-462896ffb7a7/0_0.png",
       "prompt": "photo realistic still frame image from Nausicaa and the Valley of the Wind 風の谷のナウシカ , Capture this scene with poignant clarity and depth, reflecting the weight of history resting in this solitary relic as it stands against the relentless barrage of time and wind.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-06",
       "tags": [
         "photorealistic"
       ]
@@ -5150,13 +5150,13 @@ const embeddedData = {
       "name": "young woman wearing a white tanktop, black high ponytail, pointing a Glock directly at centre of pov",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/43ad5005-e35b-4ea4-915b-d3cf6690a5ba?index=0",
       "cdn_url": "https://cdn.midjourney.com/43ad5005-e35b-4ea4-915b-d3cf6690a5ba/0_0.png",
       "prompt": "young woman wearing a white tanktop, black high ponytail, pointing a Glock directly at centre of pov, exaggerated angle, 2022 anime style, borderlands boss, powered up, main character",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "anime",
         "woman",
@@ -5286,13 +5286,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-tanks group fire in battled and shoot, shoot, shoot, battle ",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/44c70eb6-e10a-44b2-8950-2893a17a1b82?index=0",
       "cdn_url": "https://cdn.midjourney.com/44c70eb6-e10a-44b2-8950-2893a17a1b82/0_0.png",
       "prompt": "Interstellar colonization custom battle-tanks group fire in battled and shoot, shoot, shoot, battle smoke filled, blue accent, numbers and warning labels throughout body,, the expression is fierce, delicate translucent melt, internally visible, white color, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene, most clearly, grand scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -5420,13 +5420,13 @@ const embeddedData = {
       "name": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a mic",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/45f3f7c9-6287-4c63-bfe9-c1f2657b6682?index=0",
       "cdn_url": "https://cdn.midjourney.com/45f3f7c9-6287-4c63-bfe9-c1f2657b6682/0_0.png",
       "prompt": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a microphone stand and other recording equipment in the background, the background was blurred, the dilapidated room, the dim and gloomy lighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "dark"
       ]
@@ -5469,13 +5469,13 @@ const embeddedData = {
       "name": "Batman as a character in a scene from South Park",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/4681f3a3-3e0e-4942-bb03-2854d05cc27d?index=0",
       "cdn_url": "https://cdn.midjourney.com/4681f3a3-3e0e-4942-bb03-2854d05cc27d/0_0.png",
       "prompt": "Batman as a character in a scene from South Park",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-06",
       "tags": [
         "man"
       ]
@@ -5501,13 +5501,13 @@ const embeddedData = {
       "name": "a judaicpunk female traditional Rabin with white porcelain makeup, white skin, a white mitre headdre",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/46a9909b-7369-47ed-bb92-6f7d43a4f7ff?index=0",
       "cdn_url": "https://cdn.midjourney.com/46a9909b-7369-47ed-bb92-6f7d43a4f7ff/0_0.png",
       "prompt": "a judaicpunk female traditional Rabin with white porcelain makeup, white skin, a white mitre headdress, star of David in the forehead, in the style of daz3d, freakshow, porcelain, white, meticulous detail",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "woman",
         "man"
@@ -5551,13 +5551,13 @@ const embeddedData = {
       "name": "Floral Whispers | by Kol Tregaskes Tags | #ktscribbleart, #ktsimplicity, #ktgirl::0Scene | Incomplet",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/485cd2e6-c265-4236-ac81-12fc97abd7b3?index=0",
       "cdn_url": "https://cdn.midjourney.com/485cd2e6-c265-4236-ac81-12fc97abd7b3/0_0.png",
       "prompt": "Floral Whispers | by Kol Tregaskes Tags | #ktscribbleart, #ktsimplicity, #ktgirl::0Scene | Incomplete, haphazard line scribble, ephemeral clean outline art, with scribble handwritten \"love\", girl admiring a blooming tree::3Details | Rendered in a clip art fashion, blending simplicity with a touch of natural charm::1Parameters |::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": [
         "woman",
         "city"
@@ -5568,13 +5568,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, M",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/48ba4c0b-3b29-4630-8346-e14e229f2eff?index=0",
       "cdn_url": "https://cdn.midjourney.com/48ba4c0b-3b29-4630-8346-e14e229f2eff/0_0.png",
       "prompt": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, Minimalist look, matte finish, silver accent, numbers and warning labels through body, the world of shadows the visuals for oculus studios's game \"shadows\", in the style of industrial machinery aesthetics, colorful moebius, dark beige and white, detailed and intricate pen and ink work, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic",
@@ -5587,13 +5587,13 @@ const embeddedData = {
       "name": "yellow, green, blue and white funky texture design",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/48dbce7f-c078-4770-b576-3fa5382d1a30?index=0",
       "cdn_url": "https://cdn.midjourney.com/48dbce7f-c078-4770-b576-3fa5382d1a30/0_0.png",
       "prompt": "yellow, green, blue and white funky texture design",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-24",
       "tags": []
     },
     {
@@ -5601,13 +5601,13 @@ const embeddedData = {
       "name": "A photograph capturing a mythic Goliath Guard, his medieval Arabian attire and unique, insect-like a",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/48dcfb2f-3ade-4d42-bcf6-1e1fef43b5d8?index=0",
       "cdn_url": "https://cdn.midjourney.com/48dcfb2f-3ade-4d42-bcf6-1e1fef43b5d8/0_0.png",
       "prompt": "A photograph capturing a mythic Goliath Guard, his medieval Arabian attire and unique, insect-like armor standing out against the historic backdrop of Baghdad. His muscular, large body and distinct, bald Neanderthal visage, devoid of facial hair, tell a story of strength. The scene unfolds under the enchanting aura of 1001 Nights, shot on a Canon 5D Mark II with a raw style, avoiding close-ups to emphasize his stature, chaos at 35, version 6.0, sharpness at 1000",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": []
     },
     {
@@ -5648,13 +5648,13 @@ const embeddedData = {
       "name": "(Formula one driver) Ayrton Senna, cartoon 3d character in the room, in the style of realistic hyper",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/4a1e24c0-1589-4647-bebe-2397ff80c056?index=0",
       "cdn_url": "https://cdn.midjourney.com/4a1e24c0-1589-4647-bebe-2397ff80c056/0_0.png",
       "prompt": "(Formula one driver) Ayrton Senna, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, ,depressed looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "portrait",
         "photorealistic"
@@ -5726,13 +5726,13 @@ const embeddedData = {
       "name": "Ephemeral Embrace | by Kol Tregaskes Tags | #ktlineart, #ktabstract, #ktlove::0Scene | Incomplete, h",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/4b0d935c-8af9-4923-a9d2-86008f05c272?index=0",
       "cdn_url": "https://cdn.midjourney.com/4b0d935c-8af9-4923-a9d2-86008f05c272/0_0.png",
       "prompt": "Ephemeral Embrace | by Kol Tregaskes Tags | #ktlineart, #ktabstract, #ktlove::0Scene | Incomplete, haphazard line scribble, ephemeral clean outline art, with scribble handwritten \"love\", girl embracing a sunset::3Details | Clip art style, minimalist and abstract, conveying a sense of unfinished beauty::1Parameters |::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": [
         "abstract",
         "woman"
@@ -5895,13 +5895,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-tanks group fire in battled and shoot, shoot, shoot, battle ",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/4eb3ee07-25f7-43f1-ae85-071648f6653e?index=0",
       "cdn_url": "https://cdn.midjourney.com/4eb3ee07-25f7-43f1-ae85-071648f6653e/0_0.png",
       "prompt": "Interstellar colonization custom battle-tanks group fire in battled and shoot, shoot, shoot, battle smoke filled, blue accent, numbers and warning labels throughout body,, the expression is fierce, delicate translucent melt, internally visible, white color, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene, most clearly, grand scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -5964,13 +5964,13 @@ const embeddedData = {
       "name": "Close up ultra high resolution photo of a beautiful woman, sharp shadows cast by the sun, detailed s",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/4f893b67-9516-413f-a04d-27110bcc0ee2?index=0",
       "cdn_url": "https://cdn.midjourney.com/4f893b67-9516-413f-a04d-27110bcc0ee2/0_0.png",
       "prompt": "Close up ultra high resolution photo of a beautiful woman, sharp shadows cast by the sun, detailed skin, iris detail, detailed fabric, bright sunlight, peach fuzz, eyebags, detailed natural lips, hair shadows, dirt, sunrays, dust, unedited lips, 8k photography, unedited skin, healing cuts, thin facial hair, tan lines, hyper detailed eyes, subtle imperfections, macro hair detail, sharp focus, tan lines, Raw High Resolution, ultradetailed, natural lighting, Fujifilm GFX100s",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-18",
       "tags": [
         "cinematic",
         "photorealistic",
@@ -6190,13 +6190,13 @@ const embeddedData = {
       "name": "Johnny Depp, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, c",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/521a4e1d-558c-4a09-8608-6a6998345eeb?index=0",
       "cdn_url": "https://cdn.midjourney.com/521a4e1d-558c-4a09-8608-6a6998345eeb/0_0.png",
       "prompt": "Johnny Depp, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -6256,13 +6256,13 @@ const embeddedData = {
       "name": "Rock n Roll Elvis Presley, cartoon 3d character in the room, in the style of realistic hyper-detaile",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/53104266-5b39-4d65-9dd8-b6a3ad6e7642?index=0",
       "cdn_url": "https://cdn.midjourney.com/53104266-5b39-4d65-9dd8-b6a3ad6e7642/0_0.png",
       "prompt": "Rock n Roll Elvis Presley, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -6341,13 +6341,13 @@ const embeddedData = {
       "name": "Portrait shot, beautiful female android looking into mirror, word \"Dukats\" magically reflected in mi",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/544cc3ce-c423-4608-968f-c8ce55fe0982?index=0",
       "cdn_url": "https://cdn.midjourney.com/544cc3ce-c423-4608-968f-c8ce55fe0982/0_0.png",
       "prompt": "Portrait shot, beautiful female android looking into mirror, word \"Dukats\" magically reflected in mirror and in her eyes, cinematic sci-fi lighting, gritty realism, discombobulate",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "portrait",
         "cinematic",
@@ -6363,13 +6363,13 @@ const embeddedData = {
       "name": "Kurt Cobain, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, c",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/54ca6508-6713-4c0b-8ea7-cd72a8205126?index=0",
       "cdn_url": "https://cdn.midjourney.com/54ca6508-6713-4c0b-8ea7-cd72a8205126/0_0.png",
       "prompt": "Kurt Cobain, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, depressed looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -6503,13 +6503,13 @@ const embeddedData = {
       "name": "yellow, green, blue and white funky texture design",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/5693b585-58be-4dcb-9843-53ba56c97143?index=0",
       "cdn_url": "https://cdn.midjourney.com/5693b585-58be-4dcb-9843-53ba56c97143/0_0.png",
       "prompt": "yellow, green, blue and white funky texture design",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-24",
       "tags": []
     },
     {
@@ -6531,13 +6531,13 @@ const embeddedData = {
       "name": "Portrait shot, beautiful female android looking into mirror, word \"Dukats\" magically reflected in mi",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/56c62713-b389-4756-adc7-c2685d5bc7e1?index=0",
       "cdn_url": "https://cdn.midjourney.com/56c62713-b389-4756-adc7-c2685d5bc7e1/0_0.png",
       "prompt": "Portrait shot, beautiful female android looking into mirror, word \"Dukats\" magically reflected in mirror and in her eyes, cinematic sci-fi lighting, gritty realism, discombobulate",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "portrait",
         "cinematic",
@@ -6604,13 +6604,13 @@ const embeddedData = {
       "name": "a collection of different cartoon WHALE BABY characters, cartoon art style, kawaii, blue and light b",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/57d8771f-90e4-46bb-a028-e297af0b401d?index=0",
       "cdn_url": "https://cdn.midjourney.com/57d8771f-90e4-46bb-a028-e297af0b401d/0_0.png",
       "prompt": "a collection of different cartoon WHALE BABY characters, cartoon art style, kawaii, blue and light blue, white belly, full body, Cute, happy, clean background, 3d render,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": []
     },
     {
@@ -6618,13 +6618,13 @@ const embeddedData = {
       "name": "Micelangelo, Teenage Mutant Ninja Turtles, Professional Kader, hyper realistic, ultra detailed photo",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/589a87db-59e2-4cab-b6ac-893aed556311?index=0",
       "cdn_url": "https://cdn.midjourney.com/589a87db-59e2-4cab-b6ac-893aed556311/0_0.png",
       "prompt": "Micelangelo, Teenage Mutant Ninja Turtles, Professional Kader, hyper realistic, ultra detailed photograph, captured with a 85mm lens, f4. 6, bokeh, ultra detailed, ultra accurate detailed, urban settin, ultra unreal engine, intricate, life-size figures,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "photorealistic",
         "city"
@@ -6652,13 +6652,13 @@ const embeddedData = {
       "name": "Naive children's drawing with colored chalk on white paper, made by hand by a child, family and a ho",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/58b19c21-43d6-400c-8a58-dafbdfcaecc7?index=0",
       "cdn_url": "https://cdn.midjourney.com/58b19c21-43d6-400c-8a58-dafbdfcaecc7/0_0.png",
       "prompt": "Naive children's drawing with colored chalk on white paper, made by hand by a child, family and a house, isolated on white background",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-14",
       "tags": []
     },
     {
@@ -6828,13 +6828,13 @@ const embeddedData = {
       "name": "Johnny Depp, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, c",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/5a35c100-8432-4560-ab91-477c3abe5cdf?index=0",
       "cdn_url": "https://cdn.midjourney.com/5a35c100-8432-4560-ab91-477c3abe5cdf/0_0.png",
       "prompt": "Johnny Depp, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -6938,7 +6938,7 @@ const embeddedData = {
       "prompt": "A majestic dueling platform overlooking a misty Norwegian fjord::1Oversized orbital habitat, glowing with life and activity::1centered composition dark silver dark gold tranquil jolly::1neon-lit towers reaching into a starry expanse::1hyper-advanced urban utopia::1in the style of captivatingly atmospheric cityscapes, aerial view, smokey background::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-12-12",
       "tags": [
         "city",
         "dark",
@@ -6950,13 +6950,13 @@ const embeddedData = {
       "name": "an illustration of a cute cricket close-up playing a violin and making music under the stars. The sc",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/5aee88eb-93c7-4489-9ae4-f282b0d57fbe?index=0",
       "cdn_url": "https://cdn.midjourney.com/5aee88eb-93c7-4489-9ae4-f282b0d57fbe/0_0.png",
       "prompt": "an illustration of a cute cricket close-up playing a violin and making music under the stars. The scene is magical with dappled light. Colors are blue and turquoise",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "fantasy",
         "comic"
@@ -7185,7 +7185,7 @@ const embeddedData = {
       "prompt": "static camera, man looks at the camera, winks, smiles and returns to original position.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-12-14",
       "tags": [
         "man"
       ]
@@ -7241,13 +7241,13 @@ const embeddedData = {
       "name": "wise beaver holding an ancient map, traditional painting manuscript, Ukiyo-e style",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/5d624a5f-f936-4139-abac-af39f4b0c513?index=0",
       "cdn_url": "https://cdn.midjourney.com/5d624a5f-f936-4139-abac-af39f4b0c513/0_0.png",
       "prompt": "wise beaver holding an ancient map, traditional painting manuscript, Ukiyo-e style",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "man"
       ]
@@ -7273,13 +7273,13 @@ const embeddedData = {
       "name": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/5dc4bcfb-bbba-47ad-9f58-cf4431c7ff58?index=0",
       "cdn_url": "https://cdn.midjourney.com/5dc4bcfb-bbba-47ad-9f58-cf4431c7ff58/0_0.png",
       "prompt": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "photorealistic",
         "man"
@@ -7290,13 +7290,13 @@ const embeddedData = {
       "name": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a mic",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/5dd4bb35-0b75-4fa8-8ec0-8872b65032a8?index=0",
       "cdn_url": "https://cdn.midjourney.com/5dd4bb35-0b75-4fa8-8ec0-8872b65032a8/0_0.png",
       "prompt": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a microphone stand and other recording equipment in the background, the background was blurred, the dilapidated room, the dim and gloomy lighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "dark"
       ]
@@ -7324,13 +7324,13 @@ const embeddedData = {
       "name": "in the style of Ralph McQuarrie",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/5e80ebd1-5735-4845-890f-77fe56879684?index=0",
       "cdn_url": "https://cdn.midjourney.com/5e80ebd1-5735-4845-890f-77fe56879684/0_0.png",
       "prompt": "in the style of Ralph McQuarrie",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-18",
       "tags": []
     },
     {
@@ -7338,13 +7338,13 @@ const embeddedData = {
       "name": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a mic",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/5ec38d8d-3f93-4160-aff0-78a6e4e916ac?index=0",
       "cdn_url": "https://cdn.midjourney.com/5ec38d8d-3f93-4160-aff0-78a6e4e916ac/0_0.png",
       "prompt": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a microphone stand and other recording equipment in the background, the background was blurred, the dilapidated room, the dim and gloomy lighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "dark"
       ]
@@ -7377,13 +7377,13 @@ const embeddedData = {
       "name": "a digital painting of a panda with a helmet on her head, cyberpunk art by Ilya Kuvshinov, cgsociety,",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/5f62abbc-4d90-4442-9d18-33e58eca1011?index=0",
       "cdn_url": "https://cdn.midjourney.com/5f62abbc-4d90-4442-9d18-33e58eca1011/0_0.png",
       "prompt": "a digital painting of a panda with a helmet on her head, cyberpunk art by Ilya Kuvshinov, cgsociety, computer art, anime aesthetic, synthwave, sci-fi,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "sci-fi",
         "anime"
@@ -7485,13 +7485,13 @@ const embeddedData = {
       "name": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with pa",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/60d3074f-7691-48b3-9169-789403591fb5?index=0",
       "cdn_url": "https://cdn.midjourney.com/60d3074f-7691-48b3-9169-789403591fb5/0_0.png",
       "prompt": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with paper cutout, paper cutout",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "nature"
       ]
@@ -7696,13 +7696,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, M",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/63b38a4f-da79-457c-bed0-1b9704e5a548?index=0",
       "cdn_url": "https://cdn.midjourney.com/63b38a4f-da79-457c-bed0-1b9704e5a548/0_0.png",
       "prompt": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, Minimalist look, matte finish, silver accent, numbers and warning labels through body, the world of shadows the visuals for oculus studios's game \"shadows\", in the style of industrial machinery aesthetics, colorful moebius, dark beige and white, detailed and intricate pen and ink work, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic",
@@ -8094,13 +8094,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, M",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/684cac9e-c491-4277-b0e2-e908f7ddce74?index=0",
       "cdn_url": "https://cdn.midjourney.com/684cac9e-c491-4277-b0e2-e908f7ddce74/0_0.png",
       "prompt": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, Minimalist look, matte finish, silver accent, numbers and warning labels through body, the world of shadows the visuals for oculus studios's game \"shadows\", in the style of industrial machinery aesthetics, colorful moebius, dark beige and white, detailed and intricate pen and ink work, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic",
@@ -8260,13 +8260,13 @@ const embeddedData = {
       "name": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/6ac6a6dc-6ad6-495f-bf98-92ab697fd136?index=0",
       "cdn_url": "https://cdn.midjourney.com/6ac6a6dc-6ad6-495f-bf98-92ab697fd136/0_0.png",
       "prompt": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "photorealistic",
         "man"
@@ -8555,13 +8555,13 @@ const embeddedData = {
       "name": "in the style of Ralph McQuarrie",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/6d723d21-7b24-4ace-bdc3-1e3182608aab?index=0",
       "cdn_url": "https://cdn.midjourney.com/6d723d21-7b24-4ace-bdc3-1e3182608aab/0_0.png",
       "prompt": "in the style of Ralph McQuarrie",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-18",
       "tags": []
     },
     {
@@ -8781,13 +8781,13 @@ const embeddedData = {
       "name": "android 18 from Dragon Ball, by Greg Tocchini, by esad ribic, by simon stalenhag, by pascal campion,",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/6fd47713-e14a-4df9-a510-dde8202c12e7?index=0",
       "cdn_url": "https://cdn.midjourney.com/6fd47713-e14a-4df9-a510-dde8202c12e7/0_0.png",
       "prompt": "android 18 from Dragon Ball, by Greg Tocchini, by esad ribic, by simon stalenhag, by pascal campion, by atey ghailan, by ashley wood, by russ mills, sharp vibrant contrast colors, radiant Blooming daylight lighting, Epic scenery composition, subsurface scattering",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": [
         "portrait",
         "landscape",
@@ -9061,13 +9061,13 @@ const embeddedData = {
       "name": "A beautiful female cyberpunk street samurai on the streets of neo tokyo in an illustration using bol",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/738a06a6-a65c-4a2c-beef-9db6cc13c2dc?index=0",
       "cdn_url": "https://cdn.midjourney.com/738a06a6-a65c-4a2c-beef-9db6cc13c2dc/0_0.png",
       "prompt": "A beautiful female cyberpunk street samurai on the streets of neo tokyo in an illustration using bold black and red tones",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "sci-fi",
         "comic",
@@ -9206,13 +9206,13 @@ const embeddedData = {
       "name": "Portrait shot, beautiful female android looking into mirror, word \"Dukats\" magically reflected in mi",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/763956ac-eddf-446b-bff6-c9703adceb81?index=0",
       "cdn_url": "https://cdn.midjourney.com/763956ac-eddf-446b-bff6-c9703adceb81/0_0.png",
       "prompt": "Portrait shot, beautiful female android looking into mirror, word \"Dukats\" magically reflected in mirror and in her eyes, cinematic sci-fi lighting, gritty realism, discombobulate",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "portrait",
         "cinematic",
@@ -9386,13 +9386,13 @@ const embeddedData = {
       "name": "san francisco hand drawn, style Sōsaku-hanga, tranquil, downtown",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/79dab104-6528-41f9-abcc-28b671598fd0?index=0",
       "cdn_url": "https://cdn.midjourney.com/79dab104-6528-41f9-abcc-28b671598fd0/0_0.png",
       "prompt": "san francisco hand drawn, style Sōsaku-hanga, tranquil, downtown",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": []
     },
     {
@@ -9483,13 +9483,13 @@ const embeddedData = {
       "name": "custom battle-machine in battlefield, white & metalic, James Turrell, Octane rendering, 32k photo, H",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/7a9d3c05-e482-4c53-9bbb-bcd651490adc?index=0",
       "cdn_url": "https://cdn.midjourney.com/7a9d3c05-e482-4c53-9bbb-bcd651490adc/0_0.png",
       "prompt": "custom battle-machine in battlefield, white & metalic, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, clearly Detail, realistic cinematic Lighting, A magnificent scene,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-14",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -9500,13 +9500,13 @@ const embeddedData = {
       "name": "Reggae Musican Bob Marley, cartoon 3d character in the room, in the style of realistic hyper-detaile",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/7ae3f22a-33df-40d3-b02f-f19134e8ee31?index=0",
       "cdn_url": "https://cdn.midjourney.com/7ae3f22a-33df-40d3-b02f-f19134e8ee31/0_0.png",
       "prompt": "Reggae Musican Bob Marley, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -9535,13 +9535,13 @@ const embeddedData = {
       "name": "A cartoon-like cartoon drawing of a monkey in profile. The lines of that drawing are thick. The monk",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/7b4dc024-032e-4b5e-8184-e56da775171d?index=0",
       "cdn_url": "https://cdn.midjourney.com/7b4dc024-032e-4b5e-8184-e56da775171d/0_0.png",
       "prompt": "A cartoon-like cartoon drawing of a monkey in profile. The lines of that drawing are thick. The monkey looks drunk. Also, the monkey is drooling.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": []
     },
     {
@@ -9659,7 +9659,7 @@ const embeddedData = {
       "prompt": "a fox head looking down, 3/4 head positioned, illustrated by alphonse mucha",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-10-01",
       "tags": []
     },
     {
@@ -9812,13 +9812,13 @@ const embeddedData = {
       "name": "raindrops but instead of rain they are clenched fists, Ariel shot of crowds reaction,",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/7e72773d-f44f-440e-8365-72f866e5467f?index=0",
       "cdn_url": "https://cdn.midjourney.com/7e72773d-f44f-440e-8365-72f866e5467f/0_0.png",
       "prompt": "raindrops but instead of rain they are clenched fists, Ariel shot of crowds reaction,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": []
     },
     {
@@ -9895,13 +9895,13 @@ const embeddedData = {
       "name": "Tomb Raider, Chibi Style, Detailed, Manga, in the style of Jeff Lemire and Peter Bagg",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/7f2bc2a3-c5bc-484c-adc7-7740713b6beb?index=0",
       "cdn_url": "https://cdn.midjourney.com/7f2bc2a3-c5bc-484c-adc7-7740713b6beb/0_0.png",
       "prompt": "Tomb Raider, Chibi Style, Detailed, Manga, in the style of Jeff Lemire and Peter Bagg",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "anime",
         "man"
@@ -9948,13 +9948,13 @@ const embeddedData = {
       "name": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a mic",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/7f74e970-c097-41bc-a167-1abe1a420286?index=0",
       "cdn_url": "https://cdn.midjourney.com/7f74e970-c097-41bc-a167-1abe1a420286/0_0.png",
       "prompt": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a microphone stand and other recording equipment in the background, the background was blurred, the dilapidated room, the dim and gloomy lighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "dark"
       ]
@@ -9997,13 +9997,13 @@ const embeddedData = {
       "name": "full body view angle of muscular all white tactical spiderman angry look wearing all white with a la",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/806ee574-7049-4285-a283-c9b25394ccad?index=0",
       "cdn_url": "https://cdn.midjourney.com/806ee574-7049-4285-a283-c9b25394ccad/0_0.png",
       "prompt": "full body view angle of muscular all white tactical spiderman angry look wearing all white with a large white spider on his torso wearing tactical arm and leg armor holding two rifles at night, movie scene, make everything look set for the character, characteristic scene of the character, make it look very epic, very realistic, cinematic, make it look like it's from real movies, very impressive, very incredible, unique, high contrast, saturation , tint, trippy, photographic, highest quality, high quality, action taken from the movie itself, different pose, full face or full body, different perspective, different angle, extremely impressive, good lighting, looks extremely good, very high quality , good color selection, very good shading, 32k",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "portrait",
         "cinematic",
@@ -10017,13 +10017,13 @@ const embeddedData = {
       "name": "Full body wide angle shot of Athletic female african huntress covered in black Scorpion style bio-ar",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/807fbbf0-2f93-46ec-ad88-3097a9957fe2?index=0",
       "cdn_url": "https://cdn.midjourney.com/807fbbf0-2f93-46ec-ad88-3097a9957fe2/0_0.png",
       "prompt": "Full body wide angle shot of Athletic female african huntress covered in black Scorpion style bio-armor, Organic exoskeletal skin, curvaceous, very feminine,, post-apocalyptic desert setting, dark severe color palette, concept art painterly style, very realistic, Photography, well - lit, soft - focus, high - quality, artistic, Canon EOS 5D Mark IV DSLR, 50mm, pose, natural light, dramatic , 4k",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "photorealistic",
         "woman",
@@ -10056,7 +10056,7 @@ const embeddedData = {
       "prompt": "In the style of Greg Rutkowski",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-04-13",
       "tags": []
     },
     {
@@ -10161,13 +10161,13 @@ const embeddedData = {
       "name": "a scribbled character concept sketch of an ancient egypt girl with modern clothes and a smirk on her",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/83068999-826f-438b-88f3-fb010c3cebc1?index=0",
       "cdn_url": "https://cdn.midjourney.com/83068999-826f-438b-88f3-fb010c3cebc1/0_0.png",
       "prompt": "a scribbled character concept sketch of an ancient egypt girl with modern clothes and a smirk on her face, in the style of tara mcpherson, ancient egypt, rough-edged 2d animation, childlike figures, striped, exaggerated proportions",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": [
         "portrait",
         "woman"
@@ -10253,13 +10253,13 @@ const embeddedData = {
       "name": "Ephemeral Embrace | by Kol Tregaskes Tags | #ktlineart, #ktabstract, #ktlove::0Scene | Incomplete, h",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/841ae37c-e67f-49f4-899b-df5755fdc838?index=0",
       "cdn_url": "https://cdn.midjourney.com/841ae37c-e67f-49f4-899b-df5755fdc838/0_0.png",
       "prompt": "Ephemeral Embrace | by Kol Tregaskes Tags | #ktlineart, #ktabstract, #ktlove::0Scene | Incomplete, haphazard line scribble, ephemeral clean outline art, with scribble handwritten \"love\", girl embracing a sunset::3Details | Clip art style, minimalist and abstract, conveying a sense of unfinished beauty::1Parameters |::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": [
         "abstract",
         "woman"
@@ -10414,7 +10414,7 @@ const embeddedData = {
       "prompt": "A fantasy illustrative picture of an adult elf woman and a goliath knight walking through a dark swamp. She is a Druid. She has long pierced ears. She wears small gold chains around her neck. She has medium dark green-blue hair and straight bangs. She has black facial tattoos. She has golden colored, sharp eyes. She wears black leather armor. A muscular giant knight in old chainmail armor stands beside her. His mouth and chin are visible. Half helmet . He is extremely tall.",
       "parameters": "--raw --stylize 250",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-11-11",
       "tags": [
         "fantasy",
         "woman",
@@ -10444,13 +10444,13 @@ const embeddedData = {
       "name": "Comic: In the comic, a middle-aged Chinese traveler is walking through the streets of a city at nigh",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/86439275-0254-407d-9b36-54f070a54584?index=0",
       "cdn_url": "https://cdn.midjourney.com/86439275-0254-407d-9b36-54f070a54584/0_0.png",
       "prompt": "Comic: In the comic, a middle-aged Chinese traveler is walking through the streets of a city at night. The street is bustling with people, each with a different expression, and everyone seems busy and focused.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-12-26",
       "tags": [
         "comic",
         "city"
@@ -10721,13 +10721,13 @@ const embeddedData = {
       "name": "Style Cute woman Photography. Showcase a close-up, detailed photograph of an woman made from wool an",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/89d74670-3a45-4560-8946-83ffeca81a0b?index=0",
       "cdn_url": "https://cdn.midjourney.com/89d74670-3a45-4560-8946-83ffeca81a0b/0_0.png",
       "prompt": "Style Cute woman Photography. Showcase a close-up, detailed photograph of an woman made from wool and felt, highlighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "photorealistic",
         "woman",
@@ -10757,13 +10757,13 @@ const embeddedData = {
       "name": "Micelangelo, Teenage Mutant Ninja Turtles, Professional Kader, hyper realistic, ultra detailed photo",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/8a3e218a-9130-46b4-8f4f-b01f98a99234?index=0",
       "cdn_url": "https://cdn.midjourney.com/8a3e218a-9130-46b4-8f4f-b01f98a99234/0_0.png",
       "prompt": "Micelangelo, Teenage Mutant Ninja Turtles, Professional Kader, hyper realistic, ultra detailed photograph, captured with a 85mm lens, f4. 6, bokeh, ultra detailed, ultra accurate detailed, urban settin, ultra unreal engine, intricate, life-size figures,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "photorealistic",
         "city"
@@ -10866,13 +10866,13 @@ const embeddedData = {
       "name": "a girl with the skull face and wings wears a skeleton dress in a horror game, in the style of eye-ca",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/8bd985b1-19b9-4ef4-815f-5f4dbc8a17bb?index=0",
       "cdn_url": "https://cdn.midjourney.com/8bd985b1-19b9-4ef4-815f-5f4dbc8a17bb/0_0.png",
       "prompt": "a girl with the skull face and wings wears a skeleton dress in a horror game, in the style of eye-catching detail, nightcore, referential painting, bold character designs, heistcore, strong facial expression, dark white and silver",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-10",
       "tags": [
         "portrait",
         "woman",
@@ -10967,13 +10967,13 @@ const embeddedData = {
       "name": "Ralph McQuarrie's cover artwork for the book of The Hitchhikers Guide to the Galaxy",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/8cdb5479-85b6-40c2-b284-c39bec1086d3?index=0",
       "cdn_url": "https://cdn.midjourney.com/8cdb5479-85b6-40c2-b284-c39bec1086d3/0_0.png",
       "prompt": "Ralph McQuarrie's cover artwork for the book of The Hitchhikers Guide to the Galaxy",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": []
     },
     {
@@ -11082,13 +11082,13 @@ const embeddedData = {
       "name": "Style Cute woman Photography. Showcase a close-up, detailed photograph of an woman made from wool an",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/8dfd0b5d-137c-49bd-b383-c1fb54d5b340?index=0",
       "cdn_url": "https://cdn.midjourney.com/8dfd0b5d-137c-49bd-b383-c1fb54d5b340/0_0.png",
       "prompt": "Style Cute woman Photography. Showcase a close-up, detailed photograph of an woman made from wool and felt, highlighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "photorealistic",
         "woman",
@@ -11140,13 +11140,13 @@ const embeddedData = {
       "name": "ratto con gli occhiali nel chill, che fuma un cannone e indossa lo smoking, mentre è seduto in una p",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/8f267876-c726-4ae8-bf55-9b8ef45322b7?index=0",
       "cdn_url": "https://cdn.midjourney.com/8f267876-c726-4ae8-bf55-9b8ef45322b7/0_0.png",
       "prompt": "ratto con gli occhiali nel chill, che fuma un cannone e indossa lo smoking, mentre è seduto in una poltrona, realistic, cinematic photo, really realistic,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -11275,13 +11275,13 @@ const embeddedData = {
       "name": "Amy Winehouse, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits,",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/91e54840-fb73-40b4-b8dc-b333fa0ac693?index=0",
       "cdn_url": "https://cdn.midjourney.com/91e54840-fb73-40b4-b8dc-b333fa0ac693/0_0.png",
       "prompt": "Amy Winehouse, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -11351,13 +11351,13 @@ const embeddedData = {
       "name": "Naive children's drawing with colored chalk on white paper, made by hand by a child, family and a ho",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/92338660-25ce-4f2d-b04a-8a832b5ca98e?index=0",
       "cdn_url": "https://cdn.midjourney.com/92338660-25ce-4f2d-b04a-8a832b5ca98e/0_0.png",
       "prompt": "Naive children's drawing with colored chalk on white paper, made by hand by a child, family and a house, isolated on white background",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-14",
       "tags": []
     },
     {
@@ -11456,13 +11456,13 @@ const embeddedData = {
       "name": "a concept drawing of a classic red Ferrari dino driving at speed through a corner on a race track, s",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/9332af6f-fdc4-4684-b6b0-984e924fc3d7?index=0",
       "cdn_url": "https://cdn.midjourney.com/9332af6f-fdc4-4684-b6b0-984e924fc3d7/0_0.png",
       "prompt": "a concept drawing of a classic red Ferrari dino driving at speed through a corner on a race track, summer golden hour, 16:9, style is conceptual bold marker pens, energetic, light leaks, porta film stock",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic"
       ]
@@ -11489,13 +11489,13 @@ const embeddedData = {
       "name": "ratto con gli occhiali nel chill, che fuma un cannone e indossa lo smoking, mentre è seduto in una p",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/933bd3bd-9a50-4088-85a8-dd020e3ea6db?index=0",
       "cdn_url": "https://cdn.midjourney.com/933bd3bd-9a50-4088-85a8-dd020e3ea6db/0_0.png",
       "prompt": "ratto con gli occhiali nel chill, che fuma un cannone e indossa lo smoking, mentre è seduto in una poltrona, realistic, cinematic photo, really realistic,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -11561,13 +11561,13 @@ const embeddedData = {
       "name": "a concept drawing of a classic red Ferrari dino driving at speed through a corner on a race track, s",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/93a02099-2f4a-4cab-8e76-493d204fba39?index=0",
       "cdn_url": "https://cdn.midjourney.com/93a02099-2f4a-4cab-8e76-493d204fba39/0_0.png",
       "prompt": "a concept drawing of a classic red Ferrari dino driving at speed through a corner on a race track, summer golden hour, 16:9, style is conceptual bold marker pens, energetic, light leaks, porta film stock",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic"
       ]
@@ -11790,13 +11790,13 @@ const embeddedData = {
       "name": "Rock n Roll Elvis Presley, cartoon 3d character in the room, in the style of realistic hyper-detaile",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/96b56526-8b1c-4edc-8917-67732ce78778?index=0",
       "cdn_url": "https://cdn.midjourney.com/96b56526-8b1c-4edc-8917-67732ce78778/0_0.png",
       "prompt": "Rock n Roll Elvis Presley, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -11876,13 +11876,13 @@ const embeddedData = {
       "name": "A cartoon-like cartoon drawing of a monkey in profile. The lines of that drawing are thick. The monk",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/97d7e972-2be9-4490-b74a-44cd8fdd8c22?index=0",
       "cdn_url": "https://cdn.midjourney.com/97d7e972-2be9-4490-b74a-44cd8fdd8c22/0_0.png",
       "prompt": "A cartoon-like cartoon drawing of a monkey in profile. The lines of that drawing are thick. The monkey looks drunk. Also, the monkey is drooling.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": []
     },
     {
@@ -11944,13 +11944,13 @@ const embeddedData = {
       "name": "In an ink wash style, a depiction of a trendy man with a big beard emerges with minimalist lines. Cr",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/99297b72-b8f7-41bc-91f9-8b8154b378f9?index=0",
       "cdn_url": "https://cdn.midjourney.com/99297b72-b8f7-41bc-91f9-8b8154b378f9/0_0.png",
       "prompt": "In an ink wash style, a depiction of a trendy man with a big beard emerges with minimalist lines. Crafted solely in black ink, resembling handwritten woodblock print, cubism, the artwork captures the his essence with a single, continuous stroke. It evokes the sensation of linoprint onto the canvas, offering a fluid and abstract impression, magazine and newspaper collage, color shades of organe and white.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-10",
       "tags": [
         "abstract",
         "man"
@@ -11961,13 +11961,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, M",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/997fc616-0e1b-4646-8506-e60457487867?index=0",
       "cdn_url": "https://cdn.midjourney.com/997fc616-0e1b-4646-8506-e60457487867/0_0.png",
       "prompt": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, Minimalist look, matte finish, silver accent, numbers and warning labels through body, the world of shadows the visuals for oculus studios's game \"shadows\", in the style of industrial machinery aesthetics, colorful moebius, dark beige and white, detailed and intricate pen and ink work, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic",
@@ -12008,13 +12008,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-transform ship tank troops in battlefield , white, Minimalis",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/99c52d18-8cb0-4a8d-ac6c-cd3d57be56a5?index=0",
       "cdn_url": "https://cdn.midjourney.com/99c52d18-8cb0-4a8d-ac6c-cd3d57be56a5/0_0.png",
       "prompt": "Interstellar colonization custom battle-transform ship tank troops in battlefield , white, Minimalist look, matte finish, red accent, numbers and warning labels through body, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene, most clearly, most clearly view",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -12025,13 +12025,13 @@ const embeddedData = {
       "name": "aloy, action pose, forest backround, sport top suit, style j scoot cambel and artgerm",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/9a21abcd-60e1-4710-a727-b646cde3790e?index=0",
       "cdn_url": "https://cdn.midjourney.com/9a21abcd-60e1-4710-a727-b646cde3790e/0_0.png",
       "prompt": "aloy, action pose, forest backround, sport top suit, style j scoot cambel and artgerm",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-10",
       "tags": [
         "nature"
       ]
@@ -12109,13 +12109,13 @@ const embeddedData = {
       "name": "wise beaver holding an ancient map, traditional painting manuscript, Ukiyo-e style",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/9c2ea068-541a-411f-9f4c-bcfd62a11d4e?index=0",
       "cdn_url": "https://cdn.midjourney.com/9c2ea068-541a-411f-9f4c-bcfd62a11d4e/0_0.png",
       "prompt": "wise beaver holding an ancient map, traditional painting manuscript, Ukiyo-e style",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "man"
       ]
@@ -12207,13 +12207,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-transform ship tank troops in battlefield , white, Minimalis",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/9d2b7153-d98c-4c7b-868f-69e9436fae82?index=0",
       "cdn_url": "https://cdn.midjourney.com/9d2b7153-d98c-4c7b-868f-69e9436fae82/0_0.png",
       "prompt": "Interstellar colonization custom battle-transform ship tank troops in battlefield , white, Minimalist look, matte finish, red accent, numbers and warning labels through body, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene, most clearly, most clearly view",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -12306,13 +12306,13 @@ const embeddedData = {
       "name": "For realistic fantasy oil painting, In the style of Roberto Ferri and Pino Daeni, germanic art. A la",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/9f7e103b-8f20-4e50-9a91-9d2f821d401e?index=0",
       "cdn_url": "https://cdn.midjourney.com/9f7e103b-8f20-4e50-9a91-9d2f821d401e/0_0.png",
       "prompt": "For realistic fantasy oil painting, In the style of Roberto Ferri and Pino Daeni, germanic art. A large portrait of a light blue feminine creature covered blue scales, fins down her arms, slick blue scaled shoulders, with long wavy blue tentacled dreadlocks. The dreadlocks are made of blue octopus tentacles. She is relaxing on the clouds high in the sky. She is fit, with defined abs, slick wet scaly shoulders, half submerged into a pool of water inside the cloud. Blue skies beneath her. White fluffy clouds. She is looking into the distance skies, vast and blue. Her eyes are huge, angular, and yellow. She is grinning widely",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "portrait",
         "fantasy",
@@ -12325,13 +12325,13 @@ const embeddedData = {
       "name": "disney's frozen disney elsa, in the style of jessica drossin, realist detail, emotive portraiture, j",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/9ff0cd0f-6538-48e7-a671-0be685e87e88?index=0",
       "cdn_url": "https://cdn.midjourney.com/9ff0cd0f-6538-48e7-a671-0be685e87e88/0_0.png",
       "prompt": "disney's frozen disney elsa, in the style of jessica drossin, realist detail, emotive portraiture, jessica rossier, zhang jingna, 8k 3d, whimsical realism",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "portrait"
       ]
@@ -12371,13 +12371,13 @@ const embeddedData = {
       "name": "beautiful girl dressed in a cat costume, striking a pose as if a cat is stretching, with the subject",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/a14edef7-75f4-41a4-872a-5fb4d1ee7267?index=0",
       "cdn_url": "https://cdn.midjourney.com/a14edef7-75f4-41a4-872a-5fb4d1ee7267/0_0.png",
       "prompt": "beautiful girl dressed in a cat costume, striking a pose as if a cat is stretching, with the subject facing sideways. It's a full-body shot, captured in 4K high-definition - no missing ears.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "woman"
       ]
@@ -12488,13 +12488,13 @@ const embeddedData = {
       "name": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/a3d0464e-d5ff-4560-a64d-6c3a068b7cc7?index=0",
       "cdn_url": "https://cdn.midjourney.com/a3d0464e-d5ff-4560-a64d-6c3a068b7cc7/0_0.png",
       "prompt": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "photorealistic",
         "man"
@@ -12505,13 +12505,13 @@ const embeddedData = {
       "name": "hand drawn design of a modern house with pool outside showing all sides of the house",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/a47c8412-c8f3-4fc9-ae67-a98fb52aacec?index=0",
       "cdn_url": "https://cdn.midjourney.com/a47c8412-c8f3-4fc9-ae67-a98fb52aacec/0_0.png",
       "prompt": "hand drawn design of a modern house with pool outside showing all sides of the house",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": []
     },
     {
@@ -12519,13 +12519,13 @@ const embeddedData = {
       "name": "hand drawn design of a modern house with pool outside showing all sides of the house",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/a4a378c1-abce-469f-9397-75ac60389d22?index=0",
       "cdn_url": "https://cdn.midjourney.com/a4a378c1-abce-469f-9397-75ac60389d22/0_0.png",
       "prompt": "hand drawn design of a modern house with pool outside showing all sides of the house",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": []
     },
     {
@@ -12776,7 +12776,7 @@ const embeddedData = {
       "prompt": "A majestic dueling platform overlooking a misty Norwegian fjord::1Oversized orbital habitat, glowing with life and activity::1centered composition dark silver dark gold tranquil jolly::1neon-lit towers reaching into a starry expanse::1hyper-advanced urban utopia::1in the style of captivatingly atmospheric cityscapes, aerial view, smokey background::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-12-12",
       "tags": [
         "city",
         "dark",
@@ -12788,13 +12788,13 @@ const embeddedData = {
       "name": "an illustration of a cute cricket close-up playing a violin and making music under the stars. The sc",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/a7c2886f-6b1c-4aff-8319-201f9bd6936d?index=0",
       "cdn_url": "https://cdn.midjourney.com/a7c2886f-6b1c-4aff-8319-201f9bd6936d/0_0.png",
       "prompt": "an illustration of a cute cricket close-up playing a violin and making music under the stars. The scene is magical with dappled light. Colors are blue and turquoise",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "fantasy",
         "comic"
@@ -12805,13 +12805,13 @@ const embeddedData = {
       "name": "Illustration by Moebius. an elegant female android portrait, low angle Styled in the Majesty of Jupi",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/a7e5fb80-6a43-414c-aba2-277de07590f3?index=0",
       "cdn_url": "https://cdn.midjourney.com/a7e5fb80-6a43-414c-aba2-277de07590f3/0_0.png",
       "prompt": "Illustration by Moebius. an elegant female android portrait, low angle Styled in the Majesty of Jupiter's Storms. This Dynamic Angle Shot Presents a Sci-Fi Fantasy Concept Design that Mirrors the Intense Imagination of Moebius's World. Influenced by the Eerie Aesthetics of Saturn's Rings and the Swift Grace of Mercuria, the android's face Embodies the Intertwining Essence of Interstellar Adventure and Horrific Enigma",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "portrait",
         "fantasy",
@@ -12845,13 +12845,13 @@ const embeddedData = {
       "name": "photo realistic still frame image from Nausicaa and the Valley of the Wind 風の谷のナウシカ , Capture this s",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/a8119028-7ab3-4087-9f5f-17ffd00ed827?index=0",
       "cdn_url": "https://cdn.midjourney.com/a8119028-7ab3-4087-9f5f-17ffd00ed827/0_0.png",
       "prompt": "photo realistic still frame image from Nausicaa and the Valley of the Wind 風の谷のナウシカ , Capture this scene with poignant clarity and depth, reflecting the weight of history resting in this solitary relic as it stands against the relentless barrage of time and wind.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-06",
       "tags": [
         "photorealistic"
       ]
@@ -12982,13 +12982,13 @@ const embeddedData = {
       "name": "Style Cute woman Photography. Showcase a close-up, detailed photograph of an woman made from wool an",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/a909f752-e82d-4004-b98b-58704979f290?index=0",
       "cdn_url": "https://cdn.midjourney.com/a909f752-e82d-4004-b98b-58704979f290/0_0.png",
       "prompt": "Style Cute woman Photography. Showcase a close-up, detailed photograph of an woman made from wool and felt, highlighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "photorealistic",
         "woman",
@@ -13000,13 +13000,13 @@ const embeddedData = {
       "name": "Reggae Musican Bob Marley, cartoon 3d character in the room, in the style of realistic hyper-detaile",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/a97a68ec-ae53-4dfd-ac4a-396897f1c998?index=0",
       "cdn_url": "https://cdn.midjourney.com/a97a68ec-ae53-4dfd-ac4a-396897f1c998/0_0.png",
       "prompt": "Reggae Musican Bob Marley, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -13093,13 +13093,13 @@ const embeddedData = {
       "name": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with pa",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/aa31d861-c6e8-4db3-8a54-840b0f0209b6?index=0",
       "cdn_url": "https://cdn.midjourney.com/aa31d861-c6e8-4db3-8a54-840b0f0209b6/0_0.png",
       "prompt": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with paper cutout, paper cutout",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "nature"
       ]
@@ -13127,13 +13127,13 @@ const embeddedData = {
       "name": "Batman as a character in a scene from South Park",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/ab887cec-ff2e-4d68-8e67-78f3716ec505?index=0",
       "cdn_url": "https://cdn.midjourney.com/ab887cec-ff2e-4d68-8e67-78f3716ec505/0_0.png",
       "prompt": "Batman as a character in a scene from South Park",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-06",
       "tags": [
         "man"
       ]
@@ -13143,13 +13143,13 @@ const embeddedData = {
       "name": "a judaicpunk female traditional Rabin with white porcelain makeup, white skin, a white mitre headdre",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/ab95de93-d5d6-4fee-af31-a7c821141467?index=0",
       "cdn_url": "https://cdn.midjourney.com/ab95de93-d5d6-4fee-af31-a7c821141467/0_0.png",
       "prompt": "a judaicpunk female traditional Rabin with white porcelain makeup, white skin, a white mitre headdress, star of David in the forehead, in the style of daz3d, freakshow, porcelain, white, meticulous detail",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "woman",
         "man"
@@ -13259,13 +13259,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-robot in battlefield, shoot，battle，glass & metalic, James Tu",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/ae787211-af7b-4504-9f0e-81d9935423c2?index=0",
       "cdn_url": "https://cdn.midjourney.com/ae787211-af7b-4504-9f0e-81d9935423c2/0_0.png",
       "prompt": "Interstellar colonization custom battle-robot in battlefield, shoot，battle，glass & metalic, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, clearly Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic",
@@ -13444,13 +13444,13 @@ const embeddedData = {
       "name": "Amy Winehouse, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits,",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/b035a0bd-9009-4ae8-877f-202b7f0d1064?index=0",
       "cdn_url": "https://cdn.midjourney.com/b035a0bd-9009-4ae8-877f-202b7f0d1064/0_0.png",
       "prompt": "Amy Winehouse, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -13674,13 +13674,13 @@ const embeddedData = {
       "name": "in the style of Ralph McQuarrie",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/b2918b18-c653-4e90-b130-36a16db3e398?index=0",
       "cdn_url": "https://cdn.midjourney.com/b2918b18-c653-4e90-b130-36a16db3e398/0_0.png",
       "prompt": "in the style of Ralph McQuarrie",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-18",
       "tags": []
     },
     {
@@ -14022,13 +14022,13 @@ const embeddedData = {
       "name": "Kurt Cobain, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, c",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/b99e204f-a0e8-4811-a055-bce36a86502d?index=0",
       "cdn_url": "https://cdn.midjourney.com/b99e204f-a0e8-4811-a055-bce36a86502d/0_0.png",
       "prompt": "Kurt Cobain, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -14214,13 +14214,13 @@ const embeddedData = {
       "name": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/bcb1bba2-0907-4f43-897c-1b529b10b191?index=0",
       "cdn_url": "https://cdn.midjourney.com/bcb1bba2-0907-4f43-897c-1b529b10b191/0_0.png",
       "prompt": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "photorealistic",
         "man"
@@ -14306,13 +14306,13 @@ const embeddedData = {
       "name": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with pa",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/bd96e336-08e3-4dd0-a18e-410fe8dbf76d?index=0",
       "cdn_url": "https://cdn.midjourney.com/bd96e336-08e3-4dd0-a18e-410fe8dbf76d/0_0.png",
       "prompt": "Paper Cutout Double Exposure, forest inside the silhouette of a dog, double exposure created with paper cutout, paper cutout",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "nature"
       ]
@@ -14462,13 +14462,13 @@ const embeddedData = {
       "name": "Reds, pinks, and lime green intaglio engraved crosshatching, contour lines, stippling, extreme close",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/bf9f90b1-6b6e-4502-ac82-f5791cb262f6?index=0",
       "cdn_url": "https://cdn.midjourney.com/bf9f90b1-6b6e-4502-ac82-f5791cb262f6/0_0.png",
       "prompt": "Reds, pinks, and lime green intaglio engraved crosshatching, contour lines, stippling, extreme close up on a beautiful young woman",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "woman",
         "man"
@@ -14479,13 +14479,13 @@ const embeddedData = {
       "name": "Amy Winehouse, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits,",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/bfe414d7-1599-42e0-a29f-39db677afcab?index=0",
       "cdn_url": "https://cdn.midjourney.com/bfe414d7-1599-42e0-a29f-39db677afcab/0_0.png",
       "prompt": "Amy Winehouse, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -14615,13 +14615,13 @@ const embeddedData = {
       "name": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a mic",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/c22777c3-485d-4cce-9cca-20c1e46dbd53?index=0",
       "cdn_url": "https://cdn.midjourney.com/c22777c3-485d-4cce-9cca-20c1e46dbd53/0_0.png",
       "prompt": "There was a Texas chip on the old wooden table, Texas chip close-up, from the composition，with a microphone stand and other recording equipment in the background, the background was blurred, the dilapidated room, the dim and gloomy lighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": [
         "dark"
       ]
@@ -14651,13 +14651,13 @@ const embeddedData = {
       "name": "A cartoon-like cartoon drawing of a monkey in profile. The lines of that drawing are thick. The monk",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/c26fb140-b8b2-4583-a06f-766d0af016ae?index=0",
       "cdn_url": "https://cdn.midjourney.com/c26fb140-b8b2-4583-a06f-766d0af016ae/0_0.png",
       "prompt": "A cartoon-like cartoon drawing of a monkey in profile. The lines of that drawing are thick. The monkey looks drunk. Also, the monkey is drooling.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": []
     },
     {
@@ -14781,13 +14781,13 @@ const embeddedData = {
       "name": "A beautiful female cyberpunk street samurai on the streets of neo tokyo in an illustration using bol",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/c485a856-f2dd-4090-bcb0-9771c2d5dd9b?index=0",
       "cdn_url": "https://cdn.midjourney.com/c485a856-f2dd-4090-bcb0-9771c2d5dd9b/0_0.png",
       "prompt": "A beautiful female cyberpunk street samurai on the streets of neo tokyo in an illustration using bold black and red tones",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "sci-fi",
         "comic",
@@ -14873,13 +14873,13 @@ const embeddedData = {
       "name": "Rock n Roll Elvis Presley, cartoon 3d character in the room, in the style of realistic hyper-detaile",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/c6955ef3-c706-4435-8851-ed4a57699a1d?index=0",
       "cdn_url": "https://cdn.midjourney.com/c6955ef3-c706-4435-8851-ed4a57699a1d/0_0.png",
       "prompt": "Rock n Roll Elvis Presley, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -15025,13 +15025,13 @@ const embeddedData = {
       "name": "Kurt Cobain, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, c",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/caf8e626-27c9-42ca-9030-ea877be12482?index=0",
       "cdn_url": "https://cdn.midjourney.com/caf8e626-27c9-42ca-9030-ea877be12482/0_0.png",
       "prompt": "Kurt Cobain, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -15167,13 +15167,13 @@ const embeddedData = {
       "name": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/cce686b6-36a7-4f5a-8649-7c7198022e9e?index=0",
       "cdn_url": "https://cdn.midjourney.com/cce686b6-36a7-4f5a-8649-7c7198022e9e/0_0.png",
       "prompt": "realistic grumpy Russian Blue cat character in the style of Ralph Steadman",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "photorealistic",
         "man"
@@ -15456,13 +15456,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-tank in battlefield, shoot，battle，glass & metalic, James Tur",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/d1d681ba-d23d-4508-8de4-18de7683bc5a?index=0",
       "cdn_url": "https://cdn.midjourney.com/d1d681ba-d23d-4508-8de4-18de7683bc5a/0_0.png",
       "prompt": "Interstellar colonization custom battle-tank in battlefield, shoot，battle，glass & metalic, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, clearly Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -15541,13 +15541,13 @@ const embeddedData = {
       "name": "Kurt Cobain, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, c",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/d29106fa-bdae-4670-8fe3-1b412d4d8d86?index=0",
       "cdn_url": "https://cdn.midjourney.com/d29106fa-bdae-4670-8fe3-1b412d4d8d86/0_0.png",
       "prompt": "Kurt Cobain, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, depressed looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -15790,13 +15790,13 @@ const embeddedData = {
       "name": "Micelangelo, Teenage Mutant Ninja Turtles, Professional Kader, hyper realistic, ultra detailed photo",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/d4d7a793-632d-4877-b53e-5839004b429d?index=0",
       "cdn_url": "https://cdn.midjourney.com/d4d7a793-632d-4877-b53e-5839004b429d/0_0.png",
       "prompt": "Micelangelo, Teenage Mutant Ninja Turtles, Professional Kader, hyper realistic, ultra detailed photograph, captured with a 85mm lens, f4. 6, bokeh, ultra detailed, ultra accurate detailed, urban settin, ultra unreal engine, intricate, life-size figures,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "photorealistic",
         "city"
@@ -15967,13 +15967,13 @@ const embeddedData = {
       "name": "Naive children's drawing with colored chalk on white paper, made by hand by a child, family and a ho",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/d6b0aa2f-e783-4370-a009-b36026805d60?index=0",
       "cdn_url": "https://cdn.midjourney.com/d6b0aa2f-e783-4370-a009-b36026805d60/0_0.png",
       "prompt": "Naive children's drawing with colored chalk on white paper, made by hand by a child, family and a house, isolated on white background",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-14",
       "tags": []
     },
     {
@@ -15981,13 +15981,13 @@ const embeddedData = {
       "name": "snarling with bared fangs, sharp fangs, shadowrun, vampire latina aztec warrior woman with a snarlin",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/d75ea874-fe71-473e-bef1-4fae778d3f1a?index=0",
       "cdn_url": "https://cdn.midjourney.com/d75ea874-fe71-473e-bef1-4fae778d3f1a/0_0.png",
       "prompt": "snarling with bared fangs, sharp fangs, shadowrun, vampire latina aztec warrior woman with a snarling vampire fangs, cybernetic arms, traditional aztec garb, fangs, live @ agfa, in the style of digital painting and drawing, animated gifs, zuckerpunk, goblincore, piratepunk, neon words, melancholic self-portraits, tacticalcore, tacticool",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-06",
       "tags": [
         "portrait",
         "fantasy",
@@ -16070,13 +16070,13 @@ const embeddedData = {
       "name": "Tomb Raider, Chibi Style, Detailed, Manga, in the style of Jeff Lemire and Peter Bagg",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/d849dd61-d29f-4a25-9e37-fbb086cad818?index=0",
       "cdn_url": "https://cdn.midjourney.com/d849dd61-d29f-4a25-9e37-fbb086cad818/0_0.png",
       "prompt": "Tomb Raider, Chibi Style, Detailed, Manga, in the style of Jeff Lemire and Peter Bagg",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "anime",
         "man"
@@ -16087,13 +16087,13 @@ const embeddedData = {
       "name": "caravels, marine blue, a Portolan Map, the sun, heliocentric, compass rose, various little stars, co",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/d8509cc6-883d-4951-8df4-0c2e18187e1f?index=0",
       "cdn_url": "https://cdn.midjourney.com/d8509cc6-883d-4951-8df4-0c2e18187e1f/0_0.png",
       "prompt": "caravels, marine blue, a Portolan Map, the sun, heliocentric, compass rose, various little stars, constellation map style, golden filigree",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-08",
       "tags": []
     },
     {
@@ -16117,13 +16117,13 @@ const embeddedData = {
       "name": "wise beaver holding an ancient map, traditional painting manuscript, Ukiyo-e style",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/d8b6ea95-ad1a-415e-b55f-da688a090cdf?index=0",
       "cdn_url": "https://cdn.midjourney.com/d8b6ea95-ad1a-415e-b55f-da688a090cdf/0_0.png",
       "prompt": "wise beaver holding an ancient map, traditional painting manuscript, Ukiyo-e style",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "man"
       ]
@@ -16285,13 +16285,13 @@ const embeddedData = {
       "name": "Gentle Gestures | by Kol Tregaskes Tags | #ktartistic, #ktromantic, #ktexpression::0Scene | Incomple",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/db42e478-7ed7-49d6-9ba8-0def9f49b2ac?index=0",
       "cdn_url": "https://cdn.midjourney.com/db42e478-7ed7-49d6-9ba8-0def9f49b2ac/0_0.png",
       "prompt": "Gentle Gestures | by Kol Tregaskes Tags | #ktartistic, #ktromantic, #ktexpression::0Scene | Incomplete, haphazard line scribble, ephemeral clean outline art, with scribble handwritten \"love\", girl gazing at a starry sky::3Details | Presented as clip art, emphasizing the essence of minimalistic expression and romantic overtones::1Parameters |::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": [
         "woman",
         "man"
@@ -16308,7 +16308,7 @@ const embeddedData = {
       "prompt": "In the style of Greg Rutkowski",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-04-13",
       "tags": []
     },
     {
@@ -16392,13 +16392,13 @@ const embeddedData = {
       "name": "The shadow of a woman under the sunshine,Shadow shape generated by backlighting,romantic soft focus ",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/ddf57ac9-5972-4a96-9a30-319a6a1bf35a?index=0",
       "cdn_url": "https://cdn.midjourney.com/ddf57ac9-5972-4a96-9a30-319a6a1bf35a/0_0.png",
       "prompt": "The shadow of a woman under the sunshine,Shadow shape generated by backlighting,romantic soft focus and ethereal,romantic scenes, lightPhotography, HD",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "photorealistic",
         "woman",
@@ -16612,13 +16612,13 @@ const embeddedData = {
       "name": "hand drawn design of a modern house with pool outside showing all sides of the house",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e0755815-5956-428f-a48a-10f17eb2f43c?index=0",
       "cdn_url": "https://cdn.midjourney.com/e0755815-5956-428f-a48a-10f17eb2f43c/0_0.png",
       "prompt": "hand drawn design of a modern house with pool outside showing all sides of the house",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": []
     },
     {
@@ -16643,13 +16643,13 @@ const embeddedData = {
       "name": "custom battle-machine in battlefield, white & metalic, James Turrell, Octane rendering, 32k photo, H",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e091f0f1-3449-4778-a100-08b47953f1df?index=0",
       "cdn_url": "https://cdn.midjourney.com/e091f0f1-3449-4778-a100-08b47953f1df/0_0.png",
       "prompt": "custom battle-machine in battlefield, white & metalic, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, clearly Detail, realistic cinematic Lighting, A magnificent scene,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-14",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -16764,13 +16764,13 @@ const embeddedData = {
       "name": "moody portrait of a person in a city modern cafe, reflections trough a window of another person walk",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e37c12b1-7463-4547-a866-b8dc8a811531?index=0",
       "cdn_url": "https://cdn.midjourney.com/e37c12b1-7463-4547-a866-b8dc8a811531/0_0.png",
       "prompt": "moody portrait of a person in a city modern cafe, reflections trough a window of another person walking by, shot in 2023 in the style of Vivian Maier. candid::330mm lens, shot in 2023. candid, minimalism, moody, modern, cinematic realism, Eye Level Shot, shot with hasselblad 30mm, Kodak Ektar 100::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "portrait",
         "cinematic",
@@ -16830,13 +16830,13 @@ const embeddedData = {
       "name": "Johnny Depp, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, c",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e41581bb-85d9-4b37-b98d-6ced3966f378?index=0",
       "cdn_url": "https://cdn.midjourney.com/e41581bb-85d9-4b37-b98d-6ced3966f378/0_0.png",
       "prompt": "Johnny Depp, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -16948,13 +16948,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, M",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e5359b8b-389d-4e09-b5e4-156b53caaf35?index=0",
       "cdn_url": "https://cdn.midjourney.com/e5359b8b-389d-4e09-b5e4-156b53caaf35/0_0.png",
       "prompt": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, Minimalist look, matte finish, silver accent, numbers and warning labels through body, the world of shadows the visuals for oculus studios's game \"shadows\", in the style of industrial machinery aesthetics, colorful moebius, dark beige and white, detailed and intricate pen and ink work, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic",
@@ -16967,13 +16967,13 @@ const embeddedData = {
       "name": "A cartoon-like cartoon drawing of a monkey in profile. The lines of that drawing are thick. The monk",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e551023d-1dd4-4979-bd42-0b07f39163a1?index=0",
       "cdn_url": "https://cdn.midjourney.com/e551023d-1dd4-4979-bd42-0b07f39163a1/0_0.png",
       "prompt": "A cartoon-like cartoon drawing of a monkey in profile. The lines of that drawing are thick. The monkey looks drunk. Also, the monkey is drooling.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": []
     },
     {
@@ -16999,13 +16999,13 @@ const embeddedData = {
       "name": "Johnny Depp, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, c",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e59bebc8-bc2d-4fa4-a937-5f42277c9faa?index=0",
       "cdn_url": "https://cdn.midjourney.com/e59bebc8-bc2d-4fa4-a937-5f42277c9faa/0_0.png",
       "prompt": "Johnny Depp, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -17103,13 +17103,13 @@ const embeddedData = {
       "name": "custom battle-machine in battlefield, white & metalic, James Turrell, Octane rendering, 32k photo, H",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e61cca5e-c494-44e4-9258-92397ed8e487?index=0",
       "cdn_url": "https://cdn.midjourney.com/e61cca5e-c494-44e4-9258-92397ed8e487/0_0.png",
       "prompt": "custom battle-machine in battlefield, white & metalic, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, clearly Detail, realistic cinematic Lighting, A magnificent scene,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-14",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -17157,13 +17157,13 @@ const embeddedData = {
       "name": "Kurt Cobain, cartoon 3d character in the room, in the style of portraits, close-ups, topcor 58mm f/1",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e68fb332-8ae3-4ab5-95e0-a36ebd55021c?index=0",
       "cdn_url": "https://cdn.midjourney.com/e68fb332-8ae3-4ab5-95e0-a36ebd55021c/0_0.png",
       "prompt": "Kurt Cobain, cartoon 3d character in the room, in the style of portraits, close-ups, topcor 58mm f/1.4, depressed looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait"
       ]
@@ -17173,13 +17173,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-machine in battlefield, white & metalic, James Turrell, Octa",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e6b145a5-9b56-4c53-af48-59ca1ed59da3?index=0",
       "cdn_url": "https://cdn.midjourney.com/e6b145a5-9b56-4c53-af48-59ca1ed59da3/0_0.png",
       "prompt": "Interstellar colonization custom battle-machine in battlefield, white & metalic, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, clearly Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -17190,13 +17190,13 @@ const embeddedData = {
       "name": "A photograph capturing a mythic Goliath Guard, his medieval Arabian attire and unique, insect-like a",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e6fe2e39-daf1-4f0f-b35e-4852dfc412c8?index=0",
       "cdn_url": "https://cdn.midjourney.com/e6fe2e39-daf1-4f0f-b35e-4852dfc412c8/0_0.png",
       "prompt": "A photograph capturing a mythic Goliath Guard, his medieval Arabian attire and unique, insect-like armor standing out against the historic backdrop of Baghdad. His muscular, large body and distinct, bald Neanderthal visage, devoid of facial hair, tell a story of strength. The scene unfolds under the enchanting aura of 1001 Nights, shot on a Canon 5D Mark II with a raw style, avoiding close-ups to emphasize his stature, chaos at 35, version 6.0, sharpness at 1000",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": []
     },
     {
@@ -17222,13 +17222,13 @@ const embeddedData = {
       "name": "in the style of Ralph McQuarrie",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/e7e38742-2bb2-4009-b767-8c8b74c70981?index=0",
       "cdn_url": "https://cdn.midjourney.com/e7e38742-2bb2-4009-b767-8c8b74c70981/0_0.png",
       "prompt": "in the style of Ralph McQuarrie",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-18",
       "tags": []
     },
     {
@@ -17420,13 +17420,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-tank in battlefield, shoot，battle，glass & metalic, James Tur",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/eb139dc2-167f-4d49-9462-0b3ed7f3bcca?index=0",
       "cdn_url": "https://cdn.midjourney.com/eb139dc2-167f-4d49-9462-0b3ed7f3bcca/0_0.png",
       "prompt": "Interstellar colonization custom battle-tank in battlefield, shoot，battle，glass & metalic, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, clearly Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -17451,13 +17451,13 @@ const embeddedData = {
       "name": "Ephemeral Embrace | by Kol Tregaskes Tags | #ktlineart, #ktabstract, #ktlove::0Scene | Incomplete, h",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/eb32e4c8-ced2-476f-bc75-e045dd210cd3?index=0",
       "cdn_url": "https://cdn.midjourney.com/eb32e4c8-ced2-476f-bc75-e045dd210cd3/0_0.png",
       "prompt": "Ephemeral Embrace | by Kol Tregaskes Tags | #ktlineart, #ktabstract, #ktlove::0Scene | Incomplete, haphazard line scribble, ephemeral clean outline art, with scribble handwritten \"love\", girl embracing a sunset::3Details | Clip art style, minimalist and abstract, conveying a sense of unfinished beauty::1Parameters |::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": [
         "abstract",
         "woman"
@@ -17633,13 +17633,13 @@ const embeddedData = {
       "name": "(Formula one driver) Ayrton Senna, cartoon 3d character in the room, in the style of realistic hyper",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/ed836717-f215-4505-8f3b-d1bda406c2d0?index=0",
       "cdn_url": "https://cdn.midjourney.com/ed836717-f215-4505-8f3b-d1bda406c2d0/0_0.png",
       "prompt": "(Formula one driver) Ayrton Senna, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, ,depressed looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "portrait",
         "photorealistic"
@@ -17714,13 +17714,13 @@ const embeddedData = {
       "name": "Tomb Raider, Chibi Style, Detailed, Manga, in the style of Jeff Lemire and Peter Bagg",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/efa8fad8-31ae-4291-9495-724e9f679671?index=0",
       "cdn_url": "https://cdn.midjourney.com/efa8fad8-31ae-4291-9495-724e9f679671/0_0.png",
       "prompt": "Tomb Raider, Chibi Style, Detailed, Manga, in the style of Jeff Lemire and Peter Bagg",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "anime",
         "man"
@@ -17777,13 +17777,13 @@ const embeddedData = {
       "name": "hand drawn design of a modern house with pool outside showing all sides of the house",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/f10bdf65-e52c-4bc5-954e-8d0f4b73d83c?index=0",
       "cdn_url": "https://cdn.midjourney.com/f10bdf65-e52c-4bc5-954e-8d0f4b73d83c/0_0.png",
       "prompt": "hand drawn design of a modern house with pool outside showing all sides of the house",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-09",
       "tags": []
     },
     {
@@ -17828,13 +17828,13 @@ const embeddedData = {
       "name": "Style Cute woman Photography. Showcase a close-up, detailed photograph of an woman made from wool an",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/f18b70db-f1b3-4f65-a5a5-2b0c9fbdf23a?index=0",
       "cdn_url": "https://cdn.midjourney.com/f18b70db-f1b3-4f65-a5a5-2b0c9fbdf23a/0_0.png",
       "prompt": "Style Cute woman Photography. Showcase a close-up, detailed photograph of an woman made from wool and felt, highlighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "photorealistic",
         "woman",
@@ -17870,7 +17870,7 @@ const embeddedData = {
       "prompt": "In the style of Greg Rutkowski",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-04-13",
       "tags": []
     },
     {
@@ -17878,13 +17878,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-machine in battlefield, white & metalic, James Turrell, Octa",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/f1de912e-ae7d-40c9-b59a-394a8e826be4?index=0",
       "cdn_url": "https://cdn.midjourney.com/f1de912e-ae7d-40c9-b59a-394a8e826be4/0_0.png",
       "prompt": "Interstellar colonization custom battle-machine in battlefield, white & metalic, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, clearly Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -18062,13 +18062,13 @@ const embeddedData = {
       "name": "ratto con gli occhiali nel chill, che fuma un cannone e indossa lo smoking, mentre è seduto in una p",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/f5655843-ad6d-4ab8-9e09-4c4111eca5a3?index=0",
       "cdn_url": "https://cdn.midjourney.com/f5655843-ad6d-4ab8-9e09-4c4111eca5a3/0_0.png",
       "prompt": "ratto con gli occhiali nel chill, che fuma un cannone e indossa lo smoking, mentre è seduto in una poltrona, realistic, cinematic photo, really realistic,",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "cinematic",
         "photorealistic"
@@ -18196,13 +18196,13 @@ const embeddedData = {
       "name": "Style Cute woman Photography. Showcase a close-up, detailed photograph of an woman made from wool an",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/f7064e34-6d61-4a04-a71d-664734945d91?index=0",
       "cdn_url": "https://cdn.midjourney.com/f7064e34-6d61-4a04-a71d-664734945d91/0_0.png",
       "prompt": "Style Cute woman Photography. Showcase a close-up, detailed photograph of an woman made from wool and felt, highlighting",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-07",
       "tags": [
         "photorealistic",
         "woman",
@@ -18475,13 +18475,13 @@ const embeddedData = {
       "name": "Amy Winehouse, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits,",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/fb93a6c0-a04b-4cdb-bc9f-d635fffd2464?index=0",
       "cdn_url": "https://cdn.midjourney.com/fb93a6c0-a04b-4cdb-bc9f-d635fffd2464/0_0.png",
       "prompt": "Amy Winehouse, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-12",
       "tags": [
         "portrait",
         "photorealistic"
@@ -18540,7 +18540,7 @@ const embeddedData = {
       "prompt": "A gladiatorial ring on a floating island, dragons circling above::1Behemoth star carrier, casting shadows over illuminated skyscrapers::1centered composition dark silver dark gold tranquil jolly::1luminous cityscape, a beacon in the cosmos::1intergalactic metropolis teeming with life::1in the style of captivatingly atmospheric cityscapes, aerial view, smokey background::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-12-12",
       "tags": [
         "fantasy",
         "city",
@@ -18609,7 +18609,7 @@ const embeddedData = {
       "prompt": "An epic Arena by the cliff looking over to a fjord in Thailand::1, Huge floating space mothership, massive citylights::1, centered composition Dark silver dark gold tranquil jolly::1, massive city lights from buildings lights. city glows in the sky::1, futuristic life::1, in the style of captivatingly atmospheric cityscapes, aerial view, smokey background::1",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-12-12",
       "tags": [
         "sci-fi",
         "city",
@@ -18641,13 +18641,13 @@ const embeddedData = {
       "name": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, M",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/fe4b48b2-7d36-4d8a-9e33-eb556d5ceb24?index=0",
       "cdn_url": "https://cdn.midjourney.com/fe4b48b2-7d36-4d8a-9e33-eb556d5ceb24/0_0.png",
       "prompt": "Interstellar colonization custom battle-ship tank troops in battlefield ,shoot shoot shoot, black, Minimalist look, matte finish, silver accent, numbers and warning labels through body, the world of shadows the visuals for oculus studios's game \"shadows\", in the style of industrial machinery aesthetics, colorful moebius, dark beige and white, detailed and intricate pen and ink work, James Turrell, Octane rendering, 32k photo, High resolution, volume lighting, shading, Complex Detail, realistic cinematic Lighting, A magnificent scene",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-13",
       "tags": [
         "cinematic",
         "photorealistic",
@@ -18784,13 +18784,13 @@ const embeddedData = {
       "name": "(Formula one driver) driver with helmet, cartoon 3d character in the room, in the style of realistic",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/fffb8afc-e97c-4d2a-b2a8-030ac98680ce?index=0",
       "cdn_url": "https://cdn.midjourney.com/fffb8afc-e97c-4d2a-b2a8-030ac98680ce/0_0.png",
       "prompt": "(Formula one driver) driver with helmet, cartoon 3d character in the room, in the style of realistic hyper-detailed portraits, close-ups, topcor 58mm f/1.4, ,depressed looking at the camera",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-11",
       "tags": [
         "portrait",
         "photorealistic"
@@ -18807,7 +18807,7 @@ const embeddedData = {
       "prompt": "Iris Van Herpin organic fashion on humanoid ballet dancer showing mechanical parts on powerful exoskeleton with realist parts. Active mechanical skin reacts to movement showing possibility of flight. Dancer is caught mid jump. Flowing lines. Butterfly cocoon construction in perforated metal mesh. Chain mail used over shoulders",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-11",
       "tags": [
         "man",
         "robot"
@@ -18824,7 +18824,7 @@ const embeddedData = {
       "prompt": "medieval character, asoiaf, 18 years old, lady, late teens, golden blonde hair, complex hair, white eyes, intense white eyes, detailed skin, sun marks on her skin, wearing a stunning medieval white dress, inside a stunning castle, interior castle background",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "woman"
       ]
@@ -18840,7 +18840,7 @@ const embeddedData = {
       "prompt": "Layered paper-cut style silhouette of a woman’s profile, filled with mountains, forests, and rivers. Background in traditional Asian art style: white cloud patterns, red and white peonies, gold details. High detail, sharp, elegant composition.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "woman",
         "man",
@@ -18852,13 +18852,13 @@ const embeddedData = {
       "name": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramat",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/021a73d1-378c-4cc7-94b9-b3b6ccdf0283?index=0",
       "cdn_url": "https://cdn.midjourney.com/021a73d1-378c-4cc7-94b9-b3b6ccdf0283/0_0.png",
       "prompt": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramatic contrasts, futuristic",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-17",
       "tags": [
         "sci-fi",
         "comic",
@@ -18878,7 +18878,7 @@ const embeddedData = {
       "prompt": "A dynamic sketch illustration featuring a fierce, battle-hardened female warrior, possibly a pirate captain or a veteran soldier, shown in a three-quarter profile. She has an intense, gritted-teeth expression, conveying determination. She is wearing detailed battle armor and is partially concealed behind a tall, rectangular shield with a curved top edge, held firmly in front of her, suggesting a defensive stance or readiness for combat. A distinctive eye-patch covers her right eye, while her left eye is sharply focused forward. Her hair is swept back, and the overall style is an expressive sketch with bold red lines on a muted background, emphasizing tension and combat readiness",
       "parameters": "--raw",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-10-01",
       "tags": [
         "comic",
         "woman",
@@ -18923,13 +18923,13 @@ const embeddedData = {
       "name": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lowe",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/02b547ad-6ab5-4888-a4e2-dfc2bff75fd4?index=0",
       "cdn_url": "https://cdn.midjourney.com/02b547ad-6ab5-4888-a4e2-dfc2bff75fd4/0_0.png",
       "prompt": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lower third and lake mirror reflection intersecting at the upper left power point.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-22",
       "tags": [
         "landscape",
         "nature"
@@ -19059,13 +19059,13 @@ const embeddedData = {
       "name": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramat",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/06b2cfa1-41bb-48bb-8303-b375cdb9c3e4?index=0",
       "cdn_url": "https://cdn.midjourney.com/06b2cfa1-41bb-48bb-8303-b375cdb9c3e4/0_0.png",
       "prompt": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramatic contrasts, futuristic",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-17",
       "tags": [
         "sci-fi",
         "comic",
@@ -19153,7 +19153,7 @@ const embeddedData = {
       "prompt": "A man and a woman, made entirely of paper, waltz. Their figures are artfully carved from folded and textured paper, with visible edges and barely noticeable shadows. They stand on a simple, elegant surface. A single candle burns softly in the background, flooding the entire stage with warm, soft light. The candle flame casts delicate, flickering shadows on the paper dancers. The overall atmosphere is warm and cozy, the background is slightly subdued and unobtrusive, which highlights the candlelight and delicate paper figures.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-17",
       "tags": [
         "portrait",
         "woman",
@@ -19167,13 +19167,13 @@ const embeddedData = {
       "name": "playful whimsical hand-draw digital illustration,autumn early morning, forest clearing, an old big o",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/09f06981-8912-402b-8ec0-188f651157d1?index=0",
       "cdn_url": "https://cdn.midjourney.com/09f06981-8912-402b-8ec0-188f651157d1/0_0.png",
       "prompt": "playful whimsical hand-draw digital illustration,autumn early morning, forest clearing, an old big oak tree and a mossy cottage in the afternoon , use autumn colors orange, brown, gold, magical gently friendly atmosphere.",
       "parameters": "--raw --stylize 150",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-10-04",
       "tags": [
         "fantasy",
         "comic",
@@ -19228,7 +19228,7 @@ const embeddedData = {
       "prompt": "A small elegant cake with delicate cream layers, topped with fresh blueberries, glossy blueberry glaze dripping down the sides, decorated with whole blueberries and green leaves. Realistic close-up, soft natural light, appetizing and artistic composition, detailed texture of fruits and cream, professional food photography style. Pastel pink background, depth of field",
       "parameters": "--raw",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-16",
       "tags": [
         "photorealistic"
       ]
@@ -19244,7 +19244,7 @@ const embeddedData = {
       "prompt": "close-up on an anime-style character with black sunglasses and large silver teeth, dreadlocks, wearing a teal t-shirt, against a white background. 3d render in the style of pixar animation. dreadlock hairstyle, diamond grillz (tooth jewelry), and tattoos.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-20",
       "tags": [
         "anime"
       ]
@@ -19260,7 +19260,7 @@ const embeddedData = {
       "prompt": "A man and a woman, made entirely of paper, waltz. Their figures are artfully carved from folded and textured paper, with visible edges and barely noticeable shadows. They stand on a simple, elegant surface. A single candle burns softly in the background, flooding the entire stage with warm, soft light. The candle flame casts delicate, flickering shadows on the paper dancers. The overall atmosphere is warm and cozy, the background is slightly subdued and unobtrusive, which highlights the candlelight and delicate paper figures.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-17",
       "tags": [
         "portrait",
         "woman",
@@ -19274,13 +19274,13 @@ const embeddedData = {
       "name": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, moder",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/0fe97ec0-6ba8-4430-882d-c7ab1382a52e?index=0",
       "cdn_url": "https://cdn.midjourney.com/0fe97ec0-6ba8-4430-882d-c7ab1382a52e/0_0.png",
       "prompt": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, modern, cartoon, Selective Color art style, Cyberpunk, Neon Hair, Holographic Jacket, VR Goggles",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-27",
       "tags": [
         "sci-fi",
         "comic",
@@ -19340,13 +19340,13 @@ const embeddedData = {
       "name": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lowe",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/141502f6-846e-4da5-a900-6f18a0cabff1?index=0",
       "cdn_url": "https://cdn.midjourney.com/141502f6-846e-4da5-a900-6f18a0cabff1/0_0.png",
       "prompt": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lower third and lake mirror reflection intersecting at the upper left power point.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-22",
       "tags": [
         "landscape",
         "nature"
@@ -19537,7 +19537,7 @@ const embeddedData = {
       "prompt": "A man and a woman, made entirely of paper, waltz. Their figures are artfully carved from folded and textured paper, with visible edges and barely noticeable shadows. They stand on a simple, elegant surface. A single candle burns softly in the background, flooding the entire stage with warm, soft light. The candle flame casts delicate, flickering shadows on the paper dancers. The overall atmosphere is warm and cozy, the background is slightly subdued and unobtrusive, which highlights the candlelight and delicate paper figures.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-17",
       "tags": [
         "portrait",
         "woman",
@@ -19591,7 +19591,7 @@ const embeddedData = {
       "prompt": "Layered paper-cut style silhouette of a woman’s profile, filled with mountains, forests, and rivers. Background in traditional Asian art style: white cloud patterns, red and white peonies, gold details. High detail, sharp, elegant composition.",
       "parameters": "--raw --stylize 1000 --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "woman",
         "man",
@@ -19609,7 +19609,7 @@ const embeddedData = {
       "prompt": "futuristic white spacecraft in the air, sci-fi style, desert background, warm orange color palette, in the style of craig mullins and syd mead",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-09",
       "tags": [
         "sci-fi"
       ]
@@ -19639,7 +19639,7 @@ const embeddedData = {
       "prompt": "Vertical magazine cover portrait, young woman with neutral face, one side realistic and the other side dissolving into flowing holographic code lines, clean gradient background in muted sage tones, soft editorial lighting, clear negative space at top and sides for typography Canon EOS R6, 50mm",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-16",
       "tags": [
         "portrait",
         "sci-fi",
@@ -19675,7 +19675,7 @@ const embeddedData = {
       "prompt": "Close up portrait of USA scary, terrifying soldier, screaming, hands on the head, close the ears, 1970s, Vietnam jungle",
       "parameters": "--raw --stylize 0 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-20",
       "tags": [
         "portrait"
       ]
@@ -19709,7 +19709,7 @@ const embeddedData = {
       "prompt": "a pencil drawing of supermodel doutzen kroes looking at the camera, against a white background, with soft shadows, low contrast, and a clean, sharp focus, in an ultra-realistic style.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-02",
       "tags": [
         "photorealistic",
         "dark"
@@ -19756,7 +19756,7 @@ const embeddedData = {
       "prompt": "Close-up on the blindfold covering the prisoner’s eyes, painted in expressive, symbolic style. The blindfold is not plain fabric it becomes like a wide cinematic screen, displaying fragmented, overlapping scenes: soldiers dragging the prisoner brutally, cramped metal prison transport truck (\"bosta\") interior with shackled inmates, harsh hands gripping arms, dim prison corridors. The scenes are painted in a distressed, textured style, blending into the folds of the blindfold. Strong side lighting from one direction, casting deep shadows, background muted and minimal to keep focus on the blindfold imagery. Earthy, muted tones with deep contrasts, conveying pain and oppression.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "cinematic",
         "dark"
@@ -19859,13 +19859,13 @@ const embeddedData = {
       "name": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/2156e6b6-8f67-4c4a-bce8-ed1b872b6383?index=0",
       "cdn_url": "https://cdn.midjourney.com/2156e6b6-8f67-4c4a-bce8-ed1b872b6383/0_0.png",
       "prompt": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-24",
       "tags": [
         "comic"
       ]
@@ -20032,7 +20032,7 @@ const embeddedData = {
       "prompt": "A man and a woman, made entirely of paper, waltz. Their figures are artfully carved from folded and textured paper, with visible edges and barely noticeable shadows. They stand on a simple, elegant surface. A single candle burns softly in the background, flooding the entire stage with warm, soft light. The candle flame casts delicate, flickering shadows on the paper dancers. The overall atmosphere is warm and cozy, the background is slightly subdued and unobtrusive, which highlights the candlelight and delicate paper figures.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-17",
       "tags": [
         "portrait",
         "woman",
@@ -20066,7 +20066,7 @@ const embeddedData = {
       "prompt": "Subject: A beautiful young woman with delicate facial features, her face as the main focus of the image. She wears a gentle smile, with stylish headphones resting around her neck, creating a relaxed, music-loving vibe. Scene: Night city background with soft lights and neon glows. The background is blurred with bokeh effects to make the girl’s face and headphones stand out. Mood: Warm, dreamy, and soothing atmosphere. Light flares, glowing city lights, or blurred street lamps can be included to enhance the night vibe. Style: Semi-realistic or aesthetic illustration, warm-toned (orange, pink, purple), with soft shadows and highlights. Details: Headphones appear sleek and slightly glossy. Her hair flows gently as if moved by a light breeze, adding dynamic feeling to the scene.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-28",
       "tags": [
         "portrait",
         "comic",
@@ -20099,13 +20099,13 @@ const embeddedData = {
       "name": "buffalo wings in a silver tray, on top of the kitchen counter, posted on Reddit 2018,",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/28d3407a-c665-4100-a01a-1d310de7e7b3?index=0",
       "cdn_url": "https://cdn.midjourney.com/28d3407a-c665-4100-a01a-1d310de7e7b3/0_0.png",
       "prompt": "buffalo wings in a silver tray, on top of the kitchen counter, posted on Reddit 2018,",
       "parameters": "--stylize 1000 --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-19",
       "tags": []
     },
     {
@@ -20175,7 +20175,7 @@ const embeddedData = {
       "prompt": "(((art by Gustave Doré)), (((art by John Bauer))), adult halfling, female, warrior, rogue, very tanned skin, dark skin, fighter, rogue, some scars, green eyes, thousand yard stare, bright yellow hair, hair cut short, angry, 30 years old, two small earring rings in ear, Narine piercing, right nostril pierced with small ring, (((nostril piercing))), (((pierced nose))), (((ring in nose))), (((right nostril pierced))), portrait, one person, small curved sword, yellow hair,",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-28",
       "tags": [
         "portrait",
         "woman",
@@ -20211,7 +20211,7 @@ const embeddedData = {
       "prompt": "Chest-up profile portrait of a young man facing left. Medium-length, slightly wavy dark hair with chunky, tousled tufts falling across his forehead, fuller volume at the crown. Dense, full beard with a connected moustache, wrapping the jaw and under-chin with a strong lower edge. Chin is larger and more projected, jawline heavier. Nose slightly smaller, shorter, with a rounder tip. Expression calm, contemplative, gaze off-frame. He wears a dark, near-black ink-blue band-collar shirt, open at the chest with two buttons visible. A small geometric tattoo peeks above the neckline, offset slightly left. Skin is warm medium-brown with cel-shaded base tones accented by subtle gradient blends along shadow edges for added depth. Lighting is from the top-left, casting angular cel-shaded blocks across forehead, nose, cheek ridge, and collar but softened by slight gradients at transitions. A thin rim light runs along the far cheek and jaw, and a gentle glow around silhouette edges enhances separation from background. Hair rendered in dark blocks with angular highlight accents, no strands. Style is bold cel-shaded digital illustration with clean vector outlines, but polished with controlled gradients, rim lighting, and glow echoing modern anime and stylised graphic-novel minimalism. Background: flat vivid mint-green solid, smooth glow halo, no texture.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-22",
       "tags": [
         "portrait",
         "comic",
@@ -20278,13 +20278,13 @@ const embeddedData = {
       "name": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lowe",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/2de99a15-686e-4440-aace-018ff9981316?index=0",
       "cdn_url": "https://cdn.midjourney.com/2de99a15-686e-4440-aace-018ff9981316/0_0.png",
       "prompt": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lower third and lake mirror reflection intersecting at the upper left power point.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-22",
       "tags": [
         "landscape",
         "nature"
@@ -20336,7 +20336,7 @@ const embeddedData = {
       "prompt": "a drawing showing a geisha holding a hannya mask in front of her face, tattoo sleeve style, sekiro style, dangerous lighting, abstract art",
       "parameters": "--raw --stylize 250 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-11-11",
       "tags": [
         "portrait",
         "abstract"
@@ -20385,7 +20385,7 @@ const embeddedData = {
       "prompt": "close-up on an anime-style character with black sunglasses and large silver teeth, dreadlocks, wearing a teal t-shirt, against a white background. 3d render in the style of pixar animation. dreadlock hairstyle, diamond grillz (tooth jewelry), and tattoos.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-20",
       "tags": [
         "anime"
       ]
@@ -20417,7 +20417,7 @@ const embeddedData = {
       "prompt": "A medieval sewer system, with small rats passing through, and a greenish gas. Portrait illustration in semi-realistic digital painting style, smooth brushwork, shallow depth of field, polished and clean rendering, detailed shading, cinematic composition, fantasy artbook style.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "portrait",
         "cinematic",
@@ -20437,7 +20437,7 @@ const embeddedData = {
       "prompt": "Sunset over fisherman's wharf, orange-red sunset spilling over returning fishing boats; brushstrokes like harvest joy, catches becoming silver dots, fishermen's smiles 仿佛 becoming warm color blocks, ropes becoming messy lines, seawater becoming tangerine brushstrokes.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-09",
       "tags": [
         "man"
       ]
@@ -20447,13 +20447,13 @@ const embeddedData = {
       "name": "Vivid, Impressionist Watercolor, Teeming, Skyline, Dusk, Shadow Figures, Pedestrians, Strolling, Cob",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/38cac1be-9a04-423c-8b43-681e5d2735fb?index=0",
       "cdn_url": "https://cdn.midjourney.com/38cac1be-9a04-423c-8b43-681e5d2735fb/0_0.png",
       "prompt": "Vivid, Impressionist Watercolor, Teeming, Skyline, Dusk, Shadow Figures, Pedestrians, Strolling, Cobblestone Paths, Evening Glow, Bird's Eye View, Golden Hour",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-01",
       "tags": [
         "dark",
         "vibrant",
@@ -20523,7 +20523,7 @@ const embeddedData = {
       "prompt": "A woman made entirely of glass that is beginning to crack",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-15",
       "tags": [
         "woman",
         "man"
@@ -20629,13 +20629,13 @@ const embeddedData = {
       "name": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, moder",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/3df96ce1-0fba-4ae5-a860-7735a3da2f28?index=0",
       "cdn_url": "https://cdn.midjourney.com/3df96ce1-0fba-4ae5-a860-7735a3da2f28/0_0.png",
       "prompt": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, modern, cartoon, Selective Color art style, Cyberpunk, Neon Hair, Holographic Jacket, VR Goggles",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-27",
       "tags": [
         "sci-fi",
         "comic",
@@ -20647,13 +20647,13 @@ const embeddedData = {
       "name": "Chiptune cyberpunk playful girl, laughing and tongue out, sharp theets",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/3e76a9d2-b903-410d-b4af-1e5624011652?index=0",
       "cdn_url": "https://cdn.midjourney.com/3e76a9d2-b903-410d-b4af-1e5624011652/0_0.png",
       "prompt": "Chiptune cyberpunk playful girl, laughing and tongue out, sharp theets",
       "parameters": "--raw --stylize 1000 --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-26",
       "tags": [
         "sci-fi",
         "woman"
@@ -20670,7 +20670,7 @@ const embeddedData = {
       "prompt": "A woman made entirely of glass that is beginning to crack",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-15",
       "tags": [
         "woman",
         "man"
@@ -20695,13 +20695,13 @@ const embeddedData = {
       "name": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lowe",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/3ff0174e-703d-4aa4-b6cb-69de193282ce?index=0",
       "cdn_url": "https://cdn.midjourney.com/3ff0174e-703d-4aa4-b6cb-69de193282ce/0_0.png",
       "prompt": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lower third and lake mirror reflection intersecting at the upper left power point.",
       "parameters": "--raw --stylize 900",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-22",
       "tags": [
         "landscape",
         "nature"
@@ -20735,7 +20735,7 @@ const embeddedData = {
       "prompt": "A man and a woman, made entirely of paper, waltz. Their figures are artfully carved from folded and textured paper, with visible edges and barely noticeable shadows. They stand on a simple, elegant surface. A single candle burns softly in the background, flooding the entire stage with warm, soft light. The candle flame casts delicate, flickering shadows on the paper dancers. The overall atmosphere is warm and cozy, the background is slightly subdued and unobtrusive, which highlights the candlelight and delicate paper figures.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-17",
       "tags": [
         "portrait",
         "woman",
@@ -20749,13 +20749,13 @@ const embeddedData = {
       "name": "Chiptune cyberpunk playful girl, laughing and tongue out, sharp theets",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/43c47e4b-765e-4087-8bc4-5e07fbff9d54?index=0",
       "cdn_url": "https://cdn.midjourney.com/43c47e4b-765e-4087-8bc4-5e07fbff9d54/0_0.png",
       "prompt": "Chiptune cyberpunk playful girl, laughing and tongue out, sharp theets",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-26",
       "tags": [
         "sci-fi",
         "woman"
@@ -20903,7 +20903,7 @@ const embeddedData = {
       "prompt": "Comic-style drawing. A short guy. Light hair, with some strands sticking out from under a black cap. The cap is turned backwards, with the visor at the nape of his neck. Thick eyebrows. Tunnels in his ears. Wearing an orange T-shirt and tight black shorts above the knee. The shorts are rolled up at the bottom. On his wrists, large black leather bracelets with metal inserts",
       "parameters": "--raw",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-18",
       "tags": [
         "comic",
         "man"
@@ -21011,7 +21011,7 @@ const embeddedData = {
       "prompt": "futuristic white spacecraft in the air, sci-fi style, desert background, warm orange color palette, in the style of craig mullins and syd mead",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-09",
       "tags": [
         "sci-fi"
       ]
@@ -21027,7 +21027,7 @@ const embeddedData = {
       "prompt": "ast food counter at midnight, fluorescent yellow light, beautiful chinese woman with tired eyes staring at the steaming food trays, framed through greasy glass, shallow depth of field, focus pulling in and out, melancholy lonely vibe, Wong Kar-wai aesthetic",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-11",
       "tags": [
         "woman",
         "man"
@@ -21044,7 +21044,7 @@ const embeddedData = {
       "prompt": "A photo of a asian woman, dark blue long hair, piercing blue eyes, white background, wearing black t-shirt, sharp face features",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-16",
       "tags": [
         "portrait",
         "woman",
@@ -21063,7 +21063,7 @@ const embeddedData = {
       "prompt": "Ultra-realistic portrait of Dabi from My Hero Academia, upper body close-up, piercing icy blue eyes with a menacing smirk, spiky black hair slightly unkempt, pale skin with extensive purple burn scars held together by metal staples, faint blue flames subtly flickering near his shoulders, wearing a dark, tattered coat with visible stitching and texture, reimagined as a real human in Final Fantasy style, studio-quality photography, 35mm lens look, hyper-detailed facial features and scar textures, cinematic lighting, sharp focus, natural skin texture, realistic, soft depth of field, photorealism, 8K resolution, ultra-HD, no distortions, no artifacts, trending on ArtStation, professional close-up portrait, highly detailed, realistic proportions, volumetric lighting, beautiful color grading, subtle background blur.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-08",
       "tags": [
         "portrait",
         "cinematic",
@@ -21078,13 +21078,13 @@ const embeddedData = {
       "name": "what do people do on holi at the festivals?, in the style of psychedelic color palette, post-impress",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/4da98884-e33d-49b3-abba-f54b2524a3e1?index=0",
       "cdn_url": "https://cdn.midjourney.com/4da98884-e33d-49b3-abba-f54b2524a3e1/0_0.png",
       "prompt": "what do people do on holi at the festivals?, in the style of psychedelic color palette, post-impressionist colorism, airbrush art, 32k uhd, matte photo, smilecore, colorized",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-12-02",
       "tags": []
     },
     {
@@ -21130,13 +21130,13 @@ const embeddedData = {
       "name": "an evil, godfather CEO figure with an orange ING-cat that looks scared and sad, on his lap. Loads of",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/4f53886c-a849-472a-b5e2-f9efd5398cef?index=0",
       "cdn_url": "https://cdn.midjourney.com/4f53886c-a849-472a-b5e2-f9efd5398cef/0_0.png",
       "prompt": "an evil, godfather CEO figure with an orange ING-cat that looks scared and sad, on his lap. Loads of space around him.",
       "parameters": "--stylize 250",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-26",
       "tags": [
         "sci-fi"
       ]
@@ -21152,7 +21152,7 @@ const embeddedData = {
       "prompt": "Close up portrait of USA scary, terrifying soldier, screaming, hands on the head, close the ears, 1970s, Vietnam jungle",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-20",
       "tags": [
         "portrait"
       ]
@@ -21168,7 +21168,7 @@ const embeddedData = {
       "prompt": "faded cyan wall with a massive poster; the printed hair on the portrait continues out as real kelp that breathes with the wind, second woman brushes the living strands and they leave wet trails on the floor, sand grains crisp, subtle lens flare, documentary-believable surreal moment",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-20",
       "tags": [
         "portrait",
         "abstract",
@@ -21273,7 +21273,7 @@ const embeddedData = {
       "prompt": "A fantasy illustrative picture of an adult elf woman and a goliath knight walking through a dark swamp. She is a Druid. She has long pierced ears. She wears small gold chains around her neck. She has medium dark green-blue hair and straight bangs. She has black facial tattoos. She has golden colored, sharp eyes. She wears black leather armor. A muscular giant knight in old chainmail armor stands beside her. His mouth and chin are visible. Half helmet . He is extremely tall.",
       "parameters": "--raw --stylize 250 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-11-11",
       "tags": [
         "fantasy",
         "woman",
@@ -21306,7 +21306,7 @@ const embeddedData = {
       "prompt": "Ultra-realistic portrait of Dabi from My Hero Academia, upper body close-up, piercing icy blue eyes with a menacing smirk, spiky black hair slightly unkempt, pale skin with extensive purple burn scars held together by metal staples, faint blue flames subtly flickering near his shoulders, wearing a dark, tattered coat with visible stitching and texture, reimagined as a real human in Final Fantasy style, studio-quality photography, 35mm lens look, hyper-detailed facial features and scar textures, cinematic lighting, sharp focus, natural skin texture, realistic, soft depth of field, photorealism, 8K resolution, ultra-HD, no distortions, no artifacts, trending on ArtStation, professional close-up portrait, highly detailed, realistic proportions, volumetric lighting, beautiful color grading, subtle background blur.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-08",
       "tags": [
         "portrait",
         "cinematic",
@@ -21362,7 +21362,7 @@ const embeddedData = {
       "prompt": "minimalist line art sketch of a walking human figure, continuous flowing lines, elegant outline, black ink on white background, dynamic posture, poetic atmosphere, abstract simplicity",
       "parameters": "--raw",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-18",
       "tags": [
         "abstract",
         "man",
@@ -21380,7 +21380,7 @@ const embeddedData = {
       "prompt": "medieval character, asoiaf, 18 years old, lady, late teens, golden blonde hair, complex hair, white eyes, intense white eyes, detailed skin, sun marks on her skin, wearing a stunning medieval white dress, inside a stunning castle, interior castle background",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "woman"
       ]
@@ -21434,13 +21434,13 @@ const embeddedData = {
       "name": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, moder",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/5ef4e682-d0b5-4289-82d9-0706261d5cbf?index=0",
       "cdn_url": "https://cdn.midjourney.com/5ef4e682-d0b5-4289-82d9-0706261d5cbf/0_0.png",
       "prompt": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, modern, cartoon, Selective Color art style, Cyberpunk, Neon Hair, Holographic Jacket, VR Goggles",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-27",
       "tags": [
         "sci-fi",
         "comic",
@@ -21532,7 +21532,7 @@ const embeddedData = {
       "prompt": "Iris Van Herpin organic fashion on humanoid ballet dancer showing mechanical parts on powerful exoskeleton with realist parts. Active mechanical skin reacts to movement showing possibility of flight. Dancer is caught mid jump. Flowing lines. Butterfly cocoon construction in perforated metal mesh. Chain mail used over shoulders",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-11",
       "tags": [
         "man",
         "robot"
@@ -21592,13 +21592,13 @@ const embeddedData = {
       "name": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lowe",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/698d15dd-4dc4-411c-a7ed-f23cff561a41?index=0",
       "cdn_url": "https://cdn.midjourney.com/698d15dd-4dc4-411c-a7ed-f23cff561a41/0_0.png",
       "prompt": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lower third and lake mirror reflection intersecting at the upper left power point.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-22",
       "tags": [
         "landscape",
         "nature"
@@ -21630,13 +21630,13 @@ const embeddedData = {
       "name": "kanye west as a boondocks cartoon character wearing oversized closed singing on stage at a local div",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/69b5ff2d-202b-48f2-a183-86da51060bc7?index=0",
       "cdn_url": "https://cdn.midjourney.com/69b5ff2d-202b-48f2-a183-86da51060bc7/0_0.png",
       "prompt": "kanye west as a boondocks cartoon character wearing oversized closed singing on stage at a local dive bar",
       "parameters": "--stylize 1000 --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-24",
       "tags": []
     },
     {
@@ -21666,7 +21666,7 @@ const embeddedData = {
       "prompt": "Iris Van Herpin organic fashion on humanoid ballet dancer showing mechanical parts on powerful exoskeleton with realist parts. Active mechanical skin reacts to movement showing possibility of flight. Dancer is caught mid jump. Flowing lines. Butterfly cocoon construction in perforated metal mesh. Chain mail used over shoulders",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-11",
       "tags": [
         "man",
         "robot"
@@ -21697,7 +21697,7 @@ const embeddedData = {
       "prompt": "At dusk, atop a towering crane in the floating port of \"Rust Town,\" a female sky pirate captain in a brown flight jacket gazes out at her airship. Her goggles are pushed up on her forehead, a confident smirk on her lips. Behind her lies the entire noisy and chaotic harbor: giant gears turn, steam pipes hiss, and various airships take off and land in the murky yellow sky. The warm light of the setting sun casts a golden rim on her and this world of steel. The image, rendered in a Dieselpunk aesthetic with 16K resolution and a cinematic film texture, captures a moment filled with the spirit of adventure and the romance of the industrial age.",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "cinematic",
         "woman",
@@ -21733,7 +21733,7 @@ const embeddedData = {
       "prompt": "medieval dark fantasy character illustration, a prisoner, crazy insane expression",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-08",
       "tags": [
         "fantasy",
         "comic",
@@ -21745,13 +21745,13 @@ const embeddedData = {
       "name": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lowe",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/6d51b5dc-73ec-4d26-baa1-ef9d3ae3d3cf?index=0",
       "cdn_url": "https://cdn.midjourney.com/6d51b5dc-73ec-4d26-baa1-ef9d3ae3d3cf/0_0.png",
       "prompt": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lower third and lake mirror reflection intersecting at the upper left power point.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-22",
       "tags": [
         "landscape",
         "nature"
@@ -21814,7 +21814,7 @@ const embeddedData = {
       "prompt": "A small elegant cake with delicate cream layers, topped with fresh blueberries, glossy blueberry glaze dripping down the sides, decorated with whole blueberries and green leaves. Realistic close-up, soft natural light, appetizing and artistic composition, detailed texture of fruits and cream, professional food photography style. Pastel pink background, depth of field",
       "parameters": "--raw",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-16",
       "tags": [
         "photorealistic"
       ]
@@ -21860,7 +21860,7 @@ const embeddedData = {
       "prompt": "A confident young woman with box braids, wearing a long tan blazer over a crisp white blouse and white trousers. She sports sleek business sneakers and carries a laptop in one hand and a pastel yellow thermal mug in the other. She wears modern headphones. The scene is illustrated in the whimsical, soft, and detailed style of Studio Ghibli, with warm lighting and gentle textures. Urban background with subtle greenery.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-05",
       "tags": [
         "woman",
         "man",
@@ -21878,7 +21878,7 @@ const embeddedData = {
       "prompt": "A modern collage in the vancouver art school style, poster with the words \"PUNK MASK\" in bold text at the top, showcasing an abstract ink drawing of a woman wearing punk rock and a headdress. The london skyline background is filled with various textures of newspaper clippings, magazine cutouts, brochures, street signs, and other london urban elements, She has a large tear on her eye that resembles ear piercings. multimedia collage hair, The color scheme features a blue, red and orange theme with black accents for contrast. Aboriginal patterns and random graffiti text and colour drips, picasso artistic style and the vancouver art school, edgy ink lines",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-20",
       "tags": [
         "abstract",
         "woman",
@@ -21897,7 +21897,7 @@ const embeddedData = {
       "prompt": "Vertical magazine cover portrait, young woman with neutral face, one side realistic and the other side dissolving into flowing holographic code lines, clean gradient background in muted sage tones, soft editorial lighting, clear negative space at top and sides for typography Canon EOS R6, 50mm",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-16",
       "tags": [
         "portrait",
         "sci-fi",
@@ -22003,7 +22003,7 @@ const embeddedData = {
       "prompt": "highly detailed portrait of a beautiful redhead girl, natural freckles on her face, warm smile, soft lighting, cinematic look, photorealistic, shallow depth of field, 85mm lens. golden hour lighting",
       "parameters": "--raw --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-03",
       "tags": [
         "portrait",
         "cinematic",
@@ -22080,13 +22080,13 @@ const embeddedData = {
       "name": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/76abb541-f232-47cb-9944-06a41e566388?index=0",
       "cdn_url": "https://cdn.midjourney.com/76abb541-f232-47cb-9944-06a41e566388/0_0.png",
       "prompt": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "parameters": "--raw --stylize 0",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-24",
       "tags": [
         "comic"
       ]
@@ -22118,7 +22118,7 @@ const embeddedData = {
       "prompt": "Layered paper-cut style silhouette of a woman’s profile, filled with mountains, forests, and rivers. Background in traditional Asian art style: white cloud patterns, red and white peonies, gold details. High detail, sharp, elegant composition.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "woman",
         "man",
@@ -22190,7 +22190,7 @@ const embeddedData = {
       "prompt": "medieval dark fantasy character illustration, a prisoner, crazy insane expression",
       "parameters": "--raw --stylize 1000 --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-08",
       "tags": [
         "fantasy",
         "comic",
@@ -22258,13 +22258,13 @@ const embeddedData = {
       "name": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramat",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/7acb3443-a9a2-4ecf-809c-032a54fa98b9?index=0",
       "cdn_url": "https://cdn.midjourney.com/7acb3443-a9a2-4ecf-809c-032a54fa98b9/0_0.png",
       "prompt": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramatic contrasts, futuristic",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-17",
       "tags": [
         "sci-fi",
         "comic",
@@ -22278,13 +22278,13 @@ const embeddedData = {
       "name": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lowe",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/7c35b35f-72b7-446a-bcbe-f7366b9183d2?index=0",
       "cdn_url": "https://cdn.midjourney.com/7c35b35f-72b7-446a-bcbe-f7366b9183d2/0_0.png",
       "prompt": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lower third and lake mirror reflection intersecting at the upper left power point.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-22",
       "tags": [
         "landscape",
         "nature"
@@ -22371,13 +22371,13 @@ const embeddedData = {
       "name": "Vivid, Impressionist Watercolor, Teeming, Skyline, Dusk, Shadow Figures, Pedestrians, Strolling, Cob",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/7f2cad56-e8b0-4d01-987c-f3e65324ea3a?index=0",
       "cdn_url": "https://cdn.midjourney.com/7f2cad56-e8b0-4d01-987c-f3e65324ea3a/0_0.png",
       "prompt": "Vivid, Impressionist Watercolor, Teeming, Skyline, Dusk, Shadow Figures, Pedestrians, Strolling, Cobblestone Paths, Evening Glow, Bird's Eye View, Golden Hour",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-01",
       "tags": [
         "dark",
         "vibrant",
@@ -22395,7 +22395,7 @@ const embeddedData = {
       "prompt": "Layered paper-cut style silhouette of a woman’s profile, filled with mountains, forests, and rivers. Background in traditional Asian art style: white cloud patterns, red and white peonies, gold details. High detail, sharp, elegant composition.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "woman",
         "man",
@@ -22425,13 +22425,13 @@ const embeddedData = {
       "name": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/815d2824-8f15-4701-9c55-ac31cbe5654a?index=0",
       "cdn_url": "https://cdn.midjourney.com/815d2824-8f15-4701-9c55-ac31cbe5654a/0_0.png",
       "prompt": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-24",
       "tags": [
         "comic"
       ]
@@ -22447,7 +22447,7 @@ const embeddedData = {
       "prompt": "Iris Van Herpin organic fashion on humanoid ballet dancer showing mechanical parts on powerful exoskeleton with realist parts. Active mechanical skin reacts to movement showing possibility of flight. Dancer is caught mid jump. Flowing lines. Butterfly cocoon construction in perforated metal mesh. Chain mail used over shoulders",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-11",
       "tags": [
         "man",
         "robot"
@@ -22458,13 +22458,13 @@ const embeddedData = {
       "name": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, moder",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/822ae77d-8006-4fc4-8954-dedc9cd342e9?index=0",
       "cdn_url": "https://cdn.midjourney.com/822ae77d-8006-4fc4-8954-dedc9cd342e9/0_0.png",
       "prompt": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, modern, cartoon, Selective Color art style, Cyberpunk, Neon Hair, Holographic Jacket, VR Goggles",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-27",
       "tags": [
         "sci-fi",
         "comic",
@@ -22518,7 +22518,7 @@ const embeddedData = {
       "prompt": "A photo of a asian woman, dark blue long hair, piercing blue eyes, white background, wearing black t-shirt, sharp face features",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-16",
       "tags": [
         "portrait",
         "woman",
@@ -22567,13 +22567,13 @@ const embeddedData = {
       "name": "A vibrant and detailed isometric artwork of a bustling cityscape filled with colorful buildings, tin",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/878cc317-72cd-4ebc-89cd-6c408f22aa09?index=0",
       "cdn_url": "https://cdn.midjourney.com/878cc317-72cd-4ebc-89cd-6c408f22aa09/0_0.png",
       "prompt": "A vibrant and detailed isometric artwork of a bustling cityscape filled with colorful buildings, tiny vehicles, and lively characters. Each building is meticulously designed in a variety of architectural styles, with unique textures, signs, and rooftops, creating a layered, miniature world. Sidewalks are lined with street lamps, trees, and tiny cafes, while winding roads connect different parts of the scene, dotted with cars, bikes, and pedestrians going about their day. In one corner, a small park is nestled between skyscrapers, complete with tiny benches, fountains, and people relaxing. Another area features a busy marketplace with vendors selling goods under striped awnings. The scene is rich with detail; you can see miniature people interacting, sitting at cafes, and crossing streets, each frozen in a tiny moment of life. The color palette is bright and cheerful, with pastel-colored buildings contrasted against lush greenery and clean, blue roads. Shadows are carefully placed, adding depth to the structures while giving the entire piece a 3D feel. The overall atmosphere is lively and charming, with a whimsical, toy-like quality that invites viewers to explore every corner of this miniature world. The style is clean, modern, and highly detailed, celebrating the isometric perspective’s unique ability to capture complexity and charm in a single frame.",
       "parameters": "--raw --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-26",
       "tags": [
         "city",
         "dark",
@@ -22591,7 +22591,7 @@ const embeddedData = {
       "prompt": "medieval character, asoiaf, 18 years old, lady, late teens, golden blonde hair, complex hair, white eyes, intense white eyes, detailed skin, sun marks on her skin, wearing a stunning medieval white dress, inside a stunning castle, interior castle background",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "woman"
       ]
@@ -22655,7 +22655,7 @@ const embeddedData = {
       "prompt": "medieval character, asoiaf, 18 years old, lady, late teens, golden blonde hair, complex hair, white eyes, intense white eyes, detailed skin, sun marks on her skin, wearing a stunning medieval white dress, inside a stunning castle, interior castle background",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "woman"
       ]
@@ -22745,7 +22745,7 @@ const embeddedData = {
       "prompt": "medieval dark fantasy character illustration, a prisoner, crazy insane expression",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-08",
       "tags": [
         "fantasy",
         "comic",
@@ -22763,7 +22763,7 @@ const embeddedData = {
       "prompt": "medieval character, asoiaf, 18 years old, lady, late teens, golden blonde hair, complex hair, white eyes, intense white eyes, detailed skin, sun marks on her skin, wearing a stunning medieval white dress, inside a stunning castle, interior castle background",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "woman"
       ]
@@ -22789,13 +22789,13 @@ const embeddedData = {
       "name": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, moder",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/8d8ae76e-b863-4e4d-94a9-2c9a06eb1b9b?index=0",
       "cdn_url": "https://cdn.midjourney.com/8d8ae76e-b863-4e4d-94a9-2c9a06eb1b9b/0_0.png",
       "prompt": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, modern, cartoon, Selective Color art style, Cyberpunk, Neon Hair, Holographic Jacket, VR Goggles",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-27",
       "tags": [
         "sci-fi",
         "comic",
@@ -22813,7 +22813,7 @@ const embeddedData = {
       "prompt": "Iris Van Herpin organic fashion on humanoid ballet dancer showing mechanical parts on powerful exoskeleton with realist parts. Active mechanical skin reacts to movement showing possibility of flight. Dancer is caught mid jump. Flowing lines. Butterfly cocoon construction in perforated metal mesh. Chain mail used over shoulders",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-11",
       "tags": [
         "man",
         "robot"
@@ -22838,13 +22838,13 @@ const embeddedData = {
       "name": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/8f6c3ff7-3e79-481c-9169-23370611f76d?index=0",
       "cdn_url": "https://cdn.midjourney.com/8f6c3ff7-3e79-481c-9169-23370611f76d/0_0.png",
       "prompt": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-24",
       "tags": [
         "comic"
       ]
@@ -22854,13 +22854,13 @@ const embeddedData = {
       "name": "what do people do on holi at the festivals?, in the style of psychedelic color palette, post-impress",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/900ab500-a67c-4f4f-b29e-1b1d327e76a3?index=0",
       "cdn_url": "https://cdn.midjourney.com/900ab500-a67c-4f4f-b29e-1b1d327e76a3/0_0.png",
       "prompt": "what do people do on holi at the festivals?, in the style of psychedelic color palette, post-impressionist colorism, airbrush art, 32k uhd, matte photo, smilecore, colorized",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-12-02",
       "tags": []
     },
     {
@@ -22920,7 +22920,7 @@ const embeddedData = {
       "prompt": "At dusk, atop a towering crane in the floating port of \"Rust Town,\" a female sky pirate captain in a brown flight jacket gazes out at her airship. Her goggles are pushed up on her forehead, a confident smirk on her lips. Behind her lies the entire noisy and chaotic harbor: giant gears turn, steam pipes hiss, and various airships take off and land in the murky yellow sky. The warm light of the setting sun casts a golden rim on her and this world of steel. The image, rendered in a Dieselpunk aesthetic with 16K resolution and a cinematic film texture, captures a moment filled with the spirit of adventure and the romance of the industrial age.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "cinematic",
         "woman",
@@ -22938,7 +22938,7 @@ const embeddedData = {
       "prompt": "Layered paper-cut style silhouette of a woman’s profile, filled with mountains, forests, and rivers. Background in traditional Asian art style: white cloud patterns, red and white peonies, gold details. High detail, sharp, elegant composition.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "woman",
         "man",
@@ -22956,7 +22956,7 @@ const embeddedData = {
       "prompt": "close-up of a stylized animated character in a green-lit room, sharp-angled neo-minimalist cartoon style, flat shading, hard-edged shadows, geometric facial features, dark cinematic lighting, monochrome Red palette, thick outlines, 2D animation frame",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "cinematic",
         "noir",
@@ -22974,7 +22974,7 @@ const embeddedData = {
       "prompt": "A woman made entirely of glass that is beginning to crack",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-15",
       "tags": [
         "woman",
         "man"
@@ -22991,7 +22991,7 @@ const embeddedData = {
       "prompt": "close-up of a stylized animated character in a green-lit room, sharp-angled neo-minimalist cartoon style, flat shading, hard-edged shadows, geometric facial features, dark cinematic lighting, monochrome Red palette, thick outlines, 2D animation frame",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "cinematic",
         "noir",
@@ -23017,13 +23017,13 @@ const embeddedData = {
       "name": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramat",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/9879ad7d-e031-4582-b0c3-929236b666ff?index=0",
       "cdn_url": "https://cdn.midjourney.com/9879ad7d-e031-4582-b0c3-929236b666ff/0_0.png",
       "prompt": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramatic contrasts, futuristic",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-17",
       "tags": [
         "sci-fi",
         "comic",
@@ -23113,7 +23113,7 @@ const embeddedData = {
       "prompt": "medieval character, asoiaf, 18 years old, lady, late teens, golden blonde hair, complex hair, white eyes, intense white eyes, detailed skin, sun marks on her skin, wearing a stunning medieval white dress, inside a stunning castle, interior castle background",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "woman"
       ]
@@ -23139,13 +23139,13 @@ const embeddedData = {
       "name": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramat",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/9d4e3a76-c71f-41df-9512-5e33dcb6b1dd?index=0",
       "cdn_url": "https://cdn.midjourney.com/9d4e3a76-c71f-41df-9512-5e33dcb6b1dd/0_0.png",
       "prompt": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramatic contrasts, futuristic",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-17",
       "tags": [
         "sci-fi",
         "comic",
@@ -23165,7 +23165,7 @@ const embeddedData = {
       "prompt": "Iris Van Herpin organic fashion on humanoid ballet dancer showing mechanical parts on powerful exoskeleton with realist parts. Active mechanical skin reacts to movement showing possibility of flight. Dancer is caught mid jump. Flowing lines. Butterfly cocoon construction in perforated metal mesh. Chain mail used over shoulders",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-11",
       "tags": [
         "man",
         "robot"
@@ -23176,13 +23176,13 @@ const embeddedData = {
       "name": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramat",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/9faf5f13-18c8-4be6-bf34-e779ec2b25ed?index=0",
       "cdn_url": "https://cdn.midjourney.com/9faf5f13-18c8-4be6-bf34-e779ec2b25ed/0_0.png",
       "prompt": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramatic contrasts, futuristic",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-17",
       "tags": [
         "sci-fi",
         "comic",
@@ -23220,7 +23220,7 @@ const embeddedData = {
       "prompt": "A modern collage in the vancouver art school style, poster with the words \"PUNK MASK\" in bold text at the top, showcasing an abstract ink drawing of a woman wearing punk rock and a headdress. The london skyline background is filled with various textures of newspaper clippings, magazine cutouts, brochures, street signs, and other london urban elements, She has a large tear on her eye that resembles ear piercings. multimedia collage hair, The color scheme features a blue, red and orange theme with black accents for contrast. Aboriginal patterns and random graffiti text and colour drips, picasso artistic style and the vancouver art school, edgy ink lines",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-20",
       "tags": [
         "abstract",
         "woman",
@@ -23254,13 +23254,13 @@ const embeddedData = {
       "name": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramat",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/a21ac031-e393-4acf-8e30-0b71a06826d7?index=0",
       "cdn_url": "https://cdn.midjourney.com/a21ac031-e393-4acf-8e30-0b71a06826d7/0_0.png",
       "prompt": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramatic contrasts, futuristic",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-17",
       "tags": [
         "sci-fi",
         "comic",
@@ -23274,13 +23274,13 @@ const embeddedData = {
       "name": "A vibrant and detailed isometric artwork of a bustling cityscape filled with colorful buildings, tin",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/a378284d-b985-44c5-a873-65dca0c8ebb9?index=0",
       "cdn_url": "https://cdn.midjourney.com/a378284d-b985-44c5-a873-65dca0c8ebb9/0_0.png",
       "prompt": "A vibrant and detailed isometric artwork of a bustling cityscape filled with colorful buildings, tiny vehicles, and lively characters. Each building is meticulously designed in a variety of architectural styles, with unique textures, signs, and rooftops, creating a layered, miniature world. Sidewalks are lined with street lamps, trees, and tiny cafes, while winding roads connect different parts of the scene, dotted with cars, bikes, and pedestrians going about their day. In one corner, a small park is nestled between skyscrapers, complete with tiny benches, fountains, and people relaxing. Another area features a busy marketplace with vendors selling goods under striped awnings. The scene is rich with detail; you can see miniature people interacting, sitting at cafes, and crossing streets, each frozen in a tiny moment of life. The color palette is bright and cheerful, with pastel-colored buildings contrasted against lush greenery and clean, blue roads. Shadows are carefully placed, adding depth to the structures while giving the entire piece a 3D feel. The overall atmosphere is lively and charming, with a whimsical, toy-like quality that invites viewers to explore every corner of this miniature world. The style is clean, modern, and highly detailed, celebrating the isometric perspective’s unique ability to capture complexity and charm in a single frame.",
       "parameters": "--raw --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-26",
       "tags": [
         "city",
         "dark",
@@ -23298,7 +23298,7 @@ const embeddedData = {
       "prompt": "Sunset over fisherman's wharf, orange-red sunset spilling over returning fishing boats; brushstrokes like harvest joy, catches becoming silver dots, fishermen's smiles 仿佛 becoming warm color blocks, ropes becoming messy lines, seawater becoming tangerine brushstrokes.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-09",
       "tags": [
         "man"
       ]
@@ -23391,7 +23391,7 @@ const embeddedData = {
       "prompt": "\"The Word Reflects the Person\" Each stroke, like a figure dancing in the wind, The handwriting is slanted, yet carries its own rhythmic beat, As if she walks across the paper, Whispering, sowing seeds of inspiration. The words are sometimes fast, sometimes slow, Like her heart, sometimes swift as thunder, sometimes as still as a lake, hiding secret ripples between the lines. Every \"person\" she writes about seems to carry a smile or a trace of sorrow. Every \"time\" she writes about feels like the restless chime of a bell. It turns out she isn't writing, but rather engaging in a conversation with herself, measuring the breadth of her heart with ink marks, letting the world see-- The handwriting reflects the person, and the person reflects the poem.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-18",
       "tags": [
         "fantasy"
       ]
@@ -23407,7 +23407,7 @@ const embeddedData = {
       "prompt": "Layered paper-cut style silhouette of a woman’s profile, filled with mountains, forests, and rivers. Background in traditional Asian art style: white cloud patterns, red and white peonies, gold details. High detail, sharp, elegant composition.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "woman",
         "man",
@@ -23454,13 +23454,13 @@ const embeddedData = {
       "name": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramat",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/aa001d18-b8b3-4198-99f8-fce241300df0?index=0",
       "cdn_url": "https://cdn.midjourney.com/aa001d18-b8b3-4198-99f8-fce241300df0/0_0.png",
       "prompt": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramatic contrasts, futuristic",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-17",
       "tags": [
         "sci-fi",
         "comic",
@@ -23480,7 +23480,7 @@ const embeddedData = {
       "prompt": "Autumn Equinox themed poster, a winding golden rice field stream with clear water reflecting rice ears, an endless expanse of golden rice fields, plump and drooping rice ears, tall maple trees with orange red and golden gradient leaves, hazy distant mountains in the distance, a style that combines fresh natural realism and art, deep depth composition, with gold as the main color tone, matched with clear blue streams and orange red and golden maple leaves, delicate rice ear textures, depiction of maple leaf shapes, water surface light and shadow effects, high quality, exquisite details,",
       "parameters": "--raw --stylize 1000 --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-16",
       "tags": [
         "portrait",
         "nature",
@@ -23498,7 +23498,7 @@ const embeddedData = {
       "prompt": "Sunset over fisherman's wharf, orange-red sunset spilling over returning fishing boats; brushstrokes like harvest joy, catches becoming silver dots, fishermen's smiles 仿佛 becoming warm color blocks, ropes becoming messy lines, seawater becoming tangerine brushstrokes.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-09",
       "tags": [
         "man"
       ]
@@ -23525,13 +23525,13 @@ const embeddedData = {
       "name": "kanye west as a boondocks cartoon character wearing oversized closed singing on stage at a local div",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/abc2a3cf-502c-4c61-89c3-bb33332a6665?index=0",
       "cdn_url": "https://cdn.midjourney.com/abc2a3cf-502c-4c61-89c3-bb33332a6665/0_0.png",
       "prompt": "kanye west as a boondocks cartoon character wearing oversized closed singing on stage at a local dive bar",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-24",
       "tags": []
     },
     {
@@ -23566,7 +23566,7 @@ const embeddedData = {
       "prompt": "A fantasy illustrative picture of an adult elf woman and a goliath knight walking through a dark swamp. She is a Druid. She has long pierced ears. She wears small gold chains around her neck. She has medium dark green-blue hair and straight bangs. She has black facial tattoos. She has golden colored, sharp eyes. She wears black leather armor. A muscular giant knight in old chainmail armor stands beside her. His mouth and chin are visible. Half helmet . He is extremely tall.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-11-11",
       "tags": [
         "fantasy",
         "woman",
@@ -23681,7 +23681,7 @@ const embeddedData = {
       "prompt": "A confident young woman with box braids, wearing a long tan blazer over a crisp white blouse and white trousers. She sports sleek business sneakers and carries a laptop in one hand and a pastel yellow thermal mug in the other. She wears modern headphones. The scene is illustrated in the whimsical, soft, and detailed style of Studio Ghibli, with warm lighting and gentle textures. Urban background with subtle greenery.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-05",
       "tags": [
         "woman",
         "man",
@@ -23736,7 +23736,7 @@ const embeddedData = {
       "prompt": "A futuristic bedroom designed like a spaceship cockpit, filled with retro-futuristic control panels, glowing monitors, wires, and switches. The room has a large bed with a white comforter placed beneath a massive panoramic window. Outside the window, a cyberpunk city skyline glows with neon lights, skyscrapers, and bustling streets at night. The scene feels like a blend of sci-fi spacecraft interior and a cozy urban retreat, with warm ambient lighting contrasting against the cool blue cityscape outside.",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-18",
       "tags": [
         "sci-fi",
         "city",
@@ -23754,7 +23754,7 @@ const embeddedData = {
       "prompt": "Autumn Equinox themed poster, a winding golden rice field stream with clear water reflecting rice ears, an endless expanse of golden rice fields, plump and drooping rice ears, tall maple trees with orange red and golden gradient leaves, hazy distant mountains in the distance, a style that combines fresh natural realism and art, deep depth composition, with gold as the main color tone, matched with clear blue streams and orange red and golden maple leaves, delicate rice ear textures, depiction of maple leaf shapes, water surface light and shadow effects, high quality, exquisite details,",
       "parameters": "--raw --stylize 1000 --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-16",
       "tags": [
         "portrait",
         "nature",
@@ -23847,13 +23847,13 @@ const embeddedData = {
       "name": "detailed anatomy of a mechanical computer desktop, featuring an made from dark blue and black metal ",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/b510d97b-ad2d-4e95-ac12-cdb96783ef7b?index=0",
       "cdn_url": "https://cdn.midjourney.com/b510d97b-ad2d-4e95-ac12-cdb96783ef7b/0_0.png",
       "prompt": "detailed anatomy of a mechanical computer desktop, featuring an made from dark blue and black metal with black parts, intricate details . The background is white in the style of Katsuhiro Otomo and Jean Giraud. with a dark theme, cinematic, hyper-realistic,. The image is high resolution and high contrast, with a highly detailed and dynamic pose,multy shot,front view,glow red color effect, realicstic detail,4k",
       "parameters": "--stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-26",
       "tags": [
         "cinematic",
         "photorealistic",
@@ -23933,13 +23933,13 @@ const embeddedData = {
       "name": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/bb1af9b9-9baf-497b-83b6-c4e7609b7491?index=0",
       "cdn_url": "https://cdn.midjourney.com/bb1af9b9-9baf-497b-83b6-c4e7609b7491/0_0.png",
       "prompt": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-24",
       "tags": [
         "comic"
       ]
@@ -23970,13 +23970,13 @@ const embeddedData = {
       "name": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/bc371af3-54e9-41ab-afb8-b040189ce9bc?index=0",
       "cdn_url": "https://cdn.midjourney.com/bc371af3-54e9-41ab-afb8-b040189ce9bc/0_0.png",
       "prompt": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-24",
       "tags": [
         "comic"
       ]
@@ -23986,13 +23986,13 @@ const embeddedData = {
       "name": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, moder",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/bc6d7c3c-8dd6-48e9-bcce-73dd5818a4d9?index=0",
       "cdn_url": "https://cdn.midjourney.com/bc6d7c3c-8dd6-48e9-bcce-73dd5818a4d9/0_0.png",
       "prompt": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, modern, cartoon, Selective Color art style, Cyberpunk, Neon Hair, Holographic Jacket, VR Goggles",
       "parameters": "--raw",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-27",
       "tags": [
         "sci-fi",
         "comic",
@@ -24010,7 +24010,7 @@ const embeddedData = {
       "prompt": "(((art by Gustave Doré)), (((art by John Bauer))), adult halfling, female, warrior, rogue, very tanned skin, dark skin, fighter, rogue, some scars, green eyes, thousand yard stare, bright yellow hair, hair cut short, angry, 30 years old, two small earring rings in ear, Narine piercing, right nostril pierced with small ring, (((nostril piercing))), (((pierced nose))), (((ring in nose))), (((right nostril pierced))), portrait, one person, small curved sword, yellow hair,",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-28",
       "tags": [
         "portrait",
         "woman",
@@ -24100,13 +24100,13 @@ const embeddedData = {
       "name": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/c09f84fd-ede2-4483-9a31-bf47cbe952e0?index=0",
       "cdn_url": "https://cdn.midjourney.com/c09f84fd-ede2-4483-9a31-bf47cbe952e0/0_0.png",
       "prompt": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-24",
       "tags": [
         "comic"
       ]
@@ -24116,13 +24116,13 @@ const embeddedData = {
       "name": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, moder",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/c1e2ad41-5969-42a9-b29e-5e08ec3ad1b7?index=0",
       "cdn_url": "https://cdn.midjourney.com/c1e2ad41-5969-42a9-b29e-5e08ec3ad1b7/0_0.png",
       "prompt": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, modern, cartoon, Selective Color art style, Cyberpunk, Neon Hair, Holographic Jacket, VR Goggles",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-27",
       "tags": [
         "sci-fi",
         "comic",
@@ -24156,7 +24156,7 @@ const embeddedData = {
       "prompt": "medieval character, asoiaf, 18 years old, lady, late teens, golden blonde hair, complex hair, white eyes, intense white eyes, detailed skin, sun marks on her skin, wearing a stunning medieval white dress, inside a stunning castle, interior castle background, realistic art style",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "photorealistic",
         "woman"
@@ -24183,13 +24183,13 @@ const embeddedData = {
       "name": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/c2a1375e-a22d-4f7b-b8ba-3426df2b491b?index=0",
       "cdn_url": "https://cdn.midjourney.com/c2a1375e-a22d-4f7b-b8ba-3426df2b491b/0_0.png",
       "prompt": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "parameters": "--raw",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-24",
       "tags": [
         "comic"
       ]
@@ -24225,7 +24225,7 @@ const embeddedData = {
       "prompt": "Autumn Equinox themed poster, a winding golden rice field stream with clear water reflecting rice ears, an endless expanse of golden rice fields, plump and drooping rice ears, tall maple trees with orange red and golden gradient leaves, hazy distant mountains in the distance, a style that combines fresh natural realism and art, deep depth composition, with gold as the main color tone, matched with clear blue streams and orange red and golden maple leaves, delicate rice ear textures, depiction of maple leaf shapes, water surface light and shadow effects, high quality, exquisite details,",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-16",
       "tags": [
         "portrait",
         "nature",
@@ -24243,7 +24243,7 @@ const embeddedData = {
       "prompt": "A man and a woman, made entirely of paper, waltz. Their figures are artfully carved from folded and textured paper, with visible edges and barely noticeable shadows. They stand on a simple, elegant surface. A single candle burns softly in the background, flooding the entire stage with warm, soft light. The candle flame casts delicate, flickering shadows on the paper dancers. The overall atmosphere is warm and cozy, the background is slightly subdued and unobtrusive, which highlights the candlelight and delicate paper figures.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-17",
       "tags": [
         "portrait",
         "woman",
@@ -24277,7 +24277,7 @@ const embeddedData = {
       "prompt": "A modern collage in the vancouver art school style, poster with the words \"PUNK MASK\" in bold text at the top, showcasing an abstract ink drawing of a woman wearing punk rock and a headdress. The london skyline background is filled with various textures of newspaper clippings, magazine cutouts, brochures, street signs, and other london urban elements, She has a large tear on her eye that resembles ear piercings. multimedia collage hair, The color scheme features a blue, red and orange theme with black accents for contrast. Aboriginal patterns and random graffiti text and colour drips, picasso artistic style and the vancouver art school, edgy ink lines",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-20",
       "tags": [
         "abstract",
         "woman",
@@ -24307,13 +24307,13 @@ const embeddedData = {
       "name": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, moder",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/c659adaf-36a9-4bd1-bf67-ff5b2aa15189?index=0",
       "cdn_url": "https://cdn.midjourney.com/c659adaf-36a9-4bd1-bf67-ff5b2aa15189/0_0.png",
       "prompt": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, modern, cartoon, Selective Color art style, Cyberpunk, Neon Hair, Holographic Jacket, VR Goggles",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-27",
       "tags": [
         "sci-fi",
         "comic",
@@ -24339,13 +24339,13 @@ const embeddedData = {
       "name": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/c739db2f-a168-4a64-8461-4adebf6fba9d?index=0",
       "cdn_url": "https://cdn.midjourney.com/c739db2f-a168-4a64-8461-4adebf6fba9d/0_0.png",
       "prompt": "comic book art, pencil drawing, white background, sketched, simple, modern, cartoon",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-24",
       "tags": [
         "comic"
       ]
@@ -24380,7 +24380,7 @@ const embeddedData = {
       "prompt": "A woman made entirely of glass that is beginning to crack",
       "parameters": "--raw --stylize 0 --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-15",
       "tags": [
         "woman",
         "man"
@@ -24397,7 +24397,7 @@ const embeddedData = {
       "prompt": "A woman made entirely of glass that is beginning to crack",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-15",
       "tags": [
         "woman",
         "man"
@@ -24433,7 +24433,7 @@ const embeddedData = {
       "prompt": "medieval dark fantasy character illustration, a prisoner, crazy insane expression",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-08",
       "tags": [
         "fantasy",
         "comic",
@@ -24467,13 +24467,13 @@ const embeddedData = {
       "name": "photograph of broken sock monster, smelly, terrifying, minimalist composition, solid black backgroun",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/cba65b0c-5b9c-40d3-ae96-69d56579693f?index=0",
       "cdn_url": "https://cdn.midjourney.com/cba65b0c-5b9c-40d3-ae96-69d56579693f/0_0.png",
       "prompt": "photograph of broken sock monster, smelly, terrifying, minimalist composition, solid black background",
       "parameters": "--stylize 250",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-26",
       "tags": []
     },
     {
@@ -24487,7 +24487,7 @@ const embeddedData = {
       "prompt": "medieval character, asoiaf, 18 years old, lady, late teens, golden blonde hair, complex hair, white eyes, intense white eyes, detailed skin, sun marks on her skin, wearing a stunning medieval white dress, inside a stunning castle, interior castle background",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "woman"
       ]
@@ -24503,7 +24503,7 @@ const embeddedData = {
       "prompt": "Fashion portrait of a young woman in a retro American diner. Red and white striped wall, vintage Coca-Cola posters, and a classic red soda vending machine. Black-and-white checkered floor. The model wears a casual outfit: plain fitted t-shirt, dark cargo pants, and sneakers. She poses naturally with a Coca-Cola cup in hand, exuding a cool yet relaxed vibe. Bright, colorful, and cinematic retro photography style.",
       "parameters": "--stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-18",
       "tags": [
         "portrait",
         "cinematic",
@@ -24558,7 +24558,7 @@ const embeddedData = {
       "prompt": "Autumn Equinox themed poster, a winding golden rice field stream with clear water reflecting rice ears, an endless expanse of golden rice fields, plump and drooping rice ears, tall maple trees with orange red and golden gradient leaves, hazy distant mountains in the distance, a style that combines fresh natural realism and art, deep depth composition, with gold as the main color tone, matched with clear blue streams and orange red and golden maple leaves, delicate rice ear textures, depiction of maple leaf shapes, water surface light and shadow effects, high quality, exquisite details,",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-16",
       "tags": [
         "portrait",
         "nature",
@@ -24622,7 +24622,7 @@ const embeddedData = {
       "prompt": "Layered paper-cut style silhouette of a woman’s profile, filled with mountains, forests, and rivers. Background in traditional Asian art style: white cloud patterns, red and white peonies, gold details. High detail, sharp, elegant composition.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "woman",
         "man",
@@ -24720,7 +24720,7 @@ const embeddedData = {
       "prompt": "A photo of a asian woman, dark blue long hair, piercing blue eyes, white background, wearing black t-shirt, sharp face features",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-16",
       "tags": [
         "portrait",
         "woman",
@@ -24739,7 +24739,7 @@ const embeddedData = {
       "prompt": "Iris Van Herpin organic fashion on humanoid ballet dancer showing mechanical parts on powerful exoskeleton with realist parts. Active mechanical skin reacts to movement showing possibility of flight. Dancer is caught mid jump. Flowing lines. Butterfly cocoon construction in perforated metal mesh. Chain mail used over shoulders",
       "parameters": "--raw --stylize 1000 --q 2",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-11",
       "tags": [
         "man",
         "robot"
@@ -24772,7 +24772,7 @@ const embeddedData = {
       "prompt": "medieval character, asoiaf, 18 years old, lady, late teens, golden blonde hair, complex hair, white eyes, intense white eyes, detailed skin, sun marks on her skin, wearing a stunning medieval white dress, inside a stunning castle, interior castle background",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "woman"
       ]
@@ -24813,13 +24813,13 @@ const embeddedData = {
       "name": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lowe",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/d49132e6-f572-450f-80b6-4972ad563493?index=0",
       "cdn_url": "https://cdn.midjourney.com/d49132e6-f572-450f-80b6-4972ad563493/0_0.png",
       "prompt": "A forest landscape by a famous photographer with a rule of thirds grid showing the trees in the lower third and lake mirror reflection intersecting at the upper left power point.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-22",
       "tags": [
         "landscape",
         "nature"
@@ -24872,7 +24872,7 @@ const embeddedData = {
       "prompt": "smallish girl, looks to be from Tatooine, with raven colored hair almost down her back in a braid, with dark green eyes, running through the streets of tatooine, slightly dirty and scarred up.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-22",
       "tags": [
         "woman",
         "city",
@@ -24923,13 +24923,13 @@ const embeddedData = {
       "name": "Motion preset: Quantum-Shatter-Flicker-Psyche-Pulse-Scatter, Light and airy frosted risograph overla",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/d7744961-53b8-4abf-88d1-428dd05e6cb7?index=0",
       "cdn_url": "https://cdn.midjourney.com/d7744961-53b8-4abf-88d1-428dd05e6cb7/0_0.png",
       "prompt": "Motion preset: Quantum-Shatter-Flicker-Psyche-Pulse-Scatter, Light and airy frosted risograph overlays over an AutoglyphNeon anime manga style ethereal afro woman, use black, gold and sparkling gold, feeling lonely and depressed, her feelings like a Storm, seen through a Pure White PlasticCore matte frosted risograph vignette, sparkling golden sunlit citrine lipstick, focus on lips and the huge blue sparkling eyes, infinite illusionism Depth exposure effect, emotional authenticity, Pre-Raphaelite Beauty, Subsurface scattering, blurred edges, Digital Art, Celestial nanopointillism, ((Neopunk)), Double Exposure Overlay, Precise frosted risograph art, unreal anime engine rendering, dark art",
       "parameters": "--raw --stylize 1000",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-26",
       "tags": [
         "portrait",
         "anime",
@@ -24945,13 +24945,13 @@ const embeddedData = {
       "name": "kanye west as a boondocks cartoon character wearing oversized closed singing on stage at a local div",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/d7d040ca-d5a1-4e31-80d0-0455b50b42a2?index=0",
       "cdn_url": "https://cdn.midjourney.com/d7d040ca-d5a1-4e31-80d0-0455b50b42a2/0_0.png",
       "prompt": "kanye west as a boondocks cartoon character wearing oversized closed singing on stage at a local dive bar",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-10-24",
       "tags": []
     },
     {
@@ -24979,7 +24979,7 @@ const embeddedData = {
       "prompt": "A man and a woman, made entirely of paper, waltz. Their figures are artfully carved from folded and textured paper, with visible edges and barely noticeable shadows. They stand on a simple, elegant surface. A single candle burns softly in the background, flooding the entire stage with warm, soft light. The candle flame casts delicate, flickering shadows on the paper dancers. The overall atmosphere is warm and cozy, the background is slightly subdued and unobtrusive, which highlights the candlelight and delicate paper figures.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-17",
       "tags": [
         "portrait",
         "woman",
@@ -25018,7 +25018,7 @@ const embeddedData = {
       "prompt": "Iris Van Herpin organic fashion on humanoid ballet dancer showing mechanical parts on powerful exoskeleton with realist parts. Active mechanical skin reacts to movement showing possibility of flight. Dancer is caught mid jump. Flowing lines. Butterfly cocoon construction in perforated metal mesh. Chain mail used over shoulders",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-11",
       "tags": [
         "man",
         "robot"
@@ -25054,7 +25054,7 @@ const embeddedData = {
       "prompt": "smallish girl, looks to be from Tatooine, with raven colored hair almost down her back in a braid, with dark green eyes, running through the streets of tatooine, slightly dirty and scarred up.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-22",
       "tags": [
         "woman",
         "city",
@@ -25105,7 +25105,7 @@ const embeddedData = {
       "prompt": "Sunset over fisherman's wharf, orange-red sunset spilling over returning fishing boats; brushstrokes like harvest joy, catches becoming silver dots, fishermen's smiles 仿佛 becoming warm color blocks, ropes becoming messy lines, seawater becoming tangerine brushstrokes.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-09",
       "tags": [
         "man"
       ]
@@ -25181,7 +25181,7 @@ const embeddedData = {
       "prompt": "a pencil drawing of supermodel doutzen kroes looking at the camera, against a white background, with soft shadows, low contrast, and a clean, sharp focus, in an ultra-realistic style.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-02",
       "tags": [
         "photorealistic",
         "dark"
@@ -25209,13 +25209,13 @@ const embeddedData = {
       "name": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramat",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/e4a85973-ddc7-41e3-9f79-0450dd12b856?index=0",
       "cdn_url": "https://cdn.midjourney.com/e4a85973-ddc7-41e3-9f79-0450dd12b856/0_0.png",
       "prompt": "cyber Geek female character, dark and moody inked illustrations with heavy use of shadows and dramatic contrasts, futuristic",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-17",
       "tags": [
         "sci-fi",
         "comic",
@@ -25252,7 +25252,7 @@ const embeddedData = {
       "prompt": "una persona con auriculares triste dibujada con palitos estilo dibujo de niño",
       "parameters": "--raw",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-10-02",
       "tags": []
     },
     {
@@ -25284,7 +25284,7 @@ const embeddedData = {
       "prompt": "A confident young woman with box braids, wearing a long tan blazer over a crisp white blouse and white trousers. She sports sleek business sneakers and carries a laptop in one hand and a pastel yellow thermal mug in the other. She wears modern headphones. The scene is illustrated in the whimsical, soft, and detailed style of Studio Ghibli, with warm lighting and gentle textures. Urban background with subtle greenery.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-05",
       "tags": [
         "woman",
         "man",
@@ -25338,7 +25338,7 @@ const embeddedData = {
       "prompt": "A confident young woman with box braids, wearing a long tan blazer over a crisp white blouse and white trousers. She sports sleek business sneakers and carries a laptop in one hand and a pastel yellow thermal mug in the other. She wears modern headphones. The scene is illustrated in the whimsical, soft, and detailed style of Studio Ghibli, with warm lighting and gentle textures. Urban background with subtle greenery.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-05",
       "tags": [
         "woman",
         "man",
@@ -25356,7 +25356,7 @@ const embeddedData = {
       "prompt": "At dusk, atop a towering crane in the floating port of \"Rust Town,\" a female sky pirate captain in a brown flight jacket gazes out at her airship. Her goggles are pushed up on her forehead, a confident smirk on her lips. Behind her lies the entire noisy and chaotic harbor: giant gears turn, steam pipes hiss, and various airships take off and land in the murky yellow sky. The warm light of the setting sun casts a golden rim on her and this world of steel. The image, rendered in a Dieselpunk aesthetic with 16K resolution and a cinematic film texture, captures a moment filled with the spirit of adventure and the romance of the industrial age.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-14",
       "tags": [
         "cinematic",
         "woman",
@@ -25374,7 +25374,7 @@ const embeddedData = {
       "prompt": "Close-up on the blindfold covering the prisoner’s eyes, painted in expressive, symbolic style. The blindfold is not plain fabric it becomes like a wide cinematic screen, displaying fragmented, overlapping scenes: soldiers dragging the prisoner brutally, cramped metal prison transport truck (\"bosta\") interior with shackled inmates, harsh hands gripping arms, dim prison corridors. The scenes are painted in a distressed, textured style, blending into the folds of the blindfold. Strong side lighting from one direction, casting deep shadows, background muted and minimal to keep focus on the blindfold imagery. Earthy, muted tones with deep contrasts, conveying pain and oppression.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "cinematic",
         "dark"
@@ -25391,7 +25391,7 @@ const embeddedData = {
       "prompt": "Comic-style drawing. A short guy. Light hair, with some strands sticking out from under a black cap. The cap is turned backwards, with the visor at the nape of his neck. Thick eyebrows. Tunnels in his ears. Wearing an orange T-shirt and tight black shorts above the knee. The shorts are rolled up at the bottom. On his wrists, large black leather bracelets with metal inserts",
       "parameters": "--raw",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-18",
       "tags": [
         "comic",
         "man"
@@ -25408,7 +25408,7 @@ const embeddedData = {
       "prompt": "medieval character, asoiaf, 18 years old, lady, late teens, golden blonde hair, complex hair, white eyes, intense white eyes, detailed skin, sun marks on her skin, wearing a stunning medieval white dress, inside a stunning castle, interior castle background",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "woman"
       ]
@@ -25507,7 +25507,7 @@ const embeddedData = {
       "prompt": "A fantasy illustrative picture of an adult elf woman and a goliath knight walking through a dark swamp. She is a Druid. She has long pierced ears. She wears small gold chains around her neck. She has medium dark green-blue hair and straight bangs. She has black facial tattoos. She has golden colored, sharp eyes. She wears black leather armor. A muscular giant knight in old chainmail armor stands beside her. His mouth and chin are visible. Half helmet . He is extremely tall.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-11-11",
       "tags": [
         "fantasy",
         "woman",
@@ -25526,7 +25526,7 @@ const embeddedData = {
       "prompt": "close-up of the nose and mouth of a blonde woman at the beach. she is wearing black swim goggles with a white strip around the eyes and is blowing into the camera lens. she is also wearing black sunglasses, and her wet hair has sand on her face. the image has a vogue magazine editorial photo style, with gold glitter makeup and a close-up shot.",
       "parameters": "",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-09-20",
       "tags": [
         "portrait",
         "woman",
@@ -25578,7 +25578,7 @@ const embeddedData = {
       "prompt": "Close-up on the blindfold covering the prisoner’s eyes, painted in expressive, symbolic style. The blindfold is not plain fabric it becomes like a wide cinematic screen, displaying fragmented, overlapping scenes: soldiers dragging the prisoner brutally, cramped metal prison transport truck (\"bosta\") interior with shackled inmates, harsh hands gripping arms, dim prison corridors. The scenes are painted in a distressed, textured style, blending into the folds of the blindfold. Strong side lighting from one direction, casting deep shadows, background muted and minimal to keep focus on the blindfold imagery. Earthy, muted tones with deep contrasts, conveying pain and oppression.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-10",
       "tags": [
         "cinematic",
         "dark"
@@ -25595,7 +25595,7 @@ const embeddedData = {
       "prompt": "A man and a woman, made entirely of paper, waltz. Their figures are artfully carved from folded and textured paper, with visible edges and barely noticeable shadows. They stand on a simple, elegant surface. A single candle burns softly in the background, flooding the entire stage with warm, soft light. The candle flame casts delicate, flickering shadows on the paper dancers. The overall atmosphere is warm and cozy, the background is slightly subdued and unobtrusive, which highlights the candlelight and delicate paper figures.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-17",
       "tags": [
         "portrait",
         "woman",
@@ -25609,13 +25609,13 @@ const embeddedData = {
       "name": "Vivid, Impressionist Watercolor, Teeming, Skyline, Dusk, Shadow Figures, Pedestrians, Strolling, Cob",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v5",
       "url": "https://www.midjourney.com/jobs/f057604d-0eb3-4d89-8e31-757d808c2f1a?index=0",
       "cdn_url": "https://cdn.midjourney.com/f057604d-0eb3-4d89-8e31-757d808c2f1a/0_0.png",
       "prompt": "Vivid, Impressionist Watercolor, Teeming, Skyline, Dusk, Shadow Figures, Pedestrians, Strolling, Cobblestone Paths, Evening Glow, Bird's Eye View, Golden Hour",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2023-08-01",
       "tags": [
         "dark",
         "vibrant",
@@ -25742,7 +25742,7 @@ const embeddedData = {
       "prompt": "a drawing showing a geisha holding a hannya mask in front of her face, tattoo sleeve style, sekiro style, dangerous lighting, abstract art",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-11-11",
       "tags": [
         "portrait",
         "abstract"
@@ -25823,7 +25823,7 @@ const embeddedData = {
       "prompt": "medieval dark fantasy character illustration, a prisoner, crazy insane expression",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-08-08",
       "tags": [
         "fantasy",
         "comic",
@@ -25835,13 +25835,13 @@ const embeddedData = {
       "name": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, moder",
       "type": "image",
       "source": "midjourney",
-      "model": "Midjourney v7",
+      "model": "Midjourney v6",
       "url": "https://www.midjourney.com/jobs/f861644c-a91f-468e-8dd9-1883bbf78e2d?index=0",
       "cdn_url": "https://cdn.midjourney.com/f861644c-a91f-468e-8dd9-1883bbf78e2d/0_0.png",
       "prompt": "First draft, sketch lines, comic book art, pencil drawing, white background, sketched, simple, modern, cartoon, Selective Color art style, Cyberpunk, Neon Hair, Holographic Jacket, VR Goggles",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2024-01-27",
       "tags": [
         "sci-fi",
         "comic",
@@ -25895,7 +25895,7 @@ const embeddedData = {
       "prompt": "A fantasy illustrative picture of an adult elf woman and a goliath knight walking through a dark swamp. She is a Druid. She has long pierced ears. She wears small gold chains around her neck. She has medium dark green-blue hair and straight bangs. She has black facial tattoos. She has golden colored, sharp eyes. She wears black leather armor. A muscular giant knight in old chainmail armor stands beside her. His mouth and chin are visible. Half helmet . He is extremely tall.",
       "parameters": "--raw --stylize 1000 --q 4",
       "dimensions": "3:2",
-      "created": "2026-02-10",
+      "created": "2025-11-11",
       "tags": [
         "fantasy",
         "woman",
@@ -25994,14 +25994,10 @@ let currentPage = 1;
 const ITEMS_PER_PAGE = 30;
 
 // DOM elements
-const gallery = document.getElementById('gallery');
+const gallery = document.getElementById('gallery-grid') || document.getElementById('gallery');
 const modal = document.getElementById('modal');
 const modalMedia = document.getElementById('modal-media');
-const modalPrompt = document.getElementById('modal-prompt');
-const modalParams = document.getElementById('modal-params');
 const modalDate = document.getElementById('modal-date');
-const modalTags = document.getElementById('modal-tags');
-const modalLink = document.getElementById('modal-link');
 const closeBtn = document.querySelector('.close');
 const prevBtn = document.getElementById('modal-prev');
 const nextBtn = document.getElementById('modal-next');
@@ -26270,7 +26266,6 @@ function renderGallery() {
         overlayHtml = `
             <div class="overlay">
                 <div class="title">${item.name}</div>
-                <div class="meta">${item.dimensions} · ${item.created}</div>
             </div>
         `;
 
@@ -26323,38 +26318,7 @@ function openModal(item, index, pushHistory = true) {
     } else {
         modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
     }
-    modalDate.textContent = item.created;
-
-    // Create clickable tags
-    modalTags.innerHTML = item.tags.map(t => `<span data-tag="${t}">${t}</span>`).join('');
-
-    // Add click handlers to tags
-    modalTags.querySelectorAll('span').forEach(tagEl => {
-        tagEl.addEventListener('click', () => {
-            const tag = tagEl.dataset.tag;
-            closeModal();
-            filterByTag(tag);
-        });
-    });
-
-    modalPrompt.textContent = item.prompt || '';
-    modalParams.textContent = item.parameters || '';
-
-    if (item.url) {
-        modalLink.href = item.url;
-        modalLink.style.display = 'inline-block';
-
-        // Dynamic link text based on source
-        if (item.source === 'midjourney') {
-            modalLink.textContent = 'View on Midjourney';
-        } else if (item.source === 'suno') {
-            modalLink.textContent = 'View on Suno';
-        } else {
-            modalLink.textContent = 'View Source';
-        }
-    } else {
-        modalLink.style.display = 'none';
-    }
+    if (modalDate) modalDate.textContent = item.created || '';
 
     // Update navigation buttons
     updateNavButtons();
