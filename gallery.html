@@ -156,7 +156,6 @@
                 <div id="modal-media"></div>
             </div>
             <div class="modal-info">
-                <h2 id="modal-title"></h2>
                 <div class="modal-meta">
                     <span id="modal-date"></span>
                     <span id="modal-model"></span>
@@ -238,7 +237,6 @@
             const noResults = document.getElementById('no-results');
             const modal = document.getElementById('modal');
             const modalMedia = document.getElementById('modal-media');
-            const modalTitle = document.getElementById('modal-title');
             const modalDate = document.getElementById('modal-date');
             const modalModel = document.getElementById('modal-model');
             const modalDimensions = document.getElementById('modal-dimensions');
@@ -432,7 +430,6 @@
                 if (!item) return;
 
                 modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
-                if (modalTitle) modalTitle.textContent = item.name || '';
                 if (modalDate) modalDate.textContent = item.created || '';
                 if (modalModel) modalModel.textContent = item.model || '';
                 if (modalDimensions) modalDimensions.textContent = item.dimensions || '';
