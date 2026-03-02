@@ -95,24 +95,10 @@
                 </div>
 
                 <div class="filter-group">
-                    <label for="aspect-filter">Aspect Ratio</label>
-                    <select id="aspect-filter">
-                        <option value="">All Ratios</option>
-                        <option value="1:1">Square (1:1)</option>
-                        <option value="3:2">Landscape (3:2)</option>
-                        <option value="2:3">Portrait (2:3)</option>
-                        <option value="16:9">Widescreen (16:9)</option>
-                        <option value="9:16">Vertical (9:16)</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
                     <label for="sort-filter">Sort By</label>
                     <select id="sort-filter">
                         <option value="newest">Newest First</option>
                         <option value="oldest">Oldest First</option>
-                        <option value="name-asc">Name (A-Z)</option>
-                        <option value="name-desc">Name (Z-A)</option>
                     </select>
                 </div>
 
@@ -170,9 +156,25 @@
                 <div id="modal-media"></div>
             </div>
             <div class="modal-info">
+                <h2 id="modal-title"></h2>
                 <div class="modal-meta">
                     <span id="modal-date"></span>
+                    <span id="modal-model"></span>
+                    <span id="modal-dimensions"></span>
                 </div>
+                <div class="modal-tags" id="modal-tags"></div>
+                <div id="modal-prompt-section" style="display:none">
+                    <h3>Prompt</h3>
+                    <div class="prompt-text" id="modal-prompt"></div>
+                </div>
+                <div id="modal-params-section" class="modal-params" style="display:none">
+                    <h3>Parameters</h3>
+                    <code id="modal-params"></code>
+                </div>
+                <a id="modal-source-link" class="source-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none">
+                    View on Midjourney
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
             </div>
         </div>
     </div>
@@ -226,7 +228,6 @@
             const clearSearch = document.getElementById('clear-search');
             const typeFilter = document.getElementById('type-filter');
             const modelFilter = document.getElementById('model-filter');
-            const aspectFilter = document.getElementById('aspect-filter');
             const sortFilter = document.getElementById('sort-filter');
             const resetBtn = document.getElementById('reset-filters');
             const pagination = document.getElementById('pagination');
@@ -237,19 +238,24 @@
             const noResults = document.getElementById('no-results');
             const modal = document.getElementById('modal');
             const modalMedia = document.getElementById('modal-media');
+            const modalTitle = document.getElementById('modal-title');
             const modalDate = document.getElementById('modal-date');
+            const modalModel = document.getElementById('modal-model');
+            const modalDimensions = document.getElementById('modal-dimensions');
+            const modalTags = document.getElementById('modal-tags');
+            const modalPromptSection = document.getElementById('modal-prompt-section');
+            const modalPrompt = document.getElementById('modal-prompt');
+            const modalParamsSection = document.getElementById('modal-params-section');
+            const modalParams = document.getElementById('modal-params');
+            const modalSourceLink = document.getElementById('modal-source-link');
             const closeBtn = document.querySelector('.close');
             const prevBtn = document.getElementById('modal-prev');
             const nextBtn = document.getElementById('modal-next');
 
-            // Placeholder date used during batch import - hide these images
-            const PLACEHOLDER_DATE = '2026-02-10';
-
             // Initialize
             function init() {
                 if (typeof embeddedData !== 'undefined' && embeddedData.items) {
-                    // Only show images with real creation dates
-                    allItems = embeddedData.items.filter(i => i.created !== PLACEHOLDER_DATE);
+                    allItems = embeddedData.items;
                     totalCount.textContent = allItems.length.toLocaleString();
                     populateModelFilter();
                     applyFilters();
@@ -274,7 +280,6 @@
                 const searchTerm = searchInput.value.toLowerCase().trim();
                 const typeValue = typeFilter.value;
                 const modelValue = modelFilter.value;
-                const aspectValue = aspectFilter.value;
                 const sortValue = sortFilter.value;
 
                 // Filter items
@@ -291,9 +296,6 @@
                     // Model filter
                     if (modelValue && item.model !== modelValue) return false;
 
-                    // Aspect ratio filter
-                    if (aspectValue && item.dimensions !== aspectValue) return false;
-
                     // Tag filter
                     if (activeTag && !(item.tags || []).includes(activeTag)) return false;
 
@@ -305,10 +307,6 @@
                     switch (sortValue) {
                         case 'oldest':
                             return new Date(a.created || 0) - new Date(b.created || 0);
-                        case 'name-asc':
-                            return (a.name || '').localeCompare(b.name || '');
-                        case 'name-desc':
-                            return (b.name || '').localeCompare(a.name || '');
                         case 'newest':
                         default:
                             return new Date(b.created || 0) - new Date(a.created || 0);
@@ -338,9 +336,6 @@
                 grid.innerHTML = pageItems.map((item, index) => `
                     <div class="gallery-item" data-index="${start + index}">
                         <img src="${item.cdn_url}" alt="" loading="lazy">
-                        <div class="overlay">
-                            <div class="title">${item.name}</div>
-                        </div>
                     </div>
                 `).join('');
 
@@ -437,7 +432,46 @@
                 if (!item) return;
 
                 modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
+                if (modalTitle) modalTitle.textContent = item.name || '';
                 if (modalDate) modalDate.textContent = item.created || '';
+                if (modalModel) modalModel.textContent = item.model || '';
+                if (modalDimensions) modalDimensions.textContent = item.dimensions || '';
+
+                // Tags
+                if (modalTags) {
+                    const tags = item.tags || [];
+                    modalTags.innerHTML = tags.map(t => `<span>${t}</span>`).join('');
+                }
+
+                // Prompt
+                if (modalPromptSection && modalPrompt) {
+                    if (item.prompt) {
+                        modalPrompt.textContent = item.prompt;
+                        modalPromptSection.style.display = '';
+                    } else {
+                        modalPromptSection.style.display = 'none';
+                    }
+                }
+
+                // Parameters
+                if (modalParamsSection && modalParams) {
+                    if (item.parameters) {
+                        modalParams.textContent = item.parameters;
+                        modalParamsSection.style.display = '';
+                    } else {
+                        modalParamsSection.style.display = 'none';
+                    }
+                }
+
+                // Midjourney link
+                if (modalSourceLink) {
+                    if (item.url) {
+                        modalSourceLink.href = item.url;
+                        modalSourceLink.style.display = '';
+                    } else {
+                        modalSourceLink.style.display = 'none';
+                    }
+                }
 
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
@@ -474,14 +508,12 @@
 
             typeFilter.addEventListener('change', applyFilters);
             modelFilter.addEventListener('change', applyFilters);
-            aspectFilter.addEventListener('change', applyFilters);
             sortFilter.addEventListener('change', applyFilters);
 
             resetBtn.addEventListener('click', () => {
                 searchInput.value = '';
                 typeFilter.value = 'all';
                 modelFilter.value = '';
-                aspectFilter.value = '';
                 sortFilter.value = 'newest';
                 activeTag = null;
                 applyFilters();
