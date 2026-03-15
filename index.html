@@ -92,10 +92,15 @@
         </div>
     </header>
 
-    <!-- Showcase Section - Full-screen scrolling images -->
+    <!-- Showcase Section - Latest works journey -->
     <section class="showcase" id="gallery">
+        <div class="showcase-intro">
+            <span class="showcase-kicker">Latest Works</span>
+            <h2>Recent image journey</h2>
+            <p>The newest pieces from the archive, presented as a slower full-screen scroll before the full gallery.</p>
+        </div>
         <div id="showcase-images">
-            <!-- Full-screen image panels loaded dynamically -->
+            <!-- Latest showcase panels loaded dynamically -->
         </div>
         <div class="showcase-footer">
             <a href="gallery.html" class="cta-button primary">View Full Gallery</a>
@@ -198,6 +203,34 @@
 
             // Placeholder date used during batch import - hide these images
             const PLACEHOLDER_DATE = '2026-02-10';
+            const MAX_SHOWCASE_ITEMS = 12;
+
+            function escapeHtml(value) {
+                return String(value ?? '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            function getItemTitle(item) {
+                const rawTitle = (item.name || item.prompt || 'Untitled work').trim();
+                return rawTitle.length > 88 ? `${rawTitle.slice(0, 85).trimEnd()}...` : rawTitle;
+            }
+
+            function formatDisplayDate(dateString) {
+                if (!dateString || dateString === PLACEHOLDER_DATE) return 'Recent work';
+
+                const parsedDate = new Date(dateString);
+                if (Number.isNaN(parsedDate.getTime())) return 'Recent work';
+
+                return new Intl.DateTimeFormat('en-GB', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                }).format(parsedDate);
+            }
 
             function initHero() {
                 if (typeof embeddedData !== 'undefined' && embeddedData.items) {
@@ -265,14 +298,28 @@
                     .filter(i => i.type === 'image' && i.created !== PLACEHOLDER_DATE)
                     .sort((a, b) => new Date(b.created) - new Date(a.created));
 
-                // Show all images with real dates as full-screen panels
-                const showcaseItems = allImages;
+                // Keep the homepage focused on the newest work instead of the full archive
+                const showcaseItems = allImages.slice(0, MAX_SHOWCASE_ITEMS);
 
-                container.innerHTML = showcaseItems.map(item => `
-                    <div class="showcase-panel">
-                        <img src="${item.cdn_url}" alt="${item.name}" loading="lazy">
+                container.innerHTML = showcaseItems.map((item, index) => `
+                    <article class="showcase-panel${index % 2 === 1 ? ' showcase-panel--right' : ''}">
+                        <img
+                            src="${item.cdn_url}"
+                            alt="${escapeHtml(getItemTitle(item))}"
+                            loading="${index < 2 ? 'eager' : 'lazy'}"
+                            decoding="async"
+                        >
+                        <div class="showcase-panel-info">
+                            <span class="showcase-panel-count">${String(index + 1).padStart(2, '0')} / ${String(showcaseItems.length).padStart(2, '0')}</span>
+                            <h3>${escapeHtml(getItemTitle(item))}</h3>
+                            <p>${escapeHtml(formatDisplayDate(item.created))}</p>
+                        </div>
+                    </article>
+                `).join('') || `
+                    <div class="showcase-empty">
+                        <p>No recent images are ready for the homepage showcase yet.</p>
                     </div>
-                `).join('');
+                `;
             }
 
             // --- Sticky Header ---

@@ -157,6 +157,7 @@
                 <div id="modal-media"></div>
             </div>
             <div class="modal-info">
+                <h2 id="modal-title"></h2>
                 <div class="modal-meta">
                     <span id="modal-date"></span>
                     <span id="modal-model"></span>
@@ -223,6 +224,20 @@
             let activeTag = null;
             let currentModalIndex = 0;
 
+            function escapeHtml(value) {
+                return String(value ?? '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            function getItemTitle(item) {
+                const rawTitle = (item.name || item.prompt || 'Untitled work').trim();
+                return rawTitle.length > 88 ? `${rawTitle.slice(0, 85).trimEnd()}...` : rawTitle;
+            }
+
             // DOM elements
             const grid = document.getElementById('gallery-grid');
             const searchInput = document.getElementById('search');
@@ -239,6 +254,7 @@
             const noResults = document.getElementById('no-results');
             const modal = document.getElementById('modal');
             const modalMedia = document.getElementById('modal-media');
+            const modalTitle = document.getElementById('modal-title');
             const modalDate = document.getElementById('modal-date');
             const modalModel = document.getElementById('modal-model');
             const modalDimensions = document.getElementById('modal-dimensions');
@@ -335,7 +351,7 @@
                 noResults.style.display = 'none';
                 grid.innerHTML = pageItems.map((item, index) => `
                     <div class="gallery-item" data-index="${start + index}">
-                        <img src="${item.cdn_url}" alt="" loading="lazy">
+                        <img src="${item.cdn_url}" alt="${escapeHtml(getItemTitle(item))}" loading="lazy" decoding="async">
                     </div>
                 `).join('');
 
@@ -402,6 +418,11 @@
 
             // Update results count
             function updateResultsCount() {
+                if (filteredItems.length === 0) {
+                    resultsCount.textContent = 'Showing 0 results';
+                    return;
+                }
+
                 const start = (currentPage - 1) * ITEMS_PER_PAGE + 1;
                 const end = Math.min(currentPage * ITEMS_PER_PAGE, filteredItems.length);
                 resultsCount.textContent = `Showing ${start}-${end} of ${filteredItems.length.toLocaleString()} results`;
@@ -431,7 +452,8 @@
                 const item = filteredItems[index];
                 if (!item) return;
 
-                modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
+                modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="${escapeHtml(getItemTitle(item))}">`;
+                if (modalTitle) modalTitle.textContent = getItemTitle(item);
                 if (modalDate) modalDate.textContent = item.created || '';
                 if (modalModel) modalModel.textContent = item.model || '';
                 if (modalDimensions) modalDimensions.textContent = item.dimensions || '';
