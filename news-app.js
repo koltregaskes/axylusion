@@ -12,7 +12,7 @@ class NewsApp {
         this.favorites = new Set(JSON.parse(localStorage.getItem('axyl-news-favorites') || '[]'));
         this.flags = JSON.parse(localStorage.getItem('axyl-news-flags') || '{}');
         // Only these tags qualify as creative AI content
-        this.creativeTags = new Set(['image', 'video', 'audio', 'creative', '3d', 'design']);
+        this.creativeTags = new Set(['image', 'video', 'audio', 'creative', '3d']);
         this.init();
     }
 
