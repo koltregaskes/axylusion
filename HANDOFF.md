@@ -1,188 +1,123 @@
-# Axy Lusion - Session Handoff
+# Axy Lusion Website — Codex Handoff Document
 
-**Last Updated:** 2026-02-21
-**Last Commit:** 4c7056d
+**Last updated:** 15 March 2026
+**Branch:** `claude/review-project-docs-Co1Fr` (synced with remote)
+**Repo:** `koltregaskes/axylusiondotcom`
+**Live site:** GitHub Pages (currently axylusion.com, planned migration to xillusion.com)
+
+---
 
 ## Project Overview
 
-**Axy Lusion** is an AI art portfolio website for Kol Tregaskes showcasing Midjourney images, videos, and Suno music.
+Axy Lusion is a portfolio website for Kol Tregaskes showcasing AI-generated art, video, and music. It's a pure **HTML/CSS/JavaScript static site** hosted on **GitHub Pages** — no framework, no build step.
 
-- **Live:** https://koltregaskes.github.io/axylusiondotcom
-- **Repo:** github.com/koltregaskes/axylusiondotcom
-- **Domain:** axylusion.com (currently redirects to Notion - needs DNS update)
+### Site Pages
 
-## Current State
+| Page | File | Purpose |
+|------|------|---------|
+| Homepage | `index.html` | Hero section, full-screen showcase images, about artist section, back-to-top button |
+| Gallery | `gallery.html` | Browsable grid of 1,500+ AI artworks with search, filters, pagination, and modal detail view |
+| Videos | `videos.html` | AI video content |
+| Music | `music.html` | AI music content |
+| News | `news.html` + `news-app.js` | Dynamic news feed from markdown digest files, filtered for creative AI content only |
+| Tools | `tools.html` | AI creative tools page (currently hardcoded/stale — needs updating) |
+| A-List | `a-list.html` + `a-list/*.html` | Ranked leaderboard of top AI creative tools by category |
+| About | `about.html` | Bio, tools used (linked), social connections, contact form |
 
-### What's Working
-- Gallery grid with 1,519 published images (Kol's own Midjourney creations)
-- Search by keyword (searches name, prompt, tags, model)
-- Filter by type (all/images/videos/music)
-- Filter by date (year picker)
-- Filter by model (e.g., "Midjourney v7")
-- Sort options (newest/oldest/name A-Z/Z-A)
-- Reset filters button
-- Modal view with prompt, parameters, source link
-- Modal navigation (arrows, keyboard, mouse wheel)
-- Click-to-fullscreen in modal
-- URL history (back button support)
-- Tag-based filtering (click tags in modal)
-- Pagination (24 items per page on gallery.html, 30 on index.html)
-- Social links with brand icons (X, Instagram, YouTube, TikTok, Midjourney, Suno)
-- Multiple pages: index, gallery, about, music, videos, news
-- Decap CMS admin panel (config ready, auth not yet set up)
+### Key Files
 
-### CRITICAL: Broken Images
-- **ALL images return 403** — `cdn.midjourney.com` blocks external hotlinking
-- Images need to be downloaded and re-hosted on Cloudflare R2
-- Migration script created at `scripts/migrate-images.py`
-- Setup guide at `scripts/SETUP-R2.md`
+- **`styles.css`** — Single CSS file for the entire site (~4000 lines)
+- **`gallery.js`** — Large file (~1.4MB) containing embedded gallery data as JSON (`embeddedData.items`)
+- **`news-app.js`** — News parsing, creative tag filtering, and display logic
+- **`news-digests/`** — Directory of markdown digest files (YYYY-MM-DD-digest.md format)
+- **`a-list/`** — Subdirectory for A-List category detail pages
 
-### What's Hidden/Pending
-- **Videos:** Hidden from gallery — Midjourney CDN returns 403 Forbidden
-- **Music:** Schema ready but no Suno tracks added yet
+---
 
-### Important: Published Images vs Likes
-- **gallery.json** and **gallery.js**: 1,519 items — Kol's own published images
-- The database (universal.db) has 6,031 items — these are Midjourney LIKES, not published work
-- `generate-gallery-from-db.py` queries `midjourney_likes` table — DO NOT use it to rebuild gallery
-- The gallery.json.backup files contain the correct 1,519 published images
+## Architecture & Key Patterns
 
-## Technical Details
+### Gallery Data
+- Gallery items are embedded in `gallery.js` as `embeddedData.items`
+- Each item has: `id`, `name`, `type`, `source`, `model`, `url` (Midjourney link), `cdn_url`, `prompt`, `parameters`, `dimensions`, `created`, `tags`
+- **No title display** — Midjourney images don't have titles; the `name` field exists in data but is NOT shown in the UI
+- Previously a PLACEHOLDER_DATE filter hid ~1,167 images — this has been removed, all items now show
 
-### Schema (gallery.json)
-```json
-{
-  "id": "uuid",
-  "name": "Display Name",
-  "type": "image|video|music",
-  "source": "midjourney|suno|dalle|etc",
-  "model": "Midjourney v7",
-  "url": "https://midjourney.com/jobs/...",
-  "cdn_url": "https://cdn.midjourney.com/.../0_0.png",
-  "thumbnail_url": "optional for videos",
-  "prompt": "The full prompt text",
-  "parameters": "--ar 3:2 --style raw --stylize 200",
-  "dimensions": "3:2",
-  "created": "2024-12-14",
-  "tags": ["portrait", "fantasy", "cinematic"]
-}
-```
+### News Filtering
+- News articles are parsed from markdown digest files at load time
+- Creative filtering happens at **parse time** in `parseDigest()` — non-creative articles are dropped before they enter `this.articles`
+- Creative tags: `['image', 'video', 'audio', 'creative', '3d']` (note: 'design' was intentionally removed as it caught non-creative governance articles)
+- Tag detection uses regex patterns against both title AND summary text
+- The user's long-term plan is to add destination tags at the news source level (e.g., `site:creative`) rather than inferring from content
 
-### Model Version Logic
-- Images **without** `--v` parameter = latest default model
-- As of late 2024, default = **Midjourney v7**
-- Need to check Midjourney changelog for when v7 became default
-- Images with explicit `--v 6.1` = Midjourney v6.1
+### A-List Rankings
+- Data is embedded directly in HTML (no JSON file, no external fetch)
+- Meta-scores combine: Artificial Analysis (35%), LM Arena (30%), LLM Stats (15%), Expert Reviews (20%)
+- Tooltips on scores use CSS `[data-tooltip]::after` — pure CSS, no JavaScript
+- 7 categories: Image Gen, Image Editing, Video, Music, Voice/TTS, 3D, Upscaling
+- Only the Image Generation detail sub-page exists (`a-list/image-generation.html`) — the other 6 need to be created from that template
 
-### Files Structure
-```
-axylusiondotcom/
-├── index.html              # Homepage with hero carousel
-├── gallery.html            # Full gallery page
-├── about.html              # About page
-├── music.html              # Music page
-├── videos.html             # Videos page
-├── news.html               # News page
-├── gallery.js              # Gallery functionality (1.3MB, embedded data)
-├── gallery-fixes.js        # Gallery bug fixes
-├── gallery-modal-fixes.js  # Modal UX improvements
-├── data-loader.js          # Shared data loader for all pages
-├── styles.css              # Dark theme with amber/cream accents
-├── scripts/
-│   ├── migrate-images.py   # Image migration tool (CDN → R2)
-│   └── SETUP-R2.md         # Cloudflare R2 setup guide
-├── data/
-│   └── gallery.json        # Source of truth (1,519 published items)
-├── admin/
-│   ├── index.html          # Decap CMS admin panel
-│   └── config.yml          # CMS configuration
-├── content/
-│   ├── about.md            # About page content (CMS-editable)
-│   └── news/               # News articles (CMS-editable)
-├── images/uploads/         # CMS image uploads
-├── generate-gallery-from-db.py  # Rebuild gallery.json from database
-├── sync-dates-from-db.py   # Sync creation dates from database
-├── check-id-overlap.py     # Check for duplicate IDs
-├── ROADMAP.md              # Feature roadmap
-├── SPEC.md                 # Design specification
-├── SESSION-NOTES.md        # Previous session notes
-├── SESSION-PROMPT.md       # Handoff prompt for new sessions
-├── ADMIN-LOGIN.md          # Admin panel documentation
-└── HANDOFF.md              # This file
-```
+### Contact Form
+- Uses Formspree (`https://formspree.io/f/xcontact`) — the `xcontact` placeholder needs to be replaced with an actual Formspree form ID, or migrated to **Supabase** (Kol has a Supabase project set up)
 
-## Pending Tasks (Priority Order)
+---
 
-### 1. Image Hosting Migration (BLOCKING)
-All 1,519 images show broken (403 Forbidden from cdn.midjourney.com).
-**Solution:** Migrate to Cloudflare R2 (10GB free, no bandwidth charges).
-- Script ready: `scripts/migrate-images.py`
-- Setup guide: `scripts/SETUP-R2.md`
-- Steps: Download images from Midjourney → Upload to R2 → Update URLs
-- See setup guide for detailed instructions
+## What's Been Done (Recent Sessions)
 
-### 2. Image Grouping/Bundling Feature
-Similar prompts should be bundled into collections:
-- Homepage shows one "cover" image with "×3" badge
-- Modal shows thumbnail carousel for variations
-- Schema designed in plan file (see collection type)
+1. **Homepage showcase** — Removed title/date overlay, fixed dual scrollbar (removed nested scroll container), switched from `background-image: cover` to `<img>` with `object-fit: contain`
+2. **Back-to-top button** — Added fixed-position amber circle that appears on scroll
+3. **Gallery grid** — Removed broken aspect ratio filter, removed A-Z/Z-A sort options, removed all hover overlay text
+4. **Gallery modal** — Restored prompt, Midjourney link, parameters, model, dimensions, tags. Removed title (doesn't exist for MJ images)
+5. **Gallery artwork count** — Removed PLACEHOLDER_DATE filter, all 1,500+ artworks now visible
+6. **News filtering** — Moved creative filter from display toggle to parse-time exclusion, removed 'design' from creative tags
+7. **About page** — Tool names linked to websites, mailto replaced with contact form
+8. **A-List page** — New page with 7 categories of ranked AI creative tools, tooltips, one detail sub-page
 
-### 3. Model Info Pages
-Create pages documenting each AI model:
-- Midjourney v7: capabilities, release date, changelog
-- Future: v6.1, v6, Suno, DALL-E, etc.
-- Include sample images from that model
-- Link to official docs/changelogs
+---
 
-### 4. AI News Page
-Expand site beyond gallery:
-- AI news focused on content creation tools (image, video, music)
-- Integrate with News Gatherer project
-- Could have "listen to news" audio feature
-- Static info pages for various models
+## What Still Needs Doing
 
-### 5. Video Hosting Solution
-Options to resolve 403 errors:
-- Google Drive (15GB free)
-- Cloudflare R2 (10GB free, scalable)
-- Self-hosted on GitHub (limited ~1GB)
+### High Priority
+- [ ] **Tools page is entirely stale** — All content is hardcoded with fabricated dates (e.g., "February 2026" but content is old). Needs either dynamic content from news digests or a manual rewrite with accurate information
+- [ ] **A-List detail sub-pages** — 6 of 7 category pages need to be created from the `a-list/image-generation.html` template (image-editing, video-generation, music-generation, voice-tts, 3d-generation, upscaling)
+- [ ] **Contact form backend** — Replace Formspree placeholder with actual form ID, or migrate to Supabase
 
-### 6. DNS Migration
-Move axylusion.com from Notion to GitHub Pages:
-1. Add CNAME file with `axylusion.com`
-2. Update DNS: A record → GitHub Pages IPs
-3. CNAME www → koltregaskes.github.io
+### Medium Priority
+- [ ] **About Artist section** on homepage — Visibility was reported as inconsistent (sometimes not showing)
+- [ ] **News tag quality** — The real fix is at the source level: adding destination tags like `site:creative` in the digest files so each website can filter cleanly. This is a cross-project task with the main Kol's Korner site
+- [ ] **Domain swap to Xillusion.com** — Kol has the domain on IONOS. Needs: 4 A records (185.199.108-111.153), CNAME www -> koltregaskes.github.io, update CNAME file in repo, update GitHub Pages settings
 
-## Social Media Strategy
+### Future / Planned
+- [ ] **Supabase integration** — Kol has a Supabase project. Plans to use it for: contact form, newsletter signup, and eventually news storage
+- [ ] **Multi-site news distribution** — Share news across 3 sites (main, Axy Lusion, AI Resource Hub) with per-site config. Recommended approach: shared JS with `window.NEWS_CONFIG` per site
+- [ ] **A-List data automation** — GitHub Action to periodically check leaderboard APIs and flag ranking changes
+- [ ] **Oldest-first gallery sort** — Works but items with placeholder date '2026-02-10' cluster together. May need date cleanup in gallery.js data
 
-Documented in plan file. Key points:
-- @Axylusion accounts are new, need growth
-- Cross-promote from @KolTregaskes
-- Instagram: focus for visual AI art
-- TikTok: short-form video clips with Suno music
-- YouTube: longer compilations, visualisers
+---
 
-## Plan File Location
+## Design System
 
-Full strategy documented at:
-`C:\Users\kolin\.claude\plans\kind-gathering-popcorn.md`
+- **Colour palette:** Dark theme — `--axyl-black`, `--axyl-gray-*`, `--axyl-cream`, `--axyl-amber` (gold accent)
+- **Fonts:** Display font (headings), body font, mono font (code/params) — defined as CSS variables
+- **Spacing:** Uses CSS custom properties (`--space-xs` through `--space-xxl`)
+- **Consistent nav:** All pages share the same header with nav links and social icons. Navigation order: Gallery, Videos, Music, News, Tools, A-List, About
 
-## Recent Commits
+---
 
-1. `4c7056d` - Add session handoff prompt for new Claude Code sessions
-2. `8b796f5` - Remove CNAME - not ready for custom domain yet
-3. `89cb48d` - Fix: Add gallery.js script tag and update TikTok icon in footer
-4. `4e9aa93` - Fix: Restore working homepage/gallery + standardize social icons
-5. `9607777` - Fixed gallery data loading with shared data-loader.js
-6. `c1dd86e` - Modal UX improvements (transitions, fullscreen, scroll detection)
-7. `a9cc2b9` - Gallery rebuild from database (creation dates fixed, 6,031 items)
+## Related Projects
 
-## Notes for Next Session
+- **Kol's Korner** (koltregaskes.com) — Main personal site, source of news digests
+- **AI Resource Hub** — Technical AI news site (planned, will share news infrastructure)
+- **Supabase** — Set up under Kol's Korner, shared across projects
 
-1. **IMAGES ARE BROKEN** — cdn.midjourney.com returns 403 on all images. Must complete R2 migration first.
-2. **Gallery has 1,519 published images** — NOT the 6,031 likes in the database. gallery.js has the correct data embedded.
-3. **data-loader.js is unused** — no HTML page loads it. Both index.html and gallery.html use gallery.js with embedded data.
-4. **gallery-fixes.js and gallery-modal-fixes.js** — exist but not loaded by any page. May be dead code from earlier iterations.
-5. **News page:** Has "coming soon" placeholder. Needs proper content and design.
-6. **DNS:** axylusion.com still redirects to Notion — needs GitHub Pages migration.
-7. **Test locally:** Use `file://` protocol — gallery.js has embedded data, no server needed.
+---
+
+## Notes for Codex
+
+- This is a **static site** — no npm, no build, no framework. Just edit HTML/CSS/JS directly
+- The `gallery.js` file is ~1.4MB — be careful with full reads
+- All navigation changes need to be applied across **all HTML files** (there's no shared component system)
+- Profile picture uses `unavatar.io/x/axylusion` with fallback
+- The site uses GitHub Pages — push to main branch to deploy
+- Kol prefers creative AI content only on this site (not general AI/tech news)
+- No titles on gallery images — Midjourney doesn't produce titles
+- The user wants to move away from JSON data files toward Supabase for data storage
