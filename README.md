@@ -1,29 +1,53 @@
-# Axy Lusion
+# Xillusion
 
-A visual portfolio showcasing AI-generated art, video, and music.
+This repository contains the Axy Lusion creative portfolio site: a static website for AI artwork, music, video, news, and creative tool coverage.
 
-## About
+## What the Site Includes
 
-Axy Lusion is the creative alter ego of [Kol Tregaskes](https://koltregaskes.com), exploring the artistic possibilities of generative AI through Midjourney imagery, Suno music, and experimental video.
+- A cinematic homepage with a hero feature and latest-image scroll experience
+- A full gallery backed by `data/gallery.json`
+- Dedicated pages for music, video, news, tools, and about content
+- A simple Decap CMS admin shell for future editorial workflows
 
-## View the Gallery
+## Stack
 
-**Live Site:** [koltregaskes.github.io/axylusiondotcom](https://koltregaskes.github.io/axylusiondotcom)
+- Plain HTML, CSS, and JavaScript
+- No framework and no build step
+- Static hosting friendly
+- Gallery/media data stored in `data/gallery.json`
 
-## What's Inside
+## Local Preview
 
-- AI-generated artwork created with Midjourney
-- Original music compositions from Suno
-- Experimental AI videos
-- Behind-the-scenes insights into the creative process
+Run a local static server from the repo root, for example:
 
-## Connect
+```bash
+python -m http.server 4173
+```
 
-- **X/Twitter:** [@axylusion](https://x.com/axylusion)
-- **Instagram:** [@axylusion](https://instagram.com/axylusion)
-- **Midjourney:** [@koltregaskes](https://www.midjourney.com/@koltregaskes)
-- **Main Website:** [koltregaskes.com](https://koltregaskes.com)
+Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 
----
+## Project Structure
 
-*Exploring the intersection of artificial intelligence and creative expression*
+- `index.html` - homepage and latest-image showcase
+- `gallery.html` - searchable gallery
+- `news.html` - news landing page
+- `music.html` / `videos.html` / `tools.html` - supporting sections
+- `data/gallery.json` - gallery source data
+- `styles.css` - shared site styling
+- `admin/` - Decap CMS configuration and entry page
+- `content/` - editable markdown content
+- `news-digests/` - news source material used by the site
+
+## Publishing Notes
+
+- The site is designed to be deployed as a static website.
+- If you use GitHub Pages or another static host, make sure the custom domain and DNS are configured there rather than in the source files.
+- Media uploads for the CMS are configured to land in `images/uploads/`.
+
+## Links
+
+- Main website: [koltregaskes.com](https://koltregaskes.com)
+- X: [@Axylusion](https://x.com/Axylusion)
+- Instagram: [@axylusion](https://www.instagram.com/axylusion)
+- YouTube: [@AxyLusion](https://www.youtube.com/@AxyLusion)
+- TikTok: [@axylusion](https://www.tiktok.com/@axylusion)

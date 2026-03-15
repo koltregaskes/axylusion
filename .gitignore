@@ -1,1 +1,34 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.code-workspace
 
+# Python cache and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Local databases and exports
+*.db
+*.sqlite
+*.sqlite3
+
+# Backups, logs, and temp files
+*.bak
+*.backup
+*.log
+*.orig
+*.tmp
+
+# Internal working notes
+HANDOFF.md
+SESSION-*.md
+docs/

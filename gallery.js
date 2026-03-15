@@ -26425,8 +26425,8 @@ if (modal) modal.addEventListener('wheel', (e) => {
     // This allows users to scroll down to see prompt and parameters
 }, { passive: false });
 
-// Only set up gallery controls if gallery grid exists on this page
-if (gallery) {
+// Only set up gallery controls when the page explicitly wants the legacy runtime.
+if (!window.AXYL_GALLERY_DATA_ONLY && gallery) {
     // Search and filter listeners with debounce
     let searchTimeout;
     if (searchInput) searchInput.addEventListener('input', () => {
