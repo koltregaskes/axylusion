@@ -16,6 +16,8 @@ This repository contains the Axy Lusion creative portfolio site: a static websit
 - Static hosting friendly
 - Gallery/media data stored in `data/gallery.json`
 
+**Live Site:** [koltregaskes.github.io/axylusion](https://koltregaskes.github.io/axylusion)
+
 ## Local Preview
 
 Run a local static server from the repo root, for example:
