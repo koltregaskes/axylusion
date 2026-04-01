@@ -2,6 +2,7 @@
    AXYLUSION - Modern AI Art Portfolio
    Premium dark theme with sophisticated amber accents
    ============================================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 /* -----------------------------------------------------------------------------
    CSS Variables & Design Tokens
@@ -27,8 +28,8 @@
     --axyl-gray-300: #aaaaaa;
 
     /* Typography */
-    --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
     /* Spacing scale */
@@ -231,25 +232,25 @@ body::after {
     border-radius: var(--radius-full);
     font-family: var(--font-body);
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    transition: all var(--transition-base);
+    transition: all var(--transition-spring);
     cursor: pointer;
 }
 
 .cta-button.primary {
-    background: var(--axyl-amber);
+    background: linear-gradient(135deg, var(--axyl-amber) 0%, #da9421 100%);
     color: var(--axyl-black);
-    border: 2px solid var(--axyl-amber);
+    border: none;
+    padding: calc(var(--space-md) + 2px) calc(var(--space-2xl) + 2px);
 }
 
 .cta-button.primary:hover {
-    background: var(--axyl-amber-light);
-    border-color: var(--axyl-amber-light);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 40px var(--axyl-amber-glow);
+    background: linear-gradient(135deg, #da9421 0%, #eab04a 100%);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(196, 133, 26, 0.5), inset 0 0 10px rgba(255,255,255,0.4);
 }
 
 .cta-button.secondary {
@@ -4580,10 +4581,24 @@ footer a:hover {
 }
 
 .alist-source-card {
-    background: var(--axyl-gray-900);
-    border: 1px solid var(--axyl-gray-700);
-    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.4) 0%, rgba(10, 10, 10, 0.8) 100%);
+    backdrop-filter: blur(24px) saturate(120%);
+    -webkit-backdrop-filter: blur(24px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-lg);
     padding: var(--space-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(196, 133, 26, 0.02);
+    transition: transform var(--transition-spring), box-shadow var(--transition-spring), border-color var(--transition-spring);
+    cursor: default;
+}
+
+.alist-source-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(196, 133, 26, 0.05);
+    border-top: 1px solid rgba(196, 133, 26, 0.4);
+    border-left: 1px solid rgba(196, 133, 26, 0.3);
 }
 
 .alist-source-card h4 {
