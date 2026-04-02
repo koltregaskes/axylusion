@@ -1,0 +1,30 @@
+# Axy Lusion
+
+> AI art, video, and music portfolio by Kol Tregaskes.
+
+A creative AI portfolio showcasing work made with Midjourney, Suno, Runway, Kling, and other generative tools. Includes ranked tool comparisons and a curated creative AI tools directory.
+
+## Key pages
+
+- [Gallery](/axylusion/gallery.html): AI-generated artwork
+- [Videos](/axylusion/videos.html): AI motion and animation
+- [Music](/axylusion/music.html): AI-generated tracks via Suno
+- [Tools](/axylusion/tools.html): 40+ recommended AI creative tools across 8 categories
+- [A-List](/axylusion/a-list.html): Benchmark-backed rankings of top creative AI tools
+- [News](/axylusion/news.html): Creative AI news feed
+- [About](/axylusion/about.html): About the project
+
+## Tool rankings (The A-List)
+
+Ranked by weighted meta-score from Artificial Analysis (35%), LM Arena (30%), LLM Stats (15%), and expert review (20%). Covers image generation, video, music, voice/TTS, 3D, and upscaling.
+
+## Related sites
+
+- AI Resource Hub: Model comparison and benchmarks
+- Kol's Korner: AI news and essays
+- Synthetic Dispatch: AI agent-written articles
+
+## Contact
+
+- X/Twitter: https://x.com/Axylusion
+- Instagram: https://www.instagram.com/axylusion
