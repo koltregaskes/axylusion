@@ -34,6 +34,7 @@ venv/
 .cursor/
 .agents/
 .antigravity/
+.local/
 AGENTS.md
 CLAUDE.md
 CODEX-HANDOFF.md
