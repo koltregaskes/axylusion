@@ -12,7 +12,7 @@ const embeddedData = {
       "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity",
       "parameters": "--ar 3:2 --raw --quality 4 --stylize 1000 --profile aztrg5w",
       "dimensions": "3:2",
-      "created": "2025-12-13",
+      "created": "2025-12-14",
       "tags": [
         "portrait",
         "cinematic",
@@ -21,7 +21,10 @@ const embeddedData = {
         "comic",
         "photorealistic",
         "woman",
-        "man"
+        "man",
+        "close-up",
+        "graphic-novel",
+        "sin-city"
       ]
     },
     {
@@ -35,7 +38,7 @@ const embeddedData = {
       "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity",
       "parameters": "--ar 3:2 --raw --stylize 1000 --profile aztrg5w",
       "dimensions": "3:2",
-      "created": "2025-12-13",
+      "created": "2025-12-14",
       "tags": [
         "portrait",
         "cinematic",
@@ -44,7 +47,9 @@ const embeddedData = {
         "comic",
         "photorealistic",
         "woman",
-        "man"
+        "man",
+        "graphic-novel",
+        "sin-city"
       ]
     },
     {
@@ -58,7 +63,7 @@ const embeddedData = {
       "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity",
       "parameters": "--ar 3:2 --raw --stylize 200 --profile aztrg5w",
       "dimensions": "3:2",
-      "created": "2025-12-13",
+      "created": "2025-12-14",
       "tags": [
         "portrait",
         "cinematic",
@@ -67,7 +72,9 @@ const embeddedData = {
         "comic",
         "photorealistic",
         "woman",
-        "man"
+        "man",
+        "graphic-novel",
+        "sin-city"
       ]
     },
     {
@@ -85,7 +92,10 @@ const embeddedData = {
       "tags": [
         "comic",
         "woman",
-        "man"
+        "man",
+        "noir",
+        "portrait",
+        "profile"
       ]
     },
     {
@@ -101,7 +111,11 @@ const embeddedData = {
       "dimensions": "3:2",
       "created": "2025-12-13",
       "tags": [
-        "comic"
+        "comic",
+        "fantasy",
+        "layout",
+        "panel",
+        "woman"
       ]
     },
     {
@@ -119,7 +133,10 @@ const embeddedData = {
       "tags": [
         "comic",
         "woman",
-        "man"
+        "man",
+        "portrait",
+        "profile",
+        "teal"
       ]
     },
     {
@@ -137,7 +154,10 @@ const embeddedData = {
       "tags": [
         "comic",
         "woman",
-        "man"
+        "man",
+        "portrait",
+        "raincoat",
+        "yellow"
       ]
     },
     {
@@ -159,7 +179,10 @@ const embeddedData = {
         "man",
         "city",
         "dark",
-        "neon"
+        "neon",
+        "cinematic",
+        "cyberpunk",
+        "portrait"
       ]
     },
     {
@@ -175,7 +198,9 @@ const embeddedData = {
       "dimensions": "3:2",
       "created": "2025-12-06",
       "tags": [
-        "abstract"
+        "abstract",
+        "art",
+        "colorful"
       ]
     },
     {
@@ -191,7 +216,8 @@ const embeddedData = {
       "dimensions": "3:2",
       "created": "2025-12-06",
       "tags": [
-        "cinematic"
+        "cinematic",
+        "scene"
       ]
     },
     {
@@ -208,7 +234,9 @@ const embeddedData = {
       "created": "2025-12-06",
       "tags": [
         "sci-fi",
-        "robot"
+        "robot",
+        "character",
+        "retro"
       ]
     },
     {
@@ -226,7 +254,13 @@ const embeddedData = {
       "tags": [
         "cinematic",
         "photorealistic",
-        "robot"
+        "robot",
+        "action",
+        "desert",
+        "futuristic",
+        "landscape",
+        "sci-fi",
+        "vehicle"
       ]
     },
     {
@@ -259,7 +293,8 @@ const embeddedData = {
       "dimensions": "3:2",
       "created": "2025-12-06",
       "tags": [
-        "portrait"
+        "portrait",
+        "study"
       ]
     },
     {
