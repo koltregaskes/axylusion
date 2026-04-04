@@ -32,3 +32,12 @@ venv/
 HANDOFF.md
 SESSION-*.md
 docs/
+
+# Local smoke-test artefacts
+_news-dom*.html
+_server-*.err
+_server-*.out
+_shot-*.png
+_smoke-*.html
+_smoke-*.txt
+data/published-gallery-sync-report.json

@@ -1,12 +1,12 @@
 # Xillusion
 
-This repository contains the Axy Lusion creative portfolio site: a static website for AI artwork, music, video, news, and creative tool coverage.
+This repository contains the Axy Lusion creative portfolio site: a static website for AI artwork, music, video, news, blog posts, and creative tool coverage.
 
 ## What the Site Includes
 
 - A cinematic homepage with a hero feature and latest-image scroll experience
 - A full gallery backed by `data/gallery.json`
-- Dedicated pages for music, video, news, tools, and about content
+- Dedicated pages for music, video, blog, news, tools, and about content
 - A simple Decap CMS admin shell for future editorial workflows
 
 ## Stack
@@ -32,6 +32,7 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 
 - `index.html` - homepage and latest-image showcase
 - `gallery.html` - searchable gallery
+- `blog.html` - blog landing page and editorial entry point
 - `news.html` - news landing page
 - `music.html` / `videos.html` / `tools.html` - supporting sections
 - `data/gallery.json` - gallery source data
