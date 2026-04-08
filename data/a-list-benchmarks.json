@@ -1,0 +1,718 @@
+{
+  "generated_at": "2026-04-08T09:38:47.367835+00:00",
+  "source_path": "W:\\Websites\\sites\\ai-resource-hub\\data\\pg-cache\\creative_benchmarks.json",
+  "source_row_count": 33,
+  "category_count": 7,
+  "model_count": 28,
+  "categories": [
+    {
+      "slug": "image_generation",
+      "title": "Image Generation",
+      "model_count": 5,
+      "updated_at": "2026-04-04T05:00:05.131Z",
+      "models": [
+        {
+          "model_name": "Midjourney v7",
+          "model_maker": "Midjourney",
+          "model_url": "https://www.midjourney.com",
+          "pricing_note": "From $10/mo",
+          "considerations": "Discord or web UI only. No API.",
+          "strengths": [
+            "Artistic quality",
+            "Cinematic look"
+          ],
+          "meta_rank": 1,
+          "meta_score": 90.0,
+          "updated_at": "2026-04-04T05:00:05.123Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 90.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Flux 2 Max",
+          "model_maker": "Black Forest Labs",
+          "model_url": "https://blackforestlabs.ai",
+          "pricing_note": "Open source / API",
+          "considerations": "Requires technical setup for local use.",
+          "strengths": [
+            "Photorealism",
+            "Open-source"
+          ],
+          "meta_rank": 2,
+          "meta_score": 85.0,
+          "updated_at": "2026-04-04T05:00:05.125Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 85.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Gemini 3 Pro Image",
+          "model_maker": "Google",
+          "model_url": "https://deepmind.google",
+          "pricing_note": "Free via Gemini",
+          "considerations": "Quality varies by prompt style.",
+          "strengths": [
+            "Speed",
+            "Free tier"
+          ],
+          "meta_rank": 3,
+          "meta_score": 84.0,
+          "updated_at": "2026-04-04T05:00:05.127Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 84.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "GPT Image 1.5",
+          "model_maker": "OpenAI",
+          "model_url": "https://openai.com",
+          "pricing_note": "ChatGPT Plus $20/mo",
+          "considerations": "Requires ChatGPT Pro for best quality. Rate limited.",
+          "strengths": [
+            "Overall quality leader",
+            "Text rendering",
+            "Complex compositions"
+          ],
+          "meta_rank": 4,
+          "meta_score": 83.0,
+          "updated_at": "2026-04-04T05:00:05.129Z",
+          "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "",
+              "raw_score": 1268.0,
+              "score_type": "elo"
+            },
+            {
+              "source_name": "LM Arena",
+              "source_url": "",
+              "raw_score": 1264.0,
+              "score_type": "elo"
+            },
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 92.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Reve Image",
+          "model_maker": "Reve",
+          "model_url": "https://www.reveimage.com",
+          "pricing_note": "Pay per generation",
+          "considerations": "New entrant, longevity uncertain.",
+          "strengths": [
+            "Surprise newcomer",
+            "Competitive pricing"
+          ],
+          "meta_rank": 5,
+          "meta_score": 80.0,
+          "updated_at": "2026-04-04T05:00:05.131Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 80.0,
+              "score_type": "score_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "image_editing",
+      "title": "Image Editing",
+      "model_count": 4,
+      "updated_at": "2026-04-04T05:00:05.094Z",
+      "models": [
+        {
+          "model_name": "Gemini 3 Pro Image",
+          "model_maker": "Google",
+          "model_url": "https://deepmind.google",
+          "pricing_note": "Free via Gemini",
+          "considerations": "",
+          "strengths": [
+            "Fast editing",
+            "Instruction following"
+          ],
+          "meta_rank": 1,
+          "meta_score": 89.0,
+          "updated_at": "2026-04-04T05:00:05.087Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 89.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "GPT Image 1.5",
+          "model_maker": "OpenAI",
+          "model_url": "https://openai.com",
+          "pricing_note": "ChatGPT Plus $20/mo",
+          "considerations": "Requires ChatGPT subscription.",
+          "strengths": [
+            "Natural language editing",
+            "Inpainting",
+            "Style transfer"
+          ],
+          "meta_rank": 2,
+          "meta_score": 88.0,
+          "updated_at": "2026-04-04T05:00:05.089Z",
+          "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "",
+              "raw_score": 1270.0,
+              "score_type": "elo"
+            },
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 93.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Midjourney Editor",
+          "model_maker": "Midjourney",
+          "model_url": "https://www.midjourney.com",
+          "pricing_note": "From $10/mo",
+          "considerations": "",
+          "strengths": [
+            "MJ workflow",
+            "Retexture & repaint"
+          ],
+          "meta_rank": 3,
+          "meta_score": 82.0,
+          "updated_at": "2026-04-04T05:00:05.091Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 82.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Adobe Firefly",
+          "model_maker": "Adobe",
+          "model_url": "https://www.adobe.com/products/firefly.html",
+          "pricing_note": "Creative Cloud",
+          "considerations": "",
+          "strengths": [
+            "Photoshop integration",
+            "Commercially safe"
+          ],
+          "meta_rank": 4,
+          "meta_score": 78.0,
+          "updated_at": "2026-04-04T05:00:05.094Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 78.0,
+              "score_type": "score_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "video_generation",
+      "title": "Video Generation",
+      "model_count": 5,
+      "updated_at": "2026-04-04T05:00:05.142Z",
+      "models": [
+        {
+          "model_name": "Runway Gen-4.5",
+          "model_maker": "Runway",
+          "model_url": "https://runwayml.com",
+          "pricing_note": "Free tier / $15/mo",
+          "considerations": "",
+          "strengths": [
+            "Cinematic quality",
+            "Motion control"
+          ],
+          "meta_rank": 1,
+          "meta_score": 91.0,
+          "updated_at": "2026-04-04T05:00:05.134Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 91.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Seedance 2.0",
+          "model_maker": "ByteDance",
+          "model_url": "https://seedance.ai",
+          "pricing_note": "Credits",
+          "considerations": "",
+          "strengths": [
+            "Best audio-visual sync",
+            "Motion speciality"
+          ],
+          "meta_rank": 2,
+          "meta_score": 88.0,
+          "updated_at": "2026-04-04T05:00:05.136Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 88.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Kling 3.0",
+          "model_maker": "Kuaishou",
+          "model_url": "https://klingai.com",
+          "pricing_note": "Free tier / credits",
+          "considerations": "Chinese platform.",
+          "strengths": [
+            "Up to 2 min duration",
+            "4K 60fps",
+            "Best value (~$0.50/10s)"
+          ],
+          "meta_rank": 3,
+          "meta_score": 86.0,
+          "updated_at": "2026-04-04T05:00:05.138Z",
+          "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "",
+              "raw_score": 1245.0,
+              "score_type": "elo"
+            },
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 92.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Veo 3.1",
+          "model_maker": "Google",
+          "model_url": "https://deepmind.google/technologies/veo/",
+          "pricing_note": "Via Google AI Studio",
+          "considerations": "",
+          "strengths": [
+            "4K resolution",
+            "Spatial audio"
+          ],
+          "meta_rank": 4,
+          "meta_score": 86.0,
+          "updated_at": "2026-04-04T05:00:05.140Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 86.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Sora 2",
+          "model_maker": "OpenAI",
+          "model_url": "https://openai.com/sora",
+          "pricing_note": "ChatGPT Plus",
+          "considerations": "",
+          "strengths": [
+            "Stunning narratives",
+            "Up to 25s"
+          ],
+          "meta_rank": 5,
+          "meta_score": 85.0,
+          "updated_at": "2026-04-04T05:00:05.142Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 85.0,
+              "score_type": "score_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "music_generation",
+      "title": "Music Generation",
+      "model_count": 3,
+      "updated_at": "2026-04-04T05:00:05.102Z",
+      "models": [
+        {
+          "model_name": "Suno v4.5",
+          "model_maker": "Suno",
+          "model_url": "https://suno.com",
+          "pricing_note": "Free tier / $10/mo Pro",
+          "considerations": "Training data licensing in transition.",
+          "strengths": [
+            "Best for complete songs",
+            "Fast generation",
+            "User-friendly"
+          ],
+          "meta_rank": 1,
+          "meta_score": 93.0,
+          "updated_at": "2026-04-04T05:00:05.097Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 93.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Udio",
+          "model_maker": "Udio",
+          "model_url": "https://www.udio.com",
+          "pricing_note": "Free tier / $10/mo",
+          "considerations": "",
+          "strengths": [
+            "Best vocal realism",
+            "Stem downloads"
+          ],
+          "meta_rank": 2,
+          "meta_score": 91.0,
+          "updated_at": "2026-04-04T05:00:05.099Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 91.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "AIVA",
+          "model_maker": "AIVA Technologies",
+          "model_url": "https://www.aiva.ai",
+          "pricing_note": "Free / $15/mo Pro",
+          "considerations": "",
+          "strengths": [
+            "Cinematic instrumental",
+            "Full copyright"
+          ],
+          "meta_rank": 3,
+          "meta_score": 82.0,
+          "updated_at": "2026-04-04T05:00:05.102Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 82.0,
+              "score_type": "score_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "voice_tts",
+      "title": "Voice & TTS",
+      "model_count": 4,
+      "updated_at": "2026-04-04T05:00:05.121Z",
+      "models": [
+        {
+          "model_name": "ElevenLabs v3",
+          "model_maker": "ElevenLabs",
+          "model_url": "https://elevenlabs.io",
+          "pricing_note": "Free tier / $5/mo Starter",
+          "considerations": "Premium pricing.",
+          "strengths": [
+            "Best realism & emotion",
+            "380+ voices",
+            "70+ languages"
+          ],
+          "meta_rank": 1,
+          "meta_score": 88.0,
+          "updated_at": "2026-04-04T05:00:05.114Z",
+          "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "",
+              "raw_score": 1105.0,
+              "score_type": "elo"
+            },
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 95.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Inworld TTS 1.5 Max",
+          "model_maker": "Inworld",
+          "model_url": "https://inworld.ai",
+          "pricing_note": "API pricing",
+          "considerations": "",
+          "strengths": [
+            "Top arena ELO",
+            "Sub-250ms latency"
+          ],
+          "meta_rank": 2,
+          "meta_score": 88.0,
+          "updated_at": "2026-04-04T05:00:05.117Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 88.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Speech-02-Turbo",
+          "model_maker": "MiniMax",
+          "model_url": "https://www.minimax.io",
+          "pricing_note": "API pricing",
+          "considerations": "",
+          "strengths": [
+            "Strong naturalness",
+            "Competitive pricing"
+          ],
+          "meta_rank": 3,
+          "meta_score": 84.0,
+          "updated_at": "2026-04-04T05:00:05.119Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 84.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "OpenAI TTS-1",
+          "model_maker": "OpenAI",
+          "model_url": "https://openai.com",
+          "pricing_note": "API pricing",
+          "considerations": "",
+          "strengths": [
+            "Simple API",
+            "ChatGPT integration"
+          ],
+          "meta_rank": 4,
+          "meta_score": 83.0,
+          "updated_at": "2026-04-04T05:00:05.121Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 83.0,
+              "score_type": "score_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "3d_generation",
+      "title": "3D Generation",
+      "model_count": 3,
+      "updated_at": "2026-04-04T05:00:05.150Z",
+      "models": [
+        {
+          "model_name": "Rodin AI",
+          "model_maker": "Hyper3D",
+          "model_url": "https://hyper3d.ai",
+          "pricing_note": "Credits-based",
+          "considerations": "Slower generation.",
+          "strengths": [
+            "Highest quality output",
+            "Photorealistic objects",
+            "Hero assets"
+          ],
+          "meta_rank": 1,
+          "meta_score": 90.0,
+          "updated_at": "2026-04-04T05:00:05.145Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 90.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Meshy-6",
+          "model_maker": "Meshy",
+          "model_url": "https://www.meshy.ai",
+          "pricing_note": "Free tier / $20/mo",
+          "considerations": "",
+          "strengths": [
+            "Best texturing",
+            "Blender/Unity plugins"
+          ],
+          "meta_rank": 2,
+          "meta_score": 87.0,
+          "updated_at": "2026-04-04T05:00:05.147Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 87.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Tripo Prism 3.0",
+          "model_maker": "Tripo",
+          "model_url": "https://www.tripo3d.ai",
+          "pricing_note": "Free tier / Pro",
+          "considerations": "",
+          "strengths": [
+            "Clean quad topology",
+            "Game-ready"
+          ],
+          "meta_rank": 3,
+          "meta_score": 85.0,
+          "updated_at": "2026-04-04T05:00:05.150Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 85.0,
+              "score_type": "score_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "upscaling",
+      "title": "Upscaling",
+      "model_count": 4,
+      "updated_at": "2026-04-04T05:00:05.112Z",
+      "models": [
+        {
+          "model_name": "Magnific AI",
+          "model_maker": "Magnific",
+          "model_url": "https://magnific.ai",
+          "pricing_note": "$39/mo",
+          "considerations": "$39/mo, no free trial. Can over-hallucinate on photos.",
+          "strengths": [
+            "Creative upscaling king",
+            "Up to 16x",
+            "Best for AI art"
+          ],
+          "meta_rank": 1,
+          "meta_score": 94.0,
+          "updated_at": "2026-04-04T05:00:05.105Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 94.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Topaz Photo AI",
+          "model_maker": "Topaz Labs",
+          "model_url": "https://www.topazlabs.com",
+          "pricing_note": "$199 lifetime",
+          "considerations": "",
+          "strengths": [
+            "Best for photography",
+            "Faithful restoration"
+          ],
+          "meta_rank": 2,
+          "meta_score": 90.0,
+          "updated_at": "2026-04-04T05:00:05.107Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 90.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Bloom",
+          "model_maker": "Topaz Labs",
+          "model_url": "https://www.topazlabs.com/bloom",
+          "pricing_note": "Subscription",
+          "considerations": "",
+          "strengths": [
+            "Creative upscaling",
+            "Unlimited renders"
+          ],
+          "meta_rank": 3,
+          "meta_score": 85.0,
+          "updated_at": "2026-04-04T05:00:05.110Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 85.0,
+              "score_type": "score_100"
+            }
+          ]
+        },
+        {
+          "model_name": "Upscayl",
+          "model_maker": "Open Source",
+          "model_url": "https://upscayl.org",
+          "pricing_note": "Free",
+          "considerations": "",
+          "strengths": [
+            "Free & open source",
+            "Local processing"
+          ],
+          "meta_rank": 4,
+          "meta_score": 75.0,
+          "updated_at": "2026-04-04T05:00:05.112Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 75.0,
+              "score_type": "score_100"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

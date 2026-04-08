@@ -1,0 +1,30 @@
+name: Validate Site
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 6 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify digest manifest
+        run: python scripts/update-news-digest-index.py --check
+
+      - name: Validate static site structure
+        run: python scripts/validate-site.py

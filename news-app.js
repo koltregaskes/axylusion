@@ -71,128 +71,346 @@ class NewsApp {
     }
 
     async loadDigestList() {
+        const manifestFiles = [];
+
         try {
             const response = await fetch('news-digests/index.json', { cache: 'no-store' });
             if (response.ok) {
                 const payload = await response.json();
-                if (Array.isArray(payload.files) && payload.files.length > 0) {
-                    return payload.files;
+                if (Array.isArray(payload.files)) {
+                    manifestFiles.push(...payload.files);
                 }
             }
         } catch (error) {
             console.warn('News digest manifest unavailable, falling back to generated date scan.', error);
         }
 
-        return this.generateFileList();
+        if (manifestFiles.length > 0) {
+            return this.sortDigestFiles(manifestFiles);
+        }
+
+        return this.sortDigestFiles(this.generateFileList());
     }
 
     generateFileList() {
         const files = [];
         const today = new Date();
-        for (let i = 0; i < 90; i++) {
+
+        for (let i = 0; i < 120; i++) {
             const date = new Date(today);
             date.setDate(date.getDate() - i);
             const year = date.getFullYear();
             const month = String(date.getMonth() + 1).padStart(2, '0');
             const day = String(date.getDate()).padStart(2, '0');
+
             files.push(`${year}-${month}-${day}-digest.md`);
+            files.push(`digest-${year}-${month}-${day}.md`);
         }
+
         return files;
     }
 
-    parseDigest(content, filename) {
-        const dateMatch = filename.match(/(\d{4})-(\d{2})-(\d{2})-digest\.md/);
-        if (!dateMatch) return [];
+    sortDigestFiles(files) {
+        return Array.from(new Set(files))
+            .filter(filename => this.getDigestDate(filename))
+            .sort((left, right) => {
+                const leftDate = this.getDigestDate(left);
+                const rightDate = this.getDigestDate(right);
+                return rightDate - leftDate || left.localeCompare(right);
+            });
+    }
 
-        const [, year, month, day] = dateMatch;
-        const fileDate = new Date(year, month - 1, day);
-        const dateString = fileDate.toLocaleDateString('en-GB', {
-            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    parseDigest(content, filename) {
+        const fileDate = this.getDigestDate(filename);
+        if (!fileDate) return [];
+
+        if (/^##\s+\[/m.test(content)) {
+            return this.parsePublishedDigest(content, fileDate);
+        }
+
+        if (/^###\s+\d+\.\s+/m.test(content)) {
+            return this.parseStructuredDigest(content, fileDate);
+        }
+
+        return [];
+    }
+
+    getDigestDate(filename) {
+        const match = String(filename).match(/(?:(\d{4})-(\d{2})-(\d{2})-digest|digest-(\d{4})-(\d{2})-(\d{2}))\.md$/);
+        if (!match) return null;
+
+        const year = Number(match[1] || match[4]);
+        const month = Number(match[2] || match[5]);
+        const day = Number(match[3] || match[6]);
+        return new Date(year, month - 1, day);
+    }
+
+    parsePublishedDigest(content, fileDate) {
+        const articles = [];
+        const fallbackDateString = this.formatLongDate(fileDate);
+        const blocks = content.replace(/\r/g, '').split(/\n-{3,}\n+/);
+        let articleCount = 0;
+
+        blocks.forEach((block) => {
+            const headingMatch = block.match(/^##\s+\[([\s\S]+?)\]\((https?:\/\/[^\s)]+)\)/m);
+            if (!headingMatch) return;
+
+            const [, rawTitle, url] = headingMatch;
+            if (this.isJunkItem(rawTitle, url)) return;
+
+            articleCount++;
+
+            const title = this.normalizeText(
+                rawTitle
+                    .split('\n')
+                    .map(line => line.trim())
+                    .find(Boolean) || rawTitle
+            );
+
+            const metadataMatch = block.match(/^\*(.+?)\*(?:\s*\|\s*([^|\n]+))?(?:\s*\|\s*Score:\s*[0-9.]+)?$/m);
+            const source = this.normalizeText(
+                metadataMatch && metadataMatch[1] ? metadataMatch[1] : this.extractSource(url)
+            );
+
+            let articleDate = fileDate;
+            let articleDateString = fallbackDateString;
+            if (metadataMatch && metadataMatch[2] && !/score:/i.test(metadataMatch[2])) {
+                const parsed = this.parseArticleDate(metadataMatch[2], fileDate);
+                articleDate = parsed.date;
+                articleDateString = parsed.dateString;
+            }
+
+            const tagMatch = block.match(/^Tags:\s*(.+)$/m);
+            const summaryBody = block
+                .replace(headingMatch[0], '')
+                .replace(metadataMatch ? metadataMatch[0] : '', '')
+                .replace(tagMatch ? tagMatch[0] : '');
+            const quotedSummary = summaryBody
+                .split('\n')
+                .filter(line => line.trim().startsWith('>'))
+                .map(line => line.replace(/^\s*>\s?/, '').trim())
+                .join('\n');
+            const summary = this.buildSummary(quotedSummary || summaryBody);
+            const tags = tagMatch
+                ? tagMatch[1]
+                    .split(',')
+                    .map(tag => this.normalizeText(tag))
+                    .filter(Boolean)
+                    .slice(0, 5)
+                : this.generateTags(rawTitle, summary);
+
+            articles.push(this.buildArticle({
+                title,
+                source,
+                url,
+                summary,
+                category: articleCount <= 5 ? 'Top Stories' : 'News',
+                date: articleDate,
+                dateString: articleDateString,
+                tags
+            }));
         });
 
+        return articles;
+    }
+
+    parseStructuredDigest(content, fileDate) {
         const articles = [];
-        let articleCount = 0;
-        let currentSection = 'Top Stories';
+        const fallbackDateString = this.formatLongDate(fileDate);
         const lines = content.replace(/\r/g, '').split('\n');
+        let currentSection = 'Top Stories';
 
         for (let i = 0; i < lines.length; i++) {
-            const line = lines[i].trimEnd();
-            const headingMatch = line.match(/^##\s+(.+)$/);
-            if (headingMatch) {
-                currentSection = this.normalizeText(headingMatch[1].trim());
+            const line = lines[i].trim();
+            const sectionMatch = line.match(/^##\s+(.+)$/);
+            if (sectionMatch && !sectionMatch[1].startsWith('[')) {
+                currentSection = this.normalizeText(sectionMatch[1]);
                 continue;
             }
 
-            const itemMatch = line.match(/^-\s+\*\*(.+?)\*\*\s+\(\[(.+?)\]\((.+?)\)\)(?:\s+_(.+?)_)?$/);
-            if (itemMatch) {
-                const [, title, sourceName, url, itemDate] = itemMatch;
-                articleCount++;
+            const titleMatch = line.match(/^###\s+\d+\.\s+(.+)$/);
+            if (!titleMatch) continue;
 
-                let summary = '';
-                let j = i + 1;
-                while (j < lines.length && lines[j].match(/^\s{2,}/)) {
-                    summary += lines[j].trim() + ' ';
-                    j++;
+            const title = this.normalizeText(titleMatch[1]);
+            let source = 'Unknown';
+            let url = '';
+            let summary = '';
+            let category = this.getCategoryFromSection(currentSection, articles.length + 1);
+            let articleDate = fileDate;
+            let articleDateString = fallbackDateString;
+            let j = i + 1;
+
+            while (j < lines.length) {
+                const nextLine = lines[j].trim();
+
+                if (/^###\s+\d+\.\s+/.test(nextLine) || (/^##\s+/.test(nextLine) && !nextLine.startsWith('## ['))) {
+                    break;
                 }
 
-                if (this.isJunkItem(title, url)) continue;
+                const metadataMatch = nextLine.match(/^\*\*Category:\*\*\s*(.*?)\s*\|\s*\*\*Source:\*\*\s*(.*?)\s*\|\s*\*\*Date:\*\*\s*(.+)$/);
+                if (metadataMatch) {
+                    category = this.normalizeText(metadataMatch[1]) || category;
+                    source = this.normalizeText(metadataMatch[2]) || source;
 
-                const source = this.normalizeText(sourceName.trim() || this.extractSource(url));
-                const cleanTitle = this.normalizeText(title.trim());
-                const cleanSummary = this.normalizeText(summary.trim());
-                const tags = this.generateTags(cleanTitle, cleanSummary);
+                    const parsed = this.parseArticleDate(metadataMatch[3], fileDate);
+                    articleDate = parsed.date;
+                    articleDateString = parsed.dateString;
+                    j++;
+                    continue;
+                }
 
-                let articleDate = fileDate;
-                let articleDateString = dateString;
-                if (itemDate && itemDate.trim()) {
-                    const parsedDate = new Date(itemDate.trim());
-                    if (!isNaN(parsedDate.getTime())) {
-                        articleDate = parsedDate;
-                        articleDateString = parsedDate.toLocaleDateString('en-GB', {
-                            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-                        });
+                if (!url) {
+                    const urlMatch = nextLine.match(/\bhttps?:\/\/[^\s)]+/);
+                    if (urlMatch) {
+                        url = urlMatch[0];
                     }
                 }
 
-                const category = this.getCategoryFromSection(currentSection, articleCount);
+                if (nextLine === '**Summary:**') {
+                    const extracted = this.collectBlockText(lines, j + 1);
+                    summary = extracted.text;
+                    j = extracted.nextIndex;
+                    continue;
+                }
 
-                articles.push({
-                    title: cleanTitle,
-                    source,
-                    url: url.trim(),
-                    summary: cleanSummary,
-                    category,
-                    date: articleDate,
-                    dateString: articleDateString,
-                    tags
-                });
+                if (!summary && nextLine && !nextLine.startsWith('**') && !nextLine.startsWith('```') && nextLine !== '---') {
+                    const extracted = this.collectBlockText(lines, j);
+                    summary = extracted.text;
+                    j = extracted.nextIndex;
+                    continue;
+                }
 
-                this.sources.add(source);
-                continue;
+                j++;
             }
 
-            const simpleItemMatch = line.match(/^-\s+\[(.+?)\]\((.+?)\)(?:\s+_(.+?)_)?$/);
-            if (simpleItemMatch && /youtube|clips/i.test(currentSection)) {
-                const [, title, url, itemDate] = simpleItemMatch;
-                const cleanTitle = this.normalizeText(title.trim());
-                const source = this.extractSource(url);
+            articles.push(this.buildArticle({
+                title,
+                source,
+                url,
+                summary,
+                category,
+                date: articleDate,
+                dateString: articleDateString,
+                tags: this.generateTags(title, summary)
+            }));
 
-                articles.push({
-                    title: cleanTitle,
-                    source,
-                    url: url.trim(),
-                    summary: '',
-                    category: 'YouTube',
-                    date: fileDate,
-                    dateString: itemDate && itemDate.trim() ? itemDate.trim() : dateString,
-                    tags: this.generateTags(cleanTitle, currentSection)
-                });
-
-                this.sources.add(source);
-            }
+            i = j - 1;
         }
 
         return articles;
+    }
+
+    collectBlockText(lines, startIndex) {
+        const collected = [];
+        let i = startIndex;
+
+        while (i < lines.length) {
+            const line = lines[i].trim();
+
+            if (!line) {
+                if (collected.length > 0) break;
+                i++;
+                continue;
+            }
+
+            if (
+                /^###\s+\d+\.\s+/.test(line) ||
+                (/^##\s+/.test(line) && !line.startsWith('## [')) ||
+                /^\*\*(X Post|LinkedIn Post|Newsletter Bullet):/.test(line) ||
+                line === '---'
+            ) {
+                break;
+            }
+
+            if (line.startsWith('```')) {
+                i++;
+                while (i < lines.length && !lines[i].trim().startsWith('```')) {
+                    i++;
+                }
+                i++;
+                continue;
+            }
+
+            collected.push(line);
+            i++;
+        }
+
+        return {
+            text: this.normalizeText(collected.join(' ')),
+            nextIndex: i
+        };
+    }
+
+    buildSummary(rawBody) {
+        const lines = String(rawBody || '')
+            .split('\n')
+            .map(line => this.normalizeText(line))
+            .filter(Boolean)
+            .filter(line => !/^undefined$/i.test(line))
+            .filter(line => !/^by$/i.test(line))
+            .filter(line => !/^published\b/i.test(line))
+            .filter(line => !/^(opinion|review|news|announcement|lens|guide)$/i.test(line))
+            .filter(line => !/^[A-Z0-9\s/&-]{3,}$/.test(line));
+
+        if (lines.length === 0) return '';
+
+        const summary = lines.join(' ');
+        return summary.length > 240 ? `${summary.slice(0, 237).trim()}...` : summary;
+    }
+
+    buildArticle({ title, source, url, summary, category, date, dateString, tags }) {
+        const cleanTitle = this.normalizeText(title);
+        const cleanSource = this.normalizeText(source || this.extractSource(url));
+        const cleanSummary = this.normalizeText(summary);
+        const cleanDate = date instanceof Date && !isNaN(date.getTime()) ? date : new Date();
+        const cleanTags = Array.isArray(tags) && tags.length > 0
+            ? tags.map(tag => this.normalizeText(tag)).filter(Boolean).slice(0, 5)
+            : this.generateTags(cleanTitle, cleanSummary);
+
+        this.sources.add(cleanSource);
+
+        return {
+            title: cleanTitle,
+            source: cleanSource,
+            url: String(url || '').trim(),
+            summary: cleanSummary,
+            category: this.normalizeText(category || 'News'),
+            date: cleanDate,
+            dateString: dateString || this.formatLongDate(cleanDate),
+            tags: cleanTags
+        };
+    }
+
+    formatLongDate(date) {
+        if (!(date instanceof Date) || isNaN(date.getTime())) return '-';
+        return date.toLocaleDateString('en-GB', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+
+    parseArticleDate(value, fallbackDate) {
+        const cleanValue = this.normalizeText(value);
+        const slashMatch = cleanValue.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+        if (slashMatch) {
+            const [, day, month, year] = slashMatch;
+            const parsedDate = new Date(Number(year), Number(month) - 1, Number(day));
+            if (!isNaN(parsedDate.getTime())) {
+                return { date: parsedDate, dateString: this.formatLongDate(parsedDate) };
+            }
+        }
+
+        const parsedDate = new Date(cleanValue);
+        if (!isNaN(parsedDate.getTime())) {
+            return { date: parsedDate, dateString: this.formatLongDate(parsedDate) };
+        }
+
+        return {
+            date: fallbackDate,
+            dateString: this.formatLongDate(fallbackDate)
+        };
     }
 
     getCategoryFromSection(sectionName, articleCount) {
@@ -213,7 +431,22 @@ class NewsApp {
     }
 
     repairDigestContent(value) {
-x
+        return String(value || '')
+            .replace(/\uFEFF/g, '')
+            .replace(/\r\n?/g, '\n')
+            .trim();
+    }
+
+    normalizeText(value) {
+        const text = String(value || '');
+        const decoder = document.createElement('textarea');
+        decoder.innerHTML = text;
+        return decoder.value
+            .replace(/\u00a0/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
     formatCompactDate(date) {
         if (!(date instanceof Date) || isNaN(date.getTime())) return '-';
         return date.toLocaleDateString('en-GB', {
@@ -558,13 +791,16 @@ x
         const title = document.createElement('h3');
         title.className = 'an-card-title';
 
-        const link = document.createElement('a');
-        link.href = article.url;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.textContent = article.title;
-
-        title.appendChild(link);
+        if (article.url) {
+            const link = document.createElement('a');
+            link.href = article.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = article.title;
+            title.appendChild(link);
+        } else {
+            title.textContent = article.title;
+        }
 
         const summary = document.createElement('p');
         summary.className = 'an-card-summary';
@@ -591,14 +827,16 @@ x
         favBtn.setAttribute('aria-pressed', isFav ? 'true' : 'false');
         favBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.563 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>`;
 
-        const readMore = document.createElement('a');
-        readMore.href = article.url;
-        readMore.target = '_blank';
-        readMore.rel = 'noopener noreferrer';
-        readMore.className = 'an-read-more';
-        readMore.textContent = 'Read';
-
-        actions.append(favBtn, readMore);
+        actions.appendChild(favBtn);
+        if (article.url) {
+            const readMore = document.createElement('a');
+            readMore.href = article.url;
+            readMore.target = '_blank';
+            readMore.rel = 'noopener noreferrer';
+            readMore.className = 'an-read-more';
+            readMore.textContent = 'Read';
+            actions.appendChild(readMore);
+        }
         footer.append(category, actions);
 
         card.append(header, title);
