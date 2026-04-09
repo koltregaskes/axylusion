@@ -4,10 +4,38 @@
  * Adapted from Kol's Korner (koltregaskes.com)
  */
 
+const AXY_TOPIC_LABELS = {
+    image: 'Image',
+    video: 'Video',
+    audio: 'Audio',
+    creative: 'Creative',
+    design: 'Design',
+    '3d': '3D',
+    product: 'Product',
+    'open-source': 'Open Source'
+};
+
+const AXY_TOPIC_ORDER = ['image', 'video', 'audio', '3d', 'creative', 'design', 'product', 'open-source'];
+const AXY_ALLOWED_TAGS = new Set(AXY_TOPIC_ORDER);
+
+const AXY_BLOCKED_SOURCE_PATTERNS = [
+    /^reddit\b/i,
+    /^r\//i,
+    /^ground news/i,
+    /^coindesk$/i,
+    /^cointelegraph$/i,
+    /^the block$/i,
+    /^beincrypto$/i,
+    /^flipboard$/i
+];
+
+const AXY_BLOCKED_TEXT_PATTERN = /\b(chatgpt|localllama|local llama|machinelearning|bitcoin|ethereum|crypto|camera|lightroom|capture one|photography)\b/i;
+
 class NewsApp {
     constructor() {
         this.articles = [];
         this.filteredArticles = [];
+        this.activeTopics = new Set();
         this.decoder = document.createElement('textarea');
         this.favorites = new Set(this.loadStoredFavorites());
         this.init();
@@ -34,6 +62,7 @@ class NewsApp {
     async init() {
         await this.loadArticles();
         this.setupEventListeners();
+        this.renderTopicFilters();
 
         const today = new Date();
         const lastWeek = new Date();
@@ -77,9 +106,10 @@ class NewsApp {
         });
 
         const results = await Promise.all(loadPromises);
-        results.forEach(articles => this.articles.push(...articles));
-
-        this.articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+        this.articles = results
+            .flat()
+            .filter((article) => this.shouldDisplayArticle(article))
+            .sort((a, b) => new Date(b.date) - new Date(a.date));
         this.filteredArticles = [...this.articles];
         this.updateOverview();
 
@@ -396,6 +426,27 @@ class NewsApp {
         };
     }
 
+    shouldDisplayArticle(article) {
+        const source = String(article.source || '').trim();
+        if (AXY_BLOCKED_SOURCE_PATTERNS.some((pattern) => pattern.test(source))) {
+            return false;
+        }
+
+        const text = [
+            article.title,
+            article.summary,
+            article.source,
+            article.url,
+            Array.isArray(article.tags) ? article.tags.join(' ') : ''
+        ].join(' ').toLowerCase();
+
+        if (AXY_BLOCKED_TEXT_PATTERN.test(text)) {
+            return false;
+        }
+
+        return Array.isArray(article.tags) && article.tags.some((tag) => AXY_ALLOWED_TAGS.has(tag));
+    }
+
     formatLongDate(date) {
         if (!(date instanceof Date) || isNaN(date.getTime())) return '-';
         return date.toLocaleDateString('en-GB', {
@@ -618,9 +669,52 @@ class NewsApp {
             if (searchInput) searchInput.value = '';
             if (fromDate) fromDate.value = '';
             if (toDate) toDate.value = '';
+            this.activeTopics.clear();
+            this.renderTopicFilters();
             this.updateQuickFilterButtons('all');
             this.filterArticles();
         });
+    }
+
+    renderTopicFilters() {
+        const container = document.getElementById('topicFilters');
+        if (!container) return;
+
+        const availableTopics = Array.from(new Set(
+            this.articles
+                .flatMap((article) => Array.isArray(article.tags) ? article.tags : [])
+                .filter((tag) => Object.prototype.hasOwnProperty.call(AXY_TOPIC_LABELS, tag))
+        ));
+
+        container.innerHTML = '';
+        container.appendChild(this.createTopicButton('all', 'All topics', this.activeTopics.size === 0));
+
+        AXY_TOPIC_ORDER
+            .filter((tag) => availableTopics.includes(tag))
+            .forEach((tag) => {
+                container.appendChild(this.createTopicButton(tag, AXY_TOPIC_LABELS[tag], this.activeTopics.has(tag)));
+            });
+    }
+
+    createTopicButton(tag, label, isActive) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `an-chip${isActive ? ' active' : ''}`;
+        button.textContent = label;
+        button.addEventListener('click', () => {
+            if (tag === 'all') {
+                this.activeTopics.clear();
+            } else if (this.activeTopics.has(tag)) {
+                this.activeTopics.delete(tag);
+            } else {
+                this.activeTopics.clear();
+                this.activeTopics.add(tag);
+            }
+
+            this.renderTopicFilters();
+            this.filterArticles();
+        });
+        return button;
     }
 
     updateQuickFilterButtons(active = null) {
@@ -650,8 +744,10 @@ class NewsApp {
             let matchesRange = true;
             if (fromDate) matchesRange = matchesRange && articleDate >= new Date(fromDate);
             if (toDate) matchesRange = matchesRange && articleDate <= new Date(toDate + 'T23:59:59');
+            const matchesTopic = this.activeTopics.size === 0
+                || article.tags.some((tag) => this.activeTopics.has(tag));
 
-            return matchesSearch && matchesRange;
+            return matchesSearch && matchesRange && matchesTopic;
         });
 
         this.updateFilterSummary();
@@ -669,7 +765,8 @@ class NewsApp {
                 const activeFilters = [
                     document.getElementById('searchInput')?.value?.trim(),
                     document.getElementById('fromDate')?.value,
-                    document.getElementById('toDate')?.value
+                    document.getElementById('toDate')?.value,
+                    this.activeTopics.size > 0 ? Array.from(this.activeTopics).join(',') : ''
                 ].filter(Boolean).length;
                 text.textContent = activeFilters > 0
                     ? `Showing ${this.filteredArticles.length} of ${total} articles`
@@ -741,31 +838,55 @@ class NewsApp {
         };
 
         const groups = {};
-        this.filteredArticles.forEach(a => {
-            groups[a.dateString] = groups[a.dateString] || [];
-            groups[a.dateString].push(a);
+        this.filteredArticles.forEach((article) => {
+            const groupKey = groupBy === 'topic'
+                ? this.getPrimaryTopic(article)
+                : article.dateString;
+
+            if (!groupKey) return;
+            groups[groupKey] = groups[groupKey] || [];
+            groups[groupKey].push(article);
         });
 
-        const sortedDates = Object.keys(groups).sort((a, b) => {
+        const sortedKeys = Object.keys(groups).sort((left, right) => {
+            if (groupBy === 'topic') {
+                return AXY_TOPIC_ORDER.indexOf(left) - AXY_TOPIC_ORDER.indexOf(right);
+            }
+
             const parse = (str) => {
                 const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
                 const parts = str.match(/(\d+)\s+(\w+)\s+(\d+)/);
                 if (parts) return new Date(parseInt(parts[3]), months.indexOf(parts[2]), parseInt(parts[1]));
                 return new Date(0);
             };
-            return parse(b) - parse(a);
+            return parse(right) - parse(left);
         });
 
-        sortedDates.forEach(date => {
+        sortedKeys.forEach(key => {
             const h = document.createElement('h3');
             h.className = 'an-group-title';
-            h.textContent = getRelativeDate(date);
+            h.textContent = groupBy === 'topic'
+                ? (AXY_TOPIC_LABELS[key] || key)
+                : getRelativeDate(key);
             container.appendChild(h);
             const g = document.createElement('div');
             g.className = 'an-grid';
-            groups[date].forEach(a => g.appendChild(this.createCard(a)));
+            groups[key].forEach(a => g.appendChild(this.createCard(a)));
             container.appendChild(g);
         });
+    }
+
+    getPrimaryTopic(article) {
+        const articleTags = Array.isArray(article.tags) ? article.tags : [];
+
+        if (this.activeTopics.size === 1) {
+            const selected = Array.from(this.activeTopics)[0];
+            if (articleTags.includes(selected)) {
+                return selected;
+            }
+        }
+
+        return AXY_TOPIC_ORDER.find((tag) => articleTags.includes(tag)) || null;
     }
 
     createCard(article) {
@@ -845,7 +966,7 @@ class NewsApp {
             article.tags.forEach(tag => {
                 const span = document.createElement('span');
                 span.className = 'an-tag';
-                span.textContent = tag;
+                span.textContent = AXY_TOPIC_LABELS[tag] || tag;
                 tags.appendChild(span);
             });
             card.appendChild(tags);

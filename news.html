@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="news-controls.css">
     <style>
         .news-hero {
             max-width: 1400px;
@@ -208,41 +209,6 @@
         </div>
     </section>
 
-    <section class="news-hero stagger-load delay-3">
-        <div class="news-hero-grid">
-            <div class="news-hero-copy">
-                <span class="news-hero-kicker">Live digest</span>
-                <h2>News gathering is live. The newsletter is on hold.</h2>
-                <p>This page pulls from local AI news digests, filters out junk, and keeps the focus on the stories most relevant to Axy Lusion and the creative AI space.</p>
-                <div class="news-hero-note">
-                    <span><strong>Auto-updated</strong> from local digests</span>
-                    <span><strong>Newsletter</strong> paused for now</span>
-                    <span><strong>Static-site</strong> friendly</span>
-                </div>
-                <div class="news-hero-actions">
-                    <a href="tools.html" class="cta-button primary">Explore Tools</a>
-                    <a href="gallery.html" class="cta-button secondary">Browse Gallery</a>
-                </div>
-            </div>
-            <aside class="news-hero-panel" aria-label="News summary">
-                <div>
-                    <span class="news-live-label">Feed status</span>
-                    <p>The loader scans the local `news-digests` folder, keeps the focus on the newest useful stories, and preserves the date-led archive without turning the page into a feed dashboard.</p>
-                </div>
-                <div class="news-metrics">
-                    <div class="news-metric">
-                        <span>Articles</span>
-                        <strong id="news-article-count">0</strong>
-                    </div>
-                    <div class="news-metric">
-                        <span>Latest</span>
-                        <strong id="news-latest-date">-</strong>
-                    </div>
-                </div>
-            </aside>
-        </div>
-    </section>
-
     <!-- News Layout -->
     <main class="an-layout">
         <!-- Sidebar -->
@@ -250,6 +216,11 @@
             <div class="an-sidebar-section">
                 <h3>Search</h3>
                 <input type="text" id="searchInput" class="an-search" placeholder="Search articles...">
+            </div>
+
+            <div class="an-sidebar-section">
+                <h3>Topics</h3>
+                <div id="topicFilters" class="an-chip-grid" aria-label="Topic filters"></div>
             </div>
 
             <div class="an-sidebar-section">
@@ -270,6 +241,7 @@
                 <h3>Group By</h3>
                 <select id="groupBy" class="an-select">
                     <option value="date">Date</option>
+                    <option value="topic">Topic</option>
                 </select>
             </div>
 
@@ -280,6 +252,11 @@
         <div class="an-main">
             <div id="filterSummary" class="an-filter-summary" style="display: none;">
                 <span id="filterSummaryText"></span>
+            </div>
+
+            <div class="an-overview" aria-label="News overview">
+                <span class="an-overview-metric">Articles <strong id="news-article-count">0</strong></span>
+                <span class="an-overview-metric">Latest <strong id="news-latest-date">-</strong></span>
             </div>
 
             <div id="loading" class="an-loading">

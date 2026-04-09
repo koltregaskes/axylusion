@@ -1,0 +1,49 @@
+.an-chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.an-chip {
+    padding: 0.42rem 0.7rem;
+    border: 1px solid var(--axyl-gray-700);
+    border-radius: 999px;
+    background: var(--axyl-gray-800);
+    color: var(--axyl-gray-300);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.an-chip:hover,
+.an-chip.active {
+    border-color: var(--axyl-amber);
+    color: var(--axyl-black);
+    background: var(--axyl-amber);
+}
+
+.an-overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: var(--space-lg);
+}
+
+.an-overview-metric {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    padding: 0.55rem 0.8rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--axyl-gray-700);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--axyl-gray-400);
+    font-size: 0.8rem;
+}
+
+.an-overview-metric strong {
+    color: var(--axyl-cream);
+    font-size: 0.95rem;
+}
