@@ -118,7 +118,7 @@
 
         .news-metrics {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: var(--space-md);
         }
 
@@ -227,16 +227,12 @@
             <aside class="news-hero-panel" aria-label="News summary">
                 <div>
                     <span class="news-live-label">Feed status</span>
-                    <p>The loader scans the local `news-digests` folder, groups stories by date or source, and keeps the page readable even when no filters are set.</p>
+                    <p>The loader scans the local `news-digests` folder, keeps the focus on the newest useful stories, and preserves the date-led archive without turning the page into a feed dashboard.</p>
                 </div>
                 <div class="news-metrics">
                     <div class="news-metric">
                         <span>Articles</span>
                         <strong id="news-article-count">0</strong>
-                    </div>
-                    <div class="news-metric">
-                        <span>Sources</span>
-                        <strong id="news-source-count">0</strong>
                     </div>
                     <div class="news-metric">
                         <span>Latest</span>
@@ -274,13 +270,7 @@
                 <h3>Group By</h3>
                 <select id="groupBy" class="an-select">
                     <option value="date">Date</option>
-                    <option value="source">Source</option>
                 </select>
-            </div>
-
-            <div class="an-sidebar-section">
-                <h3>Sources</h3>
-                <div id="sourceCheckboxes" class="an-source-list"></div>
             </div>
 
             <button id="clearFilters" class="an-clear-btn">Clear Filters</button>

@@ -22,7 +22,7 @@ Ranked by weighted meta-score from Artificial Analysis (35%), LM Arena (30%), LL
 
 - AI Resource Hub: Model comparison and benchmarks
 - Kol's Korner: AI news and essays
-- Synthetic Dispatch: AI agent-written articles
+- Ghost in the Models: AI agent-written articles
 
 ## Contact
 

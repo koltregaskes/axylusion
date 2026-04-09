@@ -8,7 +8,6 @@ class NewsApp {
     constructor() {
         this.articles = [];
         this.filteredArticles = [];
-        this.sources = new Set();
         this.decoder = document.createElement('textarea');
         this.favorites = new Set(this.loadStoredFavorites());
         this.init();
@@ -82,7 +81,6 @@ class NewsApp {
 
         this.articles.sort((a, b) => new Date(b.date) - new Date(a.date));
         this.filteredArticles = [...this.articles];
-        this.populateFilters();
         this.updateOverview();
 
         const loading = document.getElementById('loading');
@@ -386,8 +384,6 @@ class NewsApp {
             ? tags.map(tag => this.normalizeText(tag)).filter(Boolean).slice(0, 5)
             : this.generateTags(cleanTitle, cleanSummary);
 
-        this.sources.add(cleanSource);
-
         return {
             title: cleanTitle,
             source: cleanSource,
@@ -532,7 +528,7 @@ class NewsApp {
             'open-source': /\b(open source|open-source|opensource|github|hugging face)\b/i,
             'safety': /\b(safety|alignment|ethics|regulation|govern|policy)\b/i,
             'robotics': /\b(robot|robotics|hardware|humanoid|physical)\b/i,
-            'image': /\b(image|images|imaging|midjourney|dall-e|dallÂ·e|stable diffusion|flux|ideogram|leonardo|firefly|photoshop|illustration|portrait|artwork|art\b|artis)/i,
+            'image': /\b(image|images|imaging|midjourney|dall-e|dall·e|stable diffusion|flux|ideogram|leonardo|firefly|photoshop|illustration|portrait|artwork|art\b|artis)/i,
             'video': /\b(video|videos|runway|kling|pika|sora|luma|veo|animate|animation|film|cinema|minimax|hailuo|gen-3)\b/i,
             'audio': /\b(voice|speech|audio|sound|music|suno|elevenlabs|udio|singing|song|tts|text.to.speech)\b/i,
             'coding': /\b(code|coding|developer|programming|copilot|codex)\b/i,
@@ -576,30 +572,10 @@ class NewsApp {
         } catch { return 'Unknown'; }
     }
 
-    populateFilters() {
-        const sourceContainer = document.getElementById('sourceCheckboxes');
-        if (!sourceContainer) return;
-
-        const sortedSources = Array.from(this.sources).sort();
-        sourceContainer.textContent = '';
-        sortedSources.forEach(source => {
-            const label = document.createElement('label');
-            const input = document.createElement('input');
-            input.type = 'checkbox';
-            input.value = source;
-            input.checked = true;
-            const text = document.createTextNode(` ${source}`);
-            label.appendChild(input);
-            label.appendChild(text);
-            sourceContainer.appendChild(label);
-        });
-    }
-
     setupEventListeners() {
         const searchInput = document.getElementById('searchInput');
         const fromDate = document.getElementById('fromDate');
         const toDate = document.getElementById('toDate');
-        const sourceContainer = document.getElementById('sourceCheckboxes');
         const quick24h = document.getElementById('quick24h');
         const quickLastWeek = document.getElementById('quickLastWeek');
         const quickAll = document.getElementById('quickAll');
@@ -608,7 +584,6 @@ class NewsApp {
         if (searchInput) searchInput.addEventListener('input', () => this.filterArticles());
         if (fromDate) fromDate.addEventListener('change', () => { this.updateQuickFilterButtons(); this.filterArticles(); });
         if (toDate) toDate.addEventListener('change', () => { this.updateQuickFilterButtons(); this.filterArticles(); });
-        if (sourceContainer) sourceContainer.addEventListener('change', () => this.filterArticles());
         if (groupBy) groupBy.addEventListener('change', () => this.displayArticles());
 
         if (quick24h) quick24h.addEventListener('click', () => {
@@ -643,7 +618,6 @@ class NewsApp {
             if (searchInput) searchInput.value = '';
             if (fromDate) fromDate.value = '';
             if (toDate) toDate.value = '';
-            document.querySelectorAll('#sourceCheckboxes input').forEach(cb => cb.checked = true);
             this.updateQuickFilterButtons('all');
             this.filterArticles();
         });
@@ -665,9 +639,6 @@ class NewsApp {
         const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
         const fromDate = fromDateEl ? fromDateEl.value : '';
         const toDate = toDateEl ? toDateEl.value : '';
-        const selectedSources = Array.from(document.querySelectorAll('#sourceCheckboxes input:checked')).map(i => i.value);
-        this.noSourcesSelected = document.querySelectorAll('#sourceCheckboxes input').length > 0 && selectedSources.length === 0;
-
         this.filteredArticles = this.articles.filter(article => {
             const articleDate = new Date(article.date);
 
@@ -680,9 +651,7 @@ class NewsApp {
             if (fromDate) matchesRange = matchesRange && articleDate >= new Date(fromDate);
             if (toDate) matchesRange = matchesRange && articleDate <= new Date(toDate + 'T23:59:59');
 
-            const matchesSource = selectedSources.length > 0 && selectedSources.includes(article.source);
-
-            return matchesSearch && matchesRange && matchesSource;
+            return matchesSearch && matchesRange;
         });
 
         this.updateFilterSummary();
@@ -697,12 +666,10 @@ class NewsApp {
             if (total === 0) {
                 text.textContent = 'No articles loaded yet.';
             } else {
-                const sourceCount = Array.from(document.querySelectorAll('#sourceCheckboxes input:not(:checked)')).length;
                 const activeFilters = [
                     document.getElementById('searchInput')?.value?.trim(),
                     document.getElementById('fromDate')?.value,
-                    document.getElementById('toDate')?.value,
-                    sourceCount > 0 ? 'sources' : ''
+                    document.getElementById('toDate')?.value
                 ].filter(Boolean).length;
                 text.textContent = activeFilters > 0
                     ? `Showing ${this.filteredArticles.length} of ${total} articles`
@@ -714,11 +681,9 @@ class NewsApp {
 
     updateOverview() {
         const articleCount = document.getElementById('news-article-count');
-        const sourceCount = document.getElementById('news-source-count');
         const latestDate = document.getElementById('news-latest-date');
 
         if (articleCount) articleCount.textContent = String(this.articles.length);
-        if (sourceCount) sourceCount.textContent = String(this.sources.size);
         if (latestDate) {
             latestDate.textContent = this.articles.length > 0
                 ? this.formatCompactDate(this.articles[0].date)
@@ -752,11 +717,7 @@ class NewsApp {
 
         if (this.filteredArticles.length === 0) {
             if (noResults) {
-                this.setNoResultsMessage(
-                    this.noSourcesSelected
-                        ? 'Select at least one source to see results again.'
-                        : 'No articles matched the current filters. Try widening the date range or clearing one of the source filters.'
-                );
+                this.setNoResultsMessage('No articles matched the current filters. Try widening the date range or clearing the search.');
                 noResults.style.display = 'block';
             }
             return;
@@ -779,50 +740,32 @@ class NewsApp {
             return dateString;
         };
 
-        if (groupBy === 'source') {
-            const groups = {};
-            this.filteredArticles.forEach(a => {
-                groups[a.source] = groups[a.source] || [];
-                groups[a.source].push(a);
-            });
-            Object.keys(groups).sort().forEach(src => {
-                const h = document.createElement('h3');
-                h.className = 'an-group-title';
-                h.textContent = src;
-                container.appendChild(h);
-                const g = document.createElement('div');
-                g.className = 'an-grid';
-                groups[src].forEach(a => g.appendChild(this.createCard(a)));
-                container.appendChild(g);
-            });
-        } else {
-            const groups = {};
-            this.filteredArticles.forEach(a => {
-                groups[a.dateString] = groups[a.dateString] || [];
-                groups[a.dateString].push(a);
-            });
+        const groups = {};
+        this.filteredArticles.forEach(a => {
+            groups[a.dateString] = groups[a.dateString] || [];
+            groups[a.dateString].push(a);
+        });
 
-            const sortedDates = Object.keys(groups).sort((a, b) => {
-                const parse = (str) => {
-                    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-                    const parts = str.match(/(\d+)\s+(\w+)\s+(\d+)/);
-                    if (parts) return new Date(parseInt(parts[3]), months.indexOf(parts[2]), parseInt(parts[1]));
-                    return new Date(0);
-                };
-                return parse(b) - parse(a);
-            });
+        const sortedDates = Object.keys(groups).sort((a, b) => {
+            const parse = (str) => {
+                const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                const parts = str.match(/(\d+)\s+(\w+)\s+(\d+)/);
+                if (parts) return new Date(parseInt(parts[3]), months.indexOf(parts[2]), parseInt(parts[1]));
+                return new Date(0);
+            };
+            return parse(b) - parse(a);
+        });
 
-            sortedDates.forEach(date => {
-                const h = document.createElement('h3');
-                h.className = 'an-group-title';
-                h.textContent = getRelativeDate(date);
-                container.appendChild(h);
-                const g = document.createElement('div');
-                g.className = 'an-grid';
-                groups[date].forEach(a => g.appendChild(this.createCard(a)));
-                container.appendChild(g);
-            });
-        }
+        sortedDates.forEach(date => {
+            const h = document.createElement('h3');
+            h.className = 'an-group-title';
+            h.textContent = getRelativeDate(date);
+            container.appendChild(h);
+            const g = document.createElement('div');
+            g.className = 'an-grid';
+            groups[date].forEach(a => g.appendChild(this.createCard(a)));
+            container.appendChild(g);
+        });
     }
 
     createCard(article) {
@@ -835,15 +778,11 @@ class NewsApp {
         const header = document.createElement('div');
         header.className = 'an-card-header';
 
-        const source = document.createElement('span');
-        source.className = 'an-card-source';
-        source.textContent = article.source;
-
         const date = document.createElement('span');
         date.className = 'an-card-date';
         date.textContent = article.dateString;
 
-        header.append(source, date);
+        header.append(date);
 
         const title = document.createElement('h3');
         title.className = 'an-card-title';
