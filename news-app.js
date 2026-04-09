@@ -9,8 +9,27 @@ class NewsApp {
         this.articles = [];
         this.filteredArticles = [];
         this.sources = new Set();
-        this.favorites = new Set(JSON.parse(localStorage.getItem('axyl-news-favorites') || '[]'));
+        this.decoder = document.createElement('textarea');
+        this.favorites = new Set(this.loadStoredFavorites());
         this.init();
+    }
+
+    loadStoredFavorites() {
+        try {
+            const rawValue = window.localStorage.getItem('axyl-news-favorites');
+            const parsedValue = JSON.parse(rawValue || '[]');
+            return Array.isArray(parsedValue) ? parsedValue : [];
+        } catch (_error) {
+            return [];
+        }
+    }
+
+    saveStoredFavorites() {
+        try {
+            window.localStorage.setItem('axyl-news-favorites', JSON.stringify(Array.from(this.favorites)));
+        } catch (_error) {
+            // Ignore storage failures so the page still works in strict privacy contexts.
+        }
     }
 
     async init() {
@@ -431,17 +450,55 @@ class NewsApp {
     }
 
     repairDigestContent(value) {
-        return String(value || '')
+        return this.repairMojibake(
+            String(value || '')
             .replace(/\uFEFF/g, '')
             .replace(/\r\n?/g, '\n')
-            .trim();
+            .trim()
+        );
+    }
+
+    repairMojibake(value) {
+        let text = String(value || '');
+        const suspiciousPattern = /(?:Â|Ã.|â€|â€™|â€œ|â€�|â€”|â€“|â€¦|ðŸ)/;
+        if (!suspiciousPattern.test(text)) {
+            return text;
+        }
+
+        try {
+            const decoded = decodeURIComponent(escape(text));
+            if (this.getMojibakeScore(decoded) < this.getMojibakeScore(text)) {
+                text = decoded;
+            }
+        } catch (_error) {
+            // Fall back to the manual replacements below.
+        }
+
+        return text
+            .replace(/Â /g, ' ')
+            .replace(/Â/g, '')
+            .replace(/â€™/g, "'")
+            .replace(/â€˜/g, "'")
+            .replace(/â€œ/g, '"')
+            .replace(/â€�/g, '"')
+            .replace(/â€”/g, '—')
+            .replace(/â€“/g, '–')
+            .replace(/â€¦/g, '...')
+            .replace(/â€¢/g, '•')
+            .replace(/ðŸŽ¨/g, '🎨')
+            .replace(/ðŸŽ›ï¸/g, '🎛️')
+            .replace(/ðŸŽ™ï¸/g, '🎙️')
+            .replace(/ðŸ”¥/g, '🔥');
+    }
+
+    getMojibakeScore(value) {
+        return (String(value || '').match(/(?:Â|Ã.|â€|â€™|â€œ|â€�|â€”|â€“|â€¦|ðŸ|�)/g) || []).length;
     }
 
     normalizeText(value) {
-        const text = String(value || '');
-        const decoder = document.createElement('textarea');
-        decoder.innerHTML = text;
-        return decoder.value
+        const text = this.repairMojibake(String(value || ''));
+        this.decoder.innerHTML = text;
+        return this.decoder.value
             .replace(/\u00a0/g, ' ')
             .replace(/\s+/g, ' ')
             .trim();
@@ -862,7 +919,7 @@ class NewsApp {
                 } else {
                     this.favorites.add(article.title);
                 }
-                localStorage.setItem('axyl-news-favorites', JSON.stringify(Array.from(this.favorites)));
+                this.saveStoredFavorites();
                 this.displayArticles();
             });
 

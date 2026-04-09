@@ -1,12 +1,14 @@
 # Axy Lusion Launch Readiness
 
-Last updated: 2026-04-08
+Last updated: 2026-04-09
 
 ## Ready Now
 
 - Structural validation is automated in `.github/workflows/validate-site.yml`.
+- Browser smoke tests now run in CI through `scripts/smoke-test-site.mjs`.
 - News digest indexing is automated locally via `scripts/update-news-digest-index.py` and validated in CI.
 - A single local refresh pipeline now exists at `scripts/refresh-site-data.ps1`.
+- Homepage showcase repointing is automated locally via `scripts/rebuild-homepage-gallery.py`.
 - The site now carries a dedicated favicon and a cleaner A-List navigation label.
 - The A-List has a machine-readable local snapshot path via `scripts/sync-a-list-benchmarks.py` and `data/a-list-benchmarks.json` once synced.
 
@@ -21,7 +23,7 @@ Last updated: 2026-04-08
 1. Download the published Midjourney images and upload them to Cloudflare R2.
 2. Run `python scripts/migrate-images.py` to rewrite website image URLs.
 3. Run `powershell -File scripts/refresh-site-data.ps1`.
-4. Smoke-test `index.html`, `gallery.html`, `news.html`, and `a-list.html`.
+4. Run `node scripts/smoke-test-site.mjs --base-url http://127.0.0.1:4173` against a local preview server.
 5. Deploy, confirm production rendering, then connect the custom domain.
 
 ## Phase 2 Follow-Up

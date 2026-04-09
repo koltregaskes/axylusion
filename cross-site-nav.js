@@ -1,5 +1,5 @@
 /**
- * Cross-site navigation bar — shared across all 5 websites.
+ * Cross-site navigation bar - shared across all 5 websites.
  * Injects a minimal footer bar linking to sibling sites.
  * Include this script on every page: <script src="/shared/cross-site-nav.js" defer></script>
  * Or inline it in each site's footer.
@@ -14,7 +14,7 @@
     { name: 'Photography', url: 'https://koltregaskesphotography.com', desc: 'Photo Portfolio' },
   ];
 
-  // Also match GitHub Pages URLs during development
+  // Also match GitHub Pages URLs during development.
   const GITHUB_MAP = {
     'koltregaskes.github.io/kols-korner': 'koltregaskes.com',
     'koltregaskes.github.io/axylusion': 'axylusion.com',
@@ -23,11 +23,12 @@
     'koltregaskes.github.io/kol-tregaskes-photography': 'koltregaskesphotography.com',
   };
 
-  const currentKey = CURRENT + window.location.pathname.split('/')[1];
+  const pathRoot = window.location.pathname.split('/')[1];
+  const currentKey = pathRoot ? `${CURRENT}/${pathRoot}` : CURRENT;
   const mappedDomain = GITHUB_MAP[currentKey] || CURRENT;
 
-  const siblings = SITES.filter(s => {
-    const domain = new URL(s.url).hostname;
+  const siblings = SITES.filter(site => {
+    const domain = new URL(site.url).hostname;
     return domain !== mappedDomain;
   });
 
@@ -48,10 +49,11 @@
     font-family: -apple-system, system-ui, sans-serif;
   `;
 
-  // Respect dark themes
-  if (document.documentElement.getAttribute('data-theme') === 'dark' ||
-      window.matchMedia('(prefers-color-scheme: dark)').matches ||
-      getComputedStyle(document.body).backgroundColor.match(/^rgb\((\d+)/)?.[1] < 50) {
+  if (
+    document.documentElement.getAttribute('data-theme') === 'dark' ||
+    window.matchMedia('(prefers-color-scheme: dark)').matches ||
+    getComputedStyle(document.body).backgroundColor.match(/^rgb\((\d+)/)?.[1] < 50
+  ) {
     bar.style.background = 'rgba(255,255,255,0.02)';
     bar.style.borderTopColor = 'rgba(255,255,255,0.08)';
   }
@@ -69,11 +71,14 @@
       transition: opacity 0.15s;
       white-space: nowrap;
     `;
-    link.addEventListener('mouseenter', () => link.style.opacity = '0.9');
-    link.addEventListener('mouseleave', () => link.style.opacity = '0.5');
+    link.addEventListener('mouseenter', () => {
+      link.style.opacity = '0.9';
+    });
+    link.addEventListener('mouseleave', () => {
+      link.style.opacity = '0.5';
+    });
     bar.appendChild(link);
   }
 
-  // Insert before </body>
   document.body.appendChild(bar);
 })();

@@ -26,5 +26,32 @@ jobs:
       - name: Verify digest manifest
         run: python scripts/update-news-digest-index.py --check
 
+      - name: Verify homepage gallery payload
+        run: python scripts/rebuild-homepage-gallery.py --check
+
       - name: Validate static site structure
         run: python scripts/validate-site.py
+
+  smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Playwright runtime
+        run: npm install --no-save playwright
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Start local preview server
+        run: python3 -m http.server 4173 >/tmp/axylusion-http.log 2>&1 &
+
+      - name: Run browser smoke tests
+        run: node scripts/smoke-test-site.mjs --base-url http://127.0.0.1:4173

@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login | Axy Lusion</title>
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="color-scheme" content="dark">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
         :root {
@@ -119,7 +122,8 @@
             position: fixed;
         }
     </style>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <div id="login-screen" class="login-shell">
@@ -129,6 +133,7 @@
         <div class="note">
             <h1>Before you log in</h1>
             <p>This admin area is ready for Decap CMS, but authentication still depends on Netlify Identity or GitHub OAuth being configured for the live site.</p>
+            <p>The current public site still ships static HTML, `news-digests`, and JSON snapshots, so edits made here are not yet a full live publishing workflow.</p>
         </div>
 
         <button class="login-button" type="button" onclick="openLogin()">Open Login</button>

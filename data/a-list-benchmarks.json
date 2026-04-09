@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-08T09:38:47.367835+00:00",
+  "generated_at": "2026-04-09T09:01:25.223601+00:00",
   "source_path": "W:\\Websites\\sites\\ai-resource-hub\\data\\pg-cache\\creative_benchmarks.json",
   "source_row_count": 33,
   "category_count": 7,
@@ -9,7 +9,7 @@
       "slug": "image_generation",
       "title": "Image Generation",
       "model_count": 5,
-      "updated_at": "2026-04-04T05:00:05.131Z",
+      "updated_at": "2026-04-08T05:00:06.291Z",
       "models": [
         {
           "model_name": "Midjourney v7",
@@ -23,7 +23,7 @@
           ],
           "meta_rank": 1,
           "meta_score": 90.0,
-          "updated_at": "2026-04-04T05:00:05.123Z",
+          "updated_at": "2026-04-08T05:00:06.283Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -45,7 +45,7 @@
           ],
           "meta_rank": 2,
           "meta_score": 85.0,
-          "updated_at": "2026-04-04T05:00:05.125Z",
+          "updated_at": "2026-04-08T05:00:06.285Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -67,7 +67,7 @@
           ],
           "meta_rank": 3,
           "meta_score": 84.0,
-          "updated_at": "2026-04-04T05:00:05.127Z",
+          "updated_at": "2026-04-08T05:00:06.287Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -90,7 +90,7 @@
           ],
           "meta_rank": 4,
           "meta_score": 83.0,
-          "updated_at": "2026-04-04T05:00:05.129Z",
+          "updated_at": "2026-04-08T05:00:06.289Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
@@ -124,7 +124,7 @@
           ],
           "meta_rank": 5,
           "meta_score": 80.0,
-          "updated_at": "2026-04-04T05:00:05.131Z",
+          "updated_at": "2026-04-08T05:00:06.291Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -140,7 +140,7 @@
       "slug": "image_editing",
       "title": "Image Editing",
       "model_count": 4,
-      "updated_at": "2026-04-04T05:00:05.094Z",
+      "updated_at": "2026-04-08T05:00:06.256Z",
       "models": [
         {
           "model_name": "Gemini 3 Pro Image",
@@ -154,7 +154,7 @@
           ],
           "meta_rank": 1,
           "meta_score": 89.0,
-          "updated_at": "2026-04-04T05:00:05.087Z",
+          "updated_at": "2026-04-08T05:00:06.250Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -177,7 +177,7 @@
           ],
           "meta_rank": 2,
           "meta_score": 88.0,
-          "updated_at": "2026-04-04T05:00:05.089Z",
+          "updated_at": "2026-04-08T05:00:06.252Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
@@ -205,7 +205,7 @@
           ],
           "meta_rank": 3,
           "meta_score": 82.0,
-          "updated_at": "2026-04-04T05:00:05.091Z",
+          "updated_at": "2026-04-08T05:00:06.255Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -227,7 +227,7 @@
           ],
           "meta_rank": 4,
           "meta_score": 78.0,
-          "updated_at": "2026-04-04T05:00:05.094Z",
+          "updated_at": "2026-04-08T05:00:06.256Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -243,7 +243,7 @@
       "slug": "video_generation",
       "title": "Video Generation",
       "model_count": 5,
-      "updated_at": "2026-04-04T05:00:05.142Z",
+      "updated_at": "2026-04-08T05:00:06.302Z",
       "models": [
         {
           "model_name": "Runway Gen-4.5",
@@ -257,7 +257,7 @@
           ],
           "meta_rank": 1,
           "meta_score": 91.0,
-          "updated_at": "2026-04-04T05:00:05.134Z",
+          "updated_at": "2026-04-08T05:00:06.293Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -279,7 +279,7 @@
           ],
           "meta_rank": 2,
           "meta_score": 88.0,
-          "updated_at": "2026-04-04T05:00:05.136Z",
+          "updated_at": "2026-04-08T05:00:06.296Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -302,7 +302,7 @@
           ],
           "meta_rank": 3,
           "meta_score": 86.0,
-          "updated_at": "2026-04-04T05:00:05.138Z",
+          "updated_at": "2026-04-08T05:00:06.298Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
@@ -330,7 +330,7 @@
           ],
           "meta_rank": 4,
           "meta_score": 86.0,
-          "updated_at": "2026-04-04T05:00:05.140Z",
+          "updated_at": "2026-04-08T05:00:06.300Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -352,7 +352,7 @@
           ],
           "meta_rank": 5,
           "meta_score": 85.0,
-          "updated_at": "2026-04-04T05:00:05.142Z",
+          "updated_at": "2026-04-08T05:00:06.302Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -368,7 +368,7 @@
       "slug": "music_generation",
       "title": "Music Generation",
       "model_count": 3,
-      "updated_at": "2026-04-04T05:00:05.102Z",
+      "updated_at": "2026-04-08T05:00:06.263Z",
       "models": [
         {
           "model_name": "Suno v4.5",
@@ -383,7 +383,7 @@
           ],
           "meta_rank": 1,
           "meta_score": 93.0,
-          "updated_at": "2026-04-04T05:00:05.097Z",
+          "updated_at": "2026-04-08T05:00:06.259Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -405,7 +405,7 @@
           ],
           "meta_rank": 2,
           "meta_score": 91.0,
-          "updated_at": "2026-04-04T05:00:05.099Z",
+          "updated_at": "2026-04-08T05:00:06.261Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -427,7 +427,7 @@
           ],
           "meta_rank": 3,
           "meta_score": 82.0,
-          "updated_at": "2026-04-04T05:00:05.102Z",
+          "updated_at": "2026-04-08T05:00:06.263Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -443,7 +443,7 @@
       "slug": "voice_tts",
       "title": "Voice & TTS",
       "model_count": 4,
-      "updated_at": "2026-04-04T05:00:05.121Z",
+      "updated_at": "2026-04-08T05:00:06.280Z",
       "models": [
         {
           "model_name": "ElevenLabs v3",
@@ -458,7 +458,7 @@
           ],
           "meta_rank": 1,
           "meta_score": 88.0,
-          "updated_at": "2026-04-04T05:00:05.114Z",
+          "updated_at": "2026-04-08T05:00:06.275Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
@@ -486,7 +486,7 @@
           ],
           "meta_rank": 2,
           "meta_score": 88.0,
-          "updated_at": "2026-04-04T05:00:05.117Z",
+          "updated_at": "2026-04-08T05:00:06.276Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -508,7 +508,7 @@
           ],
           "meta_rank": 3,
           "meta_score": 84.0,
-          "updated_at": "2026-04-04T05:00:05.119Z",
+          "updated_at": "2026-04-08T05:00:06.278Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -530,7 +530,7 @@
           ],
           "meta_rank": 4,
           "meta_score": 83.0,
-          "updated_at": "2026-04-04T05:00:05.121Z",
+          "updated_at": "2026-04-08T05:00:06.280Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -546,7 +546,7 @@
       "slug": "3d_generation",
       "title": "3D Generation",
       "model_count": 3,
-      "updated_at": "2026-04-04T05:00:05.150Z",
+      "updated_at": "2026-04-08T05:00:06.308Z",
       "models": [
         {
           "model_name": "Rodin AI",
@@ -561,7 +561,7 @@
           ],
           "meta_rank": 1,
           "meta_score": 90.0,
-          "updated_at": "2026-04-04T05:00:05.145Z",
+          "updated_at": "2026-04-08T05:00:06.304Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -583,7 +583,7 @@
           ],
           "meta_rank": 2,
           "meta_score": 87.0,
-          "updated_at": "2026-04-04T05:00:05.147Z",
+          "updated_at": "2026-04-08T05:00:06.306Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -605,7 +605,7 @@
           ],
           "meta_rank": 3,
           "meta_score": 85.0,
-          "updated_at": "2026-04-04T05:00:05.150Z",
+          "updated_at": "2026-04-08T05:00:06.308Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -621,7 +621,7 @@
       "slug": "upscaling",
       "title": "Upscaling",
       "model_count": 4,
-      "updated_at": "2026-04-04T05:00:05.112Z",
+      "updated_at": "2026-04-08T05:00:06.272Z",
       "models": [
         {
           "model_name": "Magnific AI",
@@ -636,7 +636,7 @@
           ],
           "meta_rank": 1,
           "meta_score": 94.0,
-          "updated_at": "2026-04-04T05:00:05.105Z",
+          "updated_at": "2026-04-08T05:00:06.265Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -658,7 +658,7 @@
           ],
           "meta_rank": 2,
           "meta_score": 90.0,
-          "updated_at": "2026-04-04T05:00:05.107Z",
+          "updated_at": "2026-04-08T05:00:06.267Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -680,7 +680,7 @@
           ],
           "meta_rank": 3,
           "meta_score": 85.0,
-          "updated_at": "2026-04-04T05:00:05.110Z",
+          "updated_at": "2026-04-08T05:00:06.270Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -702,7 +702,7 @@
           ],
           "meta_rank": 4,
           "meta_score": 75.0,
-          "updated_at": "2026-04-04T05:00:05.112Z",
+          "updated_at": "2026-04-08T05:00:06.272Z",
           "sources": [
             {
               "source_name": "Expert Review",

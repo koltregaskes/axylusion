@@ -1,4 +1,4 @@
-# Xillusion
+# Axy Lusion
 
 This repository contains the Axy Lusion creative portfolio site: a static website for AI artwork, music, video, news, blog posts, and creative tool coverage.
 
@@ -16,7 +16,9 @@ This repository contains the Axy Lusion creative portfolio site: a static websit
 - Static hosting friendly
 - Gallery/media data stored in `data/gallery.json`
 
-**Live Site:** [koltregaskes.github.io/axylusion](https://koltregaskes.github.io/axylusion)
+**Preview Path:** [koltregaskes.github.io/axylusion](https://koltregaskes.github.io/axylusion)
+
+**Intended Production Domain:** `https://axylusion.com`
 
 ## Local Preview
 
@@ -40,12 +42,17 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 - `admin/` - Decap CMS configuration and entry page
 - `content/` - editable markdown content
 - `news-digests/` - news source material used by the site
+- `scripts/refresh-site-data.ps1` - local refresh pipeline for homepage/news/A-List validation
+- `scripts/rebuild-homepage-gallery.py` - repoint homepage gallery items from `data/gallery.json`
+- `scripts/smoke-test-site.mjs` - browser smoke test for key public pages
+- `docs/CONTENT-FLOWS.md` - source-of-truth and refresh documentation
 
 ## Publishing Notes
 
 - The site is designed to be deployed as a static website.
 - If you use GitHub Pages or another static host, make sure the custom domain and DNS are configured there rather than in the source files.
 - Media uploads for the CMS are configured to land in `images/uploads/`.
+- The current public site is driven by static HTML, `news-digests`, and JSON payloads rather than automatic markdown-to-page rendering from `content/`.
 
 ## Links
 

@@ -26,12 +26,23 @@ ROOT_HTML_FILES = sorted(PROJECT_DIR.glob("*.html"))
 ADMIN_HTML_FILES = sorted((PROJECT_DIR / "admin").glob("*.html"))
 ALIST_HTML_FILES = sorted((PROJECT_DIR / "a-list").glob("*.html"))
 HTML_FILES = ROOT_HTML_FILES + ADMIN_HTML_FILES + ALIST_HTML_FILES
+PUBLIC_HTML_FILES = ROOT_HTML_FILES + ALIST_HTML_FILES
 NEWS_DIGESTS_DIR = PROJECT_DIR / "news-digests"
 INDEX_PATH = NEWS_DIGESTS_DIR / "index.json"
 ALIST_DATA_PATH = PROJECT_DIR / "data" / "a-list-benchmarks.json"
+HEAD_REQUIREMENT_PATTERNS = {
+    "icon": re.compile(r'rel=["\']icon["\']', re.IGNORECASE),
+    "manifest": re.compile(r'rel=["\']manifest["\']', re.IGNORECASE),
+}
 DIGEST_PATTERN = re.compile(
     r"(?:(\d{4})-(\d{2})-(\d{2})-digest|digest-(\d{4})-(\d{2})-(\d{2}))\.md$"
 )
+UUID_PATTERN = re.compile(
+    r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
+    re.IGNORECASE,
+)
+MOJIBAKE_PATTERN = re.compile(r"(?:Â|Ã.|â€|â€™|â€œ|â€�|â€”|â€“|â€¦|ðŸ)")
+INSECURE_HTTP_PATTERN = re.compile(r"http://(?!127\.0\.0\.1|localhost)[^\s)>\"]+", re.IGNORECASE)
 
 
 class RefParser(HTMLParser):
@@ -72,6 +83,11 @@ def load_alist_snapshot(path: Path) -> dict:
 
 def rel_path(path: Path) -> str:
     return str(path.relative_to(PROJECT_DIR)).replace("\\", "/")
+
+
+def extract_job_id(value: str) -> str:
+    match = UUID_PATTERN.search(value)
+    return match.group(1).lower() if match else ""
 
 
 def check_local_refs() -> list[str]:
@@ -152,6 +168,69 @@ def summarize_hosts(items: list[dict]) -> dict[str, int]:
     return counts
 
 
+def check_homepage_alignment(gallery_items: list[dict], homepage_items: list[dict]) -> list[str]:
+    issues: list[str] = []
+    gallery_ids = {
+        str(item.get("id") or "").strip().lower()
+        for item in gallery_items
+        if str(item.get("id") or "").strip()
+    }
+
+    for index, item in enumerate(homepage_items, start=1):
+        item_id = str(item.get("id") or "").strip().lower()
+        if not item_id:
+            item_id = extract_job_id(str(item.get("cdn_url") or ""))
+
+        if not item_id:
+            issues.append(f"Homepage item #{index} has no stable item ID or parseable media URL.")
+            continue
+
+        if item_id not in gallery_ids:
+            name = str(item.get("name") or item_id).strip()
+            issues.append(f"Homepage item is not present in data/gallery.json: {name}")
+
+    return issues
+
+
+def check_public_head_requirements() -> list[str]:
+    issues: list[str] = []
+    for html_path in PUBLIC_HTML_FILES:
+        contents = html_path.read_text(encoding="utf-8", errors="ignore")
+        for label, pattern in HEAD_REQUIREMENT_PATTERNS.items():
+            if not pattern.search(contents):
+                issues.append(f"Missing {label} tag in {rel_path(html_path)}")
+    return issues
+
+
+def check_support_files() -> list[str]:
+    required_paths = [
+        PROJECT_DIR / ".nojekyll",
+        PROJECT_DIR / "_headers",
+        PROJECT_DIR / "site.webmanifest",
+        PROJECT_DIR / "favicon.svg",
+    ]
+    issues: list[str] = []
+    for path in required_paths:
+        if not path.exists():
+            issues.append(f"Missing required support file: {rel_path(path)}")
+    return issues
+
+
+def check_digest_hygiene() -> list[str]:
+    warnings: list[str] = []
+    digest_paths = sorted(path for path in NEWS_DIGESTS_DIR.glob("*.md") if DIGEST_PATTERN.match(path.name))
+    for digest_path in digest_paths:
+        content = digest_path.read_text(encoding="utf-8", errors="ignore")
+        if MOJIBAKE_PATTERN.search(content):
+            warnings.append(f"Digest contains likely mojibake and should be reviewed: {rel_path(digest_path)}")
+
+        insecure_matches = sorted(set(INSECURE_HTTP_PATTERN.findall(content)))
+        for match in insecure_matches[:3]:
+            warnings.append(f"Insecure http:// link found in {rel_path(digest_path)}: {match}")
+
+    return warnings
+
+
 def main() -> int:
     failures: list[str] = []
     warnings: list[str] = []
@@ -187,6 +266,10 @@ def main() -> int:
 
     failures.extend(check_local_refs())
     failures.extend(check_digest_manifest())
+    failures.extend(check_homepage_alignment(gallery_items, homepage_items))
+    failures.extend(check_public_head_requirements())
+    failures.extend(check_support_files())
+    warnings.extend(check_digest_hygiene())
 
     gallery_hosts = summarize_hosts(gallery_items)
     homepage_hosts = summarize_hosts(homepage_items)
