@@ -572,6 +572,12 @@ def main() -> int:
         print(f"A-List benchmark snapshot is current: {args.output}")
         return 0
 
+    if args.output.exists():
+        existing_payload = json.loads(existing)
+        if comparable_payload(existing_payload) == comparable_payload(payload):
+            print(f"No benchmark changes detected: {args.output}")
+            return 0
+
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(rendered, encoding="utf-8")
     print(f"Wrote {args.output}")

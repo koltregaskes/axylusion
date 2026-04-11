@@ -34,6 +34,7 @@ Last updated: 2026-04-11
 - `Websites-AxyLusion-Refresh-Evening` runs daily at `19:20`.
   It runs the lighter evening path: homepage payload, news digest index, then validation.
 - Both tasks are registered through `W:\Websites\schedules\jobs.psd1` and execute through `W:\Websites\schedules\monitoring\Run-Logged.ps1`, so runs land in shared `cron_job_history`.
+- Shared watchdog coverage also exists in `W:\Websites\schedules\monitoring\Check-Freshness.ps1`, which now alerts if either Axy scheduled refresh stops landing in `cron_job_history`.
 - These tasks intentionally do not duplicate upstream jobs:
   - `LLATOS Website News Cycle`
   - `AI Resource Hub - Daily Update`

@@ -13,6 +13,8 @@
   - evening mode runs the lighter news-facing refresh path
 - `scripts/refresh-site-data.ps1`
   - now supports `-SkipAList`
+- `scripts/sync-a-list-benchmarks.py`
+  - now skips no-op rewrites when the shared benchmark content has not changed, so scheduled refreshes do not dirty the repo just by updating `generated_at`
 - `W:\Websites\schedules\jobs.psd1`
   - added `Websites-AxyLusion-Refresh-Morning`
   - added `Websites-AxyLusion-Refresh-Evening`
@@ -44,6 +46,7 @@
   - runs land in `cron_job_history` with schedule names
     - `Websites-AxyLusion-Refresh-Morning`
     - `Websites-AxyLusion-Refresh-Evening`
+  - `W:\Websites\schedules\monitoring\Check-Freshness.ps1` now also watches those schedule names for missed-run freshness alerts
 
 ## Risk
 
