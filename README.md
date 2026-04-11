@@ -43,6 +43,7 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 - `content/` - editable markdown content
 - `news-digests/` - news source material used by the site
 - `scripts/refresh-site-data.ps1` - local refresh pipeline for homepage/news/A-List validation
+- `scripts/run-scheduled-refresh.ps1` - scheduled entrypoint for morning full refresh and evening news-only refresh
 - `scripts/run-smoke-test.ps1` - local browser smoke-test wrapper for the public pages
 - `scripts/rebuild-homepage-gallery.py` - repoint homepage gallery items from `data/gallery.json`
 - `scripts/smoke-test-site.mjs` - browser smoke test for key public pages
@@ -54,6 +55,9 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 - If you use GitHub Pages or another static host, make sure the custom domain and DNS are configured there rather than in the source files.
 - Media uploads for the CMS are configured to land in `images/uploads/`.
 - The current public site is driven by static HTML, `news-digests`, and JSON payloads rather than automatic markdown-to-page rendering from `content/`.
+- Local unattended refresh is now registered through the central website scheduler:
+  - `Websites-AxyLusion-Refresh-Morning` at `07:20`
+  - `Websites-AxyLusion-Refresh-Evening` at `19:20`
 
 ## Links
 

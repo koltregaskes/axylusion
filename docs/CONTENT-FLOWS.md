@@ -19,11 +19,24 @@ Last updated: 2026-04-11
 - A-List snapshot refresh from AI Resource Hub: `python scripts/sync-a-list-benchmarks.py`
 - A-List page render from the synced snapshot: `python scripts/render-a-list.py`
 - Combined local refresh pipeline: `powershell -File scripts/refresh-site-data.ps1`
+- Combined local refresh pipeline without A-List sync/render: `powershell -File scripts/refresh-site-data.ps1 -SkipAList`
 - Combined local refresh plus browser verification: `powershell -File scripts/refresh-site-data.ps1 -RunSmokeTest`
 - Structural validation: `python scripts/validate-site.py`
   This now includes A-List drift checks for both the synced snapshot and the rendered public pages.
 - Browser smoke test wrapper: `powershell -File scripts/run-smoke-test.ps1`
 - Browser smoke test after serving the repo locally: `node scripts/smoke-test-site.mjs --base-url http://127.0.0.1:4173`
+- Scheduled refresh wrapper: `powershell -File scripts/run-scheduled-refresh.ps1 -Mode Morning|Evening`
+
+## Scheduled Ops
+
+- `Websites-AxyLusion-Refresh-Morning` runs daily at `07:20`.
+  It runs the full refresh path: homepage payload, news digest index, A-List sync/render, then validation.
+- `Websites-AxyLusion-Refresh-Evening` runs daily at `19:20`.
+  It runs the lighter evening path: homepage payload, news digest index, then validation.
+- Both tasks are registered through `W:\Websites\schedules\jobs.psd1` and execute through `W:\Websites\schedules\monitoring\Run-Logged.ps1`, so runs land in shared `cron_job_history`.
+- These tasks intentionally do not duplicate upstream jobs:
+  - `LLATOS Website News Cycle`
+  - `AI Resource Hub - Daily Update`
 
 ## CMS Caveat
 

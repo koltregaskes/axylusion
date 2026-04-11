@@ -1,5 +1,6 @@
 param(
     [switch]$RunSmokeTest,
+    [switch]$SkipAList,
     [int]$Port = 4173
 )
 
@@ -9,23 +10,37 @@ $projectRoot = Split-Path -Parent $PSScriptRoot
 
 Push-Location $projectRoot
 try {
-    Write-Host "[1/5] Rebuilding homepage gallery payload..."
+    $step = 1
+    $totalSteps = if ($RunSmokeTest) {
+        if ($SkipAList) { 4 } else { 6 }
+    } else {
+        if ($SkipAList) { 3 } else { 5 }
+    }
+
+    Write-Host "[$step/$totalSteps] Rebuilding homepage gallery payload..."
     python scripts/rebuild-homepage-gallery.py
+    $step++
 
-    Write-Host "[2/5] Updating news digest index..."
+    Write-Host "[$step/$totalSteps] Updating news digest index..."
     python scripts/update-news-digest-index.py
+    $step++
 
-    Write-Host "[3/5] Syncing A-List benchmark snapshot..."
-    python scripts/sync-a-list-benchmarks.py
+    if (-not $SkipAList) {
+        Write-Host "[$step/$totalSteps] Syncing A-List benchmark snapshot..."
+        python scripts/sync-a-list-benchmarks.py
+        $step++
 
-    Write-Host "[4/5] Rendering A-List pages..."
-    python scripts/render-a-list.py
+        Write-Host "[$step/$totalSteps] Rendering A-List pages..."
+        python scripts/render-a-list.py
+        $step++
+    }
 
-    Write-Host "[5/5] Validating site..."
+    Write-Host "[$step/$totalSteps] Validating site..."
     python scripts/validate-site.py
+    $step++
 
     if ($RunSmokeTest) {
-        Write-Host "[6/6] Running browser smoke tests..."
+        Write-Host "[$step/$totalSteps] Running browser smoke tests..."
         powershell -ExecutionPolicy Bypass -File scripts/run-smoke-test.ps1 -Port $Port
     }
 }
