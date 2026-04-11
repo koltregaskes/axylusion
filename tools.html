@@ -47,26 +47,25 @@
     <section class="page-header">
         <div class="page-header-content">
             <h1 class="page-title stagger-load delay-1">AI Creative Tools</h1>
-            <p class="page-subtitle stagger-load delay-2">Everything we use and recommend across image, video, music, research, and productivity</p>
+            <p class="page-subtitle stagger-load delay-2">The creative stack behind Axy Lusion, plus a smaller support layer for research and workflow.</p>
         </div>
     </section>
 
     <!-- Category nav -->
-    <nav class="alist-category-nav">
-        <a href="#image-gen" class="alist-nav-link">Image Gen</a>
-        <a href="#video" class="alist-nav-link">Video</a>
-        <a href="#music-audio" class="alist-nav-link">Music &amp; Audio</a>
-        <a href="#chatbots" class="alist-nav-link">Chatbots</a>
-        <a href="#research" class="alist-nav-link">Research</a>
-        <a href="#editing" class="alist-nav-link">Editing</a>
-        <a href="#productivity" class="alist-nav-link">Productivity</a>
-        <a href="#3d" class="alist-nav-link">3D</a>
+    <nav class="alist-category-nav tools-filter-nav" aria-label="Tool filters">
+        <a href="#" class="alist-nav-link tool-filter-link active" data-filter="all">Show all</a>
+        <a href="#image-gen" class="alist-nav-link tool-filter-link" data-filter="image-gen">Image Gen</a>
+        <a href="#video" class="alist-nav-link tool-filter-link" data-filter="video">Video</a>
+        <a href="#music-audio" class="alist-nav-link tool-filter-link" data-filter="music-audio">Music</a>
+        <a href="#editing" class="alist-nav-link tool-filter-link" data-filter="editing">Editing</a>
+        <a href="#3d" class="alist-nav-link tool-filter-link" data-filter="3d">3D</a>
+        <a href="#shared" class="alist-nav-link tool-filter-link" data-filter="shared">Shared</a>
     </nav>
 
     <main class="tools-directory">
 
         <!-- ===== IMAGE GENERATION ===== -->
-        <section class="tools-category" id="image-gen">
+        <section class="tools-category" id="image-gen" data-filter="image-gen">
             <h2>Image Generation</h2>
             <p class="tools-category-desc">Text-to-image and image-to-image tools for creating artwork, illustrations, and photorealistic imagery.</p>
             <div class="tools-grid">
@@ -124,7 +123,7 @@
         </section>
 
         <!-- ===== VIDEO GENERATION ===== -->
-        <section class="tools-category" id="video">
+        <section class="tools-category" id="video" data-filter="video">
             <h2>Video Generation</h2>
             <p class="tools-category-desc">AI tools for generating video from text prompts, still images, or existing footage.</p>
             <div class="tools-grid">
@@ -177,7 +176,7 @@
         </section>
 
         <!-- ===== MUSIC & AUDIO ===== -->
-        <section class="tools-category" id="music-audio">
+        <section class="tools-category" id="music-audio" data-filter="music-audio">
             <h2>Music &amp; Audio</h2>
             <p class="tools-category-desc">AI music creation, voice synthesis, and audio production tools.</p>
             <div class="tools-grid">
@@ -209,8 +208,14 @@
             </div>
         </section>
 
+        <section class="tools-support-intro" id="support-stack">
+            <span class="tools-support-label">Support layer</span>
+            <h2>Research, writing, and workflow tools</h2>
+            <p>Useful across the wider website system, but not the front-line creative stack for images, video, music, and editing.</p>
+        </section>
+
         <!-- ===== CHATBOTS & ASSISTANTS ===== -->
-        <section class="tools-category" id="chatbots">
+        <section class="tools-category tools-category-support" id="chatbots" data-filter="support" data-support="true">
             <h2>AI Chatbots &amp; Assistants</h2>
             <p class="tools-category-desc">General-purpose AI assistants for conversation, writing, coding, and reasoning.</p>
             <div class="tools-grid">
@@ -251,7 +256,7 @@
         </section>
 
         <!-- ===== RESEARCH & LEARNING ===== -->
-        <section class="tools-category" id="research">
+        <section class="tools-category tools-category-support" id="research" data-filter="support" data-support="true">
             <h2>Research &amp; Learning</h2>
             <p class="tools-category-desc">Tools for deep research, document analysis, and learning new topics.</p>
             <div class="tools-grid">
@@ -284,7 +289,7 @@
         </section>
 
         <!-- ===== EDITING & ENHANCEMENT ===== -->
-        <section class="tools-category" id="editing">
+        <section class="tools-category" id="editing" data-filter="editing">
             <h2>Editing &amp; Enhancement</h2>
             <p class="tools-category-desc">Upscaling, inpainting, style transfer, and image enhancement tools.</p>
             <div class="tools-grid">
@@ -317,7 +322,7 @@
         </section>
 
         <!-- ===== PRODUCTIVITY ===== -->
-        <section class="tools-category" id="productivity">
+        <section class="tools-category tools-category-support" id="productivity" data-filter="support" data-support="true">
             <h2>Productivity &amp; Creation</h2>
             <p class="tools-category-desc">AI-enhanced tools for presentations, documents, design, and workflow automation.</p>
             <div class="tools-grid">
@@ -355,7 +360,7 @@
         </section>
 
         <!-- ===== 3D ===== -->
-        <section class="tools-category" id="3d">
+        <section class="tools-category" id="3d" data-filter="3d">
             <h2>3D &amp; Spatial</h2>
             <p class="tools-category-desc">AI 3D model generation from text or images.</p>
             <div class="tools-grid">
@@ -381,9 +386,9 @@
         </section>
 
         <!-- Cross-site tools -->
-        <section class="tools-category" id="shared">
-            <h2>Shared Utilities</h2>
-            <p class="tools-category-desc">Tools available across the wider Axy Lusion website system via the AI Resource Hub.</p>
+        <section class="tools-category" id="shared" data-filter="shared">
+            <h2>Helpful Extras</h2>
+            <p class="tools-category-desc">Useful tools from the wider Axy Lusion website system via the AI Resource Hub.</p>
             <div class="tools-grid">
                 <a href="https://koltregaskes.github.io/ai-resource-hub/calculator/" target="_blank" rel="noopener noreferrer" class="tool-card">
                     <strong>API Pricing Calculator</strong>
@@ -433,9 +438,47 @@
 
     <style>
         .tools-directory { max-width: var(--content-max, 1100px); margin: 0 auto; padding: 0 var(--pad-x, 24px) 60px; }
-        .tools-category { margin-bottom: 48px; }
+        .tools-category { margin-bottom: 48px; scroll-margin-top: 140px; }
         .tools-category h2 { font-size: 22px; font-weight: 700; color: var(--text-primary, #f5f5f5); margin-bottom: 6px; }
         .tools-category-desc { font-size: 14px; color: var(--text-secondary, #9ca3af); margin-bottom: 20px; max-width: 600px; }
+        .tools-filter-nav { max-width: 980px; }
+        .tool-filter-link.active {
+            border-color: var(--accent, #c4851a);
+            color: var(--accent, #c4851a);
+            background: rgba(196, 133, 26, 0.12);
+        }
+        .tools-category.is-hidden,
+        .tools-support-intro[hidden] {
+            display: none;
+        }
+        .tools-support-intro {
+            margin: 0 0 40px;
+            padding: 24px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(180deg, rgba(18,18,18,0.95) 0%, rgba(12,12,12,0.92) 100%);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.24);
+        }
+        .tools-support-label {
+            display: inline-block;
+            margin-bottom: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent, #c4851a);
+        }
+        .tools-support-intro h2 {
+            font-size: 24px;
+            color: var(--text-primary, #f5f5f5);
+            margin-bottom: 8px;
+        }
+        .tools-support-intro p {
+            max-width: 700px;
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary, #9ca3af);
+        }
 
         .tools-grid {
             display: grid;
@@ -520,6 +563,57 @@
             .tools-grid { grid-template-columns: 1fr; }
         }
     </style>
+    <script>
+        (function () {
+            const header = document.getElementById('header');
+            const filterLinks = Array.from(document.querySelectorAll('.tool-filter-link'));
+            const filterableSections = Array.from(document.querySelectorAll('.tools-category[data-filter]'));
+            const supportIntro = document.querySelector('.tools-support-intro');
+
+            function applyFilter(filter, options = {}) {
+                const { scroll = true } = options;
+
+                filterLinks.forEach((link) => {
+                    link.classList.toggle('active', link.dataset.filter === filter);
+                });
+
+                filterableSections.forEach((section) => {
+                    const matches = filter === 'all' || section.dataset.filter === filter;
+                    section.classList.toggle('is-hidden', !matches);
+                });
+
+                if (supportIntro) {
+                    supportIntro.hidden = filter !== 'all';
+                }
+
+                if (!scroll) return;
+
+                const target = filter === 'all'
+                    ? document.querySelector('.tools-directory')
+                    : document.querySelector(`.tools-category[data-filter="${filter}"]`);
+
+                if (!target) return;
+
+                const headerHeight = Math.max(header?.offsetHeight || 0, 72);
+                const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 18;
+                window.scrollTo({ top: targetTop, behavior: 'smooth' });
+            }
+
+            filterLinks.forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const filter = link.dataset.filter || 'all';
+                    applyFilter(filter);
+                    const nextHash = filter === 'all' ? '' : `#${filter}`;
+                    window.history.replaceState({}, '', `${window.location.pathname}${nextHash}`);
+                });
+            });
+
+            const initialFilter = window.location.hash.replace('#', '');
+            const validInitialFilter = filterLinks.some((link) => link.dataset.filter === initialFilter) ? initialFilter : 'all';
+            applyFilter(validInitialFilter, { scroll: false });
+        })();
+    </script>
 <script src="cross-site-nav.js" defer></script>
 </body>
 </html>

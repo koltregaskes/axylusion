@@ -5,7 +5,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: "15 6 * * *"
+    - cron: "15 6,18 * * *"
 
 permissions:
   contents: read
@@ -52,6 +52,9 @@ jobs:
 
       - name: Start local preview server
         run: python3 -m http.server 4173 >/tmp/axylusion-http.log 2>&1 &
+
+      - name: Wait for preview server
+        run: sleep 2
 
       - name: Run browser smoke tests
         run: node scripts/smoke-test-site.mjs --base-url http://127.0.0.1:4173

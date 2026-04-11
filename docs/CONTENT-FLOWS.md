@@ -1,13 +1,15 @@
 # Axy Lusion Content Flows
 
-Last updated: 2026-04-09
+Last updated: 2026-04-11
 
 ## Public Sources Of Truth
 
 - Gallery pages read from `data/gallery.json`, with `gallery.js` carrying the embedded fallback copy for offline use.
 - Homepage hero and showcase panels read from `data/homepage-gallery.json`.
 - News reads from `news-digests/*.md` plus `news-digests/index.json`.
-- The A-List currently serves static HTML pages backed by the local snapshot in `data/a-list-benchmarks.json`.
+- The A-List serves static HTML pages generated from `data/a-list-benchmarks.json`.
+- `data/a-list-benchmarks.json` is presentation data only: it is synced from the shared AI Resource Hub cache at `W:\Websites\sites\ai-resource-hub\data\pg-cache\creative_benchmarks.json`.
+- Shared benchmark acquisition belongs in `W:\Websites\sites\ai-resource-hub\scripts\scrapers\creative-benchmarks.ts`, not in Axy Lusion.
 
 ## Refresh Commands
 
@@ -15,8 +17,12 @@ Last updated: 2026-04-09
 - Homepage payload rebuild from the gallery export: `python scripts/rebuild-homepage-gallery.py`
 - News digest manifest refresh: `python scripts/update-news-digest-index.py`
 - A-List snapshot refresh from AI Resource Hub: `python scripts/sync-a-list-benchmarks.py`
+- A-List page render from the synced snapshot: `python scripts/render-a-list.py`
 - Combined local refresh pipeline: `powershell -File scripts/refresh-site-data.ps1`
+- Combined local refresh plus browser verification: `powershell -File scripts/refresh-site-data.ps1 -RunSmokeTest`
 - Structural validation: `python scripts/validate-site.py`
+  This now includes A-List drift checks for both the synced snapshot and the rendered public pages.
+- Browser smoke test wrapper: `powershell -File scripts/run-smoke-test.ps1`
 - Browser smoke test after serving the repo locally: `node scripts/smoke-test-site.mjs --base-url http://127.0.0.1:4173`
 
 ## CMS Caveat

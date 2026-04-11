@@ -1,35 +1,89 @@
 {
-  "generated_at": "2026-04-09T09:01:25.223601+00:00",
+  "generated_at": "2026-04-11T17:46:55.072157+00:00",
   "source_path": "W:\\Websites\\sites\\ai-resource-hub\\data\\pg-cache\\creative_benchmarks.json",
   "source_row_count": 33,
   "category_count": 7,
   "model_count": 28,
+  "methodology_note": "This snapshot blends public benchmark signals where we can verify them and editorial studio scoring where public coverage is sparse. Coverage is shown per model so the page stays honest about what is benchmark-led versus curated.",
   "categories": [
     {
       "slug": "image_generation",
       "title": "Image Generation",
       "model_count": 5,
-      "updated_at": "2026-04-08T05:00:06.291Z",
+      "updated_at": "2026-04-10T05:00:02.949Z",
+      "note": "Public arenas reward instruction following and pairwise preference voting. Web-only tools like Midjourney are still shown, but limited benchmark coverage reduces their composite score.",
+      "weights": {
+        "Artificial Analysis": 60,
+        "LM Arena": 15,
+        "Expert Review": 25
+      },
       "models": [
+        {
+          "model_name": "GPT Image 1.5",
+          "model_maker": "OpenAI",
+          "model_url": "https://openai.com/chatgpt",
+          "pricing_note": "ChatGPT Plus $20/mo",
+          "considerations": "Requires ChatGPT Pro for best quality. Rate limited.",
+          "status_note": "",
+          "strengths": [
+            "Overall quality leader",
+            "Text rendering",
+            "Complex compositions"
+          ],
+          "meta_rank": 1,
+          "meta_score": 98.0,
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-04-10T05:00:02.947Z",
+          "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "",
+              "raw_score": 1268.0,
+              "score_type": "elo",
+              "normalized_score": 100.0
+            },
+            {
+              "source_name": "LM Arena",
+              "source_url": "",
+              "raw_score": 1264.0,
+              "score_type": "elo",
+              "normalized_score": 100.0
+            },
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 92.0,
+              "score_type": "score_100",
+              "normalized_score": 92.0
+            }
+          ]
+        },
         {
           "model_name": "Midjourney v7",
           "model_maker": "Midjourney",
           "model_url": "https://www.midjourney.com",
           "pricing_note": "From $10/mo",
           "considerations": "Discord or web UI only. No API.",
+          "status_note": "",
           "strengths": [
             "Artistic quality",
             "Cinematic look"
           ],
-          "meta_rank": 1,
-          "meta_score": 90.0,
-          "updated_at": "2026-04-08T05:00:06.283Z",
+          "meta_rank": 2,
+          "meta_score": 52.88,
+          "coverage_weight": 25.0,
+          "coverage_percent": 25.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.942Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 90.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 90.0
             }
           ]
         },
@@ -39,76 +93,51 @@
           "model_url": "https://blackforestlabs.ai",
           "pricing_note": "Open source / API",
           "considerations": "Requires technical setup for local use.",
+          "status_note": "",
           "strengths": [
             "Photorealism",
             "Open-source"
           ],
-          "meta_rank": 2,
-          "meta_score": 85.0,
-          "updated_at": "2026-04-08T05:00:06.285Z",
+          "meta_rank": 3,
+          "meta_score": 49.94,
+          "coverage_weight": 25.0,
+          "coverage_percent": 25.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.944Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 85.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 85.0
             }
           ]
         },
         {
-          "model_name": "Gemini 3 Pro Image",
+          "model_name": "Nano Banana Pro",
           "model_maker": "Google",
-          "model_url": "https://deepmind.google",
+          "model_url": "https://deepmind.google/technologies/gemini/",
           "pricing_note": "Free via Gemini",
           "considerations": "Quality varies by prompt style.",
+          "status_note": "",
           "strengths": [
             "Speed",
             "Free tier"
           ],
-          "meta_rank": 3,
-          "meta_score": 84.0,
-          "updated_at": "2026-04-08T05:00:06.287Z",
+          "meta_rank": 4,
+          "meta_score": 49.35,
+          "coverage_weight": 25.0,
+          "coverage_percent": 25.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.945Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 84.0,
-              "score_type": "score_100"
-            }
-          ]
-        },
-        {
-          "model_name": "GPT Image 1.5",
-          "model_maker": "OpenAI",
-          "model_url": "https://openai.com",
-          "pricing_note": "ChatGPT Plus $20/mo",
-          "considerations": "Requires ChatGPT Pro for best quality. Rate limited.",
-          "strengths": [
-            "Overall quality leader",
-            "Text rendering",
-            "Complex compositions"
-          ],
-          "meta_rank": 4,
-          "meta_score": 83.0,
-          "updated_at": "2026-04-08T05:00:06.289Z",
-          "sources": [
-            {
-              "source_name": "Artificial Analysis",
-              "source_url": "",
-              "raw_score": 1268.0,
-              "score_type": "elo"
-            },
-            {
-              "source_name": "LM Arena",
-              "source_url": "",
-              "raw_score": 1264.0,
-              "score_type": "elo"
-            },
-            {
-              "source_name": "Expert Review",
-              "source_url": "",
-              "raw_score": 92.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 84.0
             }
           ]
         },
@@ -118,19 +147,24 @@
           "model_url": "https://www.reveimage.com",
           "pricing_note": "Pay per generation",
           "considerations": "New entrant, longevity uncertain.",
+          "status_note": "",
           "strengths": [
             "Surprise newcomer",
             "Competitive pricing"
           ],
           "meta_rank": 5,
-          "meta_score": 80.0,
-          "updated_at": "2026-04-08T05:00:06.291Z",
+          "meta_score": 47.0,
+          "coverage_weight": 25.0,
+          "coverage_percent": 25.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.949Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 80.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 80.0
             }
           ]
         }
@@ -140,56 +174,72 @@
       "slug": "image_editing",
       "title": "Image Editing",
       "model_count": 4,
-      "updated_at": "2026-04-08T05:00:06.256Z",
+      "updated_at": "2026-04-10T05:00:02.915Z",
+      "note": "This category is benchmark-led. Studio/editorial tools can still appear, but models without public arena coverage are marked as limited-signal picks.",
+      "weights": {
+        "Artificial Analysis": 70,
+        "Expert Review": 30
+      },
       "models": [
-        {
-          "model_name": "Gemini 3 Pro Image",
-          "model_maker": "Google",
-          "model_url": "https://deepmind.google",
-          "pricing_note": "Free via Gemini",
-          "considerations": "",
-          "strengths": [
-            "Fast editing",
-            "Instruction following"
-          ],
-          "meta_rank": 1,
-          "meta_score": 89.0,
-          "updated_at": "2026-04-08T05:00:06.250Z",
-          "sources": [
-            {
-              "source_name": "Expert Review",
-              "source_url": "",
-              "raw_score": 89.0,
-              "score_type": "score_100"
-            }
-          ]
-        },
         {
           "model_name": "GPT Image 1.5",
           "model_maker": "OpenAI",
-          "model_url": "https://openai.com",
+          "model_url": "https://openai.com/chatgpt",
           "pricing_note": "ChatGPT Plus $20/mo",
           "considerations": "Requires ChatGPT subscription.",
+          "status_note": "",
           "strengths": [
             "Natural language editing",
             "Inpainting",
             "Style transfer"
           ],
-          "meta_rank": 2,
-          "meta_score": 88.0,
-          "updated_at": "2026-04-08T05:00:06.252Z",
+          "meta_rank": 1,
+          "meta_score": 97.9,
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-04-10T05:00:02.903Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
               "source_url": "",
               "raw_score": 1270.0,
-              "score_type": "elo"
+              "score_type": "elo",
+              "normalized_score": 100.0
             },
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 93.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 93.0
+            }
+          ]
+        },
+        {
+          "model_name": "Nano Banana Pro",
+          "model_maker": "Google",
+          "model_url": "https://deepmind.google/technologies/gemini/",
+          "pricing_note": "Free via Gemini",
+          "considerations": "Often referred to publicly as Gemini 3 Pro Image or Nano Banana Pro.",
+          "status_note": "",
+          "strengths": [
+            "Fast editing",
+            "Instruction following"
+          ],
+          "meta_rank": 2,
+          "meta_score": 54.73,
+          "coverage_weight": 30.0,
+          "coverage_percent": 30.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.900Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 89.0,
+              "score_type": "score_100",
+              "normalized_score": 89.0
             }
           ]
         },
@@ -199,19 +249,24 @@
           "model_url": "https://www.midjourney.com",
           "pricing_note": "From $10/mo",
           "considerations": "",
+          "status_note": "",
           "strengths": [
             "MJ workflow",
             "Retexture & repaint"
           ],
           "meta_rank": 3,
-          "meta_score": 82.0,
-          "updated_at": "2026-04-08T05:00:06.255Z",
+          "meta_score": 50.43,
+          "coverage_weight": 30.0,
+          "coverage_percent": 30.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.913Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 82.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 82.0
             }
           ]
         },
@@ -221,19 +276,24 @@
           "model_url": "https://www.adobe.com/products/firefly.html",
           "pricing_note": "Creative Cloud",
           "considerations": "",
+          "status_note": "",
           "strengths": [
             "Photoshop integration",
             "Commercially safe"
           ],
           "meta_rank": 4,
-          "meta_score": 78.0,
-          "updated_at": "2026-04-08T05:00:06.256Z",
+          "meta_score": 47.97,
+          "coverage_weight": 30.0,
+          "coverage_percent": 30.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.915Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 78.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 78.0
             }
           ]
         }
@@ -243,78 +303,99 @@
       "slug": "video_generation",
       "title": "Video Generation",
       "model_count": 5,
-      "updated_at": "2026-04-08T05:00:06.302Z",
+      "updated_at": "2026-04-10T05:00:02.958Z",
+      "note": "Video rankings still blend public arena results with studio judgement because provider access and feature sets move faster than stable public comparisons.",
+      "weights": {
+        "Artificial Analysis": 70,
+        "Expert Review": 30
+      },
       "models": [
-        {
-          "model_name": "Runway Gen-4.5",
-          "model_maker": "Runway",
-          "model_url": "https://runwayml.com",
-          "pricing_note": "Free tier / $15/mo",
-          "considerations": "",
-          "strengths": [
-            "Cinematic quality",
-            "Motion control"
-          ],
-          "meta_rank": 1,
-          "meta_score": 91.0,
-          "updated_at": "2026-04-08T05:00:06.293Z",
-          "sources": [
-            {
-              "source_name": "Expert Review",
-              "source_url": "",
-              "raw_score": 91.0,
-              "score_type": "score_100"
-            }
-          ]
-        },
-        {
-          "model_name": "Seedance 2.0",
-          "model_maker": "ByteDance",
-          "model_url": "https://seedance.ai",
-          "pricing_note": "Credits",
-          "considerations": "",
-          "strengths": [
-            "Best audio-visual sync",
-            "Motion speciality"
-          ],
-          "meta_rank": 2,
-          "meta_score": 88.0,
-          "updated_at": "2026-04-08T05:00:06.296Z",
-          "sources": [
-            {
-              "source_name": "Expert Review",
-              "source_url": "",
-              "raw_score": 88.0,
-              "score_type": "score_100"
-            }
-          ]
-        },
         {
           "model_name": "Kling 3.0",
           "model_maker": "Kuaishou",
           "model_url": "https://klingai.com",
           "pricing_note": "Free tier / credits",
           "considerations": "Chinese platform.",
+          "status_note": "",
           "strengths": [
             "Up to 2 min duration",
             "4K 60fps",
             "Best value (~$0.50/10s)"
           ],
-          "meta_rank": 3,
-          "meta_score": 86.0,
-          "updated_at": "2026-04-08T05:00:06.298Z",
+          "meta_rank": 1,
+          "meta_score": 97.6,
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-04-10T05:00:02.954Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
               "source_url": "",
               "raw_score": 1245.0,
-              "score_type": "elo"
+              "score_type": "elo",
+              "normalized_score": 100.0
             },
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 92.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 92.0
+            }
+          ]
+        },
+        {
+          "model_name": "Runway Gen-4.5",
+          "model_maker": "Runway",
+          "model_url": "https://runwayml.com",
+          "pricing_note": "Free tier / $15/mo",
+          "considerations": "Credits can disappear quickly on heavier workflows.",
+          "status_note": "",
+          "strengths": [
+            "Cinematic quality",
+            "Motion control"
+          ],
+          "meta_rank": 2,
+          "meta_score": 55.96,
+          "coverage_weight": 30.0,
+          "coverage_percent": 30.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.951Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 91.0,
+              "score_type": "score_100",
+              "normalized_score": 91.0
+            }
+          ]
+        },
+        {
+          "model_name": "Seedance 2.0",
+          "model_maker": "ByteDance",
+          "model_url": "https://dreamina.capcut.com/",
+          "pricing_note": "Credits",
+          "considerations": "Naming and access vary by host platform.",
+          "status_note": "",
+          "strengths": [
+            "Best audio-visual sync",
+            "Motion speciality"
+          ],
+          "meta_rank": 3,
+          "meta_score": 54.12,
+          "coverage_weight": 30.0,
+          "coverage_percent": 30.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.953Z",
+          "sources": [
+            {
+              "source_name": "Expert Review",
+              "source_url": "",
+              "raw_score": 88.0,
+              "score_type": "score_100",
+              "normalized_score": 88.0
             }
           ]
         },
@@ -323,20 +404,25 @@
           "model_maker": "Google",
           "model_url": "https://deepmind.google/technologies/veo/",
           "pricing_note": "Via Google AI Studio",
-          "considerations": "",
+          "considerations": "Availability depends on Google surface and region.",
+          "status_note": "",
           "strengths": [
             "4K resolution",
             "Spatial audio"
           ],
           "meta_rank": 4,
-          "meta_score": 86.0,
-          "updated_at": "2026-04-08T05:00:06.300Z",
+          "meta_score": 52.89,
+          "coverage_weight": 30.0,
+          "coverage_percent": 30.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.956Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 86.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 86.0
             }
           ]
         },
@@ -345,20 +431,25 @@
           "model_maker": "OpenAI",
           "model_url": "https://openai.com/sora",
           "pricing_note": "ChatGPT Plus",
-          "considerations": "",
+          "considerations": "OpenAI says Sora access on the web and in ChatGPT ends on April 26, 2026; Sora API access continues until September 24, 2026. Consumer availability also varies by region and plan.",
+          "status_note": "",
           "strengths": [
             "Stunning narratives",
             "Up to 25s"
           ],
           "meta_rank": 5,
-          "meta_score": 85.0,
-          "updated_at": "2026-04-08T05:00:06.302Z",
+          "meta_score": 52.27,
+          "coverage_weight": 30.0,
+          "coverage_percent": 30.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.958Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 85.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 85.0
             }
           ]
         }
@@ -368,28 +459,38 @@
       "slug": "music_generation",
       "title": "Music Generation",
       "model_count": 3,
-      "updated_at": "2026-04-08T05:00:06.263Z",
+      "updated_at": "2026-04-10T05:00:02.922Z",
+      "note": "Public music leaderboards can lag behind provider version labels. For example, Suno has since announced v5.5, while benchmark pages still reference v4.5 and v5.",
+      "weights": {
+        "Artificial Analysis": 80,
+        "Expert Review": 20
+      },
       "models": [
         {
-          "model_name": "Suno v4.5",
+          "model_name": "Suno V4.5",
           "model_maker": "Suno",
           "model_url": "https://suno.com",
           "pricing_note": "Free tier / $10/mo Pro",
           "considerations": "Training data licensing in transition.",
+          "status_note": "",
           "strengths": [
             "Best for complete songs",
             "Fast generation",
             "User-friendly"
           ],
           "meta_rank": 1,
-          "meta_score": 93.0,
-          "updated_at": "2026-04-08T05:00:06.259Z",
+          "meta_score": 52.08,
+          "coverage_weight": 20.0,
+          "coverage_percent": 20.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.918Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 93.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 93.0
             }
           ]
         },
@@ -398,42 +499,52 @@
           "model_maker": "Udio",
           "model_url": "https://www.udio.com",
           "pricing_note": "Free tier / $10/mo",
-          "considerations": "",
+          "considerations": "Public arena coverage is still patchier than its creator reputation.",
+          "status_note": "",
           "strengths": [
             "Best vocal realism",
             "Stem downloads"
           ],
           "meta_rank": 2,
-          "meta_score": 91.0,
-          "updated_at": "2026-04-08T05:00:06.261Z",
+          "meta_score": 50.96,
+          "coverage_weight": 20.0,
+          "coverage_percent": 20.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.920Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 91.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 91.0
             }
           ]
         },
         {
           "model_name": "AIVA",
-          "model_maker": "AIVA Technologies",
+          "model_maker": "AIVA",
           "model_url": "https://www.aiva.ai",
           "pricing_note": "Free / $15/mo Pro",
-          "considerations": "",
+          "considerations": "Feels more niche than current mainstream AI song tools.",
+          "status_note": "",
           "strengths": [
             "Cinematic instrumental",
             "Full copyright"
           ],
           "meta_rank": 3,
-          "meta_score": 82.0,
-          "updated_at": "2026-04-08T05:00:06.263Z",
+          "meta_score": 45.92,
+          "coverage_weight": 20.0,
+          "coverage_percent": 20.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.922Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 82.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 82.0
             }
           ]
         }
@@ -443,7 +554,12 @@
       "slug": "voice_tts",
       "title": "Voice & TTS",
       "model_count": 4,
-      "updated_at": "2026-04-08T05:00:06.280Z",
+      "updated_at": "2026-04-10T05:00:02.939Z",
+      "note": "Voice rankings use public arena scores where available, then layer in studio judgement.",
+      "weights": {
+        "Artificial Analysis": 70,
+        "Expert Review": 30
+      },
       "models": [
         {
           "model_name": "ElevenLabs v3",
@@ -451,26 +567,32 @@
           "model_url": "https://elevenlabs.io",
           "pricing_note": "Free tier / $5/mo Starter",
           "considerations": "Premium pricing.",
+          "status_note": "",
           "strengths": [
             "Best realism & emotion",
             "380+ voices",
             "70+ languages"
           ],
           "meta_rank": 1,
-          "meta_score": 88.0,
-          "updated_at": "2026-04-08T05:00:06.275Z",
+          "meta_score": 98.5,
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-04-10T05:00:02.934Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
               "source_url": "",
               "raw_score": 1105.0,
-              "score_type": "elo"
+              "score_type": "elo",
+              "normalized_score": 100.0
             },
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 95.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 95.0
             }
           ]
         },
@@ -480,19 +602,24 @@
           "model_url": "https://inworld.ai",
           "pricing_note": "API pricing",
           "considerations": "",
+          "status_note": "",
           "strengths": [
             "Top arena ELO",
             "Sub-250ms latency"
           ],
           "meta_rank": 2,
-          "meta_score": 88.0,
-          "updated_at": "2026-04-08T05:00:06.276Z",
+          "meta_score": 54.12,
+          "coverage_weight": 30.0,
+          "coverage_percent": 30.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.936Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 88.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 88.0
             }
           ]
         },
@@ -502,19 +629,24 @@
           "model_url": "https://www.minimax.io",
           "pricing_note": "API pricing",
           "considerations": "",
+          "status_note": "",
           "strengths": [
             "Strong naturalness",
             "Competitive pricing"
           ],
           "meta_rank": 3,
-          "meta_score": 84.0,
-          "updated_at": "2026-04-08T05:00:06.278Z",
+          "meta_score": 51.66,
+          "coverage_weight": 30.0,
+          "coverage_percent": 30.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.938Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 84.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 84.0
             }
           ]
         },
@@ -524,19 +656,24 @@
           "model_url": "https://openai.com",
           "pricing_note": "API pricing",
           "considerations": "",
+          "status_note": "",
           "strengths": [
             "Simple API",
             "ChatGPT integration"
           ],
           "meta_rank": 4,
-          "meta_score": 83.0,
-          "updated_at": "2026-04-08T05:00:06.280Z",
+          "meta_score": 51.05,
+          "coverage_weight": 30.0,
+          "coverage_percent": 30.0,
+          "coverage_label": "Editorial signal",
+          "updated_at": "2026-04-10T05:00:02.939Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 83.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 83.0
             }
           ]
         }
@@ -546,7 +683,11 @@
       "slug": "3d_generation",
       "title": "3D Generation",
       "model_count": 3,
-      "updated_at": "2026-04-08T05:00:06.308Z",
+      "updated_at": "2026-04-10T05:00:02.964Z",
+      "note": "3D tools remain editorially ranked because public arena coverage is still thin.",
+      "weights": {
+        "Expert Review": 100
+      },
       "models": [
         {
           "model_name": "Rodin AI",
@@ -554,6 +695,7 @@
           "model_url": "https://hyper3d.ai",
           "pricing_note": "Credits-based",
           "considerations": "Slower generation.",
+          "status_note": "",
           "strengths": [
             "Highest quality output",
             "Photorealistic objects",
@@ -561,13 +703,17 @@
           ],
           "meta_rank": 1,
           "meta_score": 90.0,
-          "updated_at": "2026-04-08T05:00:06.304Z",
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-04-10T05:00:02.960Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 90.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 90.0
             }
           ]
         },
@@ -577,19 +723,24 @@
           "model_url": "https://www.meshy.ai",
           "pricing_note": "Free tier / $20/mo",
           "considerations": "",
+          "status_note": "",
           "strengths": [
             "Best texturing",
             "Blender/Unity plugins"
           ],
           "meta_rank": 2,
           "meta_score": 87.0,
-          "updated_at": "2026-04-08T05:00:06.306Z",
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-04-10T05:00:02.962Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 87.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 87.0
             }
           ]
         },
@@ -599,19 +750,24 @@
           "model_url": "https://www.tripo3d.ai",
           "pricing_note": "Free tier / Pro",
           "considerations": "",
+          "status_note": "",
           "strengths": [
             "Clean quad topology",
             "Game-ready"
           ],
           "meta_rank": 3,
           "meta_score": 85.0,
-          "updated_at": "2026-04-08T05:00:06.308Z",
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-04-10T05:00:02.964Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 85.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 85.0
             }
           ]
         }
@@ -621,7 +777,11 @@
       "slug": "upscaling",
       "title": "Upscaling",
       "model_count": 4,
-      "updated_at": "2026-04-08T05:00:06.272Z",
+      "updated_at": "2026-04-10T05:00:02.931Z",
+      "note": "Upscaling remains an editorial category focused on practical creative output.",
+      "weights": {
+        "Expert Review": 100
+      },
       "models": [
         {
           "model_name": "Magnific AI",
@@ -629,6 +789,7 @@
           "model_url": "https://magnific.ai",
           "pricing_note": "$39/mo",
           "considerations": "$39/mo, no free trial. Can over-hallucinate on photos.",
+          "status_note": "",
           "strengths": [
             "Creative upscaling king",
             "Up to 16x",
@@ -636,13 +797,17 @@
           ],
           "meta_rank": 1,
           "meta_score": 94.0,
-          "updated_at": "2026-04-08T05:00:06.265Z",
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-04-10T05:00:02.925Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 94.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 94.0
             }
           ]
         },
@@ -652,19 +817,24 @@
           "model_url": "https://www.topazlabs.com",
           "pricing_note": "$199 lifetime",
           "considerations": "",
+          "status_note": "",
           "strengths": [
             "Best for photography",
             "Faithful restoration"
           ],
           "meta_rank": 2,
           "meta_score": 90.0,
-          "updated_at": "2026-04-08T05:00:06.267Z",
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-04-10T05:00:02.928Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 90.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 90.0
             }
           ]
         },
@@ -674,19 +844,24 @@
           "model_url": "https://www.topazlabs.com/bloom",
           "pricing_note": "Subscription",
           "considerations": "",
+          "status_note": "",
           "strengths": [
             "Creative upscaling",
             "Unlimited renders"
           ],
           "meta_rank": 3,
           "meta_score": 85.0,
-          "updated_at": "2026-04-08T05:00:06.270Z",
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-04-10T05:00:02.930Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 85.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 85.0
             }
           ]
         },
@@ -696,19 +871,24 @@
           "model_url": "https://upscayl.org",
           "pricing_note": "Free",
           "considerations": "",
+          "status_note": "",
           "strengths": [
             "Free & open source",
             "Local processing"
           ],
           "meta_rank": 4,
           "meta_score": 75.0,
-          "updated_at": "2026-04-08T05:00:06.272Z",
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-04-10T05:00:02.931Z",
           "sources": [
             {
               "source_name": "Expert Review",
               "source_url": "",
               "raw_score": 75.0,
-              "score_type": "score_100"
+              "score_type": "score_100",
+              "normalized_score": 75.0
             }
           ]
         }

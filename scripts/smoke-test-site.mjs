@@ -1,7 +1,15 @@
 #!/usr/bin/env node
 
+import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
-import { chromium } from "playwright";
+
+const playwrightImportTarget = process.env.PLAYWRIGHT_MODULE_PATH
+  ? pathToFileURL(path.join(process.env.PLAYWRIGHT_MODULE_PATH, "playwright", "index.js")).href
+  : "playwright";
+
+const playwrightModule = await import(playwrightImportTarget);
+const chromium = playwrightModule.chromium ?? playwrightModule.default?.chromium;
 
 const { values } = parseArgs({
   options: {
@@ -19,10 +27,13 @@ const pageChecks = [
   { path: "/404.html", mode: "clean" },
   { path: "/about.html", mode: "clean" },
   { path: "/blog.html", mode: "clean" },
+  { path: "/blog-welcome.html", mode: "clean" },
+  { path: "/music.html", mode: "clean" },
   { path: "/news.html", mode: "clean" },
   { path: "/tools.html", mode: "clean" },
   { path: "/videos.html", mode: "clean" },
   { path: "/a-list.html", mode: "clean" },
+  { path: "/a-list/image-generation.html", mode: "clean" },
   { path: "/index.html", mode: "allow-hosts", allowedHosts: ["cdn.midjourney.com"] },
   { path: "/gallery.html", mode: "allow-hosts", allowedHosts: ["cdn.midjourney.com"] },
 ];

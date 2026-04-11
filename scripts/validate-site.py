@@ -6,6 +6,7 @@ Checks:
   - required JSON data files load and contain items
   - local href/src references resolve
   - digest manifest matches the files on disk
+  - A-List snapshot matches the shared cache and rendered pages match the snapshot
 
 Warnings:
   - gallery/homepage payloads still reference Midjourney CDN URLs
@@ -15,7 +16,9 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
+from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
@@ -30,6 +33,8 @@ PUBLIC_HTML_FILES = ROOT_HTML_FILES + ALIST_HTML_FILES
 NEWS_DIGESTS_DIR = PROJECT_DIR / "news-digests"
 INDEX_PATH = NEWS_DIGESTS_DIR / "index.json"
 ALIST_DATA_PATH = PROJECT_DIR / "data" / "a-list-benchmarks.json"
+ALIST_SYNC_SCRIPT = PROJECT_DIR / "scripts" / "sync-a-list-benchmarks.py"
+ALIST_RENDER_SCRIPT = PROJECT_DIR / "scripts" / "render-a-list.py"
 HEAD_REQUIREMENT_PATTERNS = {
     "icon": re.compile(r'rel=["\']icon["\']', re.IGNORECASE),
     "manifest": re.compile(r'rel=["\']manifest["\']', re.IGNORECASE),
@@ -79,6 +84,15 @@ def load_alist_snapshot(path: Path) -> dict:
         raise ValueError(f"{path} categories payload is not a list")
 
     return payload
+
+
+def parse_iso_datetime(value: str) -> datetime | None:
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
 
 
 def rel_path(path: Path) -> str:
@@ -231,6 +245,24 @@ def check_digest_hygiene() -> list[str]:
     return warnings
 
 
+def check_script_sync(script_path: Path, label: str) -> list[str]:
+    if not script_path.exists():
+        return [f"Missing validation script for {label}: {rel_path(script_path)}"]
+
+    result = subprocess.run(
+        [sys.executable, str(script_path), "--check"],
+        cwd=PROJECT_DIR,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode == 0:
+        return []
+
+    message = (result.stdout or result.stderr or "").strip().splitlines()
+    detail = message[-1] if message else "check failed"
+    return [f"{label} is out of date: {detail}"]
+
+
 def main() -> int:
     failures: list[str] = []
     warnings: list[str] = []
@@ -258,6 +290,15 @@ def main() -> int:
             alist_category_count = len(categories)
             if not categories:
                 failures.append("data/a-list-benchmarks.json has no categories.")
+            generated_at = parse_iso_datetime(str(alist_snapshot.get("generated_at") or ""))
+            if generated_at is None:
+                warnings.append("data/a-list-benchmarks.json is missing a valid generated_at timestamp.")
+            else:
+                age_hours = (datetime.now(timezone.utc) - generated_at.astimezone(timezone.utc)).total_seconds() / 3600
+                if age_hours > 48:
+                    warnings.append(
+                        f"A-List snapshot is older than 48 hours ({age_hours:.1f}h): {rel_path(ALIST_DATA_PATH)}"
+                    )
 
     if not gallery_items:
         failures.append("data/gallery.json has no items.")
@@ -269,6 +310,8 @@ def main() -> int:
     failures.extend(check_homepage_alignment(gallery_items, homepage_items))
     failures.extend(check_public_head_requirements())
     failures.extend(check_support_files())
+    failures.extend(check_script_sync(ALIST_SYNC_SCRIPT, "A-List snapshot"))
+    failures.extend(check_script_sync(ALIST_RENDER_SCRIPT, "A-List rendered pages"))
     warnings.extend(check_digest_hygiene())
 
     gallery_hosts = summarize_hosts(gallery_items)

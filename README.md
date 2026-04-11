@@ -43,6 +43,7 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 - `content/` - editable markdown content
 - `news-digests/` - news source material used by the site
 - `scripts/refresh-site-data.ps1` - local refresh pipeline for homepage/news/A-List validation
+- `scripts/run-smoke-test.ps1` - local browser smoke-test wrapper for the public pages
 - `scripts/rebuild-homepage-gallery.py` - repoint homepage gallery items from `data/gallery.json`
 - `scripts/smoke-test-site.mjs` - browser smoke test for key public pages
 - `docs/CONTENT-FLOWS.md` - source-of-truth and refresh documentation
