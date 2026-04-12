@@ -17,6 +17,67 @@ const AXY_TOPIC_LABELS = {
 
 const AXY_TOPIC_ORDER = ['image', 'video', 'audio', '3d', 'creative', 'design', 'product', 'open-source'];
 const AXY_ALLOWED_TAGS = new Set(AXY_TOPIC_ORDER);
+const AXY_MEDIUM_TOPICS = new Set(['image', 'video', 'audio', '3d']);
+const AXY_TOPIC_ALIASES = {
+    image: 'image',
+    image_gen: 'image',
+    video: 'video',
+    video_gen: 'video',
+    audio: 'audio',
+    music_gen: 'audio',
+    voice_synthesis: 'audio',
+    '3d': '3d',
+    '3d_gen': '3d',
+    creative: 'creative',
+    creative_tool: 'creative',
+    creative_workflow: 'creative',
+    art_ai: 'creative',
+    design: 'design',
+    product: 'product',
+    product_launch: 'product',
+    api_update: 'product',
+    model_release: 'product',
+    announcement: 'product',
+    'open-source': 'open-source',
+    open_source: 'open-source'
+};
+const AXY_OFFTOPIC_RAW_TAGS = new Set([
+    'photography',
+    'camera',
+    'camera_release',
+    'lens',
+    'photo_editing',
+    'lightroom',
+    'photoshop',
+    'capture_one',
+    'photography_ai',
+    'photography_technique',
+    'photography_business',
+    'crypto',
+    'crypto_trading',
+    'crypto_defi',
+    'crypto_regulation',
+    'ai_agents',
+    'multi_agent',
+    'tool_use',
+    'autonomous_systems',
+    'ai_safety',
+    'mcp',
+    'reasoning',
+    'agentic_framework',
+    'agent_sdk',
+    'research_paper',
+    'benchmark',
+    'evaluation',
+    'architecture',
+    'dataset',
+    'training',
+    'inference',
+    'hardware',
+    'policy',
+    'funding',
+    'industry_move'
+]);
 
 const AXY_BLOCKED_SOURCE_PATTERNS = [
     /^reddit\b/i,
@@ -29,7 +90,10 @@ const AXY_BLOCKED_SOURCE_PATTERNS = [
     /^flipboard$/i
 ];
 
-const AXY_BLOCKED_TEXT_PATTERN = /\b(chatgpt|localllama|local llama|machinelearning|bitcoin|ethereum|crypto|camera|lightroom|capture one|photography)\b/i;
+const AXY_BLOCKED_TEXT_PATTERN = /\b(chatgpt|localllama|local llama|machinelearning|bitcoin|ethereum|crypto|camera|lightroom|capture one|photography|reddit\b|r\/machinelearning)\b/i;
+const AXY_CREATIVE_TOOL_PATTERN = /\b(midjourney|runway|kling|pika|sora|luma|veo|flux|ideogram|leonardo|firefly|photoshop|adobe|figma|canva|blender|unreal|unity|meshy|tripo|suno|udio|elevenlabs|recraft|hailuo|minimax|comfyui|creative tool|creator tool)\b/i;
+const AXY_CREATIVE_MEDIUM_PATTERN = /\b(text-to-image|image generation|video generation|text-to-video|music generation|text-to-music|voice synthesis|vfx|cgi|rendering|3d model|mesh|texture|storyboard|illustration|concept art|generative art|ai video|ai music|ai film)\b/i;
+const AXY_OFFTOPIC_PATTERN = /\b(enterprise apps?|enterprise users?|knowledge workers?|c-level|commission|attorneys general|trial|lawsuit|investigation|government|parliament|senate|military|connectivity|telecom|valuation|series [a-z]|revenue|grok|teen access|safety review|sexual(?:ised)?|child(?:ren)?|deepfake)\b/i;
 
 class NewsApp {
     constructor() {
@@ -410,9 +474,12 @@ class NewsApp {
         const cleanSource = this.normalizeText(source || this.extractSource(url));
         const cleanSummary = this.normalizeText(summary);
         const cleanDate = date instanceof Date && !isNaN(date.getTime()) ? date : new Date();
-        const cleanTags = Array.isArray(tags) && tags.length > 0
-            ? tags.map(tag => this.normalizeText(tag)).filter(Boolean).slice(0, 5)
-            : this.generateTags(cleanTitle, cleanSummary);
+        const cleanRawTags = Array.isArray(tags) && tags.length > 0
+            ? tags.map(tag => this.normalizeText(tag)).filter(Boolean).slice(0, 8)
+            : [];
+        const cleanTags = cleanRawTags.length > 0
+            ? this.getDisplayTopicsFromTags(cleanRawTags)
+            : this.generateDisplayTopics(cleanTitle, cleanSummary);
 
         return {
             title: cleanTitle,
@@ -422,6 +489,7 @@ class NewsApp {
             category: this.normalizeText(category || 'News'),
             date: cleanDate,
             dateString: dateString || this.formatLongDate(cleanDate),
+            rawTags: cleanRawTags,
             tags: cleanTags
         };
     }
@@ -437,14 +505,44 @@ class NewsApp {
             article.summary,
             article.source,
             article.url,
+            Array.isArray(article.rawTags) ? article.rawTags.join(' ') : '',
             Array.isArray(article.tags) ? article.tags.join(' ') : ''
         ].join(' ').toLowerCase();
+        const rawTags = Array.isArray(article.rawTags)
+            ? article.rawTags.map((tag) => this.normaliseRawTag(tag))
+            : [];
+        const topics = Array.isArray(article.tags)
+            ? article.tags.filter((tag) => AXY_ALLOWED_TAGS.has(tag))
+            : [];
+        const hasStrongCreativeSignal = AXY_CREATIVE_TOOL_PATTERN.test(text) || AXY_CREATIVE_MEDIUM_PATTERN.test(text);
+        const hasMediumTopic = topics.some((tag) => AXY_MEDIUM_TOPICS.has(tag));
+        const hasOffTopicSignal = AXY_OFFTOPIC_PATTERN.test(text) || /^(policy|industry|funding)$/i.test(String(article.category || '').trim());
 
         if (AXY_BLOCKED_TEXT_PATTERN.test(text)) {
             return false;
         }
 
-        return Array.isArray(article.tags) && article.tags.some((tag) => AXY_ALLOWED_TAGS.has(tag));
+        if (rawTags.some((tag) => AXY_OFFTOPIC_RAW_TAGS.has(tag))) {
+            return false;
+        }
+
+        if (topics.length === 0) {
+            return false;
+        }
+
+        if (hasOffTopicSignal && !hasStrongCreativeSignal) {
+            return false;
+        }
+
+        if (hasOffTopicSignal && !hasMediumTopic) {
+            return false;
+        }
+
+        if (!hasStrongCreativeSignal && !hasMediumTopic) {
+            return false;
+        }
+
+        return true;
     }
 
     formatLongDate(date) {
@@ -566,6 +664,27 @@ class NewsApp {
         if (junkTitles.some(t => title.includes(t))) return true;
         if (junkUrlPatterns.some(p => p.test(url))) return true;
         return false;
+    }
+
+    normaliseRawTag(tag) {
+        return this.normalizeText(tag).toLowerCase().replace(/[\s-]+/g, '_');
+    }
+
+    normaliseDisplayTopic(tag) {
+        const normalised = this.normaliseRawTag(tag);
+        return AXY_TOPIC_ALIASES[normalised] || null;
+    }
+
+    getDisplayTopicsFromTags(tags) {
+        return Array.from(new Set(
+            (Array.isArray(tags) ? tags : [])
+                .map((tag) => this.normaliseDisplayTopic(tag))
+                .filter((tag) => tag && AXY_ALLOWED_TAGS.has(tag))
+        ));
+    }
+
+    generateDisplayTopics(title, summary) {
+        return this.getDisplayTopicsFromTags(this.generateTags(title, summary));
     }
 
     generateTags(title, summary) {
