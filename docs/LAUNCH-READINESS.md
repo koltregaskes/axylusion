@@ -18,7 +18,6 @@ Last updated: 2026-04-11
 ## Still Blocked Externally
 
 - Gallery and homepage images still point at expired `cdn.midjourney.com` URLs until the Cloudflare R2 migration is completed.
-- The Decap CMS admin login depends on live authentication setup and should not be treated as launch-ready unless Netlify Identity or GitHub OAuth is configured.
 - The custom domain handoff still needs to be applied after the final deploy target is chosen.
 
 ## Launch Sequence
@@ -32,5 +31,5 @@ Last updated: 2026-04-11
 ## Phase 2 Follow-Up
 
 - Rebuild the missing Midjourney archive extraction and import pipeline documented in `MIDJOURNEY-PUBLISHED-GALLERY-MIGRATION-PLAN.md`.
-- Decide whether `/admin` is part of the live publishing workflow or should remain offline until authentication is configured.
+- The old Decap CMS shell has now been archived offline and removed from the public site until a real authenticated workflow exists.
 - If the shared benchmark pipeline becomes part of routine ops, schedule `scripts/sync-a-list-benchmarks.py` as part of the same weekly refresh flow.

@@ -7,7 +7,7 @@ This repository contains the Axy Lusion creative portfolio site: a static websit
 - A cinematic homepage with a hero feature and latest-image scroll experience
 - A full gallery backed by `data/gallery.json`
 - Dedicated pages for music, video, blog, news, tools, and about content
-- A simple Decap CMS admin shell for future editorial workflows
+- Archived Decap CMS shell files kept offline in `W:\Websites\LOCAL-ONLY\archive\axylusion-admin-shell\2026-04-21\` pending any future authenticated editorial workflow
 
 ## Stack
 
@@ -39,7 +39,6 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 - `music.html` / `videos.html` / `tools.html` - supporting sections
 - `data/gallery.json` - gallery source data
 - `styles.css` - shared site styling
-- `admin/` - Decap CMS configuration and entry page
 - `content/` - editable markdown content
 - `news-digests/` - news source material used by the site
 - `scripts/refresh-site-data.ps1` - local refresh pipeline for homepage/news/A-List validation
@@ -53,7 +52,8 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 
 - The site is designed to be deployed as a static website.
 - If you use GitHub Pages or another static host, make sure the custom domain and DNS are configured there rather than in the source files.
-- Media uploads for the CMS are configured to land in `images/uploads/`.
+- The old Decap CMS shell has been removed from the public site until a real authenticated editorial workflow exists. The archived shell files are stored offline under `W:\Websites\LOCAL-ONLY\archive\axylusion-admin-shell\2026-04-21\`.
+- Media uploads for the old CMS shell were configured to land in `images/uploads/`.
 - The current public site is driven by static HTML, `news-digests`, and JSON payloads rather than automatic markdown-to-page rendering from `content/`.
 - Local unattended refresh is now registered through the central website scheduler:
   - `Websites-AxyLusion-Refresh-Morning` at `07:20`

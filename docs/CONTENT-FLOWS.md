@@ -41,7 +41,8 @@ Last updated: 2026-04-11
 
 ## CMS Caveat
 
-- `admin/config.yml` defines Decap CMS collections under `content/`, but the current public site does not rebuild pages from those markdown files automatically.
+- The old Decap CMS shell has been archived offline under `W:\Websites\LOCAL-ONLY\archive\axylusion-admin-shell\2026-04-21\` and is no longer part of the public site.
+- The archived `config.yml` defined Decap CMS collections under `content/`, but the public site still does not rebuild pages from those markdown files automatically.
 - `content/about.md`, `content/blog/*`, and `content/news/*` should therefore be treated as staged editorial content until a renderer/export step is added.
 - The live news page is driven by `news-digests`, not `content/news`.
 
