@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -20,7 +21,7 @@ from html import unescape
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
-DEFAULT_SOURCE = Path(r"W:\Websites\sites\ai-resource-hub\data\pg-cache\creative_benchmarks.json")
+DEFAULT_SOURCE = Path(os.environ.get("AXYLUSION_ALIST_SOURCE", r"W:\Websites\sites\ai-resource-hub\data\pg-cache\creative_benchmarks.json"))
 DEFAULT_OUTPUT = PROJECT_DIR / "data" / "a-list-benchmarks.json"
 CATEGORY_ORDER = [
     "image_generation",

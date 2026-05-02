@@ -15,6 +15,7 @@ Warnings:
 from __future__ import annotations
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -35,6 +36,12 @@ INDEX_PATH = NEWS_DIGESTS_DIR / "index.json"
 ALIST_DATA_PATH = PROJECT_DIR / "data" / "a-list-benchmarks.json"
 ALIST_SYNC_SCRIPT = PROJECT_DIR / "scripts" / "sync-a-list-benchmarks.py"
 ALIST_RENDER_SCRIPT = PROJECT_DIR / "scripts" / "render-a-list.py"
+ALIST_SHARED_SOURCE = Path(
+    os.environ.get(
+        "AXYLUSION_ALIST_SOURCE",
+        r"W:\Websites\sites\ai-resource-hub\data\pg-cache\creative_benchmarks.json",
+    )
+)
 HEAD_REQUIREMENT_PATTERNS = {
     "icon": re.compile(r'rel=["\']icon["\']', re.IGNORECASE),
     "manifest": re.compile(r'rel=["\']manifest["\']', re.IGNORECASE),
@@ -310,7 +317,13 @@ def main() -> int:
     failures.extend(check_homepage_alignment(gallery_items, homepage_items))
     failures.extend(check_public_head_requirements())
     failures.extend(check_support_files())
-    failures.extend(check_script_sync(ALIST_SYNC_SCRIPT, "A-List snapshot"))
+    if ALIST_SHARED_SOURCE.exists():
+        failures.extend(check_script_sync(ALIST_SYNC_SCRIPT, "A-List snapshot"))
+    else:
+        warnings.append(
+            "A-List shared benchmark cache is unavailable; skipped source freshness check: "
+            f"{ALIST_SHARED_SOURCE}"
+        )
     failures.extend(check_script_sync(ALIST_RENDER_SCRIPT, "A-List rendered pages"))
     warnings.extend(check_digest_hygiene())
 
