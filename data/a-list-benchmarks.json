@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-11T19:18:10.783581+00:00",
+  "generated_at": "2026-05-04T06:20:13.382855+00:00",
   "source_path": "W:\\Websites\\sites\\ai-resource-hub\\data\\pg-cache\\creative_benchmarks.json",
   "source_row_count": 33,
   "category_count": 7,
@@ -10,7 +10,7 @@
       "slug": "image_generation",
       "title": "Image Generation",
       "model_count": 5,
-      "updated_at": "2026-04-10T05:00:02.949Z",
+      "updated_at": "2026-05-02T05:00:19.903Z",
       "note": "Public arenas reward instruction following and pairwise preference voting. Web-only tools like Midjourney are still shown, but limited benchmark coverage reduces their composite score.",
       "weights": {
         "Artificial Analysis": 60,
@@ -35,7 +35,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-04-10T05:00:02.947Z",
+          "updated_at": "2026-05-02T05:00:19.901Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
@@ -76,7 +76,7 @@
           "coverage_weight": 25.0,
           "coverage_percent": 25.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.942Z",
+          "updated_at": "2026-05-02T05:00:19.895Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -103,7 +103,7 @@
           "coverage_weight": 25.0,
           "coverage_percent": 25.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.944Z",
+          "updated_at": "2026-05-02T05:00:19.897Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -130,7 +130,7 @@
           "coverage_weight": 25.0,
           "coverage_percent": 25.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.945Z",
+          "updated_at": "2026-05-02T05:00:19.899Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -157,7 +157,7 @@
           "coverage_weight": 25.0,
           "coverage_percent": 25.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.949Z",
+          "updated_at": "2026-05-02T05:00:19.903Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -174,7 +174,7 @@
       "slug": "image_editing",
       "title": "Image Editing",
       "model_count": 4,
-      "updated_at": "2026-04-10T05:00:02.915Z",
+      "updated_at": "2026-05-02T05:00:19.870Z",
       "note": "This category is benchmark-led. Studio/editorial tools can still appear, but models without public arena coverage are marked as limited-signal picks.",
       "weights": {
         "Artificial Analysis": 70,
@@ -198,7 +198,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-04-10T05:00:02.903Z",
+          "updated_at": "2026-05-02T05:00:19.866Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
@@ -232,7 +232,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.900Z",
+          "updated_at": "2026-05-02T05:00:19.864Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -259,7 +259,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.913Z",
+          "updated_at": "2026-05-02T05:00:19.868Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -286,7 +286,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.915Z",
+          "updated_at": "2026-05-02T05:00:19.870Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -303,7 +303,7 @@
       "slug": "video_generation",
       "title": "Video Generation",
       "model_count": 5,
-      "updated_at": "2026-04-10T05:00:02.958Z",
+      "updated_at": "2026-05-02T05:00:19.913Z",
       "note": "Video rankings still blend public arena results with studio judgement because provider access and feature sets move faster than stable public comparisons.",
       "weights": {
         "Artificial Analysis": 70,
@@ -327,7 +327,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-04-10T05:00:02.954Z",
+          "updated_at": "2026-05-02T05:00:19.909Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
@@ -361,7 +361,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.951Z",
+          "updated_at": "2026-05-02T05:00:19.906Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -388,7 +388,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.953Z",
+          "updated_at": "2026-05-02T05:00:19.907Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -415,7 +415,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.956Z",
+          "updated_at": "2026-05-02T05:00:19.911Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -442,7 +442,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.958Z",
+          "updated_at": "2026-05-02T05:00:19.913Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -459,7 +459,7 @@
       "slug": "music_generation",
       "title": "Music Generation",
       "model_count": 3,
-      "updated_at": "2026-04-10T05:00:02.922Z",
+      "updated_at": "2026-05-02T05:00:19.876Z",
       "note": "Public music leaderboards can lag behind provider version labels. For example, Suno has since announced v5.5, while benchmark pages still reference v4.5 and v5.",
       "weights": {
         "Artificial Analysis": 80,
@@ -483,7 +483,7 @@
           "coverage_weight": 20.0,
           "coverage_percent": 20.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.918Z",
+          "updated_at": "2026-05-02T05:00:19.873Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -510,7 +510,7 @@
           "coverage_weight": 20.0,
           "coverage_percent": 20.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.920Z",
+          "updated_at": "2026-05-02T05:00:19.874Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -537,7 +537,7 @@
           "coverage_weight": 20.0,
           "coverage_percent": 20.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.922Z",
+          "updated_at": "2026-05-02T05:00:19.876Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -554,7 +554,7 @@
       "slug": "voice_tts",
       "title": "Voice & TTS",
       "model_count": 4,
-      "updated_at": "2026-04-10T05:00:02.939Z",
+      "updated_at": "2026-05-02T05:00:19.893Z",
       "note": "Voice rankings use public arena scores where available, then layer in studio judgement.",
       "weights": {
         "Artificial Analysis": 70,
@@ -578,7 +578,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-04-10T05:00:02.934Z",
+          "updated_at": "2026-05-02T05:00:19.888Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
@@ -612,7 +612,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.936Z",
+          "updated_at": "2026-05-02T05:00:19.890Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -639,7 +639,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.938Z",
+          "updated_at": "2026-05-02T05:00:19.891Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -666,7 +666,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-04-10T05:00:02.939Z",
+          "updated_at": "2026-05-02T05:00:19.893Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -683,7 +683,7 @@
       "slug": "3d_generation",
       "title": "3D Generation",
       "model_count": 3,
-      "updated_at": "2026-04-10T05:00:02.964Z",
+      "updated_at": "2026-05-02T05:00:19.919Z",
       "note": "3D tools remain editorially ranked because public arena coverage is still thin.",
       "weights": {
         "Expert Review": 100
@@ -706,7 +706,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-04-10T05:00:02.960Z",
+          "updated_at": "2026-05-02T05:00:19.916Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -733,7 +733,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-04-10T05:00:02.962Z",
+          "updated_at": "2026-05-02T05:00:19.917Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -760,7 +760,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-04-10T05:00:02.964Z",
+          "updated_at": "2026-05-02T05:00:19.919Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -777,7 +777,7 @@
       "slug": "upscaling",
       "title": "Upscaling",
       "model_count": 4,
-      "updated_at": "2026-04-10T05:00:02.931Z",
+      "updated_at": "2026-05-02T05:00:19.885Z",
       "note": "Upscaling remains an editorial category focused on practical creative output.",
       "weights": {
         "Expert Review": 100
@@ -800,7 +800,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-04-10T05:00:02.925Z",
+          "updated_at": "2026-05-02T05:00:19.879Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -827,7 +827,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-04-10T05:00:02.928Z",
+          "updated_at": "2026-05-02T05:00:19.881Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -854,7 +854,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-04-10T05:00:02.930Z",
+          "updated_at": "2026-05-02T05:00:19.882Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -881,7 +881,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-04-10T05:00:02.931Z",
+          "updated_at": "2026-05-02T05:00:19.885Z",
           "sources": [
             {
               "source_name": "Expert Review",

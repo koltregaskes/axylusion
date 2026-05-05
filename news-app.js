@@ -153,32 +153,41 @@ class NewsApp {
     }
 
     async loadArticles() {
-        const fileList = await this.loadDigestList();
-
-        const loadPromises = fileList.map(async (filename) => {
-            try {
-                const response = await fetch(`news-digests/${filename}`);
-                if (response.ok) {
-                    const rawContent = await response.text();
-                    const content = this.repairDigestContent(rawContent);
-                    return this.parseDigest(content, filename);
-                }
-            } catch (e) {
-                // File doesn't exist, skip
-            }
-            return [];
-        });
-
-        const results = await Promise.all(loadPromises);
-        this.articles = results
-            .flat()
-            .filter((article) => this.shouldDisplayArticle(article))
-            .sort((a, b) => new Date(b.date) - new Date(a.date));
-        this.filteredArticles = [...this.articles];
-        this.updateOverview();
-
         const loading = document.getElementById('loading');
-        if (loading) loading.style.display = 'none';
+
+        try {
+            const fileList = await this.loadDigestList();
+
+            const loadPromises = fileList.map(async (filename) => {
+                try {
+                    const response = await fetch(`news-digests/${filename}`);
+                    if (response.ok) {
+                        const rawContent = await response.text();
+                        const content = this.repairDigestContent(rawContent);
+                        return this.parseDigest(content, filename);
+                    }
+                } catch (e) {
+                    // File doesn't exist, skip
+                }
+                return [];
+            });
+
+            const results = await Promise.all(loadPromises);
+            this.articles = results
+                .flat()
+                .filter((article) => this.shouldDisplayArticle(article))
+                .sort((a, b) => new Date(b.date) - new Date(a.date));
+            this.filteredArticles = [...this.articles];
+            this.updateOverview();
+        } catch (error) {
+            console.warn('News digest loading failed.', error);
+            this.articles = [];
+            this.filteredArticles = [];
+            this.updateOverview();
+            this.setNoResultsMessage('The digest index could not be loaded. Please try again shortly.');
+        } finally {
+            if (loading) loading.style.display = 'none';
+        }
     }
 
     async loadDigestList() {

@@ -227,6 +227,7 @@
         // Gallery page specific functionality
         (function() {
             const ITEMS_PER_PAGE = 24;
+            const LAUNCH_MEDIA_PLACEHOLDER = 'images/media-hosting-pending.svg';
             let allItems = [];
             let filteredItems = [];
             let currentPage = 1;
@@ -245,6 +246,23 @@
             function getItemTitle(item) {
                 const rawTitle = (item.name || item.prompt || 'Untitled work').trim();
                 return rawTitle.length > 88 ? `${rawTitle.slice(0, 85).trimEnd()}...` : rawTitle;
+            }
+
+            function isFragileProviderMediaUrl(value) {
+                try {
+                    return new URL(value, window.location.href).hostname === 'cdn.midjourney.com';
+                } catch {
+                    return false;
+                }
+            }
+
+            function getLaunchMediaUrl(item) {
+                const mediaUrl = item?.cdn_url || '';
+                return isFragileProviderMediaUrl(mediaUrl) ? LAUNCH_MEDIA_PLACEHOLDER : mediaUrl;
+            }
+
+            function getLaunchMediaClass(item) {
+                return isFragileProviderMediaUrl(item?.cdn_url) ? ' launch-media-deferred' : '';
             }
 
             // DOM elements
@@ -359,8 +377,8 @@
 
                 noResults.style.display = 'none';
                 grid.innerHTML = pageItems.map((item, index) => `
-                    <div class="gallery-item" data-index="${start + index}">
-                        <img src="${item.cdn_url}" alt="${escapeHtml(getItemTitle(item))}" loading="lazy" decoding="async">
+                    <div class="gallery-item${getLaunchMediaClass(item)}" data-index="${start + index}">
+                        <img src="${escapeHtml(getLaunchMediaUrl(item))}" alt="${escapeHtml(getItemTitle(item))}" loading="lazy" decoding="async">
                     </div>
                 `).join('');
 
@@ -461,7 +479,7 @@
                 const item = filteredItems[index];
                 if (!item) return;
 
-                modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="${escapeHtml(getItemTitle(item))}">`;
+                modalMedia.innerHTML = `<img src="${escapeHtml(getLaunchMediaUrl(item))}" alt="${escapeHtml(getItemTitle(item))}" class="${getLaunchMediaClass(item).trim()}">`;
                 if (modalTitle) modalTitle.textContent = getItemTitle(item);
                 if (modalDate) modalDate.textContent = item.created || '';
                 if (modalModel) modalModel.textContent = item.model || '';

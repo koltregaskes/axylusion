@@ -34,8 +34,8 @@ const pageChecks = [
   { path: "/videos.html", mode: "clean" },
   { path: "/a-list.html", mode: "clean" },
   { path: "/a-list/image-generation.html", mode: "clean" },
-  { path: "/index.html", mode: "allow-hosts", allowedHosts: ["cdn.midjourney.com"] },
-  { path: "/gallery.html", mode: "allow-hosts", allowedHosts: ["cdn.midjourney.com"] },
+  { path: "/index.html", mode: "clean" },
+  { path: "/gallery.html", mode: "clean" },
 ];
 
 function extractHost(urlString) {

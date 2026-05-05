@@ -15,6 +15,7 @@
     <meta name="theme-color" content="#0a0a0a">
     <meta name="color-scheme" content="dark">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; media-src 'self' https:; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -23,6 +24,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-background">
@@ -68,7 +70,7 @@
             <a href="index.html" class="logo">
                 <span class="logo-text">Axy Lusion</span>
             </a>
-            <nav class="main-nav">
+            <nav class="main-nav" aria-label="Primary">
                 <a href="gallery.html" class="nav-link">Gallery</a>
                 <a href="videos.html" class="nav-link">Videos</a>
                 <a href="music.html" class="nav-link">Music</a>
@@ -102,6 +104,7 @@
         </div>
     </header>
 
+    <main id="main-content">
     <!-- Showcase Section - Latest works journey -->
     <section class="showcase" id="gallery">
         <div class="showcase-intro">
@@ -142,6 +145,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Modal -->
     <div class="modal" id="modal">
@@ -213,6 +217,7 @@
             // Placeholder date used during batch import - hide these images
             const PLACEHOLDER_DATE = '2026-02-10';
             const MAX_SHOWCASE_ITEMS = 12;
+            const LAUNCH_MEDIA_PLACEHOLDER = 'images/media-hosting-pending.svg';
 
             function escapeHtml(value) {
                 return String(value ?? '')
@@ -226,6 +231,23 @@
             function getItemTitle(item) {
                 const rawTitle = (item.name || item.prompt || 'Untitled work').trim();
                 return rawTitle.length > 88 ? `${rawTitle.slice(0, 85).trimEnd()}...` : rawTitle;
+            }
+
+            function isFragileProviderMediaUrl(value) {
+                try {
+                    return new URL(value, window.location.href).hostname === 'cdn.midjourney.com';
+                } catch {
+                    return false;
+                }
+            }
+
+            function getLaunchMediaUrl(item) {
+                const mediaUrl = item?.cdn_url || '';
+                return isFragileProviderMediaUrl(mediaUrl) ? LAUNCH_MEDIA_PLACEHOLDER : mediaUrl;
+            }
+
+            function getLaunchMediaClass(item) {
+                return isFragileProviderMediaUrl(item?.cdn_url) ? ' launch-media-deferred' : '';
             }
 
             function getItemAltText(item) {
@@ -295,7 +317,8 @@
                 const item = featuredItems[index];
                 heroImage.style.opacity = '0';
                 setTimeout(() => {
-                    heroImage.style.backgroundImage = `url(${item.cdn_url})`;
+                    heroImage.style.backgroundImage = `url(${getLaunchMediaUrl(item)})`;
+                    heroImage.classList.toggle('launch-media-deferred', isFragileProviderMediaUrl(item.cdn_url));
                     heroImage.style.opacity = '1';
                 }, 300);
                 featuredMeta.textContent = formatDisplayDate(item.created);
@@ -328,8 +351,9 @@
                 container.innerHTML = showcaseItems.map((item, index) => `
                     <article class="showcase-panel${index % 2 === 1 ? ' showcase-panel--right' : ''}">
                         <img
-                            src="${item.cdn_url}"
+                            src="${escapeHtml(getLaunchMediaUrl(item))}"
                             alt="${escapeHtml(getItemAltText(item))}"
+                            class="${getLaunchMediaClass(item).trim()}"
                             loading="${index < 2 ? 'eager' : 'lazy'}"
                             decoding="async"
                         >

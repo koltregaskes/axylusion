@@ -64,6 +64,10 @@
         <div class="page-header-content">
             <h1 class="page-title stagger-load delay-1">Videos</h1>
             <p class="page-subtitle stagger-load delay-2">Music video trailers now, with comic-book pieces, movie trailers, and short films to come.</p>
+            <div class="page-header-actions stagger-load delay-3" aria-label="Video launch links">
+                <a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" class="cta-button primary">Watch on YouTube</a>
+                <a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" class="cta-button secondary">Follow on TikTok</a>
+            </div>
         </div>
     </section>
 
@@ -102,12 +106,17 @@
             </aside>
         </section>
 
-        <!-- Video showcase grid — add YouTube video IDs here -->
+        <!-- Video showcase grid - first public version points to the live channels until owned embeds are curated. -->
         <section class="video-showcase stagger-load delay-4">
             <div class="video-grid" id="video-grid">
-                <!-- Videos will be populated from data/videos.json or manually added below -->
                 <div class="video-empty-state">
-                    <p>Video showcase is being prepared. Watch the latest work on the channels below.</p>
+                    <span class="media-status-label">Launch state</span>
+                    <h2>Watch the current releases on the live channels.</h2>
+                    <p>The embedded showcase is being curated so this page does not ship broken or fake video cards. For now, the live work sits on YouTube and TikTok, with the tool notes beside it.</p>
+                    <div class="media-empty-actions">
+                        <a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" class="cta-button primary">Open YouTube</a>
+                        <a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" class="cta-button secondary">Open TikTok</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -158,13 +167,16 @@
         .video-grid iframe { width: 100%; aspect-ratio: 16/9; border-radius: 12px; border: 1px solid var(--border); }
         .video-empty-state {
             grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            border: 1px dashed var(--border);
-            border-radius: 16px;
-            color: var(--text-secondary);
+            padding: clamp(28px, 6vw, 52px);
+            border: 1px solid rgba(240, 180, 83, 0.28);
+            border-radius: 24px;
+            background: radial-gradient(circle at 15% 0%, rgba(240, 180, 83, 0.16), transparent 34%), rgba(255, 255, 255, 0.035);
+            color: var(--axyl-gray-400);
         }
-        .video-empty-state p { font-size: 15px; max-width: 400px; margin: 0 auto; }
+        .video-empty-state h2 { color: var(--axyl-cream); margin: 8px 0 12px; }
+        .video-empty-state p { font-size: 15px; max-width: 680px; margin: 0 0 22px; }
+        .media-status-label { color: var(--axyl-amber); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+        .media-empty-actions { display: flex; flex-wrap: wrap; gap: 12px; }
     </style>
 <script src="cross-site-nav.js" defer></script>
 </body>

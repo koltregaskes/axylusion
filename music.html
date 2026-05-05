@@ -52,6 +52,10 @@
         <div class="page-header-content">
             <h1 class="page-title stagger-load delay-1">Music</h1>
             <p class="page-subtitle stagger-load delay-2">Songs, instrumentals, and vocal pieces that sit beside the visual world of Axy Lusion.</p>
+            <div class="page-header-actions stagger-load delay-3" aria-label="Music launch links">
+                <a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" class="cta-button primary">Listen on Suno</a>
+                <a href="a-list/music-generation.html" class="cta-button secondary">Music Tool Rankings</a>
+            </div>
         </div>
     </section>
 
@@ -90,12 +94,17 @@
             </aside>
         </section>
 
-        <!-- Track showcase — add Suno embed URLs here -->
+        <!-- Track showcase - first public version points to Suno until owned embeds are curated. -->
         <section class="track-showcase stagger-load delay-4">
             <div class="track-grid" id="track-grid">
-                <!-- Tracks will be populated from data/tracks.json or manually added below -->
                 <div class="track-empty-state">
-                    <p>Track showcase is being prepared. Listen to the full catalogue on Suno.</p>
+                    <span class="media-status-label">Launch state</span>
+                    <h2>Listen from the source while the track cards are curated.</h2>
+                    <p>The on-site catalogue is being staged deliberately, so this page does not pretend to have embeds before the real release list is ready. Suno is the current listening home.</p>
+                    <div class="media-empty-actions">
+                        <a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" class="cta-button primary">Open Suno</a>
+                        <a href="a-list/music-generation.html" class="cta-button secondary">See Music Rankings</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -145,13 +154,16 @@
         .track-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
         .track-empty-state {
             grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            border: 1px dashed var(--border);
-            border-radius: 16px;
-            color: var(--text-secondary);
+            padding: clamp(28px, 6vw, 52px);
+            border: 1px solid rgba(240, 180, 83, 0.28);
+            border-radius: 24px;
+            background: radial-gradient(circle at 15% 0%, rgba(240, 180, 83, 0.16), transparent 34%), rgba(255, 255, 255, 0.035);
+            color: var(--axyl-gray-400);
         }
-        .track-empty-state p { font-size: 15px; max-width: 400px; margin: 0 auto; }
+        .track-empty-state h2 { color: var(--axyl-cream); margin: 8px 0 12px; }
+        .track-empty-state p { font-size: 15px; max-width: 680px; margin: 0 0 22px; }
+        .media-status-label { color: var(--axyl-amber); font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+        .media-empty-actions { display: flex; flex-wrap: wrap; gap: 12px; }
     </style>
 <script src="cross-site-nav.js" defer></script>
 </body>

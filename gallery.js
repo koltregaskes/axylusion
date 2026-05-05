@@ -26027,6 +26027,24 @@ let currentModalIndex = -1;
 let filteredItems = [];
 let currentPage = 1;
 const ITEMS_PER_PAGE = 30;
+const LAUNCH_MEDIA_PLACEHOLDER = 'images/media-hosting-pending.svg';
+
+function isFragileProviderMediaUrl(value) {
+    try {
+        return new URL(value, window.location.href).hostname === 'cdn.midjourney.com';
+    } catch {
+        return false;
+    }
+}
+
+function getLaunchMediaUrl(item) {
+    const mediaUrl = item?.cdn_url || '';
+    return isFragileProviderMediaUrl(mediaUrl) ? LAUNCH_MEDIA_PLACEHOLDER : mediaUrl;
+}
+
+function getLaunchMediaClass(item) {
+    return isFragileProviderMediaUrl(item?.cdn_url) ? ' launch-media-deferred' : '';
+}
 
 // DOM elements
 const gallery = document.getElementById('gallery-grid') || document.getElementById('gallery');
@@ -26295,7 +26313,7 @@ function renderGallery() {
             }
             badgeHtml = '<span class="type-badge music">music</span>';
         } else {
-            mediaHtml = `<img src="${item.cdn_url}" alt="" loading="lazy">`;
+            mediaHtml = `<img src="${getLaunchMediaUrl(item)}" alt="" class="${getLaunchMediaClass(item).trim()}" loading="lazy">`;
         }
 
         overlayHtml = `
@@ -26305,7 +26323,7 @@ function renderGallery() {
         `;
 
         return `
-        <div class="gallery-item" data-id="${item.id}" data-index="${index}">
+        <div class="gallery-item${getLaunchMediaClass(item)}" data-id="${item.id}" data-index="${index}">
             ${badgeHtml}
             ${mediaHtml}
             ${overlayHtml}
@@ -26351,7 +26369,7 @@ function openModal(item, index, pushHistory = true) {
             modalMedia.innerHTML = `<audio src="${item.cdn_url}" controls autoplay></audio>`;
         }
     } else {
-        modalMedia.innerHTML = `<img src="${item.cdn_url}" alt="">`;
+        modalMedia.innerHTML = `<img src="${getLaunchMediaUrl(item)}" alt="" class="${getLaunchMediaClass(item).trim()}">`;
     }
     if (modalDate) modalDate.textContent = item.created || '';
 

@@ -1,0 +1,3 @@
+Contact: https://koltregaskes.com/contact.html
+Preferred-Languages: en
+Canonical: https://axylusion.com/.well-known/security.txt
