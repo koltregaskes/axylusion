@@ -143,12 +143,31 @@ def check_local_refs() -> list[str]:
     return issues
 
 
-def build_digest_manifest() -> dict[str, list[str]]:
+def tracked_digest_files() -> list[Path]:
+    tracked = subprocess.run(
+        ["git", "ls-files", "news-digests/*.md"],
+        cwd=PROJECT_DIR,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    tracked_names = {
+        Path(line.strip()).name
+        for line in tracked.stdout.splitlines()
+        if line.strip()
+    }
     digest_files = [
-        path.name
+        path
         for path in NEWS_DIGESTS_DIR.glob("*.md")
         if DIGEST_PATTERN.match(path.name)
     ]
+    if tracked_names:
+        digest_files = [path for path in digest_files if path.name in tracked_names]
+    return digest_files
+
+
+def build_digest_manifest() -> dict[str, list[str]]:
+    digest_files = [path.name for path in tracked_digest_files()]
     digest_files.sort(
         key=lambda name: (
             int((match := DIGEST_PATTERN.match(name)).group(1) or match.group(4)),
@@ -245,7 +264,7 @@ def check_support_files() -> list[str]:
 
 def check_digest_hygiene() -> list[str]:
     warnings: list[str] = []
-    digest_paths = sorted(path for path in NEWS_DIGESTS_DIR.glob("*.md") if DIGEST_PATTERN.match(path.name))
+    digest_paths = sorted(tracked_digest_files())
     for digest_path in digest_paths:
         content = digest_path.read_text(encoding="utf-8", errors="ignore")
         if MOJIBAKE_PATTERN.search(content):
