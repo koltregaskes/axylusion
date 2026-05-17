@@ -5,126 +5,252 @@
       "cdn_url": "https://cdn.midjourney.com/83eadd67-309b-4734-a5d5-10dd3fef18d0/0_0.png",
       "created": "2025-12-13",
       "type": "image",
-      "id": "83eadd67-309b-4734-a5d5-10dd3fef18d0"
+      "id": "83eadd67-309b-4734-a5d5-10dd3fef18d0",
+      "ref": "F0006",
+      "tones": [
+        "#1a3540",
+        "#060606",
+        "#c4851a"
+      ],
+      "prompt": "comic book style woman profile teal jacket"
     },
     {
       "name": "Comic Panel Layout - Fantasy Heroine",
       "cdn_url": "https://cdn.midjourney.com/52ba713e-fac0-4528-bed3-857b0b54d712/0_0.png",
       "created": "2025-12-13",
       "type": "image",
-      "id": "52ba713e-fac0-4528-bed3-857b0b54d712"
+      "id": "52ba713e-fac0-4528-bed3-857b0b54d712",
+      "ref": "F0005",
+      "tones": [
+        "#2a0d2e",
+        "#060606",
+        "#c4851a"
+      ],
+      "prompt": "comic book style panel layout"
     },
     {
       "name": "Cyberpunk Woman - Comic Style",
       "cdn_url": "https://cdn.midjourney.com/c3558a76-5d87-4b0f-8153-dbd38646e905/0_0.png",
       "created": "2025-12-13",
       "type": "image",
-      "id": "c3558a76-5d87-4b0f-8153-dbd38646e905"
+      "id": "c3558a76-5d87-4b0f-8153-dbd38646e905",
+      "ref": "F0008",
+      "tones": [
+        "#2a0d2e",
+        "#060606",
+        "#c4851a"
+      ],
+      "prompt": "comic book style, beautiful woman, mid 30s, athletic, dark hair pushed back, cyberpunk, near future, leather jacket, crop top, cargo pants, looking directly at the camera, stood in front of a futuristic neon city, neon lights, night time"
     },
     {
       "name": "Comic Woman - Yellow Raincoat",
       "cdn_url": "https://cdn.midjourney.com/bcbb5e3a-6760-4e57-8d11-e3628d37fc31/0_0.png",
       "created": "2025-12-13",
       "type": "image",
-      "id": "bcbb5e3a-6760-4e57-8d11-e3628d37fc31"
+      "id": "bcbb5e3a-6760-4e57-8d11-e3628d37fc31",
+      "ref": "F0007",
+      "tones": [
+        "#1c2a1a",
+        "#060606",
+        "#d4a03a"
+      ],
+      "prompt": "comic book style woman in yellow raincoat"
     },
     {
       "name": "Fantasy Heroine - Stylize Variant",
       "cdn_url": "https://cdn.midjourney.com/bbee3420-ec91-4dbd-b4fe-fd81a4e39a47/0_0.png",
       "created": "2025-12-14",
       "type": "image",
-      "id": "bbee3420-ec91-4dbd-b4fe-fd81a4e39a47"
+      "id": "bbee3420-ec91-4dbd-b4fe-fd81a4e39a47",
+      "ref": "F0002",
+      "tones": [
+        "#1a3540",
+        "#060606",
+        "#c4851a"
+      ],
+      "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity"
     },
     {
       "name": "Fantasy Heroine - Eye Detail",
       "cdn_url": "https://cdn.midjourney.com/4147cb5f-c531-47fd-b8a2-ab4ec1a424e9/0_0.png",
       "created": "2025-12-14",
       "type": "image",
-      "id": "4147cb5f-c531-47fd-b8a2-ab4ec1a424e9"
+      "id": "4147cb5f-c531-47fd-b8a2-ab4ec1a424e9",
+      "ref": "F0001",
+      "tones": [
+        "#3a1f10",
+        "#060606",
+        "#d4a03a"
+      ],
+      "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity"
     },
     {
       "name": "Comic Woman - Smoking Profile",
       "cdn_url": "https://cdn.midjourney.com/029117b6-a3ac-48e2-9ed8-c9d9e74a2de3/0_0.png",
       "created": "2025-12-13",
       "type": "image",
-      "id": "029117b6-a3ac-48e2-9ed8-c9d9e74a2de3"
+      "id": "029117b6-a3ac-48e2-9ed8-c9d9e74a2de3",
+      "ref": "F0004",
+      "tones": [
+        "#2a1810",
+        "#060606",
+        "#8a5d12"
+      ],
+      "prompt": "comic book style woman smoking profile view"
     },
     {
       "name": "Fantasy Heroine - Red Hair",
       "cdn_url": "https://cdn.midjourney.com/e055ca01-1d3c-433c-80f3-aa4818322225/0_0.png",
       "created": "2025-12-14",
       "type": "image",
-      "id": "e055ca01-1d3c-433c-80f3-aa4818322225"
+      "id": "e055ca01-1d3c-433c-80f3-aa4818322225",
+      "ref": "F0003",
+      "tones": [
+        "#1c2a1a",
+        "#060606",
+        "#d4a03a"
+      ],
+      "prompt": "Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity"
     },
     {
       "name": "Cyberpunk Hover Bike",
       "cdn_url": "https://cdn.midjourney.com/9c76a821-7461-4d02-abc3-a09b685fe73d/0_0.png",
       "created": "2025-12-06",
       "type": "image",
-      "id": "9c76a821-7461-4d02-abc3-a09b685fe73d"
+      "id": "9c76a821-7461-4d02-abc3-a09b685fe73d",
+      "ref": "F0012",
+      "tones": [
+        "#1f1024",
+        "#060606",
+        "#d4a03a"
+      ],
+      "prompt": "cinematic still of a sleek industrial black hover bike with a rider in matte black armor, desert terrain with scattered debris, dust trails behind the vehicle, low camera angle emphasizing speed and power, dramatic motion blur on background, golden hour lighting with warm amber tones, photorealistic rendering, high detail mechanical parts, weathered and battle-worn aesthetic"
     },
     {
       "name": "Sci-Fi Landscape",
       "cdn_url": "https://cdn.midjourney.com/a02fc593-c949-4e63-adbd-7f820d8e75be/0_0.png",
       "created": "2025-12-06",
       "type": "image",
-      "id": "a02fc593-c949-4e63-adbd-7f820d8e75be"
+      "id": "a02fc593-c949-4e63-adbd-7f820d8e75be",
+      "ref": "F0013",
+      "tones": [
+        "#3a0d12",
+        "#060606",
+        "#d4a03a"
+      ],
+      "prompt": "sci-fi landscape"
     },
     {
       "name": "Portrait Study",
       "cdn_url": "https://cdn.midjourney.com/b90760bf-6e48-4787-b931-5af0b9df1bbf/0_0.png",
       "created": "2025-12-06",
       "type": "image",
-      "id": "b90760bf-6e48-4787-b931-5af0b9df1bbf"
+      "id": "b90760bf-6e48-4787-b931-5af0b9df1bbf",
+      "ref": "F0014",
+      "tones": [
+        "#1a3540",
+        "#060606",
+        "#c4851a"
+      ],
+      "prompt": "portrait study"
     },
     {
       "name": "Abstract Art Piece",
       "cdn_url": "https://cdn.midjourney.com/10d82c0f-2893-4c5a-ad4d-d1fa63acd4b8/0_0.png",
       "created": "2025-12-06",
       "type": "image",
-      "id": "10d82c0f-2893-4c5a-ad4d-d1fa63acd4b8"
+      "id": "10d82c0f-2893-4c5a-ad4d-d1fa63acd4b8",
+      "ref": "F0009",
+      "tones": [
+        "#2a0d2e",
+        "#060606",
+        "#c4851a"
+      ],
+      "prompt": "abstract art"
     },
     {
       "name": "Cinematic Scene",
       "cdn_url": "https://cdn.midjourney.com/99fc258b-889a-4a3d-a25d-29878c4c7bce/0_0.png",
       "created": "2025-12-06",
       "type": "image",
-      "id": "99fc258b-889a-4a3d-a25d-29878c4c7bce"
+      "id": "99fc258b-889a-4a3d-a25d-29878c4c7bce",
+      "ref": "F0010",
+      "tones": [
+        "#1a3540",
+        "#060606",
+        "#c4851a"
+      ],
+      "prompt": "cinematic scene"
     },
     {
       "name": "Retro Sci-Fi Robot",
       "cdn_url": "https://cdn.midjourney.com/9ba88456-4fbe-4f22-935c-64a364fa96c4/0_0.png",
       "created": "2025-12-06",
       "type": "image",
-      "id": "9ba88456-4fbe-4f22-935c-64a364fa96c4"
+      "id": "9ba88456-4fbe-4f22-935c-64a364fa96c4",
+      "ref": "F0011",
+      "tones": [
+        "#0d1a2a",
+        "#060606",
+        "#c4851a"
+      ],
+      "prompt": "retro sci-fi robot character"
     },
     {
       "name": "a drawing showing a geisha holding a hannya mask in front of her face, tattoo sleeve style, sekiro s",
       "cdn_url": "https://cdn.midjourney.com/2e6ae2cd-48a1-422a-b108-aa200478930c/0_0.png",
       "created": "2025-11-11",
       "type": "image",
-      "id": "2e6ae2cd-48a1-422a-b108-aa200478930c"
+      "id": "2e6ae2cd-48a1-422a-b108-aa200478930c",
+      "ref": "F1194",
+      "tones": [
+        "#3a0d12",
+        "#060606",
+        "#d4a03a"
+      ],
+      "prompt": "a drawing showing a geisha holding a hannya mask in front of her face, tattoo sleeve style, sekiro style, dangerous lighting, abstract art"
     },
     {
       "name": "A fantasy illustrative picture of an adult elf woman and a goliath knight walking through a dark swa",
       "cdn_url": "https://cdn.midjourney.com/fa532709-4bfc-4aca-b15a-f3ebac48b0ef/0_0.png",
       "created": "2025-11-11",
       "type": "image",
-      "id": "fa532709-4bfc-4aca-b15a-f3ebac48b0ef"
+      "id": "fa532709-4bfc-4aca-b15a-f3ebac48b0ef",
+      "ref": "F1514",
+      "tones": [
+        "#2a0d2e",
+        "#060606",
+        "#c4851a"
+      ],
+      "prompt": "A fantasy illustrative picture of an adult elf woman and a goliath knight walking through a dark swamp. She is a Druid. She has long pierced ears. She wears small gold chains around her neck. She has medium dark green-blue hair and straight bangs. She has black facial tattoos. She has golden colored, sharp eyes. She wears black leather armor. A muscular giant knight in old chainmail armor stands beside her. His mouth and chin are visible. Half helmet . He is extremely tall."
     },
     {
       "name": "A fantasy illustrative picture of an adult elf wom",
       "cdn_url": "https://cdn.midjourney.com/86369e78-8188-42b8-a059-c2f5c3cc6a2e/0_0.png",
       "created": "2025-11-11",
       "type": "image",
-      "id": "86369e78-8188-42b8-a059-c2f5c3cc6a2e"
+      "id": "86369e78-8188-42b8-a059-c2f5c3cc6a2e",
+      "ref": "F0614",
+      "tones": [
+        "#3a1f10",
+        "#060606",
+        "#d4a03a"
+      ],
+      "prompt": "A fantasy illustrative picture of an adult elf woman and a goliath knight walking through a dark swamp. She is a Druid. She has long pierced ears. She wears small gold chains around her neck. She has medium dark green-blue hair and straight bangs. She has black facial tattoos. She has golden colored, sharp eyes. She wears black leather armor. A muscular giant knight in old chainmail armor stands beside her. His mouth and chin are visible. Half helmet . He is extremely tall."
     },
     {
       "name": "A fantasy illustrative picture of an adult elf woman and a goliath knight walking through a dark swa",
       "cdn_url": "https://cdn.midjourney.com/57430b16-bbe6-4fc4-92e7-f5ca95afb778/0_0.png",
       "created": "2025-11-11",
       "type": "image",
-      "id": "57430b16-bbe6-4fc4-92e7-f5ca95afb778"
+      "id": "57430b16-bbe6-4fc4-92e7-f5ca95afb778",
+      "ref": "F1247",
+      "tones": [
+        "#1f1024",
+        "#060606",
+        "#d4a03a"
+      ],
+      "prompt": "A fantasy illustrative picture of an adult elf woman and a goliath knight walking through a dark swamp. She is a Druid. She has long pierced ears. She wears small gold chains around her neck. She has medium dark green-blue hair and straight bangs. She has black facial tattoos. She has golden colored, sharp eyes. She wears black leather armor. A muscular giant knight in old chainmail armor stands beside her. His mouth and chin are visible. Half helmet . He is extremely tall."
     }
   ]
 }

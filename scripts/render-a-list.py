@@ -7,6 +7,7 @@ local benchmark snapshot.
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 from datetime import datetime
 from html import escape
@@ -19,6 +20,7 @@ SNAPSHOT_PATH = PROJECT_DIR / "data" / "a-list-benchmarks.json"
 OVERVIEW_PATH = PROJECT_DIR / "a-list.html"
 DETAILS_DIR = PROJECT_DIR / "a-list"
 DOMAIN = "https://axylusion.com"
+CINEMATIC_RENDERER = PROJECT_DIR / "scripts" / "render-cinematic-site.py"
 
 NAV_LINKS = [
     ("Gallery", "gallery.html"),
@@ -108,6 +110,21 @@ def detail_filename(slug: str) -> str:
 
 def canonical_url(path: str) -> str:
     return f"{DOMAIN}/{path}"
+
+
+def render_cinematic_overview(snapshot: dict[str, Any]) -> str:
+    """Use the cinematic renderer for the public overview page.
+
+    The category detail pages still use this script's existing detailed table
+    templates. The overview page is now part of the cinematic redesign, so the
+    validation check must compare against that source of truth.
+    """
+    spec = importlib.util.spec_from_file_location("render_cinematic_site", CINEMATIC_RENDERER)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Unable to load cinematic renderer: {CINEMATIC_RENDERER}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.clean_page(module.render_alist(snapshot))
 
 
 def link_path(base_path: str, href: str) -> str:
@@ -484,7 +501,7 @@ def render_detail_page(category: dict[str, Any]) -> str:
 
 
 def build_outputs(snapshot: dict[str, Any]) -> dict[Path, str]:
-    outputs: dict[Path, str] = {OVERVIEW_PATH: render_overview(snapshot)}
+    outputs: dict[Path, str] = {OVERVIEW_PATH: render_cinematic_overview(snapshot)}
     for category in snapshot.get("categories", []):
         outputs[DETAILS_DIR / detail_filename(category["slug"])] = render_detail_page(category)
     return outputs
