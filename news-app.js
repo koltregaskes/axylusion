@@ -128,20 +128,21 @@ class NewsApp {
         this.setupEventListeners();
         this.renderTopicFilters();
 
-        const today = new Date();
-        const lastWeek = new Date();
-        lastWeek.setDate(today.getDate() - 7);
+        const latestArticleDate = this.getLatestArticleDate();
+        const lastWeek = latestArticleDate ? new Date(latestArticleDate) : null;
+        if (lastWeek) lastWeek.setDate(latestArticleDate.getDate() - 7);
 
         const fromDate = document.getElementById('fromDate');
         const toDate = document.getElementById('toDate');
         const hasRecentArticles = this.articles.some(article => {
+            if (!latestArticleDate || !lastWeek) return false;
             const articleDate = new Date(article.date);
-            return articleDate >= lastWeek && articleDate <= today;
+            return articleDate >= lastWeek && articleDate <= latestArticleDate;
         });
 
         if (hasRecentArticles) {
             if (fromDate) fromDate.value = lastWeek.toISOString().split('T')[0];
-            if (toDate) toDate.value = today.toISOString().split('T')[0];
+            if (toDate) toDate.value = latestArticleDate.toISOString().split('T')[0];
             this.updateQuickFilterButtons('week');
         } else {
             if (fromDate) fromDate.value = '';
@@ -766,21 +767,21 @@ class NewsApp {
         if (groupBy) groupBy.addEventListener('change', () => this.displayArticles());
 
         if (quick24h) quick24h.addEventListener('click', () => {
-            const today = new Date();
-            const yesterday = new Date();
-            yesterday.setDate(today.getDate() - 1);
-            if (fromDate) fromDate.value = yesterday.toISOString().split('T')[0];
-            if (toDate) toDate.value = today.toISOString().split('T')[0];
+            const latestArticleDate = this.getLatestArticleDate();
+            if (!latestArticleDate) return;
+            if (fromDate) fromDate.value = latestArticleDate.toISOString().split('T')[0];
+            if (toDate) toDate.value = latestArticleDate.toISOString().split('T')[0];
             this.updateQuickFilterButtons('24h');
             this.filterArticles();
         });
 
         if (quickLastWeek) quickLastWeek.addEventListener('click', () => {
-            const today = new Date();
-            const lastWeek = new Date();
-            lastWeek.setDate(today.getDate() - 7);
+            const latestArticleDate = this.getLatestArticleDate();
+            if (!latestArticleDate) return;
+            const lastWeek = new Date(latestArticleDate);
+            lastWeek.setDate(latestArticleDate.getDate() - 7);
             if (fromDate) fromDate.value = lastWeek.toISOString().split('T')[0];
-            if (toDate) toDate.value = today.toISOString().split('T')[0];
+            if (toDate) toDate.value = latestArticleDate.toISOString().split('T')[0];
             this.updateQuickFilterButtons('week');
             this.filterArticles();
         });
@@ -916,6 +917,13 @@ class NewsApp {
         }
     }
 
+    getLatestArticleDate() {
+        if (!Array.isArray(this.articles) || this.articles.length === 0) return null;
+        const latest = new Date(this.articles[0].date);
+        latest.setHours(0, 0, 0, 0);
+        return Number.isNaN(latest.getTime()) ? null : latest;
+    }
+
     setNoResultsMessage(message) {
         const noResults = document.getElementById('noResults');
         if (!noResults) return;
@@ -950,17 +958,16 @@ class NewsApp {
         if (noResults) noResults.style.display = 'none';
 
         const getRelativeDate = (dateString) => {
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            const yesterday = new Date(today);
-            yesterday.setDate(yesterday.getDate() - 1);
+            const latestArticleDate = this.getLatestArticleDate();
+            const previousIssueDate = latestArticleDate ? new Date(latestArticleDate) : null;
+            if (previousIssueDate) previousIssueDate.setDate(previousIssueDate.getDate() - 1);
 
             const parts = dateString.match(/(\d+)\s+(\w+)\s+(\d+)/);
             if (parts) {
                 const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
                 const articleDate = new Date(parseInt(parts[3]), months.indexOf(parts[2]), parseInt(parts[1]));
-                if (articleDate.getTime() === today.getTime()) return 'Today';
-                if (articleDate.getTime() === yesterday.getTime()) return 'Yesterday';
+                if (latestArticleDate && articleDate.getTime() === latestArticleDate.getTime()) return 'Latest issue';
+                if (previousIssueDate && articleDate.getTime() === previousIssueDate.getTime()) return 'Previous issue';
             }
             return dateString;
         };

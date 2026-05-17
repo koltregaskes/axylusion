@@ -1,25 +1,29 @@
 #!/usr/bin/env python3
 """
 Image Migration Script for Axylusion
-=====================================
+====================================
 
-Migrates gallery images from expired Midjourney CDN URLs to Cloudflare R2.
+Migrates gallery images from expired Midjourney CDN URLs to durable hosting.
+
+Supported targets:
+    - repo-local static hosting under images/gallery/
+    - Cloudflare R2
 
 Usage:
     1. Download images from Midjourney (manually or via this script)
     2. Match downloaded files to gallery.json entries
-    3. Upload to Cloudflare R2
+    3. Stage into repo-local hosting or upload to Cloudflare R2
     4. Update gallery.json and gallery.js with new URLs
 
 Prerequisites:
     pip install boto3 requests
 
 Environment variables (for R2 upload):
-    R2_ACCOUNT_ID       - Cloudflare account ID
-    R2_ACCESS_KEY_ID    - R2 API token access key
+    R2_ACCOUNT_ID        - Cloudflare account ID
+    R2_ACCESS_KEY_ID     - R2 API token access key
     R2_SECRET_ACCESS_KEY - R2 API token secret key
-    R2_BUCKET_NAME      - R2 bucket name (e.g., "axylusion-images")
-    R2_PUBLIC_URL       - Public URL for the bucket (e.g., "https://images.axylusion.com")
+    R2_BUCKET_NAME       - R2 bucket name (e.g., "axylusion-images")
+    R2_PUBLIC_URL        - Public URL for the bucket (e.g., "https://images.axylusion.com")
 """
 
 import json
@@ -27,6 +31,7 @@ import os
 import re
 import sys
 import hashlib
+import shutil
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -37,6 +42,7 @@ PROJECT_DIR = SCRIPT_DIR.parent
 GALLERY_JSON = PROJECT_DIR / "data" / "gallery.json"
 GALLERY_JS = PROJECT_DIR / "gallery.js"
 DOWNLOAD_DIR = PROJECT_DIR / "scripts" / "downloaded-images"
+LOCAL_MEDIA_DIR = PROJECT_DIR / "images" / "gallery"
 
 
 def load_gallery():
@@ -176,6 +182,25 @@ def upload_to_r2(matched_items):
     return True
 
 
+def copy_to_local_hosting(matched_items):
+    """Copy matched images into the repo for static self-hosting."""
+    LOCAL_MEDIA_DIR.mkdir(parents=True, exist_ok=True)
+
+    copied = 0
+    for entry in matched_items:
+        file_path = entry["file"]
+        job_id = entry["job_id"]
+        ext = file_path.suffix.lower() or ".png"
+        target_path = LOCAL_MEDIA_DIR / f"{job_id}{ext}"
+
+        shutil.copy2(file_path, target_path)
+        entry["item"]["cdn_url"] = f"images/gallery/{job_id}{ext}"
+        copied += 1
+
+    print(f"Copied {copied}/{len(matched_items)} images into {LOCAL_MEDIA_DIR}")
+    return True
+
+
 def update_gallery_json(items):
     """Save updated items back to gallery.json."""
     gallery = {"items": items}
@@ -282,6 +307,30 @@ def cmd_upload(args):
         print("\nUpload failed. Gallery files not updated.")
 
 
+def cmd_stage_local(args):
+    """Copy matched images into repo-local hosting and update gallery files."""
+    download_dir = args[0] if args else str(DOWNLOAD_DIR)
+
+    print("=" * 60)
+    print("STAGING IMAGES INTO REPO-LOCAL HOSTING")
+    print("=" * 60)
+
+    items = load_gallery()
+    image_map = scan_downloaded_images(download_dir)
+
+    matched, unmatched = match_images(items, image_map)
+    print(f"Matched: {len(matched)} | Unmatched: {len(unmatched)}")
+
+    if not matched:
+        print("No matched images to stage locally.")
+        return
+
+    copy_to_local_hosting(matched)
+    update_gallery_json(items)
+    update_gallery_js(items)
+    print("\nDone! Gallery now points matched items at repo-local hosted media.")
+
+
 def cmd_export_urls(args):
     """Export all Midjourney URLs for manual download."""
     items = load_gallery()
@@ -302,6 +351,7 @@ def cmd_status(args):
     items = load_gallery()
 
     midjourney_cdn = 0
+    local_static = 0
     r2_cdn = 0
     other = 0
 
@@ -309,6 +359,8 @@ def cmd_status(args):
         url = item.get("cdn_url", "")
         if "cdn.midjourney.com" in url:
             midjourney_cdn += 1
+        elif url.startswith("images/gallery/"):
+            local_static += 1
         elif "r2" in url or "cloudflare" in url:
             r2_cdn += 1
         else:
@@ -319,6 +371,7 @@ def cmd_status(args):
     print("=" * 60)
     print(f"Total items:          {len(items)}")
     print(f"Midjourney CDN (403): {midjourney_cdn}")
+    print(f"Repo-local static:    {local_static}")
     print(f"Cloudflare R2:        {r2_cdn}")
     print(f"Other:                {other}")
     print()
@@ -332,6 +385,7 @@ if __name__ == "__main__":
     commands = {
         "scan": cmd_scan,
         "upload": cmd_upload,
+        "stage-local": cmd_stage_local,
         "export-urls": cmd_export_urls,
         "status": cmd_status,
     }
@@ -344,6 +398,7 @@ if __name__ == "__main__":
         print("  status                    - Show current CDN URL status")
         print("  export-urls [output.txt]  - Export Midjourney URLs for manual download")
         print("  scan <download-dir>       - Scan downloaded images and match to gallery")
+        print("  stage-local <download-dir> - Copy matched images into images/gallery and update URLs")
         print("  upload <download-dir>     - Upload matched images to R2 and update gallery")
         print()
         print("Workflow:")
@@ -351,8 +406,8 @@ if __name__ == "__main__":
         print("  2. Run 'export-urls' to get list of Midjourney pages")
         print("  3. Download images from Midjourney (bulk download from archive)")
         print("  4. Run 'scan <dir>' to match downloads to gallery entries")
-        print("  5. Set R2 environment variables (see script header)")
-        print("  6. Run 'upload <dir>' to upload and update gallery")
+        print("  5. Run 'stage-local <dir>' for repo-local hosting, or set R2 environment variables")
+        print("  6. Run 'upload <dir>' only if you want Cloudflare R2 instead of local hosting")
         sys.exit(0)
 
     cmd = sys.argv[1]

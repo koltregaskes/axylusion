@@ -26046,6 +26046,12 @@ function getLaunchMediaClass(item) {
     return isFragileProviderMediaUrl(item?.cdn_url) ? ' launch-media-deferred' : '';
 }
 
+function getLaunchMediaStatus(item) {
+    return isFragileProviderMediaUrl(item?.cdn_url)
+        ? '<span class="media-migration-label">Media migration pending</span>'
+        : '';
+}
+
 // DOM elements
 const gallery = document.getElementById('gallery-grid') || document.getElementById('gallery');
 const modal = document.getElementById('modal');
@@ -26313,7 +26319,7 @@ function renderGallery() {
             }
             badgeHtml = '<span class="type-badge music">music</span>';
         } else {
-            mediaHtml = `<img src="${getLaunchMediaUrl(item)}" alt="" class="${getLaunchMediaClass(item).trim()}" loading="lazy">`;
+            mediaHtml = `${getLaunchMediaStatus(item)}<img src="${getLaunchMediaUrl(item)}" alt="" class="${getLaunchMediaClass(item).trim()}" loading="lazy" onerror="this.onerror=null;this.src='${LAUNCH_MEDIA_PLACEHOLDER}';this.classList.add('launch-media-deferred');this.closest('.gallery-item')?.classList.add('launch-media-deferred')">`;
         }
 
         overlayHtml = `
@@ -26369,7 +26375,7 @@ function openModal(item, index, pushHistory = true) {
             modalMedia.innerHTML = `<audio src="${item.cdn_url}" controls autoplay></audio>`;
         }
     } else {
-        modalMedia.innerHTML = `<img src="${getLaunchMediaUrl(item)}" alt="" class="${getLaunchMediaClass(item).trim()}">`;
+        modalMedia.innerHTML = `${getLaunchMediaStatus(item)}<img src="${getLaunchMediaUrl(item)}" alt="" class="${getLaunchMediaClass(item).trim()}" onerror="this.onerror=null;this.src='${LAUNCH_MEDIA_PLACEHOLDER}';this.classList.add('launch-media-deferred')">`;
     }
     if (modalDate) modalDate.textContent = item.created || '';
 

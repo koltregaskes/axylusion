@@ -251,7 +251,7 @@ MODEL_METADATA: dict[str, dict[str, Any]] = {
         "model_url": "https://www.aiva.ai",
         "pricing_note": "Paid plans",
         "strengths": ["Instrumentals", "Composition support"],
-        "considerations": "Feels more niche than current mainstream AI song tools.",
+        "considerations": "Feels more niche than broader-market AI song tools.",
     },
 }
 def parse_args() -> argparse.Namespace:

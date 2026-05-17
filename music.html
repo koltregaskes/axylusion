@@ -67,7 +67,7 @@
                 <h2>Songs first, polish second.</h2>
                 <p>This page is for the music side of Axy Lusion: songs, instrumentals, and rougher pieces that belong beside the images and videos. Right now it is straightforward and mostly lives on Suno while the catalogue grows.</p>
                 <div class="media-hub-note">
-                    <strong>Current focus:</strong>
+                    <strong>Focus:</strong>
                     <span>building a small catalogue of tracks that matches the tone of the visual work without overselling what it is.</span>
                 </div>
                 <div class="media-hub-actions">
@@ -100,7 +100,7 @@
                 <div class="track-empty-state">
                     <span class="media-status-label">Launch state</span>
                     <h2>Listen from the source while the track cards are curated.</h2>
-                    <p>The on-site catalogue is being staged deliberately, so this page does not pretend to have embeds before the real release list is ready. Suno is the current listening home.</p>
+                    <p>The on-site catalogue is being staged deliberately, so this page does not pretend to have embeds before the real release list is ready. Suno is the listening home for now.</p>
                     <div class="media-empty-actions">
                         <a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" class="cta-button primary">Open Suno</a>
                         <a href="a-list/music-generation.html" class="cta-button secondary">See Music Rankings</a>
@@ -113,7 +113,7 @@
         <section class="media-platform-grid stagger-load delay-5" aria-label="Music links">
             <a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" class="media-platform-link">
                 <strong>Suno Profile</strong>
-                <span>The main listening destination for the current catalogue.</span>
+                <span>The main listening destination for the staged catalogue.</span>
             </a>
             <a href="a-list/music-generation.html" class="media-platform-link">
                 <strong>Music Generation Rankings</strong>
@@ -151,9 +151,12 @@
 
     <style>
         .track-showcase { padding: 0 var(--pad-x); max-width: var(--content-max); margin: 0 auto; }
-        .track-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+        .track-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; min-width: 0; }
         .track-empty-state {
             grid-column: 1 / -1;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
             padding: clamp(28px, 6vw, 52px);
             border: 1px solid rgba(240, 180, 83, 0.28);
             border-radius: 24px;

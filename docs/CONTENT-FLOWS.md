@@ -49,6 +49,7 @@ Last updated: 2026-04-11
 ## Launch Notes
 
 - The homepage gallery should be rebuilt after any gallery repoint, especially the Cloudflare R2 migration.
+- `scripts/migrate-images.py stage-local <download-dir>` can now copy a staged Midjourney archive into `images/gallery/` and rewrite gallery URLs for repo-local static hosting without any external bucket.
 - The public render path currently uses `images/media-hosting-pending.svg` instead of requesting `cdn.midjourney.com` media, because Midjourney CDN URLs return 403 and are not launch-durable.
 - The browser smoke test now expects `index.html` and `gallery.html` to pass cleanly with no allowed Midjourney host failures.
 - Once the R2 migration is complete, remove the temporary render fallback and verify the smoke test still passes cleanly across every checked page.

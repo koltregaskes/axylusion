@@ -479,6 +479,10 @@ img {
   gap: 5px;
 }
 
+.cn-frame__cap[hidden] {
+  display: none;
+}
+
 .cn-frame__cap-label {
   color: var(--axyl-amber-light);
   font-family: var(--mono);
