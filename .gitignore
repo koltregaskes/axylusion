@@ -59,3 +59,15 @@ _shot-*.png
 _smoke-*.html
 _smoke-*.txt
 data/published-gallery-sync-report.json
+
+# Node / build artefacts
+node_modules/
+dist/
+.cache/
+.next/
+.astro/
+
+# WIP / handoff content (kept locally, never committed)
+*-MIGRATION-PLAN.md
+*-RECOVERY.md
+design/archive/
