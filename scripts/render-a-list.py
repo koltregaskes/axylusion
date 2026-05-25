@@ -159,16 +159,46 @@ def render_header(base_path: str, active_href: str) -> str:
 
 
 def render_footer(base_path: str) -> str:
+    main_links = "\n                ".join(
+        f'<a href="{link_path(base_path, href)}">{escape(label)}</a>'
+        for label, href in NAV_LINKS
+    )
     return f"""<footer>
         <div class="footer-content">
             <div class="footer-brand">
                 <span class="footer-logo">Axy Lusion</span>
-                <p class="footer-tagline">AI Art, Video &amp; Music</p>
+                <p class="footer-tagline">AI art, video, music, tool notes, and visual experiments by Kol Tregaskes.</p>
+                <p class="footer-copyright">&copy; 2026 <a href="https://koltregaskes.com" target="_blank" rel="noopener noreferrer">Kol Tregaskes</a></p>
             </div>
-            <nav class="social-links">
+            <nav class="footer-group" aria-label="Footer main pages">
+                <span>Main</span>
+                {main_links}
+            </nav>
+            <nav class="footer-group" aria-label="Footer projects">
+                <span>Projects</span>
+                <a href="https://koltregaskes.com/">Kol's Korner</a>
+                <a href="https://theairesourcehub.com/">AI Resource Hub</a>
+                <a href="https://ghostinthemodels.com/">Ghost in the Models</a>
+                <a href="https://koltregaskesphotography.com/">KT Photography</a>
+            </nav>
+            <div class="footer-group">
+                <span>Contact</span>
+                <a href="{link_path(base_path, 'about.html')}">About</a>
+                <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+                <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://github.com/koltregaskes" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+            <nav class="social-links" aria-label="Axy Lusion social links">
                 {render_social_links()}
             </nav>
-            <p class="footer-copyright">&copy; 2026 <a href="https://koltregaskes.com" target="_blank" rel="noopener noreferrer">Kol Tregaskes</a></p>
+            <section class="footer-estate-panel" aria-label="Elusion Works umbrella">
+                <div>
+                    <span>Umbrella home</span>
+                    <a class="footer-estate-title" href="https://elusionworks.com/" target="_blank" rel="noopener noreferrer">Elusion Works</a>
+                </div>
+                <p>The showcase for Kol's websites, tools, games, and web experiments.</p>
+                <a class="footer-estate-cta" href="https://elusionworks.com/" target="_blank" rel="noopener noreferrer">Visit Elusion Works -&gt;</a>
+            </section>
         </div>
     </footer>
     <script src="{link_path(base_path, 'cross-site-nav.js')}" defer></script>"""

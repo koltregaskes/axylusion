@@ -217,14 +217,54 @@ def header(active: str, current_path: str = "") -> str:
 
 def footer(current_path: str = "") -> str:
     prefix = "../" if current_path.startswith("a-list/") else ""
+    main_links = [
+        ("Gallery", "gallery.html"),
+        ("Videos", "videos.html"),
+        ("Music", "music.html"),
+        ("Blog", "blog.html"),
+        ("News", "news.html"),
+        ("Tools", "tools.html"),
+        ("A-List", "a-list.html"),
+        ("About", "about.html"),
+    ]
+    main_nav = "".join(
+        f'<a href="{escape(local_link(current_path, href))}">{escape(label)}</a>'
+        for label, href in main_links
+    )
     return f"""
     <footer class="cn-footer">
       <div class="cn-footer__brand">
         <span class="cn-logo">Axy Lusion</span>
-        <p>AI Art / Video / Music</p>
+        <p>AI art, video, music, tool notes, and visual experiments by Kol Tregaskes.</p>
+        <p class="cn-footer__copy">&copy; 2026 <a href="https://koltregaskes.com" target="_blank" rel="noopener noreferrer">Kol Tregaskes</a></p>
       </div>
-      {social_links(large=True)}
-      <p class="cn-footer__copy">&copy; 2026 <a href="https://koltregaskes.com" target="_blank" rel="noopener noreferrer">Kol Tregaskes</a></p>
+      <nav class="cn-footer__group" aria-label="Footer main pages">
+        <p>Main</p>
+        {main_nav}
+      </nav>
+      <nav class="cn-footer__group" aria-label="Footer projects">
+        <p>Projects</p>
+        <a href="https://koltregaskes.com/">Kol's Korner</a>
+        <a href="https://theairesourcehub.com/">AI Resource Hub</a>
+        <a href="https://ghostinthemodels.com/">Ghost in the Models</a>
+        <a href="https://koltregaskesphotography.com/">KT Photography</a>
+      </nav>
+      <div class="cn-footer__group">
+        <p>Contact</p>
+        <a href="{escape(local_link(current_path, 'about.html'))}">About</a>
+        <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+        <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://github.com/koltregaskes" target="_blank" rel="noopener noreferrer">GitHub</a>
+        {social_links(large=True)}
+      </div>
+      <section class="cn-footer__estate" aria-label="Elusion Works umbrella">
+        <div>
+          <p>Umbrella home</p>
+          <a class="cn-footer__estate-title" href="https://elusionworks.com/" target="_blank" rel="noopener noreferrer">Elusion Works</a>
+        </div>
+        <span>The showcase for Kol's websites, tools, games, and web experiments.</span>
+        <a class="cn-footer__estate-cta" href="https://elusionworks.com/" target="_blank" rel="noopener noreferrer">Visit Elusion Works -&gt;</a>
+      </section>
     </footer>
     <script src="{prefix}scripts/cinematic.js" defer></script>
     <script src="{prefix}cross-site-nav.js" defer></script>"""

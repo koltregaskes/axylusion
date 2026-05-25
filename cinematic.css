@@ -1355,9 +1355,9 @@ img {
 
 .cn-footer {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(150px, 1fr));
   gap: clamp(18px, 4vw, 48px);
-  align-items: center;
+  align-items: start;
   padding: 42px clamp(18px, 4vw, 48px);
   border-top: 1px solid rgba(245, 230, 200, 0.1);
   background: #070706;
@@ -1378,6 +1378,84 @@ img {
 .cn-footer__copy a {
   color: var(--axl-cream);
   text-decoration: none;
+}
+
+.cn-footer__group {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+}
+
+.cn-footer__group > p {
+  margin: 0 0 4px;
+  color: var(--axl-amber);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cn-footer__group a {
+  color: var(--axl-faint);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.cn-footer__group a:hover,
+.cn-footer__group a:focus-visible {
+  color: var(--axl-cream);
+}
+
+.cn-footer__group .cn-social {
+  margin-top: 6px;
+}
+
+.cn-footer__estate {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(160px, 0.8fr) minmax(240px, 1.5fr) auto;
+  gap: clamp(12px, 2vw, 24px);
+  align-items: center;
+  padding-top: 22px;
+  border-top: 1px solid rgba(245, 230, 200, 0.12);
+}
+
+.cn-footer__estate p,
+.cn-footer__estate-title,
+.cn-footer__estate-cta {
+  font-family: var(--mono);
+  text-transform: uppercase;
+}
+
+.cn-footer__estate p {
+  margin: 0 0 4px;
+  color: var(--axl-amber);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.cn-footer__estate-title {
+  color: var(--axl-cream);
+  font-size: clamp(17px, 2vw, 24px);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.cn-footer__estate span {
+  color: var(--axl-faint);
+  line-height: 1.6;
+}
+
+.cn-footer__estate-cta {
+  justify-self: end;
+  color: var(--axl-amber);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1455,6 +1533,14 @@ img {
 
   .cn-footer {
     grid-template-columns: 1fr;
+  }
+
+  .cn-footer__estate {
+    grid-template-columns: 1fr;
+  }
+
+  .cn-footer__estate-cta {
+    justify-self: start;
   }
 }
 
