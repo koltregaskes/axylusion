@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-16T23:27:28.549155+00:00",
+  "generated_at": "2026-05-25T20:31:21.347281+00:00",
   "source_path": "W:\\Websites\\sites\\ai-resource-hub\\data\\pg-cache\\creative_benchmarks.json",
-  "source_row_count": 33,
+  "source_row_count": 44,
   "category_count": 7,
   "model_count": 28,
   "methodology_note": "This snapshot blends public benchmark signals where we can verify them and editorial studio scoring where public coverage is sparse. Coverage is shown per model so the page stays honest about what is benchmark-led versus curated.",
@@ -10,7 +10,7 @@
       "slug": "image_generation",
       "title": "Image Generation",
       "model_count": 5,
-      "updated_at": "2026-05-16T05:00:02.330Z",
+      "updated_at": "2026-05-25T07:00:22.474Z",
       "note": "Public arenas reward instruction following and pairwise preference voting. Web-only tools like Midjourney are still shown, but limited benchmark coverage reduces their composite score.",
       "weights": {
         "Artificial Analysis": 60,
@@ -35,18 +35,18 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-05-16T05:00:02.328Z",
+          "updated_at": "2026-05-25T07:00:22.474Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
-              "source_url": "",
+              "source_url": "https://artificialanalysis.ai/leaderboards/image-generation",
               "raw_score": 1268.0,
               "score_type": "elo",
               "normalized_score": 100.0
             },
             {
               "source_name": "LM Arena",
-              "source_url": "",
+              "source_url": "https://lmarena.ai/?arena=image",
               "raw_score": 1264.0,
               "score_type": "elo",
               "normalized_score": 100.0
@@ -72,12 +72,19 @@
             "Cinematic look"
           ],
           "meta_rank": 2,
-          "meta_score": 52.88,
-          "coverage_weight": 25.0,
-          "coverage_percent": 25.0,
-          "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.323Z",
+          "meta_score": 80.96,
+          "coverage_weight": 85.0,
+          "coverage_percent": 85.0,
+          "coverage_label": "Strong signal",
+          "updated_at": "2026-05-25T07:00:22.465Z",
           "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "https://artificialanalysis.ai/leaderboards/image-generation",
+              "raw_score": 1241.0,
+              "score_type": "elo",
+              "normalized_score": 87.5
+            },
             {
               "source_name": "Expert Review",
               "source_url": "",
@@ -99,12 +106,19 @@
             "Open-source"
           ],
           "meta_rank": 3,
-          "meta_score": 49.94,
-          "coverage_weight": 25.0,
-          "coverage_percent": 25.0,
-          "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.325Z",
+          "meta_score": 71.51,
+          "coverage_weight": 85.0,
+          "coverage_percent": 85.0,
+          "coverage_label": "Strong signal",
+          "updated_at": "2026-05-25T07:00:22.468Z",
           "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "https://artificialanalysis.ai/leaderboards/image-generation",
+              "raw_score": 1205.0,
+              "score_type": "elo",
+              "normalized_score": 75.0
+            },
             {
               "source_name": "Expert Review",
               "source_url": "",
@@ -126,12 +140,19 @@
             "Free tier"
           ],
           "meta_rank": 4,
-          "meta_score": 49.35,
-          "coverage_weight": 25.0,
-          "coverage_percent": 25.0,
-          "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.327Z",
+          "meta_score": 63.15,
+          "coverage_weight": 85.0,
+          "coverage_percent": 85.0,
+          "coverage_label": "Strong signal",
+          "updated_at": "2026-05-25T07:00:22.470Z",
           "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "https://artificialanalysis.ai/leaderboards/image-generation",
+              "raw_score": 1198.0,
+              "score_type": "elo",
+              "normalized_score": 62.5
+            },
             {
               "source_name": "Expert Review",
               "source_url": "",
@@ -153,12 +174,19 @@
             "Competitive pricing"
           ],
           "meta_rank": 5,
-          "meta_score": 47.0,
-          "coverage_weight": 25.0,
-          "coverage_percent": 25.0,
-          "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.330Z",
+          "meta_score": 53.97,
+          "coverage_weight": 85.0,
+          "coverage_percent": 85.0,
+          "coverage_label": "Strong signal",
+          "updated_at": "2026-05-25T07:00:22.472Z",
           "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "https://artificialanalysis.ai/leaderboards/image-generation",
+              "raw_score": 1175.0,
+              "score_type": "elo",
+              "normalized_score": 50.0
+            },
             {
               "source_name": "Expert Review",
               "source_url": "",
@@ -174,7 +202,7 @@
       "slug": "image_editing",
       "title": "Image Editing",
       "model_count": 4,
-      "updated_at": "2026-05-16T05:00:02.301Z",
+      "updated_at": "2026-05-25T07:00:22.492Z",
       "note": "This category is benchmark-led. Studio/editorial tools can still appear, but models without public arena coverage are marked as limited-signal picks.",
       "weights": {
         "Artificial Analysis": 70,
@@ -198,11 +226,11 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-05-16T05:00:02.296Z",
+          "updated_at": "2026-05-25T07:00:22.492Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
-              "source_url": "",
+              "source_url": "https://artificialanalysis.ai/leaderboards/image-editing",
               "raw_score": 1270.0,
               "score_type": "elo",
               "normalized_score": 100.0
@@ -232,7 +260,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.294Z",
+          "updated_at": "2026-05-25T05:00:02.714Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -259,7 +287,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.299Z",
+          "updated_at": "2026-05-25T05:00:02.718Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -286,7 +314,7 @@
           "coverage_weight": 30.0,
           "coverage_percent": 30.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.301Z",
+          "updated_at": "2026-05-25T05:00:02.720Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -303,7 +331,7 @@
       "slug": "video_generation",
       "title": "Video Generation",
       "model_count": 5,
-      "updated_at": "2026-05-16T05:00:02.338Z",
+      "updated_at": "2026-05-25T07:00:22.483Z",
       "note": "Video rankings still blend public arena results with studio judgement because provider access and feature sets move faster than stable public comparisons.",
       "weights": {
         "Artificial Analysis": 70,
@@ -327,11 +355,11 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-05-16T05:00:02.335Z",
+          "updated_at": "2026-05-25T07:00:22.475Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
-              "source_url": "",
+              "source_url": "https://artificialanalysis.ai/leaderboards/video-generation",
               "raw_score": 1245.0,
               "score_type": "elo",
               "normalized_score": 100.0
@@ -357,12 +385,19 @@
             "Motion control"
           ],
           "meta_rank": 2,
-          "meta_score": 55.96,
-          "coverage_weight": 30.0,
-          "coverage_percent": 30.0,
-          "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.332Z",
+          "meta_score": 88.55,
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-05-25T07:00:22.477Z",
           "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "https://artificialanalysis.ai/leaderboards/video-generation",
+              "raw_score": 1218.0,
+              "score_type": "elo",
+              "normalized_score": 87.5
+            },
             {
               "source_name": "Expert Review",
               "source_url": "",
@@ -384,12 +419,19 @@
             "Motion speciality"
           ],
           "meta_rank": 3,
-          "meta_score": 54.12,
-          "coverage_weight": 30.0,
-          "coverage_percent": 30.0,
-          "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.334Z",
+          "meta_score": 78.9,
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-05-25T07:00:22.479Z",
           "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "https://artificialanalysis.ai/leaderboards/video-generation",
+              "raw_score": 1192.0,
+              "score_type": "elo",
+              "normalized_score": 75.0
+            },
             {
               "source_name": "Expert Review",
               "source_url": "",
@@ -411,12 +453,19 @@
             "Spatial audio"
           ],
           "meta_rank": 4,
-          "meta_score": 52.89,
-          "coverage_weight": 30.0,
-          "coverage_percent": 30.0,
-          "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.337Z",
+          "meta_score": 69.55,
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-05-25T07:00:22.481Z",
           "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "https://artificialanalysis.ai/leaderboards/video-generation",
+              "raw_score": 1180.0,
+              "score_type": "elo",
+              "normalized_score": 62.5
+            },
             {
               "source_name": "Expert Review",
               "source_url": "",
@@ -430,20 +479,27 @@
           "model_name": "Sora 2",
           "model_maker": "OpenAI",
           "model_url": "https://openai.com/sora",
-          "pricing_note": "ChatGPT Plus",
+          "pricing_note": "OpenAI product access",
           "considerations": "OpenAI says Sora access on the web and in ChatGPT ends on April 26, 2026; Sora API access continues until September 24, 2026. Consumer availability also varies by region and plan.",
           "status_note": "",
           "strengths": [
-            "Stunning narratives",
-            "Up to 25s"
+            "Cinematic coherence",
+            "Brand recognition"
           ],
           "meta_rank": 5,
-          "meta_score": 52.27,
-          "coverage_weight": 30.0,
-          "coverage_percent": 30.0,
-          "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.338Z",
+          "meta_score": 60.5,
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-05-25T07:00:22.483Z",
           "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "https://artificialanalysis.ai/leaderboards/video-generation",
+              "raw_score": 1168.0,
+              "score_type": "elo",
+              "normalized_score": 50.0
+            },
             {
               "source_name": "Expert Review",
               "source_url": "",
@@ -459,7 +515,7 @@
       "slug": "music_generation",
       "title": "Music Generation",
       "model_count": 3,
-      "updated_at": "2026-05-16T05:00:02.308Z",
+      "updated_at": "2026-05-25T05:00:02.729Z",
       "note": "Public music leaderboards can lag behind provider version labels. For example, Suno has since announced v5.5, while benchmark pages still reference v4.5 and v5.",
       "weights": {
         "Artificial Analysis": 80,
@@ -483,7 +539,7 @@
           "coverage_weight": 20.0,
           "coverage_percent": 20.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.305Z",
+          "updated_at": "2026-05-25T05:00:02.724Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -510,7 +566,7 @@
           "coverage_weight": 20.0,
           "coverage_percent": 20.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.307Z",
+          "updated_at": "2026-05-25T05:00:02.727Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -537,7 +593,7 @@
           "coverage_weight": 20.0,
           "coverage_percent": 20.0,
           "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.308Z",
+          "updated_at": "2026-05-25T05:00:02.729Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -554,7 +610,7 @@
       "slug": "voice_tts",
       "title": "Voice & TTS",
       "model_count": 4,
-      "updated_at": "2026-05-16T05:00:02.322Z",
+      "updated_at": "2026-05-25T07:00:22.490Z",
       "note": "Voice rankings use public arena scores where available, then layer in studio judgement.",
       "weights": {
         "Artificial Analysis": 70,
@@ -578,11 +634,11 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-05-16T05:00:02.317Z",
+          "updated_at": "2026-05-25T07:00:22.484Z",
           "sources": [
             {
               "source_name": "Artificial Analysis",
-              "source_url": "",
+              "source_url": "https://artificialanalysis.ai/leaderboards/tts",
               "raw_score": 1105.0,
               "score_type": "elo",
               "normalized_score": 100.0
@@ -608,12 +664,19 @@
             "Sub-250ms latency"
           ],
           "meta_rank": 2,
-          "meta_score": 54.12,
-          "coverage_weight": 30.0,
-          "coverage_percent": 30.0,
-          "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.318Z",
+          "meta_score": 84.73,
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-05-25T07:00:22.486Z",
           "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "https://artificialanalysis.ai/leaderboards/tts",
+              "raw_score": 1098.0,
+              "score_type": "elo",
+              "normalized_score": 83.33
+            },
             {
               "source_name": "Expert Review",
               "source_url": "",
@@ -635,12 +698,19 @@
             "Competitive pricing"
           ],
           "meta_rank": 3,
-          "meta_score": 51.66,
-          "coverage_weight": 30.0,
-          "coverage_percent": 30.0,
-          "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.320Z",
+          "meta_score": 71.87,
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-05-25T07:00:22.488Z",
           "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "https://artificialanalysis.ai/leaderboards/tts",
+              "raw_score": 1072.0,
+              "score_type": "elo",
+              "normalized_score": 66.67
+            },
             {
               "source_name": "Expert Review",
               "source_url": "",
@@ -662,12 +732,19 @@
             "ChatGPT integration"
           ],
           "meta_rank": 4,
-          "meta_score": 51.05,
-          "coverage_weight": 30.0,
-          "coverage_percent": 30.0,
-          "coverage_label": "Editorial signal",
-          "updated_at": "2026-05-16T05:00:02.322Z",
+          "meta_score": 59.9,
+          "coverage_weight": 100.0,
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
+          "updated_at": "2026-05-25T07:00:22.490Z",
           "sources": [
+            {
+              "source_name": "Artificial Analysis",
+              "source_url": "https://artificialanalysis.ai/leaderboards/tts",
+              "raw_score": 1065.0,
+              "score_type": "elo",
+              "normalized_score": 50.0
+            },
             {
               "source_name": "Expert Review",
               "source_url": "",
@@ -683,7 +760,7 @@
       "slug": "3d_generation",
       "title": "3D Generation",
       "model_count": 3,
-      "updated_at": "2026-05-16T05:00:02.346Z",
+      "updated_at": "2026-05-25T05:00:02.783Z",
       "note": "3D tools remain editorially ranked because public arena coverage is still thin.",
       "weights": {
         "Expert Review": 100
@@ -706,7 +783,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-05-16T05:00:02.340Z",
+          "updated_at": "2026-05-25T05:00:02.779Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -733,7 +810,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-05-16T05:00:02.343Z",
+          "updated_at": "2026-05-25T05:00:02.782Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -760,7 +837,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-05-16T05:00:02.346Z",
+          "updated_at": "2026-05-25T05:00:02.783Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -777,7 +854,7 @@
       "slug": "upscaling",
       "title": "Upscaling",
       "model_count": 4,
-      "updated_at": "2026-05-16T05:00:02.315Z",
+      "updated_at": "2026-05-25T05:00:02.738Z",
       "note": "Upscaling remains an editorial category focused on practical creative output.",
       "weights": {
         "Expert Review": 100
@@ -800,7 +877,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-05-16T05:00:02.310Z",
+          "updated_at": "2026-05-25T05:00:02.731Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -827,7 +904,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-05-16T05:00:02.312Z",
+          "updated_at": "2026-05-25T05:00:02.733Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -854,7 +931,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-05-16T05:00:02.314Z",
+          "updated_at": "2026-05-25T05:00:02.735Z",
           "sources": [
             {
               "source_name": "Expert Review",
@@ -881,7 +958,7 @@
           "coverage_weight": 100.0,
           "coverage_percent": 100.0,
           "coverage_label": "Full signal",
-          "updated_at": "2026-05-16T05:00:02.315Z",
+          "updated_at": "2026-05-25T05:00:02.738Z",
           "sources": [
             {
               "source_name": "Expert Review",
