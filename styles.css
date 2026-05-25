@@ -2350,7 +2350,7 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(150px, 1fr)) auto;
+    grid-template-columns: minmax(0, 1.1fr) repeat(3, minmax(140px, 1fr)) minmax(190px, auto);
     gap: var(--space-xl);
     align-items: start;
 }
@@ -2375,7 +2375,8 @@ footer {
 }
 
 .footer-copyright {
-    margin-top: var(--space-md);
+    grid-column: 1 / -1;
+    margin-top: 0;
 }
 
 .footer-group {
