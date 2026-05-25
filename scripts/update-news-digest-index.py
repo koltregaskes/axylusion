@@ -38,11 +38,12 @@ def digest_sort_key(path: Path) -> tuple[int, str]:
 
 
 def build_manifest() -> dict[str, list[str]]:
-    digest_files = [
-        path
-        for path in NEWS_DIGESTS_DIR.glob("*.md")
-        if DIGEST_PATTERN.match(path.name)
+    all_digest_files = [
+        path for path in NEWS_DIGESTS_DIR.glob("*.md") if DIGEST_PATTERN.match(path.name)
     ]
+    # The scheduled shared news filter writes new local digest files before
+    # publication, so the live preview manifest must reflect files on disk.
+    digest_files = all_digest_files
     ordered_files = [
         path.name
         for path in sorted(digest_files, key=digest_sort_key, reverse=True)

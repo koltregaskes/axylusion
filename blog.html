@@ -1,147 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Axy Lusion</title>
-    <meta name="description" content="Notes, welcomes, process updates, and context around the art, music, video, and tools behind Axy Lusion.">
-    <meta property="og:title" content="Blog | Axy Lusion">
-    <meta property="og:description" content="Notes and updates from the world behind Axy Lusion.">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://axylusion.com/blog.html">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="color-scheme" content="dark">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Axy Lusion</title>
+  <meta name="description" content="Process notes and updates from the Axy Lusion archive.">
+  <meta name="theme-color" content="#060606">
+  <meta name="color-scheme" content="dark">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'nonce-axylusion-cinematic-schema'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta property="og:title" content="Blog | Axy Lusion">
+  <meta property="og:description" content="Process notes and updates from the Axy Lusion archive.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://axylusion.com/blog.html">
+  <link rel="canonical" href="https://axylusion.com/blog.html">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cinematic.css">
+  <script type="application/ld+json" nonce="axylusion-cinematic-schema">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://axylusion.com/#organization", "name": "Axy Lusion", "alternateName": "Axylusion", "url": "https://axylusion.com", "logo": "https://axylusion.com/favicon.svg", "description": "AI art portfolio and creative tool rankings by Kol Tregaskes.", "founder": {"@id": "https://koltregaskes.com/#person-kol"}, "sameAs": ["https://x.com/Axylusion", "https://www.instagram.com/axylusion"]}, {"@type": "WebSite", "@id": "https://axylusion.com/#website", "name": "Axy Lusion", "url": "https://axylusion.com", "publisher": {"@id": "https://axylusion.com/#organization"}}, {"@type": "Blog", "@id": "https://axylusion.com/blog.html#blog", "name": "Axy Lusion Blog", "publisher": {"@id": "https://axylusion.com/#organization"}}]}</script>
 </head>
 <body>
-    <header id="header" class="sticky">
-        <div class="header-content">
-            <a href="index.html" class="logo">
-                <span class="logo-text">Axy Lusion</span>
-            </a>
-            <nav class="main-nav">
-                <a href="gallery.html" class="nav-link">Gallery</a>
-                <a href="videos.html" class="nav-link">Videos</a>
-                <a href="music.html" class="nav-link">Music</a>
-                <a href="blog.html" class="nav-link active">Blog</a>
-                <a href="news.html" class="nav-link">News</a>
-                <a href="tools.html" class="nav-link">Tools</a>
-                <a href="a-list.html" class="nav-link">A-List</a>
-                <a href="about.html" class="nav-link">About</a>
-            </nav>
-            <div class="header-social">
-                <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" title="X / Twitter" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-                <a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-                <a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
-                <a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Midjourney" aria-label="Midjourney"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.653 2.026C6.073 3.06 8.69 4.941 10.8 7.258c2.46 2.7 4.109 5.828 4.637 9.149a.31.31 0 01-.421.335c-2.348-.945-4.54-1.258-6.59-1.02-1.739.2-3.337.792-4.816 1.703-.294.182-.62-.182-.405-.454 1.856-2.355 2.581-4.99 2.343-7.794-.195-2.292-1.031-4.61-2.284-6.709a.31.31 0 01.388-.442zm6.387 2.424c1.778.543 3.892 2.102 5.782 4.243 1.984 2.248 3.552 4.934 4.347 7.582a.31.31 0 01-.401.38l-.022-.01-.386-.154a10.6 10.6 0 00-.291-.112l-.016-.006c-.68-.247-1.199-.291-1.944-.101a.31.31 0 01-.375-.218C15.378 11.123 13.073 7.276 9.775 5c-.291-.201-.072-.653.266-.55z"/></svg></a>
-                <a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Suno" aria-label="Suno"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c0 .83-.67 1.5-1.5 1.5h-4c-.83 0-1.5-.67-1.5-1.5v-1c0-.83.67-1.5 1.5-1.5H14v-2h-4v1H8v-1c0-.83.67-1.5 1.5-1.5h4c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5H10v2h4v-1h1.5v1z"/></svg></a>
-            </div>
-        </div>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="cn-page">
+
+    <header class="cn-header">
+      <a class="cn-logo" href="index.html">Axy Lusion</a>
+      <nav class="cn-nav" aria-label="Primary navigation"><a href="gallery.html">Gallery</a><a href="videos.html">Videos</a><a href="music.html">Music</a><a class="is-active" href="blog.html">Blog</a><a href="news.html">News</a><a href="tools.html">Tools</a><a href="a-list.html">A-List</a><a href="about.html">About</a></nav>
+      <div class="cn-social"><a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" aria-label="X / @Axylusion">X</a><a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" aria-label="Instagram / @axylusion">IG</a><a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" aria-label="YouTube / @AxyLusion">YT</a><a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="TikTok / @axylusion">TT</a><a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Midjourney / @axylusion">MJ</a><a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Suno / @axylusion">SU</a></div>
     </header>
+    <main id="main-content">
 
-    <section class="page-header">
-        <div class="page-header-content">
-            <h1 class="page-title">Blog</h1>
-            <p class="page-subtitle">Notes, updates, and context behind the work.</p>
-        </div>
-    </section>
+      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Journal</span><h1 class="cn-h1">Blog</h1><p class="cn-lede">Notes behind the images, tools, videos, and decisions. Slower posts for process and project context.</p>
+      <div class="cn-note cn-note--compact">
+        <span class="cn-note__dot" aria-hidden="true"></span>
+        <p><strong>Untitled works.</strong> Frames are identified by date and queue reference rather than a title. Where the original prompt was logged, it is shown as caption.</p>
+      </div></div></section>
+      <section class="cn-blog-hero"><div class="cn-blog-hero__cover">
+      <figure class="cn-frame cn-frame--full " style="aspect-ratio:3/2">
+        <div class="cn-frame__bg" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #8a5d1255 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #2a1810cc 0%, transparent 60%),linear-gradient(160deg, #2a1810 0%, #060606 100%)"></div>
 
-    <main class="blog-page">
-        <div class="blog-shell">
-            <section class="blog-hero-card">
-                <div class="blog-hero-copy">
-                    <span class="blog-kicker">Axy Lusion Journal</span>
-                    <h2>The notes behind the images, videos, music, and decisions.</h2>
-                    <p>This is the quieter side of the site: welcome posts, project updates, process notes, and the occasional explanation of why something changed.</p>
-                    <p>Every post carries a clear date and tags from day one, so the archive can grow properly instead of feeling bolted on later.</p>
-                    <div class="blog-hero-meta">
-                        <span class="blog-chip">Dated posts</span>
-                        <span class="blog-chip">Tagged posts</span>
-                        <span class="blog-chip">Process notes</span>
-                    </div>
-                    <div class="blog-hero-actions">
-                        <a href="blog-welcome.html" class="cta-button primary">Read the welcome post</a>
-                        <a href="about.html" class="cta-button secondary">Meet the artist</a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="blog-featured-card" id="posts">
-                <div class="blog-featured-copy">
-                    <span class="blog-kicker">Featured post</span>
-                    <h3>Welcome to Axy Lusion</h3>
-                    <div class="blog-featured-meta">
-                        <span>2 April 2026</span>
-                        <span>Welcome</span>
-                        <span>Intro</span>
-                    </div>
-                    <p>A short introduction to the website, what is on it, and why it exists. If someone lands here and wants the quick orientation, this is the place to start.</p>
-                    <div class="blog-featured-actions">
-                        <a href="blog-welcome.html" class="cta-button primary">Open post</a>
-                        <a href="gallery.html" class="cta-button secondary">View the gallery</a>
-                    </div>
-                </div>
-                <div class="blog-map-grid">
-                    <article class="blog-map-card">
-                        <h3>What lands here</h3>
-                        <p>Slower posts with some actual shelf life: welcomes, updates, process notes, and creative decisions that deserve more than a caption.</p>
-                    </article>
-                    <article class="blog-map-card">
-                        <h3>What stays on news</h3>
-                        <p>Faster-moving model launches and tooling updates still belong on the news side, where the site tracks the industry signal.</p>
-                    </article>
-                    <article class="blog-map-card">
-                        <h3>Why tags matter</h3>
-                        <p>Tags make it easier to connect posts across themes like gallery updates, music, videos, workflow, and site changes as the writing builds out.</p>
-                    </article>
-                    <article class="blog-map-card">
-                        <h3>How the archive grows</h3>
-                        <p>There is only one live post today, but the structure is ready for a proper archive once the blog has a run of entries behind it.</p>
-                    </article>
-                </div>
-            </section>
-
-            <section class="blog-post-grid" aria-label="Blog posts">
-                <article class="blog-post-card">
-                    <span class="blog-post-label">Live now</span>
-                    <h3><a class="blog-post-link" href="blog-welcome.html">Welcome to Axy Lusion</a></h3>
-                    <div class="blog-post-meta">
-                        <span>2 April 2026</span>
-                        <span>Welcome</span>
-                    </div>
-                    <p>Hello, this is me, this is what lives on the site, and this is what you can expect from the project going forward.</p>
-                    <div class="blog-post-actions">
-                        <a href="blog-welcome.html" class="cta-button secondary">Read post</a>
-                    </div>
-                </article>
-            </section>
-        </div>
+        <div class="cn-frame__grain" aria-hidden="true"></div>
+        <div class="cn-frame__vignette" aria-hidden="true"></div>
+        <div class="cn-frame__corner"><span>F0004</span><span>/</span><span>13 Dec 2025</span></div>
+        <figcaption class="cn-frame__cap cn-frame__cap--optional" hidden><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">comic book style woman smoking profile view</span></figcaption>
+      </figure></div><div class="cn-blog-hero__copy"><span class="cn-kicker">Featured / 2 April 2026</span><h2 class="cn-h2">Welcome to Axy Lusion</h2><p>A short introduction to the site, what lives on it, and why the project exists.</p><div class="cn-blog-hero__meta"><span>5 min read</span><span class="cn-rule"></span><span>Welcome / Intro</span></div><a class="cn-cta cn-cta--primary" href="blog-welcome.html">Read the post</a></div></section>
+      <section class="cn-blog-list"><div class="cn-blog-list__head"><span class="cn-kicker">All posts / 1</span><h2 class="cn-h2">Archive</h2></div><a class="cn-blog-row" href="blog-welcome.html"><span class="cn-blog-row__date">02 / 04 / 26</span><span class="cn-blog-row__body"><strong>Welcome to Axy Lusion</strong><span>Hello, this is me, this is what lives on the site, and this is what you can expect from the project going forward.</span><span class="cn-tags"><span>Welcome</span><span>Intro</span></span></span><span class="cn-blog-row__arrow">-&gt;</span></a><div class="cn-blog-empty"><span class="cn-kicker">Coming soon</span><p>Process notes on the comic series, the upcoming Suno EP, and a deeper writeup on how the news pipeline is built.</p></div></section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <span class="footer-logo">Axy Lusion</span>
-                <p class="footer-tagline">AI Art, Video &amp; Music</p>
-            </div>
-            <nav class="social-links">
-                <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" title="X / Twitter" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-                <a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-                <a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
-                <a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Midjourney" aria-label="Midjourney"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.653 2.026C6.073 3.06 8.69 4.941 10.8 7.258c2.46 2.7 4.109 5.828 4.637 9.149a.31.31 0 01-.421.335c-2.348-.945-4.54-1.258-6.59-1.02-1.739.2-3.337.792-4.816 1.703-.294.182-.62-.182-.405-.454 1.856-2.355 2.581-4.99 2.343-7.794-.195-2.292-1.031-4.61-2.284-6.709a.31.31 0 01.388-.442zm6.387 2.424c1.778.543 3.892 2.102 5.782 4.243 1.984 2.248 3.552 4.934 4.347 7.582a.31.31 0 01-.401.38l-.022-.01-.386-.154a10.6 10.6 0 00-.291-.112l-.016-.006c-.68-.247-1.199-.291-1.944-.101a.31.31 0 01-.375-.218C15.378 11.123 13.073 7.276 9.775 5c-.291-.201-.072-.653.266-.55z"/></svg></a>
-                <a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Suno" aria-label="Suno"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c0 .83-.67 1.5-1.5 1.5h-4c-.83 0-1.5-.67-1.5-1.5v-1c0-.83.67-1.5 1.5-1.5H14v-2h-4v1H8v-1c0-.83.67-1.5 1.5-1.5h4c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5H10v2h4v-1h1.5v1z"/></svg></a>
-            </nav>
-            <p class="footer-copyright">&copy; 2026 <a href="https://koltregaskes.com" target="_blank" rel="noopener noreferrer">Kol Tregaskes</a></p>
+    <footer class="cn-footer">
+      <div class="cn-footer__brand">
+        <span class="cn-logo">Axy Lusion</span>
+        <p>AI art, video, music, tool notes, and visual experiments by Kol Tregaskes.</p>
+        <p class="cn-footer__copy">&copy; 2026 <a href="https://koltregaskes.com" target="_blank" rel="noopener noreferrer">Kol Tregaskes</a></p>
+      </div>
+      <nav class="cn-footer__group" aria-label="Footer main pages">
+        <p>Main</p>
+        <a href="gallery.html">Gallery</a><a href="videos.html">Videos</a><a href="music.html">Music</a><a href="blog.html">Blog</a><a href="news.html">News</a><a href="tools.html">Tools</a><a href="a-list.html">A-List</a><a href="about.html">About</a>
+      </nav>
+      <nav class="cn-footer__group" aria-label="Footer projects">
+        <p>Projects</p>
+        <a href="https://koltregaskes.com/">Kol's Korner</a>
+        <a href="https://theairesourcehub.com/">AI Resource Hub</a>
+        <a href="https://ghostinthemodels.com/">Ghost in the Models</a>
+        <a href="https://koltregaskesphotography.com/">KT Photography</a>
+      </nav>
+      <div class="cn-footer__group">
+        <p>Contact</p>
+        <a href="about.html">About</a>
+        <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+        <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://github.com/koltregaskes" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <div class="cn-social cn-social--lg"><a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" aria-label="X / @Axylusion">X</a><a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" aria-label="Instagram / @axylusion">IG</a><a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" aria-label="YouTube / @AxyLusion">YT</a><a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="TikTok / @axylusion">TT</a><a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Midjourney / @axylusion">MJ</a><a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Suno / @axylusion">SU</a></div>
+      </div>
+      <section class="cn-footer__estate" aria-label="Elusion Works umbrella">
+        <div>
+          <p>Umbrella home</p>
+          <a class="cn-footer__estate-title" href="https://elusionworks.com/" target="_blank" rel="noopener noreferrer">Elusion Works</a>
         </div>
+        <span>The showcase for Kol's websites, tools, games, and web experiments.</span>
+        <a class="cn-footer__estate-cta" href="https://elusionworks.com/" target="_blank" rel="noopener noreferrer">Visit Elusion Works -&gt;</a>
+      </section>
     </footer>
+    <script src="scripts/cinematic.js" defer></script>
     <script src="cross-site-nav.js" defer></script>
+  </div>
 </body>
 </html>

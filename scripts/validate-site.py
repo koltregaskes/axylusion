@@ -46,6 +46,7 @@ HEAD_REQUIREMENT_PATTERNS = {
     "icon": re.compile(r'rel=["\']icon["\']', re.IGNORECASE),
     "manifest": re.compile(r'rel=["\']manifest["\']', re.IGNORECASE),
 }
+LOCAL_REF_PATTERN = re.compile(r"\b(?P<attr>href|src)=[\"'](?P<value>[^\"']+)[\"']", re.IGNORECASE)
 DIGEST_PATTERN = re.compile(
     r"(?:(\d{4})-(\d{2})-(\d{2})-digest|digest-(\d{4})-(\d{2})-(\d{2}))\.md$"
 )
@@ -113,12 +114,13 @@ def extract_job_id(value: str) -> str:
 
 def check_local_refs() -> list[str]:
     issues: list[str] = []
+    exists_cache: dict[str, bool] = {}
 
     for html_path in HTML_FILES:
-        parser = RefParser()
-        parser.feed(html_path.read_text(encoding="utf-8", errors="ignore"))
+        contents = html_path.read_text(encoding="utf-8", errors="ignore")
 
-        for _tag, _attr, value in parser.refs:
+        for match in LOCAL_REF_PATTERN.finditer(contents):
+            value = match.group("value")
             if value.startswith(("http://", "https://", "mailto:", "tel:", "javascript:", "#", "data:")):
                 continue
 
@@ -127,9 +129,13 @@ def check_local_refs() -> list[str]:
             if path_part.startswith("/"):
                 target = PROJECT_DIR / path_part.lstrip("/")
             else:
-                target = (html_path.parent / path_part).resolve()
+                target = html_path.parent / path_part
 
-            if not target.exists():
+            target_key = str(target)
+            if target_key not in exists_cache:
+                exists_cache[target_key] = target.exists()
+
+            if not exists_cache[target_key]:
                 issues.append(
                     f"Missing local asset in {rel_path(html_path)}: {value}"
                 )
@@ -137,12 +143,16 @@ def check_local_refs() -> list[str]:
     return issues
 
 
-def build_digest_manifest() -> dict[str, list[str]]:
-    digest_files = [
-        path.name
+def digest_files_on_disk() -> list[Path]:
+    return [
+        path
         for path in NEWS_DIGESTS_DIR.glob("*.md")
         if DIGEST_PATTERN.match(path.name)
     ]
+
+
+def build_digest_manifest() -> dict[str, list[str]]:
+    digest_files = [path.name for path in digest_files_on_disk()]
     digest_files.sort(
         key=lambda name: (
             int((match := DIGEST_PATTERN.match(name)).group(1) or match.group(4)),
@@ -239,7 +249,7 @@ def check_support_files() -> list[str]:
 
 def check_digest_hygiene() -> list[str]:
     warnings: list[str] = []
-    digest_paths = sorted(path for path in NEWS_DIGESTS_DIR.glob("*.md") if DIGEST_PATTERN.match(path.name))
+    digest_paths = sorted(digest_files_on_disk())
     for digest_path in digest_paths:
         content = digest_path.read_text(encoding="utf-8", errors="ignore")
         if MOJIBAKE_PATTERN.search(content):

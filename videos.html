@@ -79,7 +79,7 @@
                 <h2>Trailer-led work, with bigger stories on the horizon.</h2>
                 <p>This page is for the motion side of Axy Lusion. Most pieces start from Midjourney-generated visuals and are then cut, extended, or animated into short trailer-style releases.</p>
                 <div class="media-hub-note">
-                    <strong>Current direction:</strong>
+                    <strong>Direction:</strong>
                     <span>music video trailers and shorter social releases now, then comic-book videos, movie trailers, and short films next.</span>
                 </div>
                 <div class="media-hub-actions">
@@ -88,10 +88,10 @@
                 </div>
             </div>
             <aside class="media-hub-panel" aria-label="Video direction">
-                <span class="media-hub-live-label">Current direction</span>
+                <span class="media-hub-live-label">Direction</span>
                 <ul class="media-hub-list">
                     <li>
-                        <strong>What is live now</strong>
+                        <strong>Public channel work</strong>
                         <span>Short trailer-style pieces and music video posts shared across YouTube and TikTok.</span>
                     </li>
                     <li>
@@ -106,13 +106,13 @@
             </aside>
         </section>
 
-        <!-- Video showcase grid - first public version points to the live channels until owned embeds are curated. -->
+        <!-- Video showcase grid - first public version points to public channels until owned embeds are curated. -->
         <section class="video-showcase stagger-load delay-4">
             <div class="video-grid" id="video-grid">
                 <div class="video-empty-state">
                     <span class="media-status-label">Launch state</span>
-                    <h2>Watch the current releases on the live channels.</h2>
-                    <p>The embedded showcase is being curated so this page does not ship broken or fake video cards. For now, the live work sits on YouTube and TikTok, with the tool notes beside it.</p>
+                    <h2>Watch the channel releases while embeds are curated.</h2>
+                    <p>The embedded showcase is being curated so this page does not ship broken or fake video cards. For now, the public work sits on YouTube and TikTok, with the tool notes beside it.</p>
                     <div class="media-empty-actions">
                         <a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" class="cta-button primary">Open YouTube</a>
                         <a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" class="cta-button secondary">Open TikTok</a>
@@ -163,10 +163,13 @@
 
     <style>
         .video-showcase { padding: 0 var(--pad-x); max-width: var(--content-max); margin: 0 auto; }
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 20px; min-width: 0; }
         .video-grid iframe { width: 100%; aspect-ratio: 16/9; border-radius: 12px; border: 1px solid var(--border); }
         .video-empty-state {
             grid-column: 1 / -1;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
             padding: clamp(28px, 6vw, 52px);
             border: 1px solid rgba(240, 180, 83, 0.28);
             border-radius: 24px;

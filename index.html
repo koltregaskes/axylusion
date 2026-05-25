@@ -1,444 +1,247 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axy Lusion | AI Art, Video & Music</title>
-    <meta name="description" content="AI-generated art, video, and music by Kol Tregaskes. Explore cinematic portraits, cyberpunk scenes, and original music.">
-    <meta property="og:title" content="Axy Lusion | AI Art, Video & Music">
-    <meta property="og:description" content="AI-generated art, video, and music by Kol Tregaskes">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://axylusion.com">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@Axylusion">
-    <link rel="canonical" href="https://axylusion.com">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="color-scheme" content="dark">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; media-src 'self' https:; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Axy Lusion | AI Art, Video and Music</title>
+  <meta name="description" content="Cinematic AI art, video, music, and creative tool coverage by Kol Tregaskes.">
+  <meta name="theme-color" content="#060606">
+  <meta name="color-scheme" content="dark">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'nonce-axylusion-cinematic-schema'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta property="og:title" content="Axy Lusion | AI Art, Video and Music">
+  <meta property="og:description" content="Cinematic AI art, video, music, and creative tool coverage by Kol Tregaskes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://axylusion.com/">
+  <link rel="canonical" href="https://axylusion.com/">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cinematic.css">
+  <script type="application/ld+json" nonce="axylusion-cinematic-schema">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://axylusion.com/#organization", "name": "Axy Lusion", "alternateName": "Axylusion", "url": "https://axylusion.com", "logo": "https://axylusion.com/favicon.svg", "description": "AI art portfolio and creative tool rankings by Kol Tregaskes.", "founder": {"@id": "https://koltregaskes.com/#person-kol"}, "sameAs": ["https://x.com/Axylusion", "https://www.instagram.com/axylusion"]}, {"@type": "WebSite", "@id": "https://axylusion.com/#website", "name": "Axy Lusion", "url": "https://axylusion.com", "publisher": {"@id": "https://axylusion.com/#organization"}}]}</script>
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-background">
-            <div class="hero-image" id="hero-image"></div>
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="hero-title-main">Axy Lusion</span>
-                <span class="hero-title-sub">AI Art, Video & Music</span>
-            </h1>
-            <p class="hero-tagline">Exploring the intersection of creativity and artificial intelligence</p>
-            <div class="hero-cta">
-                <a href="#gallery" class="cta-button primary">Explore Gallery</a>
-                <a href="about.html" class="cta-button secondary">About the Artist</a>
-            </div>
-        </div>
-        <div class="hero-featured">
-            <div class="featured-info">
-                <span class="featured-label">Featured work</span>
-                <h3 class="featured-title">Recent work</h3>
-                <p class="featured-meta" id="featured-meta">Loading archive...</p>
-            </div>
-            <div class="featured-nav">
-                <button class="featured-nav-btn" id="hero-prev" aria-label="Previous">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-                </button>
-                <div class="featured-dots" id="hero-dots"></div>
-                <button class="featured-nav-btn" id="hero-next" aria-label="Next">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-                </button>
-            </div>
-        </div>
-        <div class="hero-scroll-hint">
-            <span>Scroll to explore</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </div>
-    </section>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="cn-page">
 
-    <!-- Navigation Header -->
-    <header id="header">
-        <div class="header-content">
-            <a href="index.html" class="logo">
-                <span class="logo-text">Axy Lusion</span>
-            </a>
-            <nav class="main-nav" aria-label="Primary">
-                <a href="gallery.html" class="nav-link">Gallery</a>
-                <a href="videos.html" class="nav-link">Videos</a>
-                <a href="music.html" class="nav-link">Music</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="news.html" class="nav-link">News</a>
-                <a href="tools.html" class="nav-link">Tools</a>
-                <a href="a-list.html" class="nav-link">A-List</a>
-                <a href="about.html" class="nav-link">About</a>
-            </nav>
-            <div class="header-social">
-                <!-- Standard social icons - same order on all pages -->
-                <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" title="X / Twitter" aria-label="X">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                <a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                </a>
-                <a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Midjourney" aria-label="Midjourney">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.653 2.026C6.073 3.06 8.69 4.941 10.8 7.258c2.46 2.7 4.109 5.828 4.637 9.149a.31.31 0 01-.421.335c-2.348-.945-4.54-1.258-6.59-1.02-1.739.2-3.337.792-4.816 1.703-.294.182-.62-.182-.405-.454 1.856-2.355 2.581-4.99 2.343-7.794-.195-2.292-1.031-4.61-2.284-6.709a.31.31 0 01.388-.442zm6.387 2.424c1.778.543 3.892 2.102 5.782 4.243 1.984 2.248 3.552 4.934 4.347 7.582a.31.31 0 01-.401.38l-.022-.01-.386-.154a10.6 10.6 0 00-.291-.112l-.016-.006c-.68-.247-1.199-.291-1.944-.101a.31.31 0 01-.375-.218C15.378 11.123 13.073 7.276 9.775 5c-.291-.201-.072-.653.266-.55z"/></svg>
-                </a>
-                <a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Suno" aria-label="Suno">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c0 .83-.67 1.5-1.5 1.5h-4c-.83 0-1.5-.67-1.5-1.5v-1c0-.83.67-1.5 1.5-1.5H14v-2h-4v1H8v-1c0-.83.67-1.5 1.5-1.5h4c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5H10v2h4v-1h1.5v1z"/></svg>
-                </a>
-            </div>
-        </div>
+    <header class="cn-header">
+      <a class="cn-logo" href="index.html">Axy Lusion</a>
+      <nav class="cn-nav" aria-label="Primary navigation"><a href="gallery.html">Gallery</a><a href="videos.html">Videos</a><a href="music.html">Music</a><a href="blog.html">Blog</a><a href="news.html">News</a><a href="tools.html">Tools</a><a href="a-list.html">A-List</a><a href="about.html">About</a></nav>
+      <div class="cn-social"><a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" aria-label="X / @Axylusion">X</a><a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" aria-label="Instagram / @axylusion">IG</a><a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" aria-label="YouTube / @AxyLusion">YT</a><a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="TikTok / @axylusion">TT</a><a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Midjourney / @axylusion">MJ</a><a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Suno / @axylusion">SU</a></div>
     </header>
-
     <main id="main-content">
-    <!-- Showcase Section - Latest works journey -->
-    <section class="showcase" id="gallery">
-        <div class="showcase-intro">
-            <span class="showcase-kicker">Latest Works</span>
-            <h2>Recent image journey</h2>
-            <p>The newest pieces from the archive, presented as a slower full-screen scroll before the full gallery.</p>
-        </div>
-        <div id="showcase-images">
-            <!-- Latest showcase panels loaded dynamically -->
-        </div>
-        <div class="showcase-footer">
-            <a href="gallery.html" class="cta-button primary">View Full Gallery</a>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="about-content">
-            <div class="about-image">
-                <div class="about-avatar">
-                    <img src="https://unavatar.io/x/axylusion" alt="Kol Tregaskes" onerror="this.style.display='none'">
-                </div>
-            </div>
-            <div class="about-text">
-                <h2>About the Artist</h2>
-                <p>I'm <strong>Kol Tregaskes</strong>, a creative explorer at the intersection of art and artificial intelligence. Through tools like Midjourney, I craft cinematic portraits, dark fantasy scenes, and cyberpunk visions that blur the line between imagination and reality.</p>
-                <p>Every piece in this gallery represents a collaboration between human creativity and AI capability - prompts refined through countless iterations, seeking that perfect moment where technology meets artistic vision.</p>
-                <div class="about-links">
-                    <a href="https://koltregaskes.com" target="_blank" rel="noopener noreferrer" class="about-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                        Website
-                    </a>
-                    <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" class="about-link">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        Follow on X
-                    </a>
-                </div>
-            </div>
+      <section class="cn-hero">
+        <div class="cn-hero__bg" data-hero-bg style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1a3540cc 0%, transparent 60%),linear-gradient(160deg, #1a3540 0%, #060606 100%)">
+          <div class="cn-frame__grain" aria-hidden="true"></div>
+          <div class="cn-frame__vignette" aria-hidden="true"></div>
         </div>
-    </section>
+        <div class="cn-hero__inner">
+          <div class="cn-hero__meta"><span class="cn-tick" aria-hidden="true"></span><span>Archive / <span data-hero-ref>F0006</span> of 1519</span><span class="cn-rule"></span><span data-hero-date>13 December 2025</span></div>
+          <h1 class="cn-display">Axy Lusion</h1>
+          <p class="cn-display-sub">AI Art / Video / Music</p>
+          <p class="cn-pull" data-hero-prompt>&quot;comic book style woman profile teal jacket&quot;</p>
+          <div class="cn-cta-row"><a class="cn-cta cn-cta--primary" href="gallery.html">Enter the gallery</a><a class="cn-cta cn-cta--ghost" href="about.html">About the artist</a></div>
+        </div>
+        <div class="cn-strip" data-hero-strip data-hero-items='[{&quot;ref&quot;: &quot;F0006&quot;, &quot;date&quot;: &quot;13 December 2025&quot;, &quot;prompt&quot;: &quot;comic book style woman profile teal jacket&quot;, &quot;style&quot;: &quot;background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1a3540cc 0%, transparent 60%),linear-gradient(160deg, #1a3540 0%, #060606 100%)&quot;}, {&quot;ref&quot;: &quot;F0005&quot;, &quot;date&quot;: &quot;13 December 2025&quot;, &quot;prompt&quot;: &quot;comic book style panel layout&quot;, &quot;style&quot;: &quot;background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #2a0d2ecc 0%, transparent 60%),linear-gradient(160deg, #2a0d2e 0%, #060606 100%)&quot;}, {&quot;ref&quot;: &quot;F0008&quot;, &quot;date&quot;: &quot;13 December 2025&quot;, &quot;prompt&quot;: &quot;comic book style, beautiful woman, mid 30s, athletic, dark hair pushed back, cyberpunk, near future, leather jacket, crop top, cargo pants, looking directly at the camera, stood in front of a futuristic neon city, neon lights, night time&quot;, &quot;style&quot;: &quot;background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #2a0d2ecc 0%, transparent 60%),linear-gradient(160deg, #2a0d2e 0%, #060606 100%)&quot;}, {&quot;ref&quot;: &quot;F0007&quot;, &quot;date&quot;: &quot;13 December 2025&quot;, &quot;prompt&quot;: &quot;comic book style woman in yellow raincoat&quot;, &quot;style&quot;: &quot;background:radial-gradient(ellipse 60% 80% at 30% 110%, #d4a03a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1c2a1acc 0%, transparent 60%),linear-gradient(160deg, #1c2a1a 0%, #060606 100%)&quot;}, {&quot;ref&quot;: &quot;F0002&quot;, &quot;date&quot;: &quot;14 December 2025&quot;, &quot;prompt&quot;: &quot;Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity&quot;, &quot;style&quot;: &quot;background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1a3540cc 0%, transparent 60%),linear-gradient(160deg, #1a3540 0%, #060606 100%)&quot;}, {&quot;ref&quot;: &quot;F0001&quot;, &quot;date&quot;: &quot;14 December 2025&quot;, &quot;prompt&quot;: &quot;Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity&quot;, &quot;style&quot;: &quot;background:radial-gradient(ellipse 60% 80% at 30% 110%, #d4a03a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #3a1f10cc 0%, transparent 60%),linear-gradient(160deg, #3a1f10 0%, #060606 100%)&quot;}, {&quot;ref&quot;: &quot;F0004&quot;, &quot;date&quot;: &quot;13 December 2025&quot;, &quot;prompt&quot;: &quot;comic book style woman smoking profile view&quot;, &quot;style&quot;: &quot;background:radial-gradient(ellipse 60% 80% at 30% 110%, #8a5d1255 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #2a1810cc 0%, transparent 60%),linear-gradient(160deg, #2a1810 0%, #060606 100%)&quot;}, {&quot;ref&quot;: &quot;F0003&quot;, &quot;date&quot;: &quot;14 December 2025&quot;, &quot;prompt&quot;: &quot;Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity&quot;, &quot;style&quot;: &quot;background:radial-gradient(ellipse 60% 80% at 30% 110%, #d4a03a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1c2a1acc 0%, transparent 60%),linear-gradient(160deg, #1c2a1a 0%, #060606 100%)&quot;}]'><button class="cn-strip__cell is-on" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1a3540cc 0%, transparent 60%),linear-gradient(160deg, #1a3540 0%, #060606 100%)" data-hero-index="0" aria-label="Show F0006"><span class="cn-strip__ref">F0006</span></button><button class="cn-strip__cell" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #2a0d2ecc 0%, transparent 60%),linear-gradient(160deg, #2a0d2e 0%, #060606 100%)" data-hero-index="1" aria-label="Show F0005"><span class="cn-strip__ref">F0005</span></button><button class="cn-strip__cell" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #2a0d2ecc 0%, transparent 60%),linear-gradient(160deg, #2a0d2e 0%, #060606 100%)" data-hero-index="2" aria-label="Show F0008"><span class="cn-strip__ref">F0008</span></button><button class="cn-strip__cell" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #d4a03a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1c2a1acc 0%, transparent 60%),linear-gradient(160deg, #1c2a1a 0%, #060606 100%)" data-hero-index="3" aria-label="Show F0007"><span class="cn-strip__ref">F0007</span></button><button class="cn-strip__cell" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1a3540cc 0%, transparent 60%),linear-gradient(160deg, #1a3540 0%, #060606 100%)" data-hero-index="4" aria-label="Show F0002"><span class="cn-strip__ref">F0002</span></button><button class="cn-strip__cell" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #d4a03a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #3a1f10cc 0%, transparent 60%),linear-gradient(160deg, #3a1f10 0%, #060606 100%)" data-hero-index="5" aria-label="Show F0001"><span class="cn-strip__ref">F0001</span></button><button class="cn-strip__cell" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #8a5d1255 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #2a1810cc 0%, transparent 60%),linear-gradient(160deg, #2a1810 0%, #060606 100%)" data-hero-index="6" aria-label="Show F0004"><span class="cn-strip__ref">F0004</span></button><button class="cn-strip__cell" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #d4a03a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1c2a1acc 0%, transparent 60%),linear-gradient(160deg, #1c2a1a 0%, #060606 100%)" data-hero-index="7" aria-label="Show F0003"><span class="cn-strip__ref">F0003</span></button></div>
+      </section>
+      <section class="cn-reel">
+        <div class="cn-reel__intro"><span class="cn-kicker">Reel / 8 frames</span><h2 class="cn-h2">Recent image journey</h2>
+      <div class="cn-note">
+        <span class="cn-note__dot" aria-hidden="true"></span>
+        <p><strong>Untitled works.</strong> Frames are identified by date and queue reference rather than a title. Where the original prompt was logged, it is shown as caption.</p>
+      </div></div>
+
+            <article class="cn-reel__row">
+              <div class="cn-reel__num">01</div>
+              <div class="cn-reel__frame">
+      <figure class="cn-frame cn-frame--full " style="aspect-ratio:16/9">
+        <div class="cn-frame__bg" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1a3540cc 0%, transparent 60%),linear-gradient(160deg, #1a3540 0%, #060606 100%)"></div>
+
+        <div class="cn-frame__grain" aria-hidden="true"></div>
+        <div class="cn-frame__vignette" aria-hidden="true"></div>
+        <div class="cn-frame__corner"><span>F0006</span><span>/</span><span>13 Dec 2025</span></div>
+        <figcaption class="cn-frame__cap cn-frame__cap--optional" hidden><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">comic book style woman profile teal jacket</span></figcaption>
+      </figure></div>
+              <div class="cn-reel__meta">
+                <span class="cn-kicker cn-kicker--sm">F0006 / 13 Dec 2025</span>
+                <p class="cn-reel__prompt">&quot;comic book style woman profile teal jacket&quot;</p>
+                <p class="cn-reel__status">Durable image host pending / gradient frame is intentional fallback</p>
+              </div>
+            </article>
+            <article class="cn-reel__row">
+              <div class="cn-reel__num">02</div>
+              <div class="cn-reel__frame">
+      <figure class="cn-frame cn-frame--full " style="aspect-ratio:16/9">
+        <div class="cn-frame__bg" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #2a0d2ecc 0%, transparent 60%),linear-gradient(160deg, #2a0d2e 0%, #060606 100%)"></div>
+
+        <div class="cn-frame__grain" aria-hidden="true"></div>
+        <div class="cn-frame__vignette" aria-hidden="true"></div>
+        <div class="cn-frame__corner"><span>F0005</span><span>/</span><span>13 Dec 2025</span></div>
+        <figcaption class="cn-frame__cap cn-frame__cap--optional" hidden><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">comic book style panel layout</span></figcaption>
+      </figure></div>
+              <div class="cn-reel__meta">
+                <span class="cn-kicker cn-kicker--sm">F0005 / 13 Dec 2025</span>
+                <p class="cn-reel__prompt">&quot;comic book style panel layout&quot;</p>
+                <p class="cn-reel__status">Durable image host pending / gradient frame is intentional fallback</p>
+              </div>
+            </article>
+            <article class="cn-reel__row">
+              <div class="cn-reel__num">03</div>
+              <div class="cn-reel__frame">
+      <figure class="cn-frame cn-frame--full " style="aspect-ratio:16/9">
+        <div class="cn-frame__bg" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #2a0d2ecc 0%, transparent 60%),linear-gradient(160deg, #2a0d2e 0%, #060606 100%)"></div>
+
+        <div class="cn-frame__grain" aria-hidden="true"></div>
+        <div class="cn-frame__vignette" aria-hidden="true"></div>
+        <div class="cn-frame__corner"><span>F0008</span><span>/</span><span>13 Dec 2025</span></div>
+        <figcaption class="cn-frame__cap cn-frame__cap--optional" hidden><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">comic book style, beautiful woman, mid 30s, athletic, dark hair pushed back, cyberpunk, near future, leather jacket, crop top, cargo pants, looking directly at the camera, stood in front of a futuristic neon city, neon lights, night time</span></figcaption>
+      </figure></div>
+              <div class="cn-reel__meta">
+                <span class="cn-kicker cn-kicker--sm">F0008 / 13 Dec 2025</span>
+                <p class="cn-reel__prompt">&quot;comic book style, beautiful woman, mid 30s, athletic, dark hair pushed back, cyberpunk, near future, leather jacket, crop top, cargo pants, looking directly at the camera, stood in front of a futuristic neon city, neon lights, night time&quot;</p>
+                <p class="cn-reel__status">Durable image host pending / gradient frame is intentional fallback</p>
+              </div>
+            </article>
+            <article class="cn-reel__row">
+              <div class="cn-reel__num">04</div>
+              <div class="cn-reel__frame">
+      <figure class="cn-frame cn-frame--full " style="aspect-ratio:16/9">
+        <div class="cn-frame__bg" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #d4a03a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1c2a1acc 0%, transparent 60%),linear-gradient(160deg, #1c2a1a 0%, #060606 100%)"></div>
+
+        <div class="cn-frame__grain" aria-hidden="true"></div>
+        <div class="cn-frame__vignette" aria-hidden="true"></div>
+        <div class="cn-frame__corner"><span>F0007</span><span>/</span><span>13 Dec 2025</span></div>
+        <figcaption class="cn-frame__cap cn-frame__cap--optional" hidden><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">comic book style woman in yellow raincoat</span></figcaption>
+      </figure></div>
+              <div class="cn-reel__meta">
+                <span class="cn-kicker cn-kicker--sm">F0007 / 13 Dec 2025</span>
+                <p class="cn-reel__prompt">&quot;comic book style woman in yellow raincoat&quot;</p>
+                <p class="cn-reel__status">Durable image host pending / gradient frame is intentional fallback</p>
+              </div>
+            </article>
+            <article class="cn-reel__row">
+              <div class="cn-reel__num">05</div>
+              <div class="cn-reel__frame">
+      <figure class="cn-frame cn-frame--full " style="aspect-ratio:16/9">
+        <div class="cn-frame__bg" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1a3540cc 0%, transparent 60%),linear-gradient(160deg, #1a3540 0%, #060606 100%)"></div>
+
+        <div class="cn-frame__grain" aria-hidden="true"></div>
+        <div class="cn-frame__vignette" aria-hidden="true"></div>
+        <div class="cn-frame__corner"><span>F0002</span><span>/</span><span>14 Dec 2025</span></div>
+        <figcaption class="cn-frame__cap cn-frame__cap--optional" hidden><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity</span></figcaption>
+      </figure></div>
+              <div class="cn-reel__meta">
+                <span class="cn-kicker cn-kicker--sm">F0002 / 14 Dec 2025</span>
+                <p class="cn-reel__prompt">&quot;Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity&quot;</p>
+                <p class="cn-reel__status">Durable image host pending / gradient frame is intentional fallback</p>
+              </div>
+            </article>
+            <article class="cn-reel__row">
+              <div class="cn-reel__num">06</div>
+              <div class="cn-reel__frame">
+      <figure class="cn-frame cn-frame--full " style="aspect-ratio:16/9">
+        <div class="cn-frame__bg" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #d4a03a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #3a1f10cc 0%, transparent 60%),linear-gradient(160deg, #3a1f10 0%, #060606 100%)"></div>
+
+        <div class="cn-frame__grain" aria-hidden="true"></div>
+        <div class="cn-frame__vignette" aria-hidden="true"></div>
+        <div class="cn-frame__corner"><span>F0001</span><span>/</span><span>14 Dec 2025</span></div>
+        <figcaption class="cn-frame__cap cn-frame__cap--optional" hidden><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity</span></figcaption>
+      </figure></div>
+              <div class="cn-reel__meta">
+                <span class="cn-kicker cn-kicker--sm">F0001 / 14 Dec 2025</span>
+                <p class="cn-reel__prompt">&quot;Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity&quot;</p>
+                <p class="cn-reel__status">Durable image host pending / gradient frame is intentional fallback</p>
+              </div>
+            </article>
+            <article class="cn-reel__row">
+              <div class="cn-reel__num">07</div>
+              <div class="cn-reel__frame">
+      <figure class="cn-frame cn-frame--full " style="aspect-ratio:16/9">
+        <div class="cn-frame__bg" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #8a5d1255 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #2a1810cc 0%, transparent 60%),linear-gradient(160deg, #2a1810 0%, #060606 100%)"></div>
+
+        <div class="cn-frame__grain" aria-hidden="true"></div>
+        <div class="cn-frame__vignette" aria-hidden="true"></div>
+        <div class="cn-frame__corner"><span>F0004</span><span>/</span><span>13 Dec 2025</span></div>
+        <figcaption class="cn-frame__cap cn-frame__cap--optional" hidden><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">comic book style woman smoking profile view</span></figcaption>
+      </figure></div>
+              <div class="cn-reel__meta">
+                <span class="cn-kicker cn-kicker--sm">F0004 / 13 Dec 2025</span>
+                <p class="cn-reel__prompt">&quot;comic book style woman smoking profile view&quot;</p>
+                <p class="cn-reel__status">Durable image host pending / gradient frame is intentional fallback</p>
+              </div>
+            </article>
+            <article class="cn-reel__row">
+              <div class="cn-reel__num">08</div>
+              <div class="cn-reel__frame">
+      <figure class="cn-frame cn-frame--full " style="aspect-ratio:16/9">
+        <div class="cn-frame__bg" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #d4a03a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #1c2a1acc 0%, transparent 60%),linear-gradient(160deg, #1c2a1a 0%, #060606 100%)"></div>
+
+        <div class="cn-frame__grain" aria-hidden="true"></div>
+        <div class="cn-frame__vignette" aria-hidden="true"></div>
+        <div class="cn-frame__corner"><span>F0003</span><span>/</span><span>14 Dec 2025</span></div>
+        <figcaption class="cn-frame__cap cn-frame__cap--optional" hidden><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity</span></figcaption>
+      </figure></div>
+              <div class="cn-reel__meta">
+                <span class="cn-kicker cn-kicker--sm">F0003 / 14 Dec 2025</span>
+                <p class="cn-reel__prompt">&quot;Cinematic, ultra-high quality realistic professional award winning photography, Lora, strong young woman, intense gaze, determined expression, slightly wild red hair, fantasy heroine portrait, half body, subtle battle scars, dirt and dust on skin, graphic novel illustration on antique yellowed parchment paper with light grain, extreme high-contrast black and white pencil drawing, hard noir lighting, deep shadows, blown-out highlights, bold ink lines combined with rough graphite shading, visible pencil strokes, cross-hatching, heavy chiaroscuro, Sin City style noir atmosphere, brutal contrast, almost monochrome, hand-drawn comic art, dark fantasy graphic novel, in the style of Luis Royo and Frank Frazetta, dramatic composition, cinematic framing, raw emotional intensity&quot;</p>
+                <p class="cn-reel__status">Durable image host pending / gradient frame is intentional fallback</p>
+              </div>
+            </article>
+        <div class="cn-reel__foot"><a class="cn-cta cn-cta--primary" href="gallery.html">View full gallery</a></div>
+      </section>
+      <section class="cn-about">
+        <div class="cn-about__inner">
+          <div class="cn-avatar-frame" aria-hidden="true">KT</div>
+          <div class="cn-about__copy">
+            <span class="cn-kicker">About the artist</span>
+            <h2 class="cn-h2">Kol Tregaskes</h2>
+            <p>A creative explorer at the intersection of art and artificial intelligence. Through Midjourney, Suno, video models, and careful sequencing, Axy Lusion becomes a cinematic archive of images, sound, and moving-image experiments.</p>
+            <p>Every frame is a collaboration between human direction and model capability: prompts refined through iteration, then indexed here by date and frame reference.</p>
+            <div class="cn-cta-row"><a class="cn-cta cn-cta--ghost" href="https://koltregaskes.com">Kol's Korner</a><a class="cn-cta cn-cta--ghost" href="https://x.com/Axylusion">Follow on X</a></div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <button class="modal-nav modal-prev" id="modal-prev" title="Previous (left arrow or scroll up)">&lsaquo;</button>
-            <button class="modal-nav modal-next" id="modal-next" title="Next (right arrow or scroll down)">&rsaquo;</button>
-            <button class="close" type="button" title="Close (Esc)" aria-label="Close">&times;</button>
-            <div class="modal-media-wrapper">
-                <div id="modal-media"></div>
-            </div>
-            <div class="modal-info">
-                <div class="modal-meta">
-                    <span id="modal-date"></span>
-                </div>
-            </div>
+    <footer class="cn-footer">
+      <div class="cn-footer__brand">
+        <span class="cn-logo">Axy Lusion</span>
+        <p>AI art, video, music, tool notes, and visual experiments by Kol Tregaskes.</p>
+        <p class="cn-footer__copy">&copy; 2026 <a href="https://koltregaskes.com" target="_blank" rel="noopener noreferrer">Kol Tregaskes</a></p>
+      </div>
+      <nav class="cn-footer__group" aria-label="Footer main pages">
+        <p>Main</p>
+        <a href="gallery.html">Gallery</a><a href="videos.html">Videos</a><a href="music.html">Music</a><a href="blog.html">Blog</a><a href="news.html">News</a><a href="tools.html">Tools</a><a href="a-list.html">A-List</a><a href="about.html">About</a>
+      </nav>
+      <nav class="cn-footer__group" aria-label="Footer projects">
+        <p>Projects</p>
+        <a href="https://koltregaskes.com/">Kol's Korner</a>
+        <a href="https://theairesourcehub.com/">AI Resource Hub</a>
+        <a href="https://ghostinthemodels.com/">Ghost in the Models</a>
+        <a href="https://koltregaskesphotography.com/">KT Photography</a>
+      </nav>
+      <div class="cn-footer__group">
+        <p>Contact</p>
+        <a href="about.html">About</a>
+        <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+        <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://github.com/koltregaskes" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <div class="cn-social cn-social--lg"><a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" aria-label="X / @Axylusion">X</a><a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" aria-label="Instagram / @axylusion">IG</a><a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" aria-label="YouTube / @AxyLusion">YT</a><a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="TikTok / @axylusion">TT</a><a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Midjourney / @axylusion">MJ</a><a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Suno / @axylusion">SU</a></div>
+      </div>
+      <section class="cn-footer__estate" aria-label="Elusion Works umbrella">
+        <div>
+          <p>Umbrella home</p>
+          <a class="cn-footer__estate-title" href="https://elusionworks.com/" target="_blank" rel="noopener noreferrer">Elusion Works</a>
         </div>
-    </div>
-
-    <!-- Back to Top -->
-    <button id="back-to-top" class="back-to-top" title="Back to top" aria-label="Back to top">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-    </button>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <span class="footer-logo">Axy Lusion</span>
-                <p class="footer-tagline">AI Art, Video & Music</p>
-            </div>
-            <nav class="social-links">
-                <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" title="X / Twitter" aria-label="X">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                <a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                </a>
-                <a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Midjourney" aria-label="Midjourney">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.653 2.026C6.073 3.06 8.69 4.941 10.8 7.258c2.46 2.7 4.109 5.828 4.637 9.149a.31.31 0 01-.421.335c-2.348-.945-4.54-1.258-6.59-1.02-1.739.2-3.337.792-4.816 1.703-.294.182-.62-.182-.405-.454 1.856-2.355 2.581-4.99 2.343-7.794-.195-2.292-1.031-4.61-2.284-6.709a.31.31 0 01.388-.442zm6.387 2.424c1.778.543 3.892 2.102 5.782 4.243 1.984 2.248 3.552 4.934 4.347 7.582a.31.31 0 01-.401.38l-.022-.01-.386-.154a10.6 10.6 0 00-.291-.112l-.016-.006c-.68-.247-1.199-.291-1.944-.101a.31.31 0 01-.375-.218C15.378 11.123 13.073 7.276 9.775 5c-.291-.201-.072-.653.266-.55z"/></svg>
-                </a>
-                <a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Suno" aria-label="Suno">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c0 .83-.67 1.5-1.5 1.5h-4c-.83 0-1.5-.67-1.5-1.5v-1c0-.83.67-1.5 1.5-1.5H14v-2h-4v1H8v-1c0-.83.67-1.5 1.5-1.5h4c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5H10v2h4v-1h1.5v1z"/></svg>
-                </a>
-            </nav>
-            <p class="footer-copyright">&copy; 2026 <a href="https://koltregaskes.com" target="_blank" rel="noopener noreferrer">Kol Tregaskes</a></p>
-        </div>
+        <span>The showcase for Kol's websites, tools, games, and web experiments.</span>
+        <a class="cn-footer__estate-cta" href="https://elusionworks.com/" target="_blank" rel="noopener noreferrer">Visit Elusion Works -&gt;</a>
+      </section>
     </footer>
-
-    <script>
-        (function() {
-            // --- Hero Section ---
-            const heroImage = document.getElementById('hero-image');
-            const featuredMeta = document.getElementById('featured-meta');
-            const heroDots = document.getElementById('hero-dots');
-            const heroPrev = document.getElementById('hero-prev');
-            const heroNext = document.getElementById('hero-next');
-
-            let featuredItems = [];
-            let currentIndex = 0;
-            let autoRotateInterval;
-            let homepageItems = [];
-
-            // Placeholder date used during batch import - hide these images
-            const PLACEHOLDER_DATE = '2026-02-10';
-            const MAX_SHOWCASE_ITEMS = 12;
-            const LAUNCH_MEDIA_PLACEHOLDER = 'images/media-hosting-pending.svg';
-
-            function escapeHtml(value) {
-                return String(value ?? '')
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;')
-                    .replace(/"/g, '&quot;')
-                    .replace(/'/g, '&#39;');
-            }
-
-            function getItemTitle(item) {
-                const rawTitle = (item.name || item.prompt || 'Untitled work').trim();
-                return rawTitle.length > 88 ? `${rawTitle.slice(0, 85).trimEnd()}...` : rawTitle;
-            }
-
-            function isFragileProviderMediaUrl(value) {
-                try {
-                    return new URL(value, window.location.href).hostname === 'cdn.midjourney.com';
-                } catch {
-                    return false;
-                }
-            }
-
-            function getLaunchMediaUrl(item) {
-                const mediaUrl = item?.cdn_url || '';
-                return isFragileProviderMediaUrl(mediaUrl) ? LAUNCH_MEDIA_PLACEHOLDER : mediaUrl;
-            }
-
-            function getLaunchMediaClass(item) {
-                return isFragileProviderMediaUrl(item?.cdn_url) ? ' launch-media-deferred' : '';
-            }
-
-            function getItemAltText(item) {
-                const explicitName = (item.name || '').trim();
-                if (explicitName) return explicitName;
-
-                const prompt = (item.prompt || '').trim();
-                if (prompt) {
-                    return prompt.length > 120 ? `${prompt.slice(0, 117).trimEnd()}...` : prompt;
-                }
-
-                return `Axy Lusion artwork from ${formatDisplayDate(item.created)}`;
-            }
-
-            function formatDisplayDate(dateString) {
-                if (!dateString || dateString === PLACEHOLDER_DATE) return 'Recent work';
-
-                const parsedDate = new Date(dateString);
-                if (Number.isNaN(parsedDate.getTime())) return 'Recent work';
-
-                return new Intl.DateTimeFormat('en-GB', {
-                    day: 'numeric',
-                    month: 'short',
-                    year: 'numeric'
-                }).format(parsedDate);
-            }
-
-            async function loadHomepageItems() {
-                if (homepageItems.length > 0) return homepageItems;
-
-                const response = await fetch('data/homepage-gallery.json', { cache: 'no-store' });
-                if (!response.ok) {
-                    throw new Error(`Failed to load homepage gallery data (${response.status})`);
-                }
-
-                const payload = await response.json();
-                homepageItems = Array.isArray(payload.items) ? payload.items : [];
-                return homepageItems;
-            }
-
-            async function initHero() {
-                try {
-                    const items = await loadHomepageItems();
-                    featuredItems = items.slice(0, 5);
-                } catch (error) {
-                    console.error('Homepage gallery data failed to load', error);
-                    return;
-                }
-
-                if (featuredItems.length === 0) return;
-
-                featuredItems.forEach((_, i) => {
-                    const dot = document.createElement('button');
-                    dot.className = 'dot' + (i === 0 ? ' active' : '');
-                    dot.setAttribute('aria-label', `Featured item ${i + 1}`);
-                    dot.addEventListener('click', () => goToSlide(i));
-                    heroDots.appendChild(dot);
-                });
-
-                showItem(0);
-                startAutoRotate();
-                initShowcase();
-            }
-
-            function showItem(index) {
-                if (!featuredItems[index]) return;
-                const item = featuredItems[index];
-                heroImage.style.opacity = '0';
-                setTimeout(() => {
-                    heroImage.style.backgroundImage = `url(${getLaunchMediaUrl(item)})`;
-                    heroImage.classList.toggle('launch-media-deferred', isFragileProviderMediaUrl(item.cdn_url));
-                    heroImage.style.opacity = '1';
-                }, 300);
-                featuredMeta.textContent = formatDisplayDate(item.created);
-                const dots = heroDots.querySelectorAll('.dot');
-                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-                currentIndex = index;
-            }
-
-            function goToSlide(index) { showItem(index); resetAutoRotate(); }
-            function nextSlide() { showItem((currentIndex + 1) % featuredItems.length); }
-            function prevSlide() { showItem((currentIndex - 1 + featuredItems.length) % featuredItems.length); }
-            function startAutoRotate() { autoRotateInterval = setInterval(nextSlide, 5000); }
-            function resetAutoRotate() { clearInterval(autoRotateInterval); startAutoRotate(); }
-
-            heroNext.addEventListener('click', () => { nextSlide(); resetAutoRotate(); });
-            heroPrev.addEventListener('click', () => { prevSlide(); resetAutoRotate(); });
-
-            const hero = document.getElementById('hero');
-            hero.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
-            hero.addEventListener('mouseleave', startAutoRotate);
-
-            initHero();
-
-            function initShowcase() {
-                const container = document.getElementById('showcase-images');
-                if (!container) return;
-
-                const showcaseItems = homepageItems.slice(0, MAX_SHOWCASE_ITEMS);
-
-                container.innerHTML = showcaseItems.map((item, index) => `
-                    <article class="showcase-panel${index % 2 === 1 ? ' showcase-panel--right' : ''}">
-                        <img
-                            src="${escapeHtml(getLaunchMediaUrl(item))}"
-                            alt="${escapeHtml(getItemAltText(item))}"
-                            class="${getLaunchMediaClass(item).trim()}"
-                            loading="${index < 2 ? 'eager' : 'lazy'}"
-                            decoding="async"
-                        >
-                        <div class="showcase-panel-info">
-                            <span class="showcase-panel-count">${String(index + 1).padStart(2, '0')} / ${String(showcaseItems.length).padStart(2, '0')}</span>
-                            <p class="showcase-panel-kicker">Recent work</p>
-                            <p>${escapeHtml(formatDisplayDate(item.created))}</p>
-                        </div>
-                    </article>
-                `).join('') || `
-                    <div class="showcase-empty">
-                        <p>No recent images are ready for the homepage showcase yet.</p>
-                    </div>
-                `;
-            }
-
-            // --- Sticky Header ---
-            const header = document.getElementById('header');
-            const heroSection = document.getElementById('hero');
-            const headerRevealZone = 88;
-            let pointerNearTop = false;
-
-            function shouldShowHeader() {
-                const scrolledPastHero = window.scrollY > Math.max(heroSection.offsetHeight - 120, 120);
-                const movedIntoPage = window.scrollY > 72;
-                const headerFocused = header.contains(document.activeElement);
-                return scrolledPastHero || movedIntoPage || pointerNearTop || header.matches(':hover') || headerFocused;
-            }
-
-            function syncHeaderVisibility() {
-                header.classList.toggle('sticky', shouldShowHeader());
-            }
-
-            header.classList.add('peek');
-            setTimeout(() => {
-                header.classList.remove('peek');
-                syncHeaderVisibility();
-            }, 1800);
-
-            window.addEventListener('scroll', syncHeaderVisibility, { passive: true });
-            window.addEventListener('resize', syncHeaderVisibility);
-            window.addEventListener('focusin', syncHeaderVisibility);
-
-            document.addEventListener('mousemove', (event) => {
-                const nextState = event.clientY <= headerRevealZone;
-                if (nextState === pointerNearTop) return;
-                pointerNearTop = nextState;
-                syncHeaderVisibility();
-            }, { passive: true });
-
-            header.addEventListener('mouseleave', () => {
-                if (window.scrollY <= 72) {
-                    pointerNearTop = false;
-                    syncHeaderVisibility();
-                }
-            });
-
-            syncHeaderVisibility();
-
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') return;
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        const headerHeight = Math.max(header.offsetHeight, 76);
-                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                    }
-                });
-            });
-            // --- Back to Top button ---
-            const backToTop = document.getElementById('back-to-top');
-            if (backToTop) {
-                window.addEventListener('scroll', () => {
-                    backToTop.classList.toggle('visible', window.scrollY > window.innerHeight);
-                });
-                backToTop.addEventListener('click', () => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            }
-        })();
-    </script>
-<script src="cross-site-nav.js" defer></script>
+    <script src="scripts/cinematic.js" defer></script>
+    <script src="cross-site-nav.js" defer></script>
+  </div>
 </body>
 </html>

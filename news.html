@@ -1,311 +1,232 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI News | Axy Lusion</title>
-    <meta name="description" content="Daily AI news digest - the latest from the world of artificial intelligence, creative tools, and the AI industry.">
-    <meta property="og:title" content="AI News | Axy Lusion">
-    <meta property="og:description" content="Daily AI news digest from Axy Lusion">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://axylusion.com/news.html">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="color-scheme" content="dark">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="news-controls.css">
-    <style>
-        .news-hero {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 var(--space-xl) var(--space-xl);
-        }
-
-        .news-hero-grid {
-            display: grid;
-            grid-template-columns: 1.35fr 0.95fr;
-            gap: var(--space-xl);
-            align-items: stretch;
-        }
-
-        .news-hero-copy,
-        .news-hero-panel {
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: var(--radius-xl);
-            background: linear-gradient(180deg, rgba(18, 18, 18, 0.96) 0%, rgba(12, 12, 12, 0.92) 100%);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .news-hero-copy {
-            padding: var(--space-2xl);
-        }
-
-        .news-hero-kicker {
-            display: inline-block;
-            margin-bottom: var(--space-sm);
-            color: var(--axyl-amber);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-        }
-
-        .news-hero-copy h2 {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3.4rem);
-            line-height: 1.05;
-            color: var(--axyl-cream);
-            margin-bottom: var(--space-md);
-            max-width: 12ch;
-        }
-
-        .news-hero-copy p {
-            max-width: 58ch;
-            color: var(--axyl-gray-300);
-            line-height: 1.8;
-            margin-bottom: var(--space-lg);
-        }
-
-        .news-hero-note {
-            display: inline-flex;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
-            color: var(--axyl-gray-400);
-            font-size: 0.9rem;
-            margin-bottom: var(--space-lg);
-        }
-
-        .news-hero-note strong {
-            color: var(--axyl-amber);
-        }
-
-        .news-hero-actions {
-            display: flex;
-            gap: var(--space-md);
-            flex-wrap: wrap;
-        }
-
-        .news-hero-actions .cta-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .news-hero-panel {
-            padding: var(--space-2xl);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: var(--space-lg);
-        }
-
-        .news-hero-panel p {
-            color: var(--axyl-gray-400);
-            line-height: 1.7;
-        }
-
-        .news-live-label {
-            display: inline-block;
-            color: var(--axyl-amber);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: var(--space-sm);
-        }
-
-        .news-metrics {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: var(--space-md);
-        }
-
-        .news-metric {
-            padding: var(--space-md);
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .news-metric span {
-            display: block;
-            color: var(--axyl-gray-500);
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            margin-bottom: var(--space-xs);
-        }
-
-        .news-metric strong {
-            display: block;
-            color: var(--axyl-cream);
-            font-family: var(--font-display);
-            font-size: clamp(1.4rem, 3vw, 2rem);
-        }
-
-        @media (max-width: 960px) {
-            .news-hero-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .news-metrics {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News | Axy Lusion</title>
+  <meta name="description" content="Dated creative-AI digest archive for image, video, audio, tools, 3D, and benchmarks.">
+  <meta name="theme-color" content="#060606">
+  <meta name="color-scheme" content="dark">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'nonce-axylusion-cinematic-schema'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta property="og:title" content="News | Axy Lusion">
+  <meta property="og:description" content="Dated creative-AI digest archive for image, video, audio, tools, 3D, and benchmarks.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://axylusion.com/news.html">
+  <link rel="canonical" href="https://axylusion.com/news.html">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cinematic.css">
+  <script type="application/ld+json" nonce="axylusion-cinematic-schema">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://axylusion.com/#organization", "name": "Axy Lusion", "alternateName": "Axylusion", "url": "https://axylusion.com", "logo": "https://axylusion.com/favicon.svg", "description": "AI art portfolio and creative tool rankings by Kol Tregaskes.", "founder": {"@id": "https://koltregaskes.com/#person-kol"}, "sameAs": ["https://x.com/Axylusion", "https://www.instagram.com/axylusion"]}, {"@type": "WebSite", "@id": "https://axylusion.com/#website", "name": "Axy Lusion", "url": "https://axylusion.com", "publisher": {"@id": "https://axylusion.com/#organization"}}]}</script>
 </head>
 <body>
-    <!-- Navigation Header -->
-    <header id="header" class="sticky">
-        <div class="header-content">
-            <a href="index.html" class="logo">
-                <span class="logo-text">Axy Lusion</span>
-            </a>
-            <nav class="main-nav">
-                <a href="gallery.html" class="nav-link">Gallery</a>
-                <a href="videos.html" class="nav-link">Videos</a>
-                <a href="music.html" class="nav-link">Music</a>
-                <a href="blog.html" class="nav-link">Blog</a>
-                <a href="news.html" class="nav-link active">News</a>
-                <a href="tools.html" class="nav-link">Tools</a>
-                <a href="a-list.html" class="nav-link">A-List</a>
-                <a href="about.html" class="nav-link">About</a>
-            </nav>
-            <div class="header-social">
-                <!-- Standard social icons - same order on all pages -->
-                <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" title="X / Twitter" aria-label="X">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                <a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                </a>
-                <a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Midjourney" aria-label="Midjourney">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.653 2.026C6.073 3.06 8.69 4.941 10.8 7.258c2.46 2.7 4.109 5.828 4.637 9.149a.31.31 0 01-.421.335c-2.348-.945-4.54-1.258-6.59-1.02-1.739.2-3.337.792-4.816 1.703-.294.182-.62-.182-.405-.454 1.856-2.355 2.581-4.99 2.343-7.794-.195-2.292-1.031-4.61-2.284-6.709a.31.31 0 01.388-.442zm6.387 2.424c1.778.543 3.892 2.102 5.782 4.243 1.984 2.248 3.552 4.934 4.347 7.582a.31.31 0 01-.401.38l-.022-.01-.386-.154a10.6 10.6 0 00-.291-.112l-.016-.006c-.68-.247-1.199-.291-1.944-.101a.31.31 0 01-.375-.218C15.378 11.123 13.073 7.276 9.775 5c-.291-.201-.072-.653.266-.55z"/></svg>
-                </a>
-                <a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Suno" aria-label="Suno">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c0 .83-.67 1.5-1.5 1.5h-4c-.83 0-1.5-.67-1.5-1.5v-1c0-.83.67-1.5 1.5-1.5H14v-2h-4v1H8v-1c0-.83.67-1.5 1.5-1.5h4c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5H10v2h4v-1h1.5v1z"/></svg>
-                </a>
-            </div>
-        </div>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="cn-page">
+
+    <header class="cn-header">
+      <a class="cn-logo" href="index.html">Axy Lusion</a>
+      <nav class="cn-nav" aria-label="Primary navigation"><a href="gallery.html">Gallery</a><a href="videos.html">Videos</a><a href="music.html">Music</a><a href="blog.html">Blog</a><a class="is-active" href="news.html">News</a><a href="tools.html">Tools</a><a href="a-list.html">A-List</a><a href="about.html">About</a></nav>
+      <div class="cn-social"><a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" aria-label="X / @Axylusion">X</a><a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" aria-label="Instagram / @axylusion">IG</a><a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" aria-label="YouTube / @AxyLusion">YT</a><a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="TikTok / @axylusion">TT</a><a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Midjourney / @axylusion">MJ</a><a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Suno / @axylusion">SU</a></div>
     </header>
+    <main id="main-content">
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="page-header-content">
-            <h1 class="page-title stagger-load delay-1">AI News</h1>
-            <p class="page-subtitle stagger-load delay-2">Creative AI news, image tools, video, audio, and the wider AI industry</p>
-        </div>
-    </section>
-
-    <!-- News Layout -->
-    <main class="an-layout">
-        <!-- Sidebar -->
-        <aside class="an-sidebar">
-            <div class="an-sidebar-section">
-                <h3>Search</h3>
-                <input type="text" id="searchInput" class="an-search" placeholder="Search articles...">
-            </div>
-
-            <div class="an-sidebar-section">
-                <h3>Topics</h3>
-                <div id="topicFilters" class="an-chip-grid" aria-label="Topic filters"></div>
-            </div>
-
-            <div class="an-sidebar-section">
-                <h3>Date Range</h3>
-                <div class="an-quick-filters">
-                    <button id="quick24h" class="an-quick-btn">24h</button>
-                    <button id="quickLastWeek" class="an-quick-btn">7 Days</button>
-                    <button id="quickAll" class="an-quick-btn">All</button>
-                </div>
-                <div class="an-date-inputs">
-                    <input type="date" id="fromDate" class="an-date-input">
-                    <span>to</span>
-                    <input type="date" id="toDate" class="an-date-input">
-                </div>
-            </div>
-
-            <div class="an-sidebar-section">
-                <h3>Group By</h3>
-                <select id="groupBy" class="an-select">
-                    <option value="date">Date</option>
-                    <option value="topic">Topic</option>
-                </select>
-            </div>
-
-            <button id="clearFilters" class="an-clear-btn">Clear Filters</button>
-        </aside>
-
-        <!-- Main Content -->
-        <div class="an-main">
-            <div id="filterSummary" class="an-filter-summary" style="display: none;">
-                <span id="filterSummaryText"></span>
-            </div>
-
-            <div class="an-overview" aria-label="News overview">
-                <span class="an-overview-metric">Articles <strong id="news-article-count">0</strong></span>
-                <span class="an-overview-metric">Latest <strong id="news-latest-date">-</strong></span>
-            </div>
-
-            <div id="loading" class="an-loading">
-                <div class="an-spinner"></div>
-                <p>Loading news articles...</p>
-            </div>
-
-            <div id="articlesContainer"></div>
-
-            <div id="noResults" class="an-no-results" style="display: none;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-                <p>No articles found matching your filters.</p>
-                <button onclick="document.getElementById('clearFilters').click()">Clear Filters</button>
-            </div>
-        </div>
+      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Dated digest archive / 25 May 2026</span><h1 class="cn-h1">News</h1><p class="cn-lede">Creative-AI headlines for image, video, audio, tools, 3D, and benchmarks. The lead story is fixed; filters apply to the digest list below.</p></div></section>
+      <section class="cn-news-lead"><div class="cn-news-lead__bg" style="background:radial-gradient(ellipse 60% 80% at 30% 110%, #c4851a55 0%, transparent 55%),radial-gradient(ellipse 90% 60% at 80% 0%, #2a0d2ecc 0%, transparent 60%),linear-gradient(160deg, #2a0d2e 0%, #060606 100%)"><div class="cn-frame__grain"></div><div class="cn-frame__vignette"></div></div><div class="cn-news-lead__copy"><span class="cn-kicker">Lead / 25 May 2026 / Tools</span><h2 class="cn-h2">Scoble Reshares Notch Agents Turning One Prompt Into A Creative Team</h2><p>Most recent indexed creative-AI signal from the Axy Lusion digest archive.</p><div class="cn-cta-row"><a class="cn-cta cn-cta--primary" href="https://x.com/Scobleizer/status/2058106717301571752" target="_blank" rel="noopener noreferrer">Open source</a><a class="cn-cta cn-cta--ghost" href="news-digests/digest-2026-05-25.md">Read digest</a></div></div></section>
+      <section class="cn-news-filters" aria-label="News filters">
+        <div class="cn-news-filters__row"><label class="cn-search" for="news-search"><span class="cn-search__icon" aria-hidden="true">Search</span><input id="news-search" type="search" placeholder="Search headlines" data-news-search></label><div class="cn-news-filters__range"><button type="button" data-news-range="day" aria-pressed="false">Issue day</button><button type="button" data-news-range="week" aria-pressed="false">7-day window</button><button type="button" class="is-on" data-news-range="all" aria-pressed="true">All</button></div></div>
+        <div class="cn-news-filters__chips"><span class="cn-kicker cn-kicker--sm">Topic</span><button type="button" class="cn-chip is-on" data-news-topic="All" aria-pressed="true">All</button><button type="button" class="cn-chip" data-news-topic="Image" aria-pressed="false">Image</button><button type="button" class="cn-chip" data-news-topic="Video" aria-pressed="false">Video</button><button type="button" class="cn-chip" data-news-topic="Audio" aria-pressed="false">Audio</button><button type="button" class="cn-chip" data-news-topic="3D" aria-pressed="false">3D</button><button type="button" class="cn-chip" data-news-topic="Tools" aria-pressed="false">Tools</button><button type="button" class="cn-chip" data-news-topic="Benchmarks" aria-pressed="false">Benchmarks</button><button class="cn-news-filters__clear cn-hidden" type="button" data-news-clear>Clear all</button></div>
+      </section>
+      <section class="cn-digests" data-news-list><div class="cn-digests__head"><span class="cn-kicker">Digest list</span><h2 class="cn-h2">By the day</h2>
+      <div class="cn-note cn-note--compact">
+        <span class="cn-note__dot" aria-hidden="true"></span>
+        <p><strong>Untitled works.</strong> Frames are identified by date and queue reference rather than a title. Where the original prompt was logged, it is shown as caption.</p>
+      </div></div>
+            <article class="cn-digest" data-digest-date="2026-05-25" data-digest-search="scoble reshares notch agents turning one prompt into a creative team tanishq mathew abraham, sophontai founder, explains how his ph.d. in deep learning-based virtual staining supports his medical ai workflow — he completed his uc davis ph.d. at age 19.">
+              <div class="cn-digest__date"><span class="cn-digest__day">25</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Tools"><a href="https://x.com/Scobleizer/status/2058106717301571752" target="_blank" rel="noopener noreferrer">Scoble Reshares Notch Agents Turning One Prompt Into A Creative Team</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Tools"><a href="https://www.digg.com/ai/jwd7kkro?rank=4" target="_blank" rel="noopener noreferrer">Tanishq Mathew Abraham, SophontAI founder, explains how his Ph.D. in deep learning-based virtual staining supports his medical AI workflow — He completed his UC Davis Ph.D. at age 19.</a><span class="cn-digest__topic">Tools</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-25.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-23" data-digest-search="niloofar mireshghallah overhears discussion of world models and grounded video generation while resting in a copenhagen park during burnout recovery â€” nathan lambert replies with support for her trip.">
+              <div class="cn-digest__date"><span class="cn-digest__day">23</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Video"><a href="https://www.digg.com/ai/2imvfocn?rank=3" target="_blank" rel="noopener noreferrer">Niloofar Mireshghallah overhears discussion of world models and grounded video generation while resting in a Copenhagen park during burnout recovery â€” Nathan Lambert replies with support for her trip.</a><span class="cn-digest__topic">Video</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-23.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-22" data-digest-search="scoble: neuralink future job looks like creative director physx-omni: unified simulation-ready physical 3d generation for rigid, deformable, and articulated objects #raycast 2.0 is a great update, but one change to the clipboard history has completely broken my workflow. here&#x27;s what changed and how to fix it.">
+              <div class="cn-digest__date"><span class="cn-digest__day">22</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Tools"><a href="https://x.com/Scobleizer/status/2057375096894001647" target="_blank" rel="noopener noreferrer">Scoble: Neuralink Future Job Looks Like Creative Director</a><span class="cn-digest__topic">Tools</span></li><li data-topic="3D"><a href="https://paperswithcode.com/papers/2605.21572" target="_blank" rel="noopener noreferrer">PhysX-Omni: Unified Simulation-Ready Physical 3D Generation for Rigid, Deformable, and Articulated Objects</a><span class="cn-digest__topic">3D</span></li><li data-topic="Tools"><a href="https://x.com/DigitalTrends/status/2057875709339804106" target="_blank" rel="noopener noreferrer">#Raycast 2.0 is a great update, but one change to the clipboard history has completely broken my workflow. Here&#x27;s what changed and how to fix it.</a><span class="cn-digest__topic">Tools</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-22.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-21" data-digest-search="stable audio 3 is the creative post because local generation changes iteration spotify launches an elevenlabs-powered audiobook creation tool sometimes, you have to plan in order to be creative cursor inside jira is the workflow post because agents are entering work systems scoble&#x27;s 40,000 posts a day comment is the media post because it explains the future my agents read them all networking advice for ai founders visiting san francisco futurehouse robin shows ai science is leaving the literature review phase credit: venturebeat made with midjourney credit: venturebeat made with midjourney">
+              <div class="cn-digest__date"><span class="cn-digest__day">21</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Audio"><a href="https://x.com/dadabots/status/2057237186077876560" target="_blank" rel="noopener noreferrer">Stable Audio 3 Is The Creative Post Because Local Generation Changes Iteration</a><span class="cn-digest__topic">Audio</span></li><li data-topic="Audio"><a href="https://techcrunch.com/2026/05/21/spotify-launches-an-elevenlabs-powered-audiobook-creation-tool/" target="_blank" rel="noopener noreferrer">Spotify launches an ElevenLabs-powered audiobook creation tool</a><span class="cn-digest__topic">Audio</span></li><li data-topic="Tools"><a href="https://fstoppers.com/automotive/sometimes-have-plan-order-be-creative-901360" target="_blank" rel="noopener noreferrer">Sometimes, You Have to Plan in Order to Be Creative</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Tools"><a href="https://x.com/WesRoth/status/2057234730983882797" target="_blank" rel="noopener noreferrer">Cursor Inside Jira Is The Workflow Post Because Agents Are Entering Work Systems</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Tools"><a href="https://x.com/Scobleizer/status/2056966695626096732" target="_blank" rel="noopener noreferrer">Scoble&#x27;s 40,000 Posts A Day Comment Is The Media Post Because It Explains The Future</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Tools"><a href="https://x.com/Scobleizer/status/2056987384659706105" target="_blank" rel="noopener noreferrer">My Agents Read Them All</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Video"><a href="https://x.com/Scobleizer/status/2057155187656331741" target="_blank" rel="noopener noreferrer">Networking Advice For AI Founders Visiting San Francisco</a><span class="cn-digest__topic">Video</span></li><li data-topic="Tools"><a href="https://x.com/SGRodriques/status/2057092111959544141" target="_blank" rel="noopener noreferrer">FutureHouse Robin Shows AI Science Is Leaving The Literature Review Phase</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Image"><a href="https://venturebeat.com/technology/kore-ai-launches-artemis-ai-agent-platform-expands-challenge-to-microsoft-and-salesforce" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li><li data-topic="Image"><a href="https://venturebeat.com/technology/resolve-ai-says-the-ai-coding-boom-is-breaking-production-systems-it-wants-to-fix-that" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-21.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-20" data-digest-search="google pics makes ai image generation way less annoying credit: venturebeat made with midjourney credit: venturebeat made with midjourney longlive-2.0: an nvfp4 parallel infrastructure for long video generation">
+              <div class="cn-digest__date"><span class="cn-digest__day">20</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Image"><a href="https://petapixel.com/2026/05/19/google-pics-makes-ai-image-generation-way-less-annoying/" target="_blank" rel="noopener noreferrer">Google Pics Makes AI Image Generation Way Less Annoying</a><span class="cn-digest__topic">Image</span></li><li data-topic="Image"><a href="https://venturebeat.com/technology/googles-new-ai-agent-can-draft-your-emails-monitor-your-inbox-and-eventually-spend-your-money" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li><li data-topic="Image"><a href="https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li><li data-topic="Video"><a href="https://paperswithcode.com/papers/2605.18739" target="_blank" rel="noopener noreferrer">LongLive-2.0: An NVFP4 Parallel Infrastructure for Long Video Generation</a><span class="cn-digest__topic">Video</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-20.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-19" data-digest-search="google pics makes ai image generation way less annoying credit: venturebeat made with midjourney credit: venturebeat made with midjourney longlive-2.0: an nvfp4 parallel infrastructure for long video generation">
+              <div class="cn-digest__date"><span class="cn-digest__day">19</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Image"><a href="https://petapixel.com/2026/05/19/google-pics-makes-ai-image-generation-way-less-annoying/" target="_blank" rel="noopener noreferrer">Google Pics Makes AI Image Generation Way Less Annoying</a><span class="cn-digest__topic">Image</span></li><li data-topic="Image"><a href="https://venturebeat.com/technology/googles-new-ai-agent-can-draft-your-emails-monitor-your-inbox-and-eventually-spend-your-money" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li><li data-topic="Image"><a href="https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li><li data-topic="Video"><a href="https://paperswithcode.com/papers/2605.18739" target="_blank" rel="noopener noreferrer">LongLive-2.0: An NVFP4 Parallel Infrastructure for Long Video Generation</a><span class="cn-digest__topic">Video</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-19.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-18" data-digest-search="@seed3d 2.0 â€” coarse-to-fine 3d generation for creatives building game assets and product visuals xai adds native image and video generation to its grok build cli toolxai has integrated native image and video generation into its grok build cli tool for direct media creation from the command line. the update adds commands like /imagine and /imagine-video, marking the first such interface with built-in support for both formats. xai adds native image and video generation to its grok build cli tool genai deep dive: real-time video generation vol 2 â€” san francisco â€” may 21 at 5:30 pm @soundhound ai at national restaurant association show 2026 â€” booth 6857, voice ai for food service mustafa suleyman â€” accountants and restaurant industry workers face ai competition in 18 months everyone is debating where ai will be in 3 years wrong question the real question: where will *you* be when ai is everywhere because here&#x27;s what nobody is saying: in 3 years, every company has agents in 3 years, every workflow has ai in itâ€¦ i designed a recruitment screen as part of an hr system. it helps teams track open roles, monitor candidate progress, and manage hiring activities from one place. structured to give clear visibility into whatâ€™s happening at each stage withâ€¦">
+              <div class="cn-digest__date"><span class="cn-digest__day">18</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="3D"><a href="https://x.com/ai_bites/status/2055934615592780035" target="_blank" rel="noopener noreferrer">@Seed3D 2.0 â€” Coarse-to-Fine 3D Generation for Creatives Building Game Assets and Product Visuals</a><span class="cn-digest__topic">3D</span></li><li data-topic="Video"><a href="https://www.digg.com/ai/m1subx0e?rank=9" target="_blank" rel="noopener noreferrer">xAI adds native image and video generation to its Grok Build CLI toolxAI has integrated native image and video generation into its Grok Build CLI tool for direct media creation from the command line. The update adds commands like /imagine and /imagine-video, marking the first such interface with built-in support for both formats.</a><span class="cn-digest__topic">Video</span></li><li data-topic="Video"><a href="https://www.digg.com/ai/m1subx0e" target="_blank" rel="noopener noreferrer">xAI adds native image and video generation to its Grok Build CLI tool</a><span class="cn-digest__topic">Video</span></li><li data-topic="Video"><a href="https://trymimetic.com/events/sf/genai-tech-deep-dive-into-real-time-video-generation-vol-2-may-2026" target="_blank" rel="noopener noreferrer">GenAI Deep Dive: Real-Time Video Generation Vol 2 â€” San Francisco â€” May 21 at 5:30 PM</a><span class="cn-digest__topic">Video</span></li><li data-topic="Audio"><a href="https://x.com/SoundHound/status/2055996765870932086" target="_blank" rel="noopener noreferrer">@SoundHound AI at National Restaurant Association Show 2026 â€” Booth 6857, Voice AI for Food Service</a><span class="cn-digest__topic">Audio</span></li><li data-topic="Audio"><a href="https://x.com/towards_AI/status/2056011765146599844" target="_blank" rel="noopener noreferrer">Mustafa Suleyman â€” Accountants and Restaurant Industry Workers Face AI Competition in 18 Months</a><span class="cn-digest__topic">Audio</span></li><li data-topic="Tools"><a href="https://x.com/0xarslan/status/2056275682825580549" target="_blank" rel="noopener noreferrer">everyone is debating where AI will be in 3 years wrong question the real question: where will *you* be when AI is everywhere because here&#x27;s what nobody is saying: in 3 years, every company has agents in 3 years, every workflow has AI in itâ€¦</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Tools"><a href="https://x.com/jenidesignns/status/2056272894057943551" target="_blank" rel="noopener noreferrer">I designed a recruitment screen as part of an HR system. It helps teams track open roles, monitor candidate progress, and manage hiring activities from one place. Structured to give clear visibility into whatâ€™s happening at each stage withâ€¦</a><span class="cn-digest__topic">Tools</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-18.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-17" data-digest-search="scenario.gg workflow: reference images plus brief yields 15-second cinematic ai video frameo ai launches pixar-style short films powered by seedance 2.0 â€” native audio, multi-shot, director mode krea 2 moodboard released â€” explore a distinct visual language for ai image generation cleop made with midjourney stop tweaking. start finishing. the real skill isn&#x27;t perfect sounds, it&#x27;s committing to ideas and building tracks fast. learn the workflow that separate full tutorial: https:// youtu.be/unyjyqndqre #producerlife #musicproduction #beatmakinâ€¦">
+              <div class="cn-digest__date"><span class="cn-digest__day">17</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Video"><a href="https://x.com/Scenario_gg/status/2055613678179803288" target="_blank" rel="noopener noreferrer">Scenario.gg Workflow: Reference Images Plus Brief Yields 15-Second Cinematic AI Video</a><span class="cn-digest__topic">Video</span></li><li data-topic="Video"><a href="https://x.com/frameo_ai/status/2055642282796400821" target="_blank" rel="noopener noreferrer">Frameo AI Launches Pixar-Style Short Films Powered by Seedance 2.0 â€” Native Audio, Multi-Shot, Director Mode</a><span class="cn-digest__topic">Video</span></li><li data-topic="Image"><a href="https://x.com/krea_ai/status/2055444814108520468" target="_blank" rel="noopener noreferrer">Krea 2 Moodboard Released â€” Explore a Distinct Visual Language for AI Image Generation</a><span class="cn-digest__topic">Image</span></li><li data-topic="Image"><a href="https://venturebeat.com/orchestration/architectural-patterns-for-graph-enhanced-rag-moving-beyond-vector-search-in-production" target="_blank" rel="noopener noreferrer">CleoP made with Midjourney</a><span class="cn-digest__topic">Image</span></li><li data-topic="Tools"><a href="https://x.com/makedancemusic/status/2056060413570158946" target="_blank" rel="noopener noreferrer">Stop tweaking. Start finishing. The real skill isn&#x27;t perfect sounds, it&#x27;s committing to ideas and building tracks fast. Learn the workflow that separate Full tutorial: https:// youtu.be/UnYJyqNdQRE #ProducerLife #MusicProduction #BeatMakinâ€¦</a><span class="cn-digest__topic">Tools</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-17.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-16" data-digest-search="7 creative principles from brian eno that photographers need credit: venturebeat made with midjourney">
+              <div class="cn-digest__date"><span class="cn-digest__day">16</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Tools"><a href="https://fstoppers.com/education/7-creative-principles-brian-eno-photographers-need-902399" target="_blank" rel="noopener noreferrer">7 Creative Principles From Brian Eno That Photographers Need</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Image"><a href="https://venturebeat.com/technology/intercom-now-called-fin-launches-an-ai-agent-whose-only-job-is-managing-another-ai-agent" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-16.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-15" data-digest-search="runway started by helping filmmakers â€” now it wants to beat google at ai wirestock raises $23m to supply creative multimodal data to ai labs credit: venturebeat made with midjourney">
+              <div class="cn-digest__date"><span class="cn-digest__day">15</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Video"><a href="https://techcrunch.com/2026/05/15/runway-started-by-helping-filmmakers-now-it-wants-to-beat-google-at-ai/" target="_blank" rel="noopener noreferrer">Runway started by helping filmmakers â€” now it wants to beat Google at AI</a><span class="cn-digest__topic">Video</span></li><li data-topic="Tools"><a href="https://techcrunch.com/2026/05/14/wirestock-raises-23m-to-supply-multi-modal-data-to-ai-labs/" target="_blank" rel="noopener noreferrer">Wirestock raises $23M to supply creative multimodal data to AI labs</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Image"><a href="https://venturebeat.com/technology/cerebras-stock-nearly-doubles-on-day-one-as-ai-chipmaker-hits-100-billion-what-it-means-for-ai-infrastructure" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-15.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-14" data-digest-search="hey @notiondevs â€‹iâ€™m currently building ai voice agents with @elevenlabs to automate customer service. with the launch of notion workers, the workflow possibilities seem endless. â€‹my question is: how do you see the future of native conversâ€¦ this feels like the opening shot of a netflix series where everyone realizes she runs the entire company. #kling #kling3 #klingai @kling_ai get the image prompt and video prompt farther below. kling ai 3 handled micro-expressions, body lanâ€¦ credit: venturebeat made with midjourney">
+              <div class="cn-digest__date"><span class="cn-digest__day">14</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Audio"><a href="https://x.com/FloNocode/status/2054896420327436328" target="_blank" rel="noopener noreferrer">Hey @NotionDevs â€‹Iâ€™m currently building AI Voice Agents with @ElevenLabs to automate customer service. With the launch of Notion Workers, the workflow possibilities seem endless. â€‹My question is: How do you see the future of native conversâ€¦</a><span class="cn-digest__topic">Audio</span></li><li data-topic="Video"><a href="https://x.com/PrometheanAIX/status/2054894610523017553" target="_blank" rel="noopener noreferrer">This feels like the opening shot of a Netflix series where everyone realizes she runs the entire company. #Kling #Kling3 #KlingAI @Kling_ai Get the image prompt and video prompt farther below. Kling AI 3 handled micro-expressions, body lanâ€¦</a><span class="cn-digest__topic">Video</span></li><li data-topic="Image"><a href="https://venturebeat.com/technology/ai-iq-is-here-a-new-site-scores-frontier-ai-models-on-the-human-iq-scale-the-results-are-already-dividing-tech" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-14.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-13" data-digest-search="5 systems. 1 ad. 11 minutes. hook model. body model. close model. kling 2.0 renders. elevenlabs voices. the sequence is the insight. scoring loop runs last. configs stay gated. what i&#x27;m wiring up on the vps chains all 5. name drops at launâ€¦ how the tanstack npm attack actually happened: 1. attacker opened a normal-looking pull request (#7378) on the tanstack repo. 2. github automatically ran ci tests on that pr. 3. code inside the pr stole the workflow&#x27;s github actions cacheâ€¦ hi everyone just your creative ai engineer hacking on quantum computing see my work below alzheimer&amp;#8217;s disease drug development pipeline: 2026. alzheimer&amp;#8217;s &amp;amp; dementia">
+              <div class="cn-digest__date"><span class="cn-digest__day">13</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Video"><a href="https://x.com/MEEcom44/status/2054459312773238863" target="_blank" rel="noopener noreferrer">5 systems. 1 ad. 11 minutes. hook model. body model. close model. Kling 2.0 renders. ElevenLabs voices. the sequence is the insight. scoring loop runs last. configs stay gated. what I&#x27;m wiring up on the VPS chains all 5. name drops at launâ€¦</a><span class="cn-digest__topic">Video</span></li><li data-topic="Tools"><a href="https://x.com/IntCyberDigest/status/2053991878777798865" target="_blank" rel="noopener noreferrer">How the TanStack npm attack actually happened: 1. Attacker opened a normal-looking pull request (#7378) on the TanStack repo. 2. GitHub automatically ran CI tests on that PR. 3. Code inside the PR stole the workflow&#x27;s GitHub Actions Cacheâ€¦</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Tools"><a href="https://x.com/gsltbtdaao4468/status/2054625114453668043" target="_blank" rel="noopener noreferrer">Hi everyone Just your creative AI engineer hacking on Quantum Computing See my work below</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Tools"><a href="https://alz-journals.onlinelibrary.wiley.com/doi/10.1002/trc2.70251" target="_blank" rel="noopener noreferrer">Alzheimer&amp;#8217;s disease drug development pipeline: 2026. Alzheimer&amp;#8217;s &amp;amp; dementia</a><span class="cn-digest__topic">Tools</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-13.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-12" data-digest-search="dessn raises $6m for its production focused design tool">
+              <div class="cn-digest__date"><span class="cn-digest__day">12</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Tools"><a href="https://techcrunch.com/2026/05/12/dessn-raises-6m-for-its-production-focused-design-tool/" target="_blank" rel="noopener noreferrer">Dessn raises $6M for its production focused design tool</a><span class="cn-digest__topic">Tools</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-12.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-10" data-digest-search="voice ai in india is hard. wispr flow is betting on it anyway.">
+              <div class="cn-digest__date"><span class="cn-digest__day">10</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Audio"><a href="https://techcrunch.com/2026/05/09/voice-ai-in-india-is-hard-wispr-flow-is-betting-on-it-anyway/" target="_blank" rel="noopener noreferrer">Voice AI in India is hard. Wispr Flow is betting on it anyway.</a><span class="cn-digest__topic">Audio</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-10.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-09" data-digest-search="cleop made with midjourney">
+              <div class="cn-digest__date"><span class="cn-digest__day">9</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Image"><a href="https://venturebeat.com/infrastructure/intent-based-chaos-testing-is-designed-for-when-ai-behaves-confidently-and-wrongly" target="_blank" rel="noopener noreferrer">CleoP made with Midjourney</a><span class="cn-digest__topic">Image</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-09.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-08" data-digest-search="chris brown released an album with 27 suno ai like tracks">
+              <div class="cn-digest__date"><span class="cn-digest__day">8</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Audio"><a href="https://x.com/mfd00mbr/status/2052650989832851925" target="_blank" rel="noopener noreferrer">Chris Brown released an album with 27 Suno AI like tracks</a><span class="cn-digest__topic">Audio</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-08.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-07" data-digest-search="introducing elevenmusic">
+              <div class="cn-digest__date"><span class="cn-digest__day">7</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Audio"><a href="https://elevenlabs.io/blog/introducing-elevenmusic" target="_blank" rel="noopener noreferrer">Introducing ElevenMusic</a><span class="cn-digest__topic">Audio</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-07.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-06" data-digest-search="the most boring saas on the internet: packager. automates software deployment for it admins via microsoft intune. launched free on reddit. moved to $25/mo after refinement. $60k/mo today. not &quot;ai productivity copilot for everyone.&quot; one paiâ€¦ valve releases steam controller cad files under creative commons license mitâ€™s virtual violin offers luthiers a new design tool">
+              <div class="cn-digest__date"><span class="cn-digest__day">6</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Tools"><a href="https://x.com/NovaByArun/status/2052077319960047791" target="_blank" rel="noopener noreferrer">the most boring saas on the internet: packager. automates software deployment for it admins via microsoft intune. launched free on reddit. moved to $25/mo after refinement. $60k/mo today. not &quot;ai productivity copilot for everyone.&quot; one paiâ€¦</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Tools"><a href="https://www.digitalfoundry.net/news/2026/05/valve-releases-steam-controller-cad-files-under-creative-commons-license" target="_blank" rel="noopener noreferrer">Valve releases Steam Controller CAD files under Creative Commons license</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Tools"><a href="https://arstechnica.com/science/2026/05/mits-virtual-violin-offers-luthiers-a-new-design-tool/" target="_blank" rel="noopener noreferrer">MITâ€™s virtual violin offers luthiers a new design tool</a><span class="cn-digest__topic">Tools</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-06.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-05" data-digest-search="biscuit">
+              <div class="cn-digest__date"><span class="cn-digest__day">5</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Audio"><a href="https://github.com/yattsu/biscuit" target="_blank" rel="noopener noreferrer">Biscuit</a><span class="cn-digest__topic">Audio</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-05.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-04" data-digest-search="suno is worth $2.5 billion and making $300 million a year dag workflow engine">
+              <div class="cn-digest__date"><span class="cn-digest__day">4</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Audio"><a href="https://x.com/Techmeme/status/2051047267721965988" target="_blank" rel="noopener noreferrer">Suno Is Worth $2.5 Billion and Making $300 Million a Year</a><span class="cn-digest__topic">Audio</span></li><li data-topic="Tools"><a href="https://github.com/vivekg13186/Daisy-DAG" target="_blank" rel="noopener noreferrer">DAG Workflow Engine</a><span class="cn-digest__topic">Tools</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-04.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-03" data-digest-search="ai music is flooding streaming services â€” but who wants it? voice-ai-for-beginners â€“ a curated learning path for developers">
+              <div class="cn-digest__date"><span class="cn-digest__day">3</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Audio"><a href="https://www.theverge.com/column/921599/ai-music-is-flooding-streaming-services-but-who-wants-it" target="_blank" rel="noopener noreferrer">AI music is flooding streaming services â€” but who wants it?</a><span class="cn-digest__topic">Audio</span></li><li data-topic="Audio"><a href="https://github.com/mahimairaja/voiceai" target="_blank" rel="noopener noreferrer">Voice-AI-for-Beginners â€“ A curated learning path for developers</a><span class="cn-digest__topic">Audio</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-03.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-02" data-digest-search="capcut integration in creative workflows â€” ai video editing at consumer scale santa cruz restaurant changes logo after flurry of negative reviews for ai art veed launches ai video creation tools â€” helping creators produce at scale addressing &amp;#8216;creative loneliness&amp;#8217; pixverse ai video generation â€” fuji-themed ai creations going viral">
+              <div class="cn-digest__date"><span class="cn-digest__day">2</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Video"><a href="https://x.com/capcutapp" target="_blank" rel="noopener noreferrer">CapCut Integration in Creative Workflows â€” AI Video Editing at Consumer Scale</a><span class="cn-digest__topic">Video</span></li><li data-topic="Image"><a href="https://www.sfgate.com/food/article/santa-cruz-restaurant-ai-21955920.php" target="_blank" rel="noopener noreferrer">Santa Cruz restaurant changes logo after flurry of negative reviews for AI art</a><span class="cn-digest__topic">Image</span></li><li data-topic="Video"><a href="https://x.com/veedstudio" target="_blank" rel="noopener noreferrer">VEED Launches AI Video Creation Tools â€” Helping Creators Produce at Scale</a><span class="cn-digest__topic">Video</span></li><li data-topic="Tools"><a href="https://petapixel.com/2026/05/02/addressing-creative-loneliness/" target="_blank" rel="noopener noreferrer">Addressing &amp;#8216;Creative Loneliness&amp;#8217;</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Video"><a href="https://x.com/PixVerse_" target="_blank" rel="noopener noreferrer">PixVerse AI Video Generation â€” Fuji-Themed AI Creations Going Viral</a><span class="cn-digest__topic">Video</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-02.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-05-01" data-digest-search="scoble replies to beehiiv about ai agents sending newsletters">
+              <div class="cn-digest__date"><span class="cn-digest__day">1</span><span class="cn-digest__mon">May</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Tools"><a href="https://x.com/Scobleizer/status/2050010770466017327" target="_blank" rel="noopener noreferrer">Scoble Replies to beehiiv About AI Agents Sending Newsletters</a><span class="cn-digest__topic">Tools</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-05-01.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-04-30" data-digest-search="is ai video just a prequel? runway&amp;#8217;s ceo thinks world models are next elevenlabs hiring engineering and sales teams in madrid after opening new office credit: venturebeat made with midjourney credit: venturebeat made with midjourney credit: venturebeat, generated with midjourney credit: venturebeat, generated with midjourney">
+              <div class="cn-digest__date"><span class="cn-digest__day">30</span><span class="cn-digest__mon">Apr</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Video"><a href="https://techcrunch.com/podcast/equity-podcast-runway-ceo-cristobal-valenzuela-ai-video-world-models/" target="_blank" rel="noopener noreferrer">Is AI video just a prequel? Runway&amp;#8217;s CEO thinks world models are next</a><span class="cn-digest__topic">Video</span></li><li data-topic="Audio"><a href="https://x.com/WesRoth/status/2049488876998131714" target="_blank" rel="noopener noreferrer">ElevenLabs Hiring Engineering and Sales Teams in Madrid After Opening New Office</a><span class="cn-digest__topic">Audio</span></li><li data-topic="Image"><a href="https://venturebeat.com/technology/netomi-raises-110-million-as-accenture-and-adobe-bet-on-ai-for-customer-service" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li><li data-topic="Image"><a href="https://venturebeat.com/technology/writer-launches-ai-agents-that-can-act-without-prompts-taking-on-amazon-microsoft-and-salesforce" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li><li data-topic="Image"><a href="https://venturebeat.com/orchestration/aws-quicks-personal-knowledge-graph-is-making-orchestration-decisions-most-control-planes-cant-see" target="_blank" rel="noopener noreferrer">Credit: VentureBeat, generated with MidJourney</a><span class="cn-digest__topic">Image</span></li><li data-topic="Image"><a href="https://venturebeat.com/orchestration/ibm-launches-bob-with-multi-model-routing-and-human-checkpoints-to-turn-ai-coding-into-a-secure-production-system" target="_blank" rel="noopener noreferrer">Credit: VentureBeat, generated with MidJourney</a><span class="cn-digest__topic">Image</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-04-30.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-04-29" data-digest-search="fuck off ai music">
+              <div class="cn-digest__date"><span class="cn-digest__day">29</span><span class="cn-digest__mon">Apr</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Audio"><a href="https://fuckoffaimusic.com/" target="_blank" rel="noopener noreferrer">Fuck Off AI Music</a><span class="cn-digest__topic">Audio</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-04-29.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-04-28" data-digest-search="my post was all human this time microsoft vibevoice: open-source frontier voice ai">
+              <div class="cn-digest__date"><span class="cn-digest__day">28</span><span class="cn-digest__mon">Apr</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Tools"><a href="https://x.com/Scobleizer/status/2048792093137764819" target="_blank" rel="noopener noreferrer">My Post Was All Human This Time</a><span class="cn-digest__topic">Tools</span></li><li data-topic="Audio"><a href="https://github.com/microsoft/VibeVoice" target="_blank" rel="noopener noreferrer">Microsoft VibeVoice: Open-Source Frontier Voice AI</a><span class="cn-digest__topic">Audio</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-04-28.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-04-27" data-digest-search="gpt image-2 plus seedance 2.0 â€” new ai video creation workflow tutorial going viral measuring what matters: objective metrics for image generation assessment     may 20, 2025 â€¢  12 robert scoble praises runway ml â€” &#x27;big praise!&#x27; openclaw v2026.4.25 released">
+              <div class="cn-digest__date"><span class="cn-digest__day">27</span><span class="cn-digest__mon">Apr</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Video"><a href="https://x.com/DamiDina/status/2048614210687377472" target="_blank" rel="noopener noreferrer">GPT Image-2 Plus Seedance 2.0 â€” New AI Video Creation Workflow Tutorial Going Viral</a><span class="cn-digest__topic">Video</span></li><li data-topic="Image"><a href="https://huggingface.co/blog/PrunaAI/objective-metrics-for-image-generation-assessment" target="_blank" rel="noopener noreferrer">Measuring What Matters: Objective Metrics for Image Generation Assessment     May 20, 2025 â€¢  12</a><span class="cn-digest__topic">Image</span></li><li data-topic="Video"><a href="https://x.com/Scobleizer/status/2048445368120328318" target="_blank" rel="noopener noreferrer">Robert Scoble praises Runway ML â€” &#x27;Big praise!&#x27;</a><span class="cn-digest__topic">Video</span></li><li data-topic="Audio"><a href="https://github.com/openclaw/openclaw/releases/tag/v2026.4.25" target="_blank" rel="noopener noreferrer">OpenClaw v2026.4.25 released</a><span class="cn-digest__topic">Audio</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-04-27.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-04-26" data-digest-search="credit: venturebeat made with midjourney cleop made with midjourney.">
+              <div class="cn-digest__date"><span class="cn-digest__day">26</span><span class="cn-digest__mon">Apr</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Image"><a href="https://venturebeat.com/technology/ai-synthetic-audiences-are-already-here-and-poised-to-upend-the-consulting-industry" target="_blank" rel="noopener noreferrer">Credit: VentureBeat made with Midjourney</a><span class="cn-digest__topic">Image</span></li><li data-topic="Image"><a href="https://venturebeat.com/infrastructure/context-decay-orchestration-drift-and-the-rise-of-silent-failures-in-ai-systems" target="_blank" rel="noopener noreferrer">CleoP made with Midjourney.</a><span class="cn-digest__topic">Image</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-04-26.md">Open</a>
+            </article>
+            <article class="cn-digest" data-digest-date="2026-04-25" data-digest-search="what gpt-image-2 actually changed â€” and the creative ops function that makes you the one who compounds fromâ it">
+              <div class="cn-digest__date"><span class="cn-digest__day">25</span><span class="cn-digest__mon">Apr</span><span class="cn-digest__yr">2026</span></div>
+              <ul class="cn-digest__heads"><li data-topic="Tools"><a href="https://natesnewsletter.substack.com/p/what-gpt-image-2-actually-changed" target="_blank" rel="noopener noreferrer">What GPT-Image-2 actually changed â€” and the creative ops function that makes you the one who compounds fromÂ it</a><span class="cn-digest__topic">Tools</span></li></ul>
+              <a class="cn-cta cn-cta--ghost cn-cta--sm" href="news-digests/digest-2026-04-25.md">Open</a>
+            </article><div class="cn-news-empty cn-hidden" data-news-empty><span class="cn-kicker">No matches</span><p>No stories match the current filters.</p><button class="cn-cta cn-cta--ghost cn-cta--sm" type="button" data-news-empty-reset>Clear filters</button></div></section>
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <span class="footer-logo">Axy Lusion</span>
-                <p class="footer-tagline">AI Art, Video & Music</p>
-            </div>
-            <nav class="social-links">
-                <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" title="X / Twitter" aria-label="X">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                <a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                </a>
-                <a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Midjourney" aria-label="Midjourney">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.653 2.026C6.073 3.06 8.69 4.941 10.8 7.258c2.46 2.7 4.109 5.828 4.637 9.149a.31.31 0 01-.421.335c-2.348-.945-4.54-1.258-6.59-1.02-1.739.2-3.337.792-4.816 1.703-.294.182-.62-.182-.405-.454 1.856-2.355 2.581-4.99 2.343-7.794-.195-2.292-1.031-4.61-2.284-6.709a.31.31 0 01.388-.442zm6.387 2.424c1.778.543 3.892 2.102 5.782 4.243 1.984 2.248 3.552 4.934 4.347 7.582a.31.31 0 01-.401.38l-.022-.01-.386-.154a10.6 10.6 0 00-.291-.112l-.016-.006c-.68-.247-1.199-.291-1.944-.101a.31.31 0 01-.375-.218C15.378 11.123 13.073 7.276 9.775 5c-.291-.201-.072-.653.266-.55z"/></svg>
-                </a>
-                <a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" title="Suno" aria-label="Suno">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 14.5c0 .83-.67 1.5-1.5 1.5h-4c-.83 0-1.5-.67-1.5-1.5v-1c0-.83.67-1.5 1.5-1.5H14v-2h-4v1H8v-1c0-.83.67-1.5 1.5-1.5h4c.83 0 1.5.67 1.5 1.5v1c0 .83-.67 1.5-1.5 1.5H10v2h4v-1h1.5v1z"/></svg>
-                </a>
-            </nav>
-            <p class="footer-copyright">&copy; 2026 <a href="https://koltregaskes.com" target="_blank" rel="noopener noreferrer">Kol Tregaskes</a></p>
+    <footer class="cn-footer">
+      <div class="cn-footer__brand">
+        <span class="cn-logo">Axy Lusion</span>
+        <p>AI art, video, music, tool notes, and visual experiments by Kol Tregaskes.</p>
+        <p class="cn-footer__copy">&copy; 2026 <a href="https://koltregaskes.com" target="_blank" rel="noopener noreferrer">Kol Tregaskes</a></p>
+      </div>
+      <nav class="cn-footer__group" aria-label="Footer main pages">
+        <p>Main</p>
+        <a href="gallery.html">Gallery</a><a href="videos.html">Videos</a><a href="music.html">Music</a><a href="blog.html">Blog</a><a href="news.html">News</a><a href="tools.html">Tools</a><a href="a-list.html">A-List</a><a href="about.html">About</a>
+      </nav>
+      <nav class="cn-footer__group" aria-label="Footer projects">
+        <p>Projects</p>
+        <a href="https://koltregaskes.com/">Kol's Korner</a>
+        <a href="https://theairesourcehub.com/">AI Resource Hub</a>
+        <a href="https://ghostinthemodels.com/">Ghost in the Models</a>
+        <a href="https://koltregaskesphotography.com/">KT Photography</a>
+      </nav>
+      <div class="cn-footer__group">
+        <p>Contact</p>
+        <a href="about.html">About</a>
+        <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+        <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://github.com/koltregaskes" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <div class="cn-social cn-social--lg"><a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer" aria-label="X / @Axylusion">X</a><a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer" aria-label="Instagram / @axylusion">IG</a><a href="https://www.youtube.com/@AxyLusion" target="_blank" rel="noopener noreferrer" aria-label="YouTube / @AxyLusion">YT</a><a href="https://www.tiktok.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="TikTok / @axylusion">TT</a><a href="https://www.midjourney.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Midjourney / @axylusion">MJ</a><a href="https://suno.com/@axylusion" target="_blank" rel="noopener noreferrer" aria-label="Suno / @axylusion">SU</a></div>
+      </div>
+      <section class="cn-footer__estate" aria-label="Elusion Works umbrella">
+        <div>
+          <p>Umbrella home</p>
+          <a class="cn-footer__estate-title" href="https://elusionworks.com/" target="_blank" rel="noopener noreferrer">Elusion Works</a>
         </div>
+        <span>The showcase for Kol's websites, tools, games, and web experiments.</span>
+        <a class="cn-footer__estate-cta" href="https://elusionworks.com/" target="_blank" rel="noopener noreferrer">Visit Elusion Works -&gt;</a>
+      </section>
     </footer>
-
-    <script src="news-app.js"></script>
-<script src="cross-site-nav.js" defer></script>
+    <script src="scripts/cinematic.js" defer></script>
+    <script src="cross-site-nav.js" defer></script>
+  </div>
 </body>
 </html>
