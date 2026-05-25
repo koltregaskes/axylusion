@@ -35,6 +35,7 @@ venv/
 .agents/
 .antigravity/
 .local/
+design/
 AGENTS.md
 CLAUDE.md
 CODEX-HANDOFF.md
@@ -50,6 +51,7 @@ docs/DT*-prompt*.md
 docs/DT*-response*.md
 docs/prompt-*.md
 docs/HANDOFF-*.md
+docs/handoffs/
 
 # Local smoke-test artefacts
 _news-dom*.html
