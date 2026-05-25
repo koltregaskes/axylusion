@@ -14,7 +14,6 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import subprocess
 import sys
 from pathlib import Path
 
@@ -39,26 +38,12 @@ def digest_sort_key(path: Path) -> tuple[int, str]:
 
 
 def build_manifest() -> dict[str, list[str]]:
-    tracked = subprocess.run(
-        ["git", "ls-files", "news-digests/*.md"],
-        cwd=PROJECT_DIR,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    tracked_names = {
-        Path(line.strip()).name
-        for line in tracked.stdout.splitlines()
-        if line.strip()
-    }
     all_digest_files = [
         path for path in NEWS_DIGESTS_DIR.glob("*.md") if DIGEST_PATTERN.match(path.name)
     ]
-    digest_files = [
-        path
-        for path in all_digest_files
-        if not tracked_names or path.name in tracked_names
-    ]
+    # The scheduled shared news filter writes new local digest files before
+    # publication, so the live preview manifest must reflect files on disk.
+    digest_files = all_digest_files
     ordered_files = [
         path.name
         for path in sorted(digest_files, key=digest_sort_key, reverse=True)
