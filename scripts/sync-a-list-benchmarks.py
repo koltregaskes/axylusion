@@ -199,6 +199,7 @@ MODEL_METADATA: dict[str, dict[str, Any]] = {
         "model_url": "https://openai.com/sora",
         "pricing_note": "OpenAI product access",
         "strengths": ["Cinematic coherence", "Brand recognition"],
+        "status_note": "API-only legacy signal",
         "considerations": (
             "OpenAI says Sora access on the web and in ChatGPT ends on April 26, 2026; "
             "Sora API access continues until September 24, 2026. Consumer availability also varies by region and plan."

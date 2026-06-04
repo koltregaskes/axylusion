@@ -54,7 +54,7 @@ UUID_PATTERN = re.compile(
     r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
     re.IGNORECASE,
 )
-MOJIBAKE_PATTERN = re.compile(r"(?:Â|Ã.|â€|â€™|â€œ|â€�|â€”|â€“|â€¦|ðŸ)")
+MOJIBAKE_PATTERN = re.compile(r"(?:�|ï»¿|\ufeff|Â|Ã.|â€|â€™|â€œ|â€�|â€”|â€“|â€¦|ðŸ)")
 INSECURE_HTTP_PATTERN = re.compile(r"http://(?!127\.0\.0\.1|localhost)[^\s)>\"]+", re.IGNORECASE)
 
 
