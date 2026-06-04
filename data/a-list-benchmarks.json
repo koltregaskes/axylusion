@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T03:06:09.408471+00:00",
+  "generated_at": "2026-06-04T08:22:17.244524+00:00",
   "source_path": "W:\\Websites\\sites\\ai-resource-hub\\data\\pg-cache\\creative_benchmarks.json",
   "source_row_count": 44,
   "category_count": 7,
@@ -482,7 +482,7 @@
           "model_url": "https://openai.com/sora",
           "pricing_note": "API access window",
           "considerations": "Web and ChatGPT access ended April 26, 2026; API access continues until September 24, 2026. Consumer availability varies by region and plan.",
-          "status_note": "",
+          "status_note": "API-only legacy signal",
           "strengths": [
             "Stunning narratives",
             "Up to 25s"
@@ -490,8 +490,8 @@
           "meta_rank": 5,
           "meta_score": 60.5,
           "coverage_weight": 100.0,
-          "coverage_percent": 60.0,
-          "coverage_label": "API-only legacy signal",
+          "coverage_percent": 100.0,
+          "coverage_label": "Full signal",
           "updated_at": "2026-05-30T05:00:10.387Z",
           "sources": [
             {

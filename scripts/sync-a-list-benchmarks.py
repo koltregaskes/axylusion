@@ -262,8 +262,7 @@ MODEL_OUTPUT_OVERRIDES: dict[str, dict[str, Any]] = {
             "Web and ChatGPT access ended April 26, 2026; API access continues until September 24, 2026. "
             "Consumer availability varies by region and plan."
         ),
-        "coverage_percent": 60.0,
-        "coverage_label": "API-only legacy signal",
+        "status_note": "API-only legacy signal",
     },
 }
 def parse_args() -> argparse.Namespace:
