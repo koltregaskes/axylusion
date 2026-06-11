@@ -6,7 +6,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
-$runLogged = "W:\Websites\schedules\monitoring\Run-Logged.ps1"
+$runLogged = "W:\schedules\websites\monitoring\Run-Logged.ps1"
 $refreshScript = Join-Path $PSScriptRoot "refresh-site-data.ps1"
 
 $taskName = switch ($Mode) {

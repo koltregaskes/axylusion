@@ -91,8 +91,8 @@ CATEGORY_CONFIG: dict[str, dict[str, Any]] = {
 }
 MODEL_ALIASES = {
     "GPT Image 1.5 (high)": "GPT Image 1.5",
-    "Gemini 3 Pro Image": "Nano Banana Pro",
-    "Nano Banana Pro (Gemini 3 Pro Image)": "Nano Banana Pro",
+    "Nano Banana Pro": "Gemini 3 Pro Image",
+    "Nano Banana Pro (Gemini 3 Pro Image)": "Gemini 3 Pro Image",
     "Gemini 3.1 Flash Image Preview": "Nano Banana 2",
     "Nano Banana 2 (Gemini 3.1 Flash Image Preview)": "Nano Banana 2",
     "FLUX.2 [max]": "Flux 2 Max",
@@ -101,6 +101,7 @@ MODEL_ALIASES = {
     "grok-imagine-image": "Grok Imagine",
     "HunyuanImage 3.0 Instruct (Fal)": "HunyuanImage 3.0 Instruct",
     "Runway Gen-4.5": "Runway Gen-4.5",
+    "Sora 2": "Sora 2 (API only)",
 }
 MODEL_METADATA: dict[str, dict[str, Any]] = {
     "GPT Image 1.5": {
@@ -117,7 +118,7 @@ MODEL_METADATA: dict[str, dict[str, Any]] = {
         "strengths": ["Fast prompt following", "Image generation", "Editing agility"],
         "considerations": "Branding varies across Google surfaces; public benchmarks often use the Nano Banana name.",
     },
-    "Nano Banana Pro": {
+    "Gemini 3 Pro Image": {
         "model_maker": "Google",
         "model_url": "https://deepmind.google/technologies/gemini/",
         "pricing_note": "Gemini surfaces / API access",
@@ -194,15 +195,15 @@ MODEL_METADATA: dict[str, dict[str, Any]] = {
         "strengths": ["Video quality", "Audio features"],
         "considerations": "Availability depends on Google surface and region.",
     },
-    "Sora 2": {
+    "Sora 2 (API only)": {
         "model_maker": "OpenAI",
         "model_url": "https://openai.com/sora",
-        "pricing_note": "OpenAI product access",
+        "pricing_note": "API access window",
         "strengths": ["Cinematic coherence", "Brand recognition"],
         "status_note": "API-only legacy signal",
         "considerations": (
-            "OpenAI says Sora access on the web and in ChatGPT ends on April 26, 2026; "
-            "Sora API access continues until September 24, 2026. Consumer availability also varies by region and plan."
+            "Web and ChatGPT access ended April 26, 2026; API access continues until September 24, 2026. "
+            "Consumer availability varies by region and plan."
         ),
     },
     "Mureka V8": {
@@ -253,6 +254,16 @@ MODEL_METADATA: dict[str, dict[str, Any]] = {
         "pricing_note": "Paid plans",
         "strengths": ["Instrumentals", "Composition support"],
         "considerations": "Feels more niche than broader-market AI song tools.",
+    },
+}
+MODEL_OUTPUT_OVERRIDES: dict[str, dict[str, Any]] = {
+    "Sora 2 (API only)": {
+        "pricing_note": "API access window",
+        "considerations": (
+            "Web and ChatGPT access ended April 26, 2026; API access continues until September 24, 2026. "
+            "Consumer availability varies by region and plan."
+        ),
+        "status_note": "API-only legacy signal",
     },
 }
 def parse_args() -> argparse.Namespace:
@@ -446,6 +457,13 @@ def rank_category_models(models: list[dict[str, Any]], weights: dict[str, int]) 
     return ranked_models
 
 
+def apply_output_overrides(model: dict[str, Any]) -> dict[str, Any]:
+    overrides = MODEL_OUTPUT_OVERRIDES.get(str(model.get("model_name") or ""))
+    if overrides:
+        model.update(overrides)
+    return model
+
+
 def build_snapshot(rows: list[dict[str, Any]], source_path: Path) -> dict[str, Any]:
     grouped_models: dict[tuple[str, str], dict[str, Any]] = {}
 
@@ -510,7 +528,10 @@ def build_snapshot(rows: list[dict[str, Any]], source_path: Path) -> dict[str, A
             model_copy["sources"] = sort_sources(model_copy["sources"])
             models.append(model_copy)
 
-        ranked_models = rank_category_models(models, CATEGORY_CONFIG.get(category, {}).get("weights", {"Expert Review": 100}))
+        ranked_models = [
+            apply_output_overrides(model)
+            for model in rank_category_models(models, CATEGORY_CONFIG.get(category, {}).get("weights", {"Expert Review": 100}))
+        ]
         categories.append(
             {
                 "slug": category,
