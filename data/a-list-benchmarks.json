@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T12:48:19.141455+00:00",
+  "generated_at": "2026-06-11T14:55:29.396349+00:00",
   "source_path": "W:\\Websites\\sites\\ai-resource-hub\\data\\pg-cache\\creative_benchmarks.json",
   "source_row_count": 44,
   "category_count": 7,
@@ -481,8 +481,8 @@
           "model_name": "Sora 2 (API only)",
           "model_maker": "OpenAI",
           "model_url": "https://openai.com/sora",
-          "pricing_note": "ChatGPT Plus",
-          "considerations": "OpenAI says Sora access on the web and in ChatGPT ends on April 26, 2026; Sora API access continues until September 24, 2026. Consumer availability also varies by region and plan.",
+          "pricing_note": "API access window",
+          "considerations": "Web and ChatGPT access ended April 26, 2026; API access continues until September 24, 2026. Consumer availability varies by region and plan.",
           "status_note": "API-only legacy signal",
           "strengths": [
             "Cinematic coherence",
