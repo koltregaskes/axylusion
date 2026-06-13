@@ -71,3 +71,4 @@ dist/
 *-MIGRATION-PLAN.md
 *-RECOVERY.md
 design/archive/
+design/handoff-*/
