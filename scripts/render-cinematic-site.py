@@ -8,6 +8,7 @@ needed by the design, then writes the in-scope public pages.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import re
@@ -170,6 +171,14 @@ def load_and_migrate_gallery() -> tuple[list[dict], list[dict]]:
     write_json(gallery_path, gallery_payload)
     write_json(home_path, home_payload)
     return gallery_items, home_items
+
+
+def load_gallery_for_render() -> list[dict]:
+    gallery_payload = read_json(ROOT / "data" / "gallery.json")
+    gallery_items = gallery_payload.get("items", [])
+    for index, item in enumerate(gallery_items):
+        normalize_item(item, index)
+    return gallery_items
 
 
 def social_links(large: bool = False) -> str:
@@ -627,14 +636,30 @@ def render_alist(snapshot: dict) -> str:
             software_items.append({"@type": "ListItem", "position": pos, "item": {"@type": "SoftwareApplication", "name": model.get("model_name"), "url": model.get("model_url"), "applicationCategory": "DesignApplication", "operatingSystem": "Web"}})
             pos += 1
     schema = [{"@type": "ItemList", "@id": f"{DOMAIN}/a-list.html#list", "name": "Axy Lusion A-List", "numberOfItems": len(software_items), "itemListElement": software_items}]
+    updated_label = fmt_date_long(str(snapshot.get("generated_at") or ""))
     body = f"""
-      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Vol. 04 / May 2026</span><h1 class="cn-h1">The A-List</h1><p class="cn-lede">{escape(snapshot.get('methodology_note') or 'Benchmark-led rankings for creative AI.')}</p><div class="cn-method"><span class="cn-method__chip">Artificial Analysis</span><span class="cn-method__chip">LM Arena</span><span class="cn-method__chip">Expert Review</span></div>{untitled_note(True)}</div></section>
+      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Updated / {escape(updated_label)}</span><h1 class="cn-h1">The A-List</h1><p class="cn-lede">{escape(snapshot.get('methodology_note') or 'Benchmark-led rankings for creative AI.')}</p><div class="cn-method"><span class="cn-method__chip">Artificial Analysis</span><span class="cn-method__chip">LM Arena</span><span class="cn-method__chip">Expert Review</span></div>{untitled_note(True)}</div></section>
       <nav class="cn-alist-nav" aria-label="A-List categories">{nav}</nav>
       {''.join(sections)}"""
     return page_shell("a-list.html", "The A-List | Axy Lusion", "Creative AI tool rankings from Axy Lusion, blending benchmark signals and editorial judgement.", "A-List", body, schema)
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--page",
+        choices=("all", "news"),
+        default="all",
+        help="Render every cinematic page or only the scheduled news page.",
+    )
+    args = parser.parse_args()
+
+    if args.page == "news":
+        gallery_items = load_gallery_for_render()
+        write_page(ROOT / "news.html", render_news(gallery_items))
+        print("Rendered the scheduled news page.")
+        return
+
     gallery_items, home_items = load_and_migrate_gallery()
     snapshot = read_json(ROOT / "data" / "a-list-benchmarks.json")
     write_page(ROOT / "index.html", render_home(gallery_items, home_items))

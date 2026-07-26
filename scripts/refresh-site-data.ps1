@@ -13,9 +13,9 @@ Push-Location $projectRoot
 try {
     $step = 1
     $totalSteps = if ($RunSmokeTest) {
-        if ($SkipAList) { 4 } else { 6 }
+        if ($SkipAList) { 5 } else { 7 }
     } else {
-        if ($SkipAList) { 3 } else { 5 }
+        if ($SkipAList) { 4 } else { 6 }
     }
     if ($Publish) {
         $totalSteps++
@@ -32,6 +32,13 @@ try {
     python scripts/update-news-digest-index.py
     if ($LASTEXITCODE -ne 0) {
         throw "News digest index update failed with exit code $LASTEXITCODE."
+    }
+    $step++
+
+    Write-Host "[$step/$totalSteps] Rendering scheduled news page..."
+    python scripts/render-cinematic-site.py --page news
+    if ($LASTEXITCODE -ne 0) {
+        throw "News page render failed with exit code $LASTEXITCODE."
     }
     $step++
 
