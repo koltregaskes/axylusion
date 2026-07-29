@@ -54,7 +54,7 @@ UUID_PATTERN = re.compile(
     r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
     re.IGNORECASE,
 )
-MOJIBAKE_PATTERN = re.compile(r"(?:�|ï»¿|\ufeff|Â|Ã.|â€|â€™|â€œ|â€�|â€”|â€“|â€¦|ðŸ)")
+MOJIBAKE_PATTERN = re.compile(r"(?:�|ï»¿|Â|Ã.|â€|â€™|â€œ|â€�|â€”|â€“|â€¦|ðŸ)")
 INSECURE_HTTP_PATTERN = re.compile(r"http://(?!127\.0\.0\.1|localhost)[^\s)>\"]+", re.IGNORECASE)
 
 
@@ -251,7 +251,7 @@ def check_digest_hygiene() -> list[str]:
     warnings: list[str] = []
     digest_paths = sorted(digest_files_on_disk())
     for digest_path in digest_paths:
-        content = digest_path.read_text(encoding="utf-8", errors="ignore")
+        content = digest_path.read_text(encoding="utf-8-sig", errors="ignore")
         if MOJIBAKE_PATTERN.search(content):
             warnings.append(f"Digest contains likely mojibake and should be reviewed: {rel_path(digest_path)}")
 
