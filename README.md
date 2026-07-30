@@ -57,8 +57,9 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 - Media uploads for the old CMS shell were configured to land in `images/uploads/`.
 - The current public site is driven by static HTML, `news-digests`, and JSON payloads rather than automatic markdown-to-page rendering from `content/`.
 - Local unattended refresh is now registered through the central website scheduler:
-  - `Websites-AxyLusion-Refresh-Morning` at `07:20`
-  - `Websites-AxyLusion-Refresh-Evening` at `19:20`
+  - `Websites-AxyLusion-Refresh-Morning` at `09:08`
+  - `Websites-AxyLusion-Refresh-Evening` at `17:42`
+- The canonical registry is `W:\schedules\rooms-os-canonical-schedules.json`; do not recreate the retired `07:20`/`19:20` definitions.
 
 ## Links
 

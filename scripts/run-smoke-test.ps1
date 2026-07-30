@@ -1,12 +1,24 @@
 param(
     [string]$BaseUrl,
     [int]$Port = 4173,
-    [string]$ChromeExecutable = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+    [Alias("ChromeExecutable")]
+    [string]$BrowserExecutable = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+    [string]$ScreenshotDirectory
 )
 
 $ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
+
+if (-not (Test-Path -LiteralPath $BrowserExecutable)) {
+    $alternateEdgePath = "C:\Program Files\Microsoft\Edge\Application\msedge.exe"
+    if (Test-Path -LiteralPath $alternateEdgePath) {
+        $BrowserExecutable = $alternateEdgePath
+    }
+    else {
+        throw "Microsoft Edge was not found at either standard installation path."
+    }
+}
 
 function Test-PortAvailable {
     param([int]$CandidatePort)
@@ -94,7 +106,18 @@ try {
 
     $env:NODE_PATH = $nodePath
     $env:PLAYWRIGHT_MODULE_PATH = $nodePath
-    node scripts/smoke-test-site.mjs --base-url $BaseUrl --chrome-executable $ChromeExecutable
+    $smokeArgs = @(
+        "scripts/smoke-test-site.mjs",
+        "--base-url", $BaseUrl,
+        "--browser-executable", $BrowserExecutable
+    )
+    if ($ScreenshotDirectory) {
+        $smokeArgs += @("--screenshot-dir", $ScreenshotDirectory)
+    }
+    node @smokeArgs
+    if ($LASTEXITCODE -ne 0) {
+        exit $LASTEXITCODE
+    }
 }
 finally {
     if ($serverProcess -and -not $serverProcess.HasExited) {

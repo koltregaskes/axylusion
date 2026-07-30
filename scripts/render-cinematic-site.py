@@ -15,7 +15,6 @@ import re
 from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
-from urllib.parse import urlparse
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -116,6 +115,19 @@ def frame_style(item: dict) -> str:
     )
 
 
+def image_style(item: dict) -> str:
+    src = str(item.get("src") or "").strip()
+    if not src:
+        return frame_style(item)
+    return (
+        f"background-color:{str((item.get('tones') or TONES[0])[1])};"
+        f"background-image:url('{src}');"
+        "background-position:center;"
+        "background-repeat:no-repeat;"
+        "background-size:cover"
+    )
+
+
 def prompt_for(item: dict) -> str:
     return str(item.get("prompt") or item.get("name") or "Prompt not logged").strip()
 
@@ -150,10 +162,16 @@ def load_and_migrate_gallery() -> tuple[list[dict], list[dict]]:
     gallery_path = ROOT / "data" / "gallery.json"
     home_path = ROOT / "data" / "homepage-gallery.json"
     gallery_payload = read_json(gallery_path)
-    gallery_items = gallery_payload.get("items", [])
-    for index, item in enumerate(gallery_items):
+    archive_items = gallery_payload.get("items", [])
+    for index, item in enumerate(archive_items):
         normalize_item(item, index)
 
+    curated_payload = read_json(ROOT / "data" / "curated-gallery.json")
+    curated_items = curated_payload.get("items", [])
+    for index, item in enumerate(curated_items):
+        normalize_item(item, index)
+
+    gallery_items = curated_items + archive_items
     prompt_lookup = {str(item.get("id")): prompt_for(item) for item in gallery_items}
     ref_lookup = {str(item.get("id")): item.get("ref") for item in gallery_items}
     tone_lookup = {str(item.get("id")): item.get("tones") for item in gallery_items}
@@ -170,15 +188,19 @@ def load_and_migrate_gallery() -> tuple[list[dict], list[dict]]:
 
     write_json(gallery_path, gallery_payload)
     write_json(home_path, home_payload)
-    return gallery_items, home_items
+    return gallery_items, curated_items or home_items
 
 
 def load_gallery_for_render() -> list[dict]:
     gallery_payload = read_json(ROOT / "data" / "gallery.json")
-    gallery_items = gallery_payload.get("items", [])
-    for index, item in enumerate(gallery_items):
+    archive_items = gallery_payload.get("items", [])
+    for index, item in enumerate(archive_items):
         normalize_item(item, index)
-    return gallery_items
+    curated_payload = read_json(ROOT / "data" / "curated-gallery.json")
+    curated_items = curated_payload.get("items", [])
+    for index, item in enumerate(curated_items):
+        normalize_item(item, index)
+    return curated_items + archive_items
 
 
 def social_links(large: bool = False) -> str:
@@ -293,7 +315,14 @@ def frame(item: dict, index: int, ratio: str = "3/4", mode: str = "plate", capti
     date = escape(fmt_date(str(item.get("created") or "")))
     prompt = escape(prompt_for(item))
     src = escape(str(item.get("src") or ""))
-    img = f'<img class="cn-frame__img" src="{src}" alt="Frame {ref}, {date}" loading="lazy" decoding="async">' if src else ""
+    alt = escape(str(item.get("alt") or f"AI-generated frame {ref}, created {date}"))
+    img = f'<img class="cn-frame__img" src="{src}" alt="{alt}" loading="lazy" decoding="async">' if src else ""
+    empty_state = "" if src else (
+        '<div class="cn-frame__empty">'
+        '<span>Archive record</span>'
+        '<small>Artwork not published here</small>'
+        '</div>'
+    )
     cap = (
         f'<figcaption class="cn-frame__cap"><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">{prompt}</span></figcaption>'
         if caption
@@ -306,6 +335,7 @@ def frame(item: dict, index: int, ratio: str = "3/4", mode: str = "plate", capti
         <div class="cn-frame__grain" aria-hidden="true"></div>
         <div class="cn-frame__vignette" aria-hidden="true"></div>
         <div class="cn-frame__corner"><span>{ref}</span><span>/</span><span>{date}</span></div>
+        {empty_state}
         {cap}
       </figure>"""
 
@@ -313,22 +343,28 @@ def frame(item: dict, index: int, ratio: str = "3/4", mode: str = "plate", capti
 def base_schema() -> list[dict]:
     return [
         {
-            "@type": "Organization",
-            "@id": f"{DOMAIN}/#organization",
+            "@type": "Brand",
+            "@id": f"{DOMAIN}/#brand",
             "name": "Axy Lusion",
             "alternateName": "Axylusion",
             "url": DOMAIN,
             "logo": f"{DOMAIN}/favicon.svg",
             "description": "AI art portfolio and creative tool rankings by Kol Tregaskes.",
-            "founder": {"@id": "https://koltregaskes.com/#person-kol"},
             "sameAs": ["https://x.com/Axylusion", "https://www.instagram.com/axylusion"],
+        },
+        {
+            "@type": "Person",
+            "@id": "https://koltregaskes.com/#person-kol",
+            "name": "Kol Tregaskes",
+            "url": "https://koltregaskes.com",
         },
         {
             "@type": "WebSite",
             "@id": f"{DOMAIN}/#website",
             "name": "Axy Lusion",
             "url": DOMAIN,
-            "publisher": {"@id": f"{DOMAIN}/#organization"},
+            "about": {"@id": f"{DOMAIN}/#brand"},
+            "publisher": {"@id": "https://koltregaskes.com/#person-kol"},
         },
     ]
 
@@ -380,7 +416,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
     hero = items[0]
     reel = items[:8]
     strip = "".join(
-        f'<button class="cn-strip__cell{" is-on" if i == 0 else ""}" style="{escape(frame_style(item))}" data-hero-index="{i}" aria-label="Show {escape(str(item.get("ref")))}"><span class="cn-strip__ref">{escape(str(item.get("ref")))}</span></button>'
+        f'<button class="cn-strip__cell{" is-on" if i == 0 else ""}" style="{escape(image_style(item))}" data-hero-index="{i}" aria-label="Show {escape(str(item.get("ref")))}"><span class="cn-strip__ref">{escape(str(item.get("ref")))}</span></button>'
         for i, item in enumerate(items[:8])
     )
     rows = []
@@ -393,7 +429,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
               <div class="cn-reel__meta">
                 <span class="cn-kicker cn-kicker--sm">{escape(str(item.get('ref')))} / {escape(fmt_date(str(item.get('created'))))}</span>
                 <p class="cn-reel__prompt">&quot;{escape(prompt_for(item))}&quot;</p>
-                <p class="cn-reel__status">Durable image host pending / gradient frame is intentional fallback</p>
+                <p class="cn-reel__status">Portfolio selection / Midjourney v8.1 study</p>
               </div>
             </article>"""
         )
@@ -403,7 +439,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
                 "ref": item.get("ref"),
                 "date": fmt_date_long(str(item.get("created") or "")),
                 "prompt": prompt_for(item),
-                "style": frame_style(item),
+                "style": image_style(item),
             }
             for item in items[:8]
         ],
@@ -411,7 +447,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
     )
     body = f"""
       <section class="cn-hero">
-        <div class="cn-hero__bg" data-hero-bg style="{escape(frame_style(hero))}">
+        <div class="cn-hero__bg" data-hero-bg style="{escape(image_style(hero))}">
           <div class="cn-frame__grain" aria-hidden="true"></div>
           <div class="cn-frame__vignette" aria-hidden="true"></div>
         </div>
@@ -477,9 +513,11 @@ def render_gallery(gallery_items: list[dict]) -> str:
             "artform": "Digital art",
             "dateCreated": item.get("created"),
             "url": f"{DOMAIN}/gallery.html#frame-{str(item.get('ref')).lower()}",
+            "contentUrl": f"{DOMAIN}/{item.get('src')}",
             "isPartOf": {"@id": f"{DOMAIN}/gallery.html#gallery"},
         }
         for item in gallery_items
+        if item.get("src")
     ]
     schema = [
         {
@@ -492,7 +530,7 @@ def render_gallery(gallery_items: list[dict]) -> str:
     ]
     body = f"""
       <section class="cn-pagehead">
-        <div class="cn-pagehead__inner"><span class="cn-kicker">Archive / {len(gallery_items):04d} frames</span><h1 class="cn-h1">Gallery</h1><p class="cn-lede">The complete image archive. Search by prompt fragment, frame ref, ID, date, type, or model.</p>{untitled_note()}</div>
+        <div class="cn-pagehead__inner"><span class="cn-kicker">Selected works / {len(artwork):02d} images + {len(gallery_items) - len(artwork):04d} archive records</span><h1 class="cn-h1">Gallery</h1><p class="cn-lede">Ten selected works are published here now. The wider prompt archive remains searchable as dated records while its original artwork stays unpublished.</p>{untitled_note()}</div>
       </section>
       <section class="cn-controls" aria-label="Gallery controls">
         <label class="cn-search" for="gallery-search"><span class="cn-search__icon" aria-hidden="true">Search</span><input id="gallery-search" type="search" placeholder="Search prompts, frame refs, IDs or dates" data-gallery-search><span class="cn-search__hint">/</span></label>
@@ -588,8 +626,8 @@ def render_blog(gallery_items: list[dict]) -> str:
     body = f"""
       <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Journal</span><h1 class="cn-h1">Blog</h1><p class="cn-lede">Notes behind the images, tools, videos, and decisions. Slower posts for process and project context.</p>{untitled_note(True)}</div></section>
       <section class="cn-blog-hero"><div class="cn-blog-hero__cover">{frame(cover, 3, ratio='3/2', mode='full')}</div><div class="cn-blog-hero__copy"><span class="cn-kicker">Featured / 2 April 2026</span><h2 class="cn-h2">Welcome to Axy Lusion</h2><p>A short introduction to the site, what lives on it, and why the project exists.</p><div class="cn-blog-hero__meta"><span>5 min read</span><span class="cn-rule"></span><span>Welcome / Intro</span></div><a class="cn-cta cn-cta--primary" href="blog-welcome.html">Read the post</a></div></section>
-      <section class="cn-blog-list"><div class="cn-blog-list__head"><span class="cn-kicker">All posts / 1</span><h2 class="cn-h2">Archive</h2></div><a class="cn-blog-row" href="blog-welcome.html"><span class="cn-blog-row__date">02 / 04 / 26</span><span class="cn-blog-row__body"><strong>Welcome to Axy Lusion</strong><span>Hello, this is me, this is what lives on the site, and this is what you can expect from the project going forward.</span><span class="cn-tags"><span>Welcome</span><span>Intro</span></span></span><span class="cn-blog-row__arrow">-&gt;</span></a><div class="cn-blog-empty"><span class="cn-kicker">Coming soon</span><p>Process notes on the comic series, the upcoming Suno EP, and a deeper writeup on how the news pipeline is built.</p></div></section>"""
-    return page_shell("blog.html", "Blog | Axy Lusion", "Process notes and updates from the Axy Lusion archive.", "Blog", body, [{"@type": "Blog", "@id": f"{DOMAIN}/blog.html#blog", "name": "Axy Lusion Blog", "publisher": {"@id": f"{DOMAIN}/#organization"}}])
+      <section class="cn-blog-list"><div class="cn-blog-list__head"><span class="cn-kicker">Published / 1</span><h2 class="cn-h2">Archive</h2></div><a class="cn-blog-row" href="blog-welcome.html"><span class="cn-blog-row__date">02 / 04 / 26</span><span class="cn-blog-row__body"><strong>Welcome to Axy Lusion</strong><span>Hello, this is me, this is what lives on the site, and this is what you can expect from the project going forward.</span><span class="cn-tags"><span>Welcome</span><span>Intro</span></span></span><span class="cn-blog-row__arrow">-&gt;</span></a><div class="cn-blog-empty"><span class="cn-kicker">Editorial status</span><p>Only sourced, reviewed posts appear here. Draft work remains private until it clears editorial review.</p></div></section>"""
+    return page_shell("blog.html", "Blog | Axy Lusion", "Process notes and updates from the Axy Lusion archive.", "Blog", body, [{"@type": "Blog", "@id": f"{DOMAIN}/blog.html#blog", "name": "Axy Lusion Blog", "publisher": {"@id": "https://koltregaskes.com/#person-kol"}}])
 
 
 def render_about(gallery_items: list[dict]) -> str:
@@ -606,27 +644,20 @@ def render_alist(snapshot: dict) -> str:
     sections = []
     nav = "".join(f'<a href="#{escape(cat["slug"].replace("_", "-"))}" class="{"is-on" if i == 0 else ""}">{escape(cat.get("title") or cat["slug"])}</a>' for i, cat in enumerate(categories))
     for index, cat in enumerate(categories):
-        models = cat.get("models", [])
+        models = sorted(cat.get("models", []), key=lambda model: str(model.get("model_name") or "").casefold())
         if not models:
             continue
-        leader = models[0]
-        runners = models[1:5]
         def strengths(model, limit=4):
             return "".join(f'<span>{escape(str(s))}</span>' for s in model.get("strengths", [])[:limit])
-        def bar(score, small=False):
-            score = float(score or 0)
-            return f'<div class="cn-alist__bar{" cn-alist__bar--sm" if small else ""}"><div class="cn-alist__fill" style="width:{max(0, min(100, score)):.2f}%"></div><span>{score:.2f}</span></div>'
-        arena = "".join(f'<span><strong>{escape(src.get("source_name", ""))}</strong> {escape(str(src.get("raw_score", "")))}</span>' for src in leader.get("sources", [])[:3])
-        runner_html = "".join(
-            f'<article class="cn-alist__runner"><span class="cn-alist__rrank">#{escape(str(model.get("meta_rank", i + 2)))}</span><div><h3>{escape(model.get("model_name", ""))}</h3><span class="cn-alist__maker">{escape(model.get("model_maker", ""))}</span></div>{bar(model.get("meta_score"), True)}<div class="cn-alist__tags">{strengths(model, 3)}</div></article>'
-            for i, model in enumerate(runners)
+        watchlist_html = "".join(
+            f'<article class="cn-alist__runner"><div><h3><a href="{escape(model.get("model_url") or "#")}" target="_blank" rel="noopener noreferrer">{escape(model.get("model_name", ""))}</a></h3><span class="cn-alist__maker">{escape(model.get("model_maker", ""))}</span></div><div class="cn-alist__tags">{strengths(model, 3)}</div><p class="cn-alist__note">{escape(model.get("considerations") or "Evidence review pending.")}</p></article>'
+            for model in models
         )
         sections.append(
             f"""
-            <section class="cn-alist" id="{escape(cat['slug'].replace('_', '-'))}">
-              <div class="cn-alist__head"><span class="cn-kicker">Category {index + 1}</span><h2 class="cn-h2">{escape(cat.get('title') or cat['slug'])}</h2><p>{escape(cat.get('note') or snapshot.get('methodology_note') or '')}</p></div>
-              <article class="cn-alist__leader"><div class="cn-alist__rank">#1</div><div class="cn-alist__leader-body"><h3>{escape(leader.get('model_name', ''))}</h3><span class="cn-alist__maker">{escape(leader.get('model_maker', ''))}</span>{bar(leader.get('meta_score'))}<div class="cn-alist__tags">{strengths(leader)}</div><div class="cn-alist__arena">{arena}</div><p class="cn-alist__note">{escape(leader.get('coverage_label', 'Signal'))} / Coverage {float(leader.get('coverage_percent') or 0):.0f}%. {escape(leader.get('considerations') or '')}</p></div></article>
-              <div class="cn-alist__runners">{runner_html}</div>
+            <section class="cn-alist cn-alist--watchlist" id="{escape(cat['slug'].replace('_', '-'))}">
+              <div class="cn-alist__head"><span class="cn-kicker">Watchlist {index + 1}</span><h2 class="cn-h2">{escape(cat.get('title') or cat['slug'])}</h2><p>Tools worth watching, listed alphabetically while dated row-level evidence is completed.</p></div>
+              <div class="cn-alist__runners">{watchlist_html}</div>
             </section>"""
         )
     software_items = []
@@ -635,13 +666,13 @@ def render_alist(snapshot: dict) -> str:
         for model in cat.get("models", []):
             software_items.append({"@type": "ListItem", "position": pos, "item": {"@type": "SoftwareApplication", "name": model.get("model_name"), "url": model.get("model_url"), "applicationCategory": "DesignApplication", "operatingSystem": "Web"}})
             pos += 1
-    schema = [{"@type": "ItemList", "@id": f"{DOMAIN}/a-list.html#list", "name": "Axy Lusion A-List", "numberOfItems": len(software_items), "itemListElement": software_items}]
+    schema = [{"@type": "ItemList", "@id": f"{DOMAIN}/a-list.html#list", "name": "Axy Lusion creative AI watchlist", "numberOfItems": len(software_items), "itemListElement": software_items}]
     updated_label = fmt_date_long(str(snapshot.get("generated_at") or ""))
     body = f"""
-      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Updated / {escape(updated_label)}</span><h1 class="cn-h1">The A-List</h1><p class="cn-lede">{escape(snapshot.get('methodology_note') or 'Benchmark-led rankings for creative AI.')}</p><div class="cn-method"><span class="cn-method__chip">Artificial Analysis</span><span class="cn-method__chip">LM Arena</span><span class="cn-method__chip">Expert Review</span></div>{untitled_note(True)}</div></section>
+      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Updated / {escape(updated_label)}</span><h1 class="cn-h1">The A-List</h1><p class="cn-lede">An editorial watchlist for creative AI tools. It is not a leaderboard.</p><div class="cn-method"><span class="cn-method__chip">Artificial Analysis</span><span class="cn-method__chip">LM Arena</span><span class="cn-method__chip">Editorial review</span></div><div class="cn-note cn-note--compact"><span class="cn-note__dot" aria-hidden="true"></span><p><strong>Evidence gate.</strong> No numeric score, rank or coverage claim is published until each row has dated, claim-level evidence. The current entries are alphabetical editorial watchlists, not independently verified measurement.</p></div>{untitled_note(True)}</div></section>
       <nav class="cn-alist-nav" aria-label="A-List categories">{nav}</nav>
       {''.join(sections)}"""
-    return page_shell("a-list.html", "The A-List | Axy Lusion", "Creative AI tool rankings from Axy Lusion, blending benchmark signals and editorial judgement.", "A-List", body, schema)
+    return page_shell("a-list.html", "The A-List | Axy Lusion", "An alphabetical editorial watchlist of creative AI tools, with numeric rankings withheld until claim-level evidence is complete.", "A-List", body, schema)
 
 
 def main() -> None:

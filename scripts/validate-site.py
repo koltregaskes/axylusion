@@ -34,6 +34,7 @@ PUBLIC_HTML_FILES = ROOT_HTML_FILES + ALIST_HTML_FILES
 NEWS_DIGESTS_DIR = PROJECT_DIR / "news-digests"
 INDEX_PATH = NEWS_DIGESTS_DIR / "index.json"
 ALIST_DATA_PATH = PROJECT_DIR / "data" / "a-list-benchmarks.json"
+CURATED_GALLERY_PATH = PROJECT_DIR / "data" / "curated-gallery.json"
 ALIST_SYNC_SCRIPT = PROJECT_DIR / "scripts" / "sync-a-list-benchmarks.py"
 ALIST_RENDER_SCRIPT = PROJECT_DIR / "scripts" / "render-a-list.py"
 ALIST_SHARED_SOURCE = Path(
@@ -45,7 +46,19 @@ ALIST_SHARED_SOURCE = Path(
 HEAD_REQUIREMENT_PATTERNS = {
     "icon": re.compile(r'rel=["\']icon["\']', re.IGNORECASE),
     "manifest": re.compile(r'rel=["\']manifest["\']', re.IGNORECASE),
+    "referrer policy": re.compile(
+        r'<meta\s+name=["\']referrer["\']\s+content=["\']strict-origin-when-cross-origin["\']',
+        re.IGNORECASE,
+    ),
+    "content security policy": re.compile(
+        r'<meta\s+http-equiv=["\']Content-Security-Policy["\']',
+        re.IGNORECASE,
+    ),
 }
+CANONICAL_PATTERN = re.compile(
+    r'<link\s+rel=["\']canonical["\']\s+href=["\']([^"\']+)["\']',
+    re.IGNORECASE,
+)
 LOCAL_REF_PATTERN = re.compile(r"\b(?P<attr>href|src)=[\"'](?P<value>[^\"']+)[\"']", re.IGNORECASE)
 DIGEST_PATTERN = re.compile(
     r"(?:(\d{4})-(\d{2})-(\d{2})-digest|digest-(\d{4})-(\d{2})-(\d{2}))\.md$"
@@ -230,6 +243,84 @@ def check_public_head_requirements() -> list[str]:
         for label, pattern in HEAD_REQUIREMENT_PATTERNS.items():
             if not pattern.search(contents):
                 issues.append(f"Missing {label} tag in {rel_path(html_path)}")
+
+        if html_path.name == "404.html":
+            continue
+
+        relative_path = rel_path(html_path)
+        expected_canonical = (
+            "https://axylusion.com/"
+            if relative_path == "index.html"
+            else f"https://axylusion.com/{relative_path}"
+        )
+        canonicals = CANONICAL_PATTERN.findall(contents)
+        if canonicals != [expected_canonical]:
+            issues.append(
+                f"Expected one canonical {expected_canonical} in {relative_path}; found {canonicals!r}"
+            )
+    return issues
+
+
+def check_public_identity_schema() -> list[str]:
+    issues: list[str] = []
+    for filename in ("index.html", "gallery.html", "news.html", "blog.html", "about.html", "a-list.html"):
+        contents = (PROJECT_DIR / filename).read_text(encoding="utf-8", errors="ignore")
+        if '"@type": "Organization"' in contents:
+            issues.append(f"Public creative identity is still represented as an Organization in {filename}")
+        if '"@type": "Brand"' not in contents or '"@type": "Person"' not in contents:
+            issues.append(f"Missing Brand/Person identity schema in {filename}")
+    return issues
+
+
+def check_browser_safe_media_boundary() -> list[str]:
+    issues: list[str] = []
+    for filename in ("index.html", "gallery.html", "news.html", "blog.html", "about.html"):
+        contents = (PROJECT_DIR / filename).read_text(encoding="utf-8", errors="ignore")
+        if re.search(
+            r'(?:<img[^>]+src=|background(?:-image)?\s*:)[^>"]*cdn\.midjourney\.com',
+            contents,
+            re.IGNORECASE,
+        ):
+            issues.append(f"Browser-blocked Midjourney CDN media is rendered directly in {filename}")
+    return issues
+
+
+def check_public_content_contracts() -> list[str]:
+    issues: list[str] = []
+    for html_path in PUBLIC_HTML_FILES:
+        contents = html_path.read_text(encoding="utf-8", errors="ignore")
+        if contents.count('href="https://elusionworks.com/"') > 2:
+            issues.append(f"Duplicate Elusion Works footer links remain in {rel_path(html_path)}")
+
+    for html_path in [PROJECT_DIR / "a-list.html", *ALIST_HTML_FILES]:
+        contents = html_path.read_text(encoding="utf-8", errors="ignore")
+        if "No numeric score, rank or coverage claim is published" not in contents:
+            issues.append(f"Missing fail-closed A-List evidence disclosure in {rel_path(html_path)}")
+        forbidden_numeric_markers = (
+            'class="cn-alist__rank"',
+            'class="cn-alist__rrank"',
+            'class="cn-alist__bar',
+            'class="alist-score-value"',
+            "<th>Rank</th>",
+            "<th>Score</th>",
+            "<th>Coverage</th>",
+            "Source scores",
+            "Weight: ",
+        )
+        for marker in forbidden_numeric_markers:
+            if marker in contents:
+                issues.append(f"Unverified numeric A-List presentation remains in {rel_path(html_path)}: {marker}")
+
+    blog_contents = (PROJECT_DIR / "blog.html").read_text(encoding="utf-8", errors="ignore")
+    if "Coming soon" in blog_contents:
+        issues.append("Blog landing page still promises speculative coming-soon content")
+    if "Draft work remains private until it clears editorial review." not in blog_contents:
+        issues.append("Blog landing page is missing its review-gated archive state")
+    gallery_contents = (PROJECT_DIR / "gallery.html").read_text(encoding="utf-8", errors="ignore")
+    if "Artwork not published here" not in gallery_contents:
+        issues.append("Gallery archive records are missing an intentional public empty state.")
+    if "Selected works" not in gallery_contents:
+        issues.append("Gallery does not distinguish published images from archive-only records.")
     return issues
 
 
@@ -244,6 +335,49 @@ def check_support_files() -> list[str]:
     for path in required_paths:
         if not path.exists():
             issues.append(f"Missing required support file: {rel_path(path)}")
+    return issues
+
+
+def check_curated_gallery(items: list[dict]) -> list[str]:
+    issues: list[str] = []
+    seen_ids: set[str] = set()
+    rendered_pages = {
+        filename: (PROJECT_DIR / filename).read_text(encoding="utf-8", errors="ignore")
+        for filename in ("index.html", "gallery.html")
+    }
+
+    for index, item in enumerate(items, start=1):
+        item_id = str(item.get("id") or "").strip()
+        src = str(item.get("src") or "").strip()
+        alt = str(item.get("alt") or "").strip()
+        model = str(item.get("model") or "").strip()
+        score = item.get("evaluation_score")
+
+        if not item_id:
+            issues.append(f"Curated item {index} has no stable ID.")
+        elif item_id in seen_ids:
+            issues.append(f"Curated gallery repeats ID {item_id}.")
+        else:
+            seen_ids.add(item_id)
+
+        if not src:
+            issues.append(f"Curated item {item_id or index} has no repo-owned src.")
+        else:
+            asset_path = PROJECT_DIR / src
+            if not asset_path.is_file():
+                issues.append(f"Curated asset is missing: {src}")
+            if src not in rendered_pages["gallery.html"]:
+                issues.append(f"Curated asset {src} is not rendered in gallery.html.")
+            if index <= 8 and src not in rendered_pages["index.html"]:
+                issues.append(f"Homepage curated asset {src} is not rendered in index.html.")
+
+        if not alt:
+            issues.append(f"Curated item {item_id or index} has no meaningful alt text.")
+        if model != "Midjourney v8.1":
+            issues.append(f"Curated item {item_id or index} has unexpected model provenance: {model or 'missing'}.")
+        if not isinstance(score, int) or score <= 0:
+            issues.append(f"Curated item {item_id or index} has no recorded positive evaluation score.")
+
     return issues
 
 
@@ -297,6 +431,12 @@ def main() -> int:
         failures.append(f"Unable to load data/homepage-gallery.json: {exc}")
         homepage_items = []
 
+    try:
+        curated_items = load_json_items(CURATED_GALLERY_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        failures.append(f"Unable to load data/curated-gallery.json: {exc}")
+        curated_items = []
+
     if ALIST_DATA_PATH.exists():
         try:
             alist_snapshot = load_alist_snapshot(ALIST_DATA_PATH)
@@ -321,11 +461,17 @@ def main() -> int:
         failures.append("data/gallery.json has no items.")
     if not homepage_items:
         failures.append("data/homepage-gallery.json has no items.")
+    if not curated_items:
+        failures.append("data/curated-gallery.json has no items.")
 
     failures.extend(check_local_refs())
+    failures.extend(check_curated_gallery(curated_items))
     failures.extend(check_digest_manifest())
     failures.extend(check_homepage_alignment(gallery_items, homepage_items))
     failures.extend(check_public_head_requirements())
+    failures.extend(check_public_identity_schema())
+    failures.extend(check_browser_safe_media_boundary())
+    failures.extend(check_public_content_contracts())
     failures.extend(check_support_files())
     if ALIST_SHARED_SOURCE.exists():
         failures.extend(check_script_sync(ALIST_SYNC_SCRIPT, "A-List snapshot"))
@@ -356,6 +502,7 @@ def main() -> int:
     print(f"HTML files checked: {len(HTML_FILES)}")
     print(f"Gallery items: {len(gallery_items)}")
     print(f"Homepage items: {len(homepage_items)}")
+    print(f"Repo-owned curated items: {len(curated_items)}")
     print(f"Digest files indexed: {len(build_digest_manifest()['files'])}")
     if alist_category_count is not None:
         print(f"A-List categories: {alist_category_count}")

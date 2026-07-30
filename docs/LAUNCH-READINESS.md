@@ -1,6 +1,6 @@
 # Axy Lusion Launch Readiness
 
-Last updated: 2026-05-05
+Last updated: 2026-07-30
 
 ## Ready Now
 
@@ -15,13 +15,14 @@ Last updated: 2026-05-05
 - The A-List now has a shared-source flow: AI Resource Hub acquires benchmark data, Axy Lusion syncs that cache into `data/a-list-benchmarks.json`, and `scripts/render-a-list.py` rebuilds the public ranking pages locally.
 - Structural validation now catches A-List drift, so stale benchmark snapshots or stale rendered ranking pages fail the check instead of silently shipping.
 - Homepage and gallery rendering now suppresses direct `cdn.midjourney.com` requests and uses `images/media-hosting-pending.svg` for Midjourney-hosted items until durable media hosting is complete.
+- A repo-owned curated collection now provides real artwork on the homepage and at the front of the gallery. The selection is recorded in `data/curated-gallery.json` and uses downloaded, scored Midjourney v8.1 prompt-testing assets.
 - Browser smoke tests now require `index.html` and `gallery.html` to be clean instead of tolerating Midjourney CDN failures.
 - The 2026-05-04 A-List benchmark refresh and the 2026-04-19 to 2026-05-04 news-digest backfill were validated locally on 2026-05-05 and should be kept as launch-ready drift rather than parked.
 
 ## Still Blocked Externally
 
 - Gallery and homepage payloads still contain 1,519 gallery and 18 homepage `cdn.midjourney.com` URLs for migration bookkeeping, but the public render path no longer requests them.
-- Full media-rich launch remains blocked until the published Midjourney originals are downloaded and uploaded to Cloudflare R2 or another durable owned host.
+- The curated launch surface is durable and repo-owned. Complete migration of the historic 1,519-item archive still requires matching the original job IDs to downloaded files or moving those originals to another durable owned host.
 - The custom domain handoff still needs to be applied after the final deploy target is chosen.
 
 ## Launch Sequence

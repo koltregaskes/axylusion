@@ -58,6 +58,7 @@ _server-*.out
 _shot-*.png
 _smoke-*.html
 _smoke-*.txt
+output/playwright/
 data/published-gallery-sync-report.json
 
 # Node / build artefacts

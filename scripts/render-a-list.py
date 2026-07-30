@@ -237,7 +237,7 @@ def strengths_list(model: dict[str, Any], limit: int) -> str:
 
 def page_shell(*, title: str, description: str, canonical: str, stylesheet_path: str, favicon_path: str, manifest_path: str, body: str) -> str:
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -250,6 +250,7 @@ def page_shell(*, title: str, description: str, canonical: str, stylesheet_path:
     <meta name="theme-color" content="#0a0a0a">
     <meta name="color-scheme" content="dark">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -399,33 +400,28 @@ def source_cell(model: dict[str, Any], source_name: str) -> str:
 
 def render_detail_page(category: dict[str, Any]) -> str:
     base_path = "../"
-    source_cols = source_columns(category)
-    header_cells = "".join(f"<th>{escape(SOURCE_LABELS.get(source, source))}</th>" for source in source_cols)
+    models = sorted(category["models"], key=lambda model: str(model.get("model_name") or "").casefold())
     body_rows = []
-    for model in category["models"]:
-        source_cells = "".join(f"<td>{source_cell(model, source)}</td>" for source in source_cols)
+    for model in models:
         body_rows.append(
-            f"""<tr{' class="alist-table-leader"' if model['meta_rank'] == 1 else ''}>
-                <td>{model['meta_rank']}</td>
-                <td><a href="{escape(model['model_url'] or '#')}" target="_blank" rel="noopener noreferrer">{escape(model['model_name'])}</a> <span class="alist-maker">{escape(model['model_maker'])}</span></td>
-                <td><strong>{float(model['meta_score']):.2f}</strong></td>
-                <td>{model['coverage_percent']:.0f}%</td>
-                {source_cells}
+            f"""<tr>
+                <td><a href="{escape(model['model_url'] or '#')}" target="_blank" rel="noopener noreferrer">{escape(model['model_name'])}</a></td>
+                <td>{escape(model['model_maker'])}</td>
+                <td>{escape(', '.join(model.get('strengths', [])[:3]) or 'Editorial review pending.')}</td>
+                <td>{escape(model.get('considerations') or 'Evidence review pending.')}</td>
             </tr>"""
         )
 
     model_cards = []
-    for model in category["models"]:
+    for model in models:
         status_line = f'<p class="alist-status-note">{escape(model["status_note"])}</p>' if model.get("status_note") else ""
         model_cards.append(
             f"""<div class="alist-model-card">
                 <div class="alist-model-card-header">
-                    <span class="alist-leader-badge">#{model['meta_rank']}</span>
                     <div>
                         <h3><a href="{escape(model['model_url'] or '#')}" target="_blank" rel="noopener noreferrer">{escape(model['model_name'])}</a></h3>
                         <span class="alist-maker">{escape(model['model_maker'])}</span>
                     </div>
-                    {score_bar(float(model['meta_score']))}
                 </div>
                 <div class="alist-model-card-body">
                     <div class="alist-model-detail-grid">
@@ -439,16 +435,11 @@ def render_detail_page(category: dict[str, Any]) -> str:
                             <h4>Considerations</h4>
                             <ul>
                                 <li>{escape(model.get('considerations') or 'No major caveat recorded yet.')}</li>
-                                <li>Coverage: {model['coverage_percent']:.0f}% ({escape(model['coverage_label'])})</li>
                                 <li>{escape(model.get('pricing_note') or 'Pricing varies by plan and surface.')}</li>
                             </ul>
                         </div>
                     </div>
                     {status_line}
-                    <div class="alist-model-sources">
-                        <h4>Source scores</h4>
-                        <div class="alist-arena-scores">{source_badges(model)}</div>
-                    </div>
                 </div>
             </div>"""
         )
@@ -463,7 +454,7 @@ def render_detail_page(category: dict[str, Any]) -> str:
         weight_cards.append(
             f"""<div class="alist-source-card">
                 <h4>{escape(source_name)}</h4>
-                <span class="alist-source-weight">Weight: {weight}%</span>
+                <span class="alist-source-weight">Context source</span>
                 <p>{escape(description)}</p>
             </div>"""
         )
@@ -475,22 +466,21 @@ def render_detail_page(category: dict[str, Any]) -> str:
         <div class="page-header-content">
             <p class="alist-breadcrumb"><a href="../a-list.html">&larr; The A-List</a></p>
             <h1 class="page-title stagger-load delay-1">{escape(category['title'])}</h1>
-            <p class="page-subtitle stagger-load delay-2">{escape(category.get('note', ''))}</p>
+            <p class="page-subtitle stagger-load delay-2">Alphabetical editorial watchlist. Numeric rankings are withheld pending dated, claim-level evidence.</p>
         </div>
     </section>
 
     <main class="alist-detail-main">
         <section class="alist-detail-section">
-            <h2>Rankings at a glance</h2>
+            <h2>Watchlist at a glance</h2>
             <div class="alist-comparison-table">
                 <table>
                     <thead>
                         <tr>
-                            <th>Rank</th>
                             <th>Model</th>
-                            <th>Score</th>
-                            <th>Coverage</th>
-                            {header_cells}
+                            <th>Maker</th>
+                            <th>What stands out</th>
+                            <th>Watch-outs</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -507,7 +497,8 @@ def render_detail_page(category: dict[str, Any]) -> str:
 
         <section class="alist-detail-section">
             <h2>How we judge this category</h2>
-            <p class="alist-method-note">{escape(category.get('note', ''))}</p>
+            <p class="alist-method-note">Public benchmark and arena sources are retained as context while claim-level provenance is completed.</p>
+            <p class="alist-method-note"><strong>Evidence gate:</strong> No numeric score, rank or coverage claim is published until each row has dated, claim-level evidence. The current entries are alphabetical editorial watchlists, not independently verified measurement.</p>
             <div class="alist-source-cards">
                 {''.join(weight_cards)}
             </div>
@@ -521,7 +512,7 @@ def render_detail_page(category: dict[str, Any]) -> str:
     file_name = detail_filename(category["slug"])
     return page_shell(
         title=f"{category['title']} | The A-List | Axy Lusion",
-        description=f"Benchmark-led breakdown of {category['title'].lower()} tools on the Axy Lusion A-List.",
+        description=f"An alphabetical editorial watchlist of {category['title'].lower()} tools, with numeric rankings withheld until claim-level evidence is complete.",
         canonical=canonical_url(f"a-list/{file_name}"),
         stylesheet_path="../styles.css",
         favicon_path="../favicon.svg",
@@ -534,7 +525,10 @@ def build_outputs(snapshot: dict[str, Any]) -> dict[Path, str]:
     outputs: dict[Path, str] = {OVERVIEW_PATH: render_cinematic_overview(snapshot)}
     for category in snapshot.get("categories", []):
         outputs[DETAILS_DIR / detail_filename(category["slug"])] = render_detail_page(category)
-    return outputs
+    return {
+        output_path: "\n".join(line.rstrip() for line in rendered.splitlines()) + "\n"
+        for output_path, rendered in outputs.items()
+    }
 
 
 def main() -> int:
