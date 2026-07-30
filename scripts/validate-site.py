@@ -34,6 +34,7 @@ PUBLIC_HTML_FILES = ROOT_HTML_FILES + ALIST_HTML_FILES
 NEWS_DIGESTS_DIR = PROJECT_DIR / "news-digests"
 INDEX_PATH = NEWS_DIGESTS_DIR / "index.json"
 ALIST_DATA_PATH = PROJECT_DIR / "data" / "a-list-benchmarks.json"
+CURATED_GALLERY_PATH = PROJECT_DIR / "data" / "curated-gallery.json"
 ALIST_SYNC_SCRIPT = PROJECT_DIR / "scripts" / "sync-a-list-benchmarks.py"
 ALIST_RENDER_SCRIPT = PROJECT_DIR / "scripts" / "render-a-list.py"
 ALIST_SHARED_SOURCE = Path(
@@ -301,6 +302,11 @@ def check_public_content_contracts() -> list[str]:
         issues.append("Blog landing page still promises speculative coming-soon content")
     if "Draft work remains private until it clears editorial review." not in blog_contents:
         issues.append("Blog landing page is missing its review-gated archive state")
+    gallery_contents = (PROJECT_DIR / "gallery.html").read_text(encoding="utf-8", errors="ignore")
+    if "Artwork not published here" not in gallery_contents:
+        issues.append("Gallery archive records are missing an intentional public empty state.")
+    if "Selected works" not in gallery_contents:
+        issues.append("Gallery does not distinguish published images from archive-only records.")
     return issues
 
 
@@ -315,6 +321,49 @@ def check_support_files() -> list[str]:
     for path in required_paths:
         if not path.exists():
             issues.append(f"Missing required support file: {rel_path(path)}")
+    return issues
+
+
+def check_curated_gallery(items: list[dict]) -> list[str]:
+    issues: list[str] = []
+    seen_ids: set[str] = set()
+    rendered_pages = {
+        filename: (PROJECT_DIR / filename).read_text(encoding="utf-8", errors="ignore")
+        for filename in ("index.html", "gallery.html")
+    }
+
+    for index, item in enumerate(items, start=1):
+        item_id = str(item.get("id") or "").strip()
+        src = str(item.get("src") or "").strip()
+        alt = str(item.get("alt") or "").strip()
+        model = str(item.get("model") or "").strip()
+        score = item.get("evaluation_score")
+
+        if not item_id:
+            issues.append(f"Curated item {index} has no stable ID.")
+        elif item_id in seen_ids:
+            issues.append(f"Curated gallery repeats ID {item_id}.")
+        else:
+            seen_ids.add(item_id)
+
+        if not src:
+            issues.append(f"Curated item {item_id or index} has no repo-owned src.")
+        else:
+            asset_path = PROJECT_DIR / src
+            if not asset_path.is_file():
+                issues.append(f"Curated asset is missing: {src}")
+            if src not in rendered_pages["gallery.html"]:
+                issues.append(f"Curated asset {src} is not rendered in gallery.html.")
+            if index <= 8 and src not in rendered_pages["index.html"]:
+                issues.append(f"Homepage curated asset {src} is not rendered in index.html.")
+
+        if not alt:
+            issues.append(f"Curated item {item_id or index} has no meaningful alt text.")
+        if model != "Midjourney v8.1":
+            issues.append(f"Curated item {item_id or index} has unexpected model provenance: {model or 'missing'}.")
+        if not isinstance(score, int) or score <= 0:
+            issues.append(f"Curated item {item_id or index} has no recorded positive evaluation score.")
+
     return issues
 
 
@@ -368,6 +417,12 @@ def main() -> int:
         failures.append(f"Unable to load data/homepage-gallery.json: {exc}")
         homepage_items = []
 
+    try:
+        curated_items = load_json_items(CURATED_GALLERY_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        failures.append(f"Unable to load data/curated-gallery.json: {exc}")
+        curated_items = []
+
     if ALIST_DATA_PATH.exists():
         try:
             alist_snapshot = load_alist_snapshot(ALIST_DATA_PATH)
@@ -392,8 +447,11 @@ def main() -> int:
         failures.append("data/gallery.json has no items.")
     if not homepage_items:
         failures.append("data/homepage-gallery.json has no items.")
+    if not curated_items:
+        failures.append("data/curated-gallery.json has no items.")
 
     failures.extend(check_local_refs())
+    failures.extend(check_curated_gallery(curated_items))
     failures.extend(check_digest_manifest())
     failures.extend(check_homepage_alignment(gallery_items, homepage_items))
     failures.extend(check_public_head_requirements())
@@ -430,6 +488,7 @@ def main() -> int:
     print(f"HTML files checked: {len(HTML_FILES)}")
     print(f"Gallery items: {len(gallery_items)}")
     print(f"Homepage items: {len(homepage_items)}")
+    print(f"Repo-owned curated items: {len(curated_items)}")
     print(f"Digest files indexed: {len(build_digest_manifest()['files'])}")
     if alist_category_count is not None:
         print(f"A-List categories: {alist_category_count}")

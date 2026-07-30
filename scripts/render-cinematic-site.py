@@ -115,6 +115,19 @@ def frame_style(item: dict) -> str:
     )
 
 
+def image_style(item: dict) -> str:
+    src = str(item.get("src") or "").strip()
+    if not src:
+        return frame_style(item)
+    return (
+        f"background-color:{str((item.get('tones') or TONES[0])[1])};"
+        f"background-image:url('{src}');"
+        "background-position:center;"
+        "background-repeat:no-repeat;"
+        "background-size:cover"
+    )
+
+
 def prompt_for(item: dict) -> str:
     return str(item.get("prompt") or item.get("name") or "Prompt not logged").strip()
 
@@ -149,10 +162,16 @@ def load_and_migrate_gallery() -> tuple[list[dict], list[dict]]:
     gallery_path = ROOT / "data" / "gallery.json"
     home_path = ROOT / "data" / "homepage-gallery.json"
     gallery_payload = read_json(gallery_path)
-    gallery_items = gallery_payload.get("items", [])
-    for index, item in enumerate(gallery_items):
+    archive_items = gallery_payload.get("items", [])
+    for index, item in enumerate(archive_items):
         normalize_item(item, index)
 
+    curated_payload = read_json(ROOT / "data" / "curated-gallery.json")
+    curated_items = curated_payload.get("items", [])
+    for index, item in enumerate(curated_items):
+        normalize_item(item, index)
+
+    gallery_items = curated_items + archive_items
     prompt_lookup = {str(item.get("id")): prompt_for(item) for item in gallery_items}
     ref_lookup = {str(item.get("id")): item.get("ref") for item in gallery_items}
     tone_lookup = {str(item.get("id")): item.get("tones") for item in gallery_items}
@@ -169,15 +188,19 @@ def load_and_migrate_gallery() -> tuple[list[dict], list[dict]]:
 
     write_json(gallery_path, gallery_payload)
     write_json(home_path, home_payload)
-    return gallery_items, home_items
+    return gallery_items, curated_items or home_items
 
 
 def load_gallery_for_render() -> list[dict]:
     gallery_payload = read_json(ROOT / "data" / "gallery.json")
-    gallery_items = gallery_payload.get("items", [])
-    for index, item in enumerate(gallery_items):
+    archive_items = gallery_payload.get("items", [])
+    for index, item in enumerate(archive_items):
         normalize_item(item, index)
-    return gallery_items
+    curated_payload = read_json(ROOT / "data" / "curated-gallery.json")
+    curated_items = curated_payload.get("items", [])
+    for index, item in enumerate(curated_items):
+        normalize_item(item, index)
+    return curated_items + archive_items
 
 
 def social_links(large: bool = False) -> str:
@@ -292,7 +315,14 @@ def frame(item: dict, index: int, ratio: str = "3/4", mode: str = "plate", capti
     date = escape(fmt_date(str(item.get("created") or "")))
     prompt = escape(prompt_for(item))
     src = escape(str(item.get("src") or ""))
-    img = f'<img class="cn-frame__img" src="{src}" alt="Frame {ref}, {date}" loading="lazy" decoding="async">' if src else ""
+    alt = escape(str(item.get("alt") or f"AI-generated frame {ref}, created {date}"))
+    img = f'<img class="cn-frame__img" src="{src}" alt="{alt}" loading="lazy" decoding="async">' if src else ""
+    empty_state = "" if src else (
+        '<div class="cn-frame__empty">'
+        '<span>Archive record</span>'
+        '<small>Artwork not published here</small>'
+        '</div>'
+    )
     cap = (
         f'<figcaption class="cn-frame__cap"><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">{prompt}</span></figcaption>'
         if caption
@@ -305,6 +335,7 @@ def frame(item: dict, index: int, ratio: str = "3/4", mode: str = "plate", capti
         <div class="cn-frame__grain" aria-hidden="true"></div>
         <div class="cn-frame__vignette" aria-hidden="true"></div>
         <div class="cn-frame__corner"><span>{ref}</span><span>/</span><span>{date}</span></div>
+        {empty_state}
         {cap}
       </figure>"""
 
@@ -385,7 +416,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
     hero = items[0]
     reel = items[:8]
     strip = "".join(
-        f'<button class="cn-strip__cell{" is-on" if i == 0 else ""}" style="{escape(frame_style(item))}" data-hero-index="{i}" aria-label="Show {escape(str(item.get("ref")))}"><span class="cn-strip__ref">{escape(str(item.get("ref")))}</span></button>'
+        f'<button class="cn-strip__cell{" is-on" if i == 0 else ""}" style="{escape(image_style(item))}" data-hero-index="{i}" aria-label="Show {escape(str(item.get("ref")))}"><span class="cn-strip__ref">{escape(str(item.get("ref")))}</span></button>'
         for i, item in enumerate(items[:8])
     )
     rows = []
@@ -398,7 +429,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
               <div class="cn-reel__meta">
                 <span class="cn-kicker cn-kicker--sm">{escape(str(item.get('ref')))} / {escape(fmt_date(str(item.get('created'))))}</span>
                 <p class="cn-reel__prompt">&quot;{escape(prompt_for(item))}&quot;</p>
-                <p class="cn-reel__status">Source artwork retained in archive data / browser-safe media host pending</p>
+                <p class="cn-reel__status">Portfolio selection / Midjourney v8.1 study</p>
               </div>
             </article>"""
         )
@@ -408,7 +439,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
                 "ref": item.get("ref"),
                 "date": fmt_date_long(str(item.get("created") or "")),
                 "prompt": prompt_for(item),
-                "style": frame_style(item),
+                "style": image_style(item),
             }
             for item in items[:8]
         ],
@@ -416,7 +447,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
     )
     body = f"""
       <section class="cn-hero">
-        <div class="cn-hero__bg" data-hero-bg style="{escape(frame_style(hero))}">
+        <div class="cn-hero__bg" data-hero-bg style="{escape(image_style(hero))}">
           <div class="cn-frame__grain" aria-hidden="true"></div>
           <div class="cn-frame__vignette" aria-hidden="true"></div>
         </div>
@@ -482,9 +513,11 @@ def render_gallery(gallery_items: list[dict]) -> str:
             "artform": "Digital art",
             "dateCreated": item.get("created"),
             "url": f"{DOMAIN}/gallery.html#frame-{str(item.get('ref')).lower()}",
+            "contentUrl": f"{DOMAIN}/{item.get('src')}",
             "isPartOf": {"@id": f"{DOMAIN}/gallery.html#gallery"},
         }
         for item in gallery_items
+        if item.get("src")
     ]
     schema = [
         {
@@ -497,7 +530,7 @@ def render_gallery(gallery_items: list[dict]) -> str:
     ]
     body = f"""
       <section class="cn-pagehead">
-        <div class="cn-pagehead__inner"><span class="cn-kicker">Archive / {len(gallery_items):04d} frames</span><h1 class="cn-h1">Gallery</h1><p class="cn-lede">The complete image archive. Search by prompt fragment, frame ref, ID, date, type, or model.</p>{untitled_note()}</div>
+        <div class="cn-pagehead__inner"><span class="cn-kicker">Selected works / {len(artwork):02d} images + {len(gallery_items) - len(artwork):04d} archive records</span><h1 class="cn-h1">Gallery</h1><p class="cn-lede">Ten selected works are published here now. The wider prompt archive remains searchable as dated records while its original artwork stays unpublished.</p>{untitled_note()}</div>
       </section>
       <section class="cn-controls" aria-label="Gallery controls">
         <label class="cn-search" for="gallery-search"><span class="cn-search__icon" aria-hidden="true">Search</span><input id="gallery-search" type="search" placeholder="Search prompts, frame refs, IDs or dates" data-gallery-search><span class="cn-search__hint">/</span></label>
