@@ -294,8 +294,22 @@ def check_public_content_contracts() -> list[str]:
 
     for html_path in [PROJECT_DIR / "a-list.html", *ALIST_HTML_FILES]:
         contents = html_path.read_text(encoding="utf-8", errors="ignore")
-        if "not independently verified measurement" not in contents:
-            issues.append(f"Missing provisional A-List evidence disclosure in {rel_path(html_path)}")
+        if "No numeric score, rank or coverage claim is published" not in contents:
+            issues.append(f"Missing fail-closed A-List evidence disclosure in {rel_path(html_path)}")
+        forbidden_numeric_markers = (
+            'class="cn-alist__rank"',
+            'class="cn-alist__rrank"',
+            'class="cn-alist__bar',
+            'class="alist-score-value"',
+            "<th>Rank</th>",
+            "<th>Score</th>",
+            "<th>Coverage</th>",
+            "Source scores",
+            "Weight: ",
+        )
+        for marker in forbidden_numeric_markers:
+            if marker in contents:
+                issues.append(f"Unverified numeric A-List presentation remains in {rel_path(html_path)}: {marker}")
 
     blog_contents = (PROJECT_DIR / "blog.html").read_text(encoding="utf-8", errors="ignore")
     if "Coming soon" in blog_contents:

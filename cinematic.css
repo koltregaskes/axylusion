@@ -1251,6 +1251,18 @@ img {
   border-top: 1px solid rgba(245, 230, 200, 0.1);
 }
 
+.cn-alist--watchlist {
+  grid-template-columns: minmax(220px, 0.4fr) minmax(0, 1.6fr);
+}
+
+.cn-alist--watchlist .cn-alist__runners {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.cn-alist--watchlist .cn-alist__runner {
+  grid-template-columns: 1fr;
+}
+
 .cn-alist__leader,
 .cn-alist__runner,
 .cn-alist__head {

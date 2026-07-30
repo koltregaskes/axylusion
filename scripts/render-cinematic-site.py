@@ -644,27 +644,20 @@ def render_alist(snapshot: dict) -> str:
     sections = []
     nav = "".join(f'<a href="#{escape(cat["slug"].replace("_", "-"))}" class="{"is-on" if i == 0 else ""}">{escape(cat.get("title") or cat["slug"])}</a>' for i, cat in enumerate(categories))
     for index, cat in enumerate(categories):
-        models = cat.get("models", [])
+        models = sorted(cat.get("models", []), key=lambda model: str(model.get("model_name") or "").casefold())
         if not models:
             continue
-        leader = models[0]
-        runners = models[1:5]
         def strengths(model, limit=4):
             return "".join(f'<span>{escape(str(s))}</span>' for s in model.get("strengths", [])[:limit])
-        def bar(score, small=False):
-            score = float(score or 0)
-            return f'<div class="cn-alist__bar{" cn-alist__bar--sm" if small else ""}"><div class="cn-alist__fill" style="width:{max(0, min(100, score)):.2f}%"></div><span>{score:.2f}</span></div>'
-        arena = "".join(f'<span><strong>{escape(src.get("source_name", ""))}</strong> {escape(str(src.get("raw_score", "")))}</span>' for src in leader.get("sources", [])[:3])
-        runner_html = "".join(
-            f'<article class="cn-alist__runner"><span class="cn-alist__rrank">#{escape(str(model.get("meta_rank", i + 2)))}</span><div><h3>{escape(model.get("model_name", ""))}</h3><span class="cn-alist__maker">{escape(model.get("model_maker", ""))}</span></div>{bar(model.get("meta_score"), True)}<div class="cn-alist__tags">{strengths(model, 3)}</div></article>'
-            for i, model in enumerate(runners)
+        watchlist_html = "".join(
+            f'<article class="cn-alist__runner"><div><h3><a href="{escape(model.get("model_url") or "#")}" target="_blank" rel="noopener noreferrer">{escape(model.get("model_name", ""))}</a></h3><span class="cn-alist__maker">{escape(model.get("model_maker", ""))}</span></div><div class="cn-alist__tags">{strengths(model, 3)}</div><p class="cn-alist__note">{escape(model.get("considerations") or "Evidence review pending.")}</p></article>'
+            for model in models
         )
         sections.append(
             f"""
-            <section class="cn-alist" id="{escape(cat['slug'].replace('_', '-'))}">
-              <div class="cn-alist__head"><span class="cn-kicker">Category {index + 1}</span><h2 class="cn-h2">{escape(cat.get('title') or cat['slug'])}</h2><p>{escape(cat.get('note') or snapshot.get('methodology_note') or '')}</p></div>
-              <article class="cn-alist__leader"><div class="cn-alist__rank">#1</div><div class="cn-alist__leader-body"><h3>{escape(leader.get('model_name', ''))}</h3><span class="cn-alist__maker">{escape(leader.get('model_maker', ''))}</span>{bar(leader.get('meta_score'))}<div class="cn-alist__tags">{strengths(leader)}</div><div class="cn-alist__arena">{arena}</div><p class="cn-alist__note">{escape(leader.get('coverage_label', 'Signal'))} / Coverage {float(leader.get('coverage_percent') or 0):.0f}%. {escape(leader.get('considerations') or '')}</p></div></article>
-              <div class="cn-alist__runners">{runner_html}</div>
+            <section class="cn-alist cn-alist--watchlist" id="{escape(cat['slug'].replace('_', '-'))}">
+              <div class="cn-alist__head"><span class="cn-kicker">Watchlist {index + 1}</span><h2 class="cn-h2">{escape(cat.get('title') or cat['slug'])}</h2><p>Tools worth watching, listed alphabetically while dated row-level evidence is completed.</p></div>
+              <div class="cn-alist__runners">{watchlist_html}</div>
             </section>"""
         )
     software_items = []
@@ -673,13 +666,13 @@ def render_alist(snapshot: dict) -> str:
         for model in cat.get("models", []):
             software_items.append({"@type": "ListItem", "position": pos, "item": {"@type": "SoftwareApplication", "name": model.get("model_name"), "url": model.get("model_url"), "applicationCategory": "DesignApplication", "operatingSystem": "Web"}})
             pos += 1
-    schema = [{"@type": "ItemList", "@id": f"{DOMAIN}/a-list.html#list", "name": "Axy Lusion A-List", "numberOfItems": len(software_items), "itemListElement": software_items}]
+    schema = [{"@type": "ItemList", "@id": f"{DOMAIN}/a-list.html#list", "name": "Axy Lusion creative AI watchlist", "numberOfItems": len(software_items), "itemListElement": software_items}]
     updated_label = fmt_date_long(str(snapshot.get("generated_at") or ""))
     body = f"""
-      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Updated / {escape(updated_label)}</span><h1 class="cn-h1">The A-List</h1><p class="cn-lede">{escape(snapshot.get('methodology_note') or 'Benchmark-led rankings for creative AI.')}</p><div class="cn-method"><span class="cn-method__chip">Artificial Analysis</span><span class="cn-method__chip">LM Arena</span><span class="cn-method__chip">Expert Review</span></div><div class="cn-note cn-note--compact"><span class="cn-note__dot" aria-hidden="true"></span><p><strong>Provisional reference.</strong> Linked benchmark signals are separated from Axy Lusion editorial scores. Entries without a source link are opinion, not independently verified measurement.</p></div>{untitled_note(True)}</div></section>
+      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Updated / {escape(updated_label)}</span><h1 class="cn-h1">The A-List</h1><p class="cn-lede">An editorial watchlist for creative AI tools. It is not a leaderboard.</p><div class="cn-method"><span class="cn-method__chip">Artificial Analysis</span><span class="cn-method__chip">LM Arena</span><span class="cn-method__chip">Editorial review</span></div><div class="cn-note cn-note--compact"><span class="cn-note__dot" aria-hidden="true"></span><p><strong>Evidence gate.</strong> No numeric score, rank or coverage claim is published until each row has dated, claim-level evidence. The current entries are alphabetical editorial watchlists, not independently verified measurement.</p></div>{untitled_note(True)}</div></section>
       <nav class="cn-alist-nav" aria-label="A-List categories">{nav}</nav>
       {''.join(sections)}"""
-    return page_shell("a-list.html", "The A-List | Axy Lusion", "Creative AI tool rankings from Axy Lusion, blending benchmark signals and editorial judgement.", "A-List", body, schema)
+    return page_shell("a-list.html", "The A-List | Axy Lusion", "An alphabetical editorial watchlist of creative AI tools, with numeric rankings withheld until claim-level evidence is complete.", "A-List", body, schema)
 
 
 def main() -> None:
