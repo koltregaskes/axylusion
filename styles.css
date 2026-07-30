@@ -4529,7 +4529,7 @@ footer a:hover {
 
 @media (max-width: 480px) {
     .page-header {
-        padding: calc(64px + var(--space-xl)) var(--space-md) var(--space-lg);
+        padding: calc(140px + var(--space-xl)) var(--space-md) var(--space-lg);
     }
 
     .media-hub {

@@ -237,7 +237,7 @@ def strengths_list(model: dict[str, Any], limit: int) -> str:
 
 def page_shell(*, title: str, description: str, canonical: str, stylesheet_path: str, favicon_path: str, manifest_path: str, body: str) -> str:
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -250,6 +250,7 @@ def page_shell(*, title: str, description: str, canonical: str, stylesheet_path:
     <meta name="theme-color" content="#0a0a0a">
     <meta name="color-scheme" content="dark">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -508,6 +509,7 @@ def render_detail_page(category: dict[str, Any]) -> str:
         <section class="alist-detail-section">
             <h2>How we judge this category</h2>
             <p class="alist-method-note">{escape(category.get('note', ''))}</p>
+            <p class="alist-method-note"><strong>Provisional reference:</strong> linked benchmark signals are separated from Axy Lusion editorial scores. Entries without a source link are opinion, not independently verified measurement.</p>
             <div class="alist-source-cards">
                 {''.join(weight_cards)}
             </div>

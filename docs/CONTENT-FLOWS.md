@@ -29,12 +29,12 @@ Last updated: 2026-04-11
 
 ## Scheduled Ops
 
-- `Websites-AxyLusion-Refresh-Morning` runs daily at `07:20`.
+- `Websites-AxyLusion-Refresh-Morning` runs daily at `09:08`.
   It runs the full refresh path: homepage payload, news digest index, A-List sync/render, then validation.
-- `Websites-AxyLusion-Refresh-Evening` runs daily at `19:20`.
+- `Websites-AxyLusion-Refresh-Evening` runs daily at `17:42`.
   It runs the lighter evening path: homepage payload, news digest index, then validation.
-- Both tasks are registered through `W:\Websites\schedules\jobs.psd1` and execute through `W:\Websites\schedules\monitoring\Run-Logged.ps1`, so runs land in shared `cron_job_history`.
-- Shared watchdog coverage also exists in `W:\Websites\schedules\monitoring\Check-Freshness.ps1`, which now alerts if either Axy scheduled refresh stops landing in `cron_job_history`.
+- Both tasks are registered in `W:\schedules\rooms-os-canonical-schedules.json` and execute through `W:\hub\Runtime\scripts\run-website-scheduled-job.ps1`, so runs land in shared `cron_job_history`.
+- The installed tasks use the hidden Rooms OS launcher. The canonical registry deliberately retires the old `07:20`/`19:20` definitions to prevent duplicate refreshes.
 - These tasks intentionally do not duplicate upstream jobs:
   - `LLATOS Website News Cycle`
   - `AI Resource Hub - Daily Update`

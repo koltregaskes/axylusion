@@ -15,7 +15,6 @@ import re
 from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
-from urllib.parse import urlparse
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -313,22 +312,28 @@ def frame(item: dict, index: int, ratio: str = "3/4", mode: str = "plate", capti
 def base_schema() -> list[dict]:
     return [
         {
-            "@type": "Organization",
-            "@id": f"{DOMAIN}/#organization",
+            "@type": "Brand",
+            "@id": f"{DOMAIN}/#brand",
             "name": "Axy Lusion",
             "alternateName": "Axylusion",
             "url": DOMAIN,
             "logo": f"{DOMAIN}/favicon.svg",
             "description": "AI art portfolio and creative tool rankings by Kol Tregaskes.",
-            "founder": {"@id": "https://koltregaskes.com/#person-kol"},
             "sameAs": ["https://x.com/Axylusion", "https://www.instagram.com/axylusion"],
+        },
+        {
+            "@type": "Person",
+            "@id": "https://koltregaskes.com/#person-kol",
+            "name": "Kol Tregaskes",
+            "url": "https://koltregaskes.com",
         },
         {
             "@type": "WebSite",
             "@id": f"{DOMAIN}/#website",
             "name": "Axy Lusion",
             "url": DOMAIN,
-            "publisher": {"@id": f"{DOMAIN}/#organization"},
+            "about": {"@id": f"{DOMAIN}/#brand"},
+            "publisher": {"@id": "https://koltregaskes.com/#person-kol"},
         },
     ]
 
@@ -393,7 +398,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
               <div class="cn-reel__meta">
                 <span class="cn-kicker cn-kicker--sm">{escape(str(item.get('ref')))} / {escape(fmt_date(str(item.get('created'))))}</span>
                 <p class="cn-reel__prompt">&quot;{escape(prompt_for(item))}&quot;</p>
-                <p class="cn-reel__status">Durable image host pending / gradient frame is intentional fallback</p>
+                <p class="cn-reel__status">Source artwork retained in archive data / browser-safe media host pending</p>
               </div>
             </article>"""
         )
@@ -588,8 +593,8 @@ def render_blog(gallery_items: list[dict]) -> str:
     body = f"""
       <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Journal</span><h1 class="cn-h1">Blog</h1><p class="cn-lede">Notes behind the images, tools, videos, and decisions. Slower posts for process and project context.</p>{untitled_note(True)}</div></section>
       <section class="cn-blog-hero"><div class="cn-blog-hero__cover">{frame(cover, 3, ratio='3/2', mode='full')}</div><div class="cn-blog-hero__copy"><span class="cn-kicker">Featured / 2 April 2026</span><h2 class="cn-h2">Welcome to Axy Lusion</h2><p>A short introduction to the site, what lives on it, and why the project exists.</p><div class="cn-blog-hero__meta"><span>5 min read</span><span class="cn-rule"></span><span>Welcome / Intro</span></div><a class="cn-cta cn-cta--primary" href="blog-welcome.html">Read the post</a></div></section>
-      <section class="cn-blog-list"><div class="cn-blog-list__head"><span class="cn-kicker">All posts / 1</span><h2 class="cn-h2">Archive</h2></div><a class="cn-blog-row" href="blog-welcome.html"><span class="cn-blog-row__date">02 / 04 / 26</span><span class="cn-blog-row__body"><strong>Welcome to Axy Lusion</strong><span>Hello, this is me, this is what lives on the site, and this is what you can expect from the project going forward.</span><span class="cn-tags"><span>Welcome</span><span>Intro</span></span></span><span class="cn-blog-row__arrow">-&gt;</span></a><div class="cn-blog-empty"><span class="cn-kicker">Coming soon</span><p>Process notes on the comic series, the upcoming Suno EP, and a deeper writeup on how the news pipeline is built.</p></div></section>"""
-    return page_shell("blog.html", "Blog | Axy Lusion", "Process notes and updates from the Axy Lusion archive.", "Blog", body, [{"@type": "Blog", "@id": f"{DOMAIN}/blog.html#blog", "name": "Axy Lusion Blog", "publisher": {"@id": f"{DOMAIN}/#organization"}}])
+      <section class="cn-blog-list"><div class="cn-blog-list__head"><span class="cn-kicker">Published / 1</span><h2 class="cn-h2">Archive</h2></div><a class="cn-blog-row" href="blog-welcome.html"><span class="cn-blog-row__date">02 / 04 / 26</span><span class="cn-blog-row__body"><strong>Welcome to Axy Lusion</strong><span>Hello, this is me, this is what lives on the site, and this is what you can expect from the project going forward.</span><span class="cn-tags"><span>Welcome</span><span>Intro</span></span></span><span class="cn-blog-row__arrow">-&gt;</span></a><div class="cn-blog-empty"><span class="cn-kicker">Editorial status</span><p>Only sourced, reviewed posts appear here. Draft work remains private until it clears editorial review.</p></div></section>"""
+    return page_shell("blog.html", "Blog | Axy Lusion", "Process notes and updates from the Axy Lusion archive.", "Blog", body, [{"@type": "Blog", "@id": f"{DOMAIN}/blog.html#blog", "name": "Axy Lusion Blog", "publisher": {"@id": "https://koltregaskes.com/#person-kol"}}])
 
 
 def render_about(gallery_items: list[dict]) -> str:
@@ -638,7 +643,7 @@ def render_alist(snapshot: dict) -> str:
     schema = [{"@type": "ItemList", "@id": f"{DOMAIN}/a-list.html#list", "name": "Axy Lusion A-List", "numberOfItems": len(software_items), "itemListElement": software_items}]
     updated_label = fmt_date_long(str(snapshot.get("generated_at") or ""))
     body = f"""
-      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Updated / {escape(updated_label)}</span><h1 class="cn-h1">The A-List</h1><p class="cn-lede">{escape(snapshot.get('methodology_note') or 'Benchmark-led rankings for creative AI.')}</p><div class="cn-method"><span class="cn-method__chip">Artificial Analysis</span><span class="cn-method__chip">LM Arena</span><span class="cn-method__chip">Expert Review</span></div>{untitled_note(True)}</div></section>
+      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Updated / {escape(updated_label)}</span><h1 class="cn-h1">The A-List</h1><p class="cn-lede">{escape(snapshot.get('methodology_note') or 'Benchmark-led rankings for creative AI.')}</p><div class="cn-method"><span class="cn-method__chip">Artificial Analysis</span><span class="cn-method__chip">LM Arena</span><span class="cn-method__chip">Expert Review</span></div><div class="cn-note cn-note--compact"><span class="cn-note__dot" aria-hidden="true"></span><p><strong>Provisional reference.</strong> Linked benchmark signals are separated from Axy Lusion editorial scores. Entries without a source link are opinion, not independently verified measurement.</p></div>{untitled_note(True)}</div></section>
       <nav class="cn-alist-nav" aria-label="A-List categories">{nav}</nav>
       {''.join(sections)}"""
     return page_shell("a-list.html", "The A-List | Axy Lusion", "Creative AI tool rankings from Axy Lusion, blending benchmark signals and editorial judgement.", "A-List", body, schema)

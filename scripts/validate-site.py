@@ -45,7 +45,19 @@ ALIST_SHARED_SOURCE = Path(
 HEAD_REQUIREMENT_PATTERNS = {
     "icon": re.compile(r'rel=["\']icon["\']', re.IGNORECASE),
     "manifest": re.compile(r'rel=["\']manifest["\']', re.IGNORECASE),
+    "referrer policy": re.compile(
+        r'<meta\s+name=["\']referrer["\']\s+content=["\']strict-origin-when-cross-origin["\']',
+        re.IGNORECASE,
+    ),
+    "content security policy": re.compile(
+        r'<meta\s+http-equiv=["\']Content-Security-Policy["\']',
+        re.IGNORECASE,
+    ),
 }
+CANONICAL_PATTERN = re.compile(
+    r'<link\s+rel=["\']canonical["\']\s+href=["\']([^"\']+)["\']',
+    re.IGNORECASE,
+)
 LOCAL_REF_PATTERN = re.compile(r"\b(?P<attr>href|src)=[\"'](?P<value>[^\"']+)[\"']", re.IGNORECASE)
 DIGEST_PATTERN = re.compile(
     r"(?:(\d{4})-(\d{2})-(\d{2})-digest|digest-(\d{4})-(\d{2})-(\d{2}))\.md$"
@@ -230,6 +242,65 @@ def check_public_head_requirements() -> list[str]:
         for label, pattern in HEAD_REQUIREMENT_PATTERNS.items():
             if not pattern.search(contents):
                 issues.append(f"Missing {label} tag in {rel_path(html_path)}")
+
+        if html_path.name == "404.html":
+            continue
+
+        relative_path = rel_path(html_path)
+        expected_canonical = (
+            "https://axylusion.com/"
+            if relative_path == "index.html"
+            else f"https://axylusion.com/{relative_path}"
+        )
+        canonicals = CANONICAL_PATTERN.findall(contents)
+        if canonicals != [expected_canonical]:
+            issues.append(
+                f"Expected one canonical {expected_canonical} in {relative_path}; found {canonicals!r}"
+            )
+    return issues
+
+
+def check_public_identity_schema() -> list[str]:
+    issues: list[str] = []
+    for filename in ("index.html", "gallery.html", "news.html", "blog.html", "about.html", "a-list.html"):
+        contents = (PROJECT_DIR / filename).read_text(encoding="utf-8", errors="ignore")
+        if '"@type": "Organization"' in contents:
+            issues.append(f"Public creative identity is still represented as an Organization in {filename}")
+        if '"@type": "Brand"' not in contents or '"@type": "Person"' not in contents:
+            issues.append(f"Missing Brand/Person identity schema in {filename}")
+    return issues
+
+
+def check_browser_safe_media_boundary() -> list[str]:
+    issues: list[str] = []
+    for filename in ("index.html", "gallery.html", "news.html", "blog.html", "about.html"):
+        contents = (PROJECT_DIR / filename).read_text(encoding="utf-8", errors="ignore")
+        if re.search(
+            r'(?:<img[^>]+src=|background(?:-image)?\s*:)[^>"]*cdn\.midjourney\.com',
+            contents,
+            re.IGNORECASE,
+        ):
+            issues.append(f"Browser-blocked Midjourney CDN media is rendered directly in {filename}")
+    return issues
+
+
+def check_public_content_contracts() -> list[str]:
+    issues: list[str] = []
+    for html_path in PUBLIC_HTML_FILES:
+        contents = html_path.read_text(encoding="utf-8", errors="ignore")
+        if contents.count('href="https://elusionworks.com/"') > 2:
+            issues.append(f"Duplicate Elusion Works footer links remain in {rel_path(html_path)}")
+
+    for html_path in [PROJECT_DIR / "a-list.html", *ALIST_HTML_FILES]:
+        contents = html_path.read_text(encoding="utf-8", errors="ignore")
+        if "not independently verified measurement" not in contents:
+            issues.append(f"Missing provisional A-List evidence disclosure in {rel_path(html_path)}")
+
+    blog_contents = (PROJECT_DIR / "blog.html").read_text(encoding="utf-8", errors="ignore")
+    if "Coming soon" in blog_contents:
+        issues.append("Blog landing page still promises speculative coming-soon content")
+    if "Draft work remains private until it clears editorial review." not in blog_contents:
+        issues.append("Blog landing page is missing its review-gated archive state")
     return issues
 
 
@@ -326,6 +397,9 @@ def main() -> int:
     failures.extend(check_digest_manifest())
     failures.extend(check_homepage_alignment(gallery_items, homepage_items))
     failures.extend(check_public_head_requirements())
+    failures.extend(check_public_identity_schema())
+    failures.extend(check_browser_safe_media_boundary())
+    failures.extend(check_public_content_contracts())
     failures.extend(check_support_files())
     if ALIST_SHARED_SOURCE.exists():
         failures.extend(check_script_sync(ALIST_SYNC_SCRIPT, "A-List snapshot"))
