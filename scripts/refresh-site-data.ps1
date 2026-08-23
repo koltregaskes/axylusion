@@ -59,7 +59,9 @@ try {
     }
 
     Write-Host "[$step/$totalSteps] Validating site..."
-    python scripts/validate-site.py
+    $validateArgs = @('scripts/validate-site.py')
+    if ($SkipAList) { $validateArgs += '--skip-alist' }
+    python @validateArgs
     if ($LASTEXITCODE -ne 0) {
         throw "Site validation failed with exit code $LASTEXITCODE."
     }
