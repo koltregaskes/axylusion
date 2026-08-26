@@ -13,7 +13,7 @@ Usage:
     1. Download images from Midjourney (manually or via this script)
     2. Match downloaded files to gallery.json entries
     3. Stage into repo-local hosting or upload to Cloudflare R2
-    4. Update gallery.json and gallery.js with new URLs
+    4. Update gallery.json with new URLs
 
 Prerequisites:
     pip install boto3 requests
@@ -40,7 +40,6 @@ from urllib.parse import urlparse
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_DIR = SCRIPT_DIR.parent
 GALLERY_JSON = PROJECT_DIR / "data" / "gallery.json"
-GALLERY_JS = PROJECT_DIR / "gallery.js"
 DOWNLOAD_DIR = PROJECT_DIR / "scripts" / "downloaded-images"
 LOCAL_MEDIA_DIR = PROJECT_DIR / "images" / "gallery"
 
@@ -209,50 +208,6 @@ def update_gallery_json(items):
     print(f"Updated {GALLERY_JSON}")
 
 
-def update_gallery_js(items):
-    """Update the embedded data in gallery.js."""
-    gallery_data = json.dumps({"items": items}, indent=2, ensure_ascii=False)
-
-    with open(GALLERY_JS, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    # Find the embedded data block
-    # Pattern: const embeddedData = {...};
-    # Then everything up to the next top-level code
-    pattern = r"const embeddedData = \{.*?\n\};"
-    replacement = f"const embeddedData = {gallery_data};"
-
-    # Use a simpler approach: find start and end markers
-    start_marker = "const embeddedData = {"
-    start_idx = content.find(start_marker)
-    if start_idx == -1:
-        print("WARNING: Could not find embeddedData in gallery.js")
-        return
-
-    # Find the matching closing brace by counting braces
-    brace_count = 0
-    end_idx = start_idx + len(start_marker) - 1  # Position of opening {
-    for i in range(end_idx, len(content)):
-        if content[i] == "{":
-            brace_count += 1
-        elif content[i] == "}":
-            brace_count -= 1
-            if brace_count == 0:
-                end_idx = i + 1
-                break
-
-    # Find the semicolon after the closing brace
-    if end_idx < len(content) and content[end_idx] == ";":
-        end_idx += 1
-
-    new_content = content[:start_idx] + replacement + content[end_idx:]
-
-    with open(GALLERY_JS, "w", encoding="utf-8") as f:
-        f.write(new_content)
-
-    print(f"Updated {GALLERY_JS}")
-
-
 def cmd_scan(args):
     """Scan downloaded images and report matches."""
     download_dir = args[0] if args else str(DOWNLOAD_DIR)
@@ -299,10 +254,8 @@ def cmd_upload(args):
         return
 
     if upload_to_r2(matched):
-        # Update both gallery.json and gallery.js
         update_gallery_json(items)
-        update_gallery_js(items)
-        print("\nDone! CDN URLs updated in gallery.json and gallery.js")
+        print("\nDone! CDN URLs updated in gallery.json")
     else:
         print("\nUpload failed. Gallery files not updated.")
 
@@ -327,7 +280,6 @@ def cmd_stage_local(args):
 
     copy_to_local_hosting(matched)
     update_gallery_json(items)
-    update_gallery_js(items)
     print("\nDone! Gallery now points matched items at repo-local hosted media.")
 
 

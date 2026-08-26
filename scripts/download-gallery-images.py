@@ -11,7 +11,7 @@ migration (scripts/SETUP-R2.md) can proceed even if that behaviour changes.
 - Polite: sequential with a small delay; ~25-40 minutes for the full set.
 - Output: scripts/downloaded-images/<uuid>_<variant>.<ext>
 - Manifest: scripts/downloaded-images/manifest.json maps original URL ->
-  local file, for the later URL rewrite in data/gallery.json + gallery.js.
+  local file, for the later URL rewrite in data/gallery.json.
 
 Usage: python scripts/download-gallery-images.py [--limit N]
 """

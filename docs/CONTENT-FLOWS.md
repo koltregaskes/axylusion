@@ -4,7 +4,7 @@ Last updated: 2026-04-11
 
 ## Public Sources Of Truth
 
-- Gallery pages read from `data/gallery.json`, with `gallery.js` carrying the embedded fallback copy for offline use.
+- `data/gallery.json` is the canonical gallery data source. `gallery.html` is a generated static page; there is no duplicate embedded JavaScript data copy.
 - Homepage hero and showcase panels read from `data/homepage-gallery.json`.
 - News reads from `news-digests/*.md` plus `news-digests/index.json`.
 - The A-List serves static HTML pages generated from `data/a-list-benchmarks.json`.

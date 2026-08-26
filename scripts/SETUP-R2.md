@@ -92,7 +92,6 @@ python scripts/migrate-images.py upload /path/to/downloaded/images
 
 After running the upload:
 - `data/gallery.json` will be updated with new R2 URLs
-- `gallery.js` will be updated with new R2 URLs
 - Open `index.html` locally to verify images load
 - Commit and push to deploy
 

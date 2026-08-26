@@ -182,7 +182,7 @@ Verify:
 
 Gallery interactivity (modal, fixes scripts visible in repo) needs audit:
 
-- `gallery.js`, `gallery-fixes.js`, `gallery-modal-fixes.js` may construct interactive elements dynamically — Codex must confirm constructed elements use `<button>` / `<a>`, not styled `<div>` / `<span>`.
+- `gallery-fixes.js` and `gallery-modal-fixes.js` may construct interactive elements dynamically — Codex must confirm constructed elements use `<button>` / `<a>`, not styled `<div>` / `<span>`.
 - Gallery modal accessibility: `role="dialog"`, `aria-modal="true"`, focus trap, escape to close. Critical for browser agents that take screenshots.
 - A-List pages: rank cards must be `<a>` or `<button>` if clickable.
 

@@ -22,7 +22,6 @@ from typing import Any
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_DB_PATH = Path(r"W:\Agent Workspace\System\Data\universal.db")
 GALLERY_JSON_PATH = PROJECT_DIR / "data" / "gallery.json"
-GALLERY_JS_PATH = PROJECT_DIR / "gallery.js"
 REPORT_PATH = PROJECT_DIR / "data" / "published-gallery-sync-report.json"
 
 
@@ -179,37 +178,6 @@ def render_gallery_json(items: list[dict[str, Any]]) -> str:
     return json.dumps({"items": items}, indent=2, ensure_ascii=False) + "\n"
 
 
-def update_gallery_js(items: list[dict[str, Any]], path: Path, apply_changes: bool) -> bool:
-    content = path.read_text(encoding="utf-8")
-    start_marker = "const embeddedData = {"
-    start_index = content.find(start_marker)
-    if start_index == -1:
-        raise RuntimeError("Could not find embeddedData block in gallery.js")
-
-    brace_index = start_index + len(start_marker) - 1
-    brace_count = 0
-    end_index = brace_index
-    for index in range(brace_index, len(content)):
-        if content[index] == "{":
-            brace_count += 1
-        elif content[index] == "}":
-            brace_count -= 1
-            if brace_count == 0:
-                end_index = index + 1
-                break
-
-    if end_index < len(content) and content[end_index] == ";":
-        end_index += 1
-
-    replacement = f"const embeddedData = {json.dumps({'items': items}, indent=2, ensure_ascii=False)};"
-    new_content = content[:start_index] + replacement + content[end_index:]
-
-    changed = new_content != content
-    if apply_changes and changed:
-        path.write_text(new_content, encoding="utf-8")
-    return changed
-
-
 def write_if_changed(path: Path, content: str, apply_changes: bool) -> bool:
     existing = path.read_text(encoding="utf-8")
     changed = existing != content
@@ -226,7 +194,6 @@ def build_report(
     merged_items: list[dict[str, Any]],
     tags_by_item: dict[str, list[str]],
     json_changed: bool,
-    js_changed: bool,
     apply_changes: bool,
 ) -> dict[str, Any]:
     existing_by_id = {item["id"]: item for item in existing_items}
@@ -263,7 +230,6 @@ def build_report(
         "top_tags": merged_tag_counter.most_common(12),
         "file_actions": {
             "gallery_json_would_change": json_changed,
-            "gallery_js_would_change": js_changed,
         },
     }
 
@@ -271,7 +237,7 @@ def build_report(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Rebuild the published Midjourney gallery export for Axy Lusion.")
     parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH, help="Path to universal.db")
-    parser.add_argument("--apply", action="store_true", help="Write gallery.json and gallery.js")
+    parser.add_argument("--apply", action="store_true", help="Write gallery.json")
     parser.add_argument("--skip-checkpoint", action="store_true", help="Skip PRAGMA wal_checkpoint(FULL)")
     parser.add_argument("--report-path", type=Path, default=REPORT_PATH, help="Where to write the sync report JSON")
     return parser.parse_args()
@@ -298,8 +264,6 @@ def main() -> int:
         render_gallery_json(merged_items),
         apply_changes=args.apply,
     )
-    gallery_js_changed = update_gallery_js(merged_items, GALLERY_JS_PATH, apply_changes=args.apply)
-
     report = build_report(
         db_path=args.db,
         checkpoint_result=checkpoint_result,
@@ -308,7 +272,6 @@ def main() -> int:
         merged_items=merged_items,
         tags_by_item=tags_by_item,
         json_changed=gallery_json_changed,
-        js_changed=gallery_js_changed,
         apply_changes=args.apply,
     )
     args.report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -322,7 +285,6 @@ def main() -> int:
     print(f"Export tagged items: {report['drift']['export_tagged_items']}")
     print(f"Export placeholder date count (2026-02-10): {report['drift']['export_placeholder_created_2026_02_10']}")
     print(f"gallery.json would change: {report['file_actions']['gallery_json_would_change']}")
-    print(f"gallery.js would change: {report['file_actions']['gallery_js_would_change']}")
     print(f"Report written to: {args.report_path}")
 
     return 0

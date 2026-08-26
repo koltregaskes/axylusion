@@ -59,7 +59,6 @@ try {
             "news.html",
             "index.html",
             "gallery.html",
-            "gallery.js",
             "sitemap.xml"
         )
         $publishPaths = @($candidatePaths | Where-Object { Test-Path (Join-Path $projectRoot $_) })
