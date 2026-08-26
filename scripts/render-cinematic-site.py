@@ -200,6 +200,7 @@ def header(active: str, current_path: str = "") -> str:
         ("Blog", "blog.html"),
         ("News", "news.html"),
         ("Tools", "tools.html"),
+        ("Demos", "demos.html"),
         ("A-List", "a-list.html"),
         ("About", "about.html"),
     ]
@@ -224,6 +225,7 @@ def footer(current_path: str = "") -> str:
         ("Blog", "blog.html"),
         ("News", "news.html"),
         ("Tools", "tools.html"),
+        ("Demos", "demos.html"),
         ("A-List", "a-list.html"),
         ("About", "about.html"),
     ]
@@ -592,6 +594,41 @@ def render_about(gallery_items: list[dict]) -> str:
     return page_shell("about.html", "About | Axy Lusion", "About Kol Tregaskes and the Axy Lusion creative archive.", "About", body, schema)
 
 
+def render_demos() -> str:
+    games = [
+        {"title": "Civicrise", "tagline": "Living city builder", "status": "Verified playable build; public browser link pending", "repo": "https://github.com/koltregaskes/civicrise"},
+        {"title": "Mandate 2029", "tagline": "Governing under pressure", "status": "Playable browser prototype", "play": "https://koltregaskes.github.io/mandate-2029/", "repo": "https://github.com/koltregaskes/mandate-2029"},
+        {"title": "Neon District", "tagline": "Cyberpunk combat run", "status": "Environment-first browser demo", "play": "https://koltregaskes.github.io/neon-district/", "repo": "https://github.com/koltregaskes/neon-district"},
+        {"title": "Redline Horizon", "tagline": "Retro road-racer concept", "status": "Scenic browser demo", "play": "https://koltregaskes.github.io/redline-horizon/", "repo": "https://github.com/koltregaskes/redline-horizon"},
+        {"title": "Starfall Protocol", "tagline": "Third-person science-fiction concept", "status": "Public concept proof slice", "play": "https://koltregaskes.github.io/starfall-protocol/", "repo": "https://github.com/koltregaskes/starfall-protocol"},
+        {"title": "Swarmbreaker", "tagline": "Retro arcade defence", "status": "Playable desktop build; source available", "repo": "https://github.com/koltregaskes/swarmbreaker"},
+        {"title": "Turbo Vector", "tagline": "Top-down racing concept", "status": "Championship browser demo", "play": "https://koltregaskes.github.io/turbo-vector/", "repo": "https://github.com/koltregaskes/turbo-vector"},
+    ]
+    cards = []
+    for index, game in enumerate(games, 1):
+        play = (
+            f'<a class="cn-cta cn-cta--primary cn-cta--sm" href="{escape(game["play"])}" target="_blank" rel="noopener noreferrer">Play demo</a>'
+            if game.get("play")
+            else '<span class="cn-demo-card__pending">Browser link pending</span>'
+        )
+        cards.append(
+            f"""
+        <article class="cn-demo-card">
+          <span class="cn-kicker cn-kicker--sm">Project {index:02d}</span>
+          <h2 class="cn-h3">{escape(game['title'])}</h2>
+          <p class="cn-demo-card__tagline">{escape(game['tagline'])}</p>
+          <p class="cn-demo-card__status">{escape(game['status'])}</p>
+          <div class="cn-demo-card__actions">{play}<a class="cn-cta cn-cta--ghost cn-cta--sm" href="{escape(game['repo'])}" target="_blank" rel="noopener noreferrer">Source</a></div>
+        </article>"""
+        )
+
+    body = f"""
+      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">E-lusion Studios / public slate</span><h1 class="cn-h1">Playable demos</h1><p class="cn-lede">Browser experiments, proof slices, and public build references from the games portfolio. Five projects can be played in the browser now; two are listed with their current public build status.</p><div class="cn-cta-row"><a class="cn-cta cn-cta--primary" href="https://koltregaskes.github.io/gametrackdaily/games.html" target="_blank" rel="noopener noreferrer">Open the full games roster</a></div></div></section>
+      <section class="cn-demo-grid" aria-label="Games and demos">{''.join(cards)}</section>"""
+    schema = [{"@type": "CollectionPage", "@id": f"{DOMAIN}/demos.html#demos", "name": "Axy Lusion playable demos", "mainEntity": {"@type": "ItemList", "numberOfItems": len(games), "itemListElement": [{"@type": "ListItem", "position": index, "item": {"@type": "VideoGame", "name": game["title"], "url": game.get("play") or game["repo"]}} for index, game in enumerate(games, 1)]}}]
+    return page_shell("demos.html", "Playable Demos | Axy Lusion", "Play public browser demos and explore the E-lusion Studios game slate.", "Demos", body, schema)
+
+
 def render_alist(snapshot: dict) -> str:
     categories = snapshot.get("categories", [])
     sections = []
@@ -642,6 +679,7 @@ def main() -> None:
     write_page(ROOT / "news.html", render_news(gallery_items))
     write_page(ROOT / "blog.html", render_blog(gallery_items))
     write_page(ROOT / "about.html", render_about(gallery_items))
+    write_page(ROOT / "demos.html", render_demos())
     write_page(ROOT / "a-list.html", render_alist(snapshot))
     print("Rendered cinematic pages and migrated gallery metadata.")
 
