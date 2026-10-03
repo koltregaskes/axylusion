@@ -12,6 +12,11 @@
     });
   }
 
+  // Keep the gradient visible if an archive image becomes unavailable.
+  document.addEventListener("error", (event) => {
+    if (event.target.matches?.(".cn-frame__img")) event.target.hidden = true;
+  }, true);
+
   function setupHero() {
     const bg = $("[data-hero-bg]");
     const strip = $("[data-hero-strip]");
@@ -287,6 +292,9 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    $$(".cn-frame__img").forEach((img) => {
+      if (img.complete && !img.naturalWidth) img.hidden = true;
+    });
     setupHero();
     setupGalleryKeyboardFocus();
     setupGallery();

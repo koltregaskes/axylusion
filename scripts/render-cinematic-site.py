@@ -105,12 +105,29 @@ def fmt_date_long(value: str) -> str:
     return f"{parsed.day} {parsed.strftime('%B')} {parsed.year}"
 
 
-def frame_style(item: dict) -> str:
+def image_source(item: dict) -> str:
+    """Prefer migrated media; never emit the known browser-blocked MJ CDN."""
+    for key in ("cdn_url", "src"):
+        source = str(item.get(key) or "").strip()
+        parsed = urlparse(source)
+        if parsed.hostname and (parsed.hostname == "midjourney.com" or parsed.hostname.endswith(".midjourney.com")):
+            continue
+        if parsed.scheme == "https" and parsed.netloc:
+            return source
+        if source and not parsed.scheme and not parsed.netloc and not source.startswith("//"):
+            return source
+    return ""
+
+
+def frame_style(item: dict, with_image: bool = True) -> str:
     tones = item.get("tones") or TONES[0]
     a, b, accent = [str(value) for value in tones[:3]]
+    source = image_source(item) if with_image else ""
+    image_layer = f"url({json.dumps(source)}) center / cover no-repeat," if source else ""
     return (
         "background:"
-        f"radial-gradient(ellipse 60% 80% at 30% 110%, {accent}55 0%, transparent 55%),"
+        + image_layer
+        + f"radial-gradient(ellipse 60% 80% at 30% 110%, {accent}55 0%, transparent 55%),"
         f"radial-gradient(ellipse 90% 60% at 80% 0%, {a}cc 0%, transparent 60%),"
         f"linear-gradient(160deg, {a} 0%, {b} 100%)"
     )
@@ -292,7 +309,7 @@ def frame(item: dict, index: int, ratio: str = "3/4", mode: str = "plate", capti
     ref = escape(str(item.get("ref") or frame_ref(index)))
     date = escape(fmt_date(str(item.get("created") or "")))
     prompt = escape(prompt_for(item))
-    src = escape(str(item.get("src") or ""))
+    src = escape(image_source(item))
     img = f'<img class="cn-frame__img" src="{src}" alt="Frame {ref}, {date}" loading="lazy" decoding="async">' if src else ""
     cap = (
         f'<figcaption class="cn-frame__cap"><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">{prompt}</span></figcaption>'
@@ -301,7 +318,7 @@ def frame(item: dict, index: int, ratio: str = "3/4", mode: str = "plate", capti
     )
     return f"""
       <figure class="cn-frame cn-frame--{mode} {extra}" style="aspect-ratio:{escape(ratio)}">
-        <div class="cn-frame__bg" style="{escape(frame_style(item))}"></div>
+        <div class="cn-frame__bg" style="{escape(frame_style(item, with_image=False))}"></div>
         {img}
         <div class="cn-frame__grain" aria-hidden="true"></div>
         <div class="cn-frame__vignette" aria-hidden="true"></div>
@@ -376,9 +393,9 @@ def page_shell(path: str, title: str, description: str, active: str, body: str, 
 
 
 def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
-    items = home_items[:14] or gallery_items[:14]
+    items = home_items or gallery_items[:18]
     hero = items[0]
-    reel = items[:8]
+    reel = items
     strip = "".join(
         f'<button class="cn-strip__cell{" is-on" if i == 0 else ""}" style="{escape(frame_style(item))}" data-hero-index="{i}" aria-label="Show {escape(str(item.get("ref")))}"><span class="cn-strip__ref">{escape(str(item.get("ref")))}</span></button>'
         for i, item in enumerate(items[:8])
@@ -393,7 +410,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
               <div class="cn-reel__meta">
                 <span class="cn-kicker cn-kicker--sm">{escape(str(item.get('ref')))} / {escape(fmt_date(str(item.get('created'))))}</span>
                 <p class="cn-reel__prompt">&quot;{escape(prompt_for(item))}&quot;</p>
-                <p class="cn-reel__status">Durable image host pending / gradient frame is intentional fallback</p>
+                <p class="cn-reel__status">{('Image from the archive' if image_source(item) else 'Image unavailable / archive fallback')}</p>
               </div>
             </article>"""
         )
@@ -648,11 +665,18 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--page",
-        choices=("all", "news"),
+        choices=("all", "home", "news"),
         default="all",
-        help="Render every cinematic page or only the scheduled news page.",
+        help="Render every cinematic page, only the homepage, or only the scheduled news page.",
     )
     args = parser.parse_args()
+
+    if args.page == "home":
+        gallery_items = load_gallery_for_render()
+        home_items = read_json(ROOT / "data" / "homepage-gallery.json")["items"]
+        write_page(ROOT / "index.html", render_home(gallery_items, home_items))
+        print("Rendered the homepage.")
+        return
 
     if args.page == "news":
         gallery_items = load_gallery_for_render()
