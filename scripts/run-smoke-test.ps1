@@ -3,6 +3,8 @@ param(
     [int]$Port = 4173,
     [ValidateRange(5, 120)]
     [int]$PreviewReadyTimeoutSeconds = 30,
+    [ValidateRange(10, 600)]
+    [int]$PlaywrightProbeTimeoutSeconds = 120,
     [string]$ChromeExecutable = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 )
 
@@ -37,10 +39,34 @@ function Get-AvailablePort {
     throw "Unable to find a free local preview port."
 }
 
+function Invoke-PlaywrightProbe {
+    # Start `npx --yes playwright --version` with stdin closed and a bounded wait.
+    $psi = [System.Diagnostics.ProcessStartInfo]::new('cmd.exe', '/d /c npx --yes playwright --version')
+    $psi.UseShellExecute = $false
+    $psi.CreateNoWindow = $true
+    $psi.RedirectStandardInput = $true
+    $psi.RedirectStandardOutput = $true
+    $psi.RedirectStandardError = $true
+    $probe = [System.Diagnostics.Process]::Start($psi)
+    $probe.StandardInput.Close()
+    $stdoutTask = $probe.StandardOutput.ReadToEndAsync()
+    $stderrTask = $probe.StandardError.ReadToEndAsync()
+    if (-not $probe.WaitForExit($PlaywrightProbeTimeoutSeconds * 1000)) {
+        & taskkill.exe /PID $probe.Id /T /F | Out-Null
+        throw "npx playwright --version did not return within $PlaywrightProbeTimeoutSeconds s; killed process tree $($probe.Id)."
+    }
+    if ($probe.ExitCode -ne 0) {
+        $stderr = try { $stderrTask.Result.Trim() } catch { "" }
+        throw "npx playwright --version failed with exit code $($probe.ExitCode): $stderr"
+    }
+    $version = try { $stdoutTask.Result.Trim() } catch { "" }
+    if ($version) { Write-Host "Playwright probe: $version" }
+}
+
 function Get-PlaywrightNodePath {
     $cacheRoot = Join-Path $env:LOCALAPPDATA "npm-cache\_npx"
     if (-not (Test-Path $cacheRoot)) {
-        cmd /c npx --yes playwright --version | Out-Null
+        Invoke-PlaywrightProbe
     }
 
     $candidates = Get-ChildItem $cacheRoot -Directory -ErrorAction SilentlyContinue |
@@ -53,7 +79,7 @@ function Get-PlaywrightNodePath {
         }
     }
 
-    cmd /c npx --yes playwright --version | Out-Null
+    Invoke-PlaywrightProbe
     $candidates = Get-ChildItem $cacheRoot -Directory -ErrorAction SilentlyContinue |
         Sort-Object LastWriteTime -Descending
 
