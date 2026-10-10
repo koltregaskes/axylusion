@@ -29,6 +29,7 @@ const pageChecks = [
   { path: "/blog.html", mode: "clean" },
   { path: "/blog-welcome.html", mode: "clean" },
   { path: "/music.html", mode: "clean" },
+  { path: "/store.html", mode: "clean" },
   { path: "/news.html", mode: "clean" },
   { path: "/tools.html", mode: "clean" },
   { path: "/videos.html", mode: "clean" },
