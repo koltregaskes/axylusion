@@ -37,7 +37,10 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 - `blog.html` - blog landing page and editorial entry point
 - `news.html` - news landing page
 - `music.html` / `videos.html` / `tools.html` - supporting sections
+- `store.html` - ElevenLabs Marketplace catalogue and buyer-routing page
 - `data/gallery.json` - gallery source data
+- `data/music-store.json` - source catalogue for the store page
+- `store-catalogue.js` - safe client-side catalogue renderer with static HTML fallback
 - `styles.css` - shared site styling
 - `content/` - editable markdown content
 - `news-digests/` - news source material used by the site

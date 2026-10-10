@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "lastReviewed": "2026-07-20",
+  "freshnessRule": "Before changing marketplace links, licensing copy, pricing, payout, publishing limits or catalogue status, verify the latest official ElevenLabs documentation and the live creator profile.",
+  "profileUrl": "https://elevenlabs.io/app/music/explore/creator/bhB0qdQgbZ6K8MYJiHRy",
+  "items": [
+    {
+      "title": "Quantum Horizon",
+      "type": "Trailer cue",
+      "duration": "1:00",
+      "source": "ElevenLabs Music Marketplace",
+      "description": "Epic sci-fi trailer music with cinematic orchestral pressure, hybrid percussion, and a clean action-teaser arc.",
+      "useCases": ["sci-fi trailers", "game reveals", "product launches", "creator intros"],
+      "labels": ["trailer music", "sci-fi", "cinematic", "orchestral", "instrumental"],
+      "url": "https://elevenlabs.io/app/music/explore/creator/bhB0qdQgbZ6K8MYJiHRy?selectedSongId=Gc6V7SXkvyWDBM0Hm6Mo"
+    },
+    {
+      "title": "Tech Today",
+      "type": "Promo bed",
+      "duration": "0:30",
+      "source": "ElevenLabs Music Marketplace",
+      "description": "Short electronic corporate bed for product updates, explainers, app demos, and tech-channel segments.",
+      "useCases": ["tech updates", "software demos", "YouTube segments", "brand stings"],
+      "labels": ["electronic", "corporate", "utility", "background music", "short cue"],
+      "url": "https://elevenlabs.io/app/music/explore/creator/bhB0qdQgbZ6K8MYJiHRy"
+    }
+  ]
+}
