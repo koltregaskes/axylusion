@@ -72,3 +72,6 @@ dist/
 *-RECOVERY.md
 design/archive/
 design/handoff-*/
+
+# Downloaded gallery masters live on R2, not in git (KOL-5857)
+scripts/downloaded-images/*.png
