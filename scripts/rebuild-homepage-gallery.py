@@ -15,6 +15,7 @@ import json
 import re
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +25,8 @@ UUID_PATTERN = re.compile(
     r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
     re.IGNORECASE,
 )
+# Public R2 gallery host used by the live homepage.
+R2_GALLERY_BASE = "https://pub-7bea5d72ad544bb685e1335d2e6bdd10.r2.dev/gallery"
 
 
 def parse_args() -> argparse.Namespace:
@@ -49,6 +52,50 @@ def load_items(path: Path) -> list[dict[str, Any]]:
 def extract_job_id(value: str) -> str:
     match = UUID_PATTERN.search(value)
     return match.group(1).lower() if match else ""
+
+
+def is_midjourney_cdn(url: str) -> bool:
+    host = (urlparse(str(url or "").strip()).hostname or "").lower()
+    return bool(host) and (host == "midjourney.com" or host.endswith(".midjourney.com"))
+
+
+def is_durable_media_url(url: str) -> bool:
+    source = str(url or "").strip()
+    if not source or is_midjourney_cdn(source):
+        return False
+    parsed = urlparse(source)
+    if parsed.scheme == "https" and parsed.netloc:
+        return True
+    if source and not parsed.scheme and not parsed.netloc and not source.startswith("//"):
+        return True
+    return False
+
+
+def synthesise_r2_url(item_id: str) -> str:
+    item_id = str(item_id or "").strip().lower()
+    if not item_id:
+        return ""
+    return f"{R2_GALLERY_BASE}/{item_id}.png"
+
+
+def choose_cdn_url(existing: dict[str, Any], source: dict[str, Any], item_id: str) -> str:
+    """Pick a durable media URL; never prefer Midjourney CDN over R2/local."""
+    candidates = [
+        source.get("cdn_url"),
+        existing.get("cdn_url"),
+        existing.get("src"),
+        source.get("src"),
+        synthesise_r2_url(item_id),
+    ]
+    for candidate in candidates:
+        value = str(candidate or "").strip()
+        if is_durable_media_url(value):
+            return value
+    for candidate in (source.get("cdn_url"), existing.get("cdn_url")):
+        value = str(candidate or "").strip()
+        if value:
+            return value
+    return synthesise_r2_url(item_id)
 
 
 def build_gallery_lookup(items: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
@@ -83,10 +130,12 @@ def rebuild_items(homepage_items: list[dict[str, Any]], gallery_lookup: dict[str
         rebuilt_item = dict(item)
         rebuilt_item["id"] = source.get("id") or key
 
-        for field in ("name", "cdn_url", "created", "type"):
+        for field in ("name", "created", "type"):
             source_value = source.get(field)
             if isinstance(source_value, str) and source_value.strip():
                 rebuilt_item[field] = source_value.strip()
+
+        rebuilt_item["cdn_url"] = choose_cdn_url(item, source, str(rebuilt_item["id"]))
 
         rebuilt.append(rebuilt_item)
 
@@ -122,6 +171,8 @@ def main() -> int:
     args.homepage.write_text(rendered, encoding="utf-8")
     print(f"Updated {args.homepage}")
     print(f"Homepage items rebuilt: {len(rebuilt_items)}")
+    durable = sum(1 for item in rebuilt_items if is_durable_media_url(str(item.get("cdn_url") or "")))
+    print(f"Durable (non-Midjourney) cdn_url count: {durable}/{len(rebuilt_items)}")
     return 0
 
 

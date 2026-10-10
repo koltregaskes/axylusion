@@ -13,9 +13,9 @@ Push-Location $projectRoot
 try {
     $step = 1
     $totalSteps = if ($RunSmokeTest) {
-        if ($SkipAList) { 4 } else { 6 }
+        if ($SkipAList) { 5 } else { 7 }
     } else {
-        if ($SkipAList) { 3 } else { 5 }
+        if ($SkipAList) { 4 } else { 6 }
     }
     if ($Publish) {
         $totalSteps++
@@ -23,29 +23,56 @@ try {
 
     Write-Host "[$step/$totalSteps] Rebuilding homepage gallery payload..."
     python scripts/rebuild-homepage-gallery.py
+    if ($LASTEXITCODE -ne 0) {
+        throw "Homepage gallery rebuild failed with exit code $LASTEXITCODE."
+    }
     $step++
 
     Write-Host "[$step/$totalSteps] Updating news digest index..."
     python scripts/update-news-digest-index.py
+    if ($LASTEXITCODE -ne 0) {
+        throw "News digest index update failed with exit code $LASTEXITCODE."
+    }
+    $step++
+
+    Write-Host "[$step/$totalSteps] Rendering scheduled news page..."
+    python scripts/render-cinematic-site.py --page news
+    if ($LASTEXITCODE -ne 0) {
+        throw "News page render failed with exit code $LASTEXITCODE."
+    }
     $step++
 
     if (-not $SkipAList) {
         Write-Host "[$step/$totalSteps] Syncing A-List benchmark snapshot..."
         python scripts/sync-a-list-benchmarks.py
+        if ($LASTEXITCODE -ne 0) {
+            throw "A-List benchmark sync failed with exit code $LASTEXITCODE."
+        }
         $step++
 
         Write-Host "[$step/$totalSteps] Rendering A-List pages..."
         python scripts/render-a-list.py
+        if ($LASTEXITCODE -ne 0) {
+            throw "A-List page render failed with exit code $LASTEXITCODE."
+        }
         $step++
     }
 
     Write-Host "[$step/$totalSteps] Validating site..."
-    python scripts/validate-site.py
+    $validateArgs = @('scripts/validate-site.py')
+    if ($SkipAList) { $validateArgs += '--skip-alist' }
+    python @validateArgs
+    if ($LASTEXITCODE -ne 0) {
+        throw "Site validation failed with exit code $LASTEXITCODE."
+    }
     $step++
 
     if ($RunSmokeTest) {
         Write-Host "[$step/$totalSteps] Running browser smoke tests..."
         powershell -ExecutionPolicy Bypass -File scripts/run-smoke-test.ps1 -Port $Port
+        if ($LASTEXITCODE -ne 0) {
+            throw "Browser smoke test failed with exit code $LASTEXITCODE."
+        }
         $step++
     }
 

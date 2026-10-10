@@ -29,6 +29,9 @@ jobs:
       - name: Verify homepage gallery payload
         run: python scripts/rebuild-homepage-gallery.py --check
 
+      - name: Verify homepage image rendering
+        run: python scripts/test-homepage-images.py
+
       - name: Validate static site structure
         run: python scripts/validate-site.py
 

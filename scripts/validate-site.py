@@ -14,6 +14,7 @@ Warnings:
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import re
@@ -54,7 +55,7 @@ UUID_PATTERN = re.compile(
     r"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
     re.IGNORECASE,
 )
-MOJIBAKE_PATTERN = re.compile(r"(?:�|ï»¿|\ufeff|Â|Ã.|â€|â€™|â€œ|â€�|â€”|â€“|â€¦|ðŸ)")
+MOJIBAKE_PATTERN = re.compile(r"(?:�|ï»¿|Â|Ã.|â€|â€™|â€œ|â€�|â€”|â€“|â€¦|ðŸ)")
 INSECURE_HTTP_PATTERN = re.compile(r"http://(?!127\.0\.0\.1|localhost)[^\s)>\"]+", re.IGNORECASE)
 
 
@@ -251,7 +252,7 @@ def check_digest_hygiene() -> list[str]:
     warnings: list[str] = []
     digest_paths = sorted(digest_files_on_disk())
     for digest_path in digest_paths:
-        content = digest_path.read_text(encoding="utf-8", errors="ignore")
+        content = digest_path.read_text(encoding="utf-8-sig", errors="ignore")
         if MOJIBAKE_PATTERN.search(content):
             warnings.append(f"Digest contains likely mojibake and should be reviewed: {rel_path(digest_path)}")
 
@@ -281,6 +282,10 @@ def check_script_sync(script_path: Path, label: str) -> list[str]:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--skip-alist', action='store_true', help='Skip A-List freshness checks during evening news-only refresh.')
+    args = parser.parse_args()
+
     failures: list[str] = []
     warnings: list[str] = []
     alist_category_count: int | None = None
@@ -327,14 +332,17 @@ def main() -> int:
     failures.extend(check_homepage_alignment(gallery_items, homepage_items))
     failures.extend(check_public_head_requirements())
     failures.extend(check_support_files())
-    if ALIST_SHARED_SOURCE.exists():
+    if args.skip_alist:
+        warnings.append('Skipped A-List freshness checks (--skip-alist).')
+    elif ALIST_SHARED_SOURCE.exists():
         failures.extend(check_script_sync(ALIST_SYNC_SCRIPT, "A-List snapshot"))
+        failures.extend(check_script_sync(ALIST_RENDER_SCRIPT, "A-List rendered pages"))
     else:
         warnings.append(
             "A-List shared benchmark cache is unavailable; skipped source freshness check: "
             f"{ALIST_SHARED_SOURCE}"
         )
-    failures.extend(check_script_sync(ALIST_RENDER_SCRIPT, "A-List rendered pages"))
+        failures.extend(check_script_sync(ALIST_RENDER_SCRIPT, "A-List rendered pages"))
     warnings.extend(check_digest_hygiene())
 
     gallery_hosts = summarize_hosts(gallery_items)
