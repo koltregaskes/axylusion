@@ -167,7 +167,7 @@ def load_and_migrate_gallery() -> tuple[list[dict], list[dict]]:
     gallery_path = ROOT / "data" / "gallery.json"
     home_path = ROOT / "data" / "homepage-gallery.json"
     gallery_payload = read_json(gallery_path)
-    gallery_items = gallery_payload.get("items", [])
+    gallery_items = [item for item in (gallery_payload.get("items", []) or []) if str(item.get("media_status") or "") != "unavailable"]
     for index, item in enumerate(gallery_items):
         normalize_item(item, index)
 
@@ -176,7 +176,8 @@ def load_and_migrate_gallery() -> tuple[list[dict], list[dict]]:
     tone_lookup = {str(item.get("id")): item.get("tones") for item in gallery_items}
 
     home_payload = read_json(home_path)
-    home_items = home_payload.get("items", [])
+    # Preserve existing curated order but skip any entries flagged unavailable
+    home_items = [item for item in (home_payload.get("items", []) or []) if str(item.get("media_status") or "") != "unavailable"]
     for index, item in enumerate(home_items):
         normalize_item(item, index, prompt_lookup)
         item_id = str(item.get("id"))
@@ -192,7 +193,7 @@ def load_and_migrate_gallery() -> tuple[list[dict], list[dict]]:
 
 def load_gallery_for_render() -> list[dict]:
     gallery_payload = read_json(ROOT / "data" / "gallery.json")
-    gallery_items = gallery_payload.get("items", [])
+    gallery_items = [item for item in (gallery_payload.get("items", []) or []) if str(item.get("media_status") or "") != "unavailable"]
     for index, item in enumerate(gallery_items):
         normalize_item(item, index)
     return gallery_items
