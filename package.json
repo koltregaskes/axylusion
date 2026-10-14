@@ -1,0 +1,26 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "This repository contains the Axy Lusion creative portfolio site: a static website for AI artwork, music, video, news, blog posts, and creative tool coverage.",
+  "main": "cross-site-nav.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koltregaskes/axylusion.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koltregaskes/axylusion/issues"
+  },
+  "homepage": "https://github.com/koltregaskes/axylusion#readme",
+  "dependencies": {
+    "playwright": "^1.64.0"
+  }
+}
