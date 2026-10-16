@@ -23,6 +23,23 @@ const baseUrl = values["base-url"].replace(/\/$/, "");
 const waitMs = Number.parseInt(values["wait-ms"], 10);
 const chromeExecutable = values["chrome-executable"];
 
+// Load flagged-unavailable IDs from data/gallery.json (if available)
+import fs from "node:fs";
+import { fileURLToPath } from "node:url";
+const REPO_DIR = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const GALLERY_JSON_PATH = path.join(REPO_DIR, "data", "gallery.json");
+let UNAVAILABLE_IDS = new Set();
+try {
+  const raw = fs.readFileSync(GALLERY_JSON_PATH, "utf-8");
+  const payload = JSON.parse(raw);
+  const items = Array.isArray(payload?.items) ? payload.items : [];
+  UNAVAILABLE_IDS = new Set(
+    items.filter((it) => String(it?.media_status || "") === "unavailable").map((it) => String(it.id || "").toLowerCase()),
+  );
+} catch {
+  // ignore, best-effort local check
+}
+
 const pageChecks = [
   { path: "/404.html", mode: "clean" },
   { path: "/about.html", mode: "clean" },
@@ -50,6 +67,7 @@ async function capturePage(page, path) {
   const consoleErrors = [];
   const failedRequests = [];
   const badResponses = [];
+  let galleryVisibleIds = [];
 
   page.on("console", (message) => {
     if (message.type() === "error") {
@@ -76,12 +94,31 @@ async function capturePage(page, path) {
   await page.goto(`${baseUrl}${path}`, { waitUntil: "domcontentloaded", timeout: 20000 });
   await page.waitForTimeout(waitMs);
 
+  // On gallery.html, extract visible item IDs from image URLs and data-id attributes
+  if (path.endsWith("/gallery.html")) {
+    galleryVisibleIds = await page.evaluate(() => {
+      const ids = new Set();
+      // Cards from cinematic static gallery
+      for (const img of document.querySelectorAll("img")) {
+        const m = (img.src || "").match(/[0-9a-f]{8}-[0-9a-f-]{27,36}/i);
+        if (m && m[0]) ids.add(m[0].toLowerCase());
+      }
+      // Dynamic grid (if rendered by gallery.js)
+      for (const el of document.querySelectorAll(".gallery-item[data-id]")) {
+        const id = (el.getAttribute("data-id") || "").toLowerCase();
+        if (id) ids.add(id);
+      }
+      return Array.from(ids);
+    });
+  }
+
   return {
     path,
     title: await page.title(),
     consoleErrors,
     failedRequests,
     badResponses,
+    galleryVisibleIds,
   };
 }
 
@@ -103,19 +140,28 @@ function evaluateResult(result, check) {
   const disallowedUrls = problemUrls.filter((url) => !allowedHosts.has(extractHost(url)));
   const onlyAllowedFailures = disallowedUrls.length === 0;
   const consoleOkay = result.consoleErrors.length === 0 || (problemUrls.length > 0 && onlyAllowedFailures);
-  const passed = onlyAllowedFailures && consoleOkay;
+  // Fail if any visible gallery ID is flagged as unavailable
+  let unavailableVisible = [];
+  if (result.path.endsWith("/gallery.html") && UNAVAILABLE_IDS.size > 0) {
+    unavailableVisible = (result.galleryVisibleIds || []).filter((id) => UNAVAILABLE_IDS.has(String(id).toLowerCase()));
+  }
+  const passed = onlyAllowedFailures && consoleOkay && unavailableVisible.length === 0;
 
   let summary = "clean";
   if (problemUrls.length > 0 && onlyAllowedFailures) {
     summary = `allowed host failures only (${problemUrls.length})`;
   } else if (!passed) {
-    summary = "unexpected runtime issues";
+    summary =
+      unavailableVisible.length > 0
+        ? `gallery shows ${unavailableVisible.length} unavailable item(s)`
+        : "unexpected runtime issues";
   }
 
   return {
     passed,
     summary,
     disallowedUrls,
+    unavailableVisible,
   };
 }
 
@@ -144,6 +190,7 @@ try {
       consoleErrorCount: result.consoleErrors.length,
       failedRequestCount: result.failedRequests.length,
       badResponseCount: result.badResponses.length,
+      unavailableVisible: evaluation.unavailableVisible ?? [],
     };
 
     console.log(JSON.stringify(payload));
