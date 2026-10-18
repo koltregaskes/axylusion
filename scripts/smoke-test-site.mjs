@@ -29,10 +29,12 @@ import { fileURLToPath } from "node:url";
 const REPO_DIR = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const GALLERY_JSON_PATH = path.join(REPO_DIR, "data", "gallery.json");
 let UNAVAILABLE_IDS = new Set();
+let TOTAL_ITEMS = 0;
 try {
   const raw = fs.readFileSync(GALLERY_JSON_PATH, "utf-8");
   const payload = JSON.parse(raw);
   const items = Array.isArray(payload?.items) ? payload.items : [];
+  TOTAL_ITEMS = items.length;
   UNAVAILABLE_IDS = new Set(
     items.filter((it) => String(it?.media_status || "") === "unavailable").map((it) => String(it.id || "").toLowerCase()),
   );
@@ -68,6 +70,7 @@ async function capturePage(page, path) {
   const failedRequests = [];
   const badResponses = [];
   let galleryVisibleIds = [];
+  let galleryCardCount = 0;
 
   page.on("console", (message) => {
     if (message.type() === "error") {
@@ -94,22 +97,21 @@ async function capturePage(page, path) {
   await page.goto(`${baseUrl}${path}`, { waitUntil: "domcontentloaded", timeout: 20000 });
   await page.waitForTimeout(waitMs);
 
-  // On gallery.html, extract visible item IDs from image URLs and data-id attributes
+  // On gallery.html, extract visible item IDs from cinematic cards
   if (path.endsWith("/gallery.html")) {
     galleryVisibleIds = await page.evaluate(() => {
+      const uuidRe = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
       const ids = new Set();
-      // Cards from cinematic static gallery
-      for (const img of document.querySelectorAll("img")) {
-        const m = (img.src || "").match(/[0-9a-f]{8}-[0-9a-f-]{27,36}/i);
+      const cards = document.querySelectorAll(".cn-gallery-card");
+      for (const card of cards) {
+        const haystack = (card.getAttribute("data-search") || "").toLowerCase();
+        const m = haystack.match(uuidRe);
         if (m && m[0]) ids.add(m[0].toLowerCase());
       }
-      // Dynamic grid (if rendered by gallery.js)
-      for (const el of document.querySelectorAll(".gallery-item[data-id]")) {
-        const id = (el.getAttribute("data-id") || "").toLowerCase();
-        if (id) ids.add(id);
-      }
-      return Array.from(ids);
+      return { ids: Array.from(ids), count: cards.length };
     });
+    galleryCardCount = galleryVisibleIds?.count || 0;
+    galleryVisibleIds = galleryVisibleIds?.ids || [];
   }
 
   return {
@@ -119,6 +121,7 @@ async function capturePage(page, path) {
     failedRequests,
     badResponses,
     galleryVisibleIds,
+    galleryCardCount,
   };
 }
 
@@ -140,21 +143,38 @@ function evaluateResult(result, check) {
   const disallowedUrls = problemUrls.filter((url) => !allowedHosts.has(extractHost(url)));
   const onlyAllowedFailures = disallowedUrls.length === 0;
   const consoleOkay = result.consoleErrors.length === 0 || (problemUrls.length > 0 && onlyAllowedFailures);
-  // Fail if any visible gallery ID is flagged as unavailable
+  // Fail if any visible gallery ID is flagged as unavailable; fail if 0 cards; assert expected total
   let unavailableVisible = [];
-  if (result.path.endsWith("/gallery.html") && UNAVAILABLE_IDS.size > 0) {
-    unavailableVisible = (result.galleryVisibleIds || []).filter((id) => UNAVAILABLE_IDS.has(String(id).toLowerCase()));
+  let cardCountOk = true;
+  let expectedCountOk = true;
+  let expectedVisibleCount = 0;
+  if (result.path.endsWith("/gallery.html")) {
+    if (UNAVAILABLE_IDS.size > 0) {
+      unavailableVisible = (result.galleryVisibleIds || []).filter((id) => UNAVAILABLE_IDS.has(String(id).toLowerCase()));
+    }
+    cardCountOk = result.galleryCardCount > 0;
+    expectedVisibleCount = Math.max(0, TOTAL_ITEMS - UNAVAILABLE_IDS.size);
+    expectedCountOk = expectedVisibleCount === result.galleryCardCount;
   }
-  const passed = onlyAllowedFailures && consoleOkay && unavailableVisible.length === 0;
+  const passed = onlyAllowedFailures && consoleOkay && unavailableVisible.length === 0 && cardCountOk && expectedCountOk;
 
   let summary = "clean";
   if (problemUrls.length > 0 && onlyAllowedFailures) {
     summary = `allowed host failures only (${problemUrls.length})`;
   } else if (!passed) {
-    summary =
-      unavailableVisible.length > 0
-        ? `gallery shows ${unavailableVisible.length} unavailable item(s)`
-        : "unexpected runtime issues";
+    if (result.path.endsWith("/gallery.html")) {
+      if (!cardCountOk) {
+        summary = "gallery has 0 cards";
+      } else if (!expectedCountOk) {
+        summary = `gallery shows ${result.galleryCardCount} cards, expected ${expectedVisibleCount}`;
+      } else if (unavailableVisible.length > 0) {
+        summary = `gallery shows ${unavailableVisible.length} unavailable item(s)`;
+      } else {
+        summary = "unexpected runtime issues";
+      }
+    } else {
+      summary = "unexpected runtime issues";
+    }
   }
 
   return {
@@ -162,6 +182,7 @@ function evaluateResult(result, check) {
     summary,
     disallowedUrls,
     unavailableVisible,
+    expectedVisibleCount,
   };
 }
 
@@ -191,6 +212,8 @@ try {
       failedRequestCount: result.failedRequests.length,
       badResponseCount: result.badResponses.length,
       unavailableVisible: evaluation.unavailableVisible ?? [],
+      galleryCardCount: result.galleryCardCount ?? 0,
+      expectedVisibleCount: evaluation.expectedVisibleCount ?? 0,
     };
 
     console.log(JSON.stringify(payload));
