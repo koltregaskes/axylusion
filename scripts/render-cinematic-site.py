@@ -477,7 +477,7 @@ def render_gallery(gallery_items: list[dict]) -> str:
         haystack = " ".join([prompt, str(item.get("id")), str(item.get("ref")), fmt_date(str(item.get("created")))]).lower()
         cards.append(
             f"""
-            <article class="cn-gallery-card" id="frame-{escape(str(item.get('ref')).lower())}" data-index="{index}" data-search="{escape(haystack)}" data-type="{escape(type_label)}" data-model="{escape(model)}" data-date="{escape(str(item.get('created') or ''))}">
+            <article class="cn-gallery-card" id="frame-{escape(str(item.get('ref')).lower())}" data-index="{index}" data-search="{escape(haystack)}" data-type="{escape(type_label)}" data-model="{escape(model)}" data-date="{escape(str(item.get('created') or ''))}" data-item-id="{escape(str(item.get('id') or ''))}">
               {frame(item, index, caption=False)}
             </article>"""
         )
