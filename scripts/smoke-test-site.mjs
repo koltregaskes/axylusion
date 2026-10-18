@@ -54,7 +54,7 @@ const pageChecks = [
   { path: "/a-list.html", mode: "clean" },
   { path: "/a-list/image-generation.html", mode: "clean" },
   { path: "/index.html", mode: "clean" },
-  { path: "/gallery.html", mode: "clean" },
+  { path: "/gallery.html", mode: "gallery" },
 ];
 
 function extractHost(urlString) {
