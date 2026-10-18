@@ -666,7 +666,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--page",
-        choices=("all", "home", "news"),
+        choices=("all", "home", "news", "gallery"),
         default="all",
         help="Render every cinematic page, only the homepage, or only the scheduled news page.",
     )
@@ -677,6 +677,12 @@ def main() -> None:
         home_items = read_json(ROOT / "data" / "homepage-gallery.json")["items"]
         write_page(ROOT / "index.html", render_home(gallery_items, home_items))
         print("Rendered the homepage.")
+        return
+
+    if args.page == "gallery":
+        gallery_items = load_gallery_for_render()
+        write_page(ROOT / "gallery.html", render_gallery(gallery_items))
+        print("Rendered the gallery page.")
         return
 
     if args.page == "news":
