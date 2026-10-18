@@ -110,6 +110,19 @@ try {
             throw "git add failed with exit code $LASTEXITCODE."
         }
 
+        # Never publish a routed digest that reports 0 stories: unstage it, log it, carry on.
+        $stagedDigests = @(git diff --cached --name-only -- "news-digests/*.md")
+        foreach ($digestPath in $stagedDigests) {
+            $digestFile = Join-Path $projectRoot $digestPath
+            if ((Test-Path $digestFile) -and (Select-String -Path $digestFile -Pattern '^\*\*\d{4}-\d{2}-\d{2}\*\*\s*\|\s*0\s+stories\b' -Quiet)) {
+                Write-Host "Skipping publish of empty digest (0 stories): $digestPath"
+                git reset -q -- $digestPath
+                if ($LASTEXITCODE -ne 0) {
+                    throw "git reset failed for $digestPath with exit code $LASTEXITCODE."
+                }
+            }
+        }
+
         $staged = @(git diff --cached --name-only)
         if ($LASTEXITCODE -ne 0) {
             throw "git diff failed with exit code $LASTEXITCODE."

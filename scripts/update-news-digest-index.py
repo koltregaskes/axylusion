@@ -37,13 +37,31 @@ def digest_sort_key(path: Path) -> tuple[int, str]:
     return (year * 10000 + month * 100 + day, path.name)
 
 
-def build_manifest() -> dict[str, list[str]]:
+# Header written by the shared news router, e.g. "**2026-10-18** | 0 stories | ...".
+EMPTY_DIGEST_PATTERN = re.compile(r"^\*\*\d{4}-\d{2}-\d{2}\*\*\s*\|\s*0\s+stories\b", re.MULTILINE)
+
+
+def is_empty_digest(path: Path) -> bool:
+    """True only when the routed digest header explicitly reports 0 stories."""
+    text = path.read_text(encoding="utf-8-sig", errors="ignore")
+    return bool(EMPTY_DIGEST_PATTERN.search(text))
+
+
+def build_manifest(log_skips: bool = False) -> dict[str, list[str]]:
     all_digest_files = [
         path for path in NEWS_DIGESTS_DIR.glob("*.md") if DIGEST_PATTERN.match(path.name)
     ]
     # The scheduled shared news filter writes new local digest files before
     # publication, so the live preview manifest must reflect files on disk.
-    digest_files = all_digest_files
+    # Digests whose header reports 0 stories stay on disk but are not indexed,
+    # so an empty upstream route never surfaces on news.html.
+    digest_files = []
+    for path in all_digest_files:
+        if is_empty_digest(path):
+            if log_skips:
+                print(f"Skipping empty digest (0 stories), not indexed: news-digests/{path.name}")
+            continue
+        digest_files.append(path)
     ordered_files = [
         path.name
         for path in sorted(digest_files, key=digest_sort_key, reverse=True)
@@ -60,7 +78,7 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    manifest = build_manifest()
+    manifest = build_manifest(log_skips=not args.check)
     rendered = json.dumps(manifest, indent=2, ensure_ascii=False) + "\n"
 
     if args.check:
