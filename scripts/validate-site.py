@@ -152,8 +152,16 @@ def digest_files_on_disk() -> list[Path]:
     ]
 
 
+EMPTY_DIGEST_PATTERN = re.compile(r"^\*\*\d{4}-\d{2}-\d{2}\*\*\s*\|\s*0\s+stories\b", re.MULTILINE)
+
+
+def is_empty_digest(path: Path) -> bool:
+    return bool(EMPTY_DIGEST_PATTERN.search(path.read_text(encoding="utf-8-sig", errors="ignore")))
+
+
 def build_digest_manifest() -> dict[str, list[str]]:
-    digest_files = [path.name for path in digest_files_on_disk()]
+    # Mirrors scripts/update-news-digest-index.py: 0-story digests are not indexed.
+    digest_files = [path.name for path in digest_files_on_disk() if not is_empty_digest(path)]
     digest_files.sort(
         key=lambda name: (
             int((match := DIGEST_PATTERN.match(name)).group(1) or match.group(4)),
