@@ -126,11 +126,7 @@ async function capturePage(page, path) {
     });
     galleryCardCount = galleryData?.count || 0;
     galleryVisibleIds = galleryData?.ids || [];
-    // Prefer server-derived expected count
-    if (typeof galleryData?.expectedVisible === "number" && galleryData.expectedVisible > 0) {
-      // Attach as a synthetic field the evaluator can read via result
-      result_expectedVisibleFromServer = galleryData.expectedVisible; // eslint-disable-line no-undef
-    }
+    var expectedVisibleFromServer = (typeof galleryData?.expectedVisible === "number" && galleryData.expectedVisible > 0) ? galleryData.expectedVisible : 0; // eslint-disable-line no-var
   }
 
   return {
@@ -141,7 +137,7 @@ async function capturePage(page, path) {
     badResponses,
     galleryVisibleIds,
     galleryCardCount,
-    expectedVisibleFromServer: typeof result_expectedVisibleFromServer !== "undefined" ? result_expectedVisibleFromServer : 0, // eslint-disable-line no-undef
+    expectedVisibleFromServer: typeof expectedVisibleFromServer === "number" ? expectedVisibleFromServer : 0,
   };
 }
 
