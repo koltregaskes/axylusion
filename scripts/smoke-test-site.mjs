@@ -149,11 +149,24 @@ function evaluateResult(result, check) {
   let expectedCountOk = true;
   let expectedVisibleCount = 0;
   if (result.path.endsWith("/gallery.html")) {
+    // Recompute expected count from local data to avoid stale module-level state
+    try {
+      const raw = fs.readFileSync(GALLERY_JSON_PATH, "utf-8");
+      const payload = JSON.parse(raw);
+      const items = Array.isArray(payload?.items) ? payload.items : [];
+      const flagged = new Set(
+        items
+          .filter((it) => String(it?.media_status || "") === "unavailable")
+          .map((it) => String(it.id || "").toLowerCase()),
+      );
+      expectedVisibleCount = Math.max(0, items.length - flagged.size);
+    } catch {
+      expectedVisibleCount = Math.max(0, TOTAL_ITEMS - UNAVAILABLE_IDS.size);
+    }
     if (UNAVAILABLE_IDS.size > 0) {
       unavailableVisible = (result.galleryVisibleIds || []).filter((id) => UNAVAILABLE_IDS.has(String(id).toLowerCase()));
     }
     cardCountOk = result.galleryCardCount > 0;
-    expectedVisibleCount = Math.max(0, TOTAL_ITEMS - UNAVAILABLE_IDS.size);
     expectedCountOk = expectedVisibleCount === result.galleryCardCount;
   }
   const passed = onlyAllowedFailures && consoleOkay && unavailableVisible.length === 0 && cardCountOk && expectedCountOk;
