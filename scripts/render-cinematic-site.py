@@ -167,7 +167,7 @@ def load_and_migrate_gallery() -> tuple[list[dict], list[dict]]:
     gallery_path = ROOT / "data" / "gallery.json"
     home_path = ROOT / "data" / "homepage-gallery.json"
     gallery_payload = read_json(gallery_path)
-    gallery_items = gallery_payload.get("items", [])
+    gallery_items = [item for item in (gallery_payload.get("items", []) or []) if str(item.get("media_status") or "") != "unavailable"]
     for index, item in enumerate(gallery_items):
         normalize_item(item, index)
 
@@ -176,7 +176,8 @@ def load_and_migrate_gallery() -> tuple[list[dict], list[dict]]:
     tone_lookup = {str(item.get("id")): item.get("tones") for item in gallery_items}
 
     home_payload = read_json(home_path)
-    home_items = home_payload.get("items", [])
+    # Preserve existing curated order but skip any entries flagged unavailable
+    home_items = [item for item in (home_payload.get("items", []) or []) if str(item.get("media_status") or "") != "unavailable"]
     for index, item in enumerate(home_items):
         normalize_item(item, index, prompt_lookup)
         item_id = str(item.get("id"))
@@ -192,7 +193,7 @@ def load_and_migrate_gallery() -> tuple[list[dict], list[dict]]:
 
 def load_gallery_for_render() -> list[dict]:
     gallery_payload = read_json(ROOT / "data" / "gallery.json")
-    gallery_items = gallery_payload.get("items", [])
+    gallery_items = [item for item in (gallery_payload.get("items", []) or []) if str(item.get("media_status") or "") != "unavailable"]
     for index, item in enumerate(gallery_items):
         normalize_item(item, index)
     return gallery_items
@@ -665,7 +666,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--page",
-        choices=("all", "home", "news"),
+        choices=("all", "home", "news", "gallery"),
         default="all",
         help="Render every cinematic page, only the homepage, or only the scheduled news page.",
     )
@@ -676,6 +677,12 @@ def main() -> None:
         home_items = read_json(ROOT / "data" / "homepage-gallery.json")["items"]
         write_page(ROOT / "index.html", render_home(gallery_items, home_items))
         print("Rendered the homepage.")
+        return
+
+    if args.page == "gallery":
+        gallery_items = load_gallery_for_render()
+        write_page(ROOT / "gallery.html", render_gallery(gallery_items))
+        print("Rendered the gallery page.")
         return
 
     if args.page == "news":

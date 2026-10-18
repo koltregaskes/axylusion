@@ -26184,6 +26184,9 @@ function getFilteredItems() {
     const modelValue = modelFilter.value;
 
     return items.filter(item => {
+        // Skip items explicitly flagged as unavailable
+        if (String(item.media_status || "") === "unavailable") return false;
+
         // Type filter
         if (typeValue !== 'all' && item.type !== typeValue) return false;
 
