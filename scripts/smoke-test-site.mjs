@@ -100,15 +100,19 @@ async function capturePage(page, path) {
   // On gallery.html, extract visible item IDs from cinematic cards
   if (path.endsWith("/gallery.html")) {
     const galleryData = await page.evaluate(async () => {
-      const uuidRe = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
-      const ids = new Set();
+      const ids = [];
+      const missingItemIdCards = [];
       const cards = document.querySelectorAll(".cn-gallery-card");
       for (const card of cards) {
-        const haystack = (card.getAttribute("data-search") || "").toLowerCase();
-        const m = haystack.match(uuidRe);
-        if (m && m[0]) ids.add(m[0].toLowerCase());
+        const itemId = (card.getAttribute("data-item-id") || "").trim().toLowerCase();
+        if (itemId) {
+          ids.push(itemId);
+        } else {
+          missingItemIdCards.push(card.id || "");
+        }
       }
       let expectedVisible = 0;
+      let expectedIds = [];
       let domExpected = 0;
       try {
         const pager = document.querySelector("[data-gallery-count]");
@@ -128,14 +132,19 @@ async function capturePage(page, path) {
               .map((it) => String(it.id || "").toLowerCase()),
           );
           expectedVisible = Math.max(0, items.length - flagged.size);
+          expectedIds = items
+            .map((it) => String(it.id || "").toLowerCase())
+            .filter((id) => id && !flagged.has(id));
         }
       } catch {}
-      return { ids: Array.from(ids), count: cards.length, expectedVisible, domExpected };
+      return { ids, count: cards.length, expectedVisible, domExpected, expectedIds, missingItemIdCards };
     });
     galleryCardCount = galleryData?.count || 0;
     galleryVisibleIds = galleryData?.ids || [];
     var expectedVisibleFromServer = (typeof galleryData?.expectedVisible === "number" && galleryData.expectedVisible > 0) ? galleryData.expectedVisible : 0; // eslint-disable-line no-var
     var expectedVisibleFromDom = (typeof galleryData?.domExpected === "number" && galleryData.domExpected > 0) ? galleryData.domExpected : 0; // eslint-disable-line no-var
+    var expectedIdsFromServer = Array.isArray(galleryData?.expectedIds) ? galleryData.expectedIds : []; // eslint-disable-line no-var
+    var missingItemIdCardsFromDom = Array.isArray(galleryData?.missingItemIdCards) ? galleryData.missingItemIdCards : []; // eslint-disable-line no-var
   }
 
   return {
@@ -148,6 +157,8 @@ async function capturePage(page, path) {
     galleryCardCount,
     expectedVisibleFromServer: typeof expectedVisibleFromServer === "number" ? expectedVisibleFromServer : 0,
     expectedVisibleFromDom: typeof expectedVisibleFromDom === "number" ? expectedVisibleFromDom : 0,
+    expectedIdsFromServer: Array.isArray(expectedIdsFromServer) ? expectedIdsFromServer : [],
+    missingItemIdCardsFromDom: Array.isArray(missingItemIdCardsFromDom) ? missingItemIdCardsFromDom : [],
   };
 }
 
@@ -169,11 +180,28 @@ function evaluateResult(result, check) {
   const disallowedUrls = problemUrls.filter((url) => !allowedHosts.has(extractHost(url)));
   const onlyAllowedFailures = disallowedUrls.length === 0;
   const consoleOkay = result.consoleErrors.length === 0 || (problemUrls.length > 0 && onlyAllowedFailures);
-  // Fail if any visible gallery ID is flagged as unavailable; fail if 0 cards; assert expected total
+  // Gallery-specific assertions:
+  // - No missing data-item-id on any card
+  // - No duplicate IDs (unique count === card count)
+  // - Visible ID set exactly equals expected set (gallery.json items minus unavailable)
+  // - No unavailable IDs are visible
+  // - Explicitly assert presence/absence for known multi-UUID frames
   let unavailableVisible = [];
   let cardCountOk = true;
   let expectedCountOk = true;
   let expectedVisibleCount = 0;
+  let missingItemIdCount = 0;
+  let duplicateIds = [];
+  let missingIds = [];
+  let unexpectedIds = [];
+  let explicitChecksOk = true;
+  const mustHaveIds = new Set([
+    "89cf68fa-4ba7-436d-85b7-764bc8c0c43f",
+    "bcf7ef43-a942-4255-bd47-a0baf1f820d2",
+  ]);
+  const mustNotContainIds = new Set([
+    "68a3ddec-240a-4922-b99a-5c2400bbbf26",
+  ]);
   if (result.path.endsWith("/gallery.html")) {
     // Prefer expected count from the server-rendered data.json if provided
     expectedVisibleCount =
@@ -187,8 +215,57 @@ function evaluateResult(result, check) {
     }
     cardCountOk = result.galleryCardCount > 0;
     expectedCountOk = expectedVisibleCount === result.galleryCardCount;
+    // Missing data-item-id attributes
+    missingItemIdCount = Array.isArray(result.missingItemIdCardsFromDom) ? result.missingItemIdCardsFromDom.length : 0;
+    // Duplicate IDs
+    const seen = new Set();
+    duplicateIds = [];
+    for (const id of result.galleryVisibleIds || []) {
+      const key = String(id).toLowerCase();
+      if (seen.has(key)) duplicateIds.push(key);
+      seen.add(key);
+    }
+    // Set equality against expected IDs set
+    const expectedIdsSet = new Set(
+      Array.isArray(result.expectedIdsFromServer) && result.expectedIdsFromServer.length > 0
+        ? result.expectedIdsFromServer.map((id) => String(id).toLowerCase())
+        : Array.from(UNAVAILABLE_IDS).length > 0
+          ? Array.from({ length: 0 }) // placeholder, we will fall back below
+          : []
+    );
+    // Fallback when expectedIdsFromServer missing: compute from local gallery.json parse
+    if (expectedIdsSet.size === 0) {
+      try {
+        // Compute locally from TOTAL_ITEMS/UNAVAILABLE_IDS is insufficient for exact set; skip strict check in this fallback.
+      } catch {}
+    }
+    const visibleIdsSet = new Set((result.galleryVisibleIds || []).map((id) => String(id).toLowerCase()));
+    if (expectedIdsSet.size > 0) {
+      for (const id of expectedIdsSet) {
+        if (!visibleIdsSet.has(id)) missingIds.push(id);
+      }
+      for (const id of visibleIdsSet) {
+        if (!expectedIdsSet.has(id)) unexpectedIds.push(id);
+      }
+    }
+    // Explicit checks for known frames
+    for (const id of mustHaveIds) {
+      if (!visibleIdsSet.has(id)) explicitChecksOk = false;
+    }
+    for (const id of mustNotContainIds) {
+      if (visibleIdsSet.has(id)) explicitChecksOk = false;
+    }
   }
-  const passed = onlyAllowedFailures && consoleOkay && unavailableVisible.length === 0 && cardCountOk && expectedCountOk;
+  const passed =
+    onlyAllowedFailures &&
+    consoleOkay &&
+    unavailableVisible.length === 0 &&
+    cardCountOk &&
+    expectedCountOk &&
+    missingItemIdCount === 0 &&
+    duplicateIds.length === 0 &&
+    (missingIds.length === 0 && unexpectedIds.length === 0) &&
+    explicitChecksOk;
 
   let summary = "clean";
   if (problemUrls.length > 0 && onlyAllowedFailures) {
@@ -199,8 +276,16 @@ function evaluateResult(result, check) {
         summary = "gallery has 0 cards";
       } else if (!expectedCountOk) {
         summary = `gallery shows ${result.galleryCardCount} cards, expected ${expectedVisibleCount}`;
+      } else if (missingItemIdCount > 0) {
+        summary = `gallery has ${missingItemIdCount} card(s) missing data-item-id`;
+      } else if (duplicateIds.length > 0) {
+        summary = `gallery has ${duplicateIds.length} duplicate ID(s)`;
+      } else if (missingIds.length > 0 || unexpectedIds.length > 0) {
+        summary = `gallery IDs mismatch: ${missingIds.length} missing, ${unexpectedIds.length} unexpected`;
       } else if (unavailableVisible.length > 0) {
         summary = `gallery shows ${unavailableVisible.length} unavailable item(s)`;
+      } else if (!explicitChecksOk) {
+        summary = "gallery explicit ID assertions failed";
       } else {
         summary = "unexpected runtime issues";
       }
@@ -215,6 +300,10 @@ function evaluateResult(result, check) {
     disallowedUrls,
     unavailableVisible,
     expectedVisibleCount,
+    missingItemIdCount,
+    duplicateIds,
+    missingIds,
+    unexpectedIds,
   };
 }
 
@@ -246,6 +335,10 @@ try {
       unavailableVisible: evaluation.unavailableVisible ?? [],
       galleryCardCount: result.galleryCardCount ?? 0,
       expectedVisibleCount: evaluation.expectedVisibleCount ?? 0,
+      missingItemIdCount: evaluation.missingItemIdCount ?? 0,
+      duplicateIds: evaluation.duplicateIds ?? [],
+      missingIds: evaluation.missingIds ?? [],
+      unexpectedIds: evaluation.unexpectedIds ?? [],
     };
 
     console.log(JSON.stringify(payload));
