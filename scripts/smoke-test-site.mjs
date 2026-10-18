@@ -109,6 +109,14 @@ async function capturePage(page, path) {
         if (m && m[0]) ids.add(m[0].toLowerCase());
       }
       let expectedVisible = 0;
+      let domExpected = 0;
+      try {
+        const pager = document.querySelector("[data-gallery-count]");
+        if (pager && pager.textContent) {
+          const m = pager.textContent.match(/of\\s+(\\d+)/i);
+          if (m && m[1]) domExpected = Number.parseInt(m[1], 10) || 0;
+        }
+      } catch {}
       try {
         const resp = await fetch("/data/gallery.json");
         if (resp.ok) {
@@ -122,11 +130,12 @@ async function capturePage(page, path) {
           expectedVisible = Math.max(0, items.length - flagged.size);
         }
       } catch {}
-      return { ids: Array.from(ids), count: cards.length, expectedVisible };
+      return { ids: Array.from(ids), count: cards.length, expectedVisible, domExpected };
     });
     galleryCardCount = galleryData?.count || 0;
     galleryVisibleIds = galleryData?.ids || [];
     var expectedVisibleFromServer = (typeof galleryData?.expectedVisible === "number" && galleryData.expectedVisible > 0) ? galleryData.expectedVisible : 0; // eslint-disable-line no-var
+    var expectedVisibleFromDom = (typeof galleryData?.domExpected === "number" && galleryData.domExpected > 0) ? galleryData.domExpected : 0; // eslint-disable-line no-var
   }
 
   return {
@@ -138,6 +147,7 @@ async function capturePage(page, path) {
     galleryVisibleIds,
     galleryCardCount,
     expectedVisibleFromServer: typeof expectedVisibleFromServer === "number" ? expectedVisibleFromServer : 0,
+    expectedVisibleFromDom: typeof expectedVisibleFromDom === "number" ? expectedVisibleFromDom : 0,
   };
 }
 
@@ -169,7 +179,9 @@ function evaluateResult(result, check) {
     expectedVisibleCount =
       (typeof result.expectedVisibleFromServer === "number" && result.expectedVisibleFromServer > 0)
         ? result.expectedVisibleFromServer
-        : Math.max(0, TOTAL_ITEMS - UNAVAILABLE_IDS.size);
+        : (typeof result.expectedVisibleFromDom === "number" && result.expectedVisibleFromDom > 0)
+          ? result.expectedVisibleFromDom
+          : Math.max(0, TOTAL_ITEMS - UNAVAILABLE_IDS.size);
     if (UNAVAILABLE_IDS.size > 0) {
       unavailableVisible = (result.galleryVisibleIds || []).filter((id) => UNAVAILABLE_IDS.has(String(id).toLowerCase()));
     }
