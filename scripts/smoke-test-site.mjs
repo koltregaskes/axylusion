@@ -99,7 +99,7 @@ async function capturePage(page, path) {
 
   // On gallery.html, extract visible item IDs from cinematic cards
   if (path.endsWith("/gallery.html")) {
-    galleryVisibleIds = await page.evaluate(() => {
+    const galleryData = await page.evaluate(async () => {
       const uuidRe = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
       const ids = new Set();
       const cards = document.querySelectorAll(".cn-gallery-card");
@@ -108,10 +108,29 @@ async function capturePage(page, path) {
         const m = haystack.match(uuidRe);
         if (m && m[0]) ids.add(m[0].toLowerCase());
       }
-      return { ids: Array.from(ids), count: cards.length };
+      let expectedVisible = 0;
+      try {
+        const resp = await fetch("/data/gallery.json");
+        if (resp.ok) {
+          const payload = await resp.json();
+          const items = Array.isArray(payload?.items) ? payload.items : [];
+          const flagged = new Set(
+            items
+              .filter((it) => String(it?.media_status || "") === "unavailable")
+              .map((it) => String(it.id || "").toLowerCase()),
+          );
+          expectedVisible = Math.max(0, items.length - flagged.size);
+        }
+      } catch {}
+      return { ids: Array.from(ids), count: cards.length, expectedVisible };
     });
-    galleryCardCount = galleryVisibleIds?.count || 0;
-    galleryVisibleIds = galleryVisibleIds?.ids || [];
+    galleryCardCount = galleryData?.count || 0;
+    galleryVisibleIds = galleryData?.ids || [];
+    // Prefer server-derived expected count
+    if (typeof galleryData?.expectedVisible === "number" && galleryData.expectedVisible > 0) {
+      // Attach as a synthetic field the evaluator can read via result
+      result_expectedVisibleFromServer = galleryData.expectedVisible; // eslint-disable-line no-undef
+    }
   }
 
   return {
@@ -122,6 +141,7 @@ async function capturePage(page, path) {
     badResponses,
     galleryVisibleIds,
     galleryCardCount,
+    expectedVisibleFromServer: typeof result_expectedVisibleFromServer !== "undefined" ? result_expectedVisibleFromServer : 0, // eslint-disable-line no-undef
   };
 }
 
@@ -149,20 +169,11 @@ function evaluateResult(result, check) {
   let expectedCountOk = true;
   let expectedVisibleCount = 0;
   if (result.path.endsWith("/gallery.html")) {
-    // Recompute expected count from local data to avoid stale module-level state
-    try {
-      const raw = fs.readFileSync(GALLERY_JSON_PATH, "utf-8");
-      const payload = JSON.parse(raw);
-      const items = Array.isArray(payload?.items) ? payload.items : [];
-      const flagged = new Set(
-        items
-          .filter((it) => String(it?.media_status || "") === "unavailable")
-          .map((it) => String(it.id || "").toLowerCase()),
-      );
-      expectedVisibleCount = Math.max(0, items.length - flagged.size);
-    } catch {
-      expectedVisibleCount = Math.max(0, TOTAL_ITEMS - UNAVAILABLE_IDS.size);
-    }
+    // Prefer expected count from the server-rendered data.json if provided
+    expectedVisibleCount =
+      (typeof result.expectedVisibleFromServer === "number" && result.expectedVisibleFromServer > 0)
+        ? result.expectedVisibleFromServer
+        : Math.max(0, TOTAL_ITEMS - UNAVAILABLE_IDS.size);
     if (UNAVAILABLE_IDS.size > 0) {
       unavailableVisible = (result.galleryVisibleIds || []).filter((id) => UNAVAILABLE_IDS.has(String(id).toLowerCase()));
     }
