@@ -56,7 +56,7 @@ UUID_PATTERN = re.compile(
     re.IGNORECASE,
 )
 MOJIBAKE_PATTERN = re.compile(r"(?:�|ï»¿|Â|Ã.|â€|â€™|â€œ|â€�|â€”|â€“|â€¦|ðŸ)")
-INSECURE_HTTP_PATTERN = re.compile(r"http://(?!127\.0\.0\.1|localhost)[^\\s)>\\\"]+", re.IGNORECASE)
+INSECURE_HTTP_PATTERN = re.compile(r"http://(?!127\.0\.0\.1|localhost)[^\s)>\"]+", re.IGNORECASE)
 
 def extract_gallery_ids_from_html(path: Path) -> list[str]:
     """Extract rendered gallery card IDs from gallery.html via data-item-id attributes."""
@@ -64,7 +64,16 @@ def extract_gallery_ids_from_html(path: Path) -> list[str]:
         contents = path.read_text(encoding="utf-8", errors="ignore")
     except OSError:
         return []
-    return re.findall(r'data-item-id=[\"\\\']([^\"\\\']+)[\"\\\']', contents)
+    return re.findall(r'data-item-id=["\']([^"\']+)["\']', contents)
+
+def count_gallery_cards_in_html(path: Path) -> int:
+    """Count rendered gallery cards by detecting <article class=... cn-gallery-card ...>."""
+    try:
+        contents = path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return 0
+    pattern = re.compile(r'<article\b[^>]*class=["\'][^"\']*\bcn-gallery-card\b[^"\']*["\']', re.IGNORECASE)
+    return len(pattern.findall(contents))
 
 
 class RefParser(HTMLParser):
@@ -348,7 +357,13 @@ def main() -> int:
         visible_count = sum(1 for item in gallery_items if str(item.get("media_status") or "") != "unavailable")
         rendered_ids = extract_gallery_ids_from_html(PROJECT_DIR / "gallery.html")
         card_count = len(rendered_ids)
-        if card_count and visible_count != card_count:
+        html_card_count = count_gallery_cards_in_html(PROJECT_DIR / "gallery.html")
+        if html_card_count > 0 and card_count == 0:
+            failures.append(
+                "Gallery mismatch: gallery.html renders cards but contains no data-item-id attributes. "
+                "gallery.html is stale or was rendered without item IDs; re-render with scripts/render-cinematic-site.py --page gallery."
+            )
+        elif card_count and visible_count != card_count:
             if visible_count > card_count:
                 failures.append(
                     f"Gallery mismatch: data/gallery.json shows {visible_count} visible items but gallery.html renders {card_count} cards. "
