@@ -56,7 +56,15 @@ UUID_PATTERN = re.compile(
     re.IGNORECASE,
 )
 MOJIBAKE_PATTERN = re.compile(r"(?:�|ï»¿|Â|Ã.|â€|â€™|â€œ|â€�|â€”|â€“|â€¦|ðŸ)")
-INSECURE_HTTP_PATTERN = re.compile(r"http://(?!127\.0\.0\.1|localhost)[^\s)>\"]+", re.IGNORECASE)
+INSECURE_HTTP_PATTERN = re.compile(r"http://(?!127\.0\.0\.1|localhost)[^\\s)>\\\"]+", re.IGNORECASE)
+
+def extract_gallery_ids_from_html(path: Path) -> list[str]:
+    """Extract rendered gallery card IDs from gallery.html via data-item-id attributes."""
+    try:
+        contents = path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return []
+    return re.findall(r'data-item-id=[\"\\\']([^\"\\\']+)[\"\\\']', contents)
 
 
 class RefParser(HTMLParser):
@@ -334,6 +342,24 @@ def main() -> int:
         failures.append("data/gallery.json has no items.")
     if not homepage_items:
         failures.append("data/homepage-gallery.json has no items.")
+
+    # Guard: data/gallery.json visible count must match rendered gallery.html card count.
+    if gallery_items:
+        visible_count = sum(1 for item in gallery_items if str(item.get("media_status") or "") != "unavailable")
+        rendered_ids = extract_gallery_ids_from_html(PROJECT_DIR / "gallery.html")
+        card_count = len(rendered_ids)
+        if card_count and visible_count != card_count:
+            if visible_count > card_count:
+                failures.append(
+                    f"Gallery mismatch: data/gallery.json shows {visible_count} visible items but gallery.html renders {card_count} cards. "
+                    "Likely lost/unapplied 'unavailable' annotations in gallery.json or an unrefreshed render. "
+                    "Restore annotations (e.g., run scripts/mark-gallery-unavailable.py or the fixed export) and re-render gallery.html."
+                )
+            else:
+                failures.append(
+                    f"Gallery mismatch: gallery.html renders {card_count} cards but data/gallery.json has only {visible_count} visible items. "
+                    "gallery.html is stale; re-render with scripts/render-cinematic-site.py --page gallery."
+                )
 
     failures.extend(check_local_refs())
     failures.extend(check_digest_manifest())
