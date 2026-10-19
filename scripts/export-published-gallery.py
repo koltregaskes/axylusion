@@ -24,6 +24,7 @@ DEFAULT_DB_PATH = Path(r"W:\Agent Workspace\System\Data\universal.db")
 GALLERY_JSON_PATH = PROJECT_DIR / "data" / "gallery.json"
 GALLERY_JS_PATH = PROJECT_DIR / "gallery.js"
 REPORT_PATH = PROJECT_DIR / "data" / "published-gallery-sync-report.json"
+ANNOTATION_KEYS = ("media_status", "media_unavailable_reason")
 
 
 def load_existing_export(path: Path) -> list[dict[str, Any]]:
@@ -168,6 +169,12 @@ def merge_item(db_item: dict[str, Any], existing_item: dict[str, Any], db_tags: 
     if thumbnail_url or "thumbnail_url" in existing_item:
         merged["thumbnail_url"] = thumbnail_url
 
+    # Explicitly carry over curated annotation fields from the existing export.
+    # These do not exist in the upstream DB and must be preserved on refresh.
+    for key in ANNOTATION_KEYS:
+        if key in existing_item:
+            merged[key] = existing_item[key]
+
     for key, value in existing_item.items():
         if key not in merged:
             merged[key] = value
@@ -293,6 +300,13 @@ def main() -> int:
         for item_id in ordered_ids
     ]
 
+    # Report how many items retained curated annotations (e.g. unavailable flags).
+    carried_annotations = sum(
+        1
+        for item_id in ordered_ids
+        if any(k in (existing_by_id.get(item_id) or {}) for k in ANNOTATION_KEYS)
+    )
+
     gallery_json_changed = write_if_changed(
         GALLERY_JSON_PATH,
         render_gallery_json(merged_items),
@@ -321,6 +335,7 @@ def main() -> int:
     print(f"DB tagged items: {report['drift']['db_tagged_items']}")
     print(f"Export tagged items: {report['drift']['export_tagged_items']}")
     print(f"Export placeholder date count (2026-02-10): {report['drift']['export_placeholder_created_2026_02_10']}")
+    print(f"Carried over curated annotations (e.g. media_status) for: {carried_annotations} items")
     print(f"gallery.json would change: {report['file_actions']['gallery_json_would_change']}")
     print(f"gallery.js would change: {report['file_actions']['gallery_js_would_change']}")
     print(f"Report written to: {args.report_path}")
