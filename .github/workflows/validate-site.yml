@@ -66,17 +66,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - os: ubuntu-latest
-            shell: pwsh
-          - os: windows-latest
-            shell: powershell
+        os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Gallery publish guard tests (KOL-6327)
-        shell: ${{ matrix.shell }}
+      - name: Gallery publish guard tests on PowerShell 7 (KOL-6327)
+        shell: pwsh
+        run: ./tests/gallery-publish-guard.tests.ps1
+
+      - name: Gallery publish guard tests on Windows PowerShell 5.1 (KOL-6327)
+        if: runner.os == 'Windows'
+        shell: powershell
         run: ./tests/gallery-publish-guard.tests.ps1
