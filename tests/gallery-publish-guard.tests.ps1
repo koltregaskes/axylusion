@@ -31,7 +31,8 @@ function New-GalleryJson {
 function Write-Text { param([string]$Path, [string]$Text) [System.IO.File]::WriteAllText($Path, $Text, $utf8) }
 
 function Invoke-Case {
-    param([string]$Name, [AllowNull()][string]$Baseline, [string]$Current, [bool]$ExpectPass, [switch]$BreakRemote)
+    param([string]$Name, [AllowNull()][string]$Baseline, [string]$Current, [bool]$ExpectPass, [switch]$BreakRemote,
+        [AllowNull()][string]$LocalCommit = $null, [AllowNull()][string]$RemoteAdvance = $null, [string]$FetchRefspec = '')
     $root = Join-Path ([System.IO.Path]::GetTempPath()) ("kol6327-" + [guid]::NewGuid().ToString('N'))
     $bare = Join-Path $root 'origin.git'; $work = Join-Path $root 'work'
     New-Item -ItemType Directory -Force -Path $root | Out-Null
@@ -46,6 +47,21 @@ function Invoke-Case {
         Invoke-Git -Dir $work -GitArgs @('commit', '--quiet', '-m', 'baseline') | Out-Null
         Invoke-Git -Dir $work -GitArgs @('remote', 'add', 'origin', $bare) | Out-Null
         Invoke-Git -Dir $work -GitArgs @('push', '--quiet', 'origin', 'main') | Out-Null
+        if ($LocalCommit) {
+            # Unpushed local commit: HEAD differs from origin/main.
+            Write-Text (Join-Path (Join-Path $work 'data') 'gallery.json') $LocalCommit
+            Invoke-Git -Dir $work -GitArgs @('commit', '--quiet', '-am', 'local-only gallery change') | Out-Null
+        }
+        if ($RemoteAdvance) {
+            # Someone else publishes to origin/main; the local origin/main ref is now stale.
+            $other = Join-Path $root 'other'
+            Invoke-Git -Dir $root -GitArgs @('clone', '--quiet', '--branch', 'main', $bare, $other) | Out-Null
+            Write-Text (Join-Path (Join-Path $other 'data') 'gallery.json') $RemoteAdvance
+            Invoke-Git -Dir $other -GitArgs @('commit', '--quiet', '-am', 'remote gallery change') | Out-Null
+            Invoke-Git -Dir $other -GitArgs @('push', '--quiet', 'origin', 'main') | Out-Null
+        }
+        if ($FetchRefspec) { Invoke-Git -Dir $work -GitArgs @('config', 'remote.origin.fetch', $FetchRefspec) | Out-Null }
+        $script:expectedBaseline = Invoke-Git -Dir $bare -GitArgs @('rev-parse', 'refs/heads/main')
         Write-Text (Join-Path (Join-Path $work 'data') 'gallery.json') $Current
         Write-Text (Join-Path $work 'publish-marker.txt') 'would be published'
         if ($BreakRemote) { Invoke-Git -Dir $work -GitArgs @('remote', 'set-url', 'origin', (Join-Path $root 'missing.git')) | Out-Null }
@@ -71,15 +87,18 @@ exit $LASTEXITCODE
         $old = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
         try { $output = & $psExe -NoProfile -ExecutionPolicy Bypass -File $child 2>&1 } finally { $ErrorActionPreference = $old }
         $exit = $LASTEXITCODE
-        $guardLine = @(@($output) | ForEach-Object { "$_" } | Where-Object { $_ -match 'Publish guard:' }) | Select-Object -First 1
+        $guardLine = @(@($output) | ForEach-Object { "$_" } | Where-Object { $_ -match 'Publish guard:' -and $_ -notmatch 'fetched origin/main' }) | Select-Object -First 1
 
         $headAfter = Invoke-Git -Dir $work -GitArgs @('rev-parse', 'HEAD')
         $remoteAfter = Invoke-Git -Dir $bare -GitArgs @('rev-parse', 'refs/heads/main')
         $indexAfter = Invoke-Git -Dir $work -GitArgs @('diff', '--cached', '--name-only')
         $untouched = ($headAfter -eq $headBefore) -and ($remoteAfter -eq $remoteBefore) -and ($indexAfter -eq $indexBefore)
 
-        if ($ExpectPass) { $ok = ($exit -eq 0) -and ($remoteAfter -ne $remoteBefore) }
-        else { $ok = ($exit -ne 0) -and $untouched }
+        $fetchedLine = @(@($output) | ForEach-Object { "$_" } | Where-Object { $_ -match 'fetched origin/main = ' }) | Select-Object -First 1
+        $usedBaseline = ($null -eq $fetchedLine) -or ($fetchedLine -match [regex]::Escape($script:expectedBaseline))
+        if (-not $usedBaseline) { Write-Host "  baseline mismatch: expected $($script:expectedBaseline), got: $fetchedLine" }
+        if ($ExpectPass) { $ok = ($exit -eq 0) -and ($remoteAfter -ne $remoteBefore) -and $usedBaseline }
+        else { $ok = ($exit -ne 0) -and $untouched -and $usedBaseline }
         $status = if ($ok) { 'PASS' } else { 'FAIL' }
         if (-not $ok) { $script:failures++ }
         Write-Host ("[{0}] {1}: exit={2} head/index/remote unchanged={3} :: {4}" -f $status, $Name, $exit, $untouched, $guardLine)
@@ -98,18 +117,22 @@ else { Write-Host '[PASS] refresh-site-data.ps1 calls the guard before git add/c
 
 $good = New-GalleryJson -Items 100 -Unavailable 10
 Write-Host "PowerShell $($PSVersionTable.PSVersion) ($($PSVersionTable.PSEdition))"
-Invoke-Case -Name 'missing baseline (no gallery.json on origin/main)' -Baseline $null -Current $good -ExpectPass $false
+Invoke-Case -Name 'absent baseline (data/gallery.json not on origin/main)' -Baseline $null -Current $good -ExpectPass $false
+Invoke-Case -Name 'empty baseline (0-byte gallery.json on origin/main)' -Baseline '' -Current $good -ExpectPass $false
 Invoke-Case -Name 'fetch fails (origin unreachable)' -Baseline $good -Current $good -ExpectPass $false -BreakRemote
 Invoke-Case -Name 'unparseable baseline' -Baseline '{ "items": [ ' -Current $good -ExpectPass $false
 Invoke-Case -Name 'bad shape baseline (no items array)' -Baseline '{ "gallery": [ { "id": 1 } ] }' -Current $good -ExpectPass $false
 Invoke-Case -Name 'bad shape current (items is an object)' -Baseline $good -Current '{ "items": { "id": 1 } }' -ExpectPass $false
-Invoke-Case -Name 'zero baseline items' -Baseline '{ "items": [] }' -Current $good -ExpectPass $false
+Invoke-Case -Name 'zero baseline items (items: [])' -Baseline '{ "items": [] }' -Current $good -ExpectPass $false
 Invoke-Case -Name 'zero current unavailable' -Baseline $good -Current (New-GalleryJson -Items 100 -Unavailable 0) -ExpectPass $false
 Invoke-Case -Name 'item drop 3% (>2%)' -Baseline $good -Current (New-GalleryJson -Items 97 -Unavailable 10) -ExpectPass $false
 Invoke-Case -Name 'unavailable drop 10% (>2%)' -Baseline $good -Current (New-GalleryJson -Items 100 -Unavailable 9) -ExpectPass $false
+Invoke-Case -Name 'local HEAD shrunk to 97 (unpushed), current 97: rejected vs origin/main 100' -Baseline $good -LocalCommit (New-GalleryJson -Items 97 -Unavailable 10) -Current (New-GalleryJson -Items 97 -Unavailable 10) -ExpectPass $false
+Invoke-Case -Name 'local HEAD grown to 120 (unpushed), current 100: passes vs origin/main 100' -Baseline $good -LocalCommit (New-GalleryJson -Items 120 -Unavailable 10) -Current $good -ExpectPass $true
+Invoke-Case -Name 'stale local origin/main (remote moved to 120), current 100: rejected after fetch' -Baseline $good -RemoteAdvance (New-GalleryJson -Items 120 -Unavailable 10) -Current $good -ExpectPass $false
+Invoke-Case -Name 'non-default remote.origin.fetch (refs/heads/other only), remote moved to 120: still rejected' -Baseline $good -RemoteAdvance (New-GalleryJson -Items 120 -Unavailable 10) -FetchRefspec '+refs/heads/other:refs/remotes/origin/other' -Current $good -ExpectPass $false
 Invoke-Case -Name 'item drop 2% (= tolerance) passes' -Baseline $good -Current (New-GalleryJson -Items 98 -Unavailable 10) -ExpectPass $true
 Invoke-Case -Name 'unchanged copy passes' -Baseline $good -Current $good -ExpectPass $true
-
 if ($failures -gt 0) { Write-Host "$failures case(s) failed."; exit 1 }
 Write-Host 'All gallery publish guard cases passed.'
 exit 0
