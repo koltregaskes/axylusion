@@ -61,3 +61,22 @@ jobs:
 
       - name: Run browser smoke tests
         run: node scripts/smoke-test-site.mjs --base-url http://127.0.0.1:4173
+
+  publish-guard-test:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            shell: pwsh
+          - os: windows-latest
+            shell: powershell
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Gallery publish guard tests (KOL-6327)
+        shell: ${{ matrix.shell }}
+        run: ./tests/gallery-publish-guard.tests.ps1
