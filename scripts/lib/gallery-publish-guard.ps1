@@ -48,7 +48,7 @@ function Get-GalleryCounts {
 }
 
 function Assert-GalleryNotShrunk {
-    # Compares the working data/gallery.json against the verified last-published state
+    # Compares the working data/gallery.json with the remote main branch (what GitHub Pages currently publishes)
     # (origin/main after a fresh fetch). Throws, so the caller exits non-zero before any
     # git add/commit/push, when the baseline cannot be established, either file is
     # malformed, any count is zero, or items/unavailable flags drop by more than MaxDropPercent.
@@ -66,23 +66,23 @@ function Assert-GalleryNotShrunk {
     $baselineRef = "refs/remotes/$Remote/$Branch"
     $refspec = "+refs/heads/${Branch}:$baselineRef"
     $fetch = Invoke-GuardGit -RepoRoot $ProjectRoot -GitArgs @('fetch', '--quiet', $Remote, $refspec)
-    if ($fetch.ExitCode -ne 0) { throw "Publish guard: git fetch $Remote $refspec failed (exit $($fetch.ExitCode)); cannot verify the published baseline. Refusing to publish." }
+    if ($fetch.ExitCode -ne 0) { throw "Publish guard: git fetch $Remote $refspec failed (exit $($fetch.ExitCode)); cannot read the remote main baseline. Refusing to publish." }
     $sha = Invoke-GuardGit -RepoRoot $ProjectRoot -GitArgs @('rev-parse', '--verify', '--quiet', "$baselineRef^{commit}")
     if ($sha.ExitCode -ne 0 -or [string]::IsNullOrWhiteSpace($sha.Output)) { throw "Publish guard: $baselineRef did not resolve after fetch; refusing to publish." }
     $baselineSha = $sha.Output.Trim()
     Write-Host "Publish guard: fetched $Remote/$Branch = $baselineSha"
     $show = Invoke-GuardGit -RepoRoot $ProjectRoot -GitArgs @('show', "${baselineRef}:data/gallery.json")
     if ($show.ExitCode -ne 0 -or [string]::IsNullOrWhiteSpace($show.Output)) {
-        throw "Publish guard: no published data/gallery.json at $Remote/$Branch (exit $($show.ExitCode)); refusing to publish."
+        throw "Publish guard: no data/gallery.json at $Remote/$Branch (exit $($show.ExitCode)); refusing to publish."
     }
 
-    $before = Get-GalleryCounts -JsonText $show.Output -Label "published ($Remote/$Branch)"
+    $before = Get-GalleryCounts -JsonText $show.Output -Label "remote main ($Remote/$Branch)"
     $currentText = [System.IO.File]::ReadAllText($galleryPath, [System.Text.Encoding]::UTF8)
     $after = Get-GalleryCounts -JsonText $currentText -Label 'working copy'
     Write-Host ("Publish guard: baseline {0}/{1} @ {7}; gallery items {2} -> {3}, unavailable flags {4} -> {5} (max drop {6}%)." -f $Remote, $Branch, $before.Items, $after.Items, $before.Unavailable, $after.Unavailable, $MaxDropPercent, $baselineSha.Substring(0, 7))
 
     foreach ($metric in 'Items', 'Unavailable') {
-        if ($before.$metric -le 0) { throw "Publish guard: published gallery $metric count is zero; refusing to publish." }
+        if ($before.$metric -le 0) { throw "Publish guard: remote main gallery $metric count is zero; refusing to publish." }
         if ($after.$metric -le 0) { throw "Publish guard: working gallery $metric count is zero; refusing to publish." }
         $old = [double]$before.$metric
         $new = [double]$after.$metric

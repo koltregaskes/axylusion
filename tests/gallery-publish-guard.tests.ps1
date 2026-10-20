@@ -31,7 +31,7 @@ function New-GalleryJson {
 function Write-Text { param([string]$Path, [string]$Text) [System.IO.File]::WriteAllText($Path, $Text, $utf8) }
 
 function Invoke-Case {
-    param([string]$Name, [AllowNull()][string]$Baseline, [string]$Current, [bool]$ExpectPass, [switch]$BreakRemote,
+    param([string]$Name, [string]$Baseline = '', [switch]$AbsentBaseline, [string]$Current, [bool]$ExpectPass, [switch]$BreakRemote,
         [AllowNull()][string]$LocalCommit = $null, [AllowNull()][string]$RemoteAdvance = $null, [string]$FetchRefspec = '')
     $root = Join-Path ([System.IO.Path]::GetTempPath()) ("kol6327-" + [guid]::NewGuid().ToString('N'))
     $bare = Join-Path $root 'origin.git'; $work = Join-Path $root 'work'
@@ -42,7 +42,9 @@ function Invoke-Case {
         Invoke-Git -Dir $work -GitArgs @('checkout', '--quiet', '-b', 'main') | Out-Null
         New-Item -ItemType Directory -Force -Path (Join-Path $work 'data') | Out-Null
         Write-Text (Join-Path $work 'README.md') 'fixture'
-        if ($null -ne $Baseline) { Write-Text (Join-Path (Join-Path $work 'data') 'gallery.json') $Baseline }
+        # -AbsentBaseline: data/gallery.json is never written or committed. Otherwise the given text
+        # (possibly empty) is committed as the baseline.
+        if (-not $AbsentBaseline) { Write-Text (Join-Path (Join-Path $work 'data') 'gallery.json') $Baseline }
         Invoke-Git -Dir $work -GitArgs @('add', '-A') | Out-Null
         Invoke-Git -Dir $work -GitArgs @('commit', '--quiet', '-m', 'baseline') | Out-Null
         Invoke-Git -Dir $work -GitArgs @('remote', 'add', 'origin', $bare) | Out-Null
@@ -62,6 +64,11 @@ function Invoke-Case {
         }
         if ($FetchRefspec) { Invoke-Git -Dir $work -GitArgs @('config', 'remote.origin.fetch', $FetchRefspec) | Out-Null }
         $script:expectedBaseline = Invoke-Git -Dir $bare -GitArgs @('rev-parse', 'refs/heads/main')
+        # Fixture self-check: is data/gallery.json present on the remote main?
+        $oldEap = $ErrorActionPreference; $ErrorActionPreference = 'Continue'
+        try { & git -C $bare cat-file -e 'refs/heads/main:data/gallery.json' 2>$null; $showExit = $LASTEXITCODE } finally { $ErrorActionPreference = $oldEap }
+        $fixtureOk = if ($AbsentBaseline) { $showExit -ne 0 } else { $showExit -eq 0 }
+        Write-Host ("  fixture: remote main has data/gallery.json = {0} (git cat-file -e exit {1})" -f ($showExit -eq 0), $showExit)
         Write-Text (Join-Path (Join-Path $work 'data') 'gallery.json') $Current
         Write-Text (Join-Path $work 'publish-marker.txt') 'would be published'
         if ($BreakRemote) { Invoke-Git -Dir $work -GitArgs @('remote', 'set-url', 'origin', (Join-Path $root 'missing.git')) | Out-Null }
@@ -95,13 +102,23 @@ exit $LASTEXITCODE
         $untouched = ($headAfter -eq $headBefore) -and ($remoteAfter -eq $remoteBefore) -and ($indexAfter -eq $indexBefore)
 
         $fetchedLine = @(@($output) | ForEach-Object { "$_" } | Where-Object { $_ -match 'fetched origin/main = ' }) | Select-Object -First 1
-        $usedBaseline = ($null -eq $fetchedLine) -or ($fetchedLine -match [regex]::Escape($script:expectedBaseline))
-        if (-not $usedBaseline) { Write-Host "  baseline mismatch: expected $($script:expectedBaseline), got: $fetchedLine" }
+        if ($BreakRemote) {
+            # Fetch fails: no SHA log is expected, and none may appear.
+            $usedBaseline = ($null -eq $fetchedLine)
+            $shaNote = 'no SHA expected (fetch fails)'
+        } else {
+            # Fetch succeeds: the SHA log is required and must equal the remote's main.
+            $usedBaseline = ($null -ne $fetchedLine) -and ($fetchedLine -match [regex]::Escape($script:expectedBaseline))
+            $shaNote = "fetched SHA matches remote main $($script:expectedBaseline.Substring(0, 7))"
+        }
+        if (-not $usedBaseline) { Write-Host "  SHA check failed: expected $(if ($BreakRemote) { 'no fetched SHA log' } else { $script:expectedBaseline }), got: $fetchedLine" }
+        if (-not $fixtureOk) { Write-Host '  fixture check failed: data/gallery.json presence on remote main is not what this case requires' }
+        $usedBaseline = $usedBaseline -and $fixtureOk
         if ($ExpectPass) { $ok = ($exit -eq 0) -and ($remoteAfter -ne $remoteBefore) -and $usedBaseline }
         else { $ok = ($exit -ne 0) -and $untouched -and $usedBaseline }
         $status = if ($ok) { 'PASS' } else { 'FAIL' }
         if (-not $ok) { $script:failures++ }
-        Write-Host ("[{0}] {1}: exit={2} head/index/remote unchanged={3} :: {4}" -f $status, $Name, $exit, $untouched, $guardLine)
+        Write-Host ("[{0}] {1}: exit={2} head/index/remote unchanged={3}; {4} :: {5}" -f $status, $Name, $exit, $untouched, $shaNote, $guardLine)
         if (-not $ok) { Write-Host (@($output) -join "`n") }
     } finally {
         Remove-Item -LiteralPath $root -Recurse -Force -ErrorAction SilentlyContinue
@@ -117,7 +134,7 @@ else { Write-Host '[PASS] refresh-site-data.ps1 calls the guard before git add/c
 
 $good = New-GalleryJson -Items 100 -Unavailable 10
 Write-Host "PowerShell $($PSVersionTable.PSVersion) ($($PSVersionTable.PSEdition))"
-Invoke-Case -Name 'absent baseline (data/gallery.json not on origin/main)' -Baseline $null -Current $good -ExpectPass $false
+Invoke-Case -Name 'absent baseline (data/gallery.json not on origin/main)' -AbsentBaseline -Current $good -ExpectPass $false
 Invoke-Case -Name 'empty baseline (0-byte gallery.json on origin/main)' -Baseline '' -Current $good -ExpectPass $false
 Invoke-Case -Name 'fetch fails (origin unreachable)' -Baseline $good -Current $good -ExpectPass $false -BreakRemote
 Invoke-Case -Name 'unparseable baseline' -Baseline '{ "items": [ ' -Current $good -ExpectPass $false
