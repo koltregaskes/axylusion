@@ -2,12 +2,50 @@ param(
     [switch]$RunSmokeTest,
     [switch]$SkipAList,
     [switch]$Publish,
-    [int]$Port = 4173
+    [int]$Port = 4173,
+    # KOL-6327: refuse to publish if gallery.json loses items or unavailable flags.
+    [ValidateRange(0, 50)]
+    [double]$MaxGalleryDropPercent = 2
 )
 
 $ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
+
+function Get-GalleryCounts {
+    param([string]$JsonText)
+    $parsed = $JsonText | ConvertFrom-Json
+    $items = if ($parsed -is [System.Array]) { $parsed } elseif ($parsed.PSObject.Properties.Name -contains 'items') { @($parsed.items) } else { @() }
+    $unavailable = @($items | Where-Object { $_.media_status -eq 'unavailable' }).Count
+    [pscustomobject]@{ Items = @($items).Count; Unavailable = $unavailable }
+}
+
+function Assert-GalleryNotShrunk {
+    # KOL-6327: the 18 Oct 2026 refresh published a gallery.json that had lost 109
+    # media_status flags. Compare the working copy with the last published commit and
+    # stop (non-zero exit, no commit, no push) if items or unavailable flags drop.
+    param([double]$MaxDropPercent)
+    $galleryPath = Join-Path $projectRoot 'data\gallery.json'
+    if (-not (Test-Path $galleryPath)) { throw "Publish guard: data/gallery.json is missing; refusing to publish." }
+    $publishedText = (git show HEAD:data/gallery.json 2>$null) -join "`n"
+    if ($LASTEXITCODE -ne 0 -or -not $publishedText) {
+        Write-Host "Publish guard: no published data/gallery.json at HEAD to compare against; skipping count check."
+        return
+    }
+    $before = Get-GalleryCounts -JsonText $publishedText
+    $after = Get-GalleryCounts -JsonText (Get-Content -Raw -Encoding UTF8 $galleryPath)
+    Write-Host ("Publish guard: gallery items {0} -> {1}, unavailable flags {2} -> {3} (max drop {4}%)." -f $before.Items, $after.Items, $before.Unavailable, $after.Unavailable, $MaxDropPercent)
+    foreach ($metric in 'Items', 'Unavailable') {
+        $old = [double]$before.$metric
+        $new = [double]$after.$metric
+        if ($old -gt 0 -and $new -lt $old) {
+            $dropPercent = (($old - $new) / $old) * 100
+            if ($dropPercent -gt $MaxDropPercent) {
+                throw ("Publish guard: gallery {0} count dropped from {1} to {2} ({3:N1}% > {4}%). Refusing to publish. Land gallery changes on main through a PR." -f $metric, $old, $new, $dropPercent, $MaxDropPercent)
+            }
+        }
+    }
+}
 
 Push-Location $projectRoot
 try {
@@ -78,6 +116,7 @@ try {
 
     if ($Publish) {
         Write-Host "[$step/$totalSteps] Publishing generated output..."
+        Assert-GalleryNotShrunk -MaxDropPercent $MaxGalleryDropPercent
         $candidatePaths = @(
             "data",
             "news-digests",
