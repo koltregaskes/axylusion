@@ -6,7 +6,7 @@ Last updated: 2026-04-11
 
 - Gallery pages read from `data/gallery.json`, with `gallery.js` carrying the embedded fallback copy for offline use.
 - Homepage hero and showcase panels read from `data/homepage-gallery.json`.
-- News reads from `news-digests/*.md` plus `news-digests/index.json`.
+- News reads `news-digests/news-feed-latest.json` when the shared gatherer has returned items for Axy Lusion. Otherwise the page keeps the digest archive in `news-digests/*.md` plus `news-digests/index.json`.
 - The A-List serves static HTML pages generated from `data/a-list-benchmarks.json`.
 - `data/a-list-benchmarks.json` is presentation data only: it is synced from the shared AI Resource Hub cache at `W:\Websites\sites\ai-resource-hub\data\pg-cache\creative_benchmarks.json`.
 - Shared benchmark acquisition belongs in `W:\Websites\sites\ai-resource-hub\scripts\scrapers\creative-benchmarks.ts`, not in Axy Lusion.

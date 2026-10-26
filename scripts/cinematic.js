@@ -209,9 +209,78 @@
     render();
   }
 
-  function setupNews() {
+  const TOPIC_BY_TAG = {
+    image_gen: "Image",
+    video_gen: "Video",
+    music_gen: "Audio",
+    voice_synthesis: "Audio",
+    "3d_gen": "3D",
+    creative_tool: "Tools",
+    creative_workflow: "Tools",
+    art_ai: "Image",
+  };
+
+  function escapeNewsText(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function topicForRoutedArticle(article) {
+    const tags = [...(article.matching_tags || []), ...(article.tags || [])];
+    for (const tag of tags) {
+      if (TOPIC_BY_TAG[tag]) return TOPIC_BY_TAG[tag];
+    }
+    return "Tools";
+  }
+
+  async function insertRoutedFeed(list) {
+    let payload;
+    try {
+      const response = await fetch("news-digests/news-feed-latest.json", { cache: "no-store" });
+      if (!response.ok) return;
+      payload = await response.json();
+    } catch {
+      return;
+    }
+    if (payload?.site !== "Axy Lusion" || !Array.isArray(payload.articles) || payload.articles.length === 0) return;
+
+    const head = list.querySelector(".cn-digests__head");
+    if (!head) return;
+    const byDate = new Map();
+    for (const article of payload.articles) {
+      if (!article?.title || !/^https?:\/\//i.test(article.url || "")) continue;
+      const day = String(article.date || "").slice(0, 10);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) continue;
+      if (!byDate.has(day)) byDate.set(day, []);
+      byDate.get(day).push(article);
+    }
+
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let cursor = head;
+    for (const day of [...byDate.keys()].sort().reverse()) {
+      const articles = byDate.get(day);
+      const date = new Date(`${day}T00:00:00Z`);
+      const items = articles.map((article) => {
+        const topic = topicForRoutedArticle(article);
+        return `<li data-topic="${escapeNewsText(topic)}"><a href="${escapeNewsText(article.url)}" target="_blank" rel="noopener noreferrer">${escapeNewsText(article.title)}</a><span class="cn-digest__topic">${escapeNewsText(topic)}</span></li>`;
+      }).join("");
+      const row = document.createElement("article");
+      row.className = "cn-digest";
+      row.dataset.digestDate = day;
+      row.dataset.digestSearch = articles.map((article) => article.title).join(" ").toLowerCase();
+      row.innerHTML = `<div class="cn-digest__date"><span class="cn-digest__day">${date.getUTCDate()}</span><span class="cn-digest__mon">${months[date.getUTCMonth()]}</span><span class="cn-digest__yr">${date.getUTCFullYear()}</span></div><ul class="cn-digest__heads">${items}</ul>`;
+      cursor.insertAdjacentElement("afterend", row);
+      cursor = row;
+    }
+  }
+
+  async function setupNews() {
     const list = $("[data-news-list]");
     if (!list) return;
+    await insertRoutedFeed(list);
 
     const rows = $$("[data-digest-date]", list);
     const search = $("[data-news-search]");
