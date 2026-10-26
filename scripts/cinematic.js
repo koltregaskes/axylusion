@@ -259,8 +259,7 @@
     }
 
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let cursor = head;
-    for (const day of [...byDate.keys()].sort().reverse()) {
+    for (const day of byDate.keys()) {
       const articles = byDate.get(day);
       const date = new Date(`${day}T00:00:00Z`);
       const items = articles.map((article) => {
@@ -272,9 +271,12 @@
       row.dataset.digestDate = day;
       row.dataset.digestSearch = articles.map((article) => article.title).join(" ").toLowerCase();
       row.innerHTML = `<div class="cn-digest__date"><span class="cn-digest__day">${date.getUTCDate()}</span><span class="cn-digest__mon">${months[date.getUTCMonth()]}</span><span class="cn-digest__yr">${date.getUTCFullYear()}</span></div><ul class="cn-digest__heads">${items}</ul>`;
-      cursor.insertAdjacentElement("afterend", row);
-      cursor = row;
+      list.appendChild(row);
     }
+    const ordered = $$("[data-digest-date]", list).sort((left, right) => (
+      String(right.dataset.digestDate || "").localeCompare(String(left.dataset.digestDate || ""))
+    ));
+    for (const row of ordered) list.appendChild(row);
   }
 
   async function setupNews() {
@@ -288,7 +290,11 @@
     const topicButtons = $$("[data-news-topic]");
     const clearButtons = $$("[data-news-clear], [data-news-empty-reset]");
     const empty = $("[data-news-empty]");
-    const latestDate = rows.length ? new Date(`${rows[0].dataset.digestDate}T00:00:00`) : null;
+    const newestStamp = rows.reduce((newest, row) => {
+      const stamp = row.dataset.digestDate || "";
+      return stamp > newest ? stamp : newest;
+    }, "");
+    const latestDate = newestStamp ? new Date(`${newestStamp}T00:00:00`) : null;
 
     const state = {
       search: "",
