@@ -1214,6 +1214,25 @@ img {
   color: var(--axyl-amber-light);
 }
 
+.cn-alist--note {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.cn-alist--note .cn-alist__head ul {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.cn-alist--note .cn-alist__head li {
+  max-width: 68ch;
+  color: var(--axl-muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
 .cn-alist {
   display: grid;
   grid-template-columns: minmax(220px, 0.45fr) minmax(280px, 0.65fr) minmax(280px, 0.8fr);
