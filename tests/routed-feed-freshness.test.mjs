@@ -31,6 +31,19 @@ test('a feed younger than one day does not warn', () => {
   assert.ok(assessment.ageDays < WARN_AFTER_DAYS)
 })
 
+test('a fresh empty feed does not warn', () => {
+  const generated = new Date(now.getTime() - 12 * 60 * 60 * 1000).toISOString()
+  const assessment = assessRoutedFeedFreshness({
+    generated,
+    site: "Axy Lusion",
+    article_count: 0,
+    articles: [],
+  }, now)
+
+  assert.equal(assessment.warn, false)
+  assert.equal(assessment.newestItemAt, generated)
+})
+
 test('a one-day-old feed warns before it is three days old', () => {
   const generated = new Date(now.getTime() - WARN_AFTER_DAYS * 86_400_000).toISOString()
   const assessment = assessRoutedFeedFreshness(feedAt(generated), now)

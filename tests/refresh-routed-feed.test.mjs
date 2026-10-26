@@ -103,7 +103,7 @@ test('a source that cannot be fetched fails by name and does not write', async (
   assert.equal(fs.existsSync(outputPath), false)
 })
 
-test('an empty match leaves the feed file unchanged and a matched item is written', async () => {
+test('an empty match writes a fresh empty feed and a matched item is written', async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'routed-feed-'))
   const outputPath = path.join(dir, 'news-feed-latest.json')
   fs.writeFileSync(outputPath, '{"untouched":true}\n')
@@ -140,8 +140,12 @@ test('an empty match leaves the feed file unchanged and a matched item is writte
     }),
   })
   assert.deepEqual(missed.failures, [])
-  assert.equal(missed.wrote, false)
-  assert.equal(fs.readFileSync(outputPath, 'utf8'), '{"untouched":true}\n')
+  assert.equal(missed.wrote, true)
+  const emptyFeed = JSON.parse(fs.readFileSync(outputPath, 'utf8'))
+  assert.equal(emptyFeed.site, siteFilter.name)
+  assert.equal(emptyFeed.generated, '2026-10-26T00:10:00.000Z')
+  assert.equal(emptyFeed.article_count, 0)
+  assert.deepEqual(emptyFeed.articles, [])
 
   const result = await refreshRoutedFeed({
     pipelineDir: dir,
@@ -163,6 +167,84 @@ test('an empty match leaves the feed file unchanged and a matched item is writte
   assert.equal(feed.articles[0].summary, 'Fetched from the feed.')
 })
 
+
+test('html dates come from the enclosing card when the time is before the link', () => {
+  const html = `<!DOCTYPE html><html><body>
+    <article><time datetime="2026-10-25T12:00:00Z">Oct 25, 2026</time><a href="https://example.com/first-story-headline">First story headline</a></article>
+    <article><time datetime="2026-10-24T12:00:00Z">Oct 24, 2026</time><a href="https://example.com/second-story-headline">Second story headline</a></article>
+    <div class="card"><time datetime="2026-10-23T08:00:00Z"></time><a href="https://example.com/card-story-headline">Card story headline</a></div>
+    <div class="card"><time datetime="2026-10-22T08:00:00Z"></time><a href="https://example.com/other-card-headline">Other card headline</a></div>
+    </body></html>`
+  const dated = parseHtml(html, {
+    url: 'https://example.com/news',
+    articleLinkPattern: 'https://example\\.com/(?:first-story-headline|second-story-headline|card-story-headline|other-card-headline)/?$',
+    maxItems: 10,
+  })
+  const byUrl = Object.fromEntries(dated.map((entry) => [entry.url, entry.date]))
+  assert.equal(byUrl['https://example.com/first-story-headline'], '2026-10-25T12:00:00.000Z')
+  assert.equal(byUrl['https://example.com/second-story-headline'], '2026-10-24T12:00:00.000Z')
+  assert.equal(byUrl['https://example.com/card-story-headline'], '2026-10-23T08:00:00.000Z')
+  assert.equal(byUrl['https://example.com/other-card-headline'], '2026-10-22T08:00:00.000Z')
+  assert.equal(dated.length, 4)
+})
+
+test('a thrown timeout uses the remaining retries', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'routed-feed-'))
+  const outputPath = path.join(dir, 'news-feed-latest.json')
+  pipeline(dir, [{
+    id: 'venturebeat-ai',
+    name: 'VentureBeat AI',
+    adapter: 'rss',
+    url: 'https://venturebeat.com/category/ai/feed/',
+    tags: ['product_launch'],
+  }])
+  let calls = 0
+  const result = await refreshRoutedFeed({
+    pipelineDir: dir,
+    outputPath,
+    now: new Date('2026-10-26T00:10:00.000Z'),
+    retries: 3,
+    fetchImpl: async () => {
+      calls += 1
+      if (calls === 1) throw new Error('The operation was aborted due to timeout')
+      return { ok: true, status: 200, text: async () => '<rss version="2.0"><channel></channel></rss>' }
+    },
+  })
+  assert.ok(calls >= 2)
+  assert.deepEqual(result.failures, [])
+  assert.equal(result.wrote, true)
+  const feed = JSON.parse(fs.readFileSync(outputPath, 'utf8'))
+  assert.equal(feed.article_count, 0)
+  assert.equal(feed.generated, '2026-10-26T00:10:00.000Z')
+})
+
+test('a non-retryable HTTP response fails immediately and names the source', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'routed-feed-'))
+  const outputPath = path.join(dir, 'news-feed-latest.json')
+  pipeline(dir, [{
+    id: 'venturebeat-ai',
+    name: 'VentureBeat AI',
+    adapter: 'rss',
+    url: 'https://venturebeat.com/category/ai/feed/',
+    tags: ['product_launch'],
+  }])
+  let calls = 0
+  const result = await refreshRoutedFeed({
+    pipelineDir: dir,
+    outputPath,
+    retries: 3,
+    fetchImpl: async () => {
+      calls += 1
+      return { ok: false, status: 404, text: async () => 'missing' }
+    },
+  })
+  assert.equal(calls, 1)
+  assert.equal(result.wrote, false)
+  assert.equal(result.feed, null)
+  assert.match(result.failures[0], /^venturebeat-ai \(VentureBeat AI\) could not be fetched: HTTP 404$/)
+  assert.equal(fs.existsSync(outputPath), false)
+})
+
 test('the refresh workflow fetches the shared config and commits only the feed', () => {
   const workflow = fs.readFileSync(
     path.join(import.meta.dirname, '..', '.github', 'workflows', 'refresh-routed-feed.yml'),
@@ -175,4 +257,8 @@ test('the refresh workflow fetches the shared config and commits only the feed',
   assert.match(workflow, /node scripts\/refresh-routed-feed\.mjs --pipeline/)
   assert.match(workflow, /git add -- news-digests\/news-feed-latest.json/)
   assert.doesNotMatch(workflow, /git add -A|git add \./)
+  assert.match(workflow, /actions\/deploy-pages@/)
+  assert.match(workflow, /pages: write/)
+  assert.match(workflow, /id-token: write/)
+  assert.doesNotMatch(workflow, /secrets\.[A-Z0-9_]*(?:PAT|TOKEN)/)
 })

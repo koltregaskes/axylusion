@@ -4,12 +4,16 @@ on:
   workflow_dispatch:
   schedule:
     # 05:15 UTC. Every source in the shared news config is fetched. A source
-    # that cannot be fetched fails this run by name. The feed is committed
-    # only when the fetch returns items that match the Axy Lusion filter.
+    # that cannot be fetched fails this run by name and leaves the file unchanged.
+    # A successful fetch commits news-feed-latest.json, including an empty
+    # article list when nothing matches the Axy Lusion filter.
+    # That same run publishes GitHub Pages after a commit.
     - cron: '15 5 * * *'
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: refresh-routed-feed
@@ -18,6 +22,9 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -55,3 +62,22 @@ jobs:
       - name: Push the refreshed feed
         if: steps.commit.outputs.committed == 'true'
         run: git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Remove the pipeline checkout
+        if: steps.commit.outputs.committed == 'true'
+        run: rm -rf .news-pipeline
+
+      - name: Configure Pages
+        if: steps.commit.outputs.committed == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload the site
+        if: steps.commit.outputs.committed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publish GitHub Pages
+        id: deployment
+        if: steps.commit.outputs.committed == 'true'
+        uses: actions/deploy-pages@v4
