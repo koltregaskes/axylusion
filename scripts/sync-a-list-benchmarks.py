@@ -625,15 +625,16 @@ def main() -> int:
     if not isinstance(rows, list):
         raise SystemExit(f"Expected a JSON array at {args.source}")
 
+    # A current Artificial Analysis arena capture is the source of truth for the public
+    # A-List. The legacy hub-cache sync must never overwrite it, whatever the cache age:
+    # refresh-site-data.ps1 runs the arena refresh immediately before this script.
+    if public_snapshot_is_current(args.output):
+        print(f"Left the current Artificial Analysis snapshot in place: {args.output}")
+        return 0
+
     newest = newest_timestamp(rows)
     cache_is_stale = newest is None or datetime.now(timezone.utc) - newest > STALE_AFTER
     if cache_is_stale:
-        if public_snapshot_is_current(args.output):
-            print(
-                "Shared benchmark cache is older than 45 days. "
-                f"Left the current Artificial Analysis snapshot in place: {args.output}"
-            )
-            return 0
         print("Shared benchmark cache is stale, and the public A-List snapshot is not a current arena capture.")
         return 1
 
