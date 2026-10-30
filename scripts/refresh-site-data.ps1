@@ -13,9 +13,9 @@ Push-Location $projectRoot
 try {
     $step = 1
     $totalSteps = if ($RunSmokeTest) {
-        if ($SkipAList) { 5 } else { 7 }
+        if ($SkipAList) { 5 } else { 8 }
     } else {
-        if ($SkipAList) { 4 } else { 6 }
+        if ($SkipAList) { 4 } else { 7 }
     }
     if ($Publish) {
         $totalSteps++
@@ -43,6 +43,13 @@ try {
     $step++
 
     if (-not $SkipAList) {
+        Write-Host "[$step/$totalSteps] Refreshing A-List from Artificial Analysis..."
+        python scripts/refresh-a-list-benchmarks.py
+        if ($LASTEXITCODE -ne 0) {
+            throw "A-List arena refresh failed with exit code $LASTEXITCODE."
+        }
+        $step++
+
         Write-Host "[$step/$totalSteps] Syncing A-List benchmark snapshot..."
         python scripts/sync-a-list-benchmarks.py
         if ($LASTEXITCODE -ne 0) {

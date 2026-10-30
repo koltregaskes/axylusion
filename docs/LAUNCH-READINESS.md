@@ -12,11 +12,11 @@ Last updated: 2026-05-05
 - Shared watchdog monitoring now checks that the Axy refresh jobs continue landing in `cron_job_history`.
 - Homepage showcase repointing is automated locally via `scripts/rebuild-homepage-gallery.py`.
 - The site now carries a dedicated favicon and a cleaner A-List navigation label.
-- The A-List now has a shared-source flow: AI Resource Hub acquires benchmark data, Axy Lusion syncs that cache into `data/a-list-benchmarks.json`, and `scripts/render-a-list.py` rebuilds the public ranking pages locally.
-- Structural validation now catches A-List drift, so stale benchmark snapshots or stale rendered ranking pages fail the check instead of silently shipping.
+- The public A-List shows Artificial Analysis Elo copied into `data/aa-leaderboard-capture.json`. `scripts/sync-a-list-benchmarks.py` must not publish a hub cache older than 45 days over that snapshot.
+- Structural validation checks that the arena snapshot matches its capture and that the rendered ranking pages match the snapshot.
 - Homepage and gallery rendering now suppresses direct `cdn.midjourney.com` requests and uses `images/media-hosting-pending.svg` for Midjourney-hosted items until durable media hosting is complete.
 - Browser smoke tests now require `index.html` and `gallery.html` to be clean instead of tolerating Midjourney CDN failures.
-- The 2026-05-04 A-List benchmark refresh and the 2026-04-19 to 2026-05-04 news-digest backfill were validated locally on 2026-05-05 and should be kept as launch-ready drift rather than parked.
+- The May 2026 A-List composite is not current. Do not treat those scores, or the 24 August 2026 snapshot, as the public list.
 
 ## Still Blocked Externally
 
@@ -36,4 +36,4 @@ Last updated: 2026-05-05
 
 - Rebuild the missing Midjourney archive extraction and import pipeline documented in `MIDJOURNEY-PUBLISHED-GALLERY-MIGRATION-PLAN.md`.
 - The old Decap CMS shell has now been archived offline and removed from the public site until a real authenticated workflow exists.
-- If the shared benchmark pipeline becomes part of routine ops, schedule `scripts/sync-a-list-benchmarks.py` as part of the same weekly refresh flow.
+- Routine A-List refresh belongs in `scripts/refresh-a-list-benchmarks.py`, which copies the current public Elo boards. The hub-cache sync stays behind that step and refuses a stale cache.

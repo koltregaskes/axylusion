@@ -17,7 +17,7 @@ A creative AI portfolio showcasing work made with Midjourney, Suno, Runway, Klin
 
 ## Tool rankings (The A-List)
 
-Ranked by weighted meta-score from Artificial Analysis (35%), LM Arena (30%), LLM Stats (15%), and expert review (20%). Covers image generation, video, music, voice/TTS, 3D, and upscaling.
+Published Artificial Analysis arena Elo for image generation, image editing, text-to-video, and voice. Music, 3D, and upscaling are omitted until a current public Elo board exists. The retrieval date is on the A-List page.
 
 ## Related sites
 
