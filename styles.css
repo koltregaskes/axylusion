@@ -22,6 +22,8 @@
     --axyl-gray-700: #333333;
     --axyl-gray-600: #444444;
     --axyl-gray-500: #666666;
+    /* Muted text tone: 4.5:1 or better on every dark surface used here (WCAG AA). */
+    --axyl-text-faint: #8f8f8f;
     --axyl-gray-400: #888888;
     --axyl-gray-300: #aaaaaa;
 
@@ -410,7 +412,7 @@ body::after {
     flex-direction: column;
     align-items: center;
     gap: var(--space-sm);
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -545,7 +547,7 @@ header.peek {
 }
 
 .header-social a {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     transition: color var(--transition-base);
 }
 
@@ -945,7 +947,7 @@ h1 {
     left: var(--space-lg);
     width: 18px;
     height: 18px;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     pointer-events: none;
 }
 
@@ -981,7 +983,7 @@ h1 {
 }
 
 .search-bar input[type="text"]::placeholder {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 .search-bar select {
@@ -1331,7 +1333,7 @@ h1 {
 }
 
 .pagination-info {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     font-size: 0.8rem;
     padding: 0 var(--space-sm);
 }
@@ -1561,7 +1563,7 @@ h1 {
 /* Prompt section */
 .modal-info h3 {
     font-size: 0.7rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     text-transform: uppercase;
     letter-spacing: 0.15em;
     margin-bottom: var(--space-sm);
@@ -1954,7 +1956,7 @@ h1 {
 
 .social-handle {
     font-size: 0.75rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 /* About CTA */
@@ -2025,7 +2027,7 @@ h1 {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     margin-bottom: 0.35rem;
 }
 
@@ -2165,7 +2167,7 @@ h1 {
 
 .media-hub-metric span {
     display: block;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -2261,7 +2263,7 @@ h1 {
 .media-platform-link span,
 .tool-launch-link span {
     display: block;
-    color: var(--axyl-gray-400);
+    color: var(--axyl-gray-300);
     line-height: 1.7;
 }
 
@@ -2369,7 +2371,7 @@ footer {
 }
 
 .footer-tagline {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     font-size: 0.85rem;
     margin-top: var(--space-xs);
 }
@@ -2394,7 +2396,7 @@ footer {
 }
 
 .footer-group a {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     font-size: 0.82rem;
     text-decoration: none;
 }
@@ -2444,7 +2446,7 @@ footer {
 
 .footer-estate-panel p {
     margin: 0;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     line-height: 1.65;
 }
 
@@ -2460,7 +2462,7 @@ footer {
 }
 
 .social-links a {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     text-decoration: none;
     transition: all var(--transition-base);
     display: flex;
@@ -2486,12 +2488,12 @@ footer {
 }
 
 footer p {
-    color: var(--axyl-gray-600);
+    color: var(--axyl-text-faint);
     font-size: 0.8rem;
 }
 
 footer a {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     text-decoration: none;
     transition: color var(--transition-base);
 }
@@ -2954,7 +2956,7 @@ footer a:hover {
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 .clear-search {
@@ -2964,7 +2966,7 @@ footer a:hover {
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     cursor: pointer;
     padding: var(--space-xs);
     opacity: 0.5;
@@ -2996,7 +2998,7 @@ footer a:hover {
 
 .filters-row .filter-group label {
     font-size: 0.75rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -3080,7 +3082,7 @@ footer a:hover {
 .results-info {
     text-align: center;
     padding: var(--space-md) var(--space-xl);
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     font-size: 0.9rem;
 }
 
@@ -3099,7 +3101,7 @@ footer a:hover {
 .gallery-loading {
     text-align: center;
     padding: var(--space-3xl);
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 .loading-spinner {
@@ -3119,7 +3121,7 @@ footer a:hover {
 .no-results {
     text-align: center;
     padding: var(--space-3xl);
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -3173,7 +3175,7 @@ footer a:hover {
 
 .page-ellipsis {
     padding: var(--space-sm);
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 /* -----------------------------------------------------------------------------
@@ -3192,7 +3194,7 @@ footer a:hover {
 }
 
 .empty-state p {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 @media (max-width: 900px) {
@@ -3523,7 +3525,7 @@ footer a:hover {
 
 .news-date {
     font-size: 0.8rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 .news-featured-title {
@@ -3594,7 +3596,7 @@ footer a:hover {
 
 .news-section-desc {
     font-size: 0.9rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 /* News Grid (Tool Updates) */
@@ -3671,7 +3673,7 @@ footer a:hover {
 
 .news-card-date {
     font-size: 0.75rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 .news-card-title {
@@ -3698,7 +3700,7 @@ footer a:hover {
 
 .news-tag-sm {
     font-size: 0.7rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     background: var(--axyl-gray-800);
     padding: 2px var(--space-sm);
     border-radius: var(--radius-full);
@@ -3742,7 +3744,7 @@ footer a:hover {
 
 .news-list-date {
     font-size: 0.75rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 .news-list-title {
@@ -3797,7 +3799,7 @@ footer a:hover {
 
 .news-yt-meta {
     font-size: 0.7rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     margin-top: auto;
 }
 
@@ -4050,7 +4052,7 @@ footer a:hover {
 }
 
 .an-search::placeholder {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 /* Quick Filters */
@@ -4098,7 +4100,7 @@ footer a:hover {
 }
 
 .an-date-inputs span {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     font-size: 0.875rem;
 }
 
@@ -4283,7 +4285,7 @@ footer a:hover {
 }
 
 .an-card-date {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 .an-card-title {
@@ -4320,7 +4322,7 @@ footer a:hover {
 }
 
 .an-card-category {
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 500;
@@ -4335,7 +4337,7 @@ footer a:hover {
 .an-fav-btn {
     background: none;
     border: none;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     cursor: pointer;
     padding: 0.25rem;
     transition: color 0.2s;
@@ -4386,7 +4388,7 @@ footer a:hover {
 .an-no-results {
     text-align: center;
     padding: 3rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
 }
 
 .an-no-results svg {
@@ -4609,7 +4611,7 @@ footer a:hover {
 
 .alist-source-badge em {
     font-style: normal;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     margin-left: var(--space-xs);
 }
 
@@ -4748,7 +4750,7 @@ footer a:hover {
 
 .alist-maker {
     font-size: 0.8rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     display: block;
     margin-bottom: var(--space-md);
 }
@@ -4813,7 +4815,7 @@ footer a:hover {
 
 .alist-considerations {
     font-size: 0.8rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     margin: 0 0 var(--space-md);
     font-style: italic;
 }
@@ -4827,7 +4829,7 @@ footer a:hover {
 
 .alist-arena-score {
     font-size: 0.75rem;
-    color: var(--axyl-gray-400);
+    color: var(--axyl-gray-300);
     background: var(--axyl-gray-800);
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-sm);
@@ -5144,7 +5146,7 @@ footer a:hover {
 
 .alist-model-sources h4 {
     font-size: 0.8rem;
-    color: var(--axyl-gray-500);
+    color: var(--axyl-text-faint);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: var(--space-sm);

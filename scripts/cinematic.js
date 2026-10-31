@@ -35,6 +35,7 @@
     const buttons = $$("[data-hero-index]", strip);
 
     buttons.forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.classList.contains("is-on")));
       button.addEventListener("click", () => {
         const item = items[Number(button.dataset.heroIndex)];
         if (!item) return;
@@ -42,7 +43,7 @@
         if (ref) ref.textContent = item.ref || "";
         if (date) date.textContent = item.date || "";
         if (prompt) prompt.textContent = `"${item.prompt || ""}"`;
-        buttons.forEach((cell) => cell.classList.toggle("is-on", cell === button));
+        setPressed(buttons, button);
       });
     });
   }
