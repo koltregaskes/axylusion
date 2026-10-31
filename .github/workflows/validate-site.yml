@@ -32,6 +32,9 @@ jobs:
       - name: Verify homepage image rendering
         run: python scripts/test-homepage-images.py
 
+      - name: A-List sync keeps the current arena snapshot
+        run: python scripts/test-a-list-sync.py
+
       - name: Validate static site structure
         run: python scripts/validate-site.py
 

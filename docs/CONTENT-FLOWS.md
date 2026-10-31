@@ -8,16 +8,18 @@ Last updated: 2026-04-11
 - Homepage hero and showcase panels read from `data/homepage-gallery.json`.
 - News reads from `news-digests/*.md` plus `news-digests/index.json`.
 - The A-List serves static HTML pages generated from `data/a-list-benchmarks.json`.
-- `data/a-list-benchmarks.json` is presentation data only: it is synced from the shared AI Resource Hub cache at `W:\Websites\sites\ai-resource-hub\data\pg-cache\creative_benchmarks.json`.
-- Shared benchmark acquisition belongs in `W:\Websites\sites\ai-resource-hub\scripts\scrapers\creative-benchmarks.ts`, not in Axy Lusion.
+- Public scores are the Elo copied from Artificial Analysis into `data/aa-leaderboard-capture.json` by `scripts/refresh-a-list-benchmarks.py`. The retrieval date on the page is that capture's date.
+- `scripts/sync-a-list-benchmarks.py` still reads the AI Resource Hub cache at `W:\Websites\sites\ai-resource-hub\data\pg-cache\creative_benchmarks.json`, but it will not replace a current arena snapshot when that cache's newest `updated_at` or `scraped_at` is older than 45 days.
+- Music, 3D, and upscaling stay off the public A-List until a current public Elo board exists. Do not republish the 24 August 2026 editorial scores.
 
 ## Refresh Commands
 
 - Gallery export from the shared database: `powershell -File scripts/sync-published-gallery.ps1 -Apply`
 - Homepage payload rebuild from the gallery export: `python scripts/rebuild-homepage-gallery.py`
 - News digest manifest refresh: `python scripts/update-news-digest-index.py`
-- A-List snapshot refresh from AI Resource Hub: `python scripts/sync-a-list-benchmarks.py`
-- A-List page render from the synced snapshot: `python scripts/render-a-list.py`
+- A-List arena refresh from the public Artificial Analysis boards: `python scripts/refresh-a-list-benchmarks.py`
+- A-List hub-cache sync, refused when that cache is stale: `python scripts/sync-a-list-benchmarks.py`
+- A-List page render from the snapshot: `python scripts/render-a-list.py`
 - Combined local refresh pipeline: `powershell -File scripts/refresh-site-data.ps1`
 - Combined local refresh pipeline without A-List sync/render: `powershell -File scripts/refresh-site-data.ps1 -SkipAList`
 - Combined local refresh plus browser verification: `powershell -File scripts/refresh-site-data.ps1 -RunSmokeTest`
@@ -30,7 +32,7 @@ Last updated: 2026-04-11
 ## Scheduled Ops
 
 - `Websites-AxyLusion-Refresh-Morning` runs daily at `07:20`.
-  It runs the full refresh path: homepage payload, news digest index, A-List sync/render, then validation.
+  It runs the full refresh path: homepage payload, news digest index, A-List arena refresh, hub-cache sync, render, then validation.
 - `Websites-AxyLusion-Refresh-Evening` runs daily at `19:20`.
   It runs the lighter evening path: homepage payload, news digest index, then validation.
 - Both tasks are registered through `W:\Websites\schedules\jobs.psd1` and execute through `W:\Websites\schedules\monitoring\Run-Logged.ps1`, so runs land in shared `cron_job_history`.

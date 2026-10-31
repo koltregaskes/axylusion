@@ -7,6 +7,7 @@ This snapshot is intentionally presentation-layer only:
   - Axy Lusion normalizes names and notes for its own public delivery
   - we recompute the local meta-score so the rendered HTML stays explainable
   - no live scraping happens here; upstream acquisition belongs in AI Resource Hub
+  - a hub cache older than 45 days must not replace a current Artificial Analysis snapshot
 """
 
 from __future__ import annotations
@@ -14,7 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 from html import unescape
@@ -559,6 +560,52 @@ def build_snapshot(rows: list[dict[str, Any]], source_path: Path) -> dict[str, A
     }
 
 
+STALE_AFTER = timedelta(days=45)
+
+
+def parse_timestamp(value: Any) -> datetime | None:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def newest_timestamp(rows: list[dict[str, Any]]) -> datetime | None:
+    newest: datetime | None = None
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        for key in ("updated_at", "scraped_at"):
+            parsed = parse_timestamp(row.get(key))
+            if parsed is not None and (newest is None or parsed > newest):
+                newest = parsed
+    return newest
+
+
+def public_snapshot_is_current(path: Path) -> bool:
+    if not path.exists():
+        return False
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return False
+    if payload.get("score_basis") != "artificial_analysis_elo":
+        return False
+    if payload.get("publication_status") != "current":
+        return False
+    if not payload.get("categories"):
+        return False
+    retrieved_at = parse_timestamp(payload.get("retrieved_at"))
+    if retrieved_at is None:
+        return False
+    return datetime.now(timezone.utc) - retrieved_at <= STALE_AFTER
+
+
 def render_snapshot(payload: dict[str, Any]) -> str:
     return json.dumps(payload, indent=2, ensure_ascii=False) + "\n"
 
@@ -577,6 +624,19 @@ def main() -> int:
     rows = json.loads(args.source.read_text(encoding="utf-8"))
     if not isinstance(rows, list):
         raise SystemExit(f"Expected a JSON array at {args.source}")
+
+    # A current Artificial Analysis arena capture is the source of truth for the public
+    # A-List. The legacy hub-cache sync must never overwrite it, whatever the cache age:
+    # refresh-site-data.ps1 runs the arena refresh immediately before this script.
+    if public_snapshot_is_current(args.output):
+        print(f"Left the current Artificial Analysis snapshot in place: {args.output}")
+        return 0
+
+    newest = newest_timestamp(rows)
+    cache_is_stale = newest is None or datetime.now(timezone.utc) - newest > STALE_AFTER
+    if cache_is_stale:
+        print("Shared benchmark cache is stale, and the public A-List snapshot is not a current arena capture.")
+        return 1
 
     normalized_rows = normalize_rows(rows)
     payload = build_snapshot(normalized_rows, args.source)

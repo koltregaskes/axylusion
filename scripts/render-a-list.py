@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import re
 from datetime import datetime
 from html import escape
 from pathlib import Path
@@ -204,13 +205,20 @@ def render_footer(base_path: str) -> str:
     <script src="{link_path(base_path, 'cross-site-nav.js')}" defer></script>"""
 
 
-def score_bar(score: float, small: bool = False) -> str:
-    width = max(0.0, min(100.0, score))
+SAMPLE_COUNT_PATTERN = re.compile(r"([\d,]+) samples")
+
+
+def score_bar(score: float, small: bool = False, bar_percent: float | None = None, unit: str = "") -> str:
+    if bar_percent is None:
+        width = max(0.0, min(100.0, score))
+    else:
+        width = max(0.0, min(100.0, float(bar_percent)))
+    label = f"{score:.0f}" if unit == "elo" else f"{score:.2f}"
     small_class = " small" if small else ""
     return (
         f'<div class="alist-score-bar{small_class}">'
         f'<div class="alist-score-fill" style="width: {width:.2f}%"></div>'
-        f'<span class="alist-score-value">{score:.2f}</span>'
+        f'<span class="alist-score-value">{label}</span>'
         "</div>"
     )
 
@@ -224,10 +232,38 @@ def source_badges(model: dict[str, Any]) -> str:
             continue
         if source.get("score_type") == "elo":
             score_text = f"{raw_score:.0f}"
+            if source.get("ci_delta") is not None:
+                score_text += f" ±{source['ci_delta']}"
         else:
             score_text = f"{raw_score:.0f}/100"
         badges.append(f'<span class="alist-arena-score">{escape(label)}: {escape(score_text)}</span>')
     return "".join(badges)
+
+
+def elo_interval(model: dict[str, Any]) -> str:
+    for source in model.get("sources", []):
+        if source.get("score_type") == "elo" and source.get("ci_delta") is not None:
+            return f"±{source['ci_delta']}"
+    return ""
+
+
+def elo_samples(model: dict[str, Any]) -> str:
+    note = str(model.get("public_note") or model.get("considerations") or "")
+    match = SAMPLE_COUNT_PATTERN.search(note)
+    return match.group(1) if match else ""
+
+
+def elo_released(model: dict[str, Any]) -> str:
+    for item in model.get("strengths", []):
+        text = str(item)
+        if "$" in text or "/" in text:
+            continue
+        return text
+    return ""
+
+
+def cell_text(value: str) -> str:
+    return escape(value) if value else "&mdash;"
 
 
 def strengths_list(model: dict[str, Any], limit: int) -> str:
@@ -530,23 +566,146 @@ def render_detail_page(category: dict[str, Any]) -> str:
     )
 
 
+def render_elo_detail_page(category: dict[str, Any]) -> str:
+    base_path = "../"
+    models = category.get("models", [])
+    body_rows = []
+    for model in models:
+        body_rows.append(
+            f"""<tr{' class="alist-table-leader"' if model['meta_rank'] == 1 else ''}>
+                <td>{model['meta_rank']}</td>
+                <td><a href="{escape(model['model_url'] or '#')}" target="_blank" rel="noopener noreferrer">{escape(model['model_name'])}</a> <span class="alist-maker">{escape(model['model_maker'])}</span></td>
+                <td><strong>{float(model['meta_score']):.0f}</strong></td>
+                <td>{cell_text(elo_interval(model))}</td>
+                <td>{cell_text(elo_samples(model))}</td>
+                <td>{cell_text(elo_released(model))}</td>
+                <td>{cell_text(str(model.get('pricing_note') or ''))}</td>
+            </tr>"""
+        )
+
+    model_cards = []
+    for model in models[:8]:
+        note = model.get("public_note") or model.get("considerations") or ""
+        model_cards.append(
+            f"""<div class="alist-model-card">
+                <div class="alist-model-card-header">
+                    <span class="alist-leader-badge">#{model['meta_rank']}</span>
+                    <div>
+                        <h3><a href="{escape(model['model_url'] or '#')}" target="_blank" rel="noopener noreferrer">{escape(model['model_name'])}</a></h3>
+                        <span class="alist-maker">{escape(model['model_maker'])}</span>
+                    </div>
+                    {score_bar(float(model['meta_score']), bar_percent=model.get('bar_percent'), unit='elo')}
+                </div>
+                <div class="alist-model-card-body">
+                    <p class="alist-considerations">{escape(note)}</p>
+                    <div class="alist-model-sources">
+                        <h4>Published Elo</h4>
+                        <div class="alist-arena-scores">{source_badges(model)}</div>
+                    </div>
+                </div>
+            </div>"""
+        )
+
+    board_name = str(category.get("board_name") or "")
+    source_url = str(category.get("source_url") or "")
+    source_line = ""
+    if board_name or source_url:
+        source_link = (
+            f'<a href="{escape(source_url)}" target="_blank" rel="noopener noreferrer">{escape(board_name or source_url)}</a>'
+            if source_url
+            else escape(board_name)
+        )
+        source_line = f'<p class="alist-method-note">Board: {source_link}</p>'
+
+    body = f"""
+    {render_header(base_path, 'a-list.html')}
+
+    <section class="page-header">
+        <div class="page-header-content">
+            <p class="alist-breadcrumb"><a href="../a-list.html">&larr; The A-List</a></p>
+            <h1 class="page-title stagger-load delay-1">{escape(category['title'])}</h1>
+            <p class="page-subtitle stagger-load delay-2">{escape(category.get('note', ''))}</p>
+            {source_line}
+        </div>
+    </section>
+
+    <main class="alist-detail-main">
+        <section class="alist-detail-section">
+            <h2>Published Elo</h2>
+            <div class="alist-comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Model</th>
+                            <th>Elo</th>
+                            <th>±</th>
+                            <th>Samples</th>
+                            <th>Released</th>
+                            <th>Pricing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {''.join(body_rows)}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="alist-detail-section">
+            <h2>Leaders</h2>
+            {''.join(model_cards)}
+        </section>
+
+        <div class="alist-back-link"><a href="../a-list.html">&larr; Back to The A-List</a></div>
+    </main>
+
+    {render_footer(base_path)}
+    """
+    file_name = detail_filename(category["slug"])
+    return page_shell(
+        title=f"{category['title']} | The A-List | Axy Lusion",
+        description=f"Published Artificial Analysis Elo for {category['title'].lower()}.",
+        canonical=canonical_url(f"a-list/{file_name}"),
+        stylesheet_path="../styles.css",
+        favicon_path="../favicon.svg",
+        manifest_path="../site.webmanifest",
+        body=body,
+    )
+
+
+def render_category_page(category: dict[str, Any]) -> str:
+    if str(category.get("score_unit") or "") == "elo":
+        return render_elo_detail_page(category)
+    return render_detail_page(category)
+
+
 def build_outputs(snapshot: dict[str, Any]) -> dict[Path, str]:
     outputs: dict[Path, str] = {OVERVIEW_PATH: render_cinematic_overview(snapshot)}
     for category in snapshot.get("categories", []):
-        outputs[DETAILS_DIR / detail_filename(category["slug"])] = render_detail_page(category)
+        outputs[DETAILS_DIR / detail_filename(category["slug"])] = render_category_page(category)
     return outputs
+
+
+def unexpected_detail_pages(outputs: dict[Path, str]) -> list[Path]:
+    expected = {path.resolve() for path in outputs}
+    if not DETAILS_DIR.exists():
+        return []
+    return [path for path in sorted(DETAILS_DIR.glob("*.html")) if path.resolve() not in expected]
 
 
 def main() -> int:
     args = parse_args()
     snapshot = json.loads(args.snapshot.read_text(encoding="utf-8"))
     outputs = build_outputs(snapshot)
+    extras = unexpected_detail_pages(outputs)
 
     if args.check:
         outdated_paths: list[Path] = []
         for output_path, rendered in outputs.items():
             if not output_path.exists() or output_path.read_text(encoding="utf-8") != rendered:
                 outdated_paths.append(output_path)
+        outdated_paths.extend(extras)
 
         if outdated_paths:
             print("Rendered A-List pages are out of date:")
@@ -560,6 +719,9 @@ def main() -> int:
     DETAILS_DIR.mkdir(parents=True, exist_ok=True)
     for output_path, rendered in outputs.items():
         output_path.write_text(rendered, encoding="utf-8")
+    for path in extras:
+        path.unlink()
+        print(f"Removed outdated A-List page: {path}")
 
     print(f"Rendered A-List overview: {OVERVIEW_PATH}")
     print(f"Rendered A-List detail pages: {len(snapshot.get('categories', []))}")
