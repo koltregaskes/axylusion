@@ -47,6 +47,9 @@ jobs:
         with:
           node-version: "24.22.1"
 
+      - name: Test the routed feed refresh
+        run: node --test tests/refresh-routed-feed.test.mjs tests/routed-feed-freshness.test.mjs
+
       - name: Install Playwright runtime
         run: npm install --no-save playwright
 
