@@ -21,6 +21,7 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parent.parent
 DOMAIN = "https://axylusion.com"
 SCHEMA_NONCE = "axylusion-cinematic-schema"
+SOCIAL_IMAGE = f"{DOMAIN}/images/social/axylusion-og.png"
 TONES = [
     ["#1a3540", "#060606", "#c4851a"],
     ["#3a1f10", "#060606", "#d4a03a"],
@@ -372,6 +373,16 @@ def page_shell(path: str, title: str, description: str, active: str, body: str, 
   <meta property="og:description" content="{escape(description)}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{escape(canonical)}">
+  <meta property="og:site_name" content="Axy Lusion">
+  <meta property="og:image" content="{SOCIAL_IMAGE}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Axy Lusion">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Axylusion">
+  <meta name="twitter:title" content="{escape(title)}">
+  <meta name="twitter:description" content="{escape(description)}">
+  <meta name="twitter:image" content="{SOCIAL_IMAGE}">
   <link rel="canonical" href="{escape(canonical)}">
   <link rel="manifest" href="{prefix}site.webmanifest">
   <link rel="icon" href="{prefix}favicon.svg" type="image/svg+xml">

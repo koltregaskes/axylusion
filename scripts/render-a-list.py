@@ -20,6 +20,7 @@ SNAPSHOT_PATH = PROJECT_DIR / "data" / "a-list-benchmarks.json"
 OVERVIEW_PATH = PROJECT_DIR / "a-list.html"
 DETAILS_DIR = PROJECT_DIR / "a-list"
 DOMAIN = "https://axylusion.com"
+SOCIAL_IMAGE = f"{DOMAIN}/images/social/axylusion-og.png"
 CINEMATIC_RENDERER = PROJECT_DIR / "scripts" / "render-cinematic-site.py"
 
 NAV_LINKS = [
@@ -235,6 +236,34 @@ def strengths_list(model: dict[str, Any], limit: int) -> str:
     return "".join(f'<span class="alist-strength{" small" if limit == 2 else ""}">{escape(item)}</span>' for item in strengths)
 
 
+def page_schema(title: str, description: str, canonical: str) -> str:
+    graph = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": f"{canonical}#webpage",
+                "url": canonical,
+                "name": title,
+                "description": description,
+                "inLanguage": "en",
+                "isPartOf": {"@id": f"{DOMAIN}/#website"},
+                "breadcrumb": {"@id": f"{canonical}#breadcrumb"},
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": f"{canonical}#breadcrumb",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Axy Lusion", "item": f"{DOMAIN}/"},
+                    {"@type": "ListItem", "position": 2, "name": "The A-List", "item": f"{DOMAIN}/a-list.html"},
+                    {"@type": "ListItem", "position": 3, "name": title.split(" | ")[0], "item": canonical},
+                ],
+            },
+        ],
+    }
+    return json.dumps(graph, ensure_ascii=True)
+
+
 def page_shell(*, title: str, description: str, canonical: str, stylesheet_path: str, favicon_path: str, manifest_path: str, body: str) -> str:
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -246,6 +275,17 @@ def page_shell(*, title: str, description: str, canonical: str, stylesheet_path:
     <meta property="og:title" content="{escape(title)}">
     <meta property="og:description" content="{escape(description)}">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="{escape(canonical)}">
+    <meta property="og:site_name" content="Axy Lusion">
+    <meta property="og:image" content="{SOCIAL_IMAGE}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Axy Lusion">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Axylusion">
+    <meta name="twitter:title" content="{escape(title)}">
+    <meta name="twitter:description" content="{escape(description)}">
+    <meta name="twitter:image" content="{SOCIAL_IMAGE}">
     <link rel="canonical" href="{escape(canonical)}">
     <meta name="theme-color" content="#0a0a0a">
     <meta name="color-scheme" content="dark">
@@ -256,8 +296,10 @@ def page_shell(*, title: str, description: str, canonical: str, stylesheet_path:
     <link rel="stylesheet" href="{escape(stylesheet_path)}">
     <link rel="manifest" href="{escape(manifest_path)}">
     <link rel="icon" href="{escape(favicon_path)}" type="image/svg+xml">
+    <script type="application/ld+json">{page_schema(title, description, canonical)}</script>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 {body}
 </body>
 </html>
@@ -360,7 +402,7 @@ def render_overview(snapshot: dict[str, Any]) -> str:
         {nav}
     </nav>
 
-    <main class="alist-main">
+    <main id="main-content" class="alist-main">
         {''.join(sections)}
     </main>
 
@@ -479,7 +521,7 @@ def render_detail_page(category: dict[str, Any]) -> str:
         </div>
     </section>
 
-    <main class="alist-detail-main">
+    <main id="main-content" class="alist-detail-main">
         <section class="alist-detail-section">
             <h2>Rankings at a glance</h2>
             <div class="alist-comparison-table">

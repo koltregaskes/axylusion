@@ -45,7 +45,9 @@
   if (siblings.length === 0) return;
 
   const shell = document.createElement('div');
-  shell.setAttribute('role', 'contentinfo');
+  // The page already has a <footer> (contentinfo); this band is a separate, labelled region.
+  shell.setAttribute('role', 'complementary');
+  shell.setAttribute('aria-label', 'Elusion Works network');
   shell.style.cssText = `
     display: flex;
     flex-direction: column;
@@ -84,22 +86,22 @@
     link.rel = 'noopener';
     link.style.cssText = `
       color: inherit;
-      opacity: 0.5;
+      opacity: 0.8;
       text-decoration: none;
       transition: opacity 0.15s;
       white-space: nowrap;
     `;
     link.addEventListener('mouseenter', () => {
-      link.style.opacity = '0.9';
+      link.style.opacity = '1';
     });
     link.addEventListener('mouseleave', () => {
-      link.style.opacity = '0.5';
+      link.style.opacity = '0.8';
     });
     linksRow.appendChild(link);
   }
 
   const estateLine = document.createElement('div');
-  estateLine.style.cssText = 'opacity: 0.72; text-align: center;';
+  estateLine.style.cssText = 'opacity: 0.85; text-align: center;';
   estateLine.innerHTML = 'Part of the <a href="https://elusionworks.com" style="color: inherit; text-decoration: underline; text-underline-offset: 0.16em;">Elusion Works</a> web estate.';
 
   shell.append(linksRow, estateLine);
