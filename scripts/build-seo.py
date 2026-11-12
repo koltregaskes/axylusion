@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate metadata, the page/image sitemap and RSS from checked-in content."""
 import argparse
+import difflib
 import importlib.util
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -74,6 +75,10 @@ if __name__ == "__main__":
         if args.check:
             if not path.exists() or path.read_text(encoding="utf-8") != content:
                 stale.append(str(path.relative_to(ROOT)))
+                if path.exists():
+                    print("\n".join(list(difflib.unified_diff(
+                        path.read_text(encoding="utf-8").splitlines(), content.splitlines(),
+                        fromfile=str(path.relative_to(ROOT)), tofile="generated output"))[:20]))
         else:
             path.write_text(content, encoding="utf-8")
     if stale:
