@@ -26,6 +26,11 @@ jobs:
       - name: Verify digest manifest
         run: python scripts/update-news-digest-index.py --check
 
+      - name: Verify SEO output and validate sitemap and RSS
+        run: |
+          python scripts/build-seo.py --check
+          python scripts/check-seo.py
+
       - name: Verify homepage gallery payload
         run: python scripts/rebuild-homepage-gallery.py --check
 

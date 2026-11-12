@@ -58,6 +58,10 @@ try {
         $step++
     }
 
+    Write-Host "Generating search metadata, sitemap and RSS..."
+    python scripts/build-seo.py
+    if ($LASTEXITCODE -ne 0) { throw "SEO generation failed." }
+
     Write-Host "[$step/$totalSteps] Validating site..."
     $validateArgs = @('scripts/validate-site.py')
     if ($SkipAList) { $validateArgs += '--skip-alist' }
@@ -87,7 +91,8 @@ try {
             "index.html",
             "gallery.html",
             "gallery.js",
-            "sitemap.xml"
+            "sitemap.xml",
+            "feed.xml"
         )
         $publishPaths = @($candidatePaths | Where-Object { Test-Path (Join-Path $projectRoot $_) })
         if ($publishPaths.Count -eq 0) {

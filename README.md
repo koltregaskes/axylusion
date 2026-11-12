@@ -12,7 +12,7 @@ This repository contains the Axy Lusion creative portfolio site: a static websit
 ## Stack
 
 - Plain HTML, CSS, and JavaScript
-- No framework and no build step
+- No framework; a small Python build updates search metadata, sitemap and RSS
 - Static hosting friendly
 - Gallery/media data stored in `data/gallery.json`
 
@@ -21,6 +21,25 @@ This repository contains the Axy Lusion creative portfolio site: a static websit
 **Intended Production Domain:** `https://axylusion.com`
 
 ## Local Preview
+
+Before committing content changes, run:
+
+```powershell
+python scripts/build-seo.py
+python scripts/check-seo.py
+python scripts/validate-site.py
+```
+
+`build-seo.py` discovers public root and A-List HTML, adds per-page social cards
+and JSON-LD, and generates `sitemap.xml` and `feed.xml`. RSS includes up to 50
+non-empty indexed digests and their deduplicated source stories. Item GUIDs are
+stable URLs and publication dates come from the digest, never build time.
+`--check` fails CI if tracked output has gone stale. The refresh pipeline runs
+the generator after rendering, and both HTML renderers use the same metadata.
+
+The gallery image sitemap uses durable image URLs already recorded in the site.
+Midjourney URLs excluded by the renderer are excluded from the sitemap too.
+The default social card is `images/social-default.png`, a real 1200x630 PNG.
 
 Run a local static server from the repo root, for example:
 

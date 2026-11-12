@@ -381,6 +381,7 @@ def main() -> int:
     failures.extend(check_homepage_alignment(gallery_items, homepage_items))
     failures.extend(check_public_head_requirements())
     failures.extend(check_support_files())
+    failures.extend(check_script_sync(PROJECT_DIR / "scripts" / "build-seo.py", "SEO metadata, sitemap and RSS"))
     if args.skip_alist:
         warnings.append('Skipped A-List freshness checks (--skip-alist).')
     elif ALIST_SHARED_SOURCE.exists():
