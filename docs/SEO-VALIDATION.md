@@ -13,7 +13,7 @@ after it. These are offline output checks, not claims about live indexing.
 | Missing JSON-LD | 11 | 0 |
 | Sitemap URLs | 18, hand-kept | 18, generated |
 | Gallery image sitemap entries | 0 | 18 |
-| RSS items | No feed | 137 |
+| RSS items | No feed | 136 |
 
 The default social card is a real 1200x630 PNG. News RSS includes the latest 50
 non-empty indexed digests plus their source headlines, deduplicated by stable URL.
@@ -51,6 +51,10 @@ actual image URLs in ImageGallery.image.
 The pre-existing stale A-List snapshot and unavailable shared benchmark-cache
 warnings remain. No upstream benchmark repository was read or changed. External
 image availability and Search Console ownership were not checked.
+
+The PR was updated with the 12 November digest from main and the feed rebuilt.
+The stale-output CI gate correctly caught that newer source input before this
+update; the feed count above reflects the final 50-digest window.
 
 Protocol references: [Sitemaps](https://www.sitemaps.org/protocol.html) and
 [Google image sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps).

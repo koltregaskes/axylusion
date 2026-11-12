@@ -7,18 +7,18 @@
     <language>en-gb</language>
     <atom:link href="https://axylusion.com/feed.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Creative AI digest: 2026-11-11</title>
-      <link>https://axylusion.com/news-digests/digest-2026-11-11.md</link>
-      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <title>Creative AI digest: 2026-11-12</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-12.md</link>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
       <description>ElevenLabs announces new Scribe models for audio that won’t behave: https://www.digg.com/ai/14fby5bx
 Pika touts Seedream 5.5 in Image Studio, with layers to spare: https://www.digg.com/ai/maf5kqs8</description>
       <category>Digest</category>
-      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-11.md</guid>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-12.md</guid>
     </item>
     <item>
       <title>ElevenLabs announces new Scribe models for audio that won’t behave</title>
       <link>https://www.digg.com/ai/14fby5bx</link>
-      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
       <description>Digg AI</description>
       <category>Audio</category>
       <guid isPermaLink="true">https://www.digg.com/ai/14fby5bx</guid>
@@ -26,10 +26,19 @@ Pika touts Seedream 5.5 in Image Studio, with layers to spare: https://www.digg.
     <item>
       <title>Pika touts Seedream 5.5 in Image Studio, with layers to spare</title>
       <link>https://www.digg.com/ai/maf5kqs8</link>
-      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
       <description>Digg AI</description>
       <category>Video</category>
       <guid isPermaLink="true">https://www.digg.com/ai/maf5kqs8</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-11-11</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-11.md</link>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <description>ElevenLabs announces new Scribe models for audio that won’t behave: https://www.digg.com/ai/14fby5bx
+Pika touts Seedream 5.5 in Image Studio, with layers to spare: https://www.digg.com/ai/maf5kqs8</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-11.md</guid>
     </item>
     <item>
       <title>Creative AI digest: 2026-11-10</title>
@@ -1149,22 +1158,6 @@ Suno’s v6 AI Music Model Debuts With Record Label Support, New Editing Tools a
       <description>Superpower Daily</description>
       <category>Audio</category>
       <guid isPermaLink="true">https://superpowerdaily.com/posts/suno-releases-licensed-music-ai-models-as-copyright-cases-continue</guid>
-    </item>
-    <item>
-      <title>Creative AI digest: 2026-09-08</title>
-      <link>https://axylusion.com/news-digests/digest-2026-09-08.md</link>
-      <pubDate>Tue, 08 Sep 2026 00:00:00 +0000</pubDate>
-      <description>Victim loses £250k after scammers use AI video of 'well-known' celebrity The PSNI described the scam as "sophisticated" and said the victim was encouraged to borrow money to continue investing.: https://www.bbc.com/news/articles/cx2zkp8vx9jo</description>
-      <category>Digest</category>
-      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-08.md</guid>
-    </item>
-    <item>
-      <title>Victim loses £250k after scammers use AI video of 'well-known' celebrity The PSNI described the scam as "sophisticated" and said the victim was encouraged to borrow money to continue investing.</title>
-      <link>https://www.bbc.com/news/articles/cx2zkp8vx9jo</link>
-      <pubDate>Tue, 08 Sep 2026 00:00:00 +0000</pubDate>
-      <description>BBC AI</description>
-      <category>Video</category>
-      <guid isPermaLink="true">https://www.bbc.com/news/articles/cx2zkp8vx9jo</guid>
     </item>
   </channel>
 </rss>
