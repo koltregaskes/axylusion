@@ -103,7 +103,7 @@ the rule cannot apply. Verify the actual response headers after hosting cutover.
 fails on all reported severities. `scripts/scan-source-secrets.py` scans tracked
 text with redacted output, excluding environment files and binaries, not history.
 `scripts/check-external-links.py` performs a bounded external crawl and treats
-401/403/429 responses as unverified warnings requiring review, rather than claiming them safe. Definite errors and HTTPS downgrades fail CI.
+all network errors, non-404/410 HTTP errors and insecure destinations as unverified warnings requiring review. Only confirmed HTTP 404/410 fail the link gate. Unverified results are not successful destination checks.
 No form handler, payment or store setup is added by these changes.
 ### Public security boundary
 
