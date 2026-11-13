@@ -47,6 +47,9 @@ jobs:
         with:
           node-version: "24.22.1"
 
+      - name: Run gallery identity regression tests
+        run: node --test tests/gallery-smoke.test.mjs
+
       - name: Install Playwright runtime
         run: npm install --no-save playwright
 
@@ -61,3 +64,4 @@ jobs:
 
       - name: Run browser smoke tests
         run: node scripts/smoke-test-site.mjs --base-url http://127.0.0.1:4173
+
