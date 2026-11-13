@@ -15,7 +15,7 @@ async function pages(dir = '') {
 const routes = await pages();
 if (!routes.length) throw Error('No routes discovered');
 const axe = await readFile('node_modules/axe-core/axe.min.js', 'utf8');
-const browser = await chromium.launch();
+const browser = await chromium.launch(process.env.LAUNCH_BROWSER_PATH ? { executablePath: process.env.LAUNCH_BROWSER_PATH } : {});
 const failures = [];
 try {
   for (const width of [320, 1280]) {
@@ -33,10 +33,11 @@ try {
     for (const path of routes) {
       const page = await context.newPage();
       await page.goto('https://axylusion.com/' + path, { waitUntil: 'networkidle' });
+      await page.evaluate(async () => { await document.fonts.ready; await Promise.all(document.getAnimations().filter(a => a.effect.getTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))); });
       await page.addScriptTag({ url: 'https://axylusion.com/__launch-axe.js' });
-      const serious = await page.evaluate(async () => (await axe.run()).violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => ({ id: v.id, count: v.nodes.length })));
+      const serious = await page.evaluate(async () => (await axe.run()).violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => ({ id: v.id, count: v.nodes.length, nodes: v.nodes.map(n => ({ target: n.target, reason: n.failureSummary })) })));
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
-      if (serious.length || overflow) failures.push({ path, width, serious, overflow });
+      if (serious.length || overflow) failures.push({ path, width, serious, overflow, wide: overflow ? await page.evaluate(() => [...document.querySelectorAll('*')].filter(e => e.getBoundingClientRect().right > innerWidth + 1).slice(0,10).map(e => ({ tag: e.tagName, cls: e.className }))) : [] });
       await page.close();
     }
     await context.close();
