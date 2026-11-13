@@ -84,5 +84,5 @@ the rule cannot apply. Verify the actual response headers after hosting cutover.
 fails on all reported severities. `scripts/scan-source-secrets.py` scans tracked
 text with redacted output, excluding environment files and binaries, not history.
 `scripts/check-external-links.py` performs a bounded external crawl and treats
-blocked destinations as failures needing review, rather than claiming them safe.
+401/403/429 responses as unverified warnings requiring review, rather than claiming them safe. Definite errors and HTTPS downgrades fail CI.
 No form handler, payment or store setup is added by these changes.
