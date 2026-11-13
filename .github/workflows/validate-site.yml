@@ -42,6 +42,9 @@ jobs:
           python scripts/build-seo.py
           python scripts/test-seo.py
 
+      - name: Check skip links and landmarks
+        run: python scripts/render-navigation.py --check
+
       - name: Validate static site structure
         run: python scripts/validate-site.py
 

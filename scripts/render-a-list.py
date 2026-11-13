@@ -6,6 +6,8 @@ local benchmark snapshot.
 
 from __future__ import annotations
 
+from navigation import ensure_navigation
+
 import argparse
 import importlib.util
 import json
