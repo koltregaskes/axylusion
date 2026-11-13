@@ -13,6 +13,7 @@ from datetime import datetime
 from html import escape
 from pathlib import Path
 from typing import Any
+from seo import enhance_html
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
@@ -534,7 +535,7 @@ def build_outputs(snapshot: dict[str, Any]) -> dict[Path, str]:
     outputs: dict[Path, str] = {OVERVIEW_PATH: render_cinematic_overview(snapshot)}
     for category in snapshot.get("categories", []):
         outputs[DETAILS_DIR / detail_filename(category["slug"])] = render_detail_page(category)
-    return outputs
+    return {path: enhance_html(html, path.relative_to(PROJECT_DIR).as_posix()) for path, html in outputs.items()}
 
 
 def main() -> int:

@@ -16,6 +16,7 @@ from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
 from urllib.parse import urlparse
+from seo import enhance_html, gallery_images
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -116,7 +117,7 @@ def image_source(item: dict) -> str:
             return source
         if source and not parsed.scheme and not parsed.netloc and not source.startswith("//"):
             return source
-    return ""
+    return gallery_images().get(str(item.get("id")), "")
 
 
 def frame_style(item: dict, with_image: bool = True) -> str:
@@ -357,7 +358,7 @@ def page_shell(path: str, title: str, description: str, active: str, body: str, 
     prefix = "../" if path.startswith("a-list/") else ""
     graph = {"@context": "https://schema.org", "@graph": base_schema() + (schema or [])}
     canonical = page_url(path)
-    return f"""<!doctype html>
+    return enhance_html(f"""<!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
@@ -392,7 +393,7 @@ def page_shell(path: str, title: str, description: str, active: str, body: str, 
   </div>
 </body>
 </html>
-"""
+""", path)
 
 
 def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:

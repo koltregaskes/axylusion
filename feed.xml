@@ -1,0 +1,1179 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Axy Lusion news and digests</title>
+    <link>https://axylusion.com/news.html</link>
+    <description>Creative AI news: image, video, music, audio and tools.</description>
+    <language>en-gb</language>
+    <atom:link href="https://axylusion.com/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Creative AI digest: 2026-11-12</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-12.md</link>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Runway says Praxis-1 is out with open weights for robot control: https://www.digg.com/ai/ypm05vgl
+Pika and Runway say Seedance 2.5 is ready for its 4K close-up: https://www.digg.com/ai/9xw3vsww</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-12.md</guid>
+    </item>
+    <item>
+      <title>Runway says Praxis-1 is out with open weights for robot control</title>
+      <link>https://www.digg.com/ai/ypm05vgl</link>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Digg AI</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://www.digg.com/ai/ypm05vgl</guid>
+    </item>
+    <item>
+      <title>Pika and Runway say Seedance 2.5 is ready for its 4K close-up</title>
+      <link>https://www.digg.com/ai/9xw3vsww</link>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Digg AI</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://www.digg.com/ai/9xw3vsww</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-11-11</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-11.md</link>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <description>ElevenLabs announces new Scribe models for audio that won’t behave: https://www.digg.com/ai/14fby5bx
+Pika touts Seedream 5.5 in Image Studio, with layers to spare: https://www.digg.com/ai/maf5kqs8</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-11.md</guid>
+    </item>
+    <item>
+      <title>ElevenLabs announces new Scribe models for audio that won’t behave</title>
+      <link>https://www.digg.com/ai/14fby5bx</link>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Digg AI</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://www.digg.com/ai/14fby5bx</guid>
+    </item>
+    <item>
+      <title>Pika touts Seedream 5.5 in Image Studio, with layers to spare</title>
+      <link>https://www.digg.com/ai/maf5kqs8</link>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Digg AI</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://www.digg.com/ai/maf5kqs8</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-11-10</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-10.md</link>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
+      <description>ElevenLabs announces ElevenAgents Campaign Manager for outbound campaigns: https://www.digg.com/ai/dv5c2u2t</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-10.md</guid>
+    </item>
+    <item>
+      <title>ElevenLabs announces ElevenAgents Campaign Manager for outbound campaigns</title>
+      <link>https://www.digg.com/ai/dv5c2u2t</link>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Digg AI</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://www.digg.com/ai/dv5c2u2t</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-11-08</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-08.md</link>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Eminem’s publisher sues Suno over alleged use of 269 songs in AI training: https://superpowerdaily.com/posts/eminem-s-publisher-sues-suno-over-alleged-use-of-269-songs-in-ai-training
+Elvis Presley’s rights owners sue Suno over alleged AI voice cloning: https://superpowerdaily.com/posts/elvis-presley-s-rights-owners-sue-suno-over-alleged-ai-voice-cloning</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-08.md</guid>
+    </item>
+    <item>
+      <title>Eminem’s publisher sues Suno over alleged use of 269 songs in AI training</title>
+      <link>https://superpowerdaily.com/posts/eminem-s-publisher-sues-suno-over-alleged-use-of-269-songs-in-ai-training</link>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/eminem-s-publisher-sues-suno-over-alleged-use-of-269-songs-in-ai-training</guid>
+    </item>
+    <item>
+      <title>Elvis Presley’s rights owners sue Suno over alleged AI voice cloning</title>
+      <link>https://superpowerdaily.com/posts/elvis-presley-s-rights-owners-sue-suno-over-alleged-ai-voice-cloning</link>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/elvis-presley-s-rights-owners-sue-suno-over-alleged-ai-voice-cloning</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-11-07</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-07.md</link>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 +0000</pubDate>
+      <description>The Cat in the Hat review – Bill Hader brings plenty but this animated rework is a mess: https://www.theguardian.com/film/2026/nov/06/cat-in-the-hat-movie-review</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-07.md</guid>
+    </item>
+    <item>
+      <title>The Cat in the Hat review – Bill Hader brings plenty but this animated rework is a mess</title>
+      <link>https://www.theguardian.com/film/2026/nov/06/cat-in-the-hat-movie-review</link>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 +0000</pubDate>
+      <description>The Guardian (Culture)</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://www.theguardian.com/film/2026/nov/06/cat-in-the-hat-movie-review</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-11-06</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-06.md</link>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+      <description>ElevenLabs now lets users publish AI-generated music directly on SoundCloud: https://techcrunch.com/2026/11/05/elevenlabs-now-lets-users-publish-ai-generated-music-directly-on-soundcloud/
+The Cat in the Hat review – Bill Hader brings plenty but this animated rework is a mess: https://www.theguardian.com/film/2026/nov/06/cat-in-the-hat-movie-review</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-06.md</guid>
+    </item>
+    <item>
+      <title>ElevenLabs now lets users publish AI-generated music directly on SoundCloud</title>
+      <link>https://techcrunch.com/2026/11/05/elevenlabs-now-lets-users-publish-ai-generated-music-directly-on-soundcloud/</link>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+      <description>TechCrunch AI</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://techcrunch.com/2026/11/05/elevenlabs-now-lets-users-publish-ai-generated-music-directly-on-soundcloud/</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-11-05</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-05.md</link>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+      <description>A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.: https://huggingface.co/blog/phonon-tts
+Atmee v2 brings real-time avatars to AI video calls: https://www.digg.com/ai/ir5abc25
+ElevenLabs now lets users publish AI-generated music directly on SoundCloud: https://techcrunch.com/2026/11/05/elevenlabs-now-lets-users-publish-ai-generated-music-directly-on-soundcloud/
+Show HN: A decent text-to-image model trained for ~$20K (Apache 2.0 Weights): https://www.linum.ai/field-notes/pjit-21k</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-05.md</guid>
+    </item>
+    <item>
+      <title>A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.</title>
+      <link>https://huggingface.co/blog/phonon-tts</link>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Hugging Face Blog</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://huggingface.co/blog/phonon-tts</guid>
+    </item>
+    <item>
+      <title>Atmee v2 brings real-time avatars to AI video calls</title>
+      <link>https://www.digg.com/ai/ir5abc25</link>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Digg AI</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://www.digg.com/ai/ir5abc25</guid>
+    </item>
+    <item>
+      <title>Show HN: A decent text-to-image model trained for ~$20K (Apache 2.0 Weights)</title>
+      <link>https://www.linum.ai/field-notes/pjit-21k</link>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Hacker News</description>
+      <category>Image</category>
+      <guid isPermaLink="true">https://www.linum.ai/field-notes/pjit-21k</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-31</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-31.md</link>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Runway launches App Studio to turn creative workflows into shareable no-code apps: https://superpowerdaily.com/posts/runway-launches-app-studio-to-turn-creative-workflows-into-shareable-no-code-apps
+Turing TTS measures how often AI speech is mistaken for human speech: https://www.digg.com/ai/m0fwzf3y
+ElevenLabs sets November 11 New York summit with Jensen Huang on speaker list: https://superpowerdaily.com/posts/elevenlabs-sets-november-11-new-york-summit-with-jensen-huang-on-speaker-list</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-31.md</guid>
+    </item>
+    <item>
+      <title>Runway launches App Studio to turn creative workflows into shareable no-code apps</title>
+      <link>https://superpowerdaily.com/posts/runway-launches-app-studio-to-turn-creative-workflows-into-shareable-no-code-apps</link>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/runway-launches-app-studio-to-turn-creative-workflows-into-shareable-no-code-apps</guid>
+    </item>
+    <item>
+      <title>Turing TTS measures how often AI speech is mistaken for human speech</title>
+      <link>https://www.digg.com/ai/m0fwzf3y</link>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Digg AI</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://www.digg.com/ai/m0fwzf3y</guid>
+    </item>
+    <item>
+      <title>ElevenLabs sets November 11 New York summit with Jensen Huang on speaker list</title>
+      <link>https://superpowerdaily.com/posts/elevenlabs-sets-november-11-new-york-summit-with-jensen-huang-on-speaker-list</link>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/elevenlabs-sets-november-11-new-york-summit-with-jensen-huang-on-speaker-list</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-30</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-30.md</link>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Deepgram is acquiring Daily, pledging to keep its voice AI framework open: https://superpowerdaily.com/posts/deepgram-is-acquiring-daily-pledging-to-keep-its-voice-ai-framework-open
+Pika launches H3 Flex, an open-weight video model built on MiniMax H3: https://www.digg.com/ai/aa83tsqk
+Granola crunches up a dictation feature to compete with Wispr: https://techcrunch.com/2026/10/29/granola-crunches-up-a-dictation-feature-to-compete-with-wispr/
+Pika releases open-weight video model with six-step generation and synchronized audio: https://superpowerdaily.com/posts/pika-releases-open-weight-video-model-with-six-step-generation-and-synchronized-audio
+Granola adds Mac dictation, signaling a bigger fight in voice AI productivity: https://superintelligencenews.com/applications/voice-ai-granola-mac-dictation/
+​‘He buckled. I could hear his bass ringing out ...’ The luminous rise and tragic end of US alt heroes Morphine: https://www.theguardian.com/music/2026/oct/29/morphine-mark-sandman-cocoon-partisan</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-30.md</guid>
+    </item>
+    <item>
+      <title>Deepgram is acquiring Daily, pledging to keep its voice AI framework open</title>
+      <link>https://superpowerdaily.com/posts/deepgram-is-acquiring-daily-pledging-to-keep-its-voice-ai-framework-open</link>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/deepgram-is-acquiring-daily-pledging-to-keep-its-voice-ai-framework-open</guid>
+    </item>
+    <item>
+      <title>Pika launches H3 Flex, an open-weight video model built on MiniMax H3</title>
+      <link>https://www.digg.com/ai/aa83tsqk</link>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Digg AI</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://www.digg.com/ai/aa83tsqk</guid>
+    </item>
+    <item>
+      <title>Granola crunches up a dictation feature to compete with Wispr</title>
+      <link>https://techcrunch.com/2026/10/29/granola-crunches-up-a-dictation-feature-to-compete-with-wispr/</link>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <description>TechCrunch AI</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://techcrunch.com/2026/10/29/granola-crunches-up-a-dictation-feature-to-compete-with-wispr/</guid>
+    </item>
+    <item>
+      <title>Pika releases open-weight video model with six-step generation and synchronized audio</title>
+      <link>https://superpowerdaily.com/posts/pika-releases-open-weight-video-model-with-six-step-generation-and-synchronized-audio</link>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/pika-releases-open-weight-video-model-with-six-step-generation-and-synchronized-audio</guid>
+    </item>
+    <item>
+      <title>Granola adds Mac dictation, signaling a bigger fight in voice AI productivity</title>
+      <link>https://superintelligencenews.com/applications/voice-ai-granola-mac-dictation/</link>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superintelligence Newsletter</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superintelligencenews.com/applications/voice-ai-granola-mac-dictation/</guid>
+    </item>
+    <item>
+      <title>​‘He buckled. I could hear his bass ringing out ...’ The luminous rise and tragic end of US alt heroes Morphine</title>
+      <link>https://www.theguardian.com/music/2026/oct/29/morphine-mark-sandman-cocoon-partisan</link>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <description>The Guardian (Culture)</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://www.theguardian.com/music/2026/oct/29/morphine-mark-sandman-cocoon-partisan</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-29</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-29.md</link>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Prime Video releases AI-generated drama Castle Walls globally: https://superpowerdaily.com/posts/prime-video-releases-ai-generated-drama-castle-walls-globally</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-29.md</guid>
+    </item>
+    <item>
+      <title>Prime Video releases AI-generated drama Castle Walls globally</title>
+      <link>https://superpowerdaily.com/posts/prime-video-releases-ai-generated-drama-castle-walls-globally</link>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/prime-video-releases-ai-generated-drama-castle-walls-globally</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-28</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-28.md</link>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
+      <description>A painting went missing 20 years ago. Police tracked it down with the help of AI Art theft is a global problem and police forces are struggling to keep on top of it. Now they are turning to AI software that snoop out the most cleverly hidden artworks. See more: https://www.bbc.com/future/article/20261027-this-painting-went-missing-20-years-ago-police-tracked-it-down-with-the-help-of-ai
+Prime Video releases AI-generated drama Castle Walls globally: https://superpowerdaily.com/posts/prime-video-releases-ai-generated-drama-castle-walls-globally
+Vercel adds 14 ElevenLabs audio models to AI Gateway with single-key access: https://superpowerdaily.com/posts/vercel-adds-14-elevenlabs-audio-models-to-ai-gateway-with-single-key-access</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-28.md</guid>
+    </item>
+    <item>
+      <title>A painting went missing 20 years ago. Police tracked it down with the help of AI Art theft is a global problem and police forces are struggling to keep on top of it. Now they are turning to AI software that snoop out the most cleverly hidden artworks. See more</title>
+      <link>https://www.bbc.com/future/article/20261027-this-painting-went-missing-20-years-ago-police-tracked-it-down-with-the-help-of-ai</link>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
+      <description>BBC AI</description>
+      <category>Image</category>
+      <guid isPermaLink="true">https://www.bbc.com/future/article/20261027-this-painting-went-missing-20-years-ago-police-tracked-it-down-with-the-help-of-ai</guid>
+    </item>
+    <item>
+      <title>Vercel adds 14 ElevenLabs audio models to AI Gateway with single-key access</title>
+      <link>https://superpowerdaily.com/posts/vercel-adds-14-elevenlabs-audio-models-to-ai-gateway-with-single-key-access</link>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/vercel-adds-14-elevenlabs-audio-models-to-ai-gateway-with-single-key-access</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-26</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-26.md</link>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Grok Imagine releases seven-minute AI Odyssey episode after Musk’s feature-film pledge: https://superpowerdaily.com/posts/grok-imagine-releases-seven-minute-ai-odyssey-episode-after-musk-s-feature-film-pledge</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-26.md</guid>
+    </item>
+    <item>
+      <title>Grok Imagine releases seven-minute AI Odyssey episode after Musk’s feature-film pledge</title>
+      <link>https://superpowerdaily.com/posts/grok-imagine-releases-seven-minute-ai-odyssey-episode-after-musk-s-feature-film-pledge</link>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/grok-imagine-releases-seven-minute-ai-odyssey-episode-after-musk-s-feature-film-pledge</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-25</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-25.md</link>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
+      <description>These clever apps show off the iPhone Duo’s potential: https://techcrunch.com/2026/10/24/these-clever-apps-show-off-the-iphone-duos-potential/</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-25.md</guid>
+    </item>
+    <item>
+      <title>These clever apps show off the iPhone Duo’s potential</title>
+      <link>https://techcrunch.com/2026/10/24/these-clever-apps-show-off-the-iphone-duos-potential/</link>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
+      <description>TechCrunch AI</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://techcrunch.com/2026/10/24/these-clever-apps-show-off-the-iphone-duos-potential/</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-24</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-24.md</link>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Block introduces Dessa, a voice AI it says learned from speech alone: https://superpowerdaily.com/posts/block-introduces-dessa-a-voice-ai-it-says-learned-from-speech-alone
+‘I always think my head will fall off when Traitors turn on each other’: the inside story of the world’s biggest TV show: https://www.theguardian.com/tv-and-radio/2026/oct/23/traitors-bbc-making-of-inside-story-worlds-biggest-tv-show</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-24.md</guid>
+    </item>
+    <item>
+      <title>Block introduces Dessa, a voice AI it says learned from speech alone</title>
+      <link>https://superpowerdaily.com/posts/block-introduces-dessa-a-voice-ai-it-says-learned-from-speech-alone</link>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/block-introduces-dessa-a-voice-ai-it-says-learned-from-speech-alone</guid>
+    </item>
+    <item>
+      <title>‘I always think my head will fall off when Traitors turn on each other’: the inside story of the world’s biggest TV show</title>
+      <link>https://www.theguardian.com/tv-and-radio/2026/oct/23/traitors-bbc-making-of-inside-story-worlds-biggest-tv-show</link>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
+      <description>The Guardian (Culture)</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://www.theguardian.com/tv-and-radio/2026/oct/23/traitors-bbc-making-of-inside-story-worlds-biggest-tv-show</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-23</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-23.md</link>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Canva launches first image model to bring text-aware generation deeper into design workflows: https://superintelligencenews.com/ai-fields/large-language-models/canva-image-generation-model-launch/
+‘I always think my head will fall off when Traitors turn on each other’: the inside story of the world’s biggest TV show: https://www.theguardian.com/tv-and-radio/2026/oct/23/traitors-bbc-making-of-inside-story-worlds-biggest-tv-show</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-23.md</guid>
+    </item>
+    <item>
+      <title>Canva launches first image model to bring text-aware generation deeper into design workflows</title>
+      <link>https://superintelligencenews.com/ai-fields/large-language-models/canva-image-generation-model-launch/</link>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superintelligence Newsletter</description>
+      <category>Image</category>
+      <guid isPermaLink="true">https://superintelligencenews.com/ai-fields/large-language-models/canva-image-generation-model-launch/</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-22</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-22.md</link>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Hermes Agent adds an official Meshy plugin for 3D model creation: https://www.digg.com/ai/yqsr0ekf</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-22.md</guid>
+    </item>
+    <item>
+      <title>Hermes Agent adds an official Meshy plugin for 3D model creation</title>
+      <link>https://www.digg.com/ai/yqsr0ekf</link>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Digg AI</description>
+      <category>3D</category>
+      <guid isPermaLink="true">https://www.digg.com/ai/yqsr0ekf</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-21</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-21.md</link>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
+      <description>The dangers of letting tech billionaires shape our world: https://www.theguardian.com/global/2026/oct/19/musk-ukraine-ai-music
+Spotify Says It Has Removed 50 Million AI Spam Tracks From Recommendations: https://superintelligencenews.com/applications/spotify-ai-music-spam-removal/
+Satirical AI video of Paris protests mirrors real-life tourist experiences: https://www.aljazeera.com/video/newsfeed/2026/10/20/satirical-ai-video-of-paris-protests-mirrors-real-life-tourist-experiences?traffic_source=rss</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-21.md</guid>
+    </item>
+    <item>
+      <title>The dangers of letting tech billionaires shape our world</title>
+      <link>https://www.theguardian.com/global/2026/oct/19/musk-ukraine-ai-music</link>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
+      <description>The Guardian Tech</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://www.theguardian.com/global/2026/oct/19/musk-ukraine-ai-music</guid>
+    </item>
+    <item>
+      <title>Spotify Says It Has Removed 50 Million AI Spam Tracks From Recommendations</title>
+      <link>https://superintelligencenews.com/applications/spotify-ai-music-spam-removal/</link>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superintelligence Newsletter</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superintelligencenews.com/applications/spotify-ai-music-spam-removal/</guid>
+    </item>
+    <item>
+      <title>Satirical AI video of Paris protests mirrors real-life tourist experiences</title>
+      <link>https://www.aljazeera.com/video/newsfeed/2026/10/20/satirical-ai-video-of-paris-protests-mirrors-real-life-tourist-experiences?traffic_source=rss</link>
+      <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Al Jazeera</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://www.aljazeera.com/video/newsfeed/2026/10/20/satirical-ai-video-of-paris-protests-mirrors-real-life-tourist-experiences?traffic_source=rss</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-20</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-20.md</link>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+      <description>fal launches FLUX 3 Max, claiming 22× faster AI video generation than Seedance 2.5: https://venturebeat.com/technology/fal-launches-flux-3-max-claiming-22-faster-ai-video-generation-than-seedance-2-5
+The dangers of letting tech billionaires shape our world: https://www.theguardian.com/global/2026/oct/19/musk-ukraine-ai-music
+Ant Group's Ming-3.0-tts reportedly leads open-weight Controlled Voice test, ties for first in pronunciation: https://www.digg.com/ai/tqblzi7v
+Sheriff says scammers cloned Florida captain’s voice in police impersonation scheme: https://superpowerdaily.com/posts/sheriff-says-scammers-cloned-florida-captain-s-voice-in-police-impersonation-scheme
+Spotify Says It Has Removed 50 Million AI Spam Tracks From Recommendations: https://superintelligencenews.com/applications/spotify-ai-music-spam-removal/
+Satirical AI video of Paris protests mirrors real-life tourist experiences: https://www.aljazeera.com/video/newsfeed/2026/10/20/satirical-ai-video-of-paris-protests-mirrors-real-life-tourist-experiences?traffic_source=rss</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-20.md</guid>
+    </item>
+    <item>
+      <title>fal launches FLUX 3 Max, claiming 22× faster AI video generation than Seedance 2.5</title>
+      <link>https://venturebeat.com/technology/fal-launches-flux-3-max-claiming-22-faster-ai-video-generation-than-seedance-2-5</link>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+      <description>VentureBeat AI</description>
+      <category>Image</category>
+      <guid isPermaLink="true">https://venturebeat.com/technology/fal-launches-flux-3-max-claiming-22-faster-ai-video-generation-than-seedance-2-5</guid>
+    </item>
+    <item>
+      <title>Ant Group's Ming-3.0-tts reportedly leads open-weight Controlled Voice test, ties for first in pronunciation</title>
+      <link>https://www.digg.com/ai/tqblzi7v</link>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Digg AI</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://www.digg.com/ai/tqblzi7v</guid>
+    </item>
+    <item>
+      <title>Sheriff says scammers cloned Florida captain’s voice in police impersonation scheme</title>
+      <link>https://superpowerdaily.com/posts/sheriff-says-scammers-cloned-florida-captain-s-voice-in-police-impersonation-scheme</link>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/sheriff-says-scammers-cloned-florida-captain-s-voice-in-police-impersonation-scheme</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-19</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-19.md</link>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Sheriff says scammers cloned Florida captain’s voice in police impersonation scheme: https://superpowerdaily.com/posts/sheriff-says-scammers-cloned-florida-captain-s-voice-in-police-impersonation-scheme</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-19.md</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-17</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-17.md</link>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
+      <description>ElevenLabs adds video-matched music and sound effects with editable tracks: https://superpowerdaily.com/posts/elevenlabs-adds-video-matched-music-and-sound-effects-with-editable-tracks
+Pennsylvania authorities charge New Jersey deputy attorney general over AI child-abuse images: https://superpowerdaily.com/posts/pennsylvania-authorities-charge-new-jersey-deputy-attorney-general-over-ai-child-abuse-images
+NTT Docomo Business trials voice AI for older residents facing winter isolation: https://superpowerdaily.com/posts/ntt-docomo-business-trials-voice-ai-for-older-residents-facing-winter-isolation
+FLUX 3 Image Klein: https://bfl.ai/blog/flux-3-image-klein</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-17.md</guid>
+    </item>
+    <item>
+      <title>ElevenLabs adds video-matched music and sound effects with editable tracks</title>
+      <link>https://superpowerdaily.com/posts/elevenlabs-adds-video-matched-music-and-sound-effects-with-editable-tracks</link>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/elevenlabs-adds-video-matched-music-and-sound-effects-with-editable-tracks</guid>
+    </item>
+    <item>
+      <title>Pennsylvania authorities charge New Jersey deputy attorney general over AI child-abuse images</title>
+      <link>https://superpowerdaily.com/posts/pennsylvania-authorities-charge-new-jersey-deputy-attorney-general-over-ai-child-abuse-images</link>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Image</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/pennsylvania-authorities-charge-new-jersey-deputy-attorney-general-over-ai-child-abuse-images</guid>
+    </item>
+    <item>
+      <title>NTT Docomo Business trials voice AI for older residents facing winter isolation</title>
+      <link>https://superpowerdaily.com/posts/ntt-docomo-business-trials-voice-ai-for-older-residents-facing-winter-isolation</link>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/ntt-docomo-business-trials-voice-ai-for-older-residents-facing-winter-isolation</guid>
+    </item>
+    <item>
+      <title>FLUX 3 Image Klein</title>
+      <link>https://bfl.ai/blog/flux-3-image-klein</link>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Hacker News</description>
+      <category>Image</category>
+      <guid isPermaLink="true">https://bfl.ai/blog/flux-3-image-klein</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-16</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-16.md</link>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
+      <description>NTT Docomo Business trials voice AI for older residents facing winter isolation: https://superpowerdaily.com/posts/ntt-docomo-business-trials-voice-ai-for-older-residents-facing-winter-isolation
+Black Forest Labs opens FLUX 3 Image Klein weights, with free commercial use limited to smaller businesses: https://venturebeat.com/technology/black-forest-labs-opens-flux-3-image-klein-weights-with-free-commercial-use-limited-to-smaller-businesses</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-16.md</guid>
+    </item>
+    <item>
+      <title>Black Forest Labs opens FLUX 3 Image Klein weights, with free commercial use limited to smaller businesses</title>
+      <link>https://venturebeat.com/technology/black-forest-labs-opens-flux-3-image-klein-weights-with-free-commercial-use-limited-to-smaller-businesses</link>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
+      <description>VentureBeat AI</description>
+      <category>Image</category>
+      <guid isPermaLink="true">https://venturebeat.com/technology/black-forest-labs-opens-flux-3-image-klein-weights-with-free-commercial-use-limited-to-smaller-businesses</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-15</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-15.md</link>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <description>ArtCraft releases 13 free, AI-assisted alternatives to Adobe and Microsoft apps: https://superpowerdaily.com/posts/artcraft-releases-13-free-ai-assisted-alternatives-to-adobe-and-microsoft-apps
+Welcome FLUX.3 Image Klein in Diffusers: https://huggingface.co/blog/flux-3
+YouTube Music adds AI labels as streaming platforms race to disclose synthetic songs: https://superintelligencenews.com/ai-fields/large-language-models/ai-music-labels-youtube-music/
+The Floating World by Ben Eastham review – a compelling debut of art’s relation to money and power: https://www.theguardian.com/books/2026/oct/15/the-floating-world-by-ben-eastham-review-a-compelling-debut-of-arts-relation-to-money-and-power
+Black Forest Labs opens FLUX 3 Image Klein weights, with free commercial use limited to smaller businesses: https://venturebeat.com/technology/black-forest-labs-opens-flux-3-image-klein-weights-with-free-commercial-use-limited-to-smaller-businesses
+‘Don’t do this!’ Why Paul McCartney cares about looking shorter than John Lennon in Sam Mendes’ Beatles films: https://www.theguardian.com/film/2026/oct/15/dont-do-this-why-paul-mccartney-cares-about-looking-shorter-than-john-lennon-in-sam-mendes-beatles-films</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-15.md</guid>
+    </item>
+    <item>
+      <title>ArtCraft releases 13 free, AI-assisted alternatives to Adobe and Microsoft apps</title>
+      <link>https://superpowerdaily.com/posts/artcraft-releases-13-free-ai-assisted-alternatives-to-adobe-and-microsoft-apps</link>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/artcraft-releases-13-free-ai-assisted-alternatives-to-adobe-and-microsoft-apps</guid>
+    </item>
+    <item>
+      <title>Welcome FLUX.3 Image Klein in Diffusers</title>
+      <link>https://huggingface.co/blog/flux-3</link>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Hugging Face Blog</description>
+      <category>Image</category>
+      <guid isPermaLink="true">https://huggingface.co/blog/flux-3</guid>
+    </item>
+    <item>
+      <title>YouTube Music adds AI labels as streaming platforms race to disclose synthetic songs</title>
+      <link>https://superintelligencenews.com/ai-fields/large-language-models/ai-music-labels-youtube-music/</link>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superintelligence Newsletter</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superintelligencenews.com/ai-fields/large-language-models/ai-music-labels-youtube-music/</guid>
+    </item>
+    <item>
+      <title>The Floating World by Ben Eastham review – a compelling debut of art’s relation to money and power</title>
+      <link>https://www.theguardian.com/books/2026/oct/15/the-floating-world-by-ben-eastham-review-a-compelling-debut-of-arts-relation-to-money-and-power</link>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <description>The Guardian (Culture)</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://www.theguardian.com/books/2026/oct/15/the-floating-world-by-ben-eastham-review-a-compelling-debut-of-arts-relation-to-money-and-power</guid>
+    </item>
+    <item>
+      <title>‘Don’t do this!’ Why Paul McCartney cares about looking shorter than John Lennon in Sam Mendes’ Beatles films</title>
+      <link>https://www.theguardian.com/film/2026/oct/15/dont-do-this-why-paul-mccartney-cares-about-looking-shorter-than-john-lennon-in-sam-mendes-beatles-films</link>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <description>The Guardian (Culture)</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://www.theguardian.com/film/2026/oct/15/dont-do-this-why-paul-mccartney-cares-about-looking-shorter-than-john-lennon-in-sam-mendes-beatles-films</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-14</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-14.md</link>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+      <description>ArtCraft releases 13 free, AI-assisted alternatives to Adobe and Microsoft apps: https://superpowerdaily.com/posts/artcraft-releases-13-free-ai-assisted-alternatives-to-adobe-and-microsoft-apps</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-14.md</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-09</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-09.md</link>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Navy and Shield AI Commit Another $300 Million to AI-Piloted X-BAT Aircraft: https://superpowerdaily.com/posts/navy-and-shield-ai-commit-another-300-million-to-ai-piloted-x-bat-aircraft
+One Nation Reportedly Screens AI Video With Racist Tropes at Victorian Campaign Launch: https://superpowerdaily.com/posts/one-nation-reportedly-screens-ai-video-with-racist-tropes-at-victorian-campaign-launch
+One Nation’s AI video is vile and tired – but the ensloppification of Australian politics doesn’t stop there: https://www.theguardian.com/australia-news/2026/oct/09/one-nations-ai-video-is-vile-and-tired-but-the-ensloppification-of-australian-politics-doesnt-stop-there-ntwnfb</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-09.md</guid>
+    </item>
+    <item>
+      <title>Navy and Shield AI Commit Another $300 Million to AI-Piloted X-BAT Aircraft</title>
+      <link>https://superpowerdaily.com/posts/navy-and-shield-ai-commit-another-300-million-to-ai-piloted-x-bat-aircraft</link>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/navy-and-shield-ai-commit-another-300-million-to-ai-piloted-x-bat-aircraft</guid>
+    </item>
+    <item>
+      <title>One Nation Reportedly Screens AI Video With Racist Tropes at Victorian Campaign Launch</title>
+      <link>https://superpowerdaily.com/posts/one-nation-reportedly-screens-ai-video-with-racist-tropes-at-victorian-campaign-launch</link>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/one-nation-reportedly-screens-ai-video-with-racist-tropes-at-victorian-campaign-launch</guid>
+    </item>
+    <item>
+      <title>One Nation’s AI video is vile and tired – but the ensloppification of Australian politics doesn’t stop there</title>
+      <link>https://www.theguardian.com/australia-news/2026/oct/09/one-nations-ai-video-is-vile-and-tired-but-the-ensloppification-of-australian-politics-doesnt-stop-there-ntwnfb</link>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
+      <description>The Guardian (World)</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://www.theguardian.com/australia-news/2026/oct/09/one-nations-ai-video-is-vile-and-tired-but-the-ensloppification-of-australian-politics-doesnt-stop-there-ntwnfb</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-08</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-08.md</link>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Navy and Shield AI Commit Another $300 Million to AI-Piloted X-BAT Aircraft: https://superpowerdaily.com/posts/navy-and-shield-ai-commit-another-300-million-to-ai-piloted-x-bat-aircraft
+One Nation Reportedly Screens AI Video With Racist Tropes at Victorian Campaign Launch: https://superpowerdaily.com/posts/one-nation-reportedly-screens-ai-video-with-racist-tropes-at-victorian-campaign-launch
+One Nation’s AI video is vile and tired – but the ensloppification of Australian politics doesn’t stop there: https://www.theguardian.com/australia-news/2026/oct/09/one-nations-ai-video-is-vile-and-tired-but-the-ensloppification-of-australian-politics-doesnt-stop-there-ntwnfb</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-08.md</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-07</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-07.md</link>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Ex-Ramp engineers raise $20M for platform Melius after scrapping their first product: https://techcrunch.com/2026/10/06/ex-ramp-engineers-raise-20m-for-platform-melius-after-scrapping-their-first-product/
+King Charles and Elton John in the audience for Apple music workshop: https://www.bbc.co.uk/news/articles/c6398n8x13zyo?at_medium=RSS&amp;at_campaign=rss</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-07.md</guid>
+    </item>
+    <item>
+      <title>Ex-Ramp engineers raise $20M for platform Melius after scrapping their first product</title>
+      <link>https://techcrunch.com/2026/10/06/ex-ramp-engineers-raise-20m-for-platform-melius-after-scrapping-their-first-product/</link>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0000</pubDate>
+      <description>TechCrunch AI</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://techcrunch.com/2026/10/06/ex-ramp-engineers-raise-20m-for-platform-melius-after-scrapping-their-first-product/</guid>
+    </item>
+    <item>
+      <title>King Charles and Elton John in the audience for Apple music workshop</title>
+      <link>https://www.bbc.co.uk/news/articles/c6398n8x13zyo?at_medium=RSS&amp;at_campaign=rss</link>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0000</pubDate>
+      <description>BBC Entertainment &amp; Arts</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://www.bbc.co.uk/news/articles/c6398n8x13zyo?at_medium=RSS&amp;at_campaign=rss</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-06</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-06.md</link>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Melius Raises $25 Million to Automate Creative Production With AI Agents: https://superpowerdaily.com/posts/melius-raises-25-million-to-automate-creative-production-with-ai-agents</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-06.md</guid>
+    </item>
+    <item>
+      <title>Melius Raises $25 Million to Automate Creative Production With AI Agents</title>
+      <link>https://superpowerdaily.com/posts/melius-raises-25-million-to-automate-creative-production-with-ai-agents</link>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/melius-raises-25-million-to-automate-creative-production-with-ai-agents</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-03</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-03.md</link>
+      <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
+      <description>US road rage killer's sentence quashed because AI video of victim was shown in court: https://www.bbc.co.uk/news/articles/cwgkvygg5nzvo?at_medium=RSS&amp;at_campaign=rss</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-03.md</guid>
+    </item>
+    <item>
+      <title>US road rage killer's sentence quashed because AI video of victim was shown in court</title>
+      <link>https://www.bbc.co.uk/news/articles/cwgkvygg5nzvo?at_medium=RSS&amp;at_campaign=rss</link>
+      <pubDate>Sat, 03 Oct 2026 00:00:00 +0000</pubDate>
+      <description>BBC News (World)</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://www.bbc.co.uk/news/articles/cwgkvygg5nzvo?at_medium=RSS&amp;at_campaign=rss</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-02</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-02.md</link>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Suno Opens Speech Beta to Generate Spoken Words and Music in One Track: https://superpowerdaily.com/posts/suno-opens-speech-beta-to-generate-spoken-words-and-music-in-one-track
+FLUX 3 Image: https://bfl.ai/models/flux-3-image</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-02.md</guid>
+    </item>
+    <item>
+      <title>Suno Opens Speech Beta to Generate Spoken Words and Music in One Track</title>
+      <link>https://superpowerdaily.com/posts/suno-opens-speech-beta-to-generate-spoken-words-and-music-in-one-track</link>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/suno-opens-speech-beta-to-generate-spoken-words-and-music-in-one-track</guid>
+    </item>
+    <item>
+      <title>FLUX 3 Image</title>
+      <link>https://bfl.ai/models/flux-3-image</link>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Hacker News</description>
+      <category>Image</category>
+      <guid isPermaLink="true">https://bfl.ai/models/flux-3-image</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-10-01</title>
+      <link>https://axylusion.com/news-digests/digest-2026-10-01.md</link>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Instagram rolls out an AI video assistant for creators: https://techcrunch.com/2026/09/30/instagram-rolls-out-an-ai-video-assistant-for-creators/
+Runway Brings Video Pretraining to Robot Control With Praxis-1: https://superpowerdaily.com/posts/runway-brings-video-pretraining-to-robot-control-with-praxis-1
+Google figures out how to watermark AI-designed proteins: https://arstechnica.com/science/2026/09/google-figures-out-how-to-watermark-ai-designed-proteins/
+Instagram Bets on AI Coaching to Help Creators Game the Algorithm: https://superintelligencenews.com/applications/instagram-ai-creative-assistant-creators/</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-10-01.md</guid>
+    </item>
+    <item>
+      <title>Instagram rolls out an AI video assistant for creators</title>
+      <link>https://techcrunch.com/2026/09/30/instagram-rolls-out-an-ai-video-assistant-for-creators/</link>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+      <description>TechCrunch AI</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://techcrunch.com/2026/09/30/instagram-rolls-out-an-ai-video-assistant-for-creators/</guid>
+    </item>
+    <item>
+      <title>Runway Brings Video Pretraining to Robot Control With Praxis-1</title>
+      <link>https://superpowerdaily.com/posts/runway-brings-video-pretraining-to-robot-control-with-praxis-1</link>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/runway-brings-video-pretraining-to-robot-control-with-praxis-1</guid>
+    </item>
+    <item>
+      <title>Google figures out how to watermark AI-designed proteins</title>
+      <link>https://arstechnica.com/science/2026/09/google-figures-out-how-to-watermark-ai-designed-proteins/</link>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Ars Technica Science</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://arstechnica.com/science/2026/09/google-figures-out-how-to-watermark-ai-designed-proteins/</guid>
+    </item>
+    <item>
+      <title>Instagram Bets on AI Coaching to Help Creators Game the Algorithm</title>
+      <link>https://superintelligencenews.com/applications/instagram-ai-creative-assistant-creators/</link>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Superintelligence Newsletter</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://superintelligencenews.com/applications/instagram-ai-creative-assistant-creators/</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-30</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-30.md</link>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Instagram rolls out an AI video assistant for creators: https://techcrunch.com/2026/09/30/instagram-rolls-out-an-ai-video-assistant-for-creators/
+Show HN: A working 3D model of an Enigma machine: https://enigma.design
+Instagram Bets on AI Coaching to Help Creators Game the Algorithm: https://superintelligencenews.com/applications/instagram-ai-creative-assistant-creators/</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-30.md</guid>
+    </item>
+    <item>
+      <title>Show HN: A working 3D model of an Enigma machine</title>
+      <link>https://enigma.design</link>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Hacker News</description>
+      <category>3D</category>
+      <guid isPermaLink="true">https://enigma.design</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-29</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-29.md</link>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate>
+      <description>ElevenLabs’ new v4 speech model supports more expression control and 90 languages: https://techcrunch.com/2026/09/28/elevenlabs-new-v4-speech-model-supports-more-expression-control-and-90-languages/</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-29.md</guid>
+    </item>
+    <item>
+      <title>ElevenLabs’ new v4 speech model supports more expression control and 90 languages</title>
+      <link>https://techcrunch.com/2026/09/28/elevenlabs-new-v4-speech-model-supports-more-expression-control-and-90-languages/</link>
+      <pubDate>Tue, 29 Sep 2026 00:00:00 +0000</pubDate>
+      <description>TechCrunch AI</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://techcrunch.com/2026/09/28/elevenlabs-new-v4-speech-model-supports-more-expression-control-and-90-languages/</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-28</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-28.md</link>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate>
+      <description>ElevenLabs’ new v4 speech model supports more expression control and 90 languages: https://techcrunch.com/2026/09/28/elevenlabs-new-v4-speech-model-supports-more-expression-control-and-90-languages/
+British celebrities beat AI companies lobbying to get free use of their work. They have a warning for Australia: https://www.theguardian.com/australia-news/2026/sep/28/uk-celebrity-warning-for-australia-ai-copyright</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-28.md</guid>
+    </item>
+    <item>
+      <title>British celebrities beat AI companies lobbying to get free use of their work. They have a warning for Australia</title>
+      <link>https://www.theguardian.com/australia-news/2026/sep/28/uk-celebrity-warning-for-australia-ai-copyright</link>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate>
+      <description>The Guardian (World)</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://www.theguardian.com/australia-news/2026/sep/28/uk-celebrity-warning-for-australia-ai-copyright</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-27</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-27.md</link>
+      <pubDate>Sun, 27 Sep 2026 00:00:00 +0000</pubDate>
+      <description>British celebrities beat AI companies lobbying to get free use of their work. They have a warning for Australia: https://www.theguardian.com/australia-news/2026/sep/28/uk-celebrity-warning-for-australia-ai-copyright</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-27.md</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-25</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-25.md</link>
+      <pubDate>Fri, 25 Sep 2026 00:00:00 +0000</pubDate>
+      <description>ElevenLabs’ CEO on margins, IPO timing, and telling customers they’re talking to a bot: https://techcrunch.com/2026/09/24/twenty-minutes-with-the-ceo-of-elevenlabs-now-reportedly-valued-at-22-billion/
+ElevenLabs CEO Says Annual Recurring Revenue Has Reached $600 Million: https://superpowerdaily.com/posts/elevenlabs-ceo-says-annual-recurring-revenue-has-reached-600-million</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-25.md</guid>
+    </item>
+    <item>
+      <title>ElevenLabs’ CEO on margins, IPO timing, and telling customers they’re talking to a bot</title>
+      <link>https://techcrunch.com/2026/09/24/twenty-minutes-with-the-ceo-of-elevenlabs-now-reportedly-valued-at-22-billion/</link>
+      <pubDate>Fri, 25 Sep 2026 00:00:00 +0000</pubDate>
+      <description>TechCrunch AI</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://techcrunch.com/2026/09/24/twenty-minutes-with-the-ceo-of-elevenlabs-now-reportedly-valued-at-22-billion/</guid>
+    </item>
+    <item>
+      <title>ElevenLabs CEO Says Annual Recurring Revenue Has Reached $600 Million</title>
+      <link>https://superpowerdaily.com/posts/elevenlabs-ceo-says-annual-recurring-revenue-has-reached-600-million</link>
+      <pubDate>Fri, 25 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/elevenlabs-ceo-says-annual-recurring-revenue-has-reached-600-million</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-24</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-24.md</link>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+      <description>20 minutes with the CEO of ElevenLabs, now reportedly valued at $22B: https://techcrunch.com/2026/09/24/twenty-minutes-with-the-ceo-of-elevenlabs-now-reportedly-valued-at-22-billion/
+Vogue sent robots down the runway at Vogue World, and people were not impressed: https://techcrunch.com/2026/09/23/vogue-sent-robots-down-the-runway-at-vogue-world-and-people-were-not-impressed/
+YouTube Adds AI Video Feedback and Thumbnail Testing to Studio: https://superpowerdaily.com/posts/youtube-adds-ai-video-feedback-and-thumbnail-testing-to-studio
+YouTube Will Let Viewers Create AI Video Feeds From Written Requests: https://superpowerdaily.com/posts/youtube-will-let-viewers-create-ai-video-feeds-from-written-requests</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-24.md</guid>
+    </item>
+    <item>
+      <title>Vogue sent robots down the runway at Vogue World, and people were not impressed</title>
+      <link>https://techcrunch.com/2026/09/23/vogue-sent-robots-down-the-runway-at-vogue-world-and-people-were-not-impressed/</link>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+      <description>TechCrunch AI</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://techcrunch.com/2026/09/23/vogue-sent-robots-down-the-runway-at-vogue-world-and-people-were-not-impressed/</guid>
+    </item>
+    <item>
+      <title>YouTube Adds AI Video Feedback and Thumbnail Testing to Studio</title>
+      <link>https://superpowerdaily.com/posts/youtube-adds-ai-video-feedback-and-thumbnail-testing-to-studio</link>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/youtube-adds-ai-video-feedback-and-thumbnail-testing-to-studio</guid>
+    </item>
+    <item>
+      <title>YouTube Will Let Viewers Create AI Video Feeds From Written Requests</title>
+      <link>https://superpowerdaily.com/posts/youtube-will-let-viewers-create-ai-video-feeds-from-written-requests</link>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/youtube-will-let-viewers-create-ai-video-feeds-from-written-requests</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-23</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-23.md</link>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
+      <description>TBC Brings Rat-Brain Video AI to Select AWS Customers: https://superpowerdaily.com/posts/tbc-brings-rat-brain-video-ai-to-select-aws-customers
+Google Adds Seven Languages to AI Ad Guidance, Plans Unified Search Ads Report: https://superpowerdaily.com/posts/google-adds-seven-languages-to-ai-ad-guidance-plans-unified-search-ads-report
+YouTube Adds AI Video Feedback and Thumbnail Testing to Studio: https://superpowerdaily.com/posts/youtube-adds-ai-video-feedback-and-thumbnail-testing-to-studio
+YouTube Will Let Viewers Create AI Video Feeds From Written Requests: https://superpowerdaily.com/posts/youtube-will-let-viewers-create-ai-video-feeds-from-written-requests</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-23.md</guid>
+    </item>
+    <item>
+      <title>TBC Brings Rat-Brain Video AI to Select AWS Customers</title>
+      <link>https://superpowerdaily.com/posts/tbc-brings-rat-brain-video-ai-to-select-aws-customers</link>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/tbc-brings-rat-brain-video-ai-to-select-aws-customers</guid>
+    </item>
+    <item>
+      <title>Google Adds Seven Languages to AI Ad Guidance, Plans Unified Search Ads Report</title>
+      <link>https://superpowerdaily.com/posts/google-adds-seven-languages-to-ai-ad-guidance-plans-unified-search-ads-report</link>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/google-adds-seven-languages-to-ai-ad-guidance-plans-unified-search-ads-report</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-22</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-22.md</link>
+      <pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Tencent Releases Hy Image 3.5 Preview With Multi-Round Editing and 4K Output: https://superpowerdaily.com/posts/tencent-releases-hy-image-3-5-preview-with-multi-round-editing-and-4k-output
+TBC Brings Rat-Brain Video AI to Select AWS Customers: https://superpowerdaily.com/posts/tbc-brings-rat-brain-video-ai-to-select-aws-customers
+WIRED Review Finds Memory Limits Apple’s M6 Mac Mini for AI Agents: https://superpowerdaily.com/posts/wired-review-finds-memory-limits-apple-s-m6-mac-mini-for-ai-agents</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-22.md</guid>
+    </item>
+    <item>
+      <title>Tencent Releases Hy Image 3.5 Preview With Multi-Round Editing and 4K Output</title>
+      <link>https://superpowerdaily.com/posts/tencent-releases-hy-image-3-5-preview-with-multi-round-editing-and-4k-output</link>
+      <pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/tencent-releases-hy-image-3-5-preview-with-multi-round-editing-and-4k-output</guid>
+    </item>
+    <item>
+      <title>WIRED Review Finds Memory Limits Apple’s M6 Mac Mini for AI Agents</title>
+      <link>https://superpowerdaily.com/posts/wired-review-finds-memory-limits-apple-s-m6-mac-mini-for-ai-agents</link>
+      <pubDate>Tue, 22 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Image</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/wired-review-finds-memory-limits-apple-s-m6-mac-mini-for-ai-agents</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-21</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-21.md</link>
+      <pubDate>Mon, 21 Sep 2026 00:00:00 +0000</pubDate>
+      <description>WIRED Review Finds Memory Limits Apple’s M6 Mac Mini for AI Agents: https://superpowerdaily.com/posts/wired-review-finds-memory-limits-apple-s-m6-mac-mini-for-ai-agents</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-21.md</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-20</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-20.md</link>
+      <pubDate>Sun, 20 Sep 2026 00:00:00 +0000</pubDate>
+      <description>AI and the Destruction of the Creative Commons: https://www.chesterwisniewski.com/post/2026-09-13-ai-is-destroying-the-creative-commons/</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-20.md</guid>
+    </item>
+    <item>
+      <title>AI and the Destruction of the Creative Commons</title>
+      <link>https://www.chesterwisniewski.com/post/2026-09-13-ai-is-destroying-the-creative-commons/</link>
+      <pubDate>Sun, 20 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Hacker News</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://www.chesterwisniewski.com/post/2026-09-13-ai-is-destroying-the-creative-commons/</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-19</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-19.md</link>
+      <pubDate>Sat, 19 Sep 2026 00:00:00 +0000</pubDate>
+      <description>The Creative Spirit of Who Framed Roger Rabbit: https://simonwillison.net/2026/Sep/18/the-creative-spirit-of-who-framed-roger-rabbit/</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-19.md</guid>
+    </item>
+    <item>
+      <title>The Creative Spirit of Who Framed Roger Rabbit</title>
+      <link>https://simonwillison.net/2026/Sep/18/the-creative-spirit-of-who-framed-roger-rabbit/</link>
+      <pubDate>Sat, 19 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Simon Willison's Blog</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://simonwillison.net/2026/Sep/18/the-creative-spirit-of-who-framed-roger-rabbit/</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-18</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-18.md</link>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
+      <description>The Creative Spirit of Who Framed Roger Rabbit: https://simonwillison.net/2026/Sep/18/the-creative-spirit-of-who-framed-roger-rabbit/</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-18.md</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-17</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-17.md</link>
+      <pubDate>Thu, 17 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Iceland-based Treble raises $18 million for its voice simulation platform: https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/
+Treble Raises $18 Million to Expand Virtual Sound Testing for Voice AI: https://superpowerdaily.com/posts/treble-raises-18-million-to-expand-virtual-sound-testing-for-voice-ai
+Bonnie Greer obituary: https://www.theguardian.com/tv-and-radio/2026/sep/17/bonnie-greer-obituary</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-17.md</guid>
+    </item>
+    <item>
+      <title>Iceland-based Treble raises $18 million for its voice simulation platform</title>
+      <link>https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/</link>
+      <pubDate>Thu, 17 Sep 2026 00:00:00 +0000</pubDate>
+      <description>TechCrunch AI</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://techcrunch.com/2026/09/16/iceland-based-treble-raises-18-million-for-its-voice-simulation-platform/</guid>
+    </item>
+    <item>
+      <title>Treble Raises $18 Million to Expand Virtual Sound Testing for Voice AI</title>
+      <link>https://superpowerdaily.com/posts/treble-raises-18-million-to-expand-virtual-sound-testing-for-voice-ai</link>
+      <pubDate>Thu, 17 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/treble-raises-18-million-to-expand-virtual-sound-testing-for-voice-ai</guid>
+    </item>
+    <item>
+      <title>Bonnie Greer obituary</title>
+      <link>https://www.theguardian.com/tv-and-radio/2026/sep/17/bonnie-greer-obituary</link>
+      <pubDate>Thu, 17 Sep 2026 00:00:00 +0000</pubDate>
+      <description>The Guardian (Culture)</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://www.theguardian.com/tv-and-radio/2026/sep/17/bonnie-greer-obituary</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-16</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-16.md</link>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Universal Music Sues DistroKid Over Alleged Undisclosed AI Music Pipeline: https://superpowerdaily.com/posts/universal-music-sues-distrokid-over-alleged-undisclosed-ai-music-pipeline
+Suno Admits It Used YouTube Audio to Train Its AI Music Models: https://superpowerdaily.com/posts/suno-admits-it-used-youtube-audio-to-train-its-ai-music-models
+Slow Horses season six review – it gets harder to enjoy Gary Oldman’s spy thriller every year: https://www.theguardian.com/tv-and-radio/2026/sep/16/slow-horses-season-six-review-gary-oldman-spy-thriller-apple-tv</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-16.md</guid>
+    </item>
+    <item>
+      <title>Universal Music Sues DistroKid Over Alleged Undisclosed AI Music Pipeline</title>
+      <link>https://superpowerdaily.com/posts/universal-music-sues-distrokid-over-alleged-undisclosed-ai-music-pipeline</link>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/universal-music-sues-distrokid-over-alleged-undisclosed-ai-music-pipeline</guid>
+    </item>
+    <item>
+      <title>Suno Admits It Used YouTube Audio to Train Its AI Music Models</title>
+      <link>https://superpowerdaily.com/posts/suno-admits-it-used-youtube-audio-to-train-its-ai-music-models</link>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/suno-admits-it-used-youtube-audio-to-train-its-ai-music-models</guid>
+    </item>
+    <item>
+      <title>Slow Horses season six review – it gets harder to enjoy Gary Oldman’s spy thriller every year</title>
+      <link>https://www.theguardian.com/tv-and-radio/2026/sep/16/slow-horses-season-six-review-gary-oldman-spy-thriller-apple-tv</link>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0000</pubDate>
+      <description>The Guardian (Culture)</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://www.theguardian.com/tv-and-radio/2026/sep/16/slow-horses-season-six-review-gary-oldman-spy-thriller-apple-tv</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-15</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-15.md</link>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Tilly Norwood Makes Its Case for Hollywood Amid SAG-AFTRA Criticism: https://superpowerdaily.com/posts/tilly-norwood-makes-its-case-for-hollywood-amid-sag-aftra-criticism
+Universal Music Sues DistroKid Over Alleged Undisclosed AI Music Pipeline: https://superpowerdaily.com/posts/universal-music-sues-distrokid-over-alleged-undisclosed-ai-music-pipeline
+Amazon Suspends Flights With Airline Whose Plane Crashed in Miami: https://www.nytimes.com/2026/09/14/business/amazon-21-air-miami-airport-crash.html
+No one could stand in the way of this juggernaut! The biggest shocks from the Emmy awards: https://www.theguardian.com/tv-and-radio/2026/sep/15/emmy-awards-biggest-shocks-hacks-jean-smart-widows-bay-matthew-rhys</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-15.md</guid>
+    </item>
+    <item>
+      <title>Tilly Norwood Makes Its Case for Hollywood Amid SAG-AFTRA Criticism</title>
+      <link>https://superpowerdaily.com/posts/tilly-norwood-makes-its-case-for-hollywood-amid-sag-aftra-criticism</link>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/tilly-norwood-makes-its-case-for-hollywood-amid-sag-aftra-criticism</guid>
+    </item>
+    <item>
+      <title>Amazon Suspends Flights With Airline Whose Plane Crashed in Miami</title>
+      <link>https://www.nytimes.com/2026/09/14/business/amazon-21-air-miami-airport-crash.html</link>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0000</pubDate>
+      <description>New York Times Technology</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://www.nytimes.com/2026/09/14/business/amazon-21-air-miami-airport-crash.html</guid>
+    </item>
+    <item>
+      <title>No one could stand in the way of this juggernaut! The biggest shocks from the Emmy awards</title>
+      <link>https://www.theguardian.com/tv-and-radio/2026/sep/15/emmy-awards-biggest-shocks-hacks-jean-smart-widows-bay-matthew-rhys</link>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 +0000</pubDate>
+      <description>The Guardian (Culture)</description>
+      <category>Tools</category>
+      <guid isPermaLink="true">https://www.theguardian.com/tv-and-radio/2026/sep/15/emmy-awards-biggest-shocks-hacks-jean-smart-widows-bay-matthew-rhys</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-14</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-14.md</link>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
+      <description>CleoPtolemy made with Midjourney: https://venturebeat.com/orchestration/long-running-ai-agents-quietly-drop-compliance-rules-and-bigger-context-windows-wont-fix-it</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-14.md</guid>
+    </item>
+    <item>
+      <title>CleoPtolemy made with Midjourney</title>
+      <link>https://venturebeat.com/orchestration/long-running-ai-agents-quietly-drop-compliance-rules-and-bigger-context-windows-wont-fix-it</link>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
+      <description>VentureBeat AI</description>
+      <category>Image</category>
+      <guid isPermaLink="true">https://venturebeat.com/orchestration/long-running-ai-agents-quietly-drop-compliance-rules-and-bigger-context-windows-wont-fix-it</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-12</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-12.md</link>
+      <pubDate>Sat, 12 Sep 2026 00:00:00 +0000</pubDate>
+      <description>AFM Opposes Labels’ Bid to Dismiss AI Musician-Pay Case: https://superpowerdaily.com/posts/afm-opposes-labels-bid-to-dismiss-ai-musician-pay-case</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-12.md</guid>
+    </item>
+    <item>
+      <title>AFM Opposes Labels’ Bid to Dismiss AI Musician-Pay Case</title>
+      <link>https://superpowerdaily.com/posts/afm-opposes-labels-bid-to-dismiss-ai-musician-pay-case</link>
+      <pubDate>Sat, 12 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/afm-opposes-labels-bid-to-dismiss-ai-musician-pay-case</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-11</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-11.md</link>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Universal Music and ElevenLabs Launch AI Music Platform for Licensed Remixes and Fan Creations: https://superintelligencenews.com/ai-fields/large-language-models/ai-music-platform-universal-elevenlabs/
+AFM Opposes Labels’ Bid to Dismiss AI Musician-Pay Case: https://superpowerdaily.com/posts/afm-opposes-labels-bid-to-dismiss-ai-musician-pay-case
+NTSB issues investigative update on B-767 runway excursion accident in Miami: https://www.ntsb.gov:443/news/press-releases/Pages/NR20260909.aspx</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-11.md</guid>
+    </item>
+    <item>
+      <title>Universal Music and ElevenLabs Launch AI Music Platform for Licensed Remixes and Fan Creations</title>
+      <link>https://superintelligencenews.com/ai-fields/large-language-models/ai-music-platform-universal-elevenlabs/</link>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superintelligence Newsletter</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superintelligencenews.com/ai-fields/large-language-models/ai-music-platform-universal-elevenlabs/</guid>
+    </item>
+    <item>
+      <title>NTSB issues investigative update on B-767 runway excursion accident in Miami</title>
+      <link>https://www.ntsb.gov:443/news/press-releases/Pages/NR20260909.aspx</link>
+      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Hacker News</description>
+      <category>Video</category>
+      <guid isPermaLink="true">https://www.ntsb.gov:443/news/press-releases/Pages/NR20260909.aspx</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-10</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-10.md</link>
+      <pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Universal Music and ElevenLabs Launch AI Music Platform for Licensed Remixes and Fan Creations: https://superintelligencenews.com/ai-fields/large-language-models/ai-music-platform-universal-elevenlabs/
+Suno’s v6 AI Music Model Debuts With Record Label Support, New Editing Tools and a Push for More Natural Sound: https://superintelligencenews.com/ai-fields/large-language-models/suno-v6-ai-music-model-label-support/</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-10.md</guid>
+    </item>
+    <item>
+      <title>Suno’s v6 AI Music Model Debuts With Record Label Support, New Editing Tools and a Push for More Natural Sound</title>
+      <link>https://superintelligencenews.com/ai-fields/large-language-models/suno-v6-ai-music-model-label-support/</link>
+      <pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superintelligence Newsletter</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superintelligencenews.com/ai-fields/large-language-models/suno-v6-ai-music-model-label-support/</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-09-09</title>
+      <link>https://axylusion.com/news-digests/digest-2026-09-09.md</link>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Suno Releases Licensed-Music AI Models as Copyright Cases Continue: https://superpowerdaily.com/posts/suno-releases-licensed-music-ai-models-as-copyright-cases-continue</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-09.md</guid>
+    </item>
+    <item>
+      <title>Suno Releases Licensed-Music AI Models as Copyright Cases Continue</title>
+      <link>https://superpowerdaily.com/posts/suno-releases-licensed-music-ai-models-as-copyright-cases-continue</link>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/suno-releases-licensed-music-ai-models-as-copyright-cases-continue</guid>
+    </item>
+  </channel>
+</rss>
