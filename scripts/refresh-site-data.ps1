@@ -2,12 +2,18 @@ param(
     [switch]$RunSmokeTest,
     [switch]$SkipAList,
     [switch]$Publish,
-    [int]$Port = 4173
+    [int]$Port = 4173,
+    # KOL-6327: refuse to publish if gallery.json loses items or unavailable flags.
+    [ValidateRange(0, 50)]
+    [double]$MaxGalleryDropPercent = 2
 )
 
 $ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
+
+# KOL-6327: gallery publish guard (fail-closed, baseline = freshly fetched origin/main).
+. (Join-Path (Join-Path $PSScriptRoot 'lib') 'gallery-publish-guard.ps1')
 
 Push-Location $projectRoot
 try {
@@ -78,6 +84,7 @@ try {
 
     if ($Publish) {
         Write-Host "[$step/$totalSteps] Publishing generated output..."
+        Assert-GalleryNotShrunk -ProjectRoot $projectRoot -MaxDropPercent $MaxGalleryDropPercent
         $candidatePaths = @(
             "data",
             "news-digests",
