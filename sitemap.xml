@@ -1,19 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://axylusion.com/a-list/3d-generation.html</loc>
-  </url>
-  <url>
     <loc>https://axylusion.com/a-list/image-editing.html</loc>
   </url>
   <url>
     <loc>https://axylusion.com/a-list/image-generation.html</loc>
-  </url>
-  <url>
-    <loc>https://axylusion.com/a-list/music-generation.html</loc>
-  </url>
-  <url>
-    <loc>https://axylusion.com/a-list/upscaling.html</loc>
   </url>
   <url>
     <loc>https://axylusion.com/a-list/video-generation.html</loc>
