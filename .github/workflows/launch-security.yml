@@ -16,6 +16,8 @@ jobs:
           node-version: '24'
       - run: npm ci --ignore-scripts
       - run: npm audit --audit-level=low
+      - name: Verify scanner admission controls
+        run: python scripts/test-source-scan.py
       - name: Redacted tracked-source scan
         run: python scripts/scan-source-secrets.py
       - name: Validate Cloudflare header payload
