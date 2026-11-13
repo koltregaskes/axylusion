@@ -5259,4 +5259,10 @@ footer a:hover {
 }
 
 /* Keep comparison tables within their grid column at narrow widths. */
-.alist-detail-main, .alist-detail-section, .alist-comparison-table { min-width: 0; max-width: 100%; }
+.alist-detail-main { min-width: 0; max-width: min(900px, 100%); }
+.alist-detail-section, .alist-comparison-table { min-width: 0; max-width: 100%; }
+
+@media (max-width: 480px) {
+  .alist-comparison-table table { table-layout: fixed; }
+  .alist-comparison-table th, .alist-comparison-table td { overflow-wrap: anywhere; padding: 0.4rem; }
+}
