@@ -5270,3 +5270,6 @@ footer a:hover {
 @media (max-width: 480px) {
   .alist-comparison-table table { width: calc(100% - 2px); }
 }
+
+/* Elo-table links must remain distinguishable without colour alone. */
+.alist-comparison-table a { text-decoration: underline; text-underline-offset: 0.15em; }
