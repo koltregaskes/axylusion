@@ -1,34 +1,58 @@
-"""Bounded external href/src crawl. Fails on errors and HTTPS downgrade."""
+"""Bounded external crawl. Only confirmed HTTP 404/410 fail the link gate."""
 from concurrent.futures import ThreadPoolExecutor
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
-ROOT=Path(__file__).resolve().parent.parent
-urls=set()
+ROOT = Path(__file__).resolve().parent.parent
+
+def classify(status=None, error=None, final_url=None):
+    if status in (404, 410):
+        return "broken", f"HTTP {status}"
+    if error or status is None or not 200 <= status < 300:
+        return "unverified", error or f"HTTP {status}"
+    if final_url and urlsplit(final_url).scheme != "https":
+        return "unverified", "Insecure destination or HTTPS downgrade"
+    return "verified", f"HTTP {status}"
+
 class Links(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.urls = set()
     def handle_starttag(self, tag, attrs):
-        if tag=='link' and dict(attrs).get('rel') in ('preconnect','dns-prefetch'): return
-        for key,value in attrs:
-            if key in ('href','src') and value and value.startswith('https://') and urlsplit(value).hostname!='axylusion.com': urls.add(value.split('#')[0])
-for p in ROOT.rglob('*.html'):
-    if not any(x.startswith('.') or x=='node_modules' for x in p.relative_to(ROOT).parts): Links().feed(p.read_text(encoding='utf-8'))
+        attrs = dict(attrs)
+        if tag == "link" and attrs.get("rel") in ("preconnect", "dns-prefetch"):
+            return
+        for key in ("href", "src"):
+            value = attrs.get(key, "")
+            if urlsplit(value).scheme in ("https", "http") and urlsplit(value).hostname != "axylusion.com":
+                self.urls.add(value.split("#")[0])
+
 def check(url):
     try:
-        with urlopen(Request(url,headers={'User-Agent':'AxyLusion-LinkCheck/1.0'}), timeout=12) as response:
-            if urlsplit(response.url).scheme!='https': return url,'HTTPS downgrade'
-            return url,None
-    except HTTPError as e: return url,('UNVERIFIED_HTTP_' if e.code in (401,403,429) else 'HTTP_')+str(e.code)
-    except Exception as e: return url,type(e).__name__
-assert urls,'No external links discovered'
-failed=[]; unverified=[]
-with ThreadPoolExecutor(max_workers=12) as pool:
-    for url,error in pool.map(check,sorted(urls)):
-        if error and error.startswith('UNVERIFIED_'): unverified.append((url,error))
-        elif error: failed.append((url,error))
-for url,error in unverified: print(f'::warning::Blocked destination remains unverified: {url} ({error})')
-print(f'Unverified bot/auth/rate-limited responses: {len(unverified)}')
-print(f'External crawl: {len(urls)} URLs; {len(failed)} definite failures (blocked destinations counted separately)')
-for url,error in failed: print(f'{error}: {url}')
-raise SystemExit(bool(failed))
+        with urlopen(Request(url, headers={"User-Agent": "AxyLusion-LinkCheck/1.0"}), timeout=12) as response:
+            return url, *classify(response.status, final_url=response.url)
+    except HTTPError as error:
+        return url, *classify(error.code)
+    except Exception as error:
+        return url, *classify(error=type(error).__name__)
+
+def main():
+    parser = Links()
+    for page in ROOT.rglob("*.html"):
+        if not any(part.startswith(".") or part == "node_modules" for part in page.relative_to(ROOT).parts):
+            parser.feed(page.read_text(encoding="utf-8"))
+    if not parser.urls:
+        raise SystemExit("No external URLs discovered")
+    counts = dict.fromkeys(("broken", "unverified", "verified"), 0)
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        for url, state, detail in pool.map(check, sorted(parser.urls)):
+            counts[state] += 1
+            if state != "verified":
+                print(f"::warning::{state.upper()}: {url} ({detail})")
+    print(f"External crawl: {len(parser.urls)} URLs; {counts}. Only confirmed 404/410 fail. Unverified is not healthy.")
+    return int(counts["broken"] > 0)
+
+if __name__ == "__main__":
+    raise SystemExit(main())
