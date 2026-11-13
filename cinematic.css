@@ -8,7 +8,7 @@
   --axl-cream: #f5e6c8;
   --axl-white: #fffaf0;
   --axl-muted: #a89d89;
-  --axl-faint: #6d6354;
+  --axl-faint: #8c816e; /* 4.5:1+ on all panels (WCAG AA) */
   --axyl-amber: #c4851a;
   --axyl-amber-light: #d4a03a;
   --axyl-amber-glow: rgba(196, 133, 26, 0.34);

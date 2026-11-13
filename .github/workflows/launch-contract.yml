@@ -1,0 +1,28 @@
+name: Launch contract
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  launch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check static build and SEO contract
+        run: |
+          python scripts/build-seo.py --check
+          python scripts/check-seo.py
+          python scripts/check-internal-links.py
+          python scripts/validate-site.py
+          test -s llms.txt
+      - name: Install browser checks
+        run: npm install --no-save --package-lock=false playwright@1.64.0 axe-core@4.10.3
+      - run: npx playwright install --with-deps chromium
+      - name: All routes at phone and desktop widths
+        run: node scripts/launch-browser.mjs
