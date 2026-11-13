@@ -9,6 +9,7 @@ A creative AI portfolio showcasing work made with Midjourney, Suno, Runway, Klin
 - [Gallery](/axylusion/gallery.html): AI-generated artwork
 - [Videos](/axylusion/videos.html): AI motion and animation
 - [Music](/axylusion/music.html): AI-generated tracks via Suno
+- [Store](/axylusion/store.html): Licensable trailer cues and promo beds on ElevenLabs Marketplace
 - [Tools](/axylusion/tools.html): 40+ recommended AI creative tools across 8 categories
 - [A-List](/axylusion/a-list.html): Benchmark-backed rankings of top creative AI tools
 - [News](/axylusion/news.html): Creative AI news feed
