@@ -120,3 +120,14 @@ The Cloudflare response-header payload remains unapplied. Report-only CSP has no
 collector configured, so its violations are visible only in the browser console.
 Actual header application depends on the approved hosting/proxy route and requires
 provider-side readback; this code does not change DNS or hosting settings.
+### Live acceptance readback
+
+Run `python scripts/check-live-parity.py --ref origin/main` after fetching main
+and confirming its existing Pages deployment succeeded. It freezes the commit
+and compares every HTML route plus SEO files, scripts, styles and gallery data
+against unauthenticated HTTPS responses. It prints SHA-256 evidence and a small
+public response-header inventory. A mismatch can mean a deployment still in
+progress; it never changes DNS, provider settings or source to hide the mismatch.
+The dispatch-only Live main parity workflow uses the same checker. Third-party
+media, mailbox receipt, analytics delivery and future hosting acceptance remain
+separate checks. Default TLS certificate validation stays enabled.
