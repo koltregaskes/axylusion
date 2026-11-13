@@ -6,6 +6,8 @@ local benchmark snapshot.
 
 from __future__ import annotations
 
+from navigation import ensure_navigation
+
 import argparse
 import importlib.util
 import json
@@ -535,7 +537,7 @@ def build_outputs(snapshot: dict[str, Any]) -> dict[Path, str]:
     outputs: dict[Path, str] = {OVERVIEW_PATH: render_cinematic_overview(snapshot)}
     for category in snapshot.get("categories", []):
         outputs[DETAILS_DIR / detail_filename(category["slug"])] = render_detail_page(category)
-    return {path: enhance_html(html, path.relative_to(PROJECT_DIR).as_posix()) for path, html in outputs.items()}
+    return {path: enhance_html(ensure_navigation(html), path.relative_to(PROJECT_DIR).as_posix()) for path, html in outputs.items()}
 
 
 def main() -> int:

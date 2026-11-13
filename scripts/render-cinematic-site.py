@@ -8,6 +8,8 @@ needed by the design, then writes the in-scope public pages.
 
 from __future__ import annotations
 
+from navigation import ensure_navigation
+
 import argparse
 import hashlib
 import json
@@ -71,7 +73,7 @@ def clean_page(html: str) -> str:
 
 
 def write_page(path: Path, html: str) -> None:
-    path.write_text(clean_page(html), encoding="utf-8")
+    path.write_text(ensure_navigation(clean_page(html)), encoding="utf-8")
 
 
 def slugify(value: str) -> str:

@@ -45,7 +45,8 @@
   if (siblings.length === 0) return;
 
   const shell = document.createElement('div');
-  shell.setAttribute('role', 'contentinfo');
+  shell.setAttribute('role', 'complementary');
+  shell.setAttribute('aria-label', 'Related sites');
   shell.style.cssText = `
     display: flex;
     flex-direction: column;
