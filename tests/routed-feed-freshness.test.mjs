@@ -68,3 +68,10 @@ test('the scheduled workflow runs this check every day and does not fetch', () =
   assert.doesNotMatch(workflow, /contents: write/)
   assert.doesNotMatch(workflow, /refresh-routed-feed/)
 })
+
+test('fresh partial feed still warns and names failed sources', () => {
+  const feed = {...feedAt(now.toISOString()), partial:true, failed_sources:['bad-source: HTTP 404']}
+  const result=assessRoutedFeedFreshness(feed,now)
+  assert.equal(result.warn,true)
+  assert.match(formatReport(result),/bad-source: HTTP 404/)
+})

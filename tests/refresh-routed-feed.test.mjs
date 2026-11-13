@@ -79,7 +79,7 @@ test('html listings use dates that are on the page', () => {
   assert.equal(byUrl['https://www.digg.com/ai/bpr7gowe'], '2026-10-25T20:01:22.038Z')
 })
 
-test('a source that cannot be fetched fails by name and writes explicit partial coverage', async () => {
+test('a source that cannot be fetched total outage fails by name and preserves the previous feed', async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'routed-feed-'))
   const outputPath = path.join(dir, 'news-feed-latest.json')
   pipeline(dir, [{
@@ -97,10 +97,10 @@ test('a source that cannot be fetched fails by name and writes explicit partial 
     fetchImpl: async () => ({ ok: false, status: 429, text: async () => 'nope' }),
   })
 
-  assert.equal(result.wrote, true)
-  assert.equal(result.feed.partial, true)
+  assert.equal(result.wrote, false)
+  assert.equal(result.feed, null)
   assert.match(result.failures[0], /^venturebeat-ai \(VentureBeat AI\) could not be fetched: HTTP 429$/)
-  assert.equal(fs.existsSync(outputPath), true)
+  assert.equal(fs.existsSync(outputPath), false)
 })
 
 test('an empty match writes a fresh empty feed and a matched item is written', async () => {
@@ -239,10 +239,10 @@ test('a non-retryable HTTP response fails immediately and names the source', asy
     },
   })
   assert.equal(calls, 1)
-  assert.equal(result.wrote, true)
-  assert.equal(result.feed.partial, true)
+  assert.equal(result.wrote, false)
+  assert.equal(result.feed, null)
   assert.match(result.failures[0], /^venturebeat-ai \(VentureBeat AI\) could not be fetched: HTTP 404$/)
-  assert.equal(fs.existsSync(outputPath), true)
+  assert.equal(fs.existsSync(outputPath), false)
 })
 
 test('the refresh workflow fetches the shared config and commits only the feed', () => {
@@ -261,4 +261,16 @@ test('the refresh workflow fetches the shared config and commits only the feed',
   assert.doesNotMatch(workflow, /pages: write/)
   assert.doesNotMatch(workflow, /id-token: write/)
   assert.doesNotMatch(workflow, /secrets\.[A-Z0-9_]*(?:PAT|TOKEN)/)
+})
+
+test('partial source failure writes successful items and records failed sources', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'routed-feed-'))
+  const outputPath = path.join(dir, 'feed.json')
+  pipeline(dir, ['good','bad'].map(id => ({id, name:id, adapter:'rss', url:`https://example.com/${id}`, tags:['product_launch']})))
+  const result = await refreshRoutedFeed({pipelineDir:dir, outputPath, now:new Date('2026-10-26T00:10:00Z'), retries:1,
+    fetchImpl:async url => url.endsWith('/bad') ? {ok:false,status:404,text:async()=>''} : {ok:true,text:async()=>'<rss><channel><item><title>Useful model launch</title><link>https://example.com/model</link><pubDate>Sun, 25 Oct 2026 21:31:16 GMT</pubDate><description>A product launch.</description></item></channel></rss>'}})
+  assert.equal(result.wrote,true)
+  assert.equal(result.feed.partial,true)
+  assert.equal(result.feed.article_count,1)
+  assert.match(result.feed.failed_sources[0],/bad/)
 })

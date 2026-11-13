@@ -13,7 +13,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 const FEED_PATH = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'news-digests', 'news-feed-latest.json')
 const WARN_AFTER_DAYS = 1
 const HARD_MAX_DAYS = 3
-const MISSING_SOURCE = 'The 05:15 UTC refresh fetches every source in the shared news sources.json and commits this file after a successful fetch, including an empty article list when nothing matches. A source that cannot be fetched fails that run by name and leaves the file unchanged. This check means the committed feed was not replaced. Shared routing lists Axy Lusion as a destination (sites/axylusion/news-digests).'
+const MISSING_SOURCE = 'The 05:15 UTC refresh fetches shared sources.json. Successful-source items are committed; failed-source items may drop and failures remain visible. A total outage preserves the last feed. The legacy branch build is the only publishing route. Shared destination: sites/axylusion/news-digests.'
 
 export function assessRoutedFeedFreshness(feed, now = new Date()) {
   if (!feed || typeof feed !== 'object' || !Array.isArray(feed.articles)) {
@@ -44,7 +44,9 @@ export function assessRoutedFeedFreshness(feed, now = new Date()) {
     ageDays,
     generatedAt: new Date(generatedMs).toISOString(),
     newestItemAt: new Date(newestMs).toISOString(),
-    warn: ageDays >= WARN_AFTER_DAYS,
+    partial: feed.partial === true,
+    failedSources: Array.isArray(feed.failed_sources) ? feed.failed_sources : [],
+    warn: feed.partial === true || ageDays >= WARN_AFTER_DAYS,
     hardFail: ageDays > HARD_MAX_DAYS,
   }
 }
@@ -54,6 +56,7 @@ export function formatReport(assessment) {
     `Routed feed is ${assessment.ageDays.toFixed(1)} days old (generated ${assessment.generatedAt}, newest item ${assessment.newestItemAt}).`,
     `This check fails at ${WARN_AFTER_DAYS} day so a missed refresh is visible before a ${HARD_MAX_DAYS}-day age.`,
     `Missing source: ${MISSING_SOURCE}`,
+    ...(assessment.partial ? [`Partial source coverage: ${assessment.failedSources.join("; ") || "unspecified sources"}.`] : []),
   ].join(' ')
 }
 

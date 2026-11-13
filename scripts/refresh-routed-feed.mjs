@@ -456,9 +456,11 @@ async function refreshRoutedFeed({
   if (!siteFilter?.name) throw new Error(`Site filter ${siteSlug} is missing from site-filters.json.`)
   const failures = []
   const tagged = []
+  let successfulSources = 0
   for (const source of sources) {
     try {
       const entries = await fetchSource(source, fetchImpl, retries)
+      successfulSources += 1
       tagged.push(...tagEntries(entries, source, Number(siteFilter.min_importance_score ?? 0)))
       console.log(`${source.id}: fetched ${entries.length} dated entries`)
     } catch (error) {
@@ -467,6 +469,7 @@ async function refreshRoutedFeed({
       console.error(`::error title=Source fetch failed::${message}`)
     }
   }
+  if (successfulSources === 0) return { wrote: false, failures: failures.length ? failures : ["No configured sources succeeded"], feed: null }
   const articles = applySiteFilter(tagged, siteFilter, now)
   const feed = buildFeedDocument(siteFilter, articles, now)
   feed.failed_sources = failures
