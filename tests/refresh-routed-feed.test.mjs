@@ -79,7 +79,7 @@ test('html listings use dates that are on the page', () => {
   assert.equal(byUrl['https://www.digg.com/ai/bpr7gowe'], '2026-10-25T20:01:22.038Z')
 })
 
-test('a source that cannot be fetched fails by name and does not write', async () => {
+test('a source that cannot be fetched fails by name and writes explicit partial coverage', async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'routed-feed-'))
   const outputPath = path.join(dir, 'news-feed-latest.json')
   pipeline(dir, [{
@@ -97,10 +97,10 @@ test('a source that cannot be fetched fails by name and does not write', async (
     fetchImpl: async () => ({ ok: false, status: 429, text: async () => 'nope' }),
   })
 
-  assert.equal(result.wrote, false)
-  assert.equal(result.feed, null)
+  assert.equal(result.wrote, true)
+  assert.equal(result.feed.partial, true)
   assert.match(result.failures[0], /^venturebeat-ai \(VentureBeat AI\) could not be fetched: HTTP 429$/)
-  assert.equal(fs.existsSync(outputPath), false)
+  assert.equal(fs.existsSync(outputPath), true)
 })
 
 test('an empty match writes a fresh empty feed and a matched item is written', async () => {
@@ -239,10 +239,10 @@ test('a non-retryable HTTP response fails immediately and names the source', asy
     },
   })
   assert.equal(calls, 1)
-  assert.equal(result.wrote, false)
-  assert.equal(result.feed, null)
+  assert.equal(result.wrote, true)
+  assert.equal(result.feed.partial, true)
   assert.match(result.failures[0], /^venturebeat-ai \(VentureBeat AI\) could not be fetched: HTTP 404$/)
-  assert.equal(fs.existsSync(outputPath), false)
+  assert.equal(fs.existsSync(outputPath), true)
 })
 
 test('the refresh workflow fetches the shared config and commits only the feed', () => {
@@ -257,8 +257,8 @@ test('the refresh workflow fetches the shared config and commits only the feed',
   assert.match(workflow, /node scripts\/refresh-routed-feed\.mjs --pipeline/)
   assert.match(workflow, /git add -- news-digests\/news-feed-latest.json/)
   assert.doesNotMatch(workflow, /git add -A|git add \./)
-  assert.match(workflow, /actions\/deploy-pages@/)
-  assert.match(workflow, /pages: write/)
-  assert.match(workflow, /id-token: write/)
+  assert.doesNotMatch(workflow, /actions\/deploy-pages@/)
+  assert.doesNotMatch(workflow, /pages: write/)
+  assert.doesNotMatch(workflow, /id-token: write/)
   assert.doesNotMatch(workflow, /secrets\.[A-Z0-9_]*(?:PAT|TOKEN)/)
 })

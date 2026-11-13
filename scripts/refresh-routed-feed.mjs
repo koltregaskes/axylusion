@@ -5,7 +5,7 @@
  * Sources and filters come from the news pipeline config
  * (config/sources.json and site-filters.json). Articles are the entries
  * those sources return. This script does not invent items. A source that
- * cannot be fetched fails the run by name, and the feed file is left unchanged.
+ * cannot be fetched fails the run by name; successful-source items are still written.
  * A successful fetch writes the feed even when nothing matches: a fresh
  * generated timestamp and an empty article list.
  */
@@ -467,16 +467,15 @@ async function refreshRoutedFeed({
       console.error(`::error title=Source fetch failed::${message}`)
     }
   }
-  if (failures.length > 0) {
-    return { wrote: false, failures, feed: null }
-  }
   const articles = applySiteFilter(tagged, siteFilter, now)
   const feed = buildFeedDocument(siteFilter, articles, now)
+  feed.failed_sources = failures
+  feed.partial = failures.length > 0
   if (write) {
     fs.mkdirSync(path.dirname(outputPath), { recursive: true })
     fs.writeFileSync(outputPath, `${JSON.stringify(feed, null, 2)}\n`, 'utf8')
   }
-  return { wrote: write, failures: [], feed }
+  return { wrote: write, failures, feed }
 }
 
 function parseArgs(argv) {
