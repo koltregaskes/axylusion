@@ -31,3 +31,23 @@ Published Artificial Analysis arena Elo for image generation, image editing, tex
 
 - X/Twitter: https://x.com/Axylusion
 - Instagram: https://www.instagram.com/axylusion
+
+<!-- pages:start -->
+## Indexable routes
+
+- [Image Editing | The A-List | Axy Lusion](https://axylusion.com/a-list/image-editing.html)
+- [Image Generation | The A-List | Axy Lusion](https://axylusion.com/a-list/image-generation.html)
+- [Video Generation | The A-List | Axy Lusion](https://axylusion.com/a-list/video-generation.html)
+- [Voice & TTS | The A-List | Axy Lusion](https://axylusion.com/a-list/voice-tts.html)
+- [The A-List | Axy Lusion](https://axylusion.com/a-list.html)
+- [About | Axy Lusion](https://axylusion.com/about.html)
+- [Welcome to Axy Lusion | Blog](https://axylusion.com/blog-welcome.html)
+- [Blog | Axy Lusion](https://axylusion.com/blog.html)
+- [Gallery | Axy Lusion](https://axylusion.com/gallery.html)
+- [Axy Lusion | AI Art, Video and Music](https://axylusion.com/)
+- [Music | Axy Lusion](https://axylusion.com/music.html)
+- [News | Axy Lusion](https://axylusion.com/news.html)
+- [Store | Axy Lusion](https://axylusion.com/store.html)
+- [AI Creative Tools | Axy Lusion](https://axylusion.com/tools.html)
+- [Videos | Axy Lusion](https://axylusion.com/videos.html)
+<!-- pages:end -->
