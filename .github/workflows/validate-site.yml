@@ -49,6 +49,8 @@ jobs:
 
       - name: Test the routed feed refresh
         run: node --test tests/refresh-routed-feed.test.mjs tests/routed-feed-freshness.test.mjs
+      - name: Run gallery identity regression tests
+        run: node --test tests/gallery-smoke.test.mjs
 
       - name: Install Playwright runtime
         run: npm install --no-save playwright
@@ -64,3 +66,4 @@ jobs:
 
       - name: Run browser smoke tests
         run: node scripts/smoke-test-site.mjs --base-url http://127.0.0.1:4173
+
