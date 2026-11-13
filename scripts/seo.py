@@ -92,12 +92,14 @@ def enhance_html(text, relative):
         payload = json.loads(match.group(1))
         nodes.extend(payload.get("@graph", [payload]))
     text = re.sub(pattern, "", text, flags=re.S | re.I)
-    page_nodes = [node for node in nodes if node.get("@type") in page_types and node.get("url") == url]
-    merged = dict(schema)
+    page_nodes = [node for node in nodes if node.get("@type") in page_types and (node.get("url") == url or str(node.get("@id", "")).split("#", 1)[0] == url)]
+    merged = {}
     for node in page_nodes:
         merged.update(node)
-    merged["url"] = url
-    merged["image"] = schema["image"]
+    legacy = next((node for node in page_nodes if node.get("@type") != "WebPage"), page_nodes[0] if page_nodes else {})
+    merged.update(schema)
+    for key in ("@id", "@type"):
+        if key in legacy: merged[key] = legacy[key]
     if relative == "gallery.html":
         merged["@type"] = "ImageGallery"
         if "hasPart" not in merged:

@@ -37,6 +37,11 @@ jobs:
       - name: Verify homepage image rendering
         run: python scripts/test-homepage-images.py
 
+      - name: Build SEO feed and run metadata regressions
+        run: |
+          python scripts/build-seo.py
+          python scripts/test-seo.py
+
       - name: Validate static site structure
         run: python scripts/validate-site.py
 

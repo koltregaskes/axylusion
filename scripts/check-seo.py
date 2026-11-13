@@ -80,6 +80,9 @@ if __name__ == "__main__":
             assert len(schemas) == 1, "Expected exactly one JSON-LD graph"
             nodes = [node for schema in schemas for node in schema.get("@graph", [schema])]
             assert any(node.get("url") == url for node in nodes), "JSON-LD missing the page URL"
+            page_types = {"WebPage", "AboutPage", "CollectionPage", "ImageGallery", "CreativeWork", "BlogPosting"}
+            matches = [n for n in nodes if n.get("@type") in page_types and (n.get("url") == url or str(n.get("@id", "")).split("#", 1)[0] == url)]
+            assert len(matches) == 1, "Duplicate page-type nodes for canonical URL"
             if relative.startswith("posts/") and relative != "posts/":
                 assert any(n.get("@type") == "BlogPosting" and n.get("headline") and n.get("author") and n.get("datePublished") for n in nodes), "Missing article metadata"
             if relative == "gallery.html":
