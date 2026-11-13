@@ -6,7 +6,7 @@ Checks:
   - required JSON data files load and contain items
   - local href/src references resolve
   - digest manifest matches the files on disk
-  - A-List snapshot matches the shared cache and rendered pages match the snapshot
+  - A-List arena snapshot matches its captured leaderboard and rendered pages match the snapshot
 
 Warnings:
   - gallery/homepage payloads still reference Midjourney CDN URLs
@@ -36,7 +36,10 @@ NEWS_DIGESTS_DIR = PROJECT_DIR / "news-digests"
 INDEX_PATH = NEWS_DIGESTS_DIR / "index.json"
 ALIST_DATA_PATH = PROJECT_DIR / "data" / "a-list-benchmarks.json"
 ALIST_SYNC_SCRIPT = PROJECT_DIR / "scripts" / "sync-a-list-benchmarks.py"
+ALIST_REFRESH_SCRIPT = PROJECT_DIR / "scripts" / "refresh-a-list-benchmarks.py"
 ALIST_RENDER_SCRIPT = PROJECT_DIR / "scripts" / "render-a-list.py"
+ARENA_SCORE_BASIS = "artificial_analysis_elo"
+ARENA_STALE_DAYS = 21
 ALIST_SHARED_SOURCE = Path(
     os.environ.get(
         "AXYLUSION_ALIST_SOURCE",
@@ -275,6 +278,7 @@ def check_support_files() -> list[str]:
 
 def check_digest_hygiene() -> list[str]:
     warnings: list[str] = []
+
     digest_paths = sorted(digest_files_on_disk())
     for digest_path in digest_paths:
         content = digest_path.read_text(encoding="utf-8-sig", errors="ignore")
@@ -313,6 +317,16 @@ def main() -> int:
 
     failures: list[str] = []
     warnings: list[str] = []
+    tracked = subprocess.check_output(["git", "ls-files", "-z", "--", "*.html", "*.json"], cwd=PROJECT_DIR).decode("utf-8").split("\0")
+    broken = ("\u00c3", "\u00c2\u00b1", "\u00e2\u20ac")
+    for name in tracked:
+        path = PROJECT_DIR / name
+        if not name or path.name.startswith(".env") or not path.is_file():
+            continue
+        text = path.read_text(encoding="utf-8")
+        if any(marker in text for marker in broken):
+            failures.append(f"Possible mojibake in tracked public content: {name}")
+
     alist_category_count: int | None = None
 
     try:
@@ -337,15 +351,26 @@ def main() -> int:
             alist_category_count = len(categories)
             if not categories:
                 failures.append("data/a-list-benchmarks.json has no categories.")
-            generated_at = parse_iso_datetime(str(alist_snapshot.get("generated_at") or ""))
-            if generated_at is None:
-                warnings.append("data/a-list-benchmarks.json is missing a valid generated_at timestamp.")
+            if str(alist_snapshot.get("score_basis") or "") == ARENA_SCORE_BASIS:
+                retrieved_at = parse_iso_datetime(str(alist_snapshot.get("retrieved_at") or ""))
+                if retrieved_at is None:
+                    warnings.append("data/a-list-benchmarks.json is missing a valid retrieved_at timestamp.")
+                else:
+                    age_days = (datetime.now(timezone.utc) - retrieved_at.astimezone(timezone.utc)).total_seconds() / 86400
+                    if age_days > ARENA_STALE_DAYS:
+                        warnings.append(
+                            f"A-List arena snapshot was retrieved {age_days:.1f} days ago: {rel_path(ALIST_DATA_PATH)}"
+                        )
             else:
-                age_hours = (datetime.now(timezone.utc) - generated_at.astimezone(timezone.utc)).total_seconds() / 3600
-                if age_hours > 48:
-                    warnings.append(
-                        f"A-List snapshot is older than 48 hours ({age_hours:.1f}h): {rel_path(ALIST_DATA_PATH)}"
-                    )
+                generated_at = parse_iso_datetime(str(alist_snapshot.get("generated_at") or ""))
+                if generated_at is None:
+                    warnings.append("data/a-list-benchmarks.json is missing a valid generated_at timestamp.")
+                else:
+                    age_hours = (datetime.now(timezone.utc) - generated_at.astimezone(timezone.utc)).total_seconds() / 3600
+                    if age_hours > 48:
+                        warnings.append(
+                            f"A-List snapshot is older than 48 hours ({age_hours:.1f}h): {rel_path(ALIST_DATA_PATH)}"
+                        )
 
     if not gallery_items:
         failures.append("data/gallery.json has no items.")
@@ -382,6 +407,7 @@ def main() -> int:
     failures.extend(check_public_head_requirements())
     failures.extend(check_support_files())
     failures.extend(check_script_sync(PROJECT_DIR / "scripts" / "build-seo.py", "SEO metadata, sitemap and RSS"))
+    failures.extend(check_script_sync(ALIST_REFRESH_SCRIPT, "A-List arena capture"))
     if args.skip_alist:
         warnings.append('Skipped A-List freshness checks (--skip-alist).')
     elif ALIST_SHARED_SOURCE.exists():

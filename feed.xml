@@ -7,18 +7,18 @@
     <language>en-gb</language>
     <atom:link href="https://axylusion.com/feed.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Creative AI digest: 2026-11-12</title>
-      <link>https://axylusion.com/news-digests/digest-2026-11-12.md</link>
-      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <title>Creative AI digest: 2026-11-13</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-13.md</link>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
       <description>Runway says Praxis-1 is out with open weights for robot control: https://www.digg.com/ai/ypm05vgl
 Pika and Runway say Seedance 2.5 is ready for its 4K close-up: https://www.digg.com/ai/9xw3vsww</description>
       <category>Digest</category>
-      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-12.md</guid>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-13.md</guid>
     </item>
     <item>
       <title>Runway says Praxis-1 is out with open weights for robot control</title>
       <link>https://www.digg.com/ai/ypm05vgl</link>
-      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
       <description>Digg AI</description>
       <category>Video</category>
       <guid isPermaLink="true">https://www.digg.com/ai/ypm05vgl</guid>
@@ -26,10 +26,19 @@ Pika and Runway say Seedance 2.5 is ready for its 4K close-up: https://www.digg.
     <item>
       <title>Pika and Runway say Seedance 2.5 is ready for its 4K close-up</title>
       <link>https://www.digg.com/ai/9xw3vsww</link>
-      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
       <description>Digg AI</description>
       <category>Video</category>
       <guid isPermaLink="true">https://www.digg.com/ai/9xw3vsww</guid>
+    </item>
+    <item>
+      <title>Creative AI digest: 2026-11-12</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-12.md</link>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Runway says Praxis-1 is out with open weights for robot control: https://www.digg.com/ai/ypm05vgl
+Pika and Runway say Seedance 2.5 is ready for its 4K close-up: https://www.digg.com/ai/9xw3vsww</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-12.md</guid>
     </item>
     <item>
       <title>Creative AI digest: 2026-11-11</title>
@@ -1158,22 +1167,6 @@ Suno’s v6 AI Music Model Debuts With Record Label Support, New Editing Tools a
       <description>Superintelligence Newsletter</description>
       <category>Audio</category>
       <guid isPermaLink="true">https://superintelligencenews.com/ai-fields/large-language-models/suno-v6-ai-music-model-label-support/</guid>
-    </item>
-    <item>
-      <title>Creative AI digest: 2026-09-09</title>
-      <link>https://axylusion.com/news-digests/digest-2026-09-09.md</link>
-      <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
-      <description>Suno Releases Licensed-Music AI Models as Copyright Cases Continue: https://superpowerdaily.com/posts/suno-releases-licensed-music-ai-models-as-copyright-cases-continue</description>
-      <category>Digest</category>
-      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-09.md</guid>
-    </item>
-    <item>
-      <title>Suno Releases Licensed-Music AI Models as Copyright Cases Continue</title>
-      <link>https://superpowerdaily.com/posts/suno-releases-licensed-music-ai-models-as-copyright-cases-continue</link>
-      <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
-      <description>Superpower Daily</description>
-      <category>Audio</category>
-      <guid isPermaLink="true">https://superpowerdaily.com/posts/suno-releases-licensed-music-ai-models-as-copyright-cases-continue</guid>
     </item>
   </channel>
 </rss>

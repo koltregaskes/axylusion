@@ -172,7 +172,7 @@ Currently: no `robots.txt` visible — verify. If missing, add the estate baseli
 ### Sitemap.xml
 
 Verify:
-- Lists `index.html`, `about.html`, `gallery.html`, `blog.html`, `blog-welcome.html`, `a-list.html`, all `a-list/*.html` (7 sub-pages)
+- Lists `index.html`, `about.html`, `gallery.html`, `blog.html`, `blog-welcome.html`, `a-list.html`, and the A-List category pages that still have a current public Elo board
 - Includes individual artwork pages if any exist
 - `lastmod` reflects last gallery update (so AI agents see fresh content signals after R2 migration)
 
