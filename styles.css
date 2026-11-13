@@ -5266,3 +5266,7 @@ footer a:hover {
   .alist-comparison-table table { table-layout: fixed; }
   .alist-comparison-table th, .alist-comparison-table td { overflow-wrap: anywhere; padding: 0.4rem; }
 }
+
+@media (max-width: 480px) {
+  .alist-comparison-table table { width: calc(100% - 2px); }
+}
