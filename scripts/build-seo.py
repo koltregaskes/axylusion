@@ -3,6 +3,8 @@
 import argparse
 import difflib
 import importlib.util
+import re
+from html import unescape
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import format_datetime
@@ -25,6 +27,13 @@ def xml(tree):
 def outputs():
     pages = public_pages()
     result = {p: enhance_html(p.read_text(encoding="utf-8"), p.relative_to(ROOT).as_posix()) for p in pages}
+    llms_path = ROOT / "llms.txt"
+    llms = re.sub(r"\n<!-- pages:start -->.*?<!-- pages:end -->\n?", "", llms_path.read_text(encoding="utf-8"), flags=re.S).rstrip()
+    lines = []
+    for page in pages:
+        title = unescape(re.search(r"<title>(.*?)</title>", page.read_text(encoding="utf-8"), re.S | re.I).group(1)).replace("[", "").replace("]", "")
+        lines.append(f"- [{title}]({canonical(page.relative_to(ROOT).as_posix())})")
+    result[llms_path] = llms + "\n\n<!-- pages:start -->\n## Indexable routes\n\n" + "\n".join(lines) + "\n<!-- pages:end -->\n"
     sitemap = ET.Element(f"{{{SM}}}urlset")
     images = list(dict.fromkeys(gallery_images().values()))
     if len(images) > 1000:
@@ -80,7 +89,7 @@ if __name__ == "__main__":
                         path.read_text(encoding="utf-8").splitlines(), content.splitlines(),
                         fromfile=str(path.relative_to(ROOT)), tofile="generated output"))[:20]))
         else:
-            path.write_text(content, encoding="utf-8")
+            path.write_text(content, encoding="utf-8", newline="\n")
     if stale:
         raise SystemExit("SEO output is stale. Run python scripts/build-seo.py: " + ", ".join(stale))
     print("SEO output is current." if args.check else "Generated SEO metadata, sitemap and RSS.")

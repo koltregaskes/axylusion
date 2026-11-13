@@ -123,6 +123,10 @@ if __name__ == "__main__":
         if link.startswith(base + "/"):
             assert local(link).exists(), f"RSS link has no local target: {link}"
     assert dates == sorted(dates, reverse=True), "RSS dates are not newest first"
+    llms = (SITE / "llms.txt").read_text(encoding="utf-8")
+    assert all(url in llms for url in expected), "llms.txt is missing indexable route URLs"
+    assert base + "/sitemap.xml" in llms and base + "/feed.xml" in llms, "llms.txt missing feed/sitemap discovery"
+    assert "/axylusion/" not in llms, "Stale project-prefix links in llms.txt"
     robots = (SITE / "robots.txt").read_text(encoding="utf-8")
     assert f"Sitemap: {base}/sitemap.xml" in robots
     assert not re.search(r"^Disallow:\s*/\s*$", robots, re.M)
