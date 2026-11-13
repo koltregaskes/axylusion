@@ -7,6 +7,7 @@ local benchmark snapshot.
 from __future__ import annotations
 
 from navigation import ensure_navigation
+from site_config import contact_link
 
 import argparse
 import importlib.util
@@ -186,7 +187,7 @@ def render_footer(base_path: str) -> str:
                 <a href="https://koltregaskesphotography.com/">KT Photography</a>
             </nav>
             <div class="footer-group">
-                <span>Contact</span>
+                <span>Contact</span>{contact_link()}
                 <a href="{link_path(base_path, 'about.html')}">About</a>
                 <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer">X / Twitter</a>
                 <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer">Instagram</a>

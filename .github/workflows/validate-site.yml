@@ -46,6 +46,8 @@ jobs:
         run: python scripts/render-navigation.py --check
       - name: A-List sync keeps the current arena snapshot
         run: python scripts/test-a-list-sync.py
+      - name: Check generated contact links
+        run: python scripts/render-contact.py --check
 
       - name: Validate static site structure
         run: python scripts/validate-site.py
