@@ -9,6 +9,7 @@ needed by the design, then writes the in-scope public pages.
 from __future__ import annotations
 
 from navigation import ensure_navigation
+from site_config import contact_link
 
 import argparse
 import hashlib
@@ -282,7 +283,7 @@ def footer(current_path: str = "") -> str:
         <a href="https://koltregaskesphotography.com/">KT Photography</a>
       </nav>
       <div class="cn-footer__group">
-        <p>Contact</p>
+        <p>Contact</p>{contact_link()}
         <a href="{escape(local_link(current_path, 'about.html'))}">About</a>
         <a href="https://x.com/Axylusion" target="_blank" rel="noopener noreferrer">X / Twitter</a>
         <a href="https://www.instagram.com/axylusion" target="_blank" rel="noopener noreferrer">Instagram</a>
