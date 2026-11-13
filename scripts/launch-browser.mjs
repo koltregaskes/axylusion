@@ -23,6 +23,7 @@ try {
     await context.route('**/*', async route => {
       const url = new URL(route.request().url());
       if (url.origin !== 'https://axylusion.com') return route.abort();
+      if (url.pathname === '/__launch-axe.js') return route.fulfill({ body: axe, contentType: 'text/javascript' });
       const file = resolve(root, '.' + decodeURIComponent(url.pathname === '/' ? '/index.html' : url.pathname));
       if (!file.startsWith(root + sep) || url.pathname.split('/').some(p => p.startsWith('.'))) return route.fulfill({ status: 403, body: '' });
       const mime = { '.html':'text/html', '.css':'text/css', '.js':'text/javascript', '.json':'application/json', '.svg':'image/svg+xml', '.png':'image/png', '.jpg':'image/jpeg', '.webp':'image/webp' };
@@ -32,7 +33,7 @@ try {
     for (const path of routes) {
       const page = await context.newPage();
       await page.goto('https://axylusion.com/' + path, { waitUntil: 'networkidle' });
-      await page.addScriptTag({ content: axe });
+      await page.addScriptTag({ url: 'https://axylusion.com/__launch-axe.js' });
       const serious = await page.evaluate(async () => (await axe.run()).violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => ({ id: v.id, count: v.nodes.length })));
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
       if (serious.length || overflow) failures.push({ path, width, serious, overflow });
