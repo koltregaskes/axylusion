@@ -89,7 +89,7 @@ if __name__ == "__main__":
                         path.read_text(encoding="utf-8").splitlines(), content.splitlines(),
                         fromfile=str(path.relative_to(ROOT)), tofile="generated output"))[:20]))
         else:
-            path.write_text(content, encoding="utf-8")
+            path.write_text(content, encoding="utf-8", newline="\n")
     if stale:
         raise SystemExit("SEO output is stale. Run python scripts/build-seo.py: " + ", ".join(stale))
     print("SEO output is current." if args.check else "Generated SEO metadata, sitemap and RSS.")
