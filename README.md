@@ -105,3 +105,18 @@ text with redacted output, excluding environment files and binaries, not history
 `scripts/check-external-links.py` performs a bounded external crawl and treats
 401/403/429 responses as unverified warnings requiring review, rather than claiming them safe. Definite errors and HTTPS downgrades fail CI.
 No form handler, payment or store setup is added by these changes.
+### Public security boundary
+
+The current source is a static site: public pages fetch checked-in gallery and
+news JSON. There is no form submission handler, Worker/API endpoint, account
+session, newsletter subscription backend or payment handler in this repository.
+External store and social links are provider destinations, not local handlers.
+This bounded code review does not accept future newsletter, analytics or store
+backends. Those need their own input validation, consent, abuse and privacy review.
+The secret scan covers tracked text only, now including Stripe, Slack and Google
+key formats, with synthetic positive and negative admission checks. Environment
+files, binaries, symlinks and Git history remain outside its coverage.
+The Cloudflare response-header payload remains unapplied. Report-only CSP has no
+collector configured, so its violations are visible only in the browser console.
+Actual header application depends on the approved hosting/proxy route and requires
+provider-side readback; this code does not change DNS or hosting settings.
