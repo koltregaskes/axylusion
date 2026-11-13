@@ -86,3 +86,22 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 - Instagram: [@axylusion](https://www.instagram.com/axylusion)
 - YouTube: [@AxyLusion](https://www.youtube.com/@AxyLusion)
 - TikTok: [@axylusion](https://www.tiktok.com/@axylusion)
+
+## Launch security code (hub #1508)
+
+The current origin is GitHub Pages behind Cloudflare DNS. Pages does not honour
+Cloudflare Pages `_headers` files. `cloudflare-response-headers.json` is the
+response-header Transform Rule payload for the existing proxied production host;
+apply it through the existing zone's `http_response_headers_transform` ruleset
+only in the authorised hosting change. This PR does not change DNS or provider
+settings. HSTS omits includeSubDomains/preload. CSP is report-only until actual
+media, embeds and inline script/style behaviour have been checked in production;
+it is not an enforced CSP or proof of deployed headers. If traffic is DNS-only,
+the rule cannot apply. Verify the actual response headers after hosting cutover.
+
+`npm ci --ignore-scripts` installs the lockfile; `npm audit --audit-level=low`
+fails on all reported severities. `scripts/scan-source-secrets.py` scans tracked
+text with redacted output, excluding environment files and binaries, not history.
+`scripts/check-external-links.py` performs a bounded external crawl and treats
+401/403/429 responses as unverified warnings requiring review, rather than claiming them safe. Definite errors and HTTPS downgrades fail CI.
+No form handler, payment or store setup is added by these changes.

@@ -48,7 +48,7 @@ if __name__ == "__main__":
     base_path = urlparse(base).path
     expected, image_count = set(), 0
     for page in sorted(SITE.rglob("*.html")):
-        if any(part.startswith(".") for part in page.relative_to(SITE).parts):
+        if any(part.startswith(".") or part == "node_modules" for part in page.relative_to(SITE).parts):
             continue
         text = page.read_text(encoding="utf-8")
         head = Head(text)
@@ -77,7 +77,7 @@ if __name__ == "__main__":
             assert head.one("og:image:type") == "image/png"
             assert [a["href"] for a in head.links if a.get("type") == "application/rss+xml"] == [base + "/feed.xml"]
             schemas = [json.loads(m) for m in re.findall(r'<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', text, re.S)]
-            assert schemas, "Missing JSON-LD"
+            assert len(schemas) == 1, "Expected exactly one JSON-LD graph"
             nodes = [node for schema in schemas for node in schema.get("@graph", [schema])]
             assert any(node.get("url") == url for node in nodes), "JSON-LD missing the page URL"
             if relative.startswith("posts/") and relative != "posts/":

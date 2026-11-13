@@ -57,6 +57,7 @@ def gallery_images():
 
 
 def enhance_html(text, relative):
+    original_text = text
     head = Head(text)
     title = unescape(re.search(r"<title>(.*?)</title>", text, re.S | re.I).group(1))
     description = head.meta.get("description", title)
@@ -81,19 +82,34 @@ def enhance_html(text, relative):
               "image": IMAGE, "inLanguage": "en-GB", "isPartOf": {"@id": DOMAIN + "/#website"}}
     if relative == "blog-welcome.html":
         schema["creator"] = {"@type": "Person", "name": "Kol Tregaskes"}
+    page_types = {"WebPage", "AboutPage", "CollectionPage", "ImageGallery", "CreativeWork", "BlogPosting"}
     if relative == "gallery.html":
         schema["@type"] = "ImageGallery"
         schema["image"] = list(gallery_images().values())
-        # Older output puts VisualArtwork in ImageGallery.image (which expects images).
-        def fix_gallery(match):
-            payload = json.loads(match.group(1))
-            for node in payload.get("@graph", []):
-                if node.get("@type") == "ImageGallery":
-                    if "hasPart" not in node:
-                        node["hasPart"] = node.get("image", [])
-                    node["image"] = list(gallery_images().values())
-            return f'<script type="application/ld+json" nonce="{NONCE}">{json.dumps(payload, ensure_ascii=True)}</script>'
-        text = re.sub(r'<script type="application/ld\+json"[^>]*>(.*?)</script>', fix_gallery, text, flags=re.S)
-    tags.append(f'<script type="application/ld+json" nonce="{NONCE}">{json.dumps(schema, ensure_ascii=True).replace("<", chr(92) + "u003c")}</script>')
+    pattern = r'\s*<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>'
+    nodes = []
+    for match in re.finditer(pattern, original_text, re.S | re.I):
+        payload = json.loads(match.group(1))
+        nodes.extend(payload.get("@graph", [payload]))
+    text = re.sub(pattern, "", text, flags=re.S | re.I)
+    page_nodes = [node for node in nodes if node.get("@type") in page_types and node.get("url") == url]
+    merged = dict(schema)
+    for node in page_nodes:
+        merged.update(node)
+    merged["url"] = url
+    merged["image"] = schema["image"]
+    if relative == "gallery.html":
+        merged["@type"] = "ImageGallery"
+        if "hasPart" not in merged:
+            artwork = next((node.get("image") for node in page_nodes if node.get("@type") == "ImageGallery"), [])
+            merged["hasPart"] = artwork
+    graph = [node for node in nodes if node not in page_nodes]
+    graph.append({key: value for key, value in merged.items() if key != "@context"})
+    unique = {}
+    for node in graph:
+        key = node.get("@id") or json.dumps(node, sort_keys=True)
+        unique[key] = {**unique.get(key, {}), **node}
+    payload = {"@context": "https://schema.org", "@graph": list(unique.values())}
+    tags.append(f'<script type="application/ld+json" nonce="{NONCE}">{json.dumps(payload, ensure_ascii=True).replace("<", chr(92) + "u003c")}</script>')
     block = "\n  <!-- SEO:start -->\n  " + "\n  ".join(tags) + "\n  <!-- SEO:end -->\n"
     return text.replace("</head>", block + "</head>")
