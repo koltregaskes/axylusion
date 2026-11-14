@@ -11,10 +11,15 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/meta_csp.py
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
       - run: npm install --no-save --package-lock=false playwright@1.64.0 axe-core@4.10.3
       - run: node scripts/check-csp-capture.mjs
       - run: node scripts/check-header-csp.mjs
+      - run: node scripts/check-built-meta-csp.mjs
       - run: LAUNCH_BROWSER_PATH=$(command -v microsoft-edge) node scripts/launch-browser.mjs

@@ -21,6 +21,7 @@ jobs:
         run: |
           python scripts/build-seo.py --check
           python scripts/check-seo.py
+          python scripts/meta_csp.py
           python scripts/check-internal-links.py
           python scripts/validate-site.py
           test -s llms.txt

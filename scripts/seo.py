@@ -1,5 +1,6 @@
 """Shared, deterministic metadata for hand-written and generated public pages."""
 import json
+from meta_csp import apply as apply_csp
 import re
 from html import escape, unescape
 from html.parser import HTMLParser
@@ -114,4 +115,4 @@ def enhance_html(text, relative):
     payload = {"@context": "https://schema.org", "@graph": list(unique.values())}
     tags.append(f'<script type="application/ld+json" nonce="{NONCE}">{json.dumps(payload, ensure_ascii=True).replace("<", chr(92) + "u003c")}</script>')
     block = "\n  <!-- SEO:start -->\n  " + "\n  ".join(tags) + "\n  <!-- SEO:end -->\n"
-    return text.replace("</head>", block + "</head>")
+    return apply_csp(text.replace("</head>", block + "</head>"))

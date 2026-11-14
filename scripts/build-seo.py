@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 from email.utils import format_datetime
 from urllib.parse import urljoin
 
+from meta_csp import apply as apply_csp, pages as csp_pages
 from seo import ROOT, DOMAIN, canonical, enhance_html, public_pages, gallery_images
 
 SM = "http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -72,6 +73,8 @@ def outputs():
                 ET.SubElement(item, name).text = value
             ET.SubElement(item, "guid", {"isPermaLink": "true"}).text = link
     result[ROOT / "feed.xml"] = xml(rss)
+    for page in csp_pages():
+        result[page] = apply_csp(result.get(page, page.read_text(encoding="utf-8")))
     return result
 
 
