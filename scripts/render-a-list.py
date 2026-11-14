@@ -18,6 +18,7 @@ from html import escape
 from pathlib import Path
 from typing import Any
 from seo import enhance_html
+from meta_csp import apply as apply_csp
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
@@ -694,7 +695,7 @@ def build_outputs(snapshot: dict[str, Any]) -> dict[Path, str]:
             outputs[path] = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title} | Axy Lusion</title><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="manifest" href="../site.webmanifest"><link rel="stylesheet" href="../styles.css"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=../a-list.html"><link rel="canonical" href="https://axylusion.com/a-list.html"></head><body><main><h1>{title}</h1><p>No current public Elo board is available for this category. <a href="../a-list.html">View the current A-List</a>.</p></main></body></html>
 '''
-    return {path: ensure_navigation(html) if "noindex" in html else enhance_html(ensure_navigation(html), path.relative_to(PROJECT_DIR).as_posix()) for path, html in outputs.items()}
+    return {path: apply_csp(ensure_navigation(html)) if "noindex" in html else enhance_html(ensure_navigation(html), path.relative_to(PROJECT_DIR).as_posix()) for path, html in outputs.items()}
 
 
 def unexpected_detail_pages(outputs: dict[Path, str]) -> list[Path]:
