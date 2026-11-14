@@ -668,7 +668,7 @@ img {
 
 .cn-reel__row {
   display: grid;
-  grid-template-columns: 58px minmax(280px, 0.84fr) minmax(260px, 0.62fr);
+  grid-template-columns: 90px minmax(280px, 0.84fr) minmax(260px, 0.62fr);
   gap: clamp(22px, 4vw, 54px);
   align-items: center;
   padding: 28px 0;
@@ -1793,3 +1793,5 @@ img {
   color: var(--axl-muted, #b7aa96);
   line-height: 1.5;
 }
+
+.cn-alist-nav { flex-wrap: wrap; overflow-x: visible; }

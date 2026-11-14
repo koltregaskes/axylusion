@@ -1,5 +1,8 @@
 name: Launch contract
 on: [push, pull_request, workflow_dispatch]
+env:
+  PLAYWRIGHT_CHANNEL: msedge
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 permissions:
   contents: read
 jobs:
@@ -23,6 +26,7 @@ jobs:
           test -s llms.txt
       - name: Install browser checks
         run: npm install --no-save --package-lock=false playwright@1.64.0 axe-core@4.10.3
-      - run: npx playwright install --with-deps chromium
+      - run: microsoft-edge --version
+      - run: node scripts/check-overflow-browser.mjs
       - name: All routes at phone and desktop widths
         run: node scripts/launch-browser.mjs

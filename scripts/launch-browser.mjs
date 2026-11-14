@@ -1,4 +1,5 @@
 import {installCspCapture,readCspViolations} from './csp-check.mjs';
+import {findOverflow} from './overflow-check.mjs';
 import { chromium } from 'playwright';
 import { readFile, readdir } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
@@ -16,11 +17,11 @@ async function pages(dir = '') {
 const routes = await pages();
 if (!routes.length) throw Error('No routes discovered');
 const axe = await readFile('node_modules/axe-core/axe.min.js', 'utf8');
-const browser = await chromium.launch(process.env.LAUNCH_BROWSER_PATH ? { executablePath: process.env.LAUNCH_BROWSER_PATH } : {});
+const browser = await chromium.launch(process.env.LAUNCH_BROWSER_PATH ? { executablePath: process.env.LAUNCH_BROWSER_PATH } : {channel:process.env.PLAYWRIGHT_CHANNEL||'msedge'});
 const failures = [];
 try {
-  for (const width of [320, 1280]) {
-    const context = await browser.newContext({ viewport: { width, height: 900 }, serviceWorkers: 'block' });
+  for (const width of [320,390,1280]) {
+    const context = await browser.newContext({ viewport: { width, height: 900 }, serviceWorkers: 'block', reducedMotion:'reduce' });
     await context.addInitScript(installCspCapture);
     await context.route('**/*', async route => {
       const url = new URL(route.request().url());
@@ -40,12 +41,12 @@ try {
       if(csp.length)failures.push({path,width,csp});
       await page.addScriptTag({ url: 'https://axylusion.com/__launch-axe.js' });
       const serious = await page.evaluate(async () => (await axe.run()).violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => ({ id: v.id, count: v.nodes.length, nodes: v.nodes.map(n => ({ target: n.target, reason: n.failureSummary })) })));
-      const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
-      if (serious.length || overflow) failures.push({ path, width, serious, overflow, wide: overflow ? await page.evaluate(() => [...document.querySelectorAll('*')].filter(e => e.getBoundingClientRect().right > innerWidth + 1).slice(0,10).map(e => ({ tag: e.tagName, cls: e.className }))) : [] });
+      const overflow = (await page.evaluate(findOverflow)).length > 0;
+      if (serious.length || overflow) failures.push({ path, width, serious, overflow, wide: overflow ? await page.evaluate(findOverflow) : [] });
       await page.close();
     }
     await context.close();
   }
 } finally { await browser.close(); }
-console.log(JSON.stringify({ routes: routes.length, widths: [320,1280], failures }, null, 2));
+console.log(JSON.stringify({ routes: routes.length, widths: [320,390,1280], failures }, null, 2));
 if (failures.length) process.exitCode = 1;

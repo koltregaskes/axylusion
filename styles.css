@@ -5273,3 +5273,9 @@ footer a:hover {
 
 /* Elo-table links must remain distinguishable without colour alone. */
 .alist-comparison-table a { text-decoration: underline; text-underline-offset: 0.15em; }
+
+/* Preserve readable phone headings and score labels. */
+.page-title { overflow-wrap: anywhere; }
+.alist-model-card-header { flex-wrap: wrap; }
+.alist-model-card-header > div { min-width: 0; overflow-wrap: anywhere; }
+.alist-model-card-header .alist-score-bar { flex: 1 0 80px; min-width: 80px; }
