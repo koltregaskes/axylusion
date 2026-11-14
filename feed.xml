@@ -7,6 +7,22 @@
     <language>en-gb</language>
     <atom:link href="https://axylusion.com/feed.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Creative AI digest: 2026-11-14</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-14.md</link>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Xania Monet wins top honors at the first US AI Music Awards: https://superpowerdaily.com/posts/xania-monet-wins-top-honors-at-the-first-us-ai-music-awards</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-14.md</guid>
+    </item>
+    <item>
+      <title>Xania Monet wins top honors at the first US AI Music Awards</title>
+      <link>https://superpowerdaily.com/posts/xania-monet-wins-top-honors-at-the-first-us-ai-music-awards</link>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/xania-monet-wins-top-honors-at-the-first-us-ai-music-awards</guid>
+    </item>
+    <item>
       <title>Creative AI digest: 2026-11-12</title>
       <link>https://axylusion.com/news-digests/digest-2026-11-12.md</link>
       <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
@@ -1158,22 +1174,6 @@ Suno’s v6 AI Music Model Debuts With Record Label Support, New Editing Tools a
       <description>Superintelligence Newsletter</description>
       <category>Audio</category>
       <guid isPermaLink="true">https://superintelligencenews.com/ai-fields/large-language-models/suno-v6-ai-music-model-label-support/</guid>
-    </item>
-    <item>
-      <title>Creative AI digest: 2026-09-09</title>
-      <link>https://axylusion.com/news-digests/digest-2026-09-09.md</link>
-      <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
-      <description>Suno Releases Licensed-Music AI Models as Copyright Cases Continue: https://superpowerdaily.com/posts/suno-releases-licensed-music-ai-models-as-copyright-cases-continue</description>
-      <category>Digest</category>
-      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-09.md</guid>
-    </item>
-    <item>
-      <title>Suno Releases Licensed-Music AI Models as Copyright Cases Continue</title>
-      <link>https://superpowerdaily.com/posts/suno-releases-licensed-music-ai-models-as-copyright-cases-continue</link>
-      <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
-      <description>Superpower Daily</description>
-      <category>Audio</category>
-      <guid isPermaLink="true">https://superpowerdaily.com/posts/suno-releases-licensed-music-ai-models-as-copyright-cases-continue</guid>
     </item>
   </channel>
 </rss>
