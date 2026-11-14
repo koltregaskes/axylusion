@@ -37,7 +37,7 @@ try {
       await page.evaluate(async () => { await document.fonts.ready; await Promise.all(document.getAnimations().filter(a => a.effect.getTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))); });
       await page.addScriptTag({ url: 'https://axylusion.com/__launch-axe.js' });
       const serious = await page.evaluate(async () => (await axe.run()).violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => ({ id: v.id, count: v.nodes.length, nodes: v.nodes.map(n => ({ target: n.target, reason: n.failureSummary })) })));
-      const overflow = (await page.evaluate(findOverflow)).length > 0;
+      const overflow = (await page.evaluate(findOverflow)).length > 0 || await page.evaluate(()=>document.documentElement.scrollWidth > innerWidth + 1);
       if (serious.length || overflow) failures.push({ path, width, serious, overflow, wide: overflow ? await page.evaluate(findOverflow) : [] });
       await page.close();
     }
