@@ -1,0 +1,13 @@
+name: Freshness input regressions
+on: [pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: node --test tests/routed-feed-freshness.test.mjs

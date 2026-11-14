@@ -41,7 +41,7 @@ test('a fresh empty feed does not warn', () => {
   }, now)
 
   assert.equal(assessment.warn, false)
-  assert.equal(assessment.newestItemAt, generated)
+  assert.equal(assessment.newestItemAt, null)
 })
 
 test('a one-day-old feed warns before it is three days old', () => {
@@ -75,3 +75,7 @@ test('fresh partial feed still warns and names failed sources', () => {
   assert.equal(result.warn,true)
   assert.match(formatReport(result),/bad-source: HTTP 404/)
 })
+
+test('future generated/source dates fail',()=>assert.throws(()=>assessRoutedFeedFreshness(feedAt('2026-10-27T06:30:00Z'),now),/future/));
+test('wrong destination fails',()=>assert.throws(()=>assessRoutedFeedFreshness({...feedAt(now.toISOString()),site:'Other'},now),/site/));
+test('mismatched article count fails',()=>assert.throws(()=>assessRoutedFeedFreshness({...feedAt(now.toISOString()),article_count:4},now),/count/));

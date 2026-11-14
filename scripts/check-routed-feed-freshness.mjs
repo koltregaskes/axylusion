@@ -20,6 +20,8 @@ export function assessRoutedFeedFreshness(feed, now = new Date()) {
     throw new Error('Routed feed is missing articles.')
   }
 
+  if(feed.site!=='Axy Lusion')throw new Error('Routed feed site must be Axy Lusion.');
+  if(feed.article_count!==feed.articles.length)throw new Error('Routed feed article count mismatch.');
   const nowMs = new Date(now).getTime()
   if (!Number.isFinite(nowMs)) {
     throw new Error('Routed feed freshness clock is invalid.')
@@ -30,11 +32,13 @@ export function assessRoutedFeedFreshness(feed, now = new Date()) {
     throw new Error('Routed feed generated timestamp is missing or invalid.')
   }
 
+  if(generatedMs>nowMs+300000)throw new Error('Routed feed timestamp is in the future.');
   const itemTimes = feed.articles.map((article, index) => {
     const time = new Date(article?.date).getTime()
     if (!Number.isFinite(time)) {
       throw new Error(`Routed feed article ${index + 1} date is missing or invalid.`)
     }
+    if(time>nowMs+300000)throw new Error('Routed feed article timestamp is in the future.');
     return time
   })
   const newestMs = itemTimes.length ? Math.max(...itemTimes) : generatedMs
@@ -43,7 +47,7 @@ export function assessRoutedFeedFreshness(feed, now = new Date()) {
   return {
     ageDays,
     generatedAt: new Date(generatedMs).toISOString(),
-    newestItemAt: new Date(newestMs).toISOString(),
+    newestItemAt: itemTimes.length ? new Date(newestMs).toISOString() : null,
     partial: feed.partial === true,
     failedSources: Array.isArray(feed.failed_sources) ? feed.failed_sources : [],
     warn: feed.partial === true || ageDays >= WARN_AFTER_DAYS,
@@ -53,7 +57,7 @@ export function assessRoutedFeedFreshness(feed, now = new Date()) {
 
 export function formatReport(assessment) {
   return [
-    `Routed feed is ${assessment.ageDays.toFixed(1)} days old (generated ${assessment.generatedAt}, newest item ${assessment.newestItemAt}).`,
+    `Routed feed is ${assessment.ageDays.toFixed(1)} days old (generated ${assessment.generatedAt}, newest item ${assessment.newestItemAt ?? 'none (empty feed)'}).`,
     `This check fails at ${WARN_AFTER_DAYS} day so a missed refresh is visible before a ${HARD_MAX_DAYS}-day age.`,
     `Missing source: ${MISSING_SOURCE}`,
     ...(assessment.partial ? [`Partial source coverage: ${assessment.failedSources.join("; ") || "unspecified sources"}.`] : []),
