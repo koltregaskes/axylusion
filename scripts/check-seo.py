@@ -4,6 +4,7 @@ import json
 import os
 import re
 import struct
+from png_contract import validate_png
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
@@ -71,6 +72,7 @@ if __name__ == "__main__":
             assert head.one("twitter:card") == "summary_large_image"
             image = head.one("og:image")
             assert image == head.one("twitter:image") and image.startswith(base + "/") and image.endswith(".png")
+            validate_png(local(image))
             raw = local(image).read_bytes()
             assert raw[:8] == b"\x89PNG\r\n\x1a\n" and struct.unpack(">II", raw[16:24]) == (1200, 630), "Social image must be a 1200x630 PNG"
             assert head.one("og:image:width") == "1200" and head.one("og:image:height") == "630"
