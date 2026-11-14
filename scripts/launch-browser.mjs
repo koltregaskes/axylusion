@@ -1,3 +1,4 @@
+import {installCspCapture,readCspViolations} from './csp-check.mjs';
 import { chromium } from 'playwright';
 import { readFile, readdir } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
@@ -20,6 +21,7 @@ const failures = [];
 try {
   for (const width of [320, 1280]) {
     const context = await browser.newContext({ viewport: { width, height: 900 }, serviceWorkers: 'block' });
+    await context.addInitScript(installCspCapture);
     await context.route('**/*', async route => {
       const url = new URL(route.request().url());
       if (url.origin !== 'https://axylusion.com') return route.abort();
@@ -34,6 +36,8 @@ try {
       const page = await context.newPage();
       await page.goto('https://axylusion.com/' + path, { waitUntil: 'networkidle' });
       await page.evaluate(async () => { await document.fonts.ready; await Promise.all(document.getAnimations().filter(a => a.effect.getTiming().iterations !== Infinity).map(a => a.finished.catch(() => {}))); });
+      const csp=await page.evaluate(readCspViolations);
+      if(csp.length)failures.push({path,width,csp});
       await page.addScriptTag({ url: 'https://axylusion.com/__launch-axe.js' });
       const serious = await page.evaluate(async () => (await axe.run()).violations.filter(v => ['serious', 'critical'].includes(v.impact)).map(v => ({ id: v.id, count: v.nodes.length, nodes: v.nodes.map(n => ({ target: n.target, reason: n.failureSummary })) })));
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
