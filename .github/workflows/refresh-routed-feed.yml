@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: refresh-routed-feed
@@ -59,6 +60,14 @@ jobs:
       - name: Push the refreshed feed
         if: steps.commit.outputs.committed == 'true'
         run: git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      # GITHUB_TOKEN pushes do not start legacy Pages builds. Reuse that build,
+      # rather than duplicating its deploy steps. Branch dispatches never publish.
+      - name: Request the existing Pages build
+        if: steps.commit.outputs.committed == 'true' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds" --jq '.url'
 
       - name: Report incomplete source coverage
         if: steps.fetch.outcome == 'failure'
