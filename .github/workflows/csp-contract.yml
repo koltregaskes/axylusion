@@ -16,4 +16,5 @@ jobs:
           node-version: '24'
       - run: npm install --no-save --package-lock=false playwright@1.64.0 axe-core@4.10.3
       - run: node scripts/check-csp-capture.mjs
+      - run: node scripts/check-header-csp.mjs
       - run: LAUNCH_BROWSER_PATH=$(command -v microsoft-edge) node scripts/launch-browser.mjs
