@@ -4,6 +4,13 @@ from html import escape
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
+def require_closed_newsletter(config=None):
+    if config is None:
+        config = json.loads((ROOT / "data/site-config.json").read_text(encoding="utf-8"))
+    if config.get("newsletter", {}).get("signupsOpen") is not False:
+        raise ValueError("Newsletter sign-ups must stay closed: no deployed backend is configured")
+
+
 def contact_link():
     email = json.loads((ROOT / "data/site-config.json").read_text(encoding="utf-8"))["contact_email"]
     if not email:

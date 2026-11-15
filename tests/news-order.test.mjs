@@ -89,6 +89,8 @@ function digestRow(day, title) {
 async function page(feed) {
   const list = createElement('section')
   list.dataset.newsList = '1'
+  list.dataset.newsTopics = fs.readFileSync(new URL('../newsletter/categories.json', import.meta.url), 'utf8')
+  list.dataset.newsTopics = JSON.stringify(JSON.parse(list.dataset.newsTopics).tags)
   const head = createElement('div')
   head.classList.add('cn-digests__head')
   list.appendChild(head)
@@ -178,4 +180,16 @@ test('a newer routed row becomes the filter anchor instead of the first archive 
     .filter((row) => !row.classList.contains('is-hidden'))
     .map((row) => row.dataset.digestDate)
   assert.deepEqual(visible, ['2026-10-26'])
+})
+
+test('all routed News tags use the same mapping as editions, including conflicting art_ai', async () => {
+  const mapping = JSON.parse(fs.readFileSync(new URL('../newsletter/categories.json', import.meta.url), 'utf8'))
+  for (const [tag, expected] of Object.entries(mapping.tags)) {
+    const {list} = await page({site:'Axy Lusion', articles:[{
+      title:'Mapped fixture', url:'https://example.invalid/story', date:'2026-10-26T12:00:00Z',
+      matching_tags:['unknown_tag'], tags:[tag],
+    }]})
+    const row = list.querySelectorAll('[data-digest-date]').find(row => row.dataset.digestDate === '2026-10-26')
+    assert.equal(row.querySelectorAll('li[data-topic]')[0].dataset.topic, expected, tag)
+  }
 })

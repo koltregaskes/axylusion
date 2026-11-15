@@ -42,12 +42,19 @@ jobs:
         continue-on-error: true
         run: node scripts/refresh-routed-feed.mjs --pipeline .news-pipeline/shared/website-tools/pipelines/news
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Render static editions and SEO (sign-ups remain closed)
+        run: python -B scripts/build-seo.py
+
       - name: Commit the fetched feed
         id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- news-digests/news-feed-latest.json
+          git add -- news-digests/news-feed-latest.json data/newsletter-editions.json editions editions.html newsletter.html sitemap.xml feed.xml llms.txt
           if git diff --cached --quiet; then
             echo "No routed feed changes to commit."
             echo "committed=false" >> "$GITHUB_OUTPUT"

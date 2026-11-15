@@ -1,3 +1,6 @@
 {
-  "contact_email": ""
+  "contact_email": "",
+  "newsletter": {
+    "signupsOpen": false
+  }
 }

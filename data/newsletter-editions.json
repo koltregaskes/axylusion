@@ -1,0 +1,840 @@
+{
+  "editions": [
+    {
+      "date": "2026-11-15",
+      "updated": "2026-11-15T12:42:59.306Z",
+      "items": [
+        {
+          "title": "Xania Monet wins top honors at the first US AI Music Awards",
+          "url": "https://superpowerdaily.com/posts/xania-monet-wins-top-honors-at-the-first-us-ai-music-awards",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-11-14",
+          "category": "Audio"
+        }
+      ],
+      "digests": [
+        "digest-2026-11-15.md"
+      ],
+      "feedStatus": {
+        "articleCount": 0,
+        "partial": false,
+        "failedSources": 0
+      },
+      "url": "https://axylusion.com/editions/2026-11-15.html"
+    },
+    {
+      "date": "2026-11-14",
+      "updated": "2026-11-14",
+      "items": [
+        {
+          "title": "Xania Monet wins top honors at the first US AI Music Awards",
+          "url": "https://superpowerdaily.com/posts/xania-monet-wins-top-honors-at-the-first-us-ai-music-awards",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-11-14",
+          "category": "Audio"
+        }
+      ],
+      "digests": [
+        "digest-2026-11-14.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-11-14.html"
+    },
+    {
+      "date": "2026-11-13",
+      "updated": "2026-11-13",
+      "items": [
+        {
+          "title": "Runway says Praxis-1 is out with open weights for robot control",
+          "url": "https://www.digg.com/ai/ypm05vgl",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Video"
+        },
+        {
+          "title": "Pika and Runway say Seedance 2.5 is ready for its 4K close-up",
+          "url": "https://www.digg.com/ai/9xw3vsww",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Video"
+        }
+      ],
+      "digests": [
+        "digest-2026-11-13.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-11-13.html"
+    },
+    {
+      "date": "2026-11-12",
+      "updated": "2026-11-12",
+      "items": [
+        {
+          "title": "Runway says Praxis-1 is out with open weights for robot control",
+          "url": "https://www.digg.com/ai/ypm05vgl",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Video"
+        },
+        {
+          "title": "Pika and Runway say Seedance 2.5 is ready for its 4K close-up",
+          "url": "https://www.digg.com/ai/9xw3vsww",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Video"
+        }
+      ],
+      "digests": [
+        "digest-2026-11-12.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-11-12.html"
+    },
+    {
+      "date": "2026-11-11",
+      "updated": "2026-11-11",
+      "items": [
+        {
+          "title": "ElevenLabs announces new Scribe models for audio that won\u2019t behave",
+          "url": "https://www.digg.com/ai/14fby5bx",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Audio"
+        },
+        {
+          "title": "Pika touts Seedream 5.5 in Image Studio, with layers to spare",
+          "url": "https://www.digg.com/ai/maf5kqs8",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Video"
+        }
+      ],
+      "digests": [
+        "digest-2026-11-11.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-11-11.html"
+    },
+    {
+      "date": "2026-11-10",
+      "updated": "2026-11-10",
+      "items": [
+        {
+          "title": "ElevenLabs announces ElevenAgents Campaign Manager for outbound campaigns",
+          "url": "https://www.digg.com/ai/dv5c2u2t",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Audio"
+        }
+      ],
+      "digests": [
+        "digest-2026-11-10.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-11-10.html"
+    },
+    {
+      "date": "2026-11-08",
+      "updated": "2026-11-08",
+      "items": [
+        {
+          "title": "Eminem\u2019s publisher sues Suno over alleged use of 269 songs in AI training",
+          "url": "https://superpowerdaily.com/posts/eminem-s-publisher-sues-suno-over-alleged-use-of-269-songs-in-ai-training",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-11-07",
+          "category": "Audio"
+        },
+        {
+          "title": "Elvis Presley\u2019s rights owners sue Suno over alleged AI voice cloning",
+          "url": "https://superpowerdaily.com/posts/elvis-presley-s-rights-owners-sue-suno-over-alleged-ai-voice-cloning",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-11-07",
+          "category": "Audio"
+        }
+      ],
+      "digests": [
+        "digest-2026-11-08.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-11-08.html"
+    },
+    {
+      "date": "2026-11-07",
+      "updated": "2026-11-07",
+      "items": [
+        {
+          "title": "The Cat in the Hat review \u2013 Bill Hader brings plenty but this animated rework is a mess",
+          "url": "https://www.theguardian.com/film/2026/nov/06/cat-in-the-hat-movie-review",
+          "source": "The Guardian (Culture)",
+          "sourceDate": "2026-11-06",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-11-07.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-11-07.html"
+    },
+    {
+      "date": "2026-11-06",
+      "updated": "2026-11-06",
+      "items": [
+        {
+          "title": "ElevenLabs now lets users publish AI-generated music directly on SoundCloud",
+          "url": "https://techcrunch.com/2026/11/05/elevenlabs-now-lets-users-publish-ai-generated-music-directly-on-soundcloud/",
+          "source": "TechCrunch AI",
+          "sourceDate": "2026-11-05",
+          "category": "Audio"
+        },
+        {
+          "title": "The Cat in the Hat review \u2013 Bill Hader brings plenty but this animated rework is a mess",
+          "url": "https://www.theguardian.com/film/2026/nov/06/cat-in-the-hat-movie-review",
+          "source": "The Guardian (Culture)",
+          "sourceDate": "2026-11-06",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-11-06.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-11-06.html"
+    },
+    {
+      "date": "2026-11-05",
+      "updated": "2026-11-05",
+      "items": [
+        {
+          "title": "A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.",
+          "url": "https://huggingface.co/blog/phonon-tts",
+          "source": "Hugging Face Blog",
+          "sourceDate": "2026-11-05",
+          "category": "Audio"
+        },
+        {
+          "title": "Atmee v2 brings real-time avatars to AI video calls",
+          "url": "https://www.digg.com/ai/ir5abc25",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Video"
+        },
+        {
+          "title": "ElevenLabs now lets users publish AI-generated music directly on SoundCloud",
+          "url": "https://techcrunch.com/2026/11/05/elevenlabs-now-lets-users-publish-ai-generated-music-directly-on-soundcloud/",
+          "source": "TechCrunch AI",
+          "sourceDate": "2026-11-05",
+          "category": "Audio"
+        },
+        {
+          "title": "Show HN: A decent text-to-image model trained for ~$20K (Apache 2.0 Weights)",
+          "url": "https://www.linum.ai/field-notes/pjit-21k",
+          "source": "Hacker News",
+          "sourceDate": "2026-11-04",
+          "category": "Visuals"
+        }
+      ],
+      "digests": [
+        "digest-2026-11-05.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-11-05.html"
+    },
+    {
+      "date": "2026-10-31",
+      "updated": "2026-10-31",
+      "items": [
+        {
+          "title": "Runway launches App Studio to turn creative workflows into shareable no-code apps",
+          "url": "https://superpowerdaily.com/posts/runway-launches-app-studio-to-turn-creative-workflows-into-shareable-no-code-apps",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-31",
+          "category": "Video"
+        },
+        {
+          "title": "Turing TTS measures how often AI speech is mistaken for human speech",
+          "url": "https://www.digg.com/ai/m0fwzf3y",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Audio"
+        },
+        {
+          "title": "ElevenLabs sets November 11 New York summit with Jensen Huang on speaker list",
+          "url": "https://superpowerdaily.com/posts/elevenlabs-sets-november-11-new-york-summit-with-jensen-huang-on-speaker-list",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-30",
+          "category": "Audio"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-31.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-31.html"
+    },
+    {
+      "date": "2026-10-30",
+      "updated": "2026-10-30",
+      "items": [
+        {
+          "title": "Deepgram is acquiring Daily, pledging to keep its voice AI framework open",
+          "url": "https://superpowerdaily.com/posts/deepgram-is-acquiring-daily-pledging-to-keep-its-voice-ai-framework-open",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-30",
+          "category": "Audio"
+        },
+        {
+          "title": "Pika launches H3 Flex, an open-weight video model built on MiniMax H3",
+          "url": "https://www.digg.com/ai/aa83tsqk",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Video"
+        },
+        {
+          "title": "Granola crunches up a dictation feature to compete with Wispr",
+          "url": "https://techcrunch.com/2026/10/29/granola-crunches-up-a-dictation-feature-to-compete-with-wispr/",
+          "source": "TechCrunch AI",
+          "sourceDate": "2026-10-29",
+          "category": "Audio"
+        },
+        {
+          "title": "Pika releases open-weight video model with six-step generation and synchronized audio",
+          "url": "https://superpowerdaily.com/posts/pika-releases-open-weight-video-model-with-six-step-generation-and-synchronized-audio",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-30",
+          "category": "Video"
+        },
+        {
+          "title": "Granola adds Mac dictation, signaling a bigger fight in voice AI productivity",
+          "url": "https://superintelligencenews.com/applications/voice-ai-granola-mac-dictation/",
+          "source": "Superintelligence Newsletter",
+          "sourceDate": "2026-10-29",
+          "category": "Audio"
+        },
+        {
+          "title": "\u200b\u2018He buckled. I could hear his bass ringing out ...\u2019 The luminous rise and tragic end of US alt heroes Morphine",
+          "url": "https://www.theguardian.com/music/2026/oct/29/morphine-mark-sandman-cocoon-partisan",
+          "source": "The Guardian (Culture)",
+          "sourceDate": "2026-10-29",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-30.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-30.html"
+    },
+    {
+      "date": "2026-10-29",
+      "updated": "2026-10-29",
+      "items": [
+        {
+          "title": "Prime Video releases AI-generated drama Castle Walls globally",
+          "url": "https://superpowerdaily.com/posts/prime-video-releases-ai-generated-drama-castle-walls-globally",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-28",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-29.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-29.html"
+    },
+    {
+      "date": "2026-10-28",
+      "updated": "2026-10-28",
+      "items": [
+        {
+          "title": "A painting went missing 20 years ago. Police tracked it down with the help of AI Art theft is a global problem and police forces are struggling to keep on top of it. Now they are turning to AI software that snoop out the most cleverly hidden artworks. See more",
+          "url": "https://www.bbc.com/future/article/20261027-this-painting-went-missing-20-years-ago-police-tracked-it-down-with-the-help-of-ai",
+          "source": "BBC AI",
+          "sourceDate": null,
+          "category": "Visuals"
+        },
+        {
+          "title": "Prime Video releases AI-generated drama Castle Walls globally",
+          "url": "https://superpowerdaily.com/posts/prime-video-releases-ai-generated-drama-castle-walls-globally",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-28",
+          "category": "Workflows"
+        },
+        {
+          "title": "Vercel adds 14 ElevenLabs audio models to AI Gateway with single-key access",
+          "url": "https://superpowerdaily.com/posts/vercel-adds-14-elevenlabs-audio-models-to-ai-gateway-with-single-key-access",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-27",
+          "category": "Audio"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-28.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-28.html"
+    },
+    {
+      "date": "2026-10-26",
+      "updated": "2026-10-26",
+      "items": [
+        {
+          "title": "Grok Imagine releases seven-minute AI Odyssey episode after Musk\u2019s feature-film pledge",
+          "url": "https://superpowerdaily.com/posts/grok-imagine-releases-seven-minute-ai-odyssey-episode-after-musk-s-feature-film-pledge",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-25",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-26.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-26.html"
+    },
+    {
+      "date": "2026-10-25",
+      "updated": "2026-10-25",
+      "items": [
+        {
+          "title": "These clever apps show off the iPhone Duo\u2019s potential",
+          "url": "https://techcrunch.com/2026/10/24/these-clever-apps-show-off-the-iphone-duos-potential/",
+          "source": "TechCrunch AI",
+          "sourceDate": "2026-10-24",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-25.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-25.html"
+    },
+    {
+      "date": "2026-10-24",
+      "updated": "2026-10-24",
+      "items": [
+        {
+          "title": "Block introduces Dessa, a voice AI it says learned from speech alone",
+          "url": "https://superpowerdaily.com/posts/block-introduces-dessa-a-voice-ai-it-says-learned-from-speech-alone",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-24",
+          "category": "Audio"
+        },
+        {
+          "title": "\u2018I always think my head will fall off when Traitors turn on each other\u2019: the inside story of the world\u2019s biggest TV show",
+          "url": "https://www.theguardian.com/tv-and-radio/2026/oct/23/traitors-bbc-making-of-inside-story-worlds-biggest-tv-show",
+          "source": "The Guardian (Culture)",
+          "sourceDate": "2026-10-23",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-24.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-24.html"
+    },
+    {
+      "date": "2026-10-23",
+      "updated": "2026-10-23",
+      "items": [
+        {
+          "title": "Canva launches first image model to bring text-aware generation deeper into design workflows",
+          "url": "https://superintelligencenews.com/ai-fields/large-language-models/canva-image-generation-model-launch/",
+          "source": "Superintelligence Newsletter",
+          "sourceDate": "2026-10-22",
+          "category": "Visuals"
+        },
+        {
+          "title": "\u2018I always think my head will fall off when Traitors turn on each other\u2019: the inside story of the world\u2019s biggest TV show",
+          "url": "https://www.theguardian.com/tv-and-radio/2026/oct/23/traitors-bbc-making-of-inside-story-worlds-biggest-tv-show",
+          "source": "The Guardian (Culture)",
+          "sourceDate": "2026-10-23",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-23.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-23.html"
+    },
+    {
+      "date": "2026-10-22",
+      "updated": "2026-10-22",
+      "items": [
+        {
+          "title": "Hermes Agent adds an official Meshy plugin for 3D model creation",
+          "url": "https://www.digg.com/ai/yqsr0ekf",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Visuals"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-22.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-22.html"
+    },
+    {
+      "date": "2026-10-21",
+      "updated": "2026-10-21",
+      "items": [
+        {
+          "title": "The dangers of letting tech billionaires shape our world",
+          "url": "https://www.theguardian.com/global/2026/oct/19/musk-ukraine-ai-music",
+          "source": "The Guardian Tech",
+          "sourceDate": "2026-10-20",
+          "category": "Audio"
+        },
+        {
+          "title": "Spotify Says It Has Removed 50 Million AI Spam Tracks From Recommendations",
+          "url": "https://superintelligencenews.com/applications/spotify-ai-music-spam-removal/",
+          "source": "Superintelligence Newsletter",
+          "sourceDate": "2026-10-20",
+          "category": "Audio"
+        },
+        {
+          "title": "Satirical AI video of Paris protests mirrors real-life tourist experiences",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/10/20/satirical-ai-video-of-paris-protests-mirrors-real-life-tourist-experiences?traffic_source=rss",
+          "source": "Al Jazeera",
+          "sourceDate": "2026-10-20",
+          "category": "Video"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-21.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-21.html"
+    },
+    {
+      "date": "2026-10-20",
+      "updated": "2026-10-20",
+      "items": [
+        {
+          "title": "fal launches FLUX 3 Max, claiming 22\u00d7 faster AI video generation than Seedance 2.5",
+          "url": "https://venturebeat.com/technology/fal-launches-flux-3-max-claiming-22-faster-ai-video-generation-than-seedance-2-5",
+          "source": "VentureBeat AI",
+          "sourceDate": null,
+          "category": "Visuals"
+        },
+        {
+          "title": "The dangers of letting tech billionaires shape our world",
+          "url": "https://www.theguardian.com/global/2026/oct/19/musk-ukraine-ai-music",
+          "source": "The Guardian Tech",
+          "sourceDate": "2026-10-20",
+          "category": "Audio"
+        },
+        {
+          "title": "Ant Group's Ming-3.0-tts reportedly leads open-weight Controlled Voice test, ties for first in pronunciation",
+          "url": "https://www.digg.com/ai/tqblzi7v",
+          "source": "Digg AI",
+          "sourceDate": null,
+          "category": "Audio"
+        },
+        {
+          "title": "Sheriff says scammers cloned Florida captain\u2019s voice in police impersonation scheme",
+          "url": "https://superpowerdaily.com/posts/sheriff-says-scammers-cloned-florida-captain-s-voice-in-police-impersonation-scheme",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-19",
+          "category": "Audio"
+        },
+        {
+          "title": "Spotify Says It Has Removed 50 Million AI Spam Tracks From Recommendations",
+          "url": "https://superintelligencenews.com/applications/spotify-ai-music-spam-removal/",
+          "source": "Superintelligence Newsletter",
+          "sourceDate": "2026-10-20",
+          "category": "Audio"
+        },
+        {
+          "title": "Satirical AI video of Paris protests mirrors real-life tourist experiences",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/10/20/satirical-ai-video-of-paris-protests-mirrors-real-life-tourist-experiences?traffic_source=rss",
+          "source": "Al Jazeera",
+          "sourceDate": "2026-10-20",
+          "category": "Video"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-20.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-20.html"
+    },
+    {
+      "date": "2026-10-19",
+      "updated": "2026-10-19",
+      "items": [
+        {
+          "title": "Sheriff says scammers cloned Florida captain\u2019s voice in police impersonation scheme",
+          "url": "https://superpowerdaily.com/posts/sheriff-says-scammers-cloned-florida-captain-s-voice-in-police-impersonation-scheme",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-19",
+          "category": "Audio"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-19.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-19.html"
+    },
+    {
+      "date": "2026-10-17",
+      "updated": "2026-10-17",
+      "items": [
+        {
+          "title": "ElevenLabs adds video-matched music and sound effects with editable tracks",
+          "url": "https://superpowerdaily.com/posts/elevenlabs-adds-video-matched-music-and-sound-effects-with-editable-tracks",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-17",
+          "category": "Audio"
+        },
+        {
+          "title": "Pennsylvania authorities charge New Jersey deputy attorney general over AI child-abuse images",
+          "url": "https://superpowerdaily.com/posts/pennsylvania-authorities-charge-new-jersey-deputy-attorney-general-over-ai-child-abuse-images",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-16",
+          "category": "Visuals"
+        },
+        {
+          "title": "NTT Docomo Business trials voice AI for older residents facing winter isolation",
+          "url": "https://superpowerdaily.com/posts/ntt-docomo-business-trials-voice-ai-for-older-residents-facing-winter-isolation",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-16",
+          "category": "Audio"
+        },
+        {
+          "title": "FLUX 3 Image Klein",
+          "url": "https://bfl.ai/blog/flux-3-image-klein",
+          "source": "Hacker News",
+          "sourceDate": "2026-10-16",
+          "category": "Visuals"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-17.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-17.html"
+    },
+    {
+      "date": "2026-10-16",
+      "updated": "2026-10-16",
+      "items": [
+        {
+          "title": "NTT Docomo Business trials voice AI for older residents facing winter isolation",
+          "url": "https://superpowerdaily.com/posts/ntt-docomo-business-trials-voice-ai-for-older-residents-facing-winter-isolation",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-16",
+          "category": "Audio"
+        },
+        {
+          "title": "Black Forest Labs opens FLUX 3 Image Klein weights, with free commercial use limited to smaller businesses",
+          "url": "https://venturebeat.com/technology/black-forest-labs-opens-flux-3-image-klein-weights-with-free-commercial-use-limited-to-smaller-businesses",
+          "source": "VentureBeat AI",
+          "sourceDate": null,
+          "category": "Visuals"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-16.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-16.html"
+    },
+    {
+      "date": "2026-10-15",
+      "updated": "2026-10-15",
+      "items": [
+        {
+          "title": "ArtCraft releases 13 free, AI-assisted alternatives to Adobe and Microsoft apps",
+          "url": "https://superpowerdaily.com/posts/artcraft-releases-13-free-ai-assisted-alternatives-to-adobe-and-microsoft-apps",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-14",
+          "category": "Workflows"
+        },
+        {
+          "title": "Welcome FLUX.3 Image Klein in Diffusers",
+          "url": "https://huggingface.co/blog/flux-3",
+          "source": "Hugging Face Blog",
+          "sourceDate": "2026-10-15",
+          "category": "Visuals"
+        },
+        {
+          "title": "YouTube Music adds AI labels as streaming platforms race to disclose synthetic songs",
+          "url": "https://superintelligencenews.com/ai-fields/large-language-models/ai-music-labels-youtube-music/",
+          "source": "Superintelligence Newsletter",
+          "sourceDate": "2026-10-14",
+          "category": "Audio"
+        },
+        {
+          "title": "The Floating World by Ben Eastham review \u2013 a compelling debut of art\u2019s relation to money and power",
+          "url": "https://www.theguardian.com/books/2026/oct/15/the-floating-world-by-ben-eastham-review-a-compelling-debut-of-arts-relation-to-money-and-power",
+          "source": "The Guardian (Culture)",
+          "sourceDate": "2026-10-15",
+          "category": "Workflows"
+        },
+        {
+          "title": "Black Forest Labs opens FLUX 3 Image Klein weights, with free commercial use limited to smaller businesses",
+          "url": "https://venturebeat.com/technology/black-forest-labs-opens-flux-3-image-klein-weights-with-free-commercial-use-limited-to-smaller-businesses",
+          "source": "VentureBeat AI",
+          "sourceDate": null,
+          "category": "Visuals"
+        },
+        {
+          "title": "\u2018Don\u2019t do this!\u2019 Why Paul McCartney cares about looking shorter than John Lennon in Sam Mendes\u2019 Beatles films",
+          "url": "https://www.theguardian.com/film/2026/oct/15/dont-do-this-why-paul-mccartney-cares-about-looking-shorter-than-john-lennon-in-sam-mendes-beatles-films",
+          "source": "The Guardian (Culture)",
+          "sourceDate": "2026-10-15",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-15.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-15.html"
+    },
+    {
+      "date": "2026-10-14",
+      "updated": "2026-10-14",
+      "items": [
+        {
+          "title": "ArtCraft releases 13 free, AI-assisted alternatives to Adobe and Microsoft apps",
+          "url": "https://superpowerdaily.com/posts/artcraft-releases-13-free-ai-assisted-alternatives-to-adobe-and-microsoft-apps",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-14",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-14.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-14.html"
+    },
+    {
+      "date": "2026-10-09",
+      "updated": "2026-10-09",
+      "items": [
+        {
+          "title": "Navy and Shield AI Commit Another $300 Million to AI-Piloted X-BAT Aircraft",
+          "url": "https://superpowerdaily.com/posts/navy-and-shield-ai-commit-another-300-million-to-ai-piloted-x-bat-aircraft",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-08",
+          "category": "Video"
+        },
+        {
+          "title": "One Nation Reportedly Screens AI Video With Racist Tropes at Victorian Campaign Launch",
+          "url": "https://superpowerdaily.com/posts/one-nation-reportedly-screens-ai-video-with-racist-tropes-at-victorian-campaign-launch",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-08",
+          "category": "Video"
+        },
+        {
+          "title": "One Nation\u2019s AI video is vile and tired \u2013 but the ensloppification of Australian politics doesn\u2019t stop there",
+          "url": "https://www.theguardian.com/australia-news/2026/oct/09/one-nations-ai-video-is-vile-and-tired-but-the-ensloppification-of-australian-politics-doesnt-stop-there-ntwnfb",
+          "source": "The Guardian (World)",
+          "sourceDate": "2026-10-08",
+          "category": "Video"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-09.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-09.html"
+    },
+    {
+      "date": "2026-10-08",
+      "updated": "2026-10-08",
+      "items": [
+        {
+          "title": "Navy and Shield AI Commit Another $300 Million to AI-Piloted X-BAT Aircraft",
+          "url": "https://superpowerdaily.com/posts/navy-and-shield-ai-commit-another-300-million-to-ai-piloted-x-bat-aircraft",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-08",
+          "category": "Video"
+        },
+        {
+          "title": "One Nation Reportedly Screens AI Video With Racist Tropes at Victorian Campaign Launch",
+          "url": "https://superpowerdaily.com/posts/one-nation-reportedly-screens-ai-video-with-racist-tropes-at-victorian-campaign-launch",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-08",
+          "category": "Video"
+        },
+        {
+          "title": "One Nation\u2019s AI video is vile and tired \u2013 but the ensloppification of Australian politics doesn\u2019t stop there",
+          "url": "https://www.theguardian.com/australia-news/2026/oct/09/one-nations-ai-video-is-vile-and-tired-but-the-ensloppification-of-australian-politics-doesnt-stop-there-ntwnfb",
+          "source": "The Guardian (World)",
+          "sourceDate": "2026-10-08",
+          "category": "Video"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-08.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-08.html"
+    },
+    {
+      "date": "2026-10-07",
+      "updated": "2026-10-07",
+      "items": [
+        {
+          "title": "Ex-Ramp engineers raise $20M for platform Melius after scrapping their first product",
+          "url": "https://techcrunch.com/2026/10/06/ex-ramp-engineers-raise-20m-for-platform-melius-after-scrapping-their-first-product/",
+          "source": "TechCrunch AI",
+          "sourceDate": "2026-10-06",
+          "category": "Workflows"
+        },
+        {
+          "title": "King Charles and Elton John in the audience for Apple music workshop",
+          "url": "https://www.bbc.co.uk/news/articles/c6398n8x13zyo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC Entertainment & Arts",
+          "sourceDate": "2026-10-07",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-07.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-07.html"
+    },
+    {
+      "date": "2026-10-06",
+      "updated": "2026-10-06",
+      "items": [
+        {
+          "title": "Melius Raises $25 Million to Automate Creative Production With AI Agents",
+          "url": "https://superpowerdaily.com/posts/melius-raises-25-million-to-automate-creative-production-with-ai-agents",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-06",
+          "category": "Workflows"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-06.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-06.html"
+    },
+    {
+      "date": "2026-10-03",
+      "updated": "2026-10-03",
+      "items": [
+        {
+          "title": "US road rage killer's sentence quashed because AI video of victim was shown in court",
+          "url": "https://www.bbc.co.uk/news/articles/cwgkvygg5nzvo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC News (World)",
+          "sourceDate": "2026-10-03",
+          "category": "Video"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-03.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-03.html"
+    },
+    {
+      "date": "2026-10-02",
+      "updated": "2026-10-02",
+      "items": [
+        {
+          "title": "Suno Opens Speech Beta to Generate Spoken Words and Music in One Track",
+          "url": "https://superpowerdaily.com/posts/suno-opens-speech-beta-to-generate-spoken-words-and-music-in-one-track",
+          "source": "Superpower Daily",
+          "sourceDate": "2026-10-02",
+          "category": "Audio"
+        },
+        {
+          "title": "FLUX 3 Image",
+          "url": "https://bfl.ai/models/flux-3-image",
+          "source": "Hacker News",
+          "sourceDate": "2026-10-01",
+          "category": "Visuals"
+        }
+      ],
+      "digests": [
+        "digest-2026-10-02.md"
+      ],
+      "url": "https://axylusion.com/editions/2026-10-02.html"
+    }
+  ]
+}

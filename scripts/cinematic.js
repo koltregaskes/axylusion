@@ -211,16 +211,8 @@
     render();
   }
 
-  const TOPIC_BY_TAG = {
-    image_gen: "Image",
-    video_gen: "Video",
-    music_gen: "Audio",
-    voice_synthesis: "Audio",
-    "3d_gen": "3D",
-    creative_tool: "Tools",
-    creative_workflow: "Tools",
-    art_ai: "Image",
-  };
+  // Generated from newsletter/categories.json by the shared News renderer.
+  const TOPIC_BY_TAG = JSON.parse($("[data-news-list]")?.dataset.newsTopics || "{}");
 
   function escapeNewsText(value) {
     return String(value ?? "")

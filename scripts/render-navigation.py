@@ -4,7 +4,7 @@ from pathlib import Path
 from navigation import ensure_navigation
 root=Path(__file__).resolve().parent.parent
 stale=[]
-for p in [*root.glob("*.html"),*(root/"a-list").glob("*.html")]:
+for p in [*root.glob("*.html"),*(root/"a-list").glob("*.html"), *(root/"editions").glob("*.html")]:
     text=p.read_text(encoding="utf-8"); rendered=ensure_navigation(text)
     if text!=rendered:
         stale.append(p.name)

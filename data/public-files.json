@@ -19,6 +19,8 @@
     "index.html",
     "music.html",
     "news.html",
+    "newsletter.html",
+    "editions.html",
     "privacy.html",
     "store.html",
     "tools.html",
@@ -37,5 +39,6 @@
     "llms.txt",
     "news-digests/news-feed-latest.json"
   ],
-  "digest_manifest": "news-digests/index.json"
+  "digest_manifest": "news-digests/index.json",
+  "edition_pattern": "editions/????-??-??.html"
 }

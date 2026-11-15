@@ -122,7 +122,8 @@ not proof of browser requests, provider settings or current legal acceptance.
 
 `python -B scripts/build-public.py --output <new-directory>` prepares an exact
 allowlisted Pages artifact. `data/public-files.json` names the public files;
-only dated Markdown files in the digest manifest extend that list. It excludes
+dated Markdown files in the digest manifest and validated dated HTML editions
+extend that list. It excludes
 `content/` (including `publish: false` drafts), docs, unused legacy scripts and
 build sources. Active browser JavaScript under `scripts/` is included explicitly.
 CI checks this artifact but does not deploy it. The current branch/root Pages
@@ -136,8 +137,16 @@ decision. Do not treat a source `publish: false` field as access control.
 
 The current source is a static site: gallery cards are built into HTML and the
 news page fetches checked-in news JSON. There is no form submission handler,
-Worker/API endpoint, account session, newsletter subscription backend or payment
-handler in this repository.
+Worker/API endpoint, account session, deployed newsletter subscription backend
+or payment handler. The `newsletter/` directory contains offline record contracts,
+a fake in-memory transport and a Resend stub which cannot send. The build creates
+source-dated editions, an editions index and a newsletter information page, with
+no signup form or collector. The single `newsletter.signupsOpen` flag in
+`data/site-config.json` must stay `false`; build and validation reject other values
+until a separately reviewed backend integration exists. See
+[newsletter/README.md](newsletter/README.md) for the shared category mapping,
+consent evidence, unsubscribe contract and outstanding privacy/backend/delivery
+acceptance. Newsletter implementation and tests stay outside the public artifact.
 External store and social links are provider destinations, not local handlers.
 This bounded code review does not accept future newsletter, analytics or store
 backends. Those need their own input validation, consent, abuse and privacy review.

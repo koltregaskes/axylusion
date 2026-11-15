@@ -56,6 +56,44 @@ class PrivacyTests(unittest.TestCase):
         (self.root / 'new.html').write_text('<img src="https://new.example/a.png">', encoding='utf-8')
         self.assertIn('Built HTML route missing from public allowlist: new.html', inventory(self.root)[1])
 
+    def test_every_current_newsletter_route_is_allowlisted(self):
+        names = public_files(self.root)
+        self.assertIn('newsletter.html', names)
+        self.assertIn('editions.html', names)
+        editions = {p.relative_to(self.root).as_posix() for p in (self.root / 'editions').glob('*.html')}
+        self.assertGreater(len(editions), 0)
+        self.assertTrue(editions.issubset(names))
+        self.assertFalse(any(name.startswith('newsletter/') or name == 'data/newsletter-editions.json' for name in names))
+
+    def test_future_generated_edition_is_included_checked_and_copied(self):
+        name = 'editions/2099-01-02.html'  # Synthetic future file, never a real news item.
+        source = self.root / name
+        source.write_bytes((self.root / 'editions/2026-11-15.html').read_bytes())
+        self.assertIn(name, public_files(self.root))
+        self.assertEqual(inventory(self.root)[1], [])
+        destination = Path(self.temp.name) / 'future-public'
+        self.assertIn(name, builder.build(destination, self.root))
+        self.assertEqual(source.read_bytes(), (destination / name).read_bytes())
+        self.append(name, '<img src="https://new.example/future.png">')
+        self.assertTrue(any('new.example' in error for error in inventory(self.root)[1]))
+
+    def test_unapproved_nested_edition_page_is_rejected(self):
+        name = 'editions/draft.html'
+        (self.root / name).write_text('<p>Fixture draft</p>', encoding='utf-8')
+        self.assertNotIn(name, public_files(self.root))
+        self.assertIn('Built HTML route missing from public allowlist: ' + name, inventory(self.root)[1])
+
+    def test_invalid_edition_date_and_broadened_pattern_are_rejected(self):
+        (self.root / 'editions/2099-02-30.html').write_text('<p>Invalid fixture date</p>', encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'Invalid public edition date'):
+            public_files(self.root)
+        path = self.root / 'data/public-files.json'
+        config = json.loads(path.read_text(encoding='utf-8'))
+        config['edition_pattern'] = '**/*.html'
+        path.write_text(json.dumps(config), encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'Only dated public editions'):
+            public_files(self.root)
+
     def test_css_import_and_url_are_rejected(self):
         self.append('cinematic.css', '\n@import "https://styles.example/a.css";\na {background:url(//images.example/a.png)}')
         errors = '\n'.join(inventory(self.root)[1])
@@ -115,6 +153,14 @@ class PrivacyTests(unittest.TestCase):
         path = self.root / 'data/public-files.json'
         config = json.loads(path.read_text(encoding='utf-8'))
         config['files'].append('content/blog/draft.md')
+        path.write_text(json.dumps(config), encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'Authoring source cannot be published'):
+            public_files(self.root)
+
+    def test_backend_contract_cannot_be_allowlisted(self):
+        path = self.root / 'data/public-files.json'
+        config = json.loads(path.read_text(encoding='utf-8'))
+        config['files'].append('newsletter/contract.mjs')
         path.write_text(json.dumps(config), encoding='utf-8')
         with self.assertRaisesRegex(ValueError, 'Authoring source cannot be published'):
             public_files(self.root)
