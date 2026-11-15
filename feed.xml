@@ -7,20 +7,28 @@
     <language>en-gb</language>
     <atom:link href="https://axylusion.com/feed.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Creative AI digest: 2026-11-15</title>
+      <link>https://axylusion.com/news-digests/digest-2026-11-15.md</link>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Xania Monet wins top honors at the first US AI Music Awards: https://superpowerdaily.com/posts/xania-monet-wins-top-honors-at-the-first-us-ai-music-awards</description>
+      <category>Digest</category>
+      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-15.md</guid>
+    </item>
+    <item>
+      <title>Xania Monet wins top honors at the first US AI Music Awards</title>
+      <link>https://superpowerdaily.com/posts/xania-monet-wins-top-honors-at-the-first-us-ai-music-awards</link>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Superpower Daily</description>
+      <category>Audio</category>
+      <guid isPermaLink="true">https://superpowerdaily.com/posts/xania-monet-wins-top-honors-at-the-first-us-ai-music-awards</guid>
+    </item>
+    <item>
       <title>Creative AI digest: 2026-11-14</title>
       <link>https://axylusion.com/news-digests/digest-2026-11-14.md</link>
       <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
       <description>Xania Monet wins top honors at the first US AI Music Awards: https://superpowerdaily.com/posts/xania-monet-wins-top-honors-at-the-first-us-ai-music-awards</description>
       <category>Digest</category>
       <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-11-14.md</guid>
-    </item>
-    <item>
-      <title>Xania Monet wins top honors at the first US AI Music Awards</title>
-      <link>https://superpowerdaily.com/posts/xania-monet-wins-top-honors-at-the-first-us-ai-music-awards</link>
-      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
-      <description>Superpower Daily</description>
-      <category>Audio</category>
-      <guid isPermaLink="true">https://superpowerdaily.com/posts/xania-monet-wins-top-honors-at-the-first-us-ai-music-awards</guid>
     </item>
     <item>
       <title>Creative AI digest: 2026-11-13</title>
@@ -1140,32 +1148,6 @@ No one could stand in the way of this juggernaut! The biggest shocks from the Em
       <description>Superpower Daily</description>
       <category>Audio</category>
       <guid isPermaLink="true">https://superpowerdaily.com/posts/afm-opposes-labels-bid-to-dismiss-ai-musician-pay-case</guid>
-    </item>
-    <item>
-      <title>Creative AI digest: 2026-09-11</title>
-      <link>https://axylusion.com/news-digests/digest-2026-09-11.md</link>
-      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
-      <description>Universal Music and ElevenLabs Launch AI Music Platform for Licensed Remixes and Fan Creations: https://superintelligencenews.com/ai-fields/large-language-models/ai-music-platform-universal-elevenlabs/
-AFM Opposes Labels’ Bid to Dismiss AI Musician-Pay Case: https://superpowerdaily.com/posts/afm-opposes-labels-bid-to-dismiss-ai-musician-pay-case
-NTSB issues investigative update on B-767 runway excursion accident in Miami: https://www.ntsb.gov:443/news/press-releases/Pages/NR20260909.aspx</description>
-      <category>Digest</category>
-      <guid isPermaLink="true">https://axylusion.com/news-digests/digest-2026-09-11.md</guid>
-    </item>
-    <item>
-      <title>Universal Music and ElevenLabs Launch AI Music Platform for Licensed Remixes and Fan Creations</title>
-      <link>https://superintelligencenews.com/ai-fields/large-language-models/ai-music-platform-universal-elevenlabs/</link>
-      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
-      <description>Superintelligence Newsletter</description>
-      <category>Audio</category>
-      <guid isPermaLink="true">https://superintelligencenews.com/ai-fields/large-language-models/ai-music-platform-universal-elevenlabs/</guid>
-    </item>
-    <item>
-      <title>NTSB issues investigative update on B-767 runway excursion accident in Miami</title>
-      <link>https://www.ntsb.gov:443/news/press-releases/Pages/NR20260909.aspx</link>
-      <pubDate>Fri, 11 Sep 2026 00:00:00 +0000</pubDate>
-      <description>Hacker News</description>
-      <category>Video</category>
-      <guid isPermaLink="true">https://www.ntsb.gov:443/news/press-releases/Pages/NR20260909.aspx</guid>
     </item>
   </channel>
 </rss>
