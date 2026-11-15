@@ -31,7 +31,7 @@ def holding_page(relative: str) -> str:
   <link rel="stylesheet" href="{prefix}styles.css">
 </head>
 <body>
-  <header><a href="{prefix}index.html">Axy Lusion</a></header>
+  <header style="position: static; transform: none; opacity: 1;"><a href="{prefix}index.html" style="color: var(--axyl-cream, #f5e6c8); text-decoration: underline;">Axy Lusion</a></header>
   <main id="main-content" tabindex="-1">
     <h1>The A-List</h1>
     <p>{MESSAGE}</p>
