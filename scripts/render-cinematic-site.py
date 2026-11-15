@@ -744,7 +744,7 @@ def render_alist(snapshot: dict) -> str:
     return page_shell(
         "a-list.html",
         "The A-List | Axy Lusion",
-        "Current Artificial Analysis arena Elo for image, editing, video, and voice.",
+        f"Artificial Analysis arena Elo for image, editing, video, and voice, as retrieved on {updated_label}.",
         "A-List",
         body,
         schema,
