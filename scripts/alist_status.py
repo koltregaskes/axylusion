@@ -35,7 +35,7 @@ def holding_page(relative: str) -> str:
   <main id="main-content" tabindex="-1">
     <h1>The A-List</h1>
     <p>{MESSAGE}</p>
-    <p><a href="{prefix}tools.html">Explore the creative tools directory</a></p>
+    <p><a href="{prefix}tools.html" style="color: var(--axyl-cream, #f5e6c8); text-decoration: underline;">Explore the creative tools directory</a></p>
   </main>
   <footer>
     <nav aria-label="Footer main pages">
