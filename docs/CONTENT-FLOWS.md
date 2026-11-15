@@ -27,6 +27,10 @@ inactive. Restoration requires written permission, a reviewed code change and fr
 - Combined local refresh plus browser verification: `powershell -File scripts/refresh-site-data.ps1 -RunSmokeTest`
 - Structural validation: `python scripts/validate-site.py`
   This checks that A-List snapshots remain absent and all eight old routes are data-free holding pages.
+- Skip-navigation regression checks: `python -B scripts/test-navigation.py`.
+  The shared renderer keeps existing skip links pointed at the main landmark, including
+  when its ID changes. These offline checks also require current public pages to remain
+  unchanged and do not activate staged editorial content.
 - Browser smoke test wrapper: `powershell -File scripts/run-smoke-test.ps1`
 - Browser smoke test after serving the repo locally: `node scripts/smoke-test-site.mjs --base-url http://127.0.0.1:4173`
 - Scheduled refresh wrapper: `powershell -File scripts/run-scheduled-refresh.ps1 -Mode Morning|Evening`
