@@ -16,6 +16,7 @@ import re
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
+from provenance import provenance_fields
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
@@ -136,6 +137,7 @@ def rebuild_items(homepage_items: list[dict[str, Any]], gallery_lookup: dict[str
                 rebuilt_item[field] = source_value.strip()
 
         rebuilt_item["cdn_url"] = choose_cdn_url(item, source, str(rebuilt_item["id"]))
+        rebuilt_item.update(provenance_fields(rebuilt_item, source))
 
         rebuilt.append(rebuilt_item)
 

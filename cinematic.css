@@ -416,6 +416,31 @@ img {
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
 }
 
+/* Credits stay in normal flow, independently of optional prompt captions. */
+.cn-provenance {
+  margin: 0;
+  padding: 10px 12px;
+  background: #120f0b;
+  color: #f5e6c8;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.cn-provenance a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.cn-strip__item {
+  min-width: 0;
+  background: #120f0b;
+}
+
+.cn-strip__cell {
+  width: 100%;
+}
+
 .cn-frame--full {
   border-radius: 8px;
 }

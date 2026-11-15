@@ -7,6 +7,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urljoin
 from functools import cache
+from provenance import image_object
 
 ROOT = Path(__file__).resolve().parent.parent
 DOMAIN = "https://axylusion.com"
@@ -57,6 +58,32 @@ def gallery_images():
     return result
 
 
+class RenderedImages(HTMLParser):
+    def __init__(self, text):
+        super().__init__()
+        self.sources = set()
+        self.feed(text)
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == "img" and attrs.get("src"):
+            self.sources.add(urljoin(DOMAIN + "/", attrs["src"]))
+
+
+def rendered_image_objects(text, relative):
+    """Credit only collection images present as image elements on this page."""
+    sources = RenderedImages(text).sources
+    name = "homepage-gallery.json" if relative == "index.html" else "gallery.json"
+    items = json.loads((ROOT / "data" / name).read_text(encoding="utf-8"))["items"]
+    durable = gallery_images()
+    result = {}
+    for item in items:
+        url = durable.get(str(item.get("id")))
+        if item.get("media_status") != "unavailable" and url in sources:
+            result[url] = image_object(item, url)
+    return list(result.values())
+
+
 def enhance_html(text, relative):
     original_text = text
     head = Head(text)
@@ -86,7 +113,8 @@ def enhance_html(text, relative):
     page_types = {"WebPage", "AboutPage", "CollectionPage", "ImageGallery", "CreativeWork", "BlogPosting"}
     if relative == "gallery.html":
         schema["@type"] = "ImageGallery"
-        schema["image"] = list(gallery_images().values())
+    if relative in ("gallery.html", "index.html"):
+        schema["image"] = rendered_image_objects(text, relative)
     pattern = r'\s*<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>'
     nodes = []
     for match in re.finditer(pattern, original_text, re.S | re.I):
