@@ -103,6 +103,11 @@ def parse_args() -> argparse.Namespace:
 
 
 def fetch_text(url: str, accept: str) -> str:
+    # Block imported callers as well as scheduled CLI runs (#615, #1508).
+    raise RuntimeError("A-List acquisition disabled pending permission (hub #615, #1508).")
+
+
+def legacy_fetch_text(url: str, accept: str) -> str:
     request = urllib.request.Request(
         url,
         headers={
@@ -438,6 +443,12 @@ def render_json(payload: dict[str, Any]) -> str:
 
 
 def main() -> int:
+    # No data reads, fetches or writes until permission is recorded (#615, #1508).
+    print("SKIP: A-List acquisition disabled pending publishing permission (hub #615, #1508).")
+    return 0
+
+
+def legacy_main() -> int:
     args = parse_args()
     if args.check:
         if not args.capture.exists():

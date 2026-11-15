@@ -2,7 +2,7 @@
 
 > AI art, video, and music portfolio by Kol Tregaskes.
 
-A creative AI portfolio showcasing work made with Midjourney, Suno, Runway, Kling, and other generative tools. Includes ranked tool comparisons and a curated creative AI tools directory.
+A creative AI portfolio showcasing work made with Midjourney, Suno, Runway, Kling, and other generative tools. Includes a curated creative AI tools directory.
 
 ## Key pages
 
@@ -11,15 +11,10 @@ A creative AI portfolio showcasing work made with Midjourney, Suno, Runway, Klin
 - [Music](https://axylusion.com/music.html): AI-generated tracks via Suno
 - [Store](https://axylusion.com/store.html): Licensable trailer cues and promo beds on ElevenLabs Marketplace
 - [Tools](https://axylusion.com/tools.html): Recommended AI creative tools
-- [A-List](https://axylusion.com/a-list.html): Benchmark-backed rankings of creative AI tools
 - [News](https://axylusion.com/news.html): Creative AI news archive
 - [RSS](https://axylusion.com/feed.xml): News stories and dated digests
 - [Sitemap](https://axylusion.com/sitemap.xml): Public pages and gallery images
 - [About](https://axylusion.com/about.html): About the project
-
-## Tool rankings (The A-List)
-
-Published Artificial Analysis arena Elo for image generation, image editing, text-to-video, and voice. Music, 3D, and upscaling are omitted until a current public Elo board exists. The retrieval date is on the A-List page.
 
 ## Related sites
 
@@ -35,11 +30,6 @@ Published Artificial Analysis arena Elo for image generation, image editing, tex
 <!-- pages:start -->
 ## Indexable routes
 
-- [Image Editing | The A-List | Axy Lusion](https://axylusion.com/a-list/image-editing.html)
-- [Image Generation | The A-List | Axy Lusion](https://axylusion.com/a-list/image-generation.html)
-- [Video Generation | The A-List | Axy Lusion](https://axylusion.com/a-list/video-generation.html)
-- [Voice & TTS | The A-List | Axy Lusion](https://axylusion.com/a-list/voice-tts.html)
-- [The A-List | Axy Lusion](https://axylusion.com/a-list.html)
 - [About | Axy Lusion](https://axylusion.com/about.html)
 - [Welcome to Axy Lusion | Blog](https://axylusion.com/blog-welcome.html)
 - [Blog | Axy Lusion](https://axylusion.com/blog.html)

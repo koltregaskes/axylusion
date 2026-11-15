@@ -619,6 +619,12 @@ def comparable_payload(payload: dict[str, Any]) -> dict[str, Any]:
 
 
 def main() -> int:
+    # No data reads, fetches or writes until permission is recorded (#615, #1508).
+    print("SKIP: A-List acquisition disabled pending publishing permission (hub #615, #1508).")
+    return 0
+
+
+def legacy_main() -> int:
     args = parse_args()
     if not args.source.exists():
         raise SystemExit(f"Shared benchmark cache not found: {args.source}")

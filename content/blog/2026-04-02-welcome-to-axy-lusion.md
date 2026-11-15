@@ -20,7 +20,6 @@ This site is my creative home for exploring what happens when human direction me
 - **Music** for tracks and sound-led experiments.
 - **News** for useful updates from the creative AI world.
 - **Tools** for the platforms and software shaping the workflow.
-- **A-List** for standout links, references, and signal worth keeping an eye on.
 - **About** for the person behind the prompts.
 
 ## Why this exists

@@ -44,7 +44,8 @@ jobs:
 
       - name: Check skip links and landmarks
         run: python scripts/render-navigation.py --check
-      - name: A-List sync keeps the current arena snapshot
+      # No AA acquisition or snapshot validation until permission (#615, #1508).
+      - name: Verify A-List withdrawal and disabled acquisition
         run: python scripts/test-a-list-sync.py
       - name: Check generated contact links
         run: python scripts/render-contact.py --check

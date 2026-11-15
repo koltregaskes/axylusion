@@ -6,6 +6,7 @@ local benchmark snapshot.
 
 from __future__ import annotations
 
+from alist_status import holding_outputs, render_holding_pages
 from navigation import ensure_navigation
 from site_config import contact_link
 
@@ -35,7 +36,7 @@ NAV_LINKS = [
     ("Blog", "blog.html"),
     ("News", "news.html"),
     ("Tools", "tools.html"),
-    ("A-List", "a-list.html"),
+
     ("About", "about.html"),
 ]
 SOCIAL_LINKS = [
@@ -686,16 +687,8 @@ def render_category_page(category: dict[str, Any]) -> str:
 
 
 def build_outputs(snapshot: dict[str, Any]) -> dict[Path, str]:
-    outputs: dict[Path, str] = {OVERVIEW_PATH: render_cinematic_overview(snapshot)}
-    for category in snapshot.get("categories", []):
-        outputs[DETAILS_DIR / detail_filename(category["slug"])] = render_category_page(category)
-    for slug, title in (("music-generation", "Music Generation"), ("3d-generation", "3D Generation"), ("upscaling", "Upscaling")):
-        path = DETAILS_DIR / (slug + ".html")
-        if path not in outputs:
-            outputs[path] = f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title} | Axy Lusion</title><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="manifest" href="../site.webmanifest"><link rel="stylesheet" href="../styles.css"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=../a-list.html"><link rel="canonical" href="https://axylusion.com/a-list.html"></head><body><main><h1>{title}</h1><p>No current public Elo board is available for this category. <a href="../a-list.html">View the current A-List</a>.</p></main></body></html>
-'''
-    return {path: apply_csp(ensure_navigation(html)) if "noindex" in html else enhance_html(ensure_navigation(html), path.relative_to(PROJECT_DIR).as_posix()) for path, html in outputs.items()}
+    # Ignore snapshots in imported callers too, until permission (#615, #1508).
+    return holding_outputs()
 
 
 def unexpected_detail_pages(outputs: dict[Path, str]) -> list[Path]:
@@ -706,6 +699,12 @@ def unexpected_detail_pages(outputs: dict[Path, str]) -> list[Path]:
 
 
 def main() -> int:
+    # Keep the legacy renderer below for restoration only (#615, #1508).
+    args = parse_args()
+    return render_holding_pages(check=args.check)
+
+
+def legacy_main() -> int:
     args = parse_args()
     snapshot = json.loads(args.snapshot.read_text(encoding="utf-8"))
     outputs = build_outputs(snapshot)

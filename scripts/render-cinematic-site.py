@@ -8,6 +8,7 @@ needed by the design, then writes the in-scope public pages.
 
 from __future__ import annotations
 
+from alist_status import holding_outputs, holding_page
 from navigation import ensure_navigation
 from site_config import contact_link
 
@@ -246,7 +247,7 @@ def header(active: str, current_path: str = "") -> str:
         ("Blog", "blog.html"),
         ("News", "news.html"),
         ("Tools", "tools.html"),
-        ("A-List", "a-list.html"),
+
         ("About", "about.html"),
     ]
     links = []
@@ -271,7 +272,7 @@ def footer(current_path: str = "") -> str:
         ("Blog", "blog.html"),
         ("News", "news.html"),
         ("Tools", "tools.html"),
-        ("A-List", "a-list.html"),
+
         ("About", "about.html"),
     ]
     main_nav = "".join(
@@ -357,7 +358,7 @@ def base_schema() -> list[dict]:
             "alternateName": "Axylusion",
             "url": DOMAIN,
             "logo": f"{DOMAIN}/favicon.svg",
-            "description": "AI art portfolio and creative tool rankings by Kol Tregaskes.",
+            "description": "AI art portfolio and creative tool notes by Kol Tregaskes.",
             "founder": {"@id": "https://koltregaskes.com/#person-kol"},
             "sameAs": ["https://x.com/Axylusion", "https://www.instagram.com/axylusion"],
         },
@@ -660,130 +661,9 @@ def render_privacy() -> str:
                       "How Axy Lusion uses hosting, Google Fonts, image delivery and external links.", "", body)
 
 
-def render_alist(snapshot: dict) -> str:
-    categories = [category for category in snapshot.get("categories", []) if category.get("models")]
-    sections = []
-    nav = "".join(
-        f'<a href="#{escape(cat["slug"].replace("_", "-"))}" class="{"is-on" if i == 0 else ""}">{escape(cat.get("title") or cat["slug"])}</a>'
-        for i, cat in enumerate(categories)
-    )
-
-    def score_label(model: dict, unit: str) -> str:
-        score = float(model.get("meta_score") or 0)
-        return f"{score:.0f}" if unit == "elo" else f"{score:.2f}"
-
-    def bar(model: dict, unit: str, small: bool = False) -> str:
-        score = float(model.get("meta_score") or 0)
-        width = model.get("bar_percent")
-        if width is None:
-            width = max(0.0, min(100.0, score))
-        width = max(0.0, min(100.0, float(width)))
-        small_class = " cn-alist__bar--sm" if small else ""
-        return (
-            f'<div class="cn-alist__bar{small_class}">'
-            f'<div class="cn-alist__fill" style="width:{width:.2f}%"></div>'
-            f"<span>{score_label(model, unit)}</span></div>"
-        )
-
-    def strengths(model: dict, limit: int = 4) -> str:
-        return "".join(f"<span>{escape(str(item))}</span>" for item in model.get("strengths", [])[:limit])
-
-    def arena(model: dict) -> str:
-        parts = []
-        for source in model.get("sources", [])[:3]:
-            raw_score = source.get("raw_score")
-            if raw_score is None:
-                continue
-            if source.get("score_type") == "elo":
-                text = f"{float(raw_score):.0f}"
-                if source.get("ci_delta") is not None:
-                    text += f" ±{source['ci_delta']}"
-            else:
-                text = str(raw_score)
-            parts.append(
-                f"<span><strong>{escape(str(source.get('source_name') or ''))}</strong> {escape(text)}</span>"
-            )
-        return "".join(parts)
-
-    for index, category in enumerate(categories):
-        models = category.get("models", [])
-        leader = models[0]
-        runners = models[1:5]
-        unit = str(category.get("score_unit") or leader.get("score_unit") or "")
-        detail_href = f"a-list/{category['slug'].replace('_', '-')}.html"
-        note = leader.get("public_note") or leader.get("considerations") or ""
-        runner_html = "".join(
-            f'<article class="cn-alist__runner"><span class="cn-alist__rrank">#{escape(str(model.get("meta_rank", runner_index + 2)))}</span>'
-            f"<div><h3>{escape(model.get('model_name', ''))}</h3><span class=\"cn-alist__maker\">{escape(model.get('model_maker', ''))}</span></div>"
-            f"{bar(model, unit, True)}<div class=\"cn-alist__tags\">{strengths(model, 3)}</div></article>"
-            for runner_index, model in enumerate(runners)
-        )
-        sections.append(
-            f"""
-            <section class="cn-alist" id="{escape(category['slug'].replace('_', '-'))}">
-              <div class="cn-alist__head"><span class="cn-kicker">Category {index + 1}</span><h2 class="cn-h2">{escape(category.get('title') or category['slug'])}</h2><p>{escape(category.get('note') or snapshot.get('methodology_note') or '')}</p><p><a href="{escape(detail_href)}">Full Elo table ({len(models)} models)</a></p></div>
-              <article class="cn-alist__leader"><div class="cn-alist__rank">#{escape(str(leader.get('meta_rank', 1)))}</div><div class="cn-alist__leader-body"><h3>{escape(leader.get('model_name', ''))}</h3><span class="cn-alist__maker">{escape(leader.get('model_maker', ''))}</span>{bar(leader, unit)}<div class="cn-alist__tags">{strengths(leader)}</div><div class="cn-alist__arena">{arena(leader)}</div><p class="cn-alist__note">{escape(note)}</p></div></article>
-              <div class="cn-alist__runners">{runner_html}</div>
-            </section>"""
-        )
-
-    source_names: list[str] = []
-    for category in categories:
-        for model in category.get("models", []):
-            for source in model.get("sources", []):
-                name = str(source.get("source_name") or "")
-                if name and name not in source_names:
-                    source_names.append(name)
-    chips = "".join(f'<span class="cn-method__chip">{escape(name)}</span>' for name in source_names)
-    omitted_items = "".join(
-        f"<li><strong>{escape(str(item.get('title') or item.get('slug') or ''))}.</strong> {escape(str(item.get('reason') or ''))}</li>"
-        for item in snapshot.get("omitted_categories") or []
-    )
-    omitted_html = ""
-    if omitted_items:
-        omitted_html = f"""
-            <section class="cn-alist cn-alist--note" id="not-ranked">
-              <div class="cn-alist__head"><span class="cn-kicker">Not ranked</span><h2 class="cn-h2">Left off this list</h2><ul>{omitted_items}</ul></div>
-            </section>"""
-    highlighted = []
-    for category in categories:
-        highlighted.extend(category.get("models", [])[:5])
-    schema = [
-        {
-            "@type": "ItemList",
-            "@id": f"{DOMAIN}/a-list.html#list",
-            "name": "Axy Lusion A-List",
-            "numberOfItems": len(highlighted),
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": position,
-                    "item": {
-                        "@type": "SoftwareApplication",
-                        "name": model.get("model_name"),
-                        "url": model.get("model_url"),
-                        "applicationCategory": "DesignApplication",
-                        "operatingSystem": "Web",
-                    },
-                }
-                for position, model in enumerate(highlighted, start=1)
-            ],
-        }
-    ]
-    updated_label = fmt_date_long(str(snapshot.get("retrieved_at") or snapshot.get("generated_at") or ""))
-    body = f"""
-      <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Retrieved / {escape(updated_label)}</span><h1 class="cn-h1">The A-List</h1><p class="cn-lede">{escape(snapshot.get('methodology_note') or 'Published arena Elo for creative AI tools.')}</p><div class="cn-method">{chips}</div></div></section>
-      <nav class="cn-alist-nav" aria-label="A-List categories">{nav}</nav>
-      {''.join(sections)}
-      {omitted_html}"""
-    return page_shell(
-        "a-list.html",
-        "The A-List | Axy Lusion",
-        f"Artificial Analysis arena Elo for image, editing, video, and voice, as retrieved on {updated_label}.",
-        "A-List",
-        body,
-        schema,
-    )
+def render_alist(snapshot: dict | None = None) -> str:
+    # Rankings withdrawn pending permission: rooms-os-hub #615 and #1508.
+    return holding_page("a-list.html")
 
 
 def main() -> None:
@@ -827,14 +707,15 @@ def main() -> None:
         return
 
     gallery_items, home_items = load_and_migrate_gallery()
-    snapshot = read_json(ROOT / "data" / "a-list-benchmarks.json")
     write_page(ROOT / "index.html", render_home(gallery_items, home_items))
     write_page(ROOT / "gallery.html", render_gallery(gallery_items))
     write_page(ROOT / "news.html", render_news(gallery_items))
     write_page(ROOT / "blog.html", render_blog(gallery_items))
     write_page(ROOT / "about.html", render_about(gallery_items))
     write_page(ROOT / "privacy.html", render_privacy())
-    write_page(ROOT / "a-list.html", render_alist(snapshot))
+    # No snapshot is read, including on the default full render (#615, #1508).
+    for path, html in holding_outputs().items():
+        write_page(path, html)
     print("Rendered cinematic pages and migrated gallery metadata.")
 
 

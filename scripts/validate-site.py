@@ -6,7 +6,7 @@ Checks:
   - required JSON data files load and contain items
   - local href/src references resolve
   - digest manifest matches the files on disk
-  - A-List arena snapshot matches its captured leaderboard and rendered pages match the snapshot
+  - withdrawn A-List routes remain data-free and archived snapshots stay absent
 
 Warnings:
   - gallery/homepage payloads still reference Midjourney CDN URLs
@@ -14,13 +14,13 @@ Warnings:
 
 from __future__ import annotations
 
+from alist_status import publication_issues
+
 import argparse
 import json
-import os
 import re
 import subprocess
 import sys
-from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
@@ -34,18 +34,6 @@ HTML_FILES = ROOT_HTML_FILES + ADMIN_HTML_FILES + ALIST_HTML_FILES
 PUBLIC_HTML_FILES = ROOT_HTML_FILES + ALIST_HTML_FILES
 NEWS_DIGESTS_DIR = PROJECT_DIR / "news-digests"
 INDEX_PATH = NEWS_DIGESTS_DIR / "index.json"
-ALIST_DATA_PATH = PROJECT_DIR / "data" / "a-list-benchmarks.json"
-ALIST_SYNC_SCRIPT = PROJECT_DIR / "scripts" / "sync-a-list-benchmarks.py"
-ALIST_REFRESH_SCRIPT = PROJECT_DIR / "scripts" / "refresh-a-list-benchmarks.py"
-ALIST_RENDER_SCRIPT = PROJECT_DIR / "scripts" / "render-a-list.py"
-ARENA_SCORE_BASIS = "artificial_analysis_elo"
-ARENA_STALE_DAYS = 21
-ALIST_SHARED_SOURCE = Path(
-    os.environ.get(
-        "AXYLUSION_ALIST_SOURCE",
-        r"W:\Websites\sites\ai-resource-hub\data\pg-cache\creative_benchmarks.json",
-    )
-)
 HEAD_REQUIREMENT_PATTERNS = {
     "icon": re.compile(r'rel=["\']icon["\']', re.IGNORECASE),
     "manifest": re.compile(r'rel=["\']manifest["\']', re.IGNORECASE),
@@ -101,27 +89,6 @@ def load_json_items(path: Path) -> list[dict]:
     if not isinstance(items, list):
         raise ValueError(f"{path} does not contain a list of items")
     return items
-
-
-def load_alist_snapshot(path: Path) -> dict:
-    payload = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(payload, dict):
-        raise ValueError(f"{path} does not contain an object payload")
-
-    categories = payload.get("categories", [])
-    if not isinstance(categories, list):
-        raise ValueError(f"{path} categories payload is not a list")
-
-    return payload
-
-
-def parse_iso_datetime(value: str) -> datetime | None:
-    if not value:
-        return None
-    try:
-        return datetime.fromisoformat(value.replace("Z", "+00:00"))
-    except ValueError:
-        return None
 
 
 def rel_path(path: Path) -> str:
@@ -312,7 +279,7 @@ def check_script_sync(script_path: Path, label: str) -> list[str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument('--skip-alist', action='store_true', help='Skip A-List freshness checks during evening news-only refresh.')
+    parser.add_argument('--skip-alist', action='store_true', help='Compatibility flag; A-List acquisition is always disabled (#615, #1508).')
     args = parser.parse_args()
 
     failures: list[str] = []
@@ -327,8 +294,6 @@ def main() -> int:
         if any(marker in text for marker in broken):
             failures.append(f"Possible mojibake in tracked public content: {name}")
 
-    alist_category_count: int | None = None
-
     try:
         gallery_items = load_json_items(PROJECT_DIR / "data" / "gallery.json")
     except (OSError, ValueError, json.JSONDecodeError) as exc:
@@ -341,36 +306,8 @@ def main() -> int:
         failures.append(f"Unable to load data/homepage-gallery.json: {exc}")
         homepage_items = []
 
-    if ALIST_DATA_PATH.exists():
-        try:
-            alist_snapshot = load_alist_snapshot(ALIST_DATA_PATH)
-        except (OSError, ValueError, json.JSONDecodeError) as exc:
-            failures.append(f"Unable to load data/a-list-benchmarks.json: {exc}")
-        else:
-            categories = alist_snapshot.get("categories", [])
-            alist_category_count = len(categories)
-            if not categories:
-                failures.append("data/a-list-benchmarks.json has no categories.")
-            if str(alist_snapshot.get("score_basis") or "") == ARENA_SCORE_BASIS:
-                retrieved_at = parse_iso_datetime(str(alist_snapshot.get("retrieved_at") or ""))
-                if retrieved_at is None:
-                    warnings.append("data/a-list-benchmarks.json is missing a valid retrieved_at timestamp.")
-                else:
-                    age_days = (datetime.now(timezone.utc) - retrieved_at.astimezone(timezone.utc)).total_seconds() / 86400
-                    if age_days > ARENA_STALE_DAYS:
-                        warnings.append(
-                            f"A-List arena snapshot was retrieved {age_days:.1f} days ago: {rel_path(ALIST_DATA_PATH)}"
-                        )
-            else:
-                generated_at = parse_iso_datetime(str(alist_snapshot.get("generated_at") or ""))
-                if generated_at is None:
-                    warnings.append("data/a-list-benchmarks.json is missing a valid generated_at timestamp.")
-                else:
-                    age_hours = (datetime.now(timezone.utc) - generated_at.astimezone(timezone.utc)).total_seconds() / 3600
-                    if age_hours > 48:
-                        warnings.append(
-                            f"A-List snapshot is older than 48 hours ({age_hours:.1f}h): {rel_path(ALIST_DATA_PATH)}"
-                        )
+    # Withdrawal checks always run, including with --skip-alist (#615, #1508).
+    failures.extend(publication_issues())
 
     if not gallery_items:
         failures.append("data/gallery.json has no items.")
@@ -407,18 +344,6 @@ def main() -> int:
     failures.extend(check_public_head_requirements())
     failures.extend(check_support_files())
     failures.extend(check_script_sync(PROJECT_DIR / "scripts" / "build-seo.py", "SEO metadata, sitemap and RSS"))
-    failures.extend(check_script_sync(ALIST_REFRESH_SCRIPT, "A-List arena capture"))
-    if args.skip_alist:
-        warnings.append('Skipped A-List freshness checks (--skip-alist).')
-    elif ALIST_SHARED_SOURCE.exists():
-        failures.extend(check_script_sync(ALIST_SYNC_SCRIPT, "A-List snapshot"))
-        failures.extend(check_script_sync(ALIST_RENDER_SCRIPT, "A-List rendered pages"))
-    else:
-        warnings.append(
-            "A-List shared benchmark cache is unavailable; skipped source freshness check: "
-            f"{ALIST_SHARED_SOURCE}"
-        )
-        failures.extend(check_script_sync(ALIST_RENDER_SCRIPT, "A-List rendered pages"))
     warnings.extend(check_digest_hygiene())
 
     gallery_hosts = summarize_hosts(gallery_items)
@@ -441,8 +366,7 @@ def main() -> int:
     print(f"Gallery items: {len(gallery_items)}")
     print(f"Homepage items: {len(homepage_items)}")
     print(f"Digest files indexed: {len(build_digest_manifest()['files'])}")
-    if alist_category_count is not None:
-        print(f"A-List categories: {alist_category_count}")
+    print("A-List acquisition: disabled pending permission (hub #615, #1508)")
 
     if warnings:
         print("\nWarnings")
