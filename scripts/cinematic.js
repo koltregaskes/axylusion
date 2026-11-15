@@ -32,6 +32,7 @@
     const ref = $("[data-hero-ref]");
     const date = $("[data-hero-date]");
     const prompt = $("[data-hero-prompt]");
+    const credit = $("[data-hero-credit]");
     const buttons = $$("[data-hero-index]", strip);
 
     buttons.forEach((button) => {
@@ -42,6 +43,7 @@
         if (ref) ref.textContent = item.ref || "";
         if (date) date.textContent = item.date || "";
         if (prompt) prompt.textContent = `"${item.prompt || ""}"`;
+        if (credit) credit.textContent = item.credit || "";
         buttons.forEach((cell) => cell.classList.toggle("is-on", cell === button));
       });
     });

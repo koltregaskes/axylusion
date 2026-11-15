@@ -21,6 +21,8 @@ from html import escape
 from pathlib import Path
 from urllib.parse import urlparse
 from seo import enhance_html, gallery_images
+from provenance import (provenance_fields, credit_text, PRODUCTION, RIGHTS_PATH,
+                        RIGHTS_STATEMENT, TERMS_URL)
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -179,6 +181,7 @@ def normalize_item(item: dict, index: int, prompt_lookup: dict[str, str] | None 
         lookup = prompt_lookup or {}
         item["prompt"] = lookup.get(item_id, str(item.get("name") or "Prompt not logged"))
     item.setdefault("type", "image")
+    item.update(provenance_fields(item))
     return item
 
 
@@ -346,7 +349,13 @@ def frame(item: dict, index: int, ratio: str = "3/4", mode: str = "plate", capti
         <div class="cn-frame__vignette" aria-hidden="true"></div>
         <div class="cn-frame__corner"><span>{ref}</span><span>/</span><span>{date}</span></div>
         {cap}
-      </figure>"""
+      </figure>{provenance_line(item) if src else ''}"""
+
+
+def provenance_line(item: dict, hero: bool = False) -> str:
+    live = ' data-hero-credit aria-live="polite"' if hero else ''
+    return (f'<p class="cn-provenance"><span{live}>{escape(credit_text(item))}</span> '
+            f'<a href="{RIGHTS_PATH}">Image rights</a></p>')
 
 
 def base_schema() -> list[dict]:
@@ -419,7 +428,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
     hero = items[0]
     reel = items
     strip = "".join(
-        f'<button class="cn-strip__cell{" is-on" if i == 0 else ""}" style="{escape(frame_style(item))}" data-hero-index="{i}" aria-label="Show {escape(str(item.get("ref")))}"><span class="cn-strip__ref">{escape(str(item.get("ref")))}</span></button>'
+        f'<div class="cn-strip__item"><button class="cn-strip__cell{" is-on" if i == 0 else ""}" style="{escape(frame_style(item))}" data-hero-index="{i}" aria-label="Show {escape(str(item.get("ref")))}"><span class="cn-strip__ref">{escape(str(item.get("ref")))}</span></button>{provenance_line(item)}</div>'
         for i, item in enumerate(items[:8])
     )
     rows = []
@@ -443,6 +452,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
                 "date": fmt_date_long(str(item.get("created") or "")),
                 "prompt": prompt_for(item),
                 "style": frame_style(item),
+                "credit": credit_text(item),
             }
             for item in items[:8]
         ],
@@ -459,6 +469,7 @@ def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
           <h1 class="cn-display">Axy Lusion</h1>
           <p class="cn-display-sub">AI Art / Video / Music</p>
           <p class="cn-pull" data-hero-prompt>&quot;{escape(prompt_for(hero))}&quot;</p>
+          {provenance_line(hero, hero=True)}
           <div class="cn-cta-row"><a class="cn-cta cn-cta--primary" href="gallery.html">Enter the gallery</a><a class="cn-cta cn-cta--ghost" href="about.html">About the artist</a></div>
         </div>
         <div class="cn-strip" data-hero-strip data-hero-items='{escape(hero_payload)}'>{strip}</div>
@@ -514,11 +525,12 @@ def render_gallery(gallery_items: list[dict]) -> str:
             "creator": {"@id": "https://koltregaskes.com/#person-kol"},
             "artMedium": f"AI image generation ({item.get('model') or item.get('source') or 'Midjourney'})",
             "artform": "Digital art",
+            "image": {"@id": image_source(item) + "#image"},
             "dateCreated": item.get("created"),
             "url": f"{DOMAIN}/gallery.html#frame-{str(item.get('ref')).lower()}",
             "isPartOf": {"@id": f"{DOMAIN}/gallery.html#gallery"},
         }
-        for item in gallery_items
+        for item in gallery_items if image_source(item)
     ]
     schema = [
         {
@@ -636,6 +648,15 @@ def render_about(gallery_items: list[dict]) -> str:
     body = f"""
       <section class="cn-pagehead cn-pagehead--lg"><div class="cn-pagehead__inner"><span class="cn-kicker">About</span><h1 class="cn-h1">Kol Tregaskes / the work behind the archive</h1><p class="cn-lede">A creative explorer at the intersection of art and artificial intelligence. Axy Lusion is the public creative identity for image, music, and moving-image work.</p></div></section>
       <section class="cn-about-grid"><div class="cn-about-grid__portrait">{frame(portrait, 5, ratio='3/4', mode='full')}<div class="cn-about-grid__name"><span class="cn-kicker cn-kicker--sm">The artist</span><h2>Kol Tregaskes</h2><p>Cornwall, UK</p></div></div><div class="cn-about-grid__body"><p class="cn-lead-para">Every frame is a collaboration between human direction and AI capability: prompts refined through iteration, archived here by date, with the original prompt preserved as caption where available.</p><h2 class="cn-h3">Practice</h2><p>Cinematic portraits, dark fantasy scenes, cyberpunk visions, music sketches, and moving-image studies are the running threads. Tools rotate, but the archive is the constant.</p><h2 class="cn-h3">Why no titles?</h2><p>Titling a 5,000-frame Midjourney archive retroactively is the kind of task that sounds easy and quietly never gets done. Instead the archive uses what is actually reliable: a date, a queue reference, and the prompt where it was logged. Less invented, more honest, faster to build, easier to search.</p><h2 class="cn-h3">Elsewhere</h2><div class="cn-about-grid__links"><a href="https://koltregaskes.com">koltregaskes.com</a><a href="https://x.com/Axylusion">X / @Axylusion</a><a href="https://www.midjourney.com/@axylusion">Midjourney / @axylusion</a><a href="https://suno.com/@axylusion">Suno / @axylusion</a></div></div></section>"""
+    body += f"""
+      <section class="cn-pagehead" aria-labelledby="image-rights"><div class="cn-pagehead__inner cn-about-grid__body">
+        <h2 class="cn-h2" id="image-rights">Image provenance and rights</h2>
+        <p>{escape(PRODUCTION)}.</p>
+        <p>The gallery and homepage collection retain the recorded model and creation date for each image.</p>
+        <p>{escape(RIGHTS_STATEMENT)}</p>
+        <p><a href="{TERMS_URL}">Midjourney's terms of service</a> apply. Read the current terms before requesting reuse.</p>
+        <p>To request permission, contact Kol through the <a href="https://koltregaskes.com">Kol's Korner website</a> or the profiles linked above.</p>
+      </div></section>"""
     schema = [{"@type": "AboutPage", "@id": f"{DOMAIN}/about.html#about", "name": "About Axy Lusion", "mainEntity": {"@id": "https://koltregaskes.com/#person-kol"}}]
     return page_shell("about.html", "About | Axy Lusion", "About Kol Tregaskes and the Axy Lusion creative archive.", "About", body, schema)
 

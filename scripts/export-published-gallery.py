@@ -17,6 +17,7 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from provenance import provenance_fields
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
@@ -179,6 +180,7 @@ def merge_item(db_item: dict[str, Any], existing_item: dict[str, Any], db_tags: 
         if key not in merged:
             merged[key] = value
 
+    merged.update(provenance_fields(merged))
     return merged
 
 
