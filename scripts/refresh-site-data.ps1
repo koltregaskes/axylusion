@@ -18,11 +18,7 @@ $projectRoot = Split-Path -Parent $PSScriptRoot
 Push-Location $projectRoot
 try {
     $step = 1
-    $totalSteps = if ($RunSmokeTest) {
-        if ($SkipAList) { 5 } else { 8 }
-    } else {
-        if ($SkipAList) { 4 } else { 7 }
-    }
+    $totalSteps = if ($RunSmokeTest) { 5 } else { 4 }
     if ($Publish) {
         $totalSteps++
     }
@@ -48,28 +44,9 @@ try {
     }
     $step++
 
-    if (-not $SkipAList) {
-        Write-Host "[$step/$totalSteps] Refreshing A-List from Artificial Analysis..."
-        python scripts/refresh-a-list-benchmarks.py
-        if ($LASTEXITCODE -ne 0) {
-            throw "A-List arena refresh failed with exit code $LASTEXITCODE."
-        }
-        $step++
-
-        Write-Host "[$step/$totalSteps] Syncing A-List benchmark snapshot..."
-        python scripts/sync-a-list-benchmarks.py
-        if ($LASTEXITCODE -ne 0) {
-            throw "A-List benchmark sync failed with exit code $LASTEXITCODE."
-        }
-        $step++
-
-        Write-Host "[$step/$totalSteps] Rendering A-List pages..."
-        python scripts/render-a-list.py
-        if ($LASTEXITCODE -ne 0) {
-            throw "A-List page render failed with exit code $LASTEXITCODE."
-        }
-        $step++
-    }
+    # A-List acquisition, sync and ranked rendering are disabled (#615, #1508).
+    # Keep -SkipAList for existing scheduler compatibility; both modes skip it.
+    Write-Host "SKIP: A-List refresh disabled pending publishing permission (hub #615, #1508)."
 
     Write-Host "Generating search metadata, sitemap and RSS..."
     python scripts/build-seo.py
@@ -99,8 +76,6 @@ try {
         $candidatePaths = @(
             "data",
             "news-digests",
-            "a-list",
-            "a-list.html",
             "news.html",
             "index.html",
             "gallery.html",

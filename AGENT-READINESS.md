@@ -40,7 +40,7 @@ If Kol decides to ship schema work *now* with placeholders, the schema for the g
   "alternateName": "Axylusion",
   "url": "https://axylusion.com",
   "logo": "https://axylusion.com/favicon.svg",
-  "description": "AI art portfolio and creative tool rankings. Kol Tregaskes — AI artist exploring the intersection of technology and imagination through Midjourney, Suno, and other AI tools.",
+  "description": "AI art portfolio and creative tool notes. Kol Tregaskes — AI artist exploring the intersection of technology and imagination through Midjourney, Suno, and other AI tools.",
   "founder": { "@id": "https://koltregaskes.com/#person-kol" },
   "sameAs": ["https://x.com/Axylusion"],
   "parentOrganization": { "@id": "https://koltregaskes.com/#organization" }
@@ -96,44 +96,9 @@ If Kol decides to ship schema work *now* with placeholders, the schema for the g
 
 ### 1.3 A-List pages (`a-list.html`, `a-list/*.html`)
 
-Each A-List page ranks AI creative tools (image-gen, video-gen, 3d, music, voice-tts, upscaling, image-editing). These are `ItemList` of `SoftwareApplication`:
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "@id": "https://axylusion.com/a-list/image-generation.html#list",
-  "name": "A-List: Image Generation Tools",
-  "description": "Top AI image generation tools, ranked by Axy Lusion.",
-  "numberOfItems": 12,
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "item": {
-        "@type": "SoftwareApplication",
-        "name": "Midjourney",
-        "url": "https://www.midjourney.com",
-        "applicationCategory": "DesignApplication",
-        "operatingSystem": "Web"
-      }
-    }
-    // ...
-  ]
-}
-```
-
-Plus a wrapping `ReviewPage` if Axy Lusion is opining on the rankings:
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Review",
-  "itemReviewed": { "@id": "https://axylusion.com/a-list/image-generation.html#list" },
-  "author": { "@id": "https://koltregaskes.com/#person-kol" },
-  "reviewBody": "<rationale for ranking>"
-}
-```
+Withdrawn pending publishing permission (hub #615 and #1508). These routes
+serve noindex holding pages without ranking, review or model schema. Do not add
+them to discovery files or restore ranked schema before permission is recorded.
 
 ### 1.4 Blog (`blog.html`, `blog-welcome.html`)
 
@@ -172,7 +137,6 @@ Currently: no `robots.txt` visible — verify. If missing, add the estate baseli
 ### Sitemap.xml
 
 Verify:
-- Lists `index.html`, `about.html`, `gallery.html`, `blog.html`, `blog-welcome.html`, `a-list.html`, and the A-List category pages that still have a current public Elo board
 - Includes individual artwork pages if any exist
 - `lastmod` reflects last gallery update (so AI agents see fresh content signals after R2 migration)
 
@@ -184,7 +148,6 @@ Gallery interactivity (modal, fixes scripts visible in repo) needs audit:
 
 - `gallery.js`, `gallery-fixes.js`, `gallery-modal-fixes.js` may construct interactive elements dynamically — Codex must confirm constructed elements use `<button>` / `<a>`, not styled `<div>` / `<span>`.
 - Gallery modal accessibility: `role="dialog"`, `aria-modal="true"`, focus trap, escape to close. Critical for browser agents that take screenshots.
-- A-List pages: rank cards must be `<a>` or `<button>` if clickable.
 
 Form check: `admin/` directory present — verify admin forms have `<label for=…>`. (Admin probably gated behind auth, but the markup quality still matters for accessibility / browser agents the admin uses.)
 
@@ -192,11 +155,7 @@ Form check: `admin/` directory present — verify admin forms have `<label for=�
 
 ## 4. Content cadence — non-commodity check
 
-A-List rankings are exactly the kind of content Google calls out as *commodity* IF they're just "here are 10 tools" with no opinion. Axy Lusion's value lies in Kol's actual experience with each tool:
-
-- Each A-List entry should include a `Review.reviewBody` with Kol's first-hand take ("Why I switched from Midjourney v6 to v7 for portraits...")
-- Without first-person commentary, the ranking is commodity content
-- Recommend Codex flags any A-List entry where `reviewBody` is empty or boilerplate
+A-List editorial and schema work is paused pending permission (hub #615 and #1508).
 
 Gallery is unique by definition (one-of-a-kind generated images) — much less risk.
 
@@ -214,7 +173,6 @@ Likely small (a-list/ has 7 pages, plus home, about, gallery, blog). No concerns
 
 - **R2 migration must complete first** (see warning at top of this doc).
 - **License decision** for gallery images — Kol's call.
-- **A-List `reviewBody` content** — if rankings exist without rationale text, schema fidelity is poor. Editorial backfill needed.
 - **Admin section schema** — typically excluded from sitemap + `noindex`'d. Codex confirms.
 
 ---
@@ -225,7 +183,6 @@ Phase 1 — Pre-migration (no images live yet):
 
 - [ ] `Organization` + `WebSite` JSON-LD on home + every page (referenced by `@id`)
 - [ ] `AboutPage` on about
-- [ ] `ItemList` of `SoftwareApplication` on each A-List page
 - [ ] `Blog` or `Article` on blog pages
 - [ ] `BreadcrumbList` on deep pages
 - [ ] `robots.txt` matches estate baseline

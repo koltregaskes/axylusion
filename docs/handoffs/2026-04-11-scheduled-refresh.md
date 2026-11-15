@@ -1,5 +1,9 @@
 # Axy Lusion Scheduled Refresh Handoff - 2026-04-11
 
+This is a historical handoff. The A-List steps below are superseded: acquisition,
+sync and ranked rendering are disabled pending permission (hub #615 and #1508).
+See `docs/CONTENT-FLOWS.md` for the current refresh path.
+
 ## Outcome
 
 - Axy Lusion now has real unattended refresh jobs.

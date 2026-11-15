@@ -30,7 +30,7 @@ python scripts/check-seo.py
 python scripts/validate-site.py
 ```
 
-`build-seo.py` discovers public root and A-List HTML, adds per-page social cards
+`build-seo.py` discovers indexable public HTML, adds per-page social cards
 and JSON-LD, and generates `sitemap.xml` and `feed.xml`. RSS includes up to 50
 non-empty indexed digests and their deduplicated source stories. Item GUIDs are
 stable URLs and publication dates come from the digest, never build time.
@@ -60,7 +60,7 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 - `styles.css` - shared site styling
 - `content/` - editable markdown content
 - `news-digests/` - news source material used by the site
-- `scripts/refresh-site-data.ps1` - local refresh pipeline for homepage/news/A-List validation
+- `scripts/refresh-site-data.ps1` - local refresh pipeline for homepage/news refresh and A-List withdrawal checks
 - `scripts/run-scheduled-refresh.ps1` - scheduled entrypoint for morning full refresh and evening news-only refresh
 - `scripts/run-smoke-test.ps1` - local browser smoke-test wrapper for the public pages
 - `scripts/migrate-images.py` - repoint expired Midjourney CDN media to repo-local hosting or Cloudflare R2
@@ -131,3 +131,8 @@ progress; it never changes DNS, provider settings or source to hide the mismatch
 The dispatch-only Live main parity workflow uses the same checker. Third-party
 media, mailbox receipt, analytics delivery and future hosting acceptance remain
 separate checks. Default TLS certificate validation stays enabled.
+
+The A-List is withdrawn pending publishing permission (hub #615 and #1508).
+Its eight old routes are noindex holding pages. Acquisition and sync entrypoints
+explicitly skip all work; their legacy implementations are retained for restoration.
+Do not restore the archived snapshots to this public repository without permission.

@@ -1,8 +1,8 @@
 """Regression: the legacy hub-cache sync must not overwrite a current arena snapshot.
 
 Reproduces the PR #88 review finding: with a *fresh* shared cache, sync-a-list-benchmarks.py
-used to rebuild the legacy snapshot over the Artificial Analysis capture (Elo 1222 replaced by
-composite score 78), and arena validation then failed.
+used to rebuild the legacy snapshot over the Artificial Analysis capture (arena values replaced by
+legacy composite values), and arena validation then failed.
 """
 
 from __future__ import annotations
@@ -29,6 +29,12 @@ def run_sync(source: Path, output: Path, *extra: str) -> subprocess.CompletedPro
 
 
 def main() -> int:
+    # The retained arena fixture test is inactive until permission (#615, #1508).
+    print("SKIP: legacy A-List sync fixture withdrawn; running withdrawal regressions instead (hub #615, #1508).", flush=True)
+    return subprocess.run([sys.executable, "-B", str(ROOT / "scripts/test-a-list-withdrawal.py")], cwd=ROOT).returncode
+
+
+def legacy_main() -> int:
     snapshot = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
     if snapshot.get("score_basis") != "artificial_analysis_elo":
         print("SKIP: committed snapshot is not an arena capture; nothing to protect.")
