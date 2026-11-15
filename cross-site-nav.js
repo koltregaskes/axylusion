@@ -44,7 +44,10 @@
 
   if (siblings.length === 0) return;
 
+  if (document.querySelector('[data-estate-navigation]')) return;
+
   const shell = document.createElement('div');
+  shell.setAttribute('data-estate-navigation', '');
   shell.setAttribute('role', 'complementary');
   shell.setAttribute('aria-label', 'Related sites');
   shell.style.cssText = `
@@ -85,8 +88,12 @@
     link.rel = 'noopener';
     link.style.cssText = `
       color: inherit;
-      opacity: 0.8;
-      text-decoration: none;
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 0.16em;
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
       transition: opacity 0.15s;
       white-space: nowrap;
     `;
@@ -94,7 +101,7 @@
       link.style.opacity = '1';
     });
     link.addEventListener('mouseleave', () => {
-      link.style.opacity = '0.8';
+      link.style.opacity = '1';
     });
     linksRow.appendChild(link);
   }
