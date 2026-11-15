@@ -89,15 +89,19 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 
 ## Launch security code (hub #1508)
 
-The current origin is GitHub Pages behind Cloudflare DNS. Pages does not honour
-Cloudflare Pages `_headers` files. `cloudflare-response-headers.json` is the
-response-header Transform Rule payload for the existing proxied production host;
-apply it through the existing zone's `http_response_headers_transform` ruleset
-only in the authorised hosting change. This PR does not change DNS or provider
-settings. HSTS omits includeSubDomains/preload. CSP is report-only until actual
-media, embeds and inline script/style behaviour have been checked in production;
-it is not an enforced CSP or proof of deployed headers. If traffic is DNS-only,
-the rule cannot apply. Verify the actual response headers after hosting cutover.
+The supplied origin is GitHub Pages with Cloudflare DNS. Pages ignores
+`_headers`; that file is an unused generated mirror. The intended policy lives
+in `cloudflare-response-headers.json`, including an enforced CSP aligned with
+the HTML meta CSP, DENY framing, and HSTS without includeSubDomains/preload.
+Only the meta CSP is supplied by the current HTML; neither header file changes
+live responses. The Cloudflare proposal has not been applied.
+
+See [Hosting and security headers](docs/HOSTING-SECURITY.md) for the exact
+approval-ready Transform Rule, current limitations and curl acceptance checks.
+Kol must approve provider, proxy or hosting changes before they are applied.
+Run `python -B scripts/meta_csp.py` to check the proposal, unused mirror,
+documentation example and every meta CSP. After a policy edit, regenerate with
+`python -B scripts/meta_csp.py --write` and update the documented JSON example.
 
 `npm ci --ignore-scripts` installs the lockfile; `npm audit --audit-level=low`
 fails on all reported severities. `scripts/scan-source-secrets.py` scans tracked
@@ -116,8 +120,8 @@ backends. Those need their own input validation, consent, abuse and privacy revi
 The secret scan covers tracked text only, now including Stripe, Slack and Google
 key formats, with synthetic positive and negative admission checks. Environment
 files, binaries, symlinks and Git history remain outside its coverage.
-The Cloudflare response-header payload remains unapplied. Report-only CSP has no
-collector configured, so its violations are visible only in the browser console.
+The Cloudflare response-header payload remains unapplied. No CSP reporting
+collector is configured. Meta CSP enforcement does not establish live headers.
 Actual header application depends on the approved hosting/proxy route and requires
 provider-side readback; this code does not change DNS or hosting settings.
 ### Live acceptance readback

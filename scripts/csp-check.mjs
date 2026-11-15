@@ -2,12 +2,11 @@ export function installCspCapture(){globalThis.__launchCspViolations=[];document
 export function readCspViolations(){return globalThis.__launchCspViolations||[];}
 
 export async function loadHtmlCspHeaders(){
- const {readFile}=await import('node:fs/promises');let global=false,policy;
- for(const line of (await readFile('_headers','utf8')).split(/\r?\n/)){
-  if(line.trim()&&!/^\s/.test(line)){global=line.trim()==='/*';continue;}
-  const match=line.match(/^\s+Content-Security-Policy:\s*(.+)$/i);
-  if(global&&match){if(policy)throw Error('Duplicate global CSP in _headers');policy=match[1];}
- }
- if(!policy)throw Error('Global CSP missing from _headers');
+ const {readFile}=await import('node:fs/promises');
+ const payload=JSON.parse(await readFile(new URL('../cloudflare-response-headers.json',import.meta.url),'utf8'));
+ if(payload.rules?.length!==1)throw Error('Expected one proposed Cloudflare rule');
+ const entry=payload.rules[0].action_parameters?.headers?.['Content-Security-Policy'];
+ const policy=entry?.value;
+ if(entry?.operation!=='set'||!policy)throw Error('Enforced CSP missing from Cloudflare proposal');
  return {'content-security-policy':policy};
 }
