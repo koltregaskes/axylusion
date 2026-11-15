@@ -77,7 +77,7 @@ def clean_page(html: str) -> str:
 
 
 def write_page(path: Path, html: str) -> None:
-    path.write_text(ensure_navigation(clean_page(html)), encoding="utf-8")
+    path.write_text(ensure_navigation(clean_page(html)), encoding="utf-8", newline="\n")
 
 
 def slugify(value: str) -> str:
@@ -662,21 +662,42 @@ def render_about(gallery_items: list[dict]) -> str:
 
 
 def render_privacy() -> str:
-    media_hosts = sorted({urlparse(item["cdn_url"]).netloc for item in
-                         read_json(ROOT / "data" / "homepage-gallery.json")["items"]})
-    hosts = ", ".join(f"<code>{escape(host)}</code>" for host in media_hosts)
+    inventory = read_json(ROOT / "data/privacy-inventory.json")
+    providers = "".join(
+        '<li><strong>' + escape(provider['name']) + '</strong> ('
+        + ', '.join('<code>' + escape(host) + '</code>' for host in provider['hosts'])
+        + '). ' + escape(provider['purpose'])
+        + ' <a href="' + escape(provider['policy']) + '">Privacy policy</a>.</li>'
+        for provider in inventory['providers']
+    )
+    history = "".join(
+        '<li><time datetime="' + escape(entry['date']) + '">'
+        + fmt_date_long(entry['date']) + '</time>: ' + escape(entry['change']) + '</li>'
+        for entry in inventory['history']
+    )
     body = f"""
       <section class="cn-pagehead"><div class="cn-pagehead__inner cn-about-grid__body cn-privacy">
         <span class="cn-kicker">About this site</span><h1 class="cn-h1">Privacy</h1>
-        <p>Axy Lusion is a static portfolio. Here is what loads while you browse and what happens when you follow a link.</p>
-        <h2 class="cn-h3">Pages, fonts and images</h2>
-        <p>The site is hosted on GitHub Pages, with Cloudflare used for DNS. Fonts load directly from Google Fonts at <code>fonts.googleapis.com</code> and <code>fonts.gstatic.com</code>. Gallery images load directly from the Cloudflare R2 public media host {hosts}. Your browser connects to those providers to request these files.</p>
-        <p>Provider logging settings and retention periods have not been confirmed, so this notice makes no promise about them.</p>
+        <p>Last updated: <time datetime="{escape(inventory['last_updated'])}">{fmt_date_long(inventory['last_updated'])}</time>.</p>
+        <h2 class="cn-h3">Who runs Axy Lusion</h2>
+        <p>I am Kol Tregaskes. I run this creative portfolio as an individual and am the controller responsible for personal information I handle through it. For a privacy question or request, use the contact links on the <a href="about.html">About page</a>, including <a href="https://x.com/Axylusion">X</a> or <a href="https://www.instagram.com/axylusion">Instagram</a>. There is no verified site email address published yet. Contacting me on a social platform also involves that platform.</p>
+        <h2 class="cn-h3">What happens when you browse</h2>
+        <p>The current site has no forms, accounts, analytics or newsletter sign-up. Its scripts set no cookies and use neither localStorage nor sessionStorage. Gallery search and news filters stay in page memory and reset when you reload. Your browser may cache files in the usual way.</p>
+        <p>Pages are served directly by GitHub Pages. Fonts and some images come from the providers below. Each request gives the provider your IP address, user agent (browser details), the requested file and the time of the request. A referrer may also be sent, depending on your browser and referrer policy; cross-site requests from pages using this site's strict-origin-when-cross-origin policy normally send only the site's origin, not the full page address.</p>
+        <ul>{providers}</ul>
+        <p>I use these services to display and protect the portfolio, relying on my legitimate interests in running a working, secure website. Provider logs are not an analytics dashboard operated by this site. Their retention settings have not been confirmed. Providers may process information outside the UK; their policies explain their own practices, retention and transfer arrangements. I do not promise a particular retention period or UK-only processing.</p>
+        <p>Cloudflare provides DNS and the R2 image service. A Cloudflare proxy for page traffic is only proposed and awaits Kol's approval; it is not the current page-serving setup.</p>
         <h2 class="cn-h3">External links and media</h2>
         <p>Links lead to Kol's other websites, social profiles, creative tools, news sources and ElevenLabs music listings and licence pages. These include X, Instagram, YouTube, TikTok, Midjourney, Suno and GitHub. When you follow a link, the destination's privacy practices apply.</p>
         <p>There are no embedded social feeds, audio players or video players on the current pages. Music and video links take you to the external provider.</p>
         <h2 class="cn-h3">No analytics or newsletter yet</h2>
-        <p>No analytics or newsletter yet: the site currently has no analytics script, newsletter sign-up form or subscription service. Gallery search and news filters run in your browser. This notice will need updating before analytics, subscriptions or embedded players are added.</p>
+        <p><strong>Planned, not active:</strong> Axy's own cookieless analytics would measure site use. No collector is connected today. Cookieless does not automatically mean anonymous or exempt from privacy and storage rules; the data fields, purpose, retention and any consent requirements will be reviewed before activation.</p>
+        <p><strong>Planned, not active:</strong> a newsletter using Resend would store your email address, chosen categories and consent time. The plan is double opt-in, with an unsubscribe link in each email. There is no subscription or sending service connected today. I will update this page with the actual arrangements before either service goes live.</p>
+        <h2 class="cn-h3">Your rights and complaints</h2>
+        <p>Under UK GDPR, you can ask for access to personal information held about you and for inaccurate information to be corrected. Depending on the circumstances, you can ask for deletion or restriction, object to processing (including processing based on legitimate interests), or request portability. Where processing relies on consent, you can withdraw it. These rights have conditions and do not all apply to every type of processing.</p>
+        <p>Use the About page contact routes above to make a request. You can also <a href="https://ico.org.uk/make-a-complaint/">complain to the Information Commissioner's Office (ICO)</a>, the UK's data protection regulator.</p>
+        <h2 class="cn-h3">Change history</h2>
+        <ul>{history}</ul>
       </div></section>"""
     return page_shell("privacy.html", "Privacy | Axy Lusion",
                       "How Axy Lusion uses hosting, Google Fonts, image delivery and external links.", "", body)

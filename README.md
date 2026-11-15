@@ -111,9 +111,33 @@ all network errors, non-404/410 HTTP errors and insecure destinations as unverif
 No form handler, payment or store setup is added by these changes.
 ### Public security boundary
 
-The current source is a static site: public pages fetch checked-in gallery and
-news JSON. There is no form submission handler, Worker/API endpoint, account
-session, newsletter subscription backend or payment handler in this repository.
+The generated privacy notice is `privacy.html`; its provider inventory and dated
+change history are in `data/privacy-inventory.json`. Render it with
+`python -B scripts/render-cinematic-site.py --page privacy`, then run
+`python -B scripts/build-seo.py`. Existing shared navigation links the notice
+from every static footer. `python -B scripts/privacy_check.py` checks resource
+hosts and storage in the allowlisted HTML/CSS/JS and runtime JSON. Its negative
+controls are `python -B scripts/test-privacy.py`. This is an offline static guard,
+not proof of browser requests, provider settings or current legal acceptance.
+
+`python -B scripts/build-public.py --output <new-directory>` prepares an exact
+allowlisted Pages artifact. `data/public-files.json` names the public files;
+only dated Markdown files in the digest manifest extend that list. It excludes
+`content/` (including `publish: false` drafts), docs, unused legacy scripts and
+build sources. Active browser JavaScript under `scripts/` is included explicitly.
+CI checks this artifact but does not deploy it. The current branch/root Pages
+publishing route does not enforce this allowlist, and `.nojekyll` does not hide
+source files. Before using it publicly, the existing owner must obtain approval
+for the Pages publishing change, configure deployment of this artifact only,
+and verify that old source URLs are unavailable. No hosting settings are changed
+by this code. Excluding files from Pages does not make tracked source private in
+the public GitHub repository; unapproved source needs a separate private archive
+decision. Do not treat a source `publish: false` field as access control.
+
+The current source is a static site: gallery cards are built into HTML and the
+news page fetches checked-in news JSON. There is no form submission handler,
+Worker/API endpoint, account session, newsletter subscription backend or payment
+handler in this repository.
 External store and social links are provider destinations, not local handlers.
 This bounded code review does not accept future newsletter, analytics or store
 backends. Those need their own input validation, consent, abuse and privacy review.

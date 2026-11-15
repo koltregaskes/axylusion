@@ -1,0 +1,36 @@
+{
+  "last_updated": "2026-11-15",
+  "providers": [
+    {
+      "name": "GitHub Pages",
+      "hosts": ["axylusion.com"],
+      "purpose": "Delivers this site's pages and files. GitHub receives standard request logs, including your IP address and request details.",
+      "policy": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+    },
+    {
+      "name": "Google Fonts",
+      "hosts": ["fonts.googleapis.com", "fonts.gstatic.com"],
+      "purpose": "Delivers the stylesheet and font files used by these pages.",
+      "policy": "https://policies.google.com/privacy"
+    },
+    {
+      "name": "Cloudflare R2",
+      "hosts": ["pub-7bea5d72ad544bb685e1335d2e6bdd10.r2.dev"],
+      "purpose": "Delivers gallery and homepage images when your browser loads them.",
+      "policy": "https://www.cloudflare.com/privacypolicy/"
+    }
+  ],
+  "link_only_js_hosts": [
+    "koltregaskes.com",
+    "theairesourcehub.com",
+    "ghostinthemodels.com",
+    "koltregaskesphotography.com",
+    "elusionworks.com"
+  ],
+  "history": [
+    {
+      "date": "2026-11-15",
+      "change": "Expanded the existing notice with contact routes, provider disclosures, browser storage, planned services and visitors' rights. No new service was activated."
+    }
+  ]
+}
