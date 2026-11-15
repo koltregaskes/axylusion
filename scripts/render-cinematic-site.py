@@ -141,6 +141,20 @@ def prompt_for(item: dict) -> str:
     return str(item.get("prompt") or item.get("name") or "Prompt not logged").strip()
 
 
+def image_alt(item: dict) -> str:
+    """Use existing descriptive copy, retaining frame/date in the caption."""
+    name = " ".join(str(item.get("name") or "").split())
+    prompt = " ".join(str(item.get("prompt") or "").split())
+    # Some imported names are truncated prefixes of the original prompt.
+    description = prompt if prompt.startswith(name) and len(prompt) > len(name) else name
+    if not description or re.fullmatch(r"(?:Frame\s+)?F\d+|[\d\s/.,:-]+", description, re.I):
+        description = prompt
+    description = re.split(r"\s+--|(?<=[.!?])\s", description, maxsplit=1)[0]
+    if len(description) > 140:
+        description = description[:137].rsplit(" ", 1)[0] + "..."
+    return description or "AI-generated artwork"
+
+
 def page_url(path: str = "") -> str:
     if not path or path == "index.html":
         return f"{DOMAIN}/"
@@ -317,7 +331,7 @@ def frame(item: dict, index: int, ratio: str = "3/4", mode: str = "plate", capti
     date = escape(fmt_date(str(item.get("created") or "")))
     prompt = escape(prompt_for(item))
     src = escape(image_source(item))
-    img = f'<img class="cn-frame__img" src="{src}" alt="Frame {ref}, {date}" loading="lazy" decoding="async">' if src else ""
+    img = f'<img class="cn-frame__img" src="{src}" alt="{escape(image_alt(item))}" loading="lazy" decoding="async">' if src else ""
     cap = (
         f'<figcaption class="cn-frame__cap"><span class="cn-frame__cap-label">Prompt</span><span class="cn-frame__cap-text">{prompt}</span></figcaption>'
         if caption
@@ -361,7 +375,7 @@ def page_shell(path: str, title: str, description: str, active: str, body: str, 
     prefix = "../" if path.startswith("a-list/") else ""
     graph = {"@context": "https://schema.org", "@graph": base_schema() + (schema or [])}
     canonical = page_url(path)
-    return enhance_html(f"""<!doctype html>
+    return ensure_navigation(enhance_html(f"""<!doctype html>
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
@@ -396,7 +410,7 @@ def page_shell(path: str, title: str, description: str, active: str, body: str, 
   </div>
 </body>
 </html>
-""", path)
+""", path))
 
 
 def render_home(gallery_items: list[dict], home_items: list[dict]) -> str:
@@ -620,9 +634,30 @@ def render_about(gallery_items: list[dict]) -> str:
     portrait = gallery_items[5]
     body = f"""
       <section class="cn-pagehead cn-pagehead--lg"><div class="cn-pagehead__inner"><span class="cn-kicker">About</span><h1 class="cn-h1">Kol Tregaskes / the work behind the archive</h1><p class="cn-lede">A creative explorer at the intersection of art and artificial intelligence. Axy Lusion is the public creative identity for image, music, and moving-image work.</p></div></section>
-      <section class="cn-about-grid"><div class="cn-about-grid__portrait">{frame(portrait, 5, ratio='3/4', mode='full')}<div class="cn-about-grid__name"><span class="cn-kicker cn-kicker--sm">The artist</span><h3>Kol Tregaskes</h3><p>Cornwall, UK</p></div></div><div class="cn-about-grid__body"><p class="cn-lead-para">Every frame is a collaboration between human direction and AI capability: prompts refined through iteration, archived here by date, with the original prompt preserved as caption where available.</p><h2 class="cn-h3">Practice</h2><p>Cinematic portraits, dark fantasy scenes, cyberpunk visions, music sketches, and moving-image studies are the running threads. Tools rotate, but the archive is the constant.</p><h2 class="cn-h3">Why no titles?</h2><p>Titling a 5,000-frame Midjourney archive retroactively is the kind of task that sounds easy and quietly never gets done. Instead the archive uses what is actually reliable: a date, a queue reference, and the prompt where it was logged. Less invented, more honest, faster to build, easier to search.</p><h2 class="cn-h3">Elsewhere</h2><div class="cn-about-grid__links"><a href="https://koltregaskes.com">koltregaskes.com</a><a href="https://x.com/Axylusion">X / @Axylusion</a><a href="https://www.midjourney.com/@axylusion">Midjourney / @axylusion</a><a href="https://suno.com/@axylusion">Suno / @axylusion</a></div></div></section>"""
+      <section class="cn-about-grid"><div class="cn-about-grid__portrait">{frame(portrait, 5, ratio='3/4', mode='full')}<div class="cn-about-grid__name"><span class="cn-kicker cn-kicker--sm">The artist</span><h2>Kol Tregaskes</h2><p>Cornwall, UK</p></div></div><div class="cn-about-grid__body"><p class="cn-lead-para">Every frame is a collaboration between human direction and AI capability: prompts refined through iteration, archived here by date, with the original prompt preserved as caption where available.</p><h2 class="cn-h3">Practice</h2><p>Cinematic portraits, dark fantasy scenes, cyberpunk visions, music sketches, and moving-image studies are the running threads. Tools rotate, but the archive is the constant.</p><h2 class="cn-h3">Why no titles?</h2><p>Titling a 5,000-frame Midjourney archive retroactively is the kind of task that sounds easy and quietly never gets done. Instead the archive uses what is actually reliable: a date, a queue reference, and the prompt where it was logged. Less invented, more honest, faster to build, easier to search.</p><h2 class="cn-h3">Elsewhere</h2><div class="cn-about-grid__links"><a href="https://koltregaskes.com">koltregaskes.com</a><a href="https://x.com/Axylusion">X / @Axylusion</a><a href="https://www.midjourney.com/@axylusion">Midjourney / @axylusion</a><a href="https://suno.com/@axylusion">Suno / @axylusion</a></div></div></section>"""
     schema = [{"@type": "AboutPage", "@id": f"{DOMAIN}/about.html#about", "name": "About Axy Lusion", "mainEntity": {"@id": "https://koltregaskes.com/#person-kol"}}]
     return page_shell("about.html", "About | Axy Lusion", "About Kol Tregaskes and the Axy Lusion creative archive.", "About", body, schema)
+
+
+def render_privacy() -> str:
+    media_hosts = sorted({urlparse(item["cdn_url"]).netloc for item in
+                         read_json(ROOT / "data" / "homepage-gallery.json")["items"]})
+    hosts = ", ".join(f"<code>{escape(host)}</code>" for host in media_hosts)
+    body = f"""
+      <section class="cn-pagehead"><div class="cn-pagehead__inner cn-about-grid__body cn-privacy">
+        <span class="cn-kicker">About this site</span><h1 class="cn-h1">Privacy</h1>
+        <p>Axy Lusion is a static portfolio. Here is what loads while you browse and what happens when you follow a link.</p>
+        <h2 class="cn-h3">Pages, fonts and images</h2>
+        <p>The site is hosted on GitHub Pages, with Cloudflare used for DNS. Fonts load directly from Google Fonts at <code>fonts.googleapis.com</code> and <code>fonts.gstatic.com</code>. Gallery images load directly from the Cloudflare R2 public media host {hosts}. Your browser connects to those providers to request these files.</p>
+        <p>Provider logging settings and retention periods have not been confirmed, so this notice makes no promise about them.</p>
+        <h2 class="cn-h3">External links and media</h2>
+        <p>Links lead to Kol's other websites, social profiles, creative tools, news sources and ElevenLabs music listings and licence pages. These include X, Instagram, YouTube, TikTok, Midjourney, Suno and GitHub. When you follow a link, the destination's privacy practices apply.</p>
+        <p>There are no embedded social feeds, audio players or video players on the current pages. Music and video links take you to the external provider.</p>
+        <h2 class="cn-h3">No analytics or newsletter yet</h2>
+        <p>No analytics or newsletter yet: the site currently has no analytics script, newsletter sign-up form or subscription service. Gallery search and news filters run in your browser. This notice will need updating before analytics, subscriptions or embedded players are added.</p>
+      </div></section>"""
+    return page_shell("privacy.html", "Privacy | Axy Lusion",
+                      "How Axy Lusion uses hosting, Google Fonts, image delivery and external links.", "", body)
 
 
 def render_alist(snapshot: dict) -> str:
@@ -755,11 +790,22 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--page",
-        choices=("all", "home", "news", "gallery"),
+        choices=("all", "home", "news", "gallery", "about", "blog", "privacy"),
         default="all",
-        help="Render every cinematic page, only the homepage, or only the scheduled news page.",
+        help="Render every cinematic page or a selected page without migrating data.",
     )
     args = parser.parse_args()
+
+    if args.page == "privacy":
+        write_page(ROOT / "privacy.html", render_privacy())
+        print("Rendered the privacy page.")
+        return
+
+    if args.page in ("about", "blog"):
+        render = render_about if args.page == "about" else render_blog
+        write_page(ROOT / f"{args.page}.html", render(load_gallery_for_render()))
+        print(f"Rendered the {args.page} page.")
+        return
 
     if args.page == "home":
         gallery_items = load_gallery_for_render()
@@ -787,6 +833,7 @@ def main() -> None:
     write_page(ROOT / "news.html", render_news(gallery_items))
     write_page(ROOT / "blog.html", render_blog(gallery_items))
     write_page(ROOT / "about.html", render_about(gallery_items))
+    write_page(ROOT / "privacy.html", render_privacy())
     write_page(ROOT / "a-list.html", render_alist(snapshot))
     print("Rendered cinematic pages and migrated gallery metadata.")
 

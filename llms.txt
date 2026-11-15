@@ -47,6 +47,7 @@ Published Artificial Analysis arena Elo for image generation, image editing, tex
 - [Axy Lusion | AI Art, Video and Music](https://axylusion.com/)
 - [Music | Axy Lusion](https://axylusion.com/music.html)
 - [News | Axy Lusion](https://axylusion.com/news.html)
+- [Privacy | Axy Lusion](https://axylusion.com/privacy.html)
 - [Store | Axy Lusion](https://axylusion.com/store.html)
 - [AI Creative Tools | Axy Lusion](https://axylusion.com/tools.html)
 - [Videos | Axy Lusion](https://axylusion.com/videos.html)
