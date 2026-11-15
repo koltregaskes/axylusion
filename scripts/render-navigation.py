@@ -1,4 +1,4 @@
-"""Regenerate skip links and main landmarks without changing page content."""
+"""Regenerate shared skip links, main landmarks and footer privacy links."""
 import sys
 from pathlib import Path
 from navigation import ensure_navigation
@@ -10,4 +10,4 @@ for p in [*root.glob("*.html"),*(root/"a-list").glob("*.html")]:
         stale.append(p.name)
         if "--check" not in sys.argv: p.write_text(rendered,encoding="utf-8")
 if "--check" in sys.argv and stale: raise SystemExit("Navigation output stale: "+", ".join(stale))
-print("Skip links and main landmarks checked on every HTML route.")
+print("Skip links, main landmarks and privacy links checked on every HTML route.")
