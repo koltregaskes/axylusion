@@ -15,6 +15,7 @@ Warnings:
 from __future__ import annotations
 
 from alist_status import publication_issues
+from site_config import require_closed_newsletter
 
 import argparse
 import json
@@ -30,8 +31,9 @@ PROJECT_DIR = Path(__file__).resolve().parent.parent
 ROOT_HTML_FILES = sorted(PROJECT_DIR.glob("*.html"))
 ADMIN_HTML_FILES = sorted((PROJECT_DIR / "admin").glob("*.html"))
 ALIST_HTML_FILES = sorted((PROJECT_DIR / "a-list").glob("*.html"))
-HTML_FILES = ROOT_HTML_FILES + ADMIN_HTML_FILES + ALIST_HTML_FILES
-PUBLIC_HTML_FILES = ROOT_HTML_FILES + ALIST_HTML_FILES
+EDITION_HTML_FILES = sorted((PROJECT_DIR / "editions").glob("*.html"))
+HTML_FILES = ROOT_HTML_FILES + ADMIN_HTML_FILES + ALIST_HTML_FILES + EDITION_HTML_FILES
+PUBLIC_HTML_FILES = ROOT_HTML_FILES + ALIST_HTML_FILES + EDITION_HTML_FILES
 NEWS_DIGESTS_DIR = PROJECT_DIR / "news-digests"
 INDEX_PATH = NEWS_DIGESTS_DIR / "index.json"
 HEAD_REQUIREMENT_PATTERNS = {
@@ -284,6 +286,10 @@ def main() -> int:
 
     failures: list[str] = []
     warnings: list[str] = []
+    try:
+        require_closed_newsletter()
+    except ValueError as exc:
+        failures.append(str(exc))
     tracked = subprocess.check_output(["git", "ls-files", "-z", "--", "*.html", "*.json"], cwd=PROJECT_DIR).decode("utf-8").split("\0")
     broken = ("\u00c3", "\u00c2\u00b1", "\u00e2\u20ac")
     for name in tracked:

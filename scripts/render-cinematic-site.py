@@ -40,28 +40,8 @@ TONES = [
     ["#0d1a2a", "#060606", "#c4851a"],
     ["#1c2a1a", "#060606", "#d4a03a"],
 ]
-TOPIC_ALIASES = {
-    "image": "Image",
-    "image_gen": "Image",
-    "video": "Video",
-    "video_gen": "Video",
-    "audio": "Audio",
-    "music_gen": "Audio",
-    "voice_synthesis": "Audio",
-    "3d": "3D",
-    "3d_gen": "3D",
-    "creative": "Tools",
-    "creative_tool": "Tools",
-    "creative_workflow": "Tools",
-    "art_ai": "Tools",
-    "design": "Tools",
-    "product": "Tools",
-    "product_launch": "Tools",
-    "api_update": "Tools",
-    "model_release": "Tools",
-    "benchmark": "Benchmarks",
-    "evaluation": "Benchmarks",
-}
+CATEGORY_MAP = json.loads((ROOT / "newsletter/categories.json").read_text(encoding="utf-8"))
+TOPIC_ALIASES = CATEGORY_MAP["tags"]
 
 
 def read_json(path: Path):
@@ -77,7 +57,7 @@ def clean_page(html: str) -> str:
 
 
 def write_page(path: Path, html: str) -> None:
-    path.write_text(ensure_navigation(clean_page(html)), encoding="utf-8")
+    path.write_text(ensure_navigation(clean_page(html)), encoding="utf-8", newline="\n")
 
 
 def slugify(value: str) -> str:
@@ -165,8 +145,8 @@ def page_url(path: str = "") -> str:
 
 
 def local_link(current: str, target: str) -> str:
-    if current.startswith("a-list/") and not target.startswith(("http", "#", "mailto:")):
-        return f"../{target}"
+    if "/" in current and not target.startswith(("http", "#", "mailto:")):
+        return "../" * current.count("/") + target
     return target
 
 
@@ -266,7 +246,7 @@ def header(active: str, current_path: str = "") -> str:
 
 
 def footer(current_path: str = "") -> str:
-    prefix = "../" if current_path.startswith("a-list/") else ""
+    prefix = "../" * current_path.count("/")
     main_links = [
         ("Gallery", "gallery.html"),
         ("Videos", "videos.html"),
@@ -382,7 +362,7 @@ def base_schema() -> list[dict]:
 
 
 def page_shell(path: str, title: str, description: str, active: str, body: str, schema: list[dict] | None = None) -> str:
-    prefix = "../" if path.startswith("a-list/") else ""
+    prefix = "../" * path.count("/")
     graph = {"@context": "https://schema.org", "@graph": base_schema() + (schema or [])}
     canonical = page_url(path)
     return ensure_navigation(enhance_html(f"""<!doctype html>
@@ -578,11 +558,19 @@ def parse_digest(path: Path) -> dict:
                 topic = TOPIC_ALIASES[tag]
                 break
         source_match = re.search(r"\*([^*]+)\*", meta)
+        source_date_match = re.search(r"\|\s*(\d{2}/\d{2}/\d{4})\s*\|", meta)
+        source_date = None
+        if source_date_match:
+            try:
+                source_date = datetime.strptime(source_date_match[1], "%d/%m/%Y").date().isoformat()
+            except ValueError:
+                pass
         stories.append(
             {
                 "title": match.group("title").strip(),
                 "href": match.group("href").strip(),
                 "topic": topic,
+                "sourceDate": source_date,
                 "source": source_match.group(1).strip() if source_match else "Source",
             }
         )
@@ -621,16 +609,17 @@ def render_news(gallery_items: list[dict]) -> str:
             </article>"""
         )
     art = gallery_items[8] if len(gallery_items) > 8 else gallery_items[0]
-    topics = ["All", "Image", "Video", "Audio", "3D", "Tools", "Benchmarks"]
+    topics = ["All", *CATEGORY_MAP["topics"]]
     chips = "".join(f'<button type="button" class="cn-chip{" is-on" if topic == "All" else ""}" data-news-topic="{topic}" aria-pressed="{"true" if topic == "All" else "false"}">{topic}</button>' for topic in topics)
     body = f"""
       <section class="cn-pagehead"><div class="cn-pagehead__inner"><span class="cn-kicker">Dated digest archive / {escape(fmt_date(latest['date']))}</span><h1 class="cn-h1">News</h1><p class="cn-lede">Creative-AI headlines for image, video, audio, tools, 3D, and benchmarks. The lead story is fixed; filters apply to the digest list below.</p></div></section>
       <section class="cn-news-lead"><div class="cn-news-lead__bg" style="{escape(frame_style(art))}"><div class="cn-frame__grain"></div><div class="cn-frame__vignette"></div></div><div class="cn-news-lead__copy"><span class="cn-kicker">Lead / {escape(fmt_date_long(latest['date']))} / {escape(lead['topic'])}</span><h2 class="cn-h2">{escape(lead['title'])}</h2><p>Most recent indexed creative-AI signal from the Axy Lusion digest archive.</p><div class="cn-cta-row"><a class="cn-cta cn-cta--primary" href="{escape(lead['href'])}" target="_blank" rel="noopener noreferrer">Open source</a><a class="cn-cta cn-cta--ghost" href="news-digests/{escape(latest['slug'])}">Read digest</a></div></div></section>
+      <section class="cn-pagehead"><div class="cn-pagehead__inner"><h2 class="cn-h2">Daily creative edition</h2><p>Read the source-dated edition grouped into Visuals, Video, Audio and Workflows.</p><p><a href="editions.html">Browse editions</a> · <a href="newsletter.html">Newsletter: sign-ups open at launch</a></p></div></section>
       <section class="cn-news-filters" aria-label="News filters">
         <div class="cn-news-filters__row"><label class="cn-search" for="news-search"><span class="cn-search__icon" aria-hidden="true">Search</span><input id="news-search" type="search" placeholder="Search headlines" data-news-search></label><div class="cn-news-filters__range"><button type="button" data-news-range="day" aria-pressed="false">Issue day</button><button type="button" data-news-range="week" aria-pressed="false">7-day window</button><button type="button" class="is-on" data-news-range="all" aria-pressed="true">All</button></div></div>
         <div class="cn-news-filters__chips"><span class="cn-kicker cn-kicker--sm">Topic</span>{chips}<button class="cn-news-filters__clear cn-hidden" type="button" data-news-clear>Clear all</button></div>
       </section>
-      <section class="cn-digests" data-news-list><div class="cn-digests__head"><span class="cn-kicker">Digest list</span><h2 class="cn-h2">By the day</h2>{untitled_note(True)}</div>{''.join(digest_rows)}<div class="cn-news-empty cn-hidden" data-news-empty><span class="cn-kicker">No matches</span><p>No stories match the current filters.</p><button class="cn-cta cn-cta--ghost cn-cta--sm" type="button" data-news-empty-reset>Clear filters</button></div></section>"""
+      <section class="cn-digests" data-news-list data-news-topics='{escape(json.dumps(TOPIC_ALIASES))}'><div class="cn-digests__head"><span class="cn-kicker">Digest list</span><h2 class="cn-h2">By the day</h2>{untitled_note(True)}</div>{''.join(digest_rows)}<div class="cn-news-empty cn-hidden" data-news-empty><span class="cn-kicker">No matches</span><p>No stories match the current filters.</p><button class="cn-cta cn-cta--ghost cn-cta--sm" type="button" data-news-empty-reset>Clear filters</button></div></section>"""
     return page_shell("news.html", "News | Axy Lusion", "Dated creative-AI digest archive for image, video, audio, tools, 3D, and benchmarks.", "News", body)
 
 
@@ -676,7 +665,7 @@ def render_privacy() -> str:
         <p>Links lead to Kol's other websites, social profiles, creative tools, news sources and ElevenLabs music listings and licence pages. These include X, Instagram, YouTube, TikTok, Midjourney, Suno and GitHub. When you follow a link, the destination's privacy practices apply.</p>
         <p>There are no embedded social feeds, audio players or video players on the current pages. Music and video links take you to the external provider.</p>
         <h2 class="cn-h3">No analytics or newsletter yet</h2>
-        <p>No analytics or newsletter yet: the site currently has no analytics script, newsletter sign-up form or subscription service. Gallery search and news filters run in your browser. This notice will need updating before analytics, subscriptions or embedded players are added.</p>
+        <p>No analytics or newsletter yet: the site currently has no analytics script, newsletter sign-up form or subscription service. Gallery search and news filters run in your browser. Read the <a href="newsletter.html">newsletter plan and launch status</a>. No email addresses or preferences are collected here. This notice will need updating before analytics, subscriptions or embedded players are added.</p>
       </div></section>"""
     return page_shell("privacy.html", "Privacy | Axy Lusion",
                       "How Axy Lusion uses hosting, Google Fonts, image delivery and external links.", "", body)

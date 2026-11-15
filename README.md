@@ -113,7 +113,16 @@ No form handler, payment or store setup is added by these changes.
 
 The current source is a static site: public pages fetch checked-in gallery and
 news JSON. There is no form submission handler, Worker/API endpoint, account
-session, newsletter subscription backend or payment handler in this repository.
+session, deployed newsletter subscription backend or payment handler. The
+`newsletter/` directory now contains an offline backend contract, fake in-memory
+transport and a Resend stub which cannot send. It is not exposed as an endpoint.
+The build generates real source-dated edition pages, an editions index and a
+newsletter information page. There is no signup form or collector. The single
+`newsletter.signupsOpen` flag in `data/site-config.json` must remain `false`;
+build and validation reject every other value until a separately reviewed backend
+integration exists. See [newsletter/README.md](newsletter/README.md) for the shared
+category mapping, consent and unsubscribe contract, tests and outstanding provider,
+privacy, backend and delivery acceptance.
 External store and social links are provider destinations, not local handlers.
 This bounded code review does not accept future newsletter, analytics or store
 backends. Those need their own input validation, consent, abuse and privacy review.

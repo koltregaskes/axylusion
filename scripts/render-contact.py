@@ -2,7 +2,7 @@
 import re, sys
 from site_config import ROOT, contact_link
 stale=[]
-for p in [*ROOT.glob("*.html"), *(ROOT / "a-list").glob("*.html")]:
+for p in [*ROOT.glob("*.html"), *(ROOT / "a-list").glob("*.html"), *(ROOT / "editions").glob("*.html")]:
     original=p.read_text(encoding="utf-8")
     text=re.sub(r'<a href="mailto:[^"<>]*">[^<>]*</a>', '', original)
     text=re.sub(r'(<(?:span|p)>Contact</(?:span|p)>)', lambda m:m[0]+contact_link(), text)
