@@ -5,8 +5,8 @@ import re
 import unittest
 from html.parser import HTMLParser
 
-from provenance import (CREATOR, COPYRIGHT_NOTICE, PRODUCTION, RIGHTS_NOTE,
-                        credit_text, provenance_fields)
+from provenance import (CREATOR, COPYRIGHT_NOTICE, PRODUCTION, PROMPT_NOT_LOGGED,
+                        RIGHTS_NOTE, credit_text, provenance_fields)
 from seo import ROOT, RenderedImages, enhance_html, rendered_image_objects
 
 spec = importlib.util.spec_from_file_location("cinematic", ROOT / "scripts/render-cinematic-site.py")
@@ -108,6 +108,35 @@ class ProvenanceTests(unittest.TestCase):
             self.assertIn(CREATOR, item["credit"])
             self.assertIn("AI-generated", item["credit"])
         self.assertIn('data-hero-credit aria-live="polite"', text)
+
+    def test_not_logged_prompt_survives_archive_refresh(self):
+        # F1410's archived "prompt" was a news headline. The archive still holds it,
+        # so a refresh must keep the curated marker rather than restore the headline.
+        spec = importlib.util.spec_from_file_location("exporter", ROOT / "scripts/export-published-gallery.py")
+        exporter = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(exporter)
+        headline = "'Example Headline' A Reddit user shares a personal story about how"
+        archive = {"id": "c09520cf-fe59-4d86-9af0-ec7317f766f3", "source": "midjourney",
+                   "model": "Midjourney v7", "name": headline, "prompt": headline}
+        curated = {"id": archive["id"], "name": headline, "prompt": PROMPT_NOT_LOGGED}
+        self.assertEqual(exporter.merge_item(archive, curated, [])["prompt"], PROMPT_NOT_LOGGED)
+        # Ordinary archive prompts still refresh as before.
+        changed = {**curated, "prompt": "old prompt"}
+        self.assertEqual(exporter.merge_item(archive, changed, [])["prompt"], headline)
+        self.assertEqual(exporter.merge_item({**archive, "prompt": ""}, changed, [])["prompt"], "old prompt")
+
+    def test_not_logged_prompt_renders_honestly(self):
+        gallery = json.loads((ROOT / "data/gallery.json").read_text(encoding="utf-8"))["items"]
+        item = next(entry for entry in gallery if entry["ref"] == "F1410")
+        self.assertEqual(item["prompt"], PROMPT_NOT_LOGGED)
+        self.assertEqual(renderer.prompt_for(item), PROMPT_NOT_LOGGED)
+        # The imported name repeats the headline, so it must not become alt text.
+        self.assertEqual(renderer.image_alt(item), "AI-generated artwork")
+        text = (ROOT / "gallery.html").read_text(encoding="utf-8")
+        card = re.search(r'<article[^>]*id="frame-f1410".*?</article>', text, re.S)[0]
+        self.assertIn('data-search="prompt not logged ', card)
+        self.assertIn(f'<span class="cn-frame__cap-text">{PROMPT_NOT_LOGGED}</span>', card)
+        self.assertNotIn("Saved My Life", text)
 
     def test_rights_statement_has_one_target(self):
         text = (ROOT / "about.html").read_text(encoding="utf-8")

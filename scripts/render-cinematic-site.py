@@ -21,8 +21,8 @@ from html import escape
 from pathlib import Path
 from urllib.parse import urlparse
 from seo import enhance_html, gallery_images
-from provenance import (provenance_fields, credit_text, PRODUCTION, RIGHTS_PATH,
-                        RIGHTS_STATEMENT, TERMS_URL)
+from provenance import (provenance_fields, credit_text, PRODUCTION, PROMPT_NOT_LOGGED,
+                        RIGHTS_PATH, RIGHTS_STATEMENT, TERMS_URL)
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -141,13 +141,17 @@ def frame_style(item: dict, with_image: bool = True) -> str:
 
 
 def prompt_for(item: dict) -> str:
-    return str(item.get("prompt") or item.get("name") or "Prompt not logged").strip()
+    return str(item.get("prompt") or item.get("name") or PROMPT_NOT_LOGGED).strip()
 
 
 def image_alt(item: dict) -> str:
     """Use existing descriptive copy, retaining frame/date in the caption."""
     name = " ".join(str(item.get("name") or "").split())
     prompt = " ".join(str(item.get("prompt") or "").split())
+    if prompt == PROMPT_NOT_LOGGED:
+        # Imported names are copied from the archived prompt, so when that prompt
+        # was not a real one the name cannot describe the image either.
+        return "AI-generated artwork"
     # Some imported names are truncated prefixes of the original prompt.
     description = prompt if prompt.startswith(name) and len(prompt) > len(name) else name
     if not description or re.fullmatch(r"(?:Frame\s+)?F\d+|[\d\s/.,:-]+", description, re.I):
@@ -179,7 +183,7 @@ def normalize_item(item: dict, index: int, prompt_lookup: dict[str, str] | None 
     item.setdefault("tones", tone_for(item_id))
     if "prompt" not in item:
         lookup = prompt_lookup or {}
-        item["prompt"] = lookup.get(item_id, str(item.get("name") or "Prompt not logged"))
+        item["prompt"] = lookup.get(item_id, str(item.get("name") or PROMPT_NOT_LOGGED))
     item.setdefault("type", "image")
     item.update(provenance_fields(item))
     return item

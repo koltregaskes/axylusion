@@ -17,7 +17,7 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
-from provenance import provenance_fields
+from provenance import PROMPT_NOT_LOGGED, provenance_fields
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
@@ -138,6 +138,16 @@ def choose_created(db_item: dict[str, Any], existing_item: dict[str, Any]) -> st
     return str(existing_item.get("created") or "").strip()
 
 
+def choose_prompt(db_item: dict[str, Any], existing_item: dict[str, Any]) -> str:
+    existing_prompt = str(existing_item.get("prompt") or "").strip()
+    # A prompt curated as not logged replaced archive text that was not an image
+    # prompt (for example a news headline on F1410). The archive still holds that
+    # text, so letting it win here would silently restore it on the next refresh.
+    if existing_prompt == PROMPT_NOT_LOGGED:
+        return existing_prompt
+    return str(db_item.get("prompt") or existing_prompt).strip()
+
+
 def choose_tags(existing_item: dict[str, Any], db_tags: list[str]) -> list[str]:
     existing_tags = existing_item.get("tags") or []
     return unique_strings(list(existing_tags) + list(db_tags))
@@ -159,7 +169,7 @@ def merge_item(db_item: dict[str, Any], existing_item: dict[str, Any], db_tags: 
         "model": choose_model(db_item, existing_item),
         "url": str(db_item.get("url") or existing_item.get("url") or "").strip(),
         "cdn_url": str(db_item.get("cdn_url") or existing_item.get("cdn_url") or "").strip(),
-        "prompt": str(db_item.get("prompt") or existing_item.get("prompt") or "").strip(),
+        "prompt": choose_prompt(db_item, existing_item),
         "parameters": str(db_item.get("parameters") or existing_item.get("parameters") or "").strip(),
         "dimensions": str(db_item.get("dimensions") or existing_item.get("dimensions") or "").strip(),
         "created": choose_created(db_item, existing_item),
