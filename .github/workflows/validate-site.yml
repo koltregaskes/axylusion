@@ -76,6 +76,9 @@ jobs:
 
       - name: Test the routed feed refresh
         run: node --test tests/refresh-routed-feed.test.mjs tests/routed-feed-freshness.test.mjs tests/news-order.test.mjs tests/feed-publication.test.mjs
+      - name: Test performance receipt thresholds
+        run: node --test tests/performance-result.test.mjs
+
       - name: Run gallery identity regression tests
         run: node --test tests/gallery-smoke.test.mjs
 
