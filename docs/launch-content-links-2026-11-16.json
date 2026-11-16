@@ -1,0 +1,311 @@
+{
+  "checked_at_utc": "2026-11-16T12:35:00.542784+00:00",
+  "scope": "One bounded GET per unique external URL on music, videos, store and tools, using network-enabled execution after sandbox transport denial. HTTP success is not proof of playable media, rights or account availability. No login or purchase.",
+  "results": [
+    {
+      "url": "https://arxiv.org",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://blackforestlabs.ai",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://chat.openai.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://claude.ai",
+      "state": "unverified",
+      "detail": "HTTP 403"
+    },
+    {
+      "url": "https://cleanup.pictures",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://consensus.app",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://deepmind.google/technologies/veo/",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://elevenlabs.io",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://elevenlabs.io/app/music/explore/creator/bhB0qdQgbZ6K8MYJiHRy",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://elevenlabs.io/app/music/explore/creator/bhB0qdQgbZ6K8MYJiHRy?selectedSongId=Gc6V7SXkvyWDBM0Hm6Mo",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://elevenlabs.io/music-terms",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://elicit.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://elusionworks.com/",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://gamma.app",
+      "state": "unverified",
+      "detail": "HTTP 403"
+    },
+    {
+      "url": "https://gemini.google.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://ghostinthemodels.com/",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://github.com/koltregaskes",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://grok.x.ai",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://hailuoai.video",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://hyper3d.ai",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://ideogram.ai",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://klingai.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://koltregaskes.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://koltregaskes.com/",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://koltregaskes.github.io/ai-resource-hub/calculator/",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://koltregaskes.github.io/ai-resource-hub/compare/llm/",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://koltregaskes.github.io/ai-resource-hub/token-counter/",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://koltregaskesphotography.com/",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://leonardo.ai",
+      "state": "unverified",
+      "detail": "HTTP 403"
+    },
+    {
+      "url": "https://magnific.ai",
+      "state": "unverified",
+      "detail": "HTTP 403"
+    },
+    {
+      "url": "https://notebooklm.google",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://openai.com/chatgpt",
+      "state": "unverified",
+      "detail": "HTTP 403"
+    },
+    {
+      "url": "https://openai.com/sora",
+      "state": "unverified",
+      "detail": "HTTP 403"
+    },
+    {
+      "url": "https://pika.art",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://pixverse.ai",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://runwayml.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://suno.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://suno.com/@axylusion",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://theairesourcehub.com/",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://typefully.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.adobe.com/products/firefly.html",
+      "state": "unverified",
+      "detail": "HTTP 403"
+    },
+    {
+      "url": "https://www.aiva.ai",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.canva.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.freepik.com/ai/image-generator",
+      "state": "unverified",
+      "detail": "HTTP 403"
+    },
+    {
+      "url": "https://www.instagram.com/axylusion",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.meshy.ai",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.midjourney.com",
+      "state": "unverified",
+      "detail": "HTTP 403"
+    },
+    {
+      "url": "https://www.midjourney.com/@axylusion",
+      "state": "unverified",
+      "detail": "HTTP 403"
+    },
+    {
+      "url": "https://www.notion.so",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.perplexity.ai",
+      "state": "unverified",
+      "detail": "HTTP 403"
+    },
+    {
+      "url": "https://www.remove.bg",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.reveimage.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.tiktok.com/@axylusion",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.tldraw.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.topazlabs.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.tripo3d.ai",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.udio.com",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://www.youtube.com/@AxyLusion",
+      "state": "verified",
+      "detail": "HTTP 200"
+    },
+    {
+      "url": "https://x.com/Axylusion",
+      "state": "verified",
+      "detail": "HTTP 200"
+    }
+  ]
+}
