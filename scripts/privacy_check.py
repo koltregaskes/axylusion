@@ -4,6 +4,7 @@ HTML navigation/JSON-LD/CSP URLs are not requests. CSS URLs, resource attributes
 executable JS URL literals and JSON-fed media are checked. New dynamic request
 construction still needs browser review before deployment.
 """
+import argparse
 from collections import defaultdict
 from html import unescape
 from html.parser import HTMLParser
@@ -19,11 +20,16 @@ CSS_URL = re.compile(r'''url\(\s*(?:"([^"]*)"|'([^']*)'|([^\s)]+))\s*\)|@import\
 STORAGE = re.compile(r'\b(?:localStorage|sessionStorage|indexedDB)\b|document\s*(?:\.\s*cookie|\[\s*["\']cookie["\']\s*\])|\bcookieStore\b|serviceWorker', re.I)
 
 
-def inventory(root=ROOT):
-    config = json.loads((root / 'data/privacy-inventory.json').read_text(encoding='utf-8'))
+def inventory(root=ROOT, policy_root=None):
+    root = Path(root).resolve()
+    policy_root = root if policy_root is None else Path(policy_root).resolve()
+    config = json.loads((policy_root / 'data/privacy-inventory.json').read_text(encoding='utf-8'))
     allowed = {host for provider in config['providers'] for host in provider['hosts']}
-    names = public_files(root)
+    names = public_files(policy_root)
     name_set = set(names)
+    missing = [name for name in names if not (root / name).is_file() or (root / name).is_symlink() or not (root / name).resolve().is_relative_to(root)]
+    if missing:
+        return {}, ["Missing or unsafe public artifact file: " + name for name in missing]
     evidence, errors = defaultdict(list), []
     for page in [*root.glob('*.html'), *(root / 'a-list').glob('*.html')]:
         name = page.relative_to(root).as_posix()
@@ -143,9 +149,15 @@ def inventory(root=ROOT):
 
 
 if __name__ == '__main__':
-    evidence, errors = inventory()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--site", type=Path, help="Inspect exact artifact bytes using source-owned disclosure policy")
+    args = parser.parse_args()
+    if args.site is not None and not args.site.is_dir():
+        parser.error("Site directory does not exist: " + str(args.site))
+    site = args.site.resolve() if args.site is not None else ROOT
+    evidence, errors = inventory(site, ROOT if args.site is not None else None)
     for host, refs in sorted(evidence.items()):
         print(f'{host}: {len(refs)} references; {refs[0]}')
     if errors:
         raise SystemExit('\n'.join(errors))
-    print(f'Privacy inventory passed: {len(evidence)} third-party resource hosts; no site-script storage.')
+    print(f'Privacy inventory passed for {site}: {len(evidence)} third-party resource hosts; no site-script storage.')
