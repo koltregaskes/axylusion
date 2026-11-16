@@ -109,21 +109,37 @@ class ProvenanceTests(unittest.TestCase):
             self.assertIn("AI-generated", item["credit"])
         self.assertIn('data-hero-credit aria-live="polite"', text)
 
-    def test_not_logged_prompt_survives_archive_refresh(self):
-        # F1410's archived "prompt" was a news headline. The archive still holds it,
-        # so a refresh must keep the curated marker rather than restore the headline.
+    def test_rejected_archive_prompt_is_narrowly_suppressed(self):
+        # F1410's archived "prompt" was a news headline. While the archive still
+        # holds exactly that text, a refresh keeps "Prompt not logged"; a different
+        # (recovered) archive prompt replaces it, and other records are untouched.
+        import hashlib
+        from unittest import mock
         spec = importlib.util.spec_from_file_location("exporter", ROOT / "scripts/export-published-gallery.py")
         exporter = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(exporter)
-        headline = "'Example Headline' A Reddit user shares a personal story about how"
-        archive = {"id": "c09520cf-fe59-4d86-9af0-ec7317f766f3", "source": "midjourney",
-                   "model": "Midjourney v7", "name": headline, "prompt": headline}
-        curated = {"id": archive["id"], "name": headline, "prompt": PROMPT_NOT_LOGGED}
-        self.assertEqual(exporter.merge_item(archive, curated, [])["prompt"], PROMPT_NOT_LOGGED)
-        # Ordinary archive prompts still refresh as before.
-        changed = {**curated, "prompt": "old prompt"}
-        self.assertEqual(exporter.merge_item(archive, changed, [])["prompt"], headline)
-        self.assertEqual(exporter.merge_item({**archive, "prompt": ""}, changed, [])["prompt"], "old prompt")
+        f1410 = "c09520cf-fe59-4d86-9af0-ec7317f766f3"
+        self.assertEqual(set(exporter.REJECTED_ARCHIVE_PROMPTS), {f1410})
+        for digest in exporter.REJECTED_ARCHIVE_PROMPTS[f1410]:
+            self.assertRegex(digest, r"^[0-9a-f]{64}$")
+        bad = "'Example Headline' A Reddit user shares a personal story about how"
+        rejects = {f1410: frozenset({hashlib.sha256(bad.encode("utf-8")).hexdigest()})}
+        archive = {"id": f1410, "source": "midjourney", "model": "Midjourney v7", "name": bad, "prompt": bad}
+        curated = {"id": f1410, "name": bad, "prompt": PROMPT_NOT_LOGGED}
+        with mock.patch.object(exporter, "REJECTED_ARCHIVE_PROMPTS", rejects):
+            # Known-bad value stays suppressed, with or without surrounding whitespace.
+            self.assertEqual(exporter.merge_item(archive, curated, [])["prompt"], PROMPT_NOT_LOGGED)
+            padded = {**archive, "prompt": "  " + bad + "\n"}
+            self.assertEqual(exporter.merge_item(padded, {}, [])["prompt"], PROMPT_NOT_LOGGED)
+            # A recovered, different archive prompt is restored.
+            recovered = "cinematic portrait, rain-soaked neon street"
+            self.assertEqual(exporter.merge_item({**archive, "prompt": recovered}, curated, [])["prompt"], recovered)
+            # An empty archive prompt keeps the curated marker.
+            self.assertEqual(exporter.merge_item({**archive, "prompt": ""}, curated, [])["prompt"], PROMPT_NOT_LOGGED)
+            # The same text on another record is not suppressed; ordinary refresh is unchanged.
+            other = {**archive, "id": "another-record"}
+            self.assertEqual(exporter.merge_item(other, {"prompt": "old prompt"}, [])["prompt"], bad)
+            self.assertEqual(exporter.merge_item({**other, "prompt": ""}, {"prompt": "old prompt"}, [])["prompt"], "old prompt")
 
     def test_not_logged_prompt_renders_honestly(self):
         gallery = json.loads((ROOT / "data/gallery.json").read_text(encoding="utf-8"))["items"]

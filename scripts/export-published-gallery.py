@@ -10,6 +10,7 @@ script merges rather than blindly overwrites.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sqlite3
@@ -26,6 +27,16 @@ GALLERY_JSON_PATH = PROJECT_DIR / "data" / "gallery.json"
 GALLERY_JS_PATH = PROJECT_DIR / "gallery.js"
 REPORT_PATH = PROJECT_DIR / "data" / "published-gallery-sync-report.json"
 ANNOTATION_KEYS = ("media_status", "media_unavailable_reason")
+# Archive "prompts" known not to be image prompts, keyed by item ID, stored as the
+# SHA-256 of the stripped archive text so the bad text is not kept in the repo.
+# While the archive still holds exactly that text, the export says the prompt was
+# not logged; any different archive prompt (for example a recovered one) wins.
+REJECTED_ARCHIVE_PROMPTS: dict[str, frozenset[str]] = {
+    # F1410: a news headline about ChatGPT, not an image prompt.
+    "c09520cf-fe59-4d86-9af0-ec7317f766f3": frozenset(
+        {"7f3a1b3daf3c7282dc13b2c6ec144d041e49a2eeee73555197973f1b0d8d5216"}
+    ),
+}
 
 
 def load_existing_export(path: Path) -> list[dict[str, Any]]:
@@ -138,14 +149,17 @@ def choose_created(db_item: dict[str, Any], existing_item: dict[str, Any]) -> st
     return str(existing_item.get("created") or "").strip()
 
 
+def is_rejected_archive_prompt(item_id: str, prompt: str) -> bool:
+    digest = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+    return digest in REJECTED_ARCHIVE_PROMPTS.get(item_id, frozenset())
+
+
 def choose_prompt(db_item: dict[str, Any], existing_item: dict[str, Any]) -> str:
     existing_prompt = str(existing_item.get("prompt") or "").strip()
-    # A prompt curated as not logged replaced archive text that was not an image
-    # prompt (for example a news headline on F1410). The archive still holds that
-    # text, so letting it win here would silently restore it on the next refresh.
-    if existing_prompt == PROMPT_NOT_LOGGED:
-        return existing_prompt
-    return str(db_item.get("prompt") or existing_prompt).strip()
+    db_prompt = str(db_item.get("prompt") or "").strip()
+    if db_prompt and is_rejected_archive_prompt(str(db_item.get("id") or ""), db_prompt):
+        return PROMPT_NOT_LOGGED
+    return db_prompt or existing_prompt
 
 
 def choose_tags(existing_item: dict[str, Any], db_tags: list[str]) -> list[str]:
