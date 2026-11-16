@@ -5,8 +5,8 @@ import re
 import unittest
 from html.parser import HTMLParser
 
-from provenance import (CREATOR, COPYRIGHT_NOTICE, PRODUCTION, RIGHTS_NOTE,
-                        credit_text, provenance_fields)
+from provenance import (CREATOR, COPYRIGHT_NOTICE, PRODUCTION, PROMPT_NOT_LOGGED,
+                        RIGHTS_NOTE, credit_text, provenance_fields)
 from seo import ROOT, RenderedImages, enhance_html, rendered_image_objects
 
 spec = importlib.util.spec_from_file_location("cinematic", ROOT / "scripts/render-cinematic-site.py")
@@ -108,6 +108,51 @@ class ProvenanceTests(unittest.TestCase):
             self.assertIn(CREATOR, item["credit"])
             self.assertIn("AI-generated", item["credit"])
         self.assertIn('data-hero-credit aria-live="polite"', text)
+
+    def test_rejected_archive_prompt_is_narrowly_suppressed(self):
+        # F1410's archived "prompt" was a news headline. While the archive still
+        # holds exactly that text, a refresh keeps "Prompt not logged"; a different
+        # (recovered) archive prompt replaces it, and other records are untouched.
+        import hashlib
+        from unittest import mock
+        spec = importlib.util.spec_from_file_location("exporter", ROOT / "scripts/export-published-gallery.py")
+        exporter = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(exporter)
+        f1410 = "c09520cf-fe59-4d86-9af0-ec7317f766f3"
+        self.assertEqual(set(exporter.REJECTED_ARCHIVE_PROMPTS), {f1410})
+        for digest in exporter.REJECTED_ARCHIVE_PROMPTS[f1410]:
+            self.assertRegex(digest, r"^[0-9a-f]{64}$")
+        bad = "'Example Headline' A Reddit user shares a personal story about how"
+        rejects = {f1410: frozenset({hashlib.sha256(bad.encode("utf-8")).hexdigest()})}
+        archive = {"id": f1410, "source": "midjourney", "model": "Midjourney v7", "name": bad, "prompt": bad}
+        curated = {"id": f1410, "name": bad, "prompt": PROMPT_NOT_LOGGED}
+        with mock.patch.object(exporter, "REJECTED_ARCHIVE_PROMPTS", rejects):
+            # Known-bad value stays suppressed, with or without surrounding whitespace.
+            self.assertEqual(exporter.merge_item(archive, curated, [])["prompt"], PROMPT_NOT_LOGGED)
+            padded = {**archive, "prompt": "  " + bad + "\n"}
+            self.assertEqual(exporter.merge_item(padded, {}, [])["prompt"], PROMPT_NOT_LOGGED)
+            # A recovered, different archive prompt is restored.
+            recovered = "cinematic portrait, rain-soaked neon street"
+            self.assertEqual(exporter.merge_item({**archive, "prompt": recovered}, curated, [])["prompt"], recovered)
+            # An empty archive prompt keeps the curated marker.
+            self.assertEqual(exporter.merge_item({**archive, "prompt": ""}, curated, [])["prompt"], PROMPT_NOT_LOGGED)
+            # The same text on another record is not suppressed; ordinary refresh is unchanged.
+            other = {**archive, "id": "another-record"}
+            self.assertEqual(exporter.merge_item(other, {"prompt": "old prompt"}, [])["prompt"], bad)
+            self.assertEqual(exporter.merge_item({**other, "prompt": ""}, {"prompt": "old prompt"}, [])["prompt"], "old prompt")
+
+    def test_not_logged_prompt_renders_honestly(self):
+        gallery = json.loads((ROOT / "data/gallery.json").read_text(encoding="utf-8"))["items"]
+        item = next(entry for entry in gallery if entry["ref"] == "F1410")
+        self.assertEqual(item["prompt"], PROMPT_NOT_LOGGED)
+        self.assertEqual(renderer.prompt_for(item), PROMPT_NOT_LOGGED)
+        # The imported name repeats the headline, so it must not become alt text.
+        self.assertEqual(renderer.image_alt(item), "AI-generated artwork")
+        text = (ROOT / "gallery.html").read_text(encoding="utf-8")
+        card = re.search(r'<article[^>]*id="frame-f1410".*?</article>', text, re.S)[0]
+        self.assertIn('data-search="prompt not logged ', card)
+        self.assertIn(f'<span class="cn-frame__cap-text">{PROMPT_NOT_LOGGED}</span>', card)
+        self.assertNotIn("Saved My Life", text)
 
     def test_rights_statement_has_one_target(self):
         text = (ROOT / "about.html").read_text(encoding="utf-8")

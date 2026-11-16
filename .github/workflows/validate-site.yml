@@ -43,6 +43,9 @@ jobs:
       - name: Verify homepage image rendering
         run: python scripts/test-homepage-images.py
 
+      - name: Run gallery provenance and prompt regressions
+        run: python -B scripts/test-gallery-provenance.py
+
       - name: Build SEO feed and run metadata regressions
         run: |
           python scripts/build-seo.py

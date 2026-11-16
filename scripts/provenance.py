@@ -6,6 +6,8 @@ PRODUCTION = "AI-generated with Midjourney, directed and selected by Kol Tregask
 COPYRIGHT_NOTICE = "All rights reserved unless stated"
 RIGHTS_PATH = "about.html#image-rights"
 RIGHTS_NOTE = f"See {RIGHTS_PATH} for permitted use and rights."
+# Shown, and searchable, in place of a prompt the archive never truly recorded.
+PROMPT_NOT_LOGGED = "Prompt not logged"
 TERMS_URL = "https://docs.midjourney.com/hc/en-us/articles/32083055291277-Terms-of-Service"
 RIGHTS_STATEMENT = (
     "All rights reserved unless stated. Rights in AI-generated images are uncertain. "

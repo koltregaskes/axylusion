@@ -10,6 +10,7 @@ script merges rather than blindly overwrites.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sqlite3
@@ -17,7 +18,7 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
-from provenance import provenance_fields
+from provenance import PROMPT_NOT_LOGGED, provenance_fields
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
@@ -26,6 +27,16 @@ GALLERY_JSON_PATH = PROJECT_DIR / "data" / "gallery.json"
 GALLERY_JS_PATH = PROJECT_DIR / "gallery.js"
 REPORT_PATH = PROJECT_DIR / "data" / "published-gallery-sync-report.json"
 ANNOTATION_KEYS = ("media_status", "media_unavailable_reason")
+# Archive "prompts" known not to be image prompts, keyed by item ID, stored as the
+# SHA-256 of the stripped archive text so the bad text is not kept in the repo.
+# While the archive still holds exactly that text, the export says the prompt was
+# not logged; any different archive prompt (for example a recovered one) wins.
+REJECTED_ARCHIVE_PROMPTS: dict[str, frozenset[str]] = {
+    # F1410: a news headline about ChatGPT, not an image prompt.
+    "c09520cf-fe59-4d86-9af0-ec7317f766f3": frozenset(
+        {"7f3a1b3daf3c7282dc13b2c6ec144d041e49a2eeee73555197973f1b0d8d5216"}
+    ),
+}
 
 
 def load_existing_export(path: Path) -> list[dict[str, Any]]:
@@ -138,6 +149,19 @@ def choose_created(db_item: dict[str, Any], existing_item: dict[str, Any]) -> st
     return str(existing_item.get("created") or "").strip()
 
 
+def is_rejected_archive_prompt(item_id: str, prompt: str) -> bool:
+    digest = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+    return digest in REJECTED_ARCHIVE_PROMPTS.get(item_id, frozenset())
+
+
+def choose_prompt(db_item: dict[str, Any], existing_item: dict[str, Any]) -> str:
+    existing_prompt = str(existing_item.get("prompt") or "").strip()
+    db_prompt = str(db_item.get("prompt") or "").strip()
+    if db_prompt and is_rejected_archive_prompt(str(db_item.get("id") or ""), db_prompt):
+        return PROMPT_NOT_LOGGED
+    return db_prompt or existing_prompt
+
+
 def choose_tags(existing_item: dict[str, Any], db_tags: list[str]) -> list[str]:
     existing_tags = existing_item.get("tags") or []
     return unique_strings(list(existing_tags) + list(db_tags))
@@ -159,7 +183,7 @@ def merge_item(db_item: dict[str, Any], existing_item: dict[str, Any], db_tags: 
         "model": choose_model(db_item, existing_item),
         "url": str(db_item.get("url") or existing_item.get("url") or "").strip(),
         "cdn_url": str(db_item.get("cdn_url") or existing_item.get("cdn_url") or "").strip(),
-        "prompt": str(db_item.get("prompt") or existing_item.get("prompt") or "").strip(),
+        "prompt": choose_prompt(db_item, existing_item),
         "parameters": str(db_item.get("parameters") or existing_item.get("parameters") or "").strip(),
         "dimensions": str(db_item.get("dimensions") or existing_item.get("dimensions") or "").strip(),
         "created": choose_created(db_item, existing_item),
