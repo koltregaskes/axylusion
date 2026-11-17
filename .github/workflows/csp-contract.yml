@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/meta_csp.py
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: '24'
       - run: npm install --no-save --package-lock=false playwright@1.64.0 axe-core@4.10.3
