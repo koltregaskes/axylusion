@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Warn when the routed feed was not replaced
         run: node scripts/check-routed-feed-freshness.mjs
