@@ -23,6 +23,7 @@ jobs:
           python scripts/check-seo.py
           python scripts/meta_csp.py
           python scripts/check-internal-links.py
+          python -B scripts/test-navigation.py
           python scripts/validate-site.py
           test -s llms.txt
       - name: Install browser checks
