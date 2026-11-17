@@ -1,9 +1,10 @@
 import {installCspCapture,readCspViolations} from './csp-check.mjs';
 import {findOverflow} from './overflow-check.mjs';
+import {browserSite} from './browser-site.mjs';
 import { chromium } from 'playwright';
 import { readFile, readdir } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
-const root = resolve('.');
+const root = await browserSite(process.argv.slice(2));
 async function pages(dir = '') {
   const found = [];
   for (const entry of await readdir(resolve(root, dir), { withFileTypes: true })) {
@@ -15,6 +16,9 @@ async function pages(dir = '') {
   return found;
 }
 const routes = await pages();
+// The artifact must contain every approved HTML route, even if discovery misses it.
+const expected = JSON.parse(await readFile('data/public-files.json', 'utf8')).files.filter(name => name.endsWith('.html'));
+for (const route of expected) if (!routes.includes(route)) throw Error('Missing approved HTML route: ' + route);
 if (!routes.length) throw Error('No routes discovered');
 const axe = await readFile('node_modules/axe-core/axe.min.js', 'utf8');
 const browser = await chromium.launch(process.env.LAUNCH_BROWSER_PATH ? { executablePath: process.env.LAUNCH_BROWSER_PATH } : {channel:process.env.PLAYWRIGHT_CHANNEL||'msedge'});
@@ -48,5 +52,5 @@ try {
     await context.close();
   }
 } finally { await browser.close(); }
-console.log(JSON.stringify({ routes: routes.length, widths: [320,390,1280], failures }, null, 2));
+console.log(JSON.stringify({ site: root, thirdPartyResources: 'blocked; fonts/media and live acceptance unverified', routes: routes.length, widths: [320,390,1280], failures }, null, 2));
 if (failures.length) process.exitCode = 1;
