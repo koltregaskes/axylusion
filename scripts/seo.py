@@ -34,7 +34,7 @@ def canonical(relative):
 
 
 def public_pages():
-    return sorted(p for p in [*ROOT.glob("*.html"), *ROOT.joinpath("a-list").glob("*.html")]
+    return sorted(p for p in [*ROOT.glob("*.html"), *ROOT.joinpath("a-list").glob("*.html"), *ROOT.joinpath("editions").glob("*.html")]
                   if "noindex" not in Head(p.read_text(encoding="utf-8")).meta.get("robots", ""))
 
 

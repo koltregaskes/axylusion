@@ -837,6 +837,20 @@ img {
   max-width: 72ch;
 }
 
+.cn-edition {
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.cn-edition a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.cn-edition li {
+  margin-block: 1rem;
+}
+
 .cn-privacy h2 {
   margin-top: 28px;
 }

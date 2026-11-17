@@ -11,6 +11,7 @@ from email.utils import format_datetime
 from urllib.parse import urljoin
 
 from meta_csp import apply as apply_csp, pages as csp_pages
+from newsletter import generate as generate_newsletter, load_editions
 from seo import ROOT, DOMAIN, canonical, enhance_html, public_pages, gallery_images
 
 SM = "http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -72,6 +73,21 @@ def outputs():
             for name, value in (("title", title), ("link", link), ("pubDate", date), ("description", description), ("category", category)):
                 ET.SubElement(item, name).text = value
             ET.SubElement(item, "guid", {"isPermaLink": "true"}).text = link
+    for edition in load_editions():
+        item = ET.SubElement(channel, "item")
+        for name, value in (("title", "Creative edition: " + edition["date"]), ("link", edition["url"]),
+                            ("pubDate", format_datetime(datetime.fromisoformat(edition["date"]).replace(tzinfo=timezone.utc))),
+                            ("description", "Visuals, Video, Audio and Workflows. Source-dated archive edition; email sign-ups closed."),
+                            ("category", "Creative edition")):
+            ET.SubElement(item, name).text = value
+        ET.SubElement(item, "guid", {"isPermaLink": "true"}).text = edition["url"]
+    # Keep digest/story GUIDs and source-derived dates unchanged.
+    from email.utils import parsedate_to_datetime
+    items = list(channel.findall("item"))
+    for item in items:
+        channel.remove(item)
+    for item in sorted(items, key=lambda i: parsedate_to_datetime(i.findtext("pubDate")), reverse=True):
+        channel.append(item)
     result[ROOT / "feed.xml"] = xml(rss)
     for page in csp_pages():
         result[page] = apply_csp(result.get(page, page.read_text(encoding="utf-8")))
@@ -82,6 +98,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
+    generate_newsletter(check=args.check)
     stale = []
     for path, content in outputs().items():
         if args.check:

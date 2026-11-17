@@ -24,6 +24,9 @@ jobs:
           python scripts/meta_csp.py
           python scripts/check-internal-links.py
           python scripts/validate-site.py
+          python -B scripts/test-newsletter.py
+          python -B newsletter/test_contract.py
+          node --test newsletter/newsletter.test.mjs
           test -s llms.txt
       - name: Install browser checks
         run: npm install --no-save --package-lock=false playwright@1.64.0 axe-core@4.10.3

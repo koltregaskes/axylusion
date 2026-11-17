@@ -25,7 +25,7 @@ def inventory(root=ROOT):
     names = public_files(root)
     name_set = set(names)
     evidence, errors = defaultdict(list), []
-    for page in [*root.glob('*.html'), *(root / 'a-list').glob('*.html')]:
+    for page in [*root.glob('*.html'), *(root / 'a-list').glob('*.html'), *(root / 'editions').rglob('*.html')]:
         name = page.relative_to(root).as_posix()
         if name not in name_set:
             errors.append('Built HTML route missing from public allowlist: ' + name)

@@ -1,0 +1,11 @@
+{
+  "categories": ["Visuals", "Video", "Audio", "Workflows"],
+  "topics": {"Image": "Visuals", "Video": "Video", "Audio": "Audio", "3D": "Visuals", "Tools": "Workflows", "Benchmarks": "Workflows"},
+  "tags": {
+    "image": "Image", "image_gen": "Image", "video": "Video", "video_gen": "Video",
+    "audio": "Audio", "music_gen": "Audio", "voice_synthesis": "Audio", "3d": "3D", "3d_gen": "3D",
+    "creative": "Tools", "creative_tool": "Tools", "creative_workflow": "Tools", "art_ai": "Tools",
+    "design": "Tools", "product": "Tools", "product_launch": "Tools", "api_update": "Tools",
+    "model_release": "Tools", "benchmark": "Benchmarks", "evaluation": "Benchmarks"
+  }
+}
