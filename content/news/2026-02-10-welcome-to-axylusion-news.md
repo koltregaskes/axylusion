@@ -8,7 +8,7 @@ tags:
   - axylusion
 ---
 
-Welcome to the Axylusion news section! This is where I'll share updates about AI creative tools, tutorials, and my creative journey.
+This is where I'll share updates about AI creative tools, tutorials, and what I learn while making things with them.
 
 ## What to Expect
 
@@ -17,4 +17,4 @@ Welcome to the Axylusion news section! This is where I'll share updates about AI
 - **Behind the Scenes** - Insights into my creative process
 - **Community** - Highlights from the AI art community
 
-Stay tuned for more updates!
+The focus is on useful tools and techniques for creative work.
