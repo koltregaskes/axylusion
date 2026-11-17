@@ -31,6 +31,8 @@ jobs:
           python -B scripts/privacy_check.py
           python -B scripts/test-privacy.py
           python -B scripts/build-public.py --output ${{ runner.temp }}/axy-public
+          python -B scripts/check-internal-links.py --site ${{ runner.temp }}/axy-public
+          python -B scripts/test-internal-links.py
 
       - name: Verify SEO output and validate sitemap and RSS
         run: |
