@@ -22,7 +22,7 @@ from html import unescape
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
-DEFAULT_SOURCE = Path(os.environ.get("AXYLUSION_ALIST_SOURCE", r"W:\Websites\sites\ai-resource-hub\data\pg-cache\creative_benchmarks.json"))
+DEFAULT_SOURCE = Path(os.environ.get("AXYLUSION_ALIST_SOURCE", str(Path(__file__).resolve().parents[2] / "ai-resource-hub" / "data" / "pg-cache" / "creative_benchmarks.json")))
 DEFAULT_OUTPUT = PROJECT_DIR / "data" / "a-list-benchmarks.json"
 CATEGORY_ORDER = [
     "image_generation",

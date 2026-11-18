@@ -1,9 +1,13 @@
 param(
     [string]$Python = "python",
-    [string]$DbPath = "W:\Agent Workspace\System\Data\universal.db",
+    [string]$DbPath = $env:UNIVERSAL_DB_PATH,
     [switch]$Apply,
     [switch]$SkipCheckpoint
 )
+
+if (-not $DbPath) {
+    throw "Set UNIVERSAL_DB_PATH or pass -DbPath: the database lives in a private local workspace."
+}
 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $ExportScript = Join-Path $ScriptDir "export-published-gallery.py"

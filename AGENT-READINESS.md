@@ -2,8 +2,8 @@
 
 **Status:** DRAFT — awaiting Kol's sign-off. Not yet committed.
 **Last updated:** 2026-05-16
-**Estate-wide policy:** `W:\Websites\AGENT-READINESS-ESTATE.md`
-**Repo:** `W:\Websites\sites\axylusion`
+**Estate-wide policy:** the private estate-wide readiness policy (kept off GitHub)
+**Repo:** this repository (`koltregaskes/axylusion`)
 **Domain:** axylusion.com
 **Stack:** Static HTML + vanilla CSS/JS
 **Existing bio (from `about.html`):** *"Kol Tregaskes — AI artist and creative exploring the intersection of technology and imagination through Midjourney, Suno, and other AI tools."*

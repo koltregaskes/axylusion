@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sqlite3
 from collections import Counter
@@ -22,7 +23,9 @@ from provenance import PROMPT_NOT_LOGGED, provenance_fields
 
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
-DEFAULT_DB_PATH = Path(r"W:\Agent Workspace\System\Data\universal.db")
+# Set UNIVERSAL_DB_PATH (or pass --db): the database lives in a private local workspace.
+_db_env = os.environ.get("UNIVERSAL_DB_PATH")
+DEFAULT_DB_PATH = Path(_db_env) if _db_env else None
 GALLERY_JSON_PATH = PROJECT_DIR / "data" / "gallery.json"
 GALLERY_JS_PATH = PROJECT_DIR / "gallery.js"
 REPORT_PATH = PROJECT_DIR / "data" / "published-gallery-sync-report.json"
@@ -303,7 +306,7 @@ def build_report(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Rebuild the published Midjourney gallery export for Axy Lusion.")
-    parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH, help="Path to universal.db")
+    parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH, required=DEFAULT_DB_PATH is None, help="Path to universal.db (default: UNIVERSAL_DB_PATH)")
     parser.add_argument("--apply", action="store_true", help="Write gallery.json and gallery.js")
     parser.add_argument("--skip-checkpoint", action="store_true", help="Skip PRAGMA wal_checkpoint(FULL)")
     parser.add_argument("--report-path", type=Path, default=REPORT_PATH, help="Where to write the sync report JSON")
