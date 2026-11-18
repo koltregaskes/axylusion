@@ -19,11 +19,11 @@ See `docs/CONTENT-FLOWS.md` for the current refresh path.
   - now supports `-SkipAList`
 - `scripts/sync-a-list-benchmarks.py`
   - now skips no-op rewrites when the shared benchmark content has not changed, so scheduled refreshes do not dirty the repo just by updating `generated_at`
-- `W:\Websites\schedules\jobs.psd1`
+- the private shared schedule manifest
   - added `Websites-AxyLusion-Refresh-Morning`
   - added `Websites-AxyLusion-Refresh-Evening`
 - Scheduler registration
-  - tasks were registered via `W:\Websites\schedules\Register-ScheduledJobs.ps1`
+  - tasks were registered via the private shared schedule registration script
 
 ## Schedule
 
@@ -41,7 +41,7 @@ See `docs/CONTENT-FLOWS.md` for the current refresh path.
   - `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run-scheduled-refresh.ps1 -Mode Evening`
   - both succeeded
 - Scheduler registration:
-  - `W:\Websites\schedules\Show-ScheduledJobs.ps1`
+  - the private shared schedule listing script
   - both Axy jobs show as enabled and registered
 - Scheduler execution proof:
   - `Start-ScheduledTask -TaskName 'Websites-AxyLusion-Refresh-Evening'`
@@ -50,7 +50,7 @@ See `docs/CONTENT-FLOWS.md` for the current refresh path.
   - runs land in `cron_job_history` with schedule names
     - `Websites-AxyLusion-Refresh-Morning`
     - `Websites-AxyLusion-Refresh-Evening`
-  - `W:\Websites\schedules\monitoring\Check-Freshness.ps1` now also watches those schedule names for missed-run freshness alerts
+  - the private freshness checker now also watches those schedule names for missed-run freshness alerts
 
 ## Risk
 

@@ -41,15 +41,15 @@ inactive. Restoration requires written permission, a reviewed code change and fr
   It runs the full refresh path: homepage payload, news digest index, news rendering, SEO, then validation. A-List acquisition is disabled in both modes.
 - `Websites-AxyLusion-Refresh-Evening` runs daily at `19:20`.
   It runs the lighter evening path: homepage payload, news digest index, then validation.
-- Both tasks are registered through `W:\Websites\schedules\jobs.psd1` and execute through `W:\Websites\schedules\monitoring\Run-Logged.ps1`, so runs land in shared `cron_job_history`.
-- Shared watchdog coverage also exists in `W:\Websites\schedules\monitoring\Check-Freshness.ps1`, which now alerts if either Axy scheduled refresh stops landing in `cron_job_history`.
+- Both tasks are registered through the private shared schedule manifest and execute through the shared run-logging wrapper, so runs land in shared `cron_job_history`.
+- Shared watchdog coverage also exists in the private freshness checker, which now alerts if either Axy scheduled refresh stops landing in `cron_job_history`.
 - These tasks intentionally do not duplicate upstream jobs:
   - `LLATOS Website News Cycle`
   - `AI Resource Hub - Daily Update`
 
 ## CMS Caveat
 
-- The old Decap CMS shell has been archived offline under `W:\Websites\LOCAL-ONLY\archive\axylusion-admin-shell\2026-04-21\` and is no longer part of the public site.
+- The old Decap CMS shell has been archived offline under a private offline archive (path kept off GitHub) and is no longer part of the public site.
 - The archived `config.yml` defined Decap CMS collections under `content/`, but the public site still does not rebuild pages from those markdown files automatically.
 - `content/about.md`, `content/blog/*`, and `content/news/*` should therefore be treated as staged editorial content until a renderer/export step is added.
 - The live news page is driven by `news-digests`, not `content/news`.

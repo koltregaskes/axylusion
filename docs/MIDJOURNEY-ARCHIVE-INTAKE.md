@@ -12,7 +12,7 @@ running `scripts/migrate-images.py`.
 
 Place the recovered image archive under:
 
-`W:\Websites\sites\axylusion\scripts\downloaded-images\`
+`scripts/downloaded-images/` in your local checkout
 
 The migration helper defaults to that folder when no explicit download path is
 passed.
