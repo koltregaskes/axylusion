@@ -12,7 +12,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
 
 concurrency:
   group: refresh-routed-feed

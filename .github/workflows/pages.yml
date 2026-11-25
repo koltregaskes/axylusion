@@ -29,7 +29,9 @@ concurrency:
 
 jobs:
   build:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    # A refresh that commits partial coverage still fails on purpose, after its
+    # push, so deploy on failure too; main is always a safe source to rebuild.
+    if: github.event_name != 'workflow_run' || contains(fromJSON('["success", "failure"]'), github.event.workflow_run.conclusion)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -47,9 +49,12 @@ jobs:
       - name: Prove nothing outside the allowlist is published
         run: |
           cd "$RUNNER_TEMP/_site"
-          for p in docs design tests content scripts/build-public.py package.json README.md AGENT-READINESS.md; do
+          for p in docs design tests content package.json README.md AGENT-READINESS.md DESIGN.md; do
             if [ -e "$p" ]; then echo "Not a site file: $p"; exit 1; fi
           done
+          if find . -name '*.py' -o -name '*.ps1' -o -name '*.yml' -o -name '*.md' ! -path './news-digests/*' | grep -q .; then
+            echo 'Build or authoring source in the artifact'; exit 1
+          fi
           test -f index.html
           test -f CNAME
           test -f .well-known/security.txt
@@ -60,6 +65,7 @@ jobs:
 
       - name: Archive Pages artifact
         run: |
+          chmod -R +rX "$RUNNER_TEMP/_site"
           tar --dereference --hard-dereference --directory "$RUNNER_TEMP/_site" \
             --exclude=.git --exclude=.github -cf "$RUNNER_TEMP/artifact.tar" .
           tar -tf "$RUNNER_TEMP/artifact.tar" > "$RUNNER_TEMP/artifact-files.txt"
