@@ -66,7 +66,7 @@ Then open [http://127.0.0.1:4173/index.html](http://127.0.0.1:4173/index.html).
 - `scripts/migrate-images.py` - repoint expired Midjourney CDN media to repo-local hosting or Cloudflare R2
 - `scripts/rebuild-homepage-gallery.py` - repoint homepage gallery items from `data/gallery.json`
 - `scripts/smoke-test-site.mjs` - browser smoke test for key public pages
-- `docs/CONTENT-FLOWS.md` - source-of-truth and refresh documentation
+- Content flows, runbooks and launch notes are kept in the maintainer's private project notes, not in this repo
 
 ## Publishing Notes
 
