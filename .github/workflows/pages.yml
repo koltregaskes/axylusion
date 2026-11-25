@@ -1,0 +1,86 @@
+name: Deploy Axy Lusion to Pages
+
+# Publishes only the allowlisted site files (data/public-files.json plus the
+# public digest index) built by scripts/build-public.py. Docs, design notes,
+# tests, build scripts and agent files stay in the repo and are not served.
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+  # Feed refreshes push with GITHUB_TOKEN, which does not start push-triggered
+  # workflows, so deploy when the refresh workflow finishes on main.
+  workflow_run:
+    workflows: ["Refresh routed feed"]
+    types: [completed]
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Build the allowlisted site
+        run: python scripts/build-public.py --output "$RUNNER_TEMP/_site"
+
+      - name: Prove nothing outside the allowlist is published
+        run: |
+          cd "$RUNNER_TEMP/_site"
+          for p in docs design tests content scripts/build-public.py package.json README.md AGENT-READINESS.md; do
+            if [ -e "$p" ]; then echo "Not a site file: $p"; exit 1; fi
+          done
+          test -f index.html
+          test -f CNAME
+          test -f .well-known/security.txt
+          test -f news-digests/news-feed-latest.json
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      - name: Archive Pages artifact
+        run: |
+          tar --dereference --hard-dereference --directory "$RUNNER_TEMP/_site" \
+            --exclude=.git --exclude=.github -cf "$RUNNER_TEMP/artifact.tar" .
+          tar -tf "$RUNNER_TEMP/artifact.tar" > "$RUNNER_TEMP/artifact-files.txt"
+          wc -l < "$RUNNER_TEMP/artifact-files.txt"
+          grep -Fx './.well-known/security.txt' "$RUNNER_TEMP/artifact-files.txt"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

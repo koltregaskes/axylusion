@@ -13,7 +13,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 const FEED_PATH = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'news-digests', 'news-feed-latest.json')
 const WARN_AFTER_DAYS = 1
 const HARD_MAX_DAYS = 3
-const MISSING_SOURCE = 'The 05:15 UTC refresh fetches shared sources.json. Successful-source items are committed; failed-source items may drop and failures remain visible. A total outage preserves the last feed. The legacy branch build is the only publishing route. Shared destination: sites/axylusion/news-digests.'
+const MISSING_SOURCE = 'The 05:15 UTC refresh fetches shared sources.json. Successful-source items are committed; failed-source items may drop and failures remain visible. A total outage preserves the last feed. pages.yml publishes the allowlisted site after each refresh. Shared destination: sites/axylusion/news-digests.'
 
 export function assessRoutedFeedFreshness(feed, now = new Date()) {
   if (!feed || typeof feed !== 'object' || !Array.isArray(feed.articles)) {
