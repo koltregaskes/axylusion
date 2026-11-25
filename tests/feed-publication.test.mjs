@@ -19,6 +19,8 @@ test('pages.yml deploys after every finished refresh on main, including partial 
   assert.match(trigger,/workflows: \["Refresh routed feed"\]/);
   assert.match(trigger,/types: \[completed\]/);
   assert.match(trigger,/branches: \["main"\]/);
+  // checkout must build main, not the refresh run's older commit.
+  assert.match(pages,/uses: actions\/checkout@v\d+\s+with:\s+ref: main/);
   assert.match(pages,/contains\(fromJSON\('\["success", "failure"\]'\), github\.event\.workflow_run\.conclusion\)/);
 });
 
@@ -28,4 +30,5 @@ test('pages.yml publishes only the allowlisted build', () => {
   assert.match(pages,/chmod -R \+rX "\$RUNNER_TEMP\/_site"/);
   assert.match(pages,/actions\/deploy-pages@/);
   assert.doesNotMatch(pages,/--directory \.\s/);
+  assert.match(pages,/bad=\$\(find \. /);
 });

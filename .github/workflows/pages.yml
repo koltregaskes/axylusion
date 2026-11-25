@@ -52,8 +52,11 @@ jobs:
           for p in docs design tests content package.json README.md AGENT-READINESS.md DESIGN.md; do
             if [ -e "$p" ]; then echo "Not a site file: $p"; exit 1; fi
           done
-          if find . -name '*.py' -o -name '*.ps1' -o -name '*.yml' -o -name '*.md' ! -path './news-digests/*' | grep -q .; then
-            echo 'Build or authoring source in the artifact'; exit 1
+          bad=$(find . -name '*.py' -o -name '*.ps1' -o -name '*.yml' -o -name '*.yaml' -o \( -name '*.md' ! -path './news-digests/*' \))
+          if [ -n "$bad" ]; then
+            echo "Build or authoring source in the artifact:"
+            echo "$bad"
+            exit 1
           fi
           test -f index.html
           test -f CNAME
