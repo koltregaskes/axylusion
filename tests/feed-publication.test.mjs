@@ -32,3 +32,11 @@ test('pages.yml publishes only the allowlisted build', () => {
   assert.doesNotMatch(pages,/--directory \.\s/);
   assert.match(pages,/bad=\$\(find \. /);
 });
+
+test('Pages and OIDC permissions are granted to the deploy job only', () => {
+  const top=pages.slice(pages.indexOf('\npermissions:'),pages.indexOf('\nconcurrency:'));
+  assert.doesNotMatch(top,/pages: write|id-token: write/);
+  const deploy=pages.slice(pages.indexOf('\n  deploy:'));
+  assert.match(deploy,/pages: write/);
+  assert.match(deploy,/id-token: write/);
+});
